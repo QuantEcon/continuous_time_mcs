@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=node style 0] (4) at (4, 0.5) {4};
+		\node [style=node style 0] (5) at (2, 0.5) {3};
+		\node [style=node style 0] (6) at (0, 0.5) {2};
+		\node [style=node style 0] (7) at (-2, 0.5) {1};
+		\node [style=node style 0] (8) at (-4, 0.5) {0};
+		\node [style=none] (10) at (1, 0) {$\lambda$};
+		\node [style=none] (11) at (3, 0) {$\lambda$};
+		\node [style=none] (12) at (-1, 0) {$\lambda$};
+		\node [style=none] (13) at (-3, 0) {$\lambda$};
+		\node [style=none] (14) at (0, 2.5) {};
+		\node [style=none] (15) at (0, 2.5) {$\kappa$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=edge style 0, in=360, out=180] (4) to (5);
+		\draw [style=edge style 0] (5) to (6);
+		\draw [style=edge style 0] (6) to (7);
+		\draw [style=edge style 0] (7) to (8);
+		\draw [style=edge style 0, bend left, looseness=1.25] (8) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}
