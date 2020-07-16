@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Continuous Time Markov Chains I: Introduction &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Continuous Time Markov Chains II: Generators and Distributions" href="ctmc2.html" />
+    <link rel="prev" title="Poisson Processes" href="poisson.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="intro.html">Continuous Time Markov Chains</a>
+  </li>
+  <li class="">
+    <a href="poisson.html">Poisson Processes</a>
+  </li>
+  <li class="active">
+    <a href="">Continuous Time Markov Chains I: Introduction</a>
+  </li>
+  <li class="">
+    <a href="ctmc2.html">Continuous Time Markov Chains II: Generators and Distributions</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/ctmc1.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#overview" class="nav-link">Overview</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#a-model-of-inventory-dynamics" class="nav-link">A Model of Inventory Dynamics</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#representation" class="nav-link">Representation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#simulation" class="nav-link">Simulation</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#markov-processes" class="nav-link">Markov Processes</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#definitions" class="nav-link">Definitions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#back-to-inventories" class="nav-link">Back to Inventories</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="continuous-time-markov-chains-i-introduction">
+<h1>Continuous Time Markov Chains I: Introduction<a class="headerlink" href="#continuous-time-markov-chains-i-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>To be added.  Focus is on time-homogeneous chains.  Finite state space.</p>
+<p>[Consider generalizing to the countable case.  Can you include the Poisson
+process?  Where does the theory get complicated?  Can you get around it by
+assuming bounded positive rates?]</p>
+<p>[If the above works, start with the Poisson process as an example.  Try
+replacing exponentials with some other distribution and argue that the Markov
+property fails.  Use a simple two state example.  We want to know not just
+whether <span class="math notranslate nohighlight">\(X_t\)</span> is in state <span class="math notranslate nohighlight">\(x\)</span>, but also how long.  This violates the Markov
+assumption.]</p>
+<p>The state space is <span class="math notranslate nohighlight">\(S = \{x_1, \ldots, x_n\}\)</span>, where each <span class="math notranslate nohighlight">\(x_i\)</span> is a real number.</p>
+<p>Informally, a continuous time <span class="math notranslate nohighlight">\(S\)</span>-valued Markov chain <span class="math notranslate nohighlight">\((X_t)_{t \geq 0}\)</span> is an <span class="math notranslate nohighlight">\(S\)</span>-valued stochastic process indexed by <span class="math notranslate nohighlight">\(t \in \mathbb R_+\)</span> that has the Markov property.</p>
+<p>Having the Markov property means that <span class="math notranslate nohighlight">\((X_t)_{t &lt; r}\)</span> and <span class="math notranslate nohighlight">\((X_t)_{t \geq r}\)</span> are independent given <span class="math notranslate nohighlight">\(X_r\)</span>.</p>
+<p>As we will see, the Markov property imposes a great deal of valuable structure.</p>
+<p>We will use the following imports</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-model-of-inventory-dynamics">
+<h2>A Model of Inventory Dynamics<a class="headerlink" href="#a-model-of-inventory-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>Let’s now meet our first continuous time Markov chain on a finite state space.</p>
+<p>Let <span class="math notranslate nohighlight">\(X_t\)</span> be the inventory of a firm at time <span class="math notranslate nohighlight">\(t\)</span>,
+taking values in the integers <span class="math notranslate nohighlight">\(0, 1, \ldots, b\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(X_t &gt; 0\)</span>, then a customer arrives after <span class="math notranslate nohighlight">\(W\)</span>
+units of time, where <span class="math notranslate nohighlight">\(W \sim E(\lambda)\)</span> for some fixed <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>.</p>
+<p>Each customer purchases <span class="math notranslate nohighlight">\(\min\{U, X_t\}\)</span> units, where <span class="math notranslate nohighlight">\(U\)</span> is an IID draw from
+the geometric distribution</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb P\{U = u\} = (1-\alpha)^{k-1} \alpha
+    \qquad (k = 1, 2, \ldots, \; \alpha \in (0, 1))
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(X_t = 0\)</span>, then no customers arrive and the firm places an order for <span class="math notranslate nohighlight">\(b\)</span> units.</p>
+<p>The order arrives after a delay of <span class="math notranslate nohighlight">\(D\)</span> units of time, where <span class="math notranslate nohighlight">\(D \sim E(\lambda)\)</span>.</p>
+<p>(We use the same <span class="math notranslate nohighlight">\(\lambda\)</span> here just for convenience, to simplify the exposition.)</p>
+<div class="section" id="representation">
+<h3>Representation<a class="headerlink" href="#representation" title="Permalink to this headline">¶</a></h3>
+<p>The inventory process jumps to a new value either when a new customer arrives
+<span class="math notranslate nohighlight">\((X_t &gt; 0)\)</span> or when new stock arrives <span class="math notranslate nohighlight">\((X_t = 0)\)</span>.</p>
+<p>Between these arrival times it is constant.</p>
+<p>Hence, to track <span class="math notranslate nohighlight">\(X_t\)</span>, it is enough to track the jump times and the new values
+taken at the jumps.</p>
+<p>In what follows, we denote the jump times by <span class="math notranslate nohighlight">\(\{J_k\}\)</span> and the values at jumps
+by <span class="math notranslate nohighlight">\(Y_k\)</span>.</p>
+<p>Then</p>
+<div class="math notranslate nohighlight" id="equation-xfromy">
+<span class="eqno">(1)<a class="headerlink" href="#equation-xfromy" title="Permalink to this equation">¶</a></span>\[
+    X_t = \sum_{k \geq 0} Y_k \mathbb 1\{J_k \leq t &lt; J_{k+1}\}
+    \qquad (t \geq 0)
+\]</div>
+</div>
+<div class="section" id="simulation">
+<h3>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h3>
+<p>Let’s simulate this process, starting at <span class="math notranslate nohighlight">\(X_0 = 0\)</span>.</p>
+<p>As above,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{J_k\}\)</span> gives the time of the jumps in inventory.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y_k\)</span> gives the size of the inventory after the <span class="math notranslate nohighlight">\(k\)</span>-th jump.</p></li>
+<li><p><span class="math notranslate nohighlight">\((X_t)\)</span> is defined from these objects via <a class="reference internal" href="#equation-xfromy">(1)</a>.</p></li>
+</ul>
+<p>Here’s a function that simulates one path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sim_path</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">sim_length</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">α</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sim_length</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sim_length</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sim_length</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span>  <span class="c1"># W ~ E(λ)</span>
+        <span class="n">J</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">J</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">W</span>
+        <span class="k">if</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">geometric</span><span class="p">(</span><span class="n">α</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">J</span><span class="p">,</span> <span class="n">Y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot the process <span class="math notranslate nohighlight">\(\{X_t\}\)</span> using the <code class="docutils literal notranslate"><span class="pre">step</span></code> method of <code class="docutils literal notranslate"><span class="pre">ax</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">J</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">sim_path</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X_t$&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;inventory&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ctmc1_5_0.png" src="_images/ctmc1_5_0.png" />
+</div>
+</div>
+<p>As expected, inventory falls and then jumps back up to <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p>We might now ask questions such as “What fraction of time does <span class="math notranslate nohighlight">\(X_t = 0\)</span> hold
+over a long time series?”</p>
+<p>Before we dig deeper, however, let us turn to some definitions.</p>
+</div>
+</div>
+<div class="section" id="markov-processes">
+<h2>Markov Processes<a class="headerlink" href="#markov-processes" title="Permalink to this headline">¶</a></h2>
+<p>[add roadmap]</p>
+<div class="section" id="definitions">
+<h3>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h3>
+<p>A continuous time stochastic process <span class="math notranslate nohighlight">\((X_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is a family of <span class="math notranslate nohighlight">\(S\)</span>-valued
+random variables <span class="math notranslate nohighlight">\(X_t\)</span> defined on a common probability space.</p>
+<p>A <strong>transition semigroup</strong> is a family <span class="math notranslate nohighlight">\((P_t)_{t \geq 0}\)</span> of Markov matrices
+satisfying <span class="math notranslate nohighlight">\(P_0 = I\)</span>, where <span class="math notranslate nohighlight">\(I\)</span> is the <span class="math notranslate nohighlight">\(n \times n\)</span> identity matrix, and</p>
+<div class="math notranslate nohighlight" id="equation-chapkol-ct">
+<span class="eqno">(2)<a class="headerlink" href="#equation-chapkol-ct" title="Permalink to this equation">¶</a></span>\[
+    P_{s + t} = P_s P_t
+    \qquad (s, t \geq 0)
+\]</div>
+<p>The interpretation of <span class="math notranslate nohighlight">\(P_t(x, y)\)</span> is the probability of moving from state <span class="math notranslate nohighlight">\(x\)</span>
+to state <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(t\)</span> units of time.</p>
+<p>Equation <a class="reference internal" href="#equation-chapkol-ct">(2)</a> is a version of the <strong>Chapman-Kolmogorov equation</strong>.</p>
+<p>This becomes clearer if we write it more explicitly as</p>
+<div class="math notranslate nohighlight">
+\[
+    P_{s+t}(x, y) 
+    = \sum_{z \in S} P_s(x, z) P_t(z, y)
+\]</div>
+<p>A stochastic process <span class="math notranslate nohighlight">\((X_t)\)</span> is called a (time homogeneous) <strong>Markov process</strong> on <span class="math notranslate nohighlight">\(S\)</span>
+with transition semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> if</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb P\{X_t = y \,|\, (X_r)_{r \leq s} \}
+    = P_{t - s} (X_s, y)
+\]</div>
+<p>with probability one for all <span class="math notranslate nohighlight">\(y \in S\)</span> and <span class="math notranslate nohighlight">\(s \leq t\)</span>.</p>
+</div>
+<div class="section" id="back-to-inventories">
+<h3>Back to Inventories<a class="headerlink" href="#back-to-inventories" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="poisson.html" title="previous page">Poisson Processes</a>
+    <a class='right-next' id="next-link" href="ctmc2.html" title="next page">Continuous Time Markov Chains II: Generators and Distributions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

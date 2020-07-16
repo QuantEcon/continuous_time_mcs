@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Continuous Time Markov Chains II: Generators and Distributions &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Continuous Time Markov Chains I: Introduction" href="ctmc1.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="intro.html">Continuous Time Markov Chains</a>
+  </li>
+  <li class="">
+    <a href="poisson.html">Poisson Processes</a>
+  </li>
+  <li class="">
+    <a href="ctmc1.html">Continuous Time Markov Chains I: Introduction</a>
+  </li>
+  <li class="active">
+    <a href="">Continuous Time Markov Chains II: Generators and Distributions</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/ctmc2.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#overview" class="nav-link">Overview</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#distribution-dynamics" class="nav-link">Distribution Dynamics</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#review-of-the-discrete-time-case" class="nav-link">Review of the Discrete Time Case</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#shifting-to-continuous-time" class="nav-link">Shifting to Continuous Time</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#solving-the-ode" class="nav-link">Solving the ODE</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#preserving-distributions" class="nav-link">Preserving Distributions</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#infintessimal-generators" class="nav-link">Infintessimal Generators</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#representations" class="nav-link">Representations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#the-inventory-example" class="nav-link">The Inventory Example</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#jump-chains" class="nav-link">Jump Chains</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#all-ctmcs-are-jump-chains" class="nav-link">All CTMCs are Jump Chains</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="continuous-time-markov-chains-ii-generators-and-distributions">
+<h1>Continuous Time Markov Chains II: Generators and Distributions<a class="headerlink" href="#continuous-time-markov-chains-ii-generators-and-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>To be added.  Focus is on time-homogeneous chains.  Finite state space.</p>
+<p>We will use the following imports</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.art3d</span> <span class="kn">import</span> <span class="n">Poly3DCollection</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="distribution-dynamics">
+<h2>Distribution Dynamics<a class="headerlink" href="#distribution-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>We continue to study a continuous time Markov chain on discrete state space <span class="math notranslate nohighlight">\(S
+= \{x_1, \ldots, x_n\}\)</span>.</p>
+<p>We will start off with a line of argument that seems orthogonal to all of the
+discussion above.</p>
+<p>Then we will make the connections.</p>
+<p>Below,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb 1\)</span> is an <span class="math notranslate nohighlight">\(n \times 1\)</span> column vector of ones and</p></li>
+<li><p><span class="math notranslate nohighlight">\(D(S)\)</span> is the set of all distributions (pmfs) on <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+<div class="section" id="review-of-the-discrete-time-case">
+<h3>Review of the Discrete Time Case<a class="headerlink" href="#review-of-the-discrete-time-case" title="Permalink to this headline">¶</a></h3>
+<p>Previously we studied discrete time Markov chains.</p>
+<p>We learned that the distribution <span class="math notranslate nohighlight">\(\psi_t\)</span> of <span class="math notranslate nohighlight">\(X_t\)</span> updates according to</p>
+<div class="math notranslate nohighlight">
+\[
+    \psi_{t+1} = \psi_t P, 
+    \qquad \psi_0 \text{ a given element of } D(S),
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is a Markov matrix (nonnegative and unit row sums) and</p></li>
+<li><p>distributions are understood as <span class="math notranslate nohighlight">\(1 \times n\)</span> row vectors.</p></li>
+</ul>
+<p>In summary,</p>
+<ol class="simple">
+<li><p>distributions update according to a linear difference equation and</p></li>
+<li><p>that difference equation has the property that trajectories remain in <span class="math notranslate nohighlight">\(D(S)\)</span>.</p></li>
+</ol>
+<p>The second point holds because <span class="math notranslate nohighlight">\(P\)</span> is a Markov matrix if and only if <span class="math notranslate nohighlight">\(\psi \mapsto \psi P\)</span> send <span class="math notranslate nohighlight">\(D(S)\)</span> into itself. (Check it!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unit_simplex</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+    <span class="n">vtx</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+    
+    <span class="n">tri</span> <span class="o">=</span> <span class="n">Poly3DCollection</span><span class="p">([</span><span class="n">vtx</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">tri</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection3d</span><span class="p">(</span><span class="n">tri</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">zlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+           <span class="n">xticks</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">yticks</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">zticks</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;$(1, 0, 0)$&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;$(0, 1, 0)$&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_zticklabels</span><span class="p">([</span><span class="s1">&#39;$(0, 0, 1)$&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">majorTicks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_pad</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">majorTicks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_pad</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">majorTicks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_pad</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+
+    <span class="c1"># Move axis to origin</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">_axinfo</span><span class="p">[</span><span class="s1">&#39;juggled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">_axinfo</span><span class="p">[</span><span class="s1">&#39;juggled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">_axinfo</span><span class="p">[</span><span class="s1">&#39;juggled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">ax</span>
+
+
+<span class="k">def</span> <span class="nf">convergence_plot</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">unit_simplex</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+
+    <span class="c1"># Convergence plot</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">((</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+         <span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
+         <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+    
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+
+    <span class="n">ψ</span> <span class="o">=</span> <span class="n">ψ</span>        <span class="c1"># Initial condition</span>
+
+    <span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">z_vals</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">y_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">z_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">ψ</span> <span class="o">=</span> <span class="n">ψ</span> <span class="o">@</span> <span class="n">P</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">z_vals</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">depthshade</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">qe</span><span class="o">.</span><span class="n">MarkovChain</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="n">ψ_star</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">stationary_distributions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ψ_star</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ψ_star</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ψ_star</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ψ</span>
+
+<span class="n">ψ</span> <span class="o">=</span> <span class="n">convergence_plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ctmc2_3_0.png" src="_images/ctmc2_3_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="shifting-to-continuous-time">
+<h3>Shifting to Continuous Time<a class="headerlink" href="#shifting-to-continuous-time" title="Permalink to this headline">¶</a></h3>
+<p>In view of the foregoing, for a continuous time Markov chain, we fully expect
+the following:</p>
+<ol class="simple">
+<li><p>distributions update according to a linear <em>differential</em> equation and</p></li>
+<li><p>that differential equation is such that trajectories remain in <span class="math notranslate nohighlight">\(D(S)\)</span>.</p></li>
+</ol>
+<p>The linear differential equation can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-ode-mc">
+<span class="eqno">(3)<a class="headerlink" href="#equation-ode-mc" title="Permalink to this equation">¶</a></span>\[
+    \psi_t' = \psi_t Q, 
+    \qquad \psi_0 \text{ a given element of } D(S),
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix with suitable properties,</p></li>
+<li><p>distributions are again understood as row vectors, and</p></li>
+<li><p>derivatives are taken element by element, so that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    \psi_t' =
+    \begin{pmatrix}
+        \frac{d}{dt} \psi_t(1) &amp;
+        \cdots &amp;
+        \frac{d}{dt} \psi_t(n)
+    \end{pmatrix}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert simplex figure with flow here, discuss discretization</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this calculation, we chose <span class="math notranslate nohighlight">\(Q\)</span> with some care, so that the flow remains in
+<span class="math notranslate nohighlight">\(D(S)\)</span>.</p>
+<p>This raises a key question: what properties do we require on <span class="math notranslate nohighlight">\(Q\)</span> such that
+<span class="math notranslate nohighlight">\(\psi_t\)</span> is always in <span class="math notranslate nohighlight">\(D(S)\)</span>?</p>
+<p>We seek necessary and sufficient conditions, so we can determine
+exactly the set of continuous time Markov models on our state space.</p>
+<p>We will answer this question in stages.</p>
+<div class="section" id="solving-the-ode">
+<h4>Solving the ODE<a class="headerlink" href="#solving-the-ode" title="Permalink to this headline">¶</a></h4>
+<p>A good way first step is to note that the unique
+solution to the initial value problem <a class="reference internal" href="#equation-ode-mc">(3)</a> is given by</p>
+<div class="math notranslate nohighlight" id="equation-cmc-sol">
+<span class="eqno">(4)<a class="headerlink" href="#equation-cmc-sol" title="Permalink to this equation">¶</a></span>\[
+    \psi_t = \psi_0 P_t 
+    \quad \text{where } P_t := e^{tQ}
+\]</div>
+<p>Here, the right hand side is the <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_exponential">matrix exponential</a>, with definition</p>
+<div class="math notranslate nohighlight">
+\[
+    e^{tQ} = \sum_{k \geq 0} \frac{1}{k!} (tQ)^k
+\]</div>
+<p>The derivative of this expression with respect to <span class="math notranslate nohighlight">\(t\)</span>, working element by
+element, is</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d}{d t} P_t =  Q e^{tQ} = e^{tQ} Q 
+\]</div>
+<p>We can write the first equality as</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d}{d t} P_t =  Q P_t 
+\]</div>
+<p>This is called the <strong>Kolmogorov backward equation</strong>.  The second equality can
+be written as</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d}{d t} P_t = P_t Q 
+\]</div>
+<p>and is called the <strong>Kolmogorov forward equation</strong>.</p>
+<p>With <span class="math notranslate nohighlight">\(\psi_t\)</span> set to <span class="math notranslate nohighlight">\(\psi_0 P_t\)</span> and applying the Kolmogorov forward
+equation, we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d}{d t} \psi_t 
+    = \psi_0 \frac{d}{d t} P_t 
+    = \psi_0 P_t Q
+    = \psi_t Q
+\]</div>
+<p>This confirms that <a class="reference internal" href="#equation-cmc-sol">(4)</a> solves <a class="reference internal" href="#equation-ode-mc">(3)</a>.</p>
+<p>For a proof that no other solution exists, see [cite Norris].</p>
+</div>
+<div class="section" id="preserving-distributions">
+<h4>Preserving Distributions<a class="headerlink" href="#preserving-distributions" title="Permalink to this headline">¶</a></h4>
+<p>Recall that the linear update rule <span class="math notranslate nohighlight">\(\psi \mapsto \psi P\)</span> is invariant on <span class="math notranslate nohighlight">\(D(S)\)</span>
+if and only if <span class="math notranslate nohighlight">\(P\)</span> is a Markov matrix.</p>
+<p>So now we can rephrase our key question regarding invariance on <span class="math notranslate nohighlight">\(D(S)\)</span>:</p>
+<p>What properties do we need to impose on <span class="math notranslate nohighlight">\(Q\)</span> so that <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix
+for all <span class="math notranslate nohighlight">\(t\)</span>?</p>
+<p>A square matrix <span class="math notranslate nohighlight">\(Q\)</span> is called a <strong>transition rate matrix</strong> if <span class="math notranslate nohighlight">\(Q\)</span> has zero row
+sums and <span class="math notranslate nohighlight">\(Q(i, j) \geq 0\)</span> whenever <span class="math notranslate nohighlight">\(i \not= j\)</span>.</p>
+<p>(Some authors call a transition rate matrix a <span class="math notranslate nohighlight">\(Q\)</span> matrix.)</p>
+<p>Having zero row sums can be expressed as <span class="math notranslate nohighlight">\(Q \mathbb 1 = 0\)</span>.</p>
+<p>As a small exercise, you can check that the following is true</p>
+<div class="math notranslate nohighlight" id="equation-zrsnec">
+<span class="eqno">(5)<a class="headerlink" href="#equation-zrsnec" title="Permalink to this equation">¶</a></span>\[
+    Q \text{ has zero row sums }
+    \iff
+    Q^k \mathbb 1 = 0 \text{ for all } k \geq 1
+\]</div>
+<p><strong>Theorem</strong> If <span class="math notranslate nohighlight">\(Q\)</span> is an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix and <span class="math notranslate nohighlight">\(P_t := e^{tQ}\)</span>, then the
+following statements are equivalent:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix for all <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is a transition rate matrix.</p></li>
+</ol>
+<p><em>Proof:</em>  Suppose first that <span class="math notranslate nohighlight">\(Q\)</span> is a transition rate matrix and set <span class="math notranslate nohighlight">\(P_t =
+e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>By the definition of the exponential function, for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    P_t \mathbb 1 = \mathbb 1 + tQ \mathbb 1 + \frac{1}{2!} t^2 Q^2 \mathbb 1 + \cdots
+\]</div>
+<p>From <a class="reference internal" href="#equation-zrsnec">(5)</a>, we see that <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums.</p>
+<p>As a second observation, note that, for any <span class="math notranslate nohighlight">\(i, j\)</span> and <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-otp">
+<span class="eqno">(6)<a class="headerlink" href="#equation-otp" title="Permalink to this equation">¶</a></span>\[
+    P_t(i, j) = \mathbb 1\{i = j\} + t Q(i, j) + o(t)
+\]</div>
+<p>From <a class="reference internal" href="#equation-otp">(6)</a>, both off-diagonal and on-diagonal elements of <span class="math notranslate nohighlight">\(P_t\)</span> are nonnegative.</p>
+<p>Hence <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix.</p>
+<p>Regarding the converse implication, suppose that <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> is a Markov
+matrix for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Because <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums and differentiation is linear,
+we can employ the Kolmogorov backward equation to obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    Q  \mathbb 1
+      = Q P_t \mathbb 1
+      = \left( \frac{d}{d t} P_t \right) \mathbb 1
+      = \frac{d}{d t} (P_t \mathbb 1)
+      = \frac{d}{d t} \mathbb 1
+      = 0
+\]</div>
+<p>Hence <span class="math notranslate nohighlight">\(Q\)</span> has zero row sums.</p>
+<p>Moreover, in view of <a class="reference internal" href="#equation-otp">(6)</a>, the off diagonal elements of <span class="math notranslate nohighlight">\(Q\)</span> must be positive.</p>
+<p>Hence <span class="math notranslate nohighlight">\(Q\)</span> is a transition rate matrix.</p>
+<p>This completes the proof.</p>
+</div>
+</div>
+</div>
+<div class="section" id="infintessimal-generators">
+<h2>Infintessimal Generators<a class="headerlink" href="#infintessimal-generators" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math notranslate nohighlight">\(Q\)</span> is a transition rate matrix and <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>, then
+the family of matrices <span class="math notranslate nohighlight">\(\{P_t\}\)</span> is called a <strong>transition semigroup</strong>.</p>
+<p>In this context, <span class="math notranslate nohighlight">\(Q\)</span> is called the <strong>infintessimal generator</strong> of the semigroup.</p>
+<p>The name “semigroup” refers to the fact that <span class="math notranslate nohighlight">\(P_s P_t = P_{s+t}\)</span>, as you can
+easily verify using the properties of the exponential function.</p>
+<p>In the present context, the equality <span class="math notranslate nohighlight">\(P_s P_t = P_{s+t}\)</span> is called the
+<strong>Chapman-Kolmogorov equation</strong>.</p>
+<div class="section" id="representations">
+<h3>Representations<a class="headerlink" href="#representations" title="Permalink to this headline">¶</a></h3>
+<p>Both the semigroup and its infintessimal generator are natural representations
+of a given continuous time Marko chain.</p>
+<p>The semigroup can be constructed uniquely constructed from its generator <span class="math notranslate nohighlight">\(Q\)</span>
+via <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span>, and the generator can be recovered from the semigroup via</p>
+<div class="math notranslate nohighlight">
+\[
+    Q = \frac{d}{d t} P_t \big|_0
+\]</div>
+<p>The last claim follows from <span class="math notranslate nohighlight">\(P_t = I\)</span> and either the forward or backward
+Kolmogorov equation.</p>
+<p>The semigroup is, in some sense, more informative than the generator, since it
+allows us to update distributions to any point in time.</p>
+<p>But the generator is simpler and often more intuitive in particular
+applications.</p>
+</div>
+<div class="section" id="the-inventory-example">
+<h3>The Inventory Example<a class="headerlink" href="#the-inventory-example" title="Permalink to this headline">¶</a></h3>
+<p>Let’s go back to the inventory example we discussed above.</p>
+<p>What is the infintessimal generator for this problem?</p>
+<p>The intuitive interpretation of a given generator <span class="math notranslate nohighlight">\(Q\)</span> is that</p>
+<p>$$
+Q(i, j) = \text{ rate of flow from state <span class="math notranslate nohighlight">\(i\)</span> to state <span class="math notranslate nohighlight">\(j\)</span>}
+$$</p>
+<p>For example, if we observe the inventories of many firms independently
+following the model above, then <span class="math notranslate nohighlight">\(Q(i, j) = r\)</span> means that firms inventories
+transition from state <span class="math notranslate nohighlight">\(i\)</span> to state <span class="math notranslate nohighlight">\(j\)</span> at a rate of <span class="math notranslate nohighlight">\(r\)</span> per unit of time.</p>
+<p>[improve this, make it clearer]</p>
+</div>
+</div>
+<div class="section" id="jump-chains">
+<h2>Jump Chains<a class="headerlink" href="#jump-chains" title="Permalink to this headline">¶</a></h2>
+<p>In this section we provide a natural way to construct continuous time
+continuous time Markov chain on our finite state space <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>Later we will show that <em>every</em> continuous time Markov chain on a finite
+state space can be represented in this way.</p>
+<p>Intro model based on <span class="math notranslate nohighlight">\(\lambda\)</span> fixed and <span class="math notranslate nohighlight">\(\Pi(i, j)\)</span>.</p>
+<p>Build <span class="math notranslate nohighlight">\(Q\)</span> from this model, and then <span class="math notranslate nohighlight">\(P_t\)</span> from <span class="math notranslate nohighlight">\(Q\)</span> in the usual way.</p>
+<p>Build <span class="math notranslate nohighlight">\(P_t\)</span> directly using probabilistic reasoning and show that the two
+coincide.</p>
+</div>
+<div class="section" id="all-ctmcs-are-jump-chains">
+<h2>All CTMCs are Jump Chains<a class="headerlink" href="#all-ctmcs-are-jump-chains" title="Permalink to this headline">¶</a></h2>
+<p>Start with a Q matrix and construct the jump chain.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ctmc1.html" title="previous page">Continuous Time Markov Chains I: Introduction</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
