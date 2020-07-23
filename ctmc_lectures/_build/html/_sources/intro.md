@@ -1,4 +1,0 @@
-Continuous Time Markov Chains
-=============================
-
-Introductory text to be added.
