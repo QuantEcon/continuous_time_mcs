@@ -50,6 +50,7 @@ from numba import njit
 ```
 
 
+
 ## A Model of Inventory Dynamics
 
 Let's now meet our first continuous time Markov chain on a finite state space.

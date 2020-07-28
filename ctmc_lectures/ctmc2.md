@@ -374,7 +374,7 @@ transition from state $i$ to state $j$ at a rate of $r$ per unit of time.
 
 [improve this, make it clearer]
 
-## Jump Chains
+## Jump Chains: The General Case
 
 In this section we provide a natural way to construct continuous time
 continuous time Markov chain on our finite state space $S$.
@@ -390,6 +390,8 @@ Build $Q$ from this model, and then $P_t$ from $Q$ in the usual way.
 Build $P_t$ directly using probabilistic reasoning and show that the two
 coincide.
 
+
+[exponential clocks representation, Gillespie algo]
 
 
 ## All CTMCs are Jump Chains 
