@@ -1,4 +1,9 @@
 - file: intro
+- file: memoryless
 - file: poisson
-- file: ctmc1
-- file: ctmc2
+- file: markov_prop
+- file: kolmogorov_bwd
+- file: kolmogorov_fwd
+- file: prob_view
+- file: infinitesimals
+- file: ergodicity

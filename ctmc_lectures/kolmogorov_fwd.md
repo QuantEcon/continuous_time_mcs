@@ -13,11 +13,40 @@ kernelspec:
 ---
 
 
-# Continuous Time Markov Chains II: Generators and Distributions
+# The Kolmogorov Forward Equation
+
+
 
 ## Overview
 
-To be added.  Focus is on time-homogeneous chains.  Finite state space.
+To be added.  Finite state space.
+
+Start with discrete time and motivate $\psi'_t = \psi_t Q$.
+
+Solution is $\psi_t = \psi_0 e^{tQ}$.
+
+What properties do we need on $Q$ such that flow is in $\mathcal D$?
+
+(Rate matrix.)
+
+Connection to semigroups: set $P_t = e^{tQ}$.
+
+
+Argue that $(P_t)$ is a transition semigroup.
+
+Introduce the KFE and show that $\psi'_t = \psi_t Q$ is equivalent.
+
+Implications:
+
+* Each rate matrix defines a transition semigroup.
+* The KFE for the semigroup yields the flow of distributions.
+
+Later we will argue that the reverse is true: each transition
+semigroup defines a rate matrix such that the semigroup can be reconstructed
+from this rate matrix. 
+
+Show that $(P_t)$ satisfies the Kolmogorov backward equation too (an exercise?)
+
 
 
 We will use the following imports
@@ -322,18 +351,12 @@ Hence $Q$ is a transition rate matrix.
 
 This completes the proof.
 
-## Infintessimal Generators
 
-If $Q$ is a transition rate matrix and $P_t = e^{tQ}$ for all $t$, then 
-the family of matrices $\{P_t\}$ is called a **transition semigroup**.
 
-In this context, $Q$ is called the **infintessimal generator** of the semigroup.
 
-The name "semigroup" refers to the fact that $P_s P_t = P_{s+t}$, as you can 
-easily verify using the properties of the exponential function.
 
-In the present context, the equality $P_s P_t = P_{s+t}$ is called the 
-**Chapman-Kolmogorov equation**.
+
+
 
 ### Representations
 
@@ -382,8 +405,7 @@ continuous time Markov chain on our finite state space $S$.
 Later we will show that *every* continuous time Markov chain on a finite
 state space can be represented in this way.
 
-
-Intro model based on $\lambda$ fixed and $\Pi(i, j)$.
+Intro model based on $\lambda$ fixed and $\Pi(x, y)$.
 
 Build $Q$ from this model, and then $P_t$ from $Q$ in the usual way.
 
@@ -391,10 +413,36 @@ Build $P_t$ directly using probabilistic reasoning and show that the two
 coincide.
 
 
-[exponential clocks representation, Gillespie algo]
 
 
 ## All CTMCs are Jump Chains 
 
 Start with a Q matrix and construct the jump chain.
 
+When does $Q$ admit the decomposition $Q = \lambda (\Pi - I)$?
+
+
+
+
+
+## The Gillespie Algorithm
+
+Exponential clocks.
+
+
+
+
+
+
+## Exercises
+
+The transition semigroup properties lead to the KF and KB equations.
+
+When treating Kolmogorov forward and backward equations, do a first order
+Euler discretization and link to the discrete case.
+
+
+
+## Solutions
+
+To be added.

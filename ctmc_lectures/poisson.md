@@ -15,10 +15,7 @@ kernelspec:
 
 # Poisson Processes
 
-In this lecture we examine some building blocks for continuous time Markov
-chains.  
-
-Most of our focus is on Poisson processes.
+Now we turn to on Poisson processes.
 
 We will use the following imports
 
@@ -31,9 +28,7 @@ from scipy.special import factorial, binom
 ```
 
 
-
 ## Overview
-
 
 Poisson processes are a kind of **counting process**, in that they count the
 number of "arrivals" occurring by a given time.
@@ -42,34 +37,6 @@ number of "arrivals" occurring by a given time.
 
 Counting processes become Poisson processes when the time interval between
 arrivals is IID and exponentially distributed.
-
-The next figure shows one realization of a Poisson process $(N_t)$, with jumps
-at each new arrival.
-
-
-```{code-cell} ipython3
-:tags: [hide-input]
-
-np.random.seed(1234)
-T = 5
-Ws = np.random.exponential(size=T)
-Js = np.cumsum(Ws)
-Ys = np.arange(T)
-
-fig, ax = plt.subplots()
-
-ax.plot(np.insert(Js, 0, 0)[:-1], Ys, 'o')
-ax.hlines(Ys, np.insert(Js, 0, 0)[:-1], Js, label='$N_t$')
-ax.vlines(Js[:-1], Ys[:-1], Ys[1:], alpha=0.25)
-
-ax.set(xticks=[],
-       yticks=range(Ys.max()+1),
-       xlabel='time')
-
-ax.grid(lw=0.2)
-ax.legend(loc='lower right')
-plt.show()
-```
 
 Exponential distributions and Poisson processes have deep connections to
 continuous time Markov chains.
@@ -80,310 +47,14 @@ a continuous time Markov chain.
 In addition, when continuous time Markov chains jump between states, the time
 between jumps is *necessarily* exponentially distributed.
 
-This is due to the fact that Markov chains are, by definition, forgetful.
 
-In particular, for a Markov chain, the distribution over future outcomes
-depends only on the current state of the chain.
 
-This requires that the amount of time since the last jump is not helpful in
-predicting the timing of the next jump.
+## Counting Processes
 
-In other words, the jump times are "memoryless".
+Let's start with the general case of an arbitrary counting process.
 
-It is remarkable that the only distribution on $\mathbb R_+$ with this
-property is the exponential distribution.
 
-(Similarly, the only memoryless distribution on $\mathbb Z_+$ is the geometric
-distribution.)
-
-The discussion below tries to clarify these ideas.
-
-
-## Memoryless Distributions
-
-Consider betting on a roulette wheel and suppose that red has come up four times in a row.
-
-Since five reds in a row is an unlikely event, many people instinctively feel
-that black is more likely on the fifth spin.
-
-("Surely black will come up this time!")
-
-But rational thought tells us this is wrong: the four previous reds make no
-difference to the outcome of the next spin.
-
-(We are assuming that the wheel is fairly balanced.)
-
-A more mathematical restatement of this phenomenon is: the geometric distribution is memoryless.
-
-This restatement will be clarified below.
-
-### The Geometric Distribution
-
-A random variable $X$ is said to be [geometrically distributed](https://en.wikipedia.org/wiki/Geometric_distribution) if it is
-supported on the nonnegative integers and, for some $\theta \in [0, 1]$,
-
-$$ 
-    \mathbb P\{X = k\} = (1-\theta)^k \theta 
-    \qquad (k = 0, 1, \ldots)
-$$ (geodist)
-
-An example can be constructed from the discussion of the roulette wheel above.
-
-Suppose that, 
-
-* the outcome of each spin is either red or black, 
-* on each spin, black occurs with probability $\theta$ and
-* outcomes across spins are independent.
-
-The expression in {eq}`geodist` is the probability that the first occurrence of
-black is at spin $k$, when the first spin is labeled $0$.
-
-(The outcome "black" fails $k$ times and then succeeds.)
-
-Consistent with our discussion in the introduction, the geometric distribution
-is memoryless.
-
-For example, given any nonnegative integer $m$, we have
-
-$$
-    \mathbb P \{X = m + 1 \,|\, X > m \} = \mathbb P \{X = 0\}
-$$ (memgeo)
-
-To show this, we note that the left hand side is
-
-$$
-    \frac{ \mathbb P \{X = m + 1 \text{ and } X > m \} }
-    {\mathbb P \{X \geq m\}}
-    =
-    \frac{ \mathbb P \{X = m + 1 \} }
-    {\mathbb P \{X > m\}}
-    = \frac{ (1-\theta)^{m+1} \theta }
-        {\sum_{k > m} (1-\theta)^k \theta }
-$$
-
-The right hand side simplifies to $\theta$, completing the proof of {eq}`memgeo`.
-
-
-
-### From Geometric to Exponential
-
-Continuous time Markov chains jump between discrete states.
-
-To construct them, we need to specify the distribution of the **holding
-times** (also called **wait times**), which are the time intervals between jumps.
-
-The holding time distribution must be memoryless, so that the chain satisfies
-the Markov property (we return to this point later).
-
-While the geometric distribution is memoryless, its discrete support makes it
-less than ideal for the continuous time case.
-
-Hence we turn to the [exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution), which is supported on $\mathbb R_+$.
-
-If $Y$ is exponential with rate $\lambda$, then 
-
-$$
-    \mathbb P\{Y > y\} = e^{-\lambda y}
-    \quad \text{  for all } 
-    y \geq 0
-$$
-
-The exponential distribution can be regarded as the "limit" of the geometric
-distribution, as we now argue informally.
-
-Suppose that 
-
-* customers enter a shop at discrete times $t_1, t_2, \ldots$
-* these times are evenly spaced, with $h = t_{i+1} - t_i$ for all $i$
-* at each $t_i$, either zero or one customers enter (less than 2 because $h$ is small) 
-* entry at each $t_i$ occurs with probability $\lambda h$ and is independent over $i$.
-
-Let 
-
-* $Y$ be the time of the first arrival at the shop, 
-* $t$ be a given positive number and
-* $i(h)$ be the largest integer such that $t_{i(h)} \leq t$.
-
-Note that, as $h \to 0$, the grid becomes finer and $t_{i(h)} = i(h) h  \to t$.
-
-Writing $i(h)$ as $i$ and using the geometric distribution, the probability that 
-the first arrival occurs after $t_{i}$ is $(1-\lambda h)^{i}$.
-
-Hence 
-
-$$
-    \mathbb P\{Y > t_{i} \}
-    = (1-\lambda h)^i
-    = \left( 1- \frac{\lambda i h}{i} \right)^i
-$$
-
-Using the fact that $e^x = \lim_{i \to \infty}(1 + x/i)^i$ for all $x$ and $i
-h = t_i \to t$, we obtain, for large $i$,
-
-$$
-    \mathbb P\{Y > t\}
-    \approx
-    e^{- \lambda t}
-$$
-
-In this sense, the exponential is the limit of the geometric distribution.
-
-
-### Memoryless Property of the Exponential Distribution
-
-The exponential distribution is the only memoryless distribution supported on $\mathbb R_+$.
-
-More specifically, a random variable $X$ supported on $\mathbb R_+$ has 
-the exponential distribution with some rate $\lambda > 0$ if and only if,
-for all positive $s, t$,
-
-$$
-    \mathbb P \{X > s + t \,|\, X > s \} = \mathbb P \{X > t\}
-$$ (memexpo)
-
-To see that {eq}`memexpo` holds when $X$ is exponential with rate $\lambda$,
-observe that
-
-$$
-    \frac{ \mathbb P \{X > s + t \text{ and } X > s \} }
-    {\mathbb P \{X > s\}}
-    =
-    \frac{ \mathbb P \{X > s + t \} }
-    {\mathbb P \{X > s\}}
-    = \frac{e^{-\lambda s - \lambda t}}{e^{-\lambda s}}
-    = e^{-\lambda t}
-$$
-
-#### Uniqueness
-
-Let's look at the claim that memorylessness implies the exponential distribution.
-
-The proof is a bit longer but not overly difficult.
-
-Let $X$ be a random variable supported on $\mathbb R_+$ such that
-{eq}`memexpo` holds.
-
-The "exceedance" function $f(s) := \mathbb P\{X > s\}$ then has three properties:
-
-1. $f$ is decreasing on $\mathbb R_+$,
-1. $0 < f(t) < 1$ for all $t > 0$,
-1. $f(s + t) = f(s) f(t)$ for all $s, t > 0$.
-
-The first property is common to all exceedance functions, the second is due to
-the fact that $X$ is supported on all of $\mathbb R_+$, and the
-third is {eq}`memexpo`.
-
-From these three properties we will show that
-
-$$
-    f(t) = f(1)^t  \;\; \forall \, t \geq 0
-$$ (implex)
-
-This is sufficient to prove the claim because $\lambda := - \ln f(1)$ is a positive real number (by property 2) and, moreover,
-
-$$ 
-    f(t) 
-    = \exp( \ln ( f(1) ) t) 
-    = \exp( - \lambda t) 
-$$
-
-To see that {eq}`implex` holds, fix positive integers $m,n$.
-
-We can use property 3 to obtain both
-
-$$
-    f(m/n) = f(1/n)^m
-    \quad \text{and} \quad
-    f(1) = f(1/n)^n
-$$
-
-It follows that $f(m/n)^n = f(1/n)^{m n} = f(1)^m$ and, raising to the power
-of $1/n$, we get {eq}`implex` when $t=m/n$.
-
-The discussion so far confirms that {eq}`implex` holds when $t$ is rational.
-
-So now take any $t \geq 0$ and rational sequences $(a_n)$ and $(b_n)$
-converging to $t$ with $a_n \leq t \leq b_n$ for all $n$.
-
-By property 1 we have $f(a_n) \leq f(t) \leq f(b_n)$ for all $n$, so
-
-$$
-    f(1)^{a_n} \leq f(t) \leq f(1)^{b_n}
-    \quad \forall \, n \in \mathbb N
-$$
-
-Taking the limit in $n$ completes the proof.
-
-
-
-## Sums of Exponentials
-
-A random variable $W$ on $\mathbb R_+$ is said to have the [Erlang
-distribution](https://en.wikipedia.org/wiki/Erlang_distribution) if its
-density has the form
-
-$$ 
-    f(t) = \frac{\lambda^n  t^{n-1}}{(n-1)!} e^{-\lambda t}
-    \qquad (t \geq 0)
-$$
-
-for some $n \in \mathbb N$ and $\lambda > 0$.
-
-The parameters $n$ and $\lambda$ are called the **shape** and **rate**
-parameters respectively.
-
-The next figure shows the shape for two parameterizations.
-
-
-```{code-cell} ipython3
-:tags: [hide-input]
-
-t_grid = np.linspace(0, 50, 100)
-
-class Erlang:
-
-    def __init__(self, λ=0.5, n=10):
-        self.λ, self.n = λ, n
-
-    def __call__(self, t):
-        n, λ = self.n, self.λ
-        return (λ**n * t**(n-1) * np.exp(-λ * t)) / factorial(n-1)
-
-e1 = Erlang(n=10, λ=0.5)
-e2 = Erlang(n=10, λ=0.75)
-
-fig, ax = plt.subplots()
-for e in e1, e2:
-    ax.plot(t_grid, e(t_grid), label=f'$n={e.n}, \lambda={e.λ}$')
-
-ax.legend()
-plt.show()
-
-```
-
-The CDF of the Erlang distribution is
-
-$$
-    F(t) 
-    = \mathbb P\{W \leq t\}
-    = 1 - \sum_{k=0}^{n-1} \frac{(\lambda t)^k}{k!} e^{-\lambda t}
-$$ (erlcdf)
-
-The Erlang distribution is of interest to us because of the following fact.
-
-If, for some $\lambda > 0$, the sequence $(W_i)$ is IID and exponentially
-distributed with rate $\lambda$, then $J_n := \sum_{i=1}^n W_i$ has the Erlang
-distribution with shape $n$ and rate $\lambda$.
-
-We will see how this connects to the Poisson process just below.
-
-
-
-## Poisson Dynamics
-
-Next we turn to Poisson processes, which are a form of counting process.
-
-### Counting Processes
+### Jumps and Counts
 
 Let $(J_k)$ be an increasing sequence of nonnegative random variables
 satisfying  $J_k \to \infty$ with probability one.
@@ -445,7 +116,7 @@ $$
 
 where $(W_i)$ are IID exponential with some fixed rate $\lambda$.
 
-Then the associated counting process $(N_t)$ is called a **Poisson process**.
+Then the associated counting process $(N_t)$ is called a **Poisson process** with rate $\lambda$.
 
 The rationale behind the name is that, for each $t > 0$, the random variable
 $N_t$ has the Poisson distribution with parameter $t \lambda$.
@@ -471,7 +142,7 @@ and the right hand side agrees with {eq}`poissondist` when $k=0$.
 This sets up a proof by induction, which is time consuming but not difficult
 --- the details can be found in $\S29$ of {cite}`howard2017elements`.
 
-Another way to show that $N_t$ is Poisson with rate $t \lambda$ is to observe
+Another way to show that $N_t$ is Poisson with rate $\lambda$ is to observe
 that
 
 $$ 
@@ -485,16 +156,45 @@ rate $\lambda$, we obtain
 
 $$ 
     \mathbb P\{N_t \leq n\} 
-    = \sum_{k=0}^{n} \frac{(\lambda t)^k}{k!} e^{-\lambda t}
+    = \sum_{k=0}^{n} \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
-This is the (integer valued) CDF for the Poisson distribution with rate
+This is the (integer valued) CDF for the Poisson distribution with parameter
 $t \lambda$.
 
 An exercise at the end of the lecture asks you to verify that $N(t)$ is Poisson-$(t \lambda )$ informally via simulation.
 
+The next figure shows one realization of a Poisson process $(N_t)$, with jumps
+at each new arrival.
 
-### Properties
+
+```{code-cell} ipython3
+:tags: [hide-input]
+
+np.random.seed(1234)
+T = 5
+Ws = np.random.exponential(size=T)
+Js = np.cumsum(Ws)
+Ys = np.arange(T)
+
+fig, ax = plt.subplots()
+
+ax.plot(np.insert(Js, 0, 0)[:-1], Ys, 'o')
+ax.hlines(Ys, np.insert(Js, 0, 0)[:-1], Js, label='$N_t$')
+ax.vlines(Js[:-1], Ys[:-1], Ys[1:], alpha=0.25)
+
+ax.set(xticks=[],
+       yticks=range(Ys.max()+1),
+       xlabel='time')
+
+ax.grid(lw=0.2)
+ax.legend(loc='lower right')
+plt.show()
+```
+
+
+
+## Stationary Independent Increments
 
 One of the defining features of a Poisson process is that it has stationary
 and independent increments.
@@ -530,17 +230,17 @@ the exponential.
 
 That is, we fix small $h > 0$ and let $t_i := ih$ for all $i$.
 
-Let $(V_i)$ be IID binary random variables with $\mathbb P\{V_i = 1\} =
-\lambda h$ for some $\lambda > 0$.
+Let $(V_i)$ be IID binary random variables with $\mathbb P\{V_i = 1\} = h \lambda$ for some $\lambda > 0$.
 
 Linking to our previous discussion, 
 
+* either one or zero customers visits a shop at each $t_i$.
 * $V_i = 1$ means that a customer visits at time $t_i$.
-* Visits occur with probability $\lambda h$, which is proportional to the
+* Visits occur with probability $h \lambda$, which is proportional to the
   length of the interval between grid points.
 
-We learned above that the holding time (wait time) until the first visit is approximately
-exponential with rate $t \lambda$.
+We learned above that the holding time (wait time) until the first visit is
+approximately exponential with rate $t \lambda$.
 
 Since $(V_i)$ is IID, the same is true for the second wait time and so on.
 
@@ -586,12 +286,12 @@ This intuition is correct because, fixing $t$, letting $k := \max\{i \in
 $$
     \hat N_t 
     = \sum_{i=1}^k V_i
-    \sim \text{Binomial}(k, \lambda h)
+    \sim \text{Binomial}(k, h \lambda)
     \approx
-    \text{Poisson}(k \lambda h)
+    \text{Poisson}(k h \lambda )
 $$
 
-Using the fact that $kh = t_k \approx t$, we see
+Using the fact that $kh = t_k \approx t$ when $k$ is large, we see
 that $\hat N_t$ is approximately Poisson with rate $t \lambda$, just as we
 expected.
 
@@ -599,33 +299,33 @@ expected.
 This approximate construction of a Poisson process helps illustrate the
 property of stationary independent increments.
 
-For example, if we fix $s < t$, then $\hat N_t - \hat N_s$ is the number of visits
-between $s$ and $t$, so that 
+For example, if we fix $s, t$, then $\hat N_{s + t} - \hat N_s$ is the number of visits
+between $s$ and $s+t$, so that 
 
 $$
-    \hat N_t - \hat N_s
-    = \sum_i V_i \mathbb 1\{ s < t_i < t \}
+    \hat N_{s+t} - \hat N_s
+    = \sum_i V_i \mathbb 1\{ s \leq t_i < s + t \}
 $$
 
-Suppose there are $k$ grid points between $s$ and $t$, so that $t-s \approx
+Suppose there are $k$ grid points between $s$ and $s+t$, so that $t \approx
 kh$.
 
 Then
 
 $$
-    \hat N_t - \hat N_s
-    \sim \text{Binomial}(k, \lambda h)
+    \hat N_{s+t} - \hat N_s
+    \sim \text{Binomial}(k, h \lambda )
     \approx 
-    \text{Poisson}(k \lambda h)
+    \text{Poisson}(k h \lambda )
     \approx 
-    \text{Poisson}((t -s) \lambda)
+    \text{Poisson}(t\lambda)
 $$
 
 This illustrates the idea that, for a Poisson process $(N_t)$, we have
 
 $$
-   N_t - N_s \sim N_{t-s} \sim  
-    \text{Poisson}((t -s) \lambda)
+   N_{s+t} - N_s 
+   \sim  \text{Poisson}(t\lambda)
 $$
 
 In particular, increments are stationary.
@@ -634,18 +334,67 @@ The approximation also illustrates indepenence of increments, since, in the
 approximation, increments depend on separate subsets of $(V_i)$.
 
 
+
+
+
 ## Uniqueness
 
 What other counting processes have stationary independent increments?
 
-Remarkably, the answer is none: any counting process with these properties is
-necessarily a Poisson process.
+Remarkably, the answer is none: any process $(M_t)$ supported on $\mathbb Z_+$
+having stationary independent increments and starting at 0
+is a Poisson process.
+
+In particular, there exists a $\lambda > 0$ such that
+
+$$
+    M_{s + t} - M_s
+   \sim  \text{Poisson}(t\lambda)
+$$
+
+for any $s, t$.
 
 The proof is similar to our earlier proof that the exponential distribution is
 the only memoryless distribution.
 
 Details can be found in Section 6.2 of {cite}`pardoux2008markov` or 
 Theorem 2.4.3 of {cite}`norris1998markov`.
+
+(restart_prop)=
+### The Restarting Property
+
+An important consequence of stationary independent increments is the
+restarting property, which means that the Poisson process can restart itself at any
+time.
+
+Formally, if $(N_t)$ is a Poisson process, $s > 0$ and 
+$(M_t)$ is defined by $M_t = N_{s+t} - N_s$ for $t \geq 0$, then $(M_t)$ is a 
+Poisson process independent of $(N_r)_{r \leq s}$.
+
+Independence of $(M_t)$ and $(N_r)_{r \leq s}$ follows from indepenence of the
+increments of $(N_t)$.
+
+In view of the uniqueness statement above, we can verify that $(M_t)$ is a
+Poisson process by showing that $(M_t)$ starts at zero, is supported on
+$\mathbb Z_+$ and has stationary independent increments.
+
+It is clear that $(M_t)$ starts at zero and is supported on $\mathbb Z_+$.
+
+In addition, if we take any $t < t'$, then
+
+$$
+    M_{t'} - M_t = N_{s+t'} - N_{s + t}
+   \sim  \text{Poisson}((t' - t) \lambda)
+$$
+
+Hence $(M_t)$ has stationary increments and, 
+using the relation $M_{t'} - M_t = N_{s+t'} - N_{s + t}$ again,
+the increments are independent as well.
+    
+We conclude that $(N_{s+t} - N_s)_{t \geq 0}$ is indeed a 
+Poisson process independent of $(N_r)_{r \leq s}$.
+
+
 
 
 ## Exercises
@@ -671,7 +420,7 @@ Exercise 2
 ----------
 
 
-In the we used the fact that
+In the lecture we used the fact that
 
 $$
     \text{Binomial}(n, \theta) 
@@ -688,8 +437,8 @@ Experiment with different values of $n$ and $\theta$.
 
 ## Solutions
 
-Exercise 1
-----------
+
+### Solution to Exercise 1
 
 Here is one solution.  
 
@@ -742,8 +491,7 @@ plt.show()
 ```
 
 
-Exercise 2
-----------
+### Solution to Exercise 2
 
 Here is one solution.  It shows that the approximation is good when $n$ is
 large and $\theta$ is small.
@@ -775,7 +523,7 @@ plt.show()
 
 
 
-# References
+## References
 
 ```{bibliography} references.bib
 ```
