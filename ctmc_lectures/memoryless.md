@@ -88,11 +88,11 @@ An example can be constructed from the discussion of the roulette wheel above.
 Suppose that, 
 
 * the outcome of each spin is either red or black, 
+* spins are labeled by $0, 1, 2, \ldots$,
 * on each spin, black occurs with probability $\theta$ and
 * outcomes across spins are independent.
 
-The expression in {eq}`geodist` is the probability that the first occurrence of
-black is at spin $k$, when the first spin is labeled $0$.
+Then {eq}`geodist` is the probability that the first occurrence of black is at spin $k$.
 
 (The outcome "black" fails $k$ times and then succeeds.)
 
@@ -161,8 +161,17 @@ Suppose that
 
 * customers enter a shop at discrete times $t_1, t_2, \ldots$
 * these times are evenly spaced, with $h = t_{i+1} - t_i$ for all $i$
-* at each $t_i$, either zero or one customers enter (less than 2 because $h$ is small) 
+* at each $t_i$, either zero or one customers enter (no more because $h$ is small) 
 * entry at each $t_i$ occurs with probability $\lambda h$ and is independent over $i$.
+
+The fact that the entry probability is proportional to $h$ is important in
+what follows.
+
+You can imagine many customers passing by the shop, each entering
+independently.
+
+If we halve the time interval, then we also halve the probability that a
+customer enters.
 
 Let 
 
@@ -379,7 +388,7 @@ If, for some $\lambda > 0$, the sequence $(W_i)$ is IID and exponentially
 distributed with rate $\lambda$, then $J_n := \sum_{i=1}^n W_i$ has the Erlang
 distribution with shape $n$ and rate $\lambda$.
 
-We will see how this connects to the Poisson process just below.
+This connects to Poisson process theory, as we shall soon see.
 
 
 
