@@ -486,4 +486,5 @@ which is identical to {eq}`kolbackeq`.
 ## References
 
 ```{bibliography} references.bib
+:filter: docname in docnames
 ```
