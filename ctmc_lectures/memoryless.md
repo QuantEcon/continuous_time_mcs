@@ -452,7 +452,7 @@ $$
     = e^{-\lambda(s - t)}
 $$
 
-Either way, we have $X \sim E(\lambda)$, as was to be show.
+Either way, we have $X \sim E(\lambda)$, as was to be shown.
 
 
 ### Solution to Exercise 2
