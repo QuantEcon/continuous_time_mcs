@@ -34,9 +34,7 @@ of great scientists such as Isaac Newton.)
 We will see in this lecture that the same is true for continuous time Markov
 chains.
 
-Throughout this lecture, the state space is assumed to be finite, with $|S|=n$.
-
-This will help us focus on intuition rather than relatively minor technicalities.
+To help us focus on intuition in this lecture, rather than technicalities, the state space is assumed to be finite, with $|S|=n$.
 
 Later we will investigate the case where $|S| = \infty$.
 
@@ -55,7 +53,7 @@ from numba import njit
 
 ## State Dependent Jump Intensities
 
-Recall that continuous time Markov chains jump between states and hence can 
+As we have seen, continuous time Markov chains jump between states, and hence can 
 have the form
 
 $$
@@ -63,30 +61,31 @@ $$
     \qquad (t \geq 0)
 $$ 
 
-where $(J_n)$ are jump times and $(Y_n)$ are the values at each jump.
+where $(J_k)$ are jump times and $(Y_k)$ are the states at each jump.
 
 (We are assuming that $J_k \to \infty$ with probability one, so that $X_t$ is well
 defined for all $t \geq 0$ --- an issue we return to below.)
 
-In the {doc}`previous lecture <markov_prop>`, the sequence $(Y_n)$ was drawn
-from a Markov kernel $\Pi$ and called the embedded jump chain.
+In the {doc}`previous lecture <markov_prop>`, 
 
-The holding times $W_k := J_k - J_{k-1}$ were IID and Exp$(\lambda)$ for some
+* the sequence $(Y_k)$ was drawn from a Markov kernel $K$ and called the embedded jump chain, while
+* the holding times $W_k := J_k - J_{k-1}$ were IID and Exp$(\lambda)$ for some
 constant jump intensity $\lambda$.
 
-The difference in this lecture is that the jump intensity is allowed to vary
+In this lecture, we will generalize by allowing the jump intensity to vary
 with the state.
 
-This difference sounds minor but in fact it allows us to reach full generality
-in our description of continuous time Markov chains, in a sense to be
-clarified soon.
+This difference sounds minor but in fact it will allow us to reach full generality
+in our description of continuous time Markov chains, as
+clarified below.
 
-For now, as a motivating example, you can think of {ref}`the inventory model <inventory_dynam>`.
+### Motivation
 
-We assumed that the wait time for the next customer (when $X_t > 0$) was equal
-to the wait time for new inventory to be delivered (when $X_t = 0$).
+As a motivating example, recall {ref}`the inventory model <inventory_dynam>`,
+where we assumed that the wait time for the next customer was equal
+to the wait time for new inventory.
 
-This assumption was made purely for convenience seems unlikely to hold true.
+This assumption was made purely for convenience and seems unlikely to hold true.
 
 When we relax it, the jump intensities depend on the state.
 
@@ -95,7 +94,7 @@ When we relax it, the jump intensities depend on the state.
 
 We start with two primitives
 
-1. A Markov kernel $\Pi$ on $S$ satisfying $\Pi(x, x) = 0$ for all $x \in S$
+1. A Markov kernel $K$ on $S$ satisfying $K(x, x) = 0$ for all $x \in S$
    and
 1. A function $\lambda$ mapping $S$ to $(0, \infty)$.
 
@@ -103,24 +102,23 @@ The process $(X_t)$
 
 * starts at state $x$, 
 * waits there for an exponential time $W$ with rate $\lambda(x)$ and then
-* updates to a new state drawn $y$ from $\Pi(x, \cdot)$.
+* updates to a new state $y$ drawn from $K(x, \cdot)$.
 
 Now we take $y$ as the new state for the process and repeat.
 
-More explicitly:
+More explicitly, assuming initial condition $\psi$, we
 
-1. Draw $Y_0$ from $\psi$, set $J_0 = 0$ and $n=1$.
+1. draw $Y_0$ from $\psi$, set $J_0 = 0$ and $n=1$.
 1. Draw $W_n$ independently from Exp$(\lambda(Y_{n-1}))$.
 1. Set $J_n = J_{n-1} + W_n$.
 1. Set $X_t = Y_{n-1}$ for $t$ in $[J_{n-1}, J_n)$.
-1. Draw $Y_n$ from $\Pi(Y_{n-1}, \cdot)$.
+1. Draw $Y_n$ from $K(Y_{n-1}, \cdot)$.
 1. Set $n = n+1$ and go to step 2.
 
 The sequence $(W_n)$ is drawn as an IID sequence and $(W_n)$ and $(Y_n)$ are
 drawn independently.
 
-The idea behind the restriction $\Pi(x,x) = 0$ for all $x$ is that $X_t$
-jumps to a new state at each jump time $J_n$.
+The restriction $K(x,x) = 0$ for all $x$ implies that $(X_t)$ actually jumps at each jump time.
 
 This isn't strictly necessary but it makes the arguments clearer.
 
@@ -135,9 +133,11 @@ The approach we adopt is
 1. use probabilistic reasoning to obtain an integral equation that the
    semigroup must satisfy.
 1. Convert the integral equation into a differential equation that is easier
-   to work with (the Kolmogorov backward equation).
+   to work with.
 1. Solve this differential equation to obtain the transition semigroup $(P_t)$.
 
+
+The differential equation in question has a special name:  the Kolmogorov backward equation.
 
 
 ### An Integral Equation
@@ -147,19 +147,17 @@ The integral equation referred to above is
 $$
     P_t(x, y) = e^{-t \lambda(x)} I(x, y)
     + \lambda(x) 
-      \int_0^t (\Pi P_{t-\tau})(x, y) e^{- \tau \lambda(x)} d \tau
+      \int_0^t (K P_{t-\tau})(x, y) e^{- \tau \lambda(x)} d \tau
 $$ (kbinteg)
 
 which, we claim, holds for all $t \geq 0$ and $x, y$ in $S$.
 
-Here $(P_t)$ is the transition semigroup of the $(X_t)$
-and $\Pi P_{t-\tau}$ is the product of two Markov kernels as previously
+Here $(P_t)$ is the transition semigroup of $(X_t)$, the process constructed
+algorithmically above, while 
+$K P_{t-\tau}$ is the product of two Markov kernels as previously
 defined.
 
-As we show below, this equation is an integral version of a famous equation
-due to Kolmogorov.
-
-For now, however, let's see why {eq}`kbinteg` holds.
+Let's see why {eq}`kbinteg` holds.
 
 Conditioning implicitly on $X_0 = x$, the semigroup $(P_t)$ must satisfy 
 
@@ -202,12 +200,12 @@ $$
     \mathbb P\{X_t = y, \; J_1 > t \}
     & = \int_0^\infty
             \mathbb 1\{\tau > t\}
-            \sum_z \Pi(x, z) P_{t - \tau} (z, y)  \lambda(x) e^{-\tau \lambda(x)} 
+            \sum_z K(x, z) P_{t - \tau} (z, y)  \lambda(x) e^{-\tau \lambda(x)} 
             d \tau
         \\
     & = \lambda(x)
             \int_0^t
-            \sum_z \Pi(x, z) P_{t - \tau} (z, y)  e^{-\tau \lambda(x)} 
+            \sum_z K(x, z) P_{t - \tau} (z, y)  e^{-\tau \lambda(x)} 
             d \tau
 \end{aligned}
 $$
@@ -232,14 +230,14 @@ model
 $$
     P'_t = Q P_t 
     \quad \text{where } \;
-    Q(x, y) := \lambda(x) (\Pi(x, y) - I(x, y))
+    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 $$ (kolbackeq)
 
 The derivative on the left hand side of {eq}`kolbackeq` is taken element by
 element, with respect to $t$, so that
 
 $$
-    P'_t(x, y) = \left( \frac{d}{dt} p_t(x, y) \right)
+    P'_t(x, y) = \left( \frac{d}{dt} P_t(x, y) \right)
     \qquad ((x, y) \in S \times S)
 $$
 
@@ -250,8 +248,10 @@ important exercise (see below).
 
 ### Exponential Solution
 
-The scalar valued differential equation $y'_t = a y_t$ with constant $a$ and
-given $y_0$ has solution $y_t = e^{ta} y_0$.
+The Kolmogorov backward equation is a matrix-valued differential equation.
+
+Recall that, for a scalar differential equation $y'_t = a y_t$ with constant
+$a$ and initial condition $y_0$, the solution is $y_t = e^{ta} y_0$.
 
 This, along with $P_0 = I$, encourages us to guess that the solution to
 Kolmogorov's backward equation {eq}`kolbackeq` is
@@ -283,19 +283,17 @@ Notice that our solution
 $$
     P_t = e^{t Q} 
     \quad \text{where } \;
-    Q(x, y) := \lambda(x) (\Pi(x, y) - I(x, y))
-$$ 
+    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+$$  (psolq)
 
 for the semigroup of the jump process $(X_t)$ associated with the jump kernel
-$\Pi$ and the jump intensity function $\lambda \colon S \to (0, \infty)$ is
+$K$ and the jump intensity function $\lambda \colon S \to (0, \infty)$ is
 consistent with our earlier result.
 
 In particular, we {ref}`showed <consjumptransemi>` that, for the model with
-constant jump intensity $\lambda$ model, $P_t = e^{t \lambda (\Pi - I)}$.
+constant jump intensity $\lambda$, we have $P_t = e^{t \lambda (K - I)}$.
 
-Hence we simply replace the constant $\lambda$ with a function to obtain the
-general case.
-
+This is obviously a special case of {eq}`psolq`.
 
 
 
@@ -315,7 +313,7 @@ First
 
 $$
     \sum_y Q(x, y) 
-    = \lambda(x) \sum_y (\Pi(x, y) - I(x, y))
+    = \lambda(x) \sum_y (K(x, y) - I(x, y))
     = 0
 $$
 
@@ -457,7 +455,7 @@ $$
     \left\{ 
         I(x, y)
         + \lambda(x) 
-        \int_0^t (\Pi P_s)(x, y) e^{s \lambda(x)} d s
+        \int_0^t (K P_s)(x, y) e^{s \lambda(x)} d s
     \right\}
 $$ (kbinteg2)
 
@@ -468,7 +466,7 @@ $$
     = e^{-t \lambda(x)} 
         \left\{ 
              \lambda(x) 
-             (\Pi P_t)(x, y) e^{t \lambda(x)} 
+             (K P_t)(x, y) e^{t \lambda(x)} 
         \right\}
         - \lambda(x) P_t(x, y)
 $$
@@ -477,7 +475,7 @@ After minor rearrangements this becomes
 
 $$
     P'_t(x, y) 
-    = \lambda(x) [ (\Pi - I)  P_t](x, y) 
+    = \lambda(x) [ (K - I)  P_t](x, y) 
 $$
 
 which is identical to {eq}`kolbackeq`.

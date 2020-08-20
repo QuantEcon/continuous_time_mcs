@@ -534,11 +534,11 @@ process $(Y_n)$ is called the "embedded jump chain".
 
 It is easy to see that $(Y_n)$ is discrete time finite state Markov chain.
 
-Its Markov matrix $\Pi$ is
-given by  $\Pi(x, y) = \mathbb 1\{y=b\}$ when $x=0$ and,  when $0 < x \leq b$, 
+Its Markov matrix $K$ is
+given by  $K(x, y) = \mathbb 1\{y=b\}$ when $x=0$ and,  when $0 < x \leq b$, 
 
 $$
-    \Pi(x, y)
+    K(x, y)
     =
     \begin{cases}
     \mathbb 0 & \text{ if }  y \geq x
@@ -582,13 +582,13 @@ The data for a Markov process on $S$ with constant jump rates are
 
 * a parameter $\lambda > 0$ called the **jump rate**, which governs the jump
   intensities and
-* a Markov kernel $\Pi$ on $S$, called the **jump kernel**.
+* a Markov kernel $K$ on $S$, called the **jump kernel**.
 
 To run the process we also need an initial condition $\psi \in \mathcal D$.
 
 The process $(X_t)$ is constructed by holding at each state for an
 exponential amount of time, with rate $\lambda$, and then updating to a
-new state via $\Pi$.
+new state via $K$.
 
 In more detail, the construction is
 
@@ -596,13 +596,13 @@ In more detail, the construction is
 1. set $n = 1$ and $J_0 = 0$
 1. draw $W_n$ from Exp$(\lambda)$ and set $J_n = J_{n-1} + W_n$
 1. set $X_t = Y_{n-1}$ for all $t$ such that $J_{n-1} \leq t < J_n$.
-1. draw $Y_n$ from $\Pi(Y_{n-1}, \cdot)$ 
+1. draw $Y_n$ from $K(Y_{n-1}, \cdot)$ 
 1. set $n = n+1$ and go to step 3.
 
 An alternative, more parsimonious way to express the same process is to take 
 
 * $(N_t)$ to be a Poisson process with rate $\lambda$ and
-* $(Y_n)$ to be a discrete time Markov chain with kernel $\Pi$
+* $(Y_n)$ to be a discrete time Markov chain with kernel $K$
 
 and then set
 
@@ -624,7 +624,7 @@ The Poisson process with rate $\lambda$ is a jump process on $S = \mathbb Z_+$.
 
 The holding times are obviously exponential with constant rate $\lambda$.
 
-The jump kernel is just $\Pi(i, j) = \mathbb 1\{j = i+1\}$, so that the state
+The jump kernel is just $K(i, j) = \mathbb 1\{j = i+1\}$, so that the state
 jumps up by one at every $J_n$.
 
 The inventory model is also a jump process with constant rate $\lambda$, this
@@ -652,7 +652,7 @@ the whole history $\mathcal F_s = \{ (N_r)_{r \leq s}, (Y_n)_{n \leq N_s} \}$
 depends only on $X_s$.
 
 Indeed, if we know $X_s$, then we can simply {ref}`restart <restart_prop>` the
-Poisson process from $N_s$ and then update the jump chain using $\Pi$ each time a
+Poisson process from $N_s$ and then update the jump chain using $K$ each time a
 jump occurs, starting from $X_s$.
 
 Let's write this more mathematically.
@@ -676,14 +676,14 @@ $$
        \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
-Because the jump chain is Markov with kernel $\Pi$, we can simplify further to
+Because the jump chain is Markov with kernel $K$, we can simplify further to
 
 
 $$
     \mathbb P\{X_{s + t} = y \,|\, \mathcal F_s \}
     = \sum_{k \geq 0}
-    \Pi^k(Y_{N_s}, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
-    = \Pi^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+    K^k(Y_{N_s}, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+    = K^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
 Since the expression above depends only on $X_s$,
@@ -699,7 +699,7 @@ on $X_s = x$ to get
 $$
     P^t(x, y) = \mathbb P\{X_{s + t} = y \,|\, X_s = x \}
     = e^{-t \lambda} \sum_{k \geq 0}
-        \Pi^k(x, y) \frac{(t \lambda )^k}{k!} 
+        K^k(x, y) \frac{(t \lambda )^k}{k!} 
 $$
 
 If $S$ is finite, we can write this in matrix form and use the definition of
@@ -710,9 +710,9 @@ $$
     P^t 
     = e^{-t \lambda}
         \sum_{k \geq 0}
-        \frac{(t \lambda \Pi)^k}{k!} 
-    = e^{-t \lambda} e^{t \lambda \Pi}
-    = e^{t \lambda (\Pi - I)}
+        \frac{(t \lambda K)^k}{k!} 
+    = e^{-t \lambda} e^{t \lambda K}
+    = e^{t \lambda (K - I)}
 $$
 
 This is a simple and elegant representation of the transition semigroup that
@@ -721,10 +721,10 @@ makes it easy to understand and analyze distribution dynamics.
 For example, if $X_0$ has distribution $\psi$, then $X_t$ has distribution
 
 $$
-    \psi P_t = \psi e^{t \lambda (\Pi - I)}
+    \psi P_t = \psi e^{t \lambda (K - I)}
 $$ (distflowconst)
 
-We just need to plug in $\lambda$ and $\Pi$ to obtain the entire flow $t \mapsto \psi P_t$.
+We just need to plug in $\lambda$ and $K$ to obtain the entire flow $t \mapsto \psi P_t$.
 
 We will soon extend this representation to the case where $S$ is infinite.
 
@@ -740,7 +740,7 @@ We fix
 * an initial condition $X_0 \sim \psi_0$, where $\psi_0$ is an arbitrary
 distribution on $S$.
 
-The state $S$ is set to $\{0, \ldots, b\}$ and the kernel $\Pi$ is defined by
+The state $S$ is set to $\{0, \ldots, b\}$ and the kernel $K$ is defined by
 {eq}`ijumpkern`.
 
 Now we run time forward.
@@ -793,18 +793,18 @@ distribution "cools" over time)
     states = np.arange(n)
     I = np.identity(n)
 
-    Π = np.zeros((n, n))
-    Π[0, -1] = 1
+    K = np.zeros((n, n))
+    K[0, -1] = 1
     for i in range(1, n):
         for j in range(0, i):
             if j == 0:
-                Π[i, j] = (1 - α)**(i-1)
+                K[i, j] = (1 - α)**(i-1)
             else:
-                Π[i, j] = α * (1 - α)**(i-j-1)
+                K[i, j] = α * (1 - α)**(i-j-1)
 
 
     def P_t(ψ, t):
-        return ψ @ expm(t * λ * (Π - I))
+        return ψ @ expm(t * λ * (K - I))
 
     def plot_distribution_dynamics(ax, ψ_0, steps=200, step_size=0.1):
         ψ = ψ_0
