@@ -989,5 +989,4 @@ The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
 ## References
 
 ```{bibliography} references.bib
-:filter: docname in docnames
 ```
