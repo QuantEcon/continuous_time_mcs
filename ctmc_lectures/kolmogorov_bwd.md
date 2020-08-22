@@ -12,8 +12,6 @@ kernelspec:
   name: python3
 ---
 
-
-
 # Kolmogorov Backward Equation
 
 ## Overview 
@@ -47,9 +45,9 @@ import matplotlib.pyplot as plt
 import quantecon as qe
 from numba import njit
 
+from scipy.linalg import expm
+from scipy.stats import binom
 ```
-
-
 
 ## State Dependent Jump Intensities
 
@@ -64,7 +62,7 @@ $$
 where $(J_k)$ are jump times and $(Y_k)$ are the states at each jump.
 
 (We are assuming that $J_k \to \infty$ with probability one, so that $X_t$ is well
-defined for all $t \geq 0$ --- an issue we return to below.)
+defined for all $t \geq 0$, but this is always true for when holding times are exponential and the state space is finite.)
 
 In the {doc}`previous lecture <markov_prop>`, 
 
@@ -120,13 +118,12 @@ drawn independently.
 
 The restriction $K(x,x) = 0$ for all $x$ implies that $(X_t)$ actually jumps at each jump time.
 
-This isn't strictly necessary but it makes the arguments clearer.
 
 
 ## Computing the Semigroup
 
-For this jump process with time varying intensities, calculating the
-transition semigroup is not a trivial exercise.
+For the jump process $(X_t)$ with time varying intensities described in the
+algorithm just given, calculating the transition semigroup is not a trivial exercise.
 
 The approach we adopt is
 
@@ -372,17 +369,86 @@ In fact it's not hard to supply a proof --- see the exercises.
 
 
 
-
 ## Application: The Inventory Model
 
-Use algo to simulate forward to time $t$.
+Let us look at a modified version of the inventory model where jump
+intensities depend on the state.
 
-Histogram.
+In particular, the wait time for new inventory will now be exponential at rate
+$\gamma$.
 
-Use exponential representation of semigroup to push densities forward.
+The arrival rate for customers will still be denoted by $\lambda$ and allowed
+to differ from $\gamma$.
 
-Compare.
+For parameters we take
 
+```{code-cell} ipython3
+α = 0.6
+λ = 0.5
+γ = 0.1
+b = 10
+```
+
+Our plan is to investigate the distribution $\psi_T$ of $X_T$ at $T=30$.
+
+We will do this by simulating many independent draws of $X_T$ and
+histogramming them.
+
+(In the exercises you are asked to calculate $\psi_T$ a different way, via
+{eq}`psolq`.)
+
+```{code-cell} ipython3
+@njit
+def draw_X(T, X_0, max_iter=5000):
+    """
+    Generate one draw of X_T given X_0.
+    """
+
+    J, Y = 0, X_0
+    m = 0
+
+    while m < max_iter:
+        s = 1/γ if Y == 0 else 1/λ
+        W = np.random.exponential(scale=s)  # W ~ E(λ)
+        J += W
+        if J >= T:
+            return Y
+        # Otherwise update Y
+        if Y == 0:
+            Y = b
+        else:
+            U = np.random.geometric(α)
+            Y = Y - min(Y, U)
+        m += 1
+
+
+@njit
+def independent_draws(T=10, num_draws=100):
+    "Generate a vector of independent draws of X_T."
+
+    draws = np.empty(num_draws, dtype=np.int64)
+
+    for i in range(num_draws):
+        X_0 = np.random.binomial(b+1, 0.25)
+        draws[i] = draw_X(T, X_0)
+
+    return draws
+```
+
+```{code-cell} ipython3
+T = 30
+n = b + 1 
+draws = independent_draws(T, num_draws=100_000)
+fig, ax = plt.subplots()
+
+ax.bar(range(n), [np.mean(draws == i) for i in range(n)], width=0.8, alpha=0.6)
+ax.set(xlabel="inventory")
+
+plt.show()
+```
+
+If you experiment with the code above, you will see that the large amount of
+mass on zero is due to the low arrival rate $\gamma$ for inventory.
 
 
 
@@ -391,9 +457,27 @@ Compare.
 
 ### Exercise 1
 
-Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`.
+In the discussion above, we generated an approximation of $\psi_T$ when
+$T=30$, the initial condition is Binomial$(n, 0.25)$ and parameters
+are set to
+
+```{code-cell} ipython3
+α = 0.6
+λ = 0.5
+γ = 0.1
+b = 10
+```
+
+The calculation was done by simulating independent draws and histogramming.
+
+Try to generate the same figure using {eq}`psolq` instead, modifying code from
+{ref}`our lecture <markov_prop>` on the Markov property.
 
 ### Exercise 2
+
+Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`.
+
+### Exercise 3
 
 We claimed above that the solution $P_t = e^{t Q}$ is the unique
 transition semigroup satisfying the backward equation $P'_t = Q P_t$.
@@ -402,40 +486,54 @@ Try to supply a proof.
 
 (This is not an easy exercise but worth thinking about in any case.)
 
-### Solution to Exercise 2
-
-Here is one proof of uniqueness.
-
-Suppose that $(\hat P_t)$ is another transition semigroup satisfying 
-$P'_t = Q P_t$.
-
-Fix $t > 0$ and let $V_s$ be defined by $V_s = P_s \hat P_{t-s}$ for all $s
-\geq 0$.
-
-Note that $V_0 = \hat P_t$ and $V_t = P_t$.
-
-Note also that $s \mapsto V_s$ is differentiable, with derivative
-
-$$
-    V'_s 
-    = P'_s \hat P_{t-s} - P_s \hat P'_{t-s}
-    = P_s Q \hat P_{t-s} - P_s Q \hat P_{t-s}
-    = 0
-$$
-
-where, in the second last equality, we used {eq}`expoderiv`.
-
-
-Hence $V_s$ is constant, so our previous observations $V_0 = \hat P_t$ and $V_t = P_t$
-now yield $\hat P_t = P_t$.
-
-Since $t$ was arbitrary, the proof is now done.
-
-
 
 ## Solutions
 
 ### Solution to Exercise 1
+
+Here is one solution:
+
+```{code-cell} ipython3
+states = np.arange(n)
+I = np.identity(n)
+
+# Embedded jump chain matrix
+K = np.zeros((n, n))
+K[0, -1] = 1
+for i in range(1, n):
+    for j in range(0, i):
+        if j == 0:
+            K[i, j] = (1 - α)**(i-1)
+        else:
+            K[i, j] = α * (1 - α)**(i-j-1)
+
+# Jump intensities as a function of the state
+r = np.ones(n) * λ
+r[0] = γ
+
+# Q matrix
+Q = np.empty_like(K)
+for i in range(n):
+    for j in range(n):
+        Q[i, j] = r[i] * (K[i, j] - I[i, j])
+
+def P_t(ψ, t):
+    return ψ @ expm(t * Q)
+
+ψ_0 = binom.pmf(states, n, 0.25)
+ψ_T = P_t(ψ_0, T)
+
+fig, ax = plt.subplots()
+
+ax.bar(range(n), ψ_T, width=0.8, alpha=0.6)
+ax.set(xlabel="inventory")
+
+plt.show()
+```
+
+
+
+### Solution to Exercise 2
 
 One can easily verify that, when $f$ is a differentiable function and $\alpha >
 0$, we have
@@ -481,9 +579,33 @@ $$
 which is identical to {eq}`kolbackeq`.
 
 
+### Solution to Exercise 3
+
+Here is one proof of uniqueness.
+
+Suppose that $(\hat P_t)$ is another transition semigroup satisfying 
+$P'_t = Q P_t$.
+
+Fix $t > 0$ and let $V_s$ be defined by $V_s = P_s \hat P_{t-s}$ for all $s
+\geq 0$.
+
+Note that $V_0 = \hat P_t$ and $V_t = P_t$.
+
+Note also that $s \mapsto V_s$ is differentiable, with derivative
+
+$$
+    V'_s 
+    = P'_s \hat P_{t-s} - P_s \hat P'_{t-s}
+    = P_s Q \hat P_{t-s} - P_s Q \hat P_{t-s}
+    = 0
+$$
+
+where, in the second last equality, we used {eq}`expoderiv`.
 
 
-## References
+Hence $V_s$ is constant, so our previous observations $V_0 = \hat P_t$ and $V_t = P_t$
+now yield $\hat P_t = P_t$.
 
-```{bibliography} references.bib
-```
+Since $t$ was arbitrary, the proof is now done.
+
+

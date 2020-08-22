@@ -12,8 +12,6 @@ kernelspec:
   name: python3
 ---
 
-
-
 # The Markov Property 
 
 ## Overview
@@ -60,6 +58,7 @@ We will use the following imports
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
+
 import quantecon as qe
 from numba import njit
 
@@ -69,7 +68,6 @@ from scipy.stats import binom
 from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
 ```
-
 
 ## Markov Processes
 
@@ -486,36 +484,59 @@ As above,
 * $Y_k$ is the size of the inventory after the $k$-th jump.
 * $(X_t)$ is defined from these objects via {eq}`xfromy`.
 
-Here's a function that simulates one path of the jump components.
+Here's a function that generates and returns one path $t \mapsto X_t$.
+
+(We are not aiming for computational efficiency at this stage.)
 
 ```{code-cell} ipython3
+def sim_path(T=10, seed=123, λ=0.5, α=0.7, b=10):
+    """
+    Generate a path for inventory starting at b, up to time T.
 
-def sim_path(seed=123, sim_length=30, λ=0.5, α=0.7, b=10):
+    Return the path as a function X(t) constructed from (J_k) and (Y_k).
+    """
 
-    J = np.zeros(sim_length)
-    Y = np.zeros(sim_length)
-    k = 0
+    J, Y = 0, b
+    J_vals, Y_vals = [J], [Y]
     np.random.seed(seed)
 
-    for k in range(sim_length-1):
+    while True:
         W = np.random.exponential(scale=1/λ)  # W ~ E(λ)
-        J[k+1] = J[k] + W
-        if Y[k] == 0:
-            Y[k+1] = b
+        J += W
+        J_vals.append(J)
+        if J >= T:
+            break
+        # Update Y
+        if Y == 0:
+            Y = b
         else:
             U = np.random.geometric(α)
-            Y[k+1] = Y[k] - min(Y[k], U)
-    return J, Y
+            Y = Y - min(Y, U)
+        Y_vals.append(Y)
+    
+    Y_vals = np.array(Y_vals)
+    J_vals = np.array(J_vals)
+
+    def X(t):
+        if t == 0.0:
+            return Y_vals[0]
+        else:
+            k = np.searchsorted(J_vals, t)
+            return Y_vals[k-1]
+
+    return X
 ```
 
-Let's plot the process $\{X_t\}$ using the ``step`` method of ``ax``.
+Let's plot the process $(X_t)$.
 
 ```{code-cell} ipython3
+T = 20
+X = sim_path(T=T)
 
-J, Y = sim_path()
+grid = np.linspace(0, T, 100)
 
 fig, ax = plt.subplots()
-ax.step(J, Y, label="$X_t$")
+ax.step(grid, [X(t) for t in grid], label="$X_t$")
 
 ax.set(xlabel="time", ylabel="inventory")
 
@@ -771,67 +792,27 @@ large numbers.
 
 In other words, in the limit we recover $\psi_t$.
 
-
 Option 2 is to insert the parameters into the right hand side of {eq}`distflowconst`
 and compute $\psi_t$ as $\psi_0 P_t$.
 
-Let's try option 2, with $\alpha = 0.6$, $\lambda = 0.5$ and $b=10$.
+The figure below is created using option 2, with $\alpha = 0.6$, $\lambda = 0.5$ and $b=10$.
 
 For the initial distribution we pick a binomial distribution.
+
 
 Since we cannot compute the entire uncountable flow $t \mapsto \psi_t$, we
 iterate forward 200 steps at time increments $h=0.1$.
 
-In the figure below, hot colors indicate initial conditions and early dates (so that the
+In the figure, hot colors indicate initial conditions and early dates (so that the
 distribution "cools" over time)
 
-```{code-cell} ipython3
-    α = 0.6
-    λ = 0.5
-    b = 10
-    n = b + 1
-    states = np.arange(n)
-    I = np.identity(n)
+```{glue:figure} flow_fig
+:name: "flow_fig"
 
-    K = np.zeros((n, n))
-    K[0, -1] = 1
-    for i in range(1, n):
-        for j in range(0, i):
-            if j == 0:
-                K[i, j] = (1 - α)**(i-1)
-            else:
-                K[i, j] = α * (1 - α)**(i-j-1)
-
-
-    def P_t(ψ, t):
-        return ψ @ expm(t * λ * (K - I))
-
-    def plot_distribution_dynamics(ax, ψ_0, steps=200, step_size=0.1):
-        ψ = ψ_0
-        t = 0.0
-        colors = cm.jet_r(np.linspace(0.0, 1, steps))
-
-        for i in range(steps):
-            ax.bar(states, ψ, zs=t, zdir='y', 
-                color=colors[i], alpha=0.8, width=0.4)
-            ψ = P_t(ψ, t=step_size)
-            t += step_size
-
-        ax.set_xlabel('inventory')
-        ax.set_ylabel('$t$')
-
-
-    ψ_0 = binom.pmf(states, n, 0.25)
-    fig = plt.figure(figsize=(8, 6))
-    ax = fig.add_subplot(111, projection='3d')
-    plot_distribution_dynamics(ax, ψ_0)
-    plt.show()
+Probability flows for the inventory model.
 ```
 
-In the exercises below you are asked to implement option 1 and check that the
-figure looks the same.
-
-
+In the (solved) exercises you will be asked to try to reproduce this figure.
 
 
 ## Exercises
@@ -853,8 +834,7 @@ Show by direct calculation that the Poisson kernels $(P_t)$ defined in
 Hints
 
 * Recall that $P_t(j, k) = 0$ whenever $j > k$.
-* Consider using the [binomial
-  formula](https://en.wikipedia.org/wiki/Binomial_theorem).
+* Consider using the [binomial formula](https://en.wikipedia.org/wiki/Binomial_theorem).
 
 
 ### Exercise 3
@@ -875,16 +855,9 @@ distribution $\mathbf P_\psi^n$.
 
 ### Exercise 4
 
-Replicate, as best you can, the figure produced from the {ref}`discussion on distribution flows <invdistflows>`, this time using option 1.
+Try to produce your own version of the figure {ref}`flow_fig`.
 
-You will need to use a suitably large sample.
-
-
-
-
-
-
-
+The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
 
 
 ## Solutions
@@ -980,13 +953,56 @@ The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
 
 ### Solution to Exercise 4 
 
-[To be added.]
+Here is one approach.
+
+(The statements involving ``glue`` are specific to this book and can be deleted
+by most readers.  They store the output so it can be displayed elsewhere.)
+
+```{code-cell} ipython3
+α = 0.6
+λ = 0.5
+b = 10
+n = b + 1
+states = np.arange(n)
+I = np.identity(n)
+
+K = np.zeros((n, n))
+K[0, -1] = 1
+for i in range(1, n):
+    for j in range(0, i):
+        if j == 0:
+            K[i, j] = (1 - α)**(i-1)
+        else:
+            K[i, j] = α * (1 - α)**(i-j-1)
 
 
+def P_t(ψ, t):
+    return ψ @ expm(t * λ * (K - I))
+
+def plot_distribution_dynamics(ax, ψ_0, steps=200, step_size=0.1):
+    ψ = ψ_0
+    t = 0.0
+    colors = cm.jet_r(np.linspace(0.0, 1, steps))
+
+    for i in range(steps):
+        ax.bar(states, ψ, zs=t, zdir='y', 
+            color=colors[i], alpha=0.8, width=0.4)
+        ψ = P_t(ψ, t=step_size)
+        t += step_size
+
+    ax.set_xlabel('inventory')
+    ax.set_ylabel('$t$')
 
 
+ψ_0 = binom.pmf(states, n, 0.25)
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+plot_distribution_dynamics(ax, ψ_0)
 
-## References
+from myst_nb import glue
+glue("flow_fig", fig, display=False)
 
-```{bibliography} references.bib
+plt.show()
 ```
+
+
