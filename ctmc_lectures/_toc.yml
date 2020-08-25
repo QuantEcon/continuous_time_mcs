@@ -4,7 +4,8 @@
 - file: markov_prop
 - file: kolmogorov_bwd
 - file: kolmogorov_fwd
+- file: generators
 - file: prob_view
-- file: infinitesimals
+- file: infdim
 - file: ergodicity
 - file: zreferences

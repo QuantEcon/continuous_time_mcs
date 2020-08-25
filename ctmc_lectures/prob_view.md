@@ -18,27 +18,37 @@ kernelspec:
 
 ## Overview
 
-Follows on from the analytic discussion linking ODEs, rate kernels and
-semigroups.
+We have seen in previous lectures that each intensity matrix on $S$ generates
+a uniquely defined Markov semigroup, and hence a continuous time Markov chain
+via the associated joint distribution.
 
-We are now convinced that every continuous time Markov chain on $S$ arises
-from a rate matrix.
+This method of building chains from intensity matrices is important from a
+theoretical perspective but less helpful in terms of intuition and simulation.
 
-We've also seen continuous time Markov chains constructed as jump processes
-from a jump chain kernel $\Pi$ and a jump intensity function $\lambda$.
+In this lecture we provide another point of view.
 
-(The rate matrix is $Q = \lambda (\Pi - I)$.)
+As a first step, we recall how we saw continuous time Markov chains
+constructed as jump processes from a jump chain kernel $K$ and a jump
+intensity function $\lambda$.
 
-We show in this lecture that this is in fact the only possibility -- every
-rate matrix admits this representation.
+The intensity matrix was then given by 
 
-As a result, every continuous time Markov chain can be viewed as jump
-processes from a jump chain kernel $\Pi$ and a jump intensity function
-$\lambda$.
+$$
+    Q(x, y) = \lambda(x) (K(x, y) - I(x, y))
+$$
 
-This gives us a probabilistic view and opens up algorithms for simulation.
+We show in this lecture that this is in fact the **only** possibility -- every
+intensity matrix admits this representation.
 
-Mention Gillespie algorithm.
+This gives us a probabilistic construction of a continuous time Markov chain
+associated with any given intensity matrix.
+
+In fact there is another probabilistic construction of a chain from an
+intensity matrix, sometimes called the exponential clock method.
+
+Understanding these ideas is important for both intuition and for 
+simulation algorithms.
+
 
 
 
@@ -46,7 +56,7 @@ Mention Gillespie algorithm.
 
 Start with a Q matrix and construct the jump chain.
 
-When does $Q$ admit the decomposition $Q = \lambda (\Pi - I)$?
+When does $Q$ admit the decomposition $Q = \lambda (K - I)$?
 
 
 ## Simulation

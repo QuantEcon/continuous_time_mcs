@@ -17,7 +17,7 @@ kernelspec:
 ## Overview 
 
 As models become more complex, deriving analytical representations of the
-transition semigroup $(P_t)$ becomes harder.
+Markov semigroup $(P_t)$ becomes harder.
 
 This is analogous to the idea that solutions to continuous time models often
 lack analytical solutions.
@@ -49,6 +49,7 @@ from scipy.linalg import expm
 from scipy.stats import binom
 ```
 
+(sdji)=
 ## State Dependent Jump Intensities
 
 As we have seen, continuous time Markov chains jump between states, and hence can 
@@ -123,7 +124,7 @@ The restriction $K(x,x) = 0$ for all $x$ implies that $(X_t)$ actually jumps at 
 ## Computing the Semigroup
 
 For the jump process $(X_t)$ with time varying intensities described in the
-algorithm just given, calculating the transition semigroup is not a trivial exercise.
+algorithm just given, calculating the Markov semigroup is not a trivial exercise.
 
 The approach we adopt is
 
@@ -131,7 +132,7 @@ The approach we adopt is
    semigroup must satisfy.
 1. Convert the integral equation into a differential equation that is easier
    to work with.
-1. Solve this differential equation to obtain the transition semigroup $(P_t)$.
+1. Solve this differential equation to obtain the Markov semigroup $(P_t)$.
 
 
 The differential equation in question has a special name:  the Kolmogorov backward equation.
@@ -149,7 +150,7 @@ $$ (kbinteg)
 
 which, we claim, holds for all $t \geq 0$ and $x, y$ in $S$.
 
-Here $(P_t)$ is the transition semigroup of $(X_t)$, the process constructed
+Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed
 algorithmically above, while 
 $K P_{t-\tau}$ is the product of two Markov kernels as previously
 defined.
@@ -302,7 +303,7 @@ Let's investigate further the properties of the exponential solution.
 
 While we have confirmed that $(P_t)$ defined by $P_t = e^{t Q}$ solves the
 Kolmogorov backward equation, we have not yet shown that this solution is in
-fact a transition semigroup.
+fact a Markov semigroup.
 
 Let's now tie up this loose end.
 
@@ -354,12 +355,12 @@ It is clear from this representation that all entries of $e^{tQ}$ are
 nonnegative.
 
 We can now be reassured that our solution to the Kolmogorov backward equation
-is indeed a transition semigroup.
+is indeed a Markov semigroup.
 
 
 ### Uniqueness
 
-Might there be another, entirely different transition semigroup that also
+Might there be another, entirely different Markov semigroup that also
 satisfies the Kolmogorov backward equation?
 
 The answer is no --- linear ODEs with constant coefficients and fixed initial
@@ -480,7 +481,7 @@ Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`
 ### Exercise 3
 
 We claimed above that the solution $P_t = e^{t Q}$ is the unique
-transition semigroup satisfying the backward equation $P'_t = Q P_t$.
+Markov semigroup satisfying the backward equation $P'_t = Q P_t$.
 
 Try to supply a proof.
 
@@ -583,7 +584,7 @@ which is identical to {eq}`kolbackeq`.
 
 Here is one proof of uniqueness.
 
-Suppose that $(\hat P_t)$ is another transition semigroup satisfying 
+Suppose that $(\hat P_t)$ is another Markov semigroup satisfying 
 $P'_t = Q P_t$.
 
 Fix $t > 0$ and let $V_s$ be defined by $V_s = P_s \hat P_{t-s}$ for all $s
