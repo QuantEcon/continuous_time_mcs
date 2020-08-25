@@ -140,7 +140,7 @@ a poor fit for the continuous time case.
 
 Hence we turn to the [exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution), which is supported on $\mathbb R_+$.
 
-A random variable $Y$ on $\mathbb R_+$ is called **exponential with rate $\lambda$** if
+A random variable $Y$ on $\mathbb R_+$ is called **exponential with rate $\lambda$**, denoted by $Y \sim Exp(\lambda)$, if
 
 $$
     \mathbb P\{Y > y\} = e^{-\lambda y}
@@ -402,15 +402,15 @@ Due to its memoryless property, we can "stop" and "restart" an exponential
 draw without changing its distribution.
 
 To illustrate this, we can think of fixing $\lambda > 0$, drawing from
-$E(\lambda)$, and stopping and restarting whenever a threshold $s$ is crossed.
+$Exp(\lambda)$, and stopping and restarting whenever a threshold $s$ is crossed.
 
 In particular, consider the random variable $X$ defined as follows:
 
-* Draw $Y$ from $E(\lambda)$.
+* Draw $Y$ from $Exp(\lambda)$.
 * If $Y \leq s$, set $X = Y$.
-* If not, draw $Z$ independently from $E(\lambda)$ and set $X = s + Z$.
+* If not, draw $Z$ independently from $Exp(\lambda)$ and set $X = s + Z$.
 
-Show that $X \sim E(\lambda)$.
+Show that $X \sim Exp(\lambda)$.
 
 
 ### Exercise 2
@@ -452,7 +452,7 @@ $$
     = e^{-\lambda(s - t)}
 $$
 
-Either way, we have $X \sim E(\lambda)$, as was to be shown.
+Either way, we have $X \sim Exp(\lambda)$, as was to be shown.
 
 
 ### Solution to Exercise 2
