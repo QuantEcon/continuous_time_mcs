@@ -522,8 +522,3 @@ plt.show()
 ```
 
 
-
-## References
-
-```{bibliography} references.bib
-```

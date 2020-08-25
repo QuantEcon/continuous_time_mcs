@@ -18,29 +18,26 @@ kernelspec:
 
 ## Overview
 
-Plan for this lecture:
+Motivation: our very first example (Poisson process) has an infinite state
+space.
 
-Fix a conservative rate kernel $Q$ on countable state space $S$.
+A key result: one-to-one pairing between bounded linear operators on
+$\ell_1(S)$ and uniformly continuous semigroups.
 
-Show that it determines a unique uniformly continuous transition semigroup.
+For the unbounded case we have to look to the Hille-Yoshida theorem.
+
+Now specialize to Markov semigroups with bounded generators.
+
+Define a conservative intensity operator to be a bounded linear operator with
+zero "row" sums.
+
+Show that there is a one-to-one pairing between such operators and uniformly
+continuous Markov semigroups, via generators.
 
 Show that the Kolmogorov equations hold.
 
-Conversely fix a uniformly continuous transition semigroup.
-
-Introduce the notion of an infinitesimal generator.
-
-Show that the infinitesimal generator is a conservative rate kernel and,
-moreover, that this rate kernel generates the semigroup.
-
-Conclusion: there is a one-to-one pairing between conservative rate kernels
-and uniformly continuous transition semigroups.
-
-
 [KFE and KBE are "dual" to each other, in that they use dual (adjoint)
 representations of the infinitesimal generator.]
-
-
 
 We will use the following imports
 
@@ -100,7 +97,7 @@ Notice that we continue to write arguments to the left of the operator,
 ## Infintessimal Generators
 
 If $Q$ is a transition rate matrix and $P_t = e^{tQ}$ for all $t$, then 
-the family of matrices $\{P_t\}$ is called a **transition semigroup**.
+the family of matrices $\{P_t\}$ is called a **Markov semigroup**.
 
 In this context, $Q$ is called the **infintessimal generator** of the semigroup.
 
