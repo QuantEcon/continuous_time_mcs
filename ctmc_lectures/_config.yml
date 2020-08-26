@@ -3,6 +3,15 @@ title: Continuous Time Markov Chains
 author: John Stachurski
 # logo: logo.png
 
+sphinx:
+  config:
+    myst_override_mathjax: false
+    mathjax_config:
+      TeX:
+        Macros:
+          "Exp" : ["\\operatorname{Exp}"]
+
 latex:
+  latex_engine: "xelatex"
   latex_documents:
     targetname: book.tex
