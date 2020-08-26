@@ -237,14 +237,14 @@ $$
 ### Solutions to Linear Vector ODEs
 
 Using the matrix exponential, the unique solution to the initial value problem
-{eq}`ode_mc` can be expressed as
+{eq}`ode_mc` is
 
 $$
     \psi_t = \psi_0 P_t 
     \quad \text{where } P_t := e^{tQ}
 $$ (cmc_sol)
 
-To check this, we use {eq}`expoderiv` again to get
+To check that {eq}`cmc_sol` is a solution, we use {eq}`expoderiv` again to get
 
 $$
     \frac{d}{d t} P_t =  Q e^{tQ} = e^{tQ} Q 
@@ -261,11 +261,11 @@ $$
 
 and is called the **Kolmogorov forward equation**.
 
-With $\psi_t$ set to $\psi_0 P_t$ and applying the Kolmogorov forward
-equation, we obtain
+Applying the Kolmogorov forward equation, we obtain
 
 $$
     \frac{d}{d t} \psi_t 
+    = \frac{d}{d t} \psi_0 P_t 
     = \psi_0 \frac{d}{d t} P_t 
     = \psi_0 P_t Q
     = \psi_t Q
@@ -319,7 +319,7 @@ plt.show()
 
 As the above discussion shows, we can take the Kolmogorov forward equation
 $P_t' = P_t Q$ and premultiply by any distribution $\psi_0$ to get the
-distribution ODE $\psi'_t = \psi_t Q$ (where $\psi_t = \psi_0 P_t$).
+distribution ODE $\psi'_t = \psi_t Q$.
 
 In this sense, we can understand the Kolmogorov forward equation as pushing
 distributions forward in time.
@@ -338,9 +338,32 @@ ODE tells us how expectations evolve, conditioning backward to time zero.
 Both the forward and the backward equations uniquely pin down the same solution 
 $P_t = e^{tQ}$.
 
-Incidentally, the ODE $\psi'_t = \psi_t Q$ is sometimes called the
-**Fokker--Planck equation**, although this terminology is more commonly used
-in the context of diffusions.
+
+### Matrix- vs Vector-Valued ODEs
+
+The ODE $\psi'_t = \psi_t Q$ is sometimes called the
+**Fokker--Planck equation** (although this terminology is most commonly used
+in the context of diffusions).
+
+It is a vector-valued ODE that describes the evolution of a particular
+distribution path.
+
+By comparison, the Kolmogorov forward equation is (like the backward equation)
+a differential equation in matrices.
+
+(And matrices are really maps, that send vectors into vectors.)
+
+Operating at this level is less intuitive and more abstract than working with the
+Fokker--Planck equation.
+
+But, in the end, the object that we want to describe is a the Markov
+semigroup.
+
+The Kolmogorov forward and backward equations are the ODEs that define
+this fundamental object.
+
+
+
 
 
 ### Preserving Distributions
@@ -438,20 +461,33 @@ Hence $Q$ is a intensity matrix.
 
 Let's return to the inventory example we discussed in previous lectures.
 
-What is the intensity matrix for this problem?
+Recall that, in the case where the jump rate is allowed to vary with the
+state, the semigroup is given by 
 
+$$ 
+    P_t = e^{tQ}
+    \quad \text{where} \quad
+    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+$$
 
+Here $K$ is the jump chain Markov matrix and $\lambda(x)$ is the jump
+rate at $x$.
 
-[Add intuition for this eg and more generally for the FP eq below.]
+In light of the preceding analysis, we can differentiate to obtain the
+Kolmogorov forward equation $P_t' = P_t Q$.
 
-The intuitive interpretation of a given intensity matrix $Q$ is that 
-$Q(x, y)$ is the rate of flow from state $x$ to state $y$.
+Hence $Q(x, y) = \lambda(x) (K(x, y) - I(x, y))$ describes the rate at which
+probability mass flows from $x$ to $y$.
 
-For example, if we observe the inventories of many firms independently
-following the model above, then $Q(x, y) = r$ means that firms inventories
-transition from state $i$ to state $j$ at a rate of $r$ per unit of time.
+(We will make this clearer later on.)
 
-[We can see this in the FP eq.]
+We can also premultiply by $\psi_0 \in \mathcal D$ to get $\psi_t' = \psi_t
+Q$, which is the Fokker--Planck equation.
+
+Hence it's clear that $Q$ corresponds to the intensity matrix for this
+semigroup.
+
+(You can easily check that it satisfies the definition of an intensity matrix.)
 
 
 ## Exercises

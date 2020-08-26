@@ -24,20 +24,36 @@ space.
 A key result: one-to-one pairing between bounded linear operators on
 $\ell_1(S)$ and uniformly continuous semigroups.
 
-For the unbounded case we have to look to the Hille-Yoshida theorem.
+Motivate this as follows: as long as you are prepared to have some reasonable
+restrictions on jump intensities, you will have a conservative intensity
+matrix.
 
-Now specialize to Markov semigroups with bounded generators.
+(Define a conservative intensity matrix to be a bounded linear operator with
+zero "row" sums?)
 
-Define a conservative intensity operator to be a bounded linear operator with
-zero "row" sums.
+Show that
 
-Show that there is a one-to-one pairing between such operators and uniformly
-continuous Markov semigroups, via generators.
-
-Show that the Kolmogorov equations hold.
+* this is the generator of a uniformly continuous Markov semigroup.
+* The exponential representation is valid.
+* The Markov semigroup and the generator satisfy the KFE/KBE.
 
 [KFE and KBE are "dual" to each other, in that they use dual (adjoint)
 representations of the infinitesimal generator.]
+
+So what other uniformly continuous Markov semigroups can we cook up?
+
+None.
+
+Conclude that there is a one-to-one pairing between such conservative
+intensity matrices and uniformly continuous Markov semigroups, via generators.
+
+Note that, for the unbounded case, the situation is trickier.
+
+* We have to look to the Hille-Yoshida theorem to pin down valid generators of
+  Markov semigroups.
+* The exponential representation is not valid.
+* The KFE/KBE can have multiple solutions.
+
 
 We will use the following imports
 

@@ -28,7 +28,7 @@ theoretical perspective but less helpful in terms of intuition and simulation.
 In this lecture we provide another point of view.
 
 As a first step, we recall how we saw continuous time Markov chains
-constructed as jump processes from a jump chain kernel $K$ and a jump
+constructed as jump processes from a jump matrix $K$ and a jump
 intensity function $\lambda$.
 
 The intensity matrix was then given by 

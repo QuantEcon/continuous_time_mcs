@@ -67,7 +67,7 @@ defined for all $t \geq 0$, but this is always true for when holding times are e
 
 In the {doc}`previous lecture <markov_prop>`, 
 
-* the sequence $(Y_k)$ was drawn from a Markov kernel $K$ and called the embedded jump chain, while
+* the sequence $(Y_k)$ was drawn from a Markov matrix $K$ and called the embedded jump chain, while
 * the holding times $W_k := J_k - J_{k-1}$ were IID and Exp$(\lambda)$ for some
 constant jump intensity $\lambda$.
 
@@ -93,7 +93,7 @@ When we relax it, the jump intensities depend on the state.
 
 We start with two primitives
 
-1. A Markov kernel $K$ on $S$ satisfying $K(x, x) = 0$ for all $x \in S$
+1. A Markov matrix $K$ on $S$ satisfying $K(x, x) = 0$ for all $x \in S$
    and
 1. A function $\lambda$ mapping $S$ to $(0, \infty)$.
 
@@ -152,7 +152,7 @@ which, we claim, holds for all $t \geq 0$ and $x, y$ in $S$.
 
 Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed
 algorithmically above, while 
-$K P_{t-\tau}$ is the product of two Markov kernels as previously
+$K P_{t-\tau}$ is the product of two Markov matrices as previously
 defined.
 
 Let's see why {eq}`kbinteg` holds.
@@ -284,7 +284,7 @@ $$
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 $$  (psolq)
 
-for the semigroup of the jump process $(X_t)$ associated with the jump kernel
+for the semigroup of the jump process $(X_t)$ associated with the jump matrix
 $K$ and the jump intensity function $\lambda \colon S \to (0, \infty)$ is
 consistent with our earlier result.
 

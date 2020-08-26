@@ -20,7 +20,7 @@ kernelspec:
 A continuous time stochastic process is said to have the Markov property if
 that the past and future are independent given the current state.
 
-(A more formal definition is provide below.)
+(A more formal definition is provided below.)
 
 As we will see, the Markov property imposes a great deal of structure on
 continuous time processes.
@@ -49,7 +49,14 @@ $\sum_x \phi(x) = 1$.
 
 Let $\mathcal D$ denote the set of all distributions on $S$.
 
-In expressions involving matrix algebra, we **always treat distributions as row
+To economize on terminology, we define a **matrix** to be a map $A$ from $S
+\times S$ to $\RR$.
+
+When $S$ is finite, this reduces to the usual notion of a matrix, and you can
+mentally identify expressions like $A(x,y)$ with more familiar matrix
+notation, such as $A_{ij}$, if you wish.
+
+In statements involving matrix algebra, we **always treat distributions as row
 vectors**.
 
 We will use the following imports
@@ -84,8 +91,6 @@ The simplest Markov processes are those with a discrete time parameter and finit
 Assume for now that $S$ has $n$ elements and let $P$ be a Markov matrix (i.e., nonnegative with unit row sums) of size $n \times n$.
 
 We write $P(x, y)$ for a typical element of $P$.
-
-(Most of the time, this is more convenient than using symbols such as $P_{ij}$, and it aligns better with the infinite state case.)
 
 In applications, $P(x, y)$ represents the probability of transitioning from $x$ to
 $y$ in one step.
@@ -142,13 +147,13 @@ $\mathbf P_\psi$ as its joint distribution.
 The last statement is equivalent to 
 
 $$
-    \mathbb P\{ X_{t_1} = y_{t_1}, \ldots, X_{t_k} = y_{t_k} \}
+    \mathbb P\{ X_{t_1} = y_1, \ldots, X_{t_k} = y_k \}
     =
     \mathbf P_\psi\{ (x_t) \in S^\infty \,:\, 
-        x_{t_i} = y_{t_i} \text{ for } i = 1, \ldots m\}
+        x_{t_i} = y_i \text{ for } i = 1, \ldots m\}
 $$ (jointdeq)
 
-for any $m$ positive integers $t_i$ and $m$ elements  $y_{t_i}$ of the state space $S$.
+for any $m$ positive integers $t_i$ and $m$ elements  $y_i$ of the state space $S$.
 
 
 (Joint distributions of discrete time processes
@@ -185,9 +190,9 @@ Hence $P$ defines the joint distribution $\mathbf P_\psi$ when paired with any i
 
 ### Extending to Countable State Spaces
 
-When $S$ is infinite, we cannot view $P$ as a matrix.  
+When $S$ is infinite, the same idea carries through.
 
-Instead, we introduce the notion of a **Markov kernel** on $S$, which is a function
+Consistent with the finite case, a **Markov matrix** is a map
 $P$ from $S \times S$ to $\mathbb R_+$ satisfying
 
 $$
@@ -195,12 +200,9 @@ $$
     \text{ for all } x \in S
 $$
 
-This is a natural extension of matrices with nonnegative elements and unit row
-sums.
+The definition of a Markov chain $(X_t)_{t \in \mathbb Z_+}$ on $S$ with Markov matrix  $P$ is exactly as in {eq}`markovpropd`.
 
-The definition of a Markov chain $(X_t)_{t \in \mathbb Z_+}$ on $S$ with Markov kernel  $P$ is exactly as in {eq}`markovpropd`.
-
-Given Markov kernel $P$ and $\phi \in \mathcal D$, we define $\phi P$ by
+Given Markov matrix $P$ and $\phi \in \mathcal D$, we define $\phi P$ by
 {eq}`update_rule`.
     
 Then, as before, $\phi P$ can be understood as the distribution of 
@@ -220,16 +222,16 @@ $$
 Swapping the order of infinite sums is justified here by the fact that all
 elements are nonnegative (a version of Tonelli's theorem).
 
-We can take products of Markov kernels that are analogous to matrix products.
+We can take products of Markov matrices that are analogous to matrix products.
 
-In particular, if $P$ and $Q$ are Markov kernels on $S$, then, for $(x, y)$ in $S
+In particular, if $P$ and $Q$ are Markov matrices on $S$, then, for $(x, y)$ in $S
 \times S$,
 
 $$
     (P Q)(x, y) := \sum_z P(x, z) Q(z, y)
 $$ (kernprod)
 
-It is not difficult to check that the product $P Q$ is again a Markov kernel on $S$.
+It is not difficult to check that the product $P Q$ is again a Markov matrix on $S$.
 
 The operation {eq}`kernprod` is analogous to matrix multiplication, so that
 elements of $P^k$, the $k$-th product of $P$ with itself, retain the finite
@@ -245,7 +247,7 @@ $$ (kernprodk)
 which is a version of the discrete time Chapman-Kolmogorov equation.
 
 Equation {eq}`kernprodk` can be obtained from the law of total probability: if
-$(X_t)$ is a Markov chain with Markov kernel $P$ and initial condition $X_0 =
+$(X_t)$ is a Markov chain with Markov matrix $P$ and initial condition $X_0 =
 x$, then 
 
 $$
@@ -267,21 +269,32 @@ A **continuous time stochastic process** on $S$ is a collection $(X_t)$ of $S$-v
 random variables $X_t$ defined on a common probability space and indexed by $t
 \in \mathbb R_+$.
 
-Let $I$ be the Markov kernel on $S$ defined by $I(x,y) = \mathbb 1\{x = y\}$.
+Let $I$ be the Markov matrix on $S$ defined by $I(x,y) = \mathbb 1\{x = y\}$.
 
-A **Markov semigroup** is a family $(P_t)$ of Markov kernels
-on $S$ satisfying $P_0 = I$ and
+A **Markov semigroup** is a family $(P_t)$ of Markov matrices
+on $S$ satisfying 
 
-$$
-    P_{s + t} = P_s P_t
-    \qquad (s, t \geq 0)
-$$ (chapkol_ct)
+1. $P_0 = I$,
+2. $\lim_{t \to 0} P_t(x, y) = I(x,y)$ for all $x,y$ in $S$, and
+3. the semigroup property $P_{s + t} = P_s P_t$ for all $s, t \geq 0$.
 
 The interpretation of $P_t(x, y)$ is the probability of moving from state $x$
 to state $y$ in $t$ units of time.
 
-Equation {eq}`chapkol_ct`, which is known as the semigroup property of
-$(P_t)$, is another version of the Chapman-Kolmogorov equation.
+As such it is natural that $P_0(x,y) = 1$ if $x=y$ and zero otherwise, which
+is condition 1.
+
+Condition 2 might sound restrictive but it is in fact very mild.
+
+For all practical applications, probabilities do not jump --- although the
+chain $(X_t)$ itself can of course jump from state to state as time
+goes by.[^footnote1] 
+
+[^footnote1]: On a technical level, right continuity of paths for $(X_t)$ implies condition 2, as proved in Theorem 2.12 of {cite}`liggett2010continuous`.  Right continuity of paths allows for jumps, but insists on only finitely many jumps in any bounded interval.
+
+
+The semigroup property in condition 3 is nothing more than a continuous
+time version of the Chapman-Kolmogorov equation.
 
 This becomes clearer if we write it more explicitly as
 
@@ -358,12 +371,12 @@ whenever $j \leq k$ and $P_t(j, k) = 0$ otherwise.
 This chain of equalities was obtained with $N_s = j$ for arbitrary $j$, so we
 can replace $j$ with $N_s$ in {eq}`poissemi` to verify the Markov property {eq}`markovprop` for the Poisson process.
 
-Under {eq}`poissemi`, each $P_t$ is a Markov kernel and $(P_t)$ is a
+Under {eq}`poissemi`, each $P_t$ is a Markov matrix and $(P_t)$ is a
 Markov semigroup.
 
-The proof of the semigroup property is a solved exercise below.
+The proof of the semigroup property is a solved exercise below.[^footnote2]
 
-(In {eq}`poissemi` we use the convention that $0^0 = 1$, which leads to $P_0 = I$.)
+[^footnote2]: In the definition of $P_t$ in {eq}`poissemi`, we use the convention that $0^0 = 1$, which leads to $P_0 = I$ and $\lim_{t \to 0} P_t(j, k) = I(j,k)$ for all $j,k$.  These facts, along with the semigroup property, imply that $(P_t)$ is a valid Markov semigroup.
 
 
 
@@ -604,7 +617,7 @@ The data for a Markov process on $S$ with constant jump rates are
 
 * a parameter $\lambda > 0$ called the **jump rate**, which governs the jump
   intensities and
-* a Markov kernel $K$ on $S$, called the **jump kernel**.
+* a Markov matrix $K$ on $S$, called the **jump matrix**.
 
 To run the process we also need an initial condition $\psi \in \mathcal D$.
 
@@ -624,7 +637,7 @@ In more detail, the construction is
 An alternative, more parsimonious way to express the same process is to take 
 
 * $(N_t)$ to be a Poisson process with rate $\lambda$ and
-* $(Y_n)$ to be a discrete time Markov chain with kernel $K$
+* $(Y_n)$ to be a discrete time Markov chain with Markov matrix $K$
 
 and then set
 
@@ -646,13 +659,13 @@ The Poisson process with rate $\lambda$ is a jump process on $S = \mathbb Z_+$.
 
 The holding times are obviously exponential with constant rate $\lambda$.
 
-The jump kernel is just $K(i, j) = \mathbb 1\{j = i+1\}$, so that the state
+The jump matrix is just $K(i, j) = \mathbb 1\{j = i+1\}$, so that the state
 jumps up by one at every $J_n$.
 
 The inventory model is also a jump process with constant rate $\lambda$, this
 time on $S = \{0, 1, \ldots, b\}$.
 
-The jump kernel (or matrix in this case) was given in {eq}`ijumpkern`.
+The jump matrix was given in {eq}`ijumpkern`.
 
 
 
@@ -698,7 +711,7 @@ $$
        \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
-Because the jump chain is Markov with kernel $K$, we can simplify further to
+Because the jump chain is Markov with Markov matrix $K$, we can simplify further to
 
 
 $$
@@ -762,7 +775,7 @@ We fix
 * an initial condition $X_0 \sim \psi_0$, where $\psi_0$ is an arbitrary
 distribution on $S$.
 
-The state $S$ is set to $\{0, \ldots, b\}$ and the kernel $K$ is defined by
+The state $S$ is set to $\{0, \ldots, b\}$ and the matrix $K$ is defined by
 {eq}`ijumpkern`.
 
 Now we run time forward.
@@ -829,7 +842,7 @@ Construct two different random variables with this distribution.
 
 ### Exercise 2
 
-Show by direct calculation that the Poisson kernels $(P_t)$ defined in 
+Show by direct calculation that the Poisson matrices $(P_t)$ defined in 
 {eq}`poissemi` satisfy the semigroup property {eq}`chapkol_ct2`.
 
 Hints
