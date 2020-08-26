@@ -473,21 +473,17 @@ $$
 Here $K$ is the jump chain Markov matrix and $\lambda(x)$ is the jump
 rate at $x$.
 
-In light of the preceding analysis, we can differentiate to obtain the
-Kolmogorov forward equation $P_t' = P_t Q$.
-
-Hence $Q(x, y) = \lambda(x) (K(x, y) - I(x, y))$ describes the rate at which
-probability mass flows from $x$ to $y$.
-
-(We will make this clearer later on.)
+We can differentiate to obtain the Kolmogorov forward equation $P_t' = P_t Q$.
 
 We can also premultiply by $\psi_0 \in \mathcal D$ to get $\psi_t' = \psi_t
 Q$, which is the Fokker--Planck equation.
 
-Hence it's clear that $Q$ corresponds to the intensity matrix for this
-semigroup.
+From this discussion it is clear that $Q$ corresponds to the intensity matrix
+for this semigroup.
 
 (You can easily check that it satisfies the definition of an intensity matrix.)
+
+
 
 
 ## Exercises

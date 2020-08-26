@@ -46,15 +46,29 @@ associated with any given intensity matrix.
 In fact there is another probabilistic construction of a chain from an
 intensity matrix, sometimes called the exponential clock method.
 
-Understanding these ideas is important for both intuition and for 
-simulation algorithms.
+Understanding these ideas is important for both intuition and simulation.
 
+In what follows, we continue to assume that $|S| = n < \infty$, although all ideas
+carry over smoothly to the infinite case.
 
+We will use the following imports
+
+```{code-cell} ipython3
+import numpy as np
+import scipy as sp
+import matplotlib.pyplot as plt
+import quantecon as qe
+from numba import njit
+from scipy.linalg import expm
+```
 
 
 ## All CTMCs are Jump Chains 
 
-Start with a Q matrix and construct the jump chain.
+Let $Q$ be an intensity matrix on $S$.
+
+Now define a function $\lambda$ and a Markov matrix $K$ on $S$ via
+
 
 When does $Q$ admit the decomposition $Q = \lambda (K - I)$?
 
