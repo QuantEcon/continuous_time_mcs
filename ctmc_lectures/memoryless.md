@@ -32,10 +32,10 @@ not helpful in predicting the timing of the next jump.
 
 In other words, the jump times are "memoryless".
 
-It is remarkable that the only distribution on $\mathbb R_+$ with this
+It is remarkable that the only distribution on $\RR_+$ with this
 property is the exponential distribution.
 
-Similarly, the only memoryless distribution on $\mathbb Z_+$ is the geometric
+Similarly, the only memoryless distribution on $\ZZ_+$ is the geometric
 distribution.
 
 This lecture tries to clarify these ideas.
@@ -73,13 +73,12 @@ This restatement will be clarified below.
 
 ### Memorylessness
 
-Let $X$ be a random variable supported on the nonnegative integers $\mathbb
-Z_+$.
+Let $X$ be a random variable supported on the nonnegative integers $\ZZ_+$.
 
 We say that $X$ is [geometrically distributed](https://en.wikipedia.org/wiki/Geometric_distribution) if, for some $\theta \in [0, 1]$,
 
 $$ 
-    \mathbb P\{X = k\} = (1-\theta)^k \theta 
+    \PP\{X = k\} = (1-\theta)^k \theta 
     \qquad (k = 0, 1, \ldots)
 $$ (geodist)
 
@@ -102,7 +101,7 @@ is memoryless.
 For example, given any nonnegative integer $m$, we have
 
 $$
-    \mathbb P \{X = m + 1 \,|\, X > m \} = \theta
+    \PP \{X = m + 1 \,|\, X > m \} = \theta
 $$ (memgeo)
 
 In other words, regardless of how long we have seen only red outcomes, the
@@ -112,11 +111,11 @@ probability of getting black on the very first spin.
 To show this, we note that the left hand side is
 
 $$
-    \frac{ \mathbb P \{X = m + 1 \text{ and } X > m \} }
-    {\mathbb P \{X \geq m\}}
+    \frac{ \PP \{X = m + 1 \text{ and } X > m \} }
+    {\PP \{X \geq m\}}
     =
-    \frac{ \mathbb P \{X = m + 1 \} }
-    {\mathbb P \{X > m\}}
+    \frac{ \PP \{X = m + 1 \} }
+    {\PP \{X > m\}}
     = \frac{ (1-\theta)^{m+1} \theta }
         {\sum_{k > m} (1-\theta)^k \theta }
 $$
@@ -138,12 +137,12 @@ memoryless, so that the chain satisfies the Markov property.
 While the geometric distribution is memoryless, its discrete support makes it
 a poor fit for the continuous time case.
 
-Hence we turn to the [exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution), which is supported on $\mathbb R_+$.
+Hence we turn to the [exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution), which is supported on $\RR_+$.
 
-A random variable $Y$ on $\mathbb R_+$ is called **exponential with rate $\lambda$**, denoted by $Y \sim \Exp(\lambda)$, if
+A random variable $Y$ on $\RR_+$ is called **exponential with rate $\lambda$**, denoted by $Y \sim \Exp(\lambda)$, if
 
 $$
-    \mathbb P\{Y > y\} = e^{-\lambda y}
+    \PP\{Y > y\} = e^{-\lambda y}
     \quad \text{  for all } 
     y \geq 0
 $$
@@ -187,7 +186,7 @@ the first arrival occurs after $t_{i}$ is $(1-\lambda h)^{i}$.
 Hence 
 
 $$
-    \mathbb P\{Y > t_{i} \}
+    \PP\{Y > t_{i} \}
     = (1-\lambda h)^i
     = \left( 1- \frac{\lambda i h}{i} \right)^i
 $$
@@ -196,7 +195,7 @@ Using the fact that $e^x = \lim_{i \to \infty}(1 + x/i)^i$ for all $x$ and $i
 h = t_i \to t$, we obtain, for large $i$,
 
 $$
-    \mathbb P\{Y > t\}
+    \PP\{Y > t\}
     \approx
     e^{- \lambda t}
 $$
@@ -206,25 +205,25 @@ In this sense, the exponential is the limit of the geometric distribution.
 
 ### Memoryless Property of the Exponential Distribution
 
-The exponential distribution is the only memoryless distribution supported on $\mathbb R_+$.
+The exponential distribution is the only memoryless distribution supported on $\RR_+$.
 
-More specifically, a random variable $X$ supported on $\mathbb R_+$ has 
+More specifically, a random variable $X$ supported on $\RR_+$ has 
 the exponential distribution with some rate $\lambda > 0$ if and only if,
 for all positive $s, t$,
 
 $$
-    \mathbb P \{X > s + t \,|\, X > s \} = \mathbb P \{X > t\}
+    \PP \{X > s + t \,|\, X > s \} = \PP \{X > t\}
 $$ (memexpo)
 
 To see that {eq}`memexpo` holds when $X$ is exponential with rate $\lambda$,
 observe that
 
 $$
-    \frac{ \mathbb P \{X > s + t \text{ and } X > s \} }
-    {\mathbb P \{X > s\}}
+    \frac{ \PP \{X > s + t \text{ and } X > s \} }
+    {\PP \{X > s\}}
     =
-    \frac{ \mathbb P \{X > s + t \} }
-    {\mathbb P \{X > s\}}
+    \frac{ \PP \{X > s + t \} }
+    {\PP \{X > s\}}
     = \frac{e^{-\lambda s - \lambda t}}{e^{-\lambda s}}
     = e^{-\lambda t}
 $$
@@ -237,17 +236,17 @@ Let's look at the claim that memorylessness implies the exponential distribution
 
 The proof is a bit longer but not overly difficult.
 
-Let $X$ be a random variable supported on $\mathbb R_+$ such that
+Let $X$ be a random variable supported on $\RR_+$ such that
 {eq}`memexpo` holds.
 
-The "exceedance" function $f(s) := \mathbb P\{X > s\}$ then has three properties:
+The "exceedance" function $f(s) := \PP\{X > s\}$ then has three properties:
 
-1. $f$ is decreasing on $\mathbb R_+$,
+1. $f$ is decreasing on $\RR_+$,
 1. $0 < f(t) < 1$ for all $t > 0$,
 1. $f(s + t) = f(s) f(t)$ for all $s, t > 0$.
 
 The first property is common to all exceedance functions, the second is due to
-the fact that $X$ is supported on all of $\mathbb R_+$, and the
+the fact that $X$ is supported on all of $\RR_+$, and the
 third is {eq}`memexpo`.
 
 From these three properties we will show that
@@ -286,7 +285,7 @@ By property 1 we have $f(a_n) \leq f(t) \leq f(b_n)$ for all $n$, so
 
 $$
     f(1)^{a_n} \leq f(t) \leq f(1)^{b_n}
-    \quad \forall \, n \in \mathbb N
+    \quad \forall \, n \in \NN
 $$
 
 Taking the limit in $n$ completes the proof.
@@ -295,16 +294,16 @@ Taking the limit in $n$ completes the proof.
 (fail_mem)=
 ### Failure of Memorylessness
 
-We know from the proceeding section that any distribution on $\mathbb R_+$ other
+We know from the proceeding section that any distribution on $\RR_+$ other
 than the exponential distribution fails to be memoryless.
 
-Here's an example that helps to clarify (although the support of the distribution is a proper subset of $\mathbb R_+$).
+Here's an example that helps to clarify (although the support of the distribution is a proper subset of $\RR_+$).
 
 A random variable $Y$ has the Pareto distribution with positive parameters $t_0, \alpha$ if
 
 $$
     f(t) 
-    := \mathbb P\{Y > t\} 
+    := \PP\{Y > t\} 
     = 
     \begin{cases}
     1 & \text{ if } t \leq t_0
@@ -316,10 +315,10 @@ $$
 As a result,  with $s > t_0$,
 
 $$
-    \mathbb P \{Y > s + t \,|\, Y > s \}
+    \PP \{Y > s + t \,|\, Y > s \}
     =
-    \frac{ \mathbb P \{Y > s + t \} }
-    {\mathbb P \{Y > s\}}
+    \frac{ \PP \{Y > s + t \} }
+    {\PP \{Y > s\}}
     = \left( \frac{t}{t + s} \right)^\alpha
 $$
 
@@ -331,7 +330,7 @@ probability of waiting another hour is relatively small.
 
 ## Sums of Exponentials
 
-A random variable $W$ on $\mathbb R_+$ is said to have the [Erlang
+A random variable $W$ on $\RR_+$ is said to have the [Erlang
 distribution](https://en.wikipedia.org/wiki/Erlang_distribution) if its
 density has the form
 
@@ -340,7 +339,7 @@ $$
     \qquad (t \geq 0)
 $$
 
-for some $n \in \mathbb N$ and $\lambda > 0$.
+for some $n \in \NN$ and $\lambda > 0$.
 
 The parameters $n$ and $\lambda$ are called the **shape** and **rate**
 parameters respectively.
@@ -378,7 +377,7 @@ The CDF of the Erlang distribution is
 
 $$
     F(t) 
-    = \mathbb P\{W \leq t\}
+    = \PP\{W \leq t\}
     = 1 - \sum_{k=0}^{n-1} \frac{(\lambda t)^k}{k!} e^{-\lambda t}
 $$ (erlcdf)
 
@@ -439,16 +438,16 @@ Notice that $X > s + t$ if and only if $Y > s$ and $Z > t$.
 As a result of this fact and independence,
 
 $$
-    \mathbb P\{X > s + t\}
-    = \mathbb P\{Y > s \} \mathbb P\{Z > t\}
+    \PP\{X > s + t\}
+    = \PP\{Y > s \} \PP\{Z > t\}
     = e^{-\lambda(s + t)}
 $$
 
 At the same time,
 
 $$
-    \mathbb P\{X > s - t\}
-    = \mathbb P\{Y > s - t \} 
+    \PP\{X > s - t\}
+    = \PP\{Y > s - t \} 
     = e^{-\lambda(s - t)}
 $$
 

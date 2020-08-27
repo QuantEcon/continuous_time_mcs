@@ -13,16 +13,10 @@ kernelspec:
 ---
 
 
-# Infinite State Spaces
+# Characterizing Continuous Time Markov Chains
 
 
 ## Overview
-
-Motivation: our very first example (Poisson process) has an infinite state
-space.
-
-A key result: one-to-one pairing between bounded linear operators on
-$\ell_1(S)$ and uniformly continuous semigroups.
 
 Motivate this as follows: as long as you are prepared to have some reasonable
 restrictions on jump intensities, you will have a conservative intensity
@@ -73,22 +67,19 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 ##  Foobar
 
-Notation:
+Throughout this lecture, $S$ is an arbitrary countable set and we adopt the
+following notation:
 
-* $\ell_1(S)$ is all **summable functions** on $S$; that is, all $g \, \colon S \to \mathbb R$ with $\sum_x |g(x)| < \infty$,
-* $bS$ is all **bounded functions** on $S$; that is, all $h \, \colon S \to \mathbb R$ with $\sup_x |g(x)| < \infty$, and
+* $\ell_1$ is all **summable functions** on $S$; that is, all $g \, \colon S \to \mathbb R$ with $\sum_x |g(x)| < \infty$,
+* $\ell_\infty$ is all **bounded functions** on $S$; that is, all $h \, \colon S \to \mathbb R$ with $\sup_x |g(x)| < \infty$, and
 
-As usual, a **linear operator** on $\ell_1(S)$ is a map $L$ from $\ell_1(S)$ to itself
-satisfying 
+### Norms and Operators
+
+If $g \in \ell_1$, then 
 
 $$
-    L(\alpha g + \beta h) = \alpha L g + \beta L h,
-    \quad
-    \forall \, g, h \in \ell_1(S), \;\; \alpha, \beta \in \mathbb R
+    \| g\| := \sum_x |g(x)|
 $$
-
-A linear operator on $bS$ is defined analogously.
-
 
 It is not difficult to check that, in the case where $S$ is finite, $P$ is a
 Markov matrix if and only if $\phi P$ is in $\mathcal D$ whenever $\phi$ is in

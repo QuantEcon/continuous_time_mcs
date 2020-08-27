@@ -91,7 +91,7 @@ $$
 where distributions are understood as row vectors.
 
 Here's a visualization for the case $|S|=3$, so that $\mathcal D$ is the unit
-simplex in $\mathbb R^3$.
+simplex in $\RR^3$.
 
 The initial condition is `` (0, 0, 1)`` and the Markov matrix is
 
@@ -332,7 +332,7 @@ $$
     (P_t h)' = Q P_t h
 $$
 
-Recalling that $(P_t h)(x) = \mathbb E [ h(X_t) \,|\, X_0 = x]$, this vector
+Recalling that $(P_t h)(x) = \EE [ h(X_t) \,|\, X_0 = x]$, this vector
 ODE tells us how expectations evolve, conditioning backward to time zero.
 
 Both the forward and the backward equations uniquely pin down the same solution 
@@ -484,13 +484,49 @@ for this semigroup.
 (You can easily check that it satisfies the definition of an intensity matrix.)
 
 
+## Summary
+
+We have seen that any intensity matrix $Q$ on $S$ defines a Markov semigroup via $P_t = e^{tQ}$.
+
+Henceforth, we will say that $(X_t)$ is **a Markov chain with intensity matrix** $Q$ if 
+$(X_t)$ is a Markov chain with Markov semigroup $(e^{tQ})$.
+
+While our discussion has been in the context of a finite state space, later we
+will see that these ideas carry over to an infinite state setting under mild
+restrictions.
+
+We have also hinted at the fact that *every* continuous time Markov chain 
+is a Markov chain with intensity matrix $Q$ for some suitably chosen $Q$.
+
+Later we will prove this to be universally true when $S$ is finite and true
+under mild conditions when $S$ is countably infinite.
+
+Intensity matrices are important because 
+
+1. they are the natural infinitesimal descriptions of Markov semigroups,
+2. they are often easy to write down in applications and
+3. they provide an intuitive description of dynamics.
+
+
+Later, we will see that, for a given intensity matrix $Q$, the elements are
+ understood as follows:
+
+* when $x \not= y$, the value $Q(x, y)$ is the "rate of leaving $x$ for $y$" and
+* $-Q(x, x) \geq 0$ is the "rate of leaving $x$" .
+
+
 
 
 ## Exercises
 
 ### Exercise 1
 
-Let $(P_t)$ be a Markov semigroup and let
+Let $(P_t)$ be a Markov semigroup such that $t \mapsto P_t(x, y)$ is
+differentiable at all $t \geq 0$ and $(x, y) \in S \times S$.
+
+(The derivative at $t=0$ is the usual right derivative.)
+
+Define (pointwise, at each $(x,y)$),
 
 $$ 
     Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}

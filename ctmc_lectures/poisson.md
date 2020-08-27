@@ -124,7 +124,7 @@ $N_t$ has the Poisson distribution with parameter $t \lambda$.
 In other words, 
 
 $$ 
-    \mathbb P\{N_t = k\} 
+    \PP\{N_t = k\} 
     = e^{-t \lambda} \frac{(t \lambda)^k }{k!}
     \qquad (k = 0, 1, \ldots)
 $$ (poissondist)
@@ -132,8 +132,8 @@ $$ (poissondist)
 For example, since $N_t = 0$ if and only if $W_1 > t$, we have
 
 $$ 
-    \mathbb P\{N_t =0\} 
-    = \mathbb P\{W_1 > t\}
+    \PP\{N_t =0\} 
+    = \PP\{W_1 > t\}
     = e^{-t \lambda}
 $$
 
@@ -146,16 +146,16 @@ Another way to show that $N_t$ is Poisson with rate $\lambda$ is to observe
 that
 
 $$ 
-    \mathbb P\{N_t \leq n\} 
-    = \mathbb P\{J_{n+1} > t\} 
-    = 1 - \mathbb P\{J_{n+1} \leq t\}
+    \PP\{N_t \leq n\} 
+    = \PP\{J_{n+1} > t\} 
+    = 1 - \PP\{J_{n+1} \leq t\}
 $$
 
 Inserting the expression for the Erlang CDF in {eq}`erlcdf` with shape $n+1$ and
 rate $\lambda$, we obtain 
 
 $$ 
-    \mathbb P\{N_t \leq n\} 
+    \PP\{N_t \leq n\} 
     = \sum_{k=0}^{n} \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
@@ -230,7 +230,7 @@ the exponential.
 
 That is, we fix small $h > 0$ and let $t_i := ih$ for all $i$.
 
-Let $(V_i)$ be IID binary random variables with $\mathbb P\{V_i = 1\} = h \lambda$ for some $\lambda > 0$.
+Let $(V_i)$ be IID binary random variables with $\PP\{V_i = 1\} = h \lambda$ for some $\lambda > 0$.
 
 Linking to our previous discussion, 
 
@@ -281,7 +281,7 @@ plt.show()
 We expect from the discussion above that $(\hat N_t)$ approximates a Poisson process.
 
 This intuition is correct because, fixing $t$, letting $k := \max\{i \in
-\mathbb N \,:\, t_i \leq t\}$ and applying {eq}`binpois`, we have
+\NN \,:\, t_i \leq t\}$ and applying {eq}`binpois`, we have
 
 $$
     \hat N_t 
@@ -341,7 +341,7 @@ approximation, increments depend on separate subsets of $(V_i)$.
 
 What other counting processes have stationary independent increments?
 
-Remarkably, the answer is none: any process $(M_t)$ supported on $\mathbb Z_+$
+Remarkably, the answer is none: any process $(M_t)$ supported on $\ZZ_+$
 having stationary independent increments and starting at 0
 is a Poisson process.
 
@@ -376,9 +376,9 @@ increments of $(N_t)$.
 
 In view of the uniqueness statement above, we can verify that $(M_t)$ is a
 Poisson process by showing that $(M_t)$ starts at zero, is supported on
-$\mathbb Z_+$ and has stationary independent increments.
+$\ZZ_+$ and has stationary independent increments.
 
-It is clear that $(M_t)$ starts at zero and is supported on $\mathbb Z_+$.
+It is clear that $(M_t)$ starts at zero and is supported on $\ZZ_+$.
 
 In addition, if we take any $t < t'$, then
 

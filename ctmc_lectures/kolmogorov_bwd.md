@@ -88,7 +88,7 @@ This assumption was made purely for convenience and seems unlikely to hold true.
 
 When we relax it, the jump intensities depend on the state.
 
-
+(jumpchainalgo)=
 ### Algorithmic Construction
 
 We start with two primitives
@@ -119,12 +119,12 @@ drawn independently.
 
 The restriction $K(x,x) = 0$ for all $x$ implies that $(X_t)$ actually jumps at each jump time.
 
-
+We call the algorithm stated above the **jump chain algorithm** for the pair $\lambda, K$.
 
 ## Computing the Semigroup
 
 For the jump process $(X_t)$ with time varying intensities described in the
-algorithm just given, calculating the Markov semigroup is not a trivial exercise.
+jump chain algorithm, calculating the Markov semigroup is not a trivial exercise.
 
 The approach we adopt is
 
@@ -151,7 +151,7 @@ $$ (kbinteg)
 which, we claim, holds for all $t \geq 0$ and $x, y$ in $S$.
 
 Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed
-algorithmically above, while 
+via the jump chain algorithm, while 
 $K P_{t-\tau}$ is the product of two Markov matrices as previously
 defined.
 
@@ -161,16 +161,16 @@ Conditioning implicitly on $X_0 = x$, the semigroup $(P_t)$ must satisfy
 
 $$
     P_t(x, y) 
-    = \mathbb P\{X_t = y\}
-    = \mathbb P\{X_t = y, \; J_1 > t \}
-        + \mathbb P\{X_t = y, \; J_1 \leq t \}
+    = \PP\{X_t = y\}
+    = \PP\{X_t = y, \; J_1 > t \}
+        + \PP\{X_t = y, \; J_1 \leq t \}
 $$ (pt_split)
 
 
 Regarding the first term on the right hand side of {eq}`pt_split`, we have 
 
 $$
-    \mathbb P\{X_t = y, \; J_1 > t \}
+    \PP\{X_t = y, \; J_1 > t \}
         = I(x, y) P\{J_1 > t \}
         = I(x, y) e^{- t \lambda(x)}
 $$ (pt_first)
@@ -180,12 +180,12 @@ where $I(x, y) = \mathbb 1\{x = y\}$.
 For the second term on the right hand side of {eq}`pt_split`, we have 
 
 $$
-    \mathbb P\{X_t = y, \; J_1 > t \}
-    = \mathbb E 
+    \PP\{X_t = y, \; J_1 > t \}
+    = \EE 
         \left[
-            \mathbb 1\{J_1 > t\} \mathbb P\{X_t = y \,|\, W_1, Y_1\}
+            \mathbb 1\{J_1 > t\} \PP\{X_t = y \,|\, W_1, Y_1\}
         \right]
-    = \mathbb E 
+    = \EE 
         \left[
             \mathbb 1\{J_1 > t\} P_{t - J_1} (Y_1, y) 
         \right]
@@ -195,7 +195,7 @@ Evaluating the expectation and using the independence of $J_1$ and $Y_1$, this b
 
 $$
 \begin{aligned}
-    \mathbb P\{X_t = y, \; J_1 > t \}
+    \PP\{X_t = y, \; J_1 > t \}
     & = \int_0^\infty
             \mathbb 1\{\tau > t\}
             \sum_z K(x, z) P_{t - \tau} (z, y)  \lambda(x) e^{-\tau \lambda(x)} 
@@ -215,9 +215,8 @@ Combining this result with {eq}`pt_split` and {eq}`pt_first` gives
 
 ### Kolmogorov's Differential Equation
 
-We have now confirmed that the semigroup $(P_t)$ associated with the process
-$(X_t)$ should satisfy {eq}`kbinteg`.
-
+We have now confirmed that the semigroup $(P_t)$ associated with the jump
+chain process $(X_t)$ satisfies {eq}`kbinteg`.
 
 Equation {eq}`kbinteg` is important but we can simplify it further without
 losing information by taking the time derivative.

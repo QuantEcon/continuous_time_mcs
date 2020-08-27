@@ -10,6 +10,12 @@ sphinx:
       TeX:
         Macros:
           "Exp" : ["\\operatorname{Exp}"]
+          "BB" : ["\\mathbb{B}"]
+          "EE" : ["\\mathbb{E}"]
+          "PP" : ["\\mathbb{P}"]
+          "RR" : ["\\mathbb{R}"]
+          "NN" : ["\\mathbb{N}"]
+          "ZZ" : ["\\mathbb{Z}"]
 
 latex:
   latex_engine: "xelatex"

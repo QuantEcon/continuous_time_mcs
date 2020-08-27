@@ -22,10 +22,10 @@ that the past and future are independent given the current state.
 
 (A more formal definition is provided below.)
 
-As we will see, the Markov property imposes a great deal of structure on
+As we will see, the Markov property imposes a large amount of structure on
 continuous time processes.
 
-This structure leads to an elegant and powerful collection of results on
+This structure leads to elegant and powerful results on
 evolution and dynamics.
 
 At the same time, the Markov property is general enough to cover many applied
@@ -35,7 +35,7 @@ problems, as described in {doc}`the introduction <intro>`.
 
 ### Setting
 
-In this lecture and much of what follows, the state space where dynamics
+In this lecture, the state space where dynamics
 evolve will be a [countable set](https://en.wikipedia.org/wiki/Countable_set),
 denoted henceforth by $S$, with typical elements $x, y$.
 
@@ -44,7 +44,7 @@ denoted henceforth by $S$, with typical elements $x, y$.
 Regarding notation, in what follows, $\sum_{x \in S}$ is abbreviated to
 $\sum_x$, the supremum $\sup_{x \in S}$ is abbreviated to $\sup_x$ and so on.
 
-A **distribution** on $S$ is a function $\phi$ from $S$ to $\mathbb R_+$ with
+A **distribution** on $S$ is a function $\phi$ from $S$ to $\RR_+$ with
 $\sum_x \phi(x) = 1$.
 
 Let $\mathcal D$ denote the set of all distributions on $S$.
@@ -56,8 +56,21 @@ When $S$ is finite, this reduces to the usual notion of a matrix, and you can
 mentally identify expressions like $A(x,y)$ with more familiar matrix
 notation, such as $A_{ij}$, if you wish.
 
-In statements involving matrix algebra, we **always treat distributions as row
-vectors**.
+The product of two matrices $A$ and $B$ is defined by 
+
+$$
+    (A B)(x, y) = \sum_z A(x, z) B(z, y)
+    \qquad ((x, y) \in S \times S)
+$$ (kernprod)
+
+If $S$ is finite, then this is just ordinary matrix multiplication.
+
+In statements involving matrix algebra, we *always treat distributions as row
+vectors*, so that, for $\phi \in \mathcal D$ and given matrix $A$,
+
+$$
+    (\phi A)(y) = \sum_x \phi(x) A(x, y) 
+$$
 
 We will use the following imports
 
@@ -84,28 +97,24 @@ discrete case and then shifting to continuous time.
 
 
 
+(finstatediscretemc)=
 ### Discrete Time, Finite State 
 
 The simplest Markov processes are those with a discrete time parameter and finite state space.
 
 Assume for now that $S$ has $n$ elements and let $P$ be a Markov matrix (i.e., nonnegative with unit row sums) of size $n \times n$.
 
-We write $P(x, y)$ for a typical element of $P$.
-
 In applications, $P(x, y)$ represents the probability of transitioning from $x$ to
 $y$ in one step.
 
-(finstatediscretemc)=
-#### Markov Chains
-
-A Markov chain $(X_t)_{t \in \mathbb Z_+}$ on finite set $S$ with Markov matrix $P$ is a
-sequence of random variables satisfying 
+A **Markov chain** $(X_t)_{t \in \ZZ_+}$ on $S$ with Markov
+matrix $P$ is a sequence of random variables satisfying 
 
 $$
-    \mathbb P\{X_{t+1} = y \,|\, X_0, X_1, \ldots, X_t \} = P (X_t, y)
+    \PP\{X_{t+1} = y \,|\, X_0, X_1, \ldots, X_t \} = P (X_t, y)
 $$ (markovpropd)
 
-with probability one for all $y \in S$ and any $t \in \mathbb Z_+$.
+with probability one for all $y \in S$ and any $t \in \ZZ_+$.
 
 In addition to connecting probabilities to the Markov matrix,
 {eq}`markovpropd` says that the process depends on its history only through
@@ -134,20 +143,20 @@ $\phi$, we can construct many random variables having distribution $\phi$.
 
 Hence $P$ is, in a sense, a more primitive object than $(X_t)$.
 
-There is another way to see the fundamental importance of $P$: by constructing the joint distribution.
+There is another way to see the fundamental importance of $P$, which is by
+constructing the joint distribution from $P$.
 
-Consider the infinite sequence space $S^\infty := S \times S \times \cdots$.
+Let $S^\infty$ represent the infinite sequence space $S \times S \times \cdots$
+of $S$-valued sequences $(x_0, x_1, x_2, \ldots)$.
 
-Together with an initial condition $\psi \in
-\mathcal D$, a Markov matrix $P$ defines a distribution $\mathbf P_\psi$
-over $S^\infty$ such that any
-Markov chain $(X_t)$ satisfying {eq}`markovpropd` and $X_0 \sim \psi$ has
-$\mathbf P_\psi$ as its joint distribution.
+Fix an initial condition $\psi \in \mathcal D$ and a Markov matrix $P$ on $S$.
 
-The last statement is equivalent to 
+The **joint distribution** of a Markov chain $(X_t)$ satisfying
+{eq}`markovpropd` and $X_0 \sim \psi$ is the distribution $\mathbf P_\psi$ over
+$S^\infty$ such that
 
 $$
-    \mathbb P\{ X_{t_1} = y_1, \ldots, X_{t_k} = y_k \}
+    \PP\{ X_{t_1} = y_1, \ldots, X_{t_k} = y_k \}
     =
     \mathbf P_\psi\{ (x_t) \in S^\infty \,:\, 
         x_{t_i} = y_i \text{ for } i = 1, \ldots m\}
@@ -155,15 +164,11 @@ $$ (jointdeq)
 
 for any $m$ positive integers $t_i$ and $m$ elements  $y_i$ of the state space $S$.
 
+(Joint distributions of discrete time processes are uniquely defined by their
+values at finite collections of times --- see, for example, Theorem 7.2 of {cite}`walsh2012knowing`.)
 
-(Joint distributions of discrete time processes
-are uniquely defined by their values at finite collections of times in the sense of
-{eq}`jointdeq` --- see, for example, Theorem 7.2 of {cite}`walsh2012knowing`.)
-
-
-To construct the joint distribution over $S^\infty$, one first constructs a
-finite dimensional version over the Cartiesian product $S^{n+1}$
-via
+We can construct $\mathbf P_\psi$ by first defining $P_\psi^n$ over 
+the the finite Cartiesian product $S^{n+1}$ via
 
 $$
     \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
@@ -173,14 +178,15 @@ $$
         P(x_{n-1}, x_n)
 $$ (mathjointd)
 
-Then one shows that for any Markov chain $(X_t)$ satisfying {eq}`markovpropd`
-and $X_0 \sim \psi$, the restriction $(X_0, \ldots, X_n)$ has joint
-distribution $\mathbf P_\psi^n$.
+For any Markov chain $(X_t)$ satisfying {eq}`markovpropd` and $X_0 \sim \psi$,
+the restriction $(X_0, \ldots, X_n)$ has joint distribution $\mathbf
+P_\psi^n$.
 
 This is a solved exercise below.
 
-The last remaining step is to show that the family $(\mathbf P_\psi^n)$ defined at each $n \in \mathbb N$ extends uniquely to a distribution $\mathbf P_\psi$ over the infinite
-sequences in $S^\infty$.
+The last step is to show that the family $(\mathbf P_\psi^n)$ defined at each
+$n \in \NN$ extends uniquely to a distribution $\mathbf P_\psi$ over the
+infinite sequences in $S^\infty$.
 
 That this is true follows from a well known [theorem of Kolmogorov](https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem).
 
@@ -193,14 +199,14 @@ Hence $P$ defines the joint distribution $\mathbf P_\psi$ when paired with any i
 When $S$ is infinite, the same idea carries through.
 
 Consistent with the finite case, a **Markov matrix** is a map
-$P$ from $S \times S$ to $\mathbb R_+$ satisfying
+$P$ from $S \times S$ to $\RR_+$ satisfying
 
 $$
     \sum_y P(x, y) = 1 
     \text{ for all } x \in S
 $$
 
-The definition of a Markov chain $(X_t)_{t \in \mathbb Z_+}$ on $S$ with Markov matrix  $P$ is exactly as in {eq}`markovpropd`.
+The definition of a Markov chain $(X_t)_{t \in \ZZ_+}$ on $S$ with Markov matrix  $P$ is exactly as in {eq}`markovpropd`.
 
 Given Markov matrix $P$ and $\phi \in \mathcal D$, we define $\phi P$ by
 {eq}`update_rule`.
@@ -222,20 +228,16 @@ $$
 Swapping the order of infinite sums is justified here by the fact that all
 elements are nonnegative (a version of Tonelli's theorem).
 
-We can take products of Markov matrices that are analogous to matrix products.
-
-In particular, if $P$ and $Q$ are Markov matrices on $S$, then, for $(x, y)$ in $S
-\times S$,
+If $P$ and $Q$ are Markov matrices on $S$, then, using the definition in
+{eq}`kernprod`, 
 
 $$
     (P Q)(x, y) := \sum_z P(x, z) Q(z, y)
-$$ (kernprod)
+$$ 
 
-It is not difficult to check that the product $P Q$ is again a Markov matrix on $S$.
+It is not difficult to check that $P Q$ is again a Markov matrix on $S$.
 
-The operation {eq}`kernprod` is analogous to matrix multiplication, so that
-elements of $P^k$, the $k$-th product of $P$ with itself, retain the finite
-state interpretation of $k$ step transition probabilities.
+The elements of $P^k$, the $k$-th product of $P$ with itself, give $k$ step transition probabilities.
 
 For example, we have
 
@@ -244,15 +246,15 @@ $$
     = (P^{k-j} P^j)(x, y) = \sum_z P^{k-j}(x, z) P^j(z, y)
 $$ (kernprodk)
 
-which is a version of the discrete time Chapman-Kolmogorov equation.
+which is a version of the (discrete time) Chapman-Kolmogorov equation.
 
 Equation {eq}`kernprodk` can be obtained from the law of total probability: if
 $(X_t)$ is a Markov chain with Markov matrix $P$ and initial condition $X_0 =
 x$, then 
 
 $$
-    \mathbb P\{X_k = y\}
-    = \sum_z \mathbb P\{X_k = y \,|\, X_j=z\} \mathbb P\{X_j=z\}
+    \PP\{X_k = y\}
+    = \sum_z \PP\{X_k = y \,|\, X_j=z\} \PP\{X_j=z\}
 $$
 
 
@@ -267,7 +269,7 @@ to the current setting.
 
 A **continuous time stochastic process** on $S$ is a collection $(X_t)$ of $S$-valued
 random variables $X_t$ defined on a common probability space and indexed by $t
-\in \mathbb R_+$.
+\in \RR_+$.
 
 Let $I$ be the Markov matrix on $S$ defined by $I(x,y) = \mathbb 1\{x = y\}$.
 
@@ -284,7 +286,8 @@ to state $y$ in $t$ units of time.
 As such it is natural that $P_0(x,y) = 1$ if $x=y$ and zero otherwise, which
 is condition 1.
 
-Condition 2 might sound restrictive but it is in fact very mild.
+Condition 2 is continuity with respect to $t$, which might seem restrictive
+but it is in fact very mild.
 
 For all practical applications, probabilities do not jump --- although the
 chain $(X_t)$ itself can of course jump from state to state as time
@@ -303,11 +306,11 @@ $$
     = \sum_z P_s(x, z) P_t(z, y)
 $$ (chapkol_ct2)
 
-A stochastic process $(X_t)$ is called a (time homogeneous) **Markov process** on $S$
-with Markov semigroup $(P_t)$ if
+A stochastic process $(X_t)$ is called a (time homogeneous) **continuous time
+Markov chain** on $S$ with Markov semigroup $(P_t)$ if
 
 $$
-    \mathbb P\{X_{s + t} = y \,|\, \mathcal F_s \}
+    \PP\{X_{s + t} = y \,|\, \mathcal F_s \}
     = P_t (X_s, y)
 $$ (markovprop)
 
@@ -322,65 +325,70 @@ $s$.
 If you are familiar with measure theory, you can understand $\mathcal F_s$ as
 the $\sigma$-algebra generated by $(X_r)_{r \leq s}$.
 
-
 Analogous to the discrete time case, the joint
 distribution of $(X_t)$ is determined by its Markov semigroup plus an
 initial condition.
 
-To prove this, one first builds finite dimensional distributions using
+This distribution is defined over the set of all right continuous functions
+$\RR_+ \ni t \mapsto x_t \in S$, which we call $rcS$.
+
+Next one builds finite dimensional distributions over $rcS$ using
 expressions similar to {eq}`mathjointd`.
 
-Next the Kolmogorov extension theorem is applied, similar to the discrete time case
-(see, e.g., Corollary 6.4 of {cite}`le2016brownian`).
+Finally, the Kolmogorov extension theorem is applied, similar to the discrete
+time case.
+
+Corollary 6.4 of {cite}`le2016brownian` provides full details.
 
 
+### The Canonical Chain
+
+Given a Markov semigroup $(P_t)$ on $S$, does there always exist a continuous
+time Markov chain $(X_t)$ such that {eq}`markovprop` holds?
+
+The answer is affirmative.
+
+To illustrate, pick any Markov semigroup $(P_t)$ on $S$ and fix initial
+condition $\psi$.
+
+Next, create the corresponding joint distribution $\mathbf P_\psi$ over
+$rcS$, as described above.
+
+Now, for each $t \geq 0$, let $\pi_t$ be the point evaluation functional on
+$rcS$, that maps right continuous function $(x_\tau)$ into its time $t$ value
+$x_t$.
+
+Finally, let $X_t$ be an $S$-valued function on $rcS$ defined at $(x_\tau) \in rcS$ by $\pi_t ( (x_\tau))$.
+
+In other words, after $\mathbf P_\psi$ picks out some time path $(x_\tau) \in
+rcS$, the Markov chain $(X_t)$ simply reports this time path.
+
+Hence $(X_t)$ automatically has the correct distribution.
+
+The chain $(X_t)$ constructed in this way is called the **canonical chain**
+for the semigroup $(P_t)$ and initial condition $\psi$.
 
 
-### Example: Poisson Processes
+### Simulation and Probabilistic Constructions
 
-The Poisson process discussed in our {doc}`previous lecture <poisson>` is a
-Markov process on state space $\mathbb Z_+$.
+While we have answered the existence question in the affirmative, by
+constructing a canonical chain, the construction is quite abstract.
 
-To obtain the Markov semigroup, we observe that, for $k \geq j$,
+Moreover, there is little information about how we might simulate such a chain.
 
-$$
-    \mathbb P\{N_{s + t} = k \,|\, N_s = j\}
-    = \mathbb P\{N_{s + t} - N_s = k - j \,|\, N_s = j\}
-    = \mathbb P\{N_{s + t} - N_s = k - j\}
-$$
+Fortunately, it turns out that there are more concrete ways to build
+continuous time Markov chains from the objects that describe their
+distributions.
 
-where the last step is due to independence of increments.
-
-From stationarity of increments we have
-
-$$
-    \mathbb P\{N_{s + t} - N_s = k - j\}
-    = \mathbb P\{N_t = k - j\}
-    = e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}
-$$
-
-In summary, the Markov semigroup is
-
-$$
-    P_t(j, k) 
-    = e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}  
-$$ (poissemi)
-
-whenever $j \leq k$ and $P_t(j, k) = 0$ otherwise.
-
-This chain of equalities was obtained with $N_s = j$ for arbitrary $j$, so we
-can replace $j$ with $N_s$ in {eq}`poissemi` to verify the Markov property {eq}`markovprop` for the Poisson process.
-
-Under {eq}`poissemi`, each $P_t$ is a Markov matrix and $(P_t)$ is a
-Markov semigroup.
-
-The proof of the semigroup property is a solved exercise below.[^footnote2]
-
-[^footnote2]: In the definition of $P_t$ in {eq}`poissemi`, we use the convention that $0^0 = 1$, which leads to $P_0 = I$ and $\lim_{t \to 0} P_t(j, k) = I(j,k)$ for all $j,k$.  These facts, along with the semigroup property, imply that $(P_t)$ is a valid Markov semigroup.
+We will learn about these in a {doc}`later lecture <prob_view>`.
 
 
+## Implications of the Markov Property
 
+The Markov property carries some strong implications that are not immediately
+obvious.
 
+Let's take some time to explore them.
 
 ### Example: Failure of the Markov Property
 
@@ -421,7 +429,7 @@ Thus, the Markov property fails.
 From the discussion above, we see that, for continuous time Markov chains,
 the length of time between jumps must be memoryless.
 
-Recall that the {ref}`only <exp_unique>` memoryless distribution supported on $\mathbb R_+$ is the exponential distribution.
+Recall that the {ref}`only <exp_unique>` memoryless distribution supported on $\RR_+$ is the exponential distribution.
 
 [XX why isn't this link working??]
 
@@ -439,7 +447,56 @@ In summary, we already understand the following about continuous time Markov cha
 We just need to clarify the details in these steps to have a complete description.
 
 
-We start this process with an example.
+
+
+## Examples of Markov Processes
+
+Let's look at some examples of processes that possess the Markov property.
+
+### Example: Poisson Processes
+
+The Poisson process discussed in our {doc}`previous lecture <poisson>` is a
+Markov process on state space $\ZZ_+$.
+
+To obtain the Markov semigroup, we observe that, for $k \geq j$,
+
+$$
+    \PP\{N_{s + t} = k \,|\, N_s = j\}
+    = \PP\{N_{s + t} - N_s = k - j \,|\, N_s = j\}
+    = \PP\{N_{s + t} - N_s = k - j\}
+$$
+
+where the last step is due to independence of increments.
+
+From stationarity of increments we have
+
+$$
+    \PP\{N_{s + t} - N_s = k - j\}
+    = \PP\{N_t = k - j\}
+    = e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}
+$$
+
+In summary, the Markov semigroup is
+
+$$
+    P_t(j, k) 
+    = e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}  
+$$ (poissemi)
+
+whenever $j \leq k$ and $P_t(j, k) = 0$ otherwise.
+
+This chain of equalities was obtained with $N_s = j$ for arbitrary $j$, so we
+can replace $j$ with $N_s$ in {eq}`poissemi` to verify the Markov property {eq}`markovprop` for the Poisson process.
+
+Under {eq}`poissemi`, each $P_t$ is a Markov matrix and $(P_t)$ is a
+Markov semigroup.
+
+The proof of the semigroup property is a solved exercise below.[^footnote2]
+
+[^footnote2]: In the definition of $P_t$ in {eq}`poissemi`, we use the convention that $0^0 = 1$, which leads to $P_0 = I$ and $\lim_{t \to 0} P_t(j, k) = I(j,k)$ for all $j,k$.  These facts, along with the semigroup property, imply that $(P_t)$ is a valid Markov semigroup.
+
+
+
 
 
 (inventory_dynam)=
@@ -456,7 +513,7 @@ Upon arrival, each customer purchases $\min\{U, X_t\}$ units, where $U$ is an
 IID draw from the geometric distribution started at 1 rather than 0:
 
 $$
-    \mathbb P\{U = k\} = (1-\alpha)^{k-1} \alpha
+    \PP\{U = k\} = (1-\alpha)^{k-1} \alpha
     \qquad (k = 1, 2, \ldots, \; \alpha \in (0, 1))
 $$
 
@@ -578,10 +635,10 @@ $$
     \begin{cases}
     \mathbb 0 & \text{ if }  y \geq x
     \\
-    \mathbb P\{x - U = y\} = (1-\alpha)^{x-y-1} \alpha 
+    \PP\{x - U = y\} = (1-\alpha)^{x-y-1} \alpha 
         & \text{ if } 0 < y < x
     \\
-    \mathbb P\{U \geq x\} = (1-\alpha)^{x-1}
+    \PP\{U \geq x\} = (1-\alpha)^{x-1}
         & \text{ if } y = 0
     \end{cases}
 $$ (ijumpkern)
@@ -655,7 +712,7 @@ The draws $(W_n)$ are called the **wait times** or **holding times**.
 
 ### Examples
 
-The Poisson process with rate $\lambda$ is a jump process on $S = \mathbb Z_+$.
+The Poisson process with rate $\lambda$ is a jump process on $S = \ZZ_+$.
 
 The holding times are obviously exponential with constant rate $\lambda$.
 
@@ -696,18 +753,18 @@ Fixing $y \in S$ and $s, t \geq 0$, we have
 
 
 $$
-    \mathbb P\{X_{s + t} = y \,|\, \mathcal F_s \}
-      = \mathbb P\{Y_{N_{s + t}} = y \,|\, \mathcal F_s \}
-      = \mathbb P\{Y_{N_s + N_{s + t} - N_s} = y \,|\, \mathcal F_s \}
+    \PP\{X_{s + t} = y \,|\, \mathcal F_s \}
+      = \PP\{Y_{N_{s + t}} = y \,|\, \mathcal F_s \}
+      = \PP\{Y_{N_s + N_{s + t} - N_s} = y \,|\, \mathcal F_s \}
 $$
 
 {ref}`Recalling <restart_prop>` that $N_{s + t} - N_s$ is Poisson distributed with rate $t \lambda$, independent of the history $\mathcal F_s$, we can write the display above as 
 
 $$
-    \mathbb P\{X_{s + t} = y \,|\, \mathcal F_s \}
+    \PP\{X_{s + t} = y \,|\, \mathcal F_s \}
     =
     \sum_{k \geq 0}
-    \mathbb P\{Y_{N_s + k} = y \,|\, \mathcal F_s \}
+    \PP\{Y_{N_s + k} = y \,|\, \mathcal F_s \}
        \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
@@ -715,7 +772,7 @@ Because the jump chain is Markov with Markov matrix $K$, we can simplify further
 
 
 $$
-    \mathbb P\{X_{s + t} = y \,|\, \mathcal F_s \}
+    \PP\{X_{s + t} = y \,|\, \mathcal F_s \}
     = \sum_{k \geq 0}
     K^k(Y_{N_s}, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
     = K^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
@@ -732,7 +789,7 @@ The Markov semigroup can be obtained from our final result, conditioning
 on $X_s = x$ to get
 
 $$
-    P^t(x, y) = \mathbb P\{X_{s + t} = y \,|\, X_s = x \}
+    P^t(x, y) = \PP\{X_{s + t} = y \,|\, X_s = x \}
     = e^{-t \lambda} \sum_{k \geq 0}
         K^k(x, y) \frac{(t \lambda )^k}{k!} 
 $$
@@ -801,7 +858,7 @@ $$
     \qquad (x \in S)
 $$
 
-Then $\hat \psi_t(x)$ will be close to $\mathbb P\{X_t = x\}$ by the law of
+Then $\hat \psi_t(x)$ will be close to $\PP\{X_t = x\}$ by the law of
 large numbers.
 
 In other words, in the limit we recover $\psi_t$.
@@ -891,7 +948,7 @@ Alternatively, we could take $Z$ to be standard normal and set $X=0$ if $Z <
 
 ### Solution to Exercise 2
 
-Fixing $s, t \in \mathbb R_+$ and $j \leq k$, we have 
+Fixing $s, t \in \RR_+$ and $j \leq k$, we have 
 
 $$
 \begin{aligned}
@@ -943,10 +1000,10 @@ defined above.
 Then 
 
 $$
-    \mathbb P \{X_0 = x_0, \ldots, X_n = x_n\}
-    = \mathbb P \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
+    \PP \{X_0 = x_0, \ldots, X_n = x_n\}
+    = \PP \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
     \\
-        \times \mathbb P \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
+        \times \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
 $$
 
 From the Markov property and the induction hypothesis, the right hand side is
