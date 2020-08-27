@@ -330,7 +330,7 @@ $$
 
 In particular, increments are stationary.
 
-The approximation also illustrates indepenence of increments, since, in the
+The approximation also illustrates independence of increments, since, in the
 approximation, increments depend on separate subsets of $(V_i)$.
 
 
