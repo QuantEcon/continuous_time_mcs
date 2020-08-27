@@ -474,7 +474,7 @@ def draw_X(s=1.0, n=1_000):
         else:
             Z = np.random.exponential(scale=1/λ)
             X = s + Z
-        draws[i] = Z
+        draws[i] = X
     return draws
 
 fig, ax = plt.subplots()
