@@ -291,7 +291,7 @@ $$
     \text{Poisson}(k h \lambda )
 $$
 
-Using the fact that $kh = t_k \approx t$ when $k$ is large, we see
+Using the fact that $kh = t_k \approx t$ as $h \to 0$, we see
 that $\hat N_t$ is approximately Poisson with rate $t \lambda$, just as we
 expected.
 
