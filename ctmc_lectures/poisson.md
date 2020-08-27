@@ -304,7 +304,7 @@ between $s$ and $s+t$, so that
 
 $$
     \hat N_{s+t} - \hat N_s
-    = \sum_i V_i \mathbb 1\{ s \leq t_i < s + t \}
+    = \sum_i \mathbb 1\{ s \leq t_i < s + t \}
 $$
 
 Suppose there are $k$ grid points between $s$ and $s+t$, so that $t \approx
