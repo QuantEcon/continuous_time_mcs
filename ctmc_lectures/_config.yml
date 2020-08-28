@@ -16,6 +16,9 @@ sphinx:
           "RR" : ["\\mathbb{R}"]
           "NN" : ["\\mathbb{N}"]
           "ZZ" : ["\\mathbb{Z}"]
+          "linop" : ["\\mathcal{L}(\\mathbb{B})"]
+  extra_extensions:
+    - sphinxcontrib.proof
 
 latex:
   latex_engine: "xelatex"

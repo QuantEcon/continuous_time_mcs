@@ -23,7 +23,7 @@ Markov semigroup.
 
 We have also hinted that the pairing is one-to-one, in a sense to be made precise.
 
-We wish to clarify these ideas, and in doing so it is helpful to begin in an
+To clarify these ideas, we start in an
 abstract setting, with an arbitrary initial value problem.
 
 In this setting we introduce general operator semigroups and their generators.
@@ -31,98 +31,339 @@ In this setting we introduce general operator semigroups and their generators.
 Once this is done, we will be able to return to the Markov case and fully
 clarify the connection between intensity matrices and Markov semigroups.
 
-Note that the material below is relatively technical, with most of the
+The material below is relatively technical, with most of the
 complications driven by the fact that the state space can be infinite.
 
-In the end, such technicalities cannot be avoided, since so many interesting
-Markov chains do have infinite state spaces.
+Such technicalities are hard to avoid, since so many interesting Markov chains
+do have infinite state spaces.
 
-Even our very first example -- the Poisson process -- has an infinite state space.
+* Our very first example -- the Poisson process -- has an infinite state space.
+* Another example is the study of queues, which often have no natural upper
+bound.[^footnotepp]
 
-Another example is the study of queues, which often have no natural upper
-bound.
+[^footnotepp]: In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.
 
-(In fact a major concern with queues is that their length does not explode,
-and this issue cannot be properly explored unless the state space is
-infinite.)
+Readers are assumed to have some basic familiarity with Banach spaces.
+
 
 
 ## Preliminaries
 
-Throughout this lecture, $(\mathbb B, \| \cdot \|)$ is a Banach space.
+Throughout this lecture, $(\BB, \| \cdot \|)$ is a Banach space.
 
-You will recall that a **linear operator** on $\mathbb B$ is a map $L$ from $\mathbb B$ to
+You will recall that a **linear operator** on $\BB$ is a map $L$ from $\BB$ to
 itself satisfying 
 
 $$
     L(\alpha g + \beta h) = \alpha L g + \beta L h,
     \quad
-    \forall \, g, h \in \mathbb B, \;\; \alpha, \beta \in \mathbb R
+    \forall \, g, h \in \BB, \;\; \alpha, \beta \in \RR
 $$
 
 The operator $L$ is called **bounded** if
 
 $$
-    \| L \| := \sup_{g \in \mathbb B, \, \| g \| \leq 1} \| L g \| < \infty
+    \| L \| := \sup_{g \in \BB, \, \| g \| \leq 1} \| L g \| < \infty
 $$ (norml)
 
 This is the usual definition of a [bounded linear operator](https://en.wikipedia.org/wiki/Bounded_operator) on a normed linear space.
 
-The value defined in {eq}`norml` is called the **operator norm** of $L$.
+The set of all bounded linear operators on $\BB$ is denoted by $\linop$.
 
-The set of all bounded linear operators on $\mathbb B$ is denoted by $\mathcal L(\mathbb B)$.
+Let $I$ be the identity in $\linop$, satisfying $Ig = g$ for all $g \in \BB$.
 
-Sums and scalar products of elements of $\mathcal L(\mathbb B)$ are defined in the
-usual way, so that, for $A, B \in \mathcal L(\mathbb B)$ and $g \in \mathbb B$, we have (A +
-B) g = Ag + Bg and so on.
+Sums and scalar products of elements of $\linop$ are defined in the usual way,
+so that, for $\alpha \in \RR$, $A, B \in \linop$ and $g \in \BB$, we have 
 
-As suggested by the notation, the operator norm [is a norm](https://en.wikipedia.org/wiki/Operator_norm) on $\mathcal L(\mathbb B)$.
+$$
+    (A + B) g = Ag + Bg, 
+    \quad (\alpha A) g = \alpha (A g)
+$$
+
+and so on.
+
+We write $A B$ to indicate composition of the operators $A, B \in \linop$.
+
+The value defined in {eq}`norml` is called the **operator norm** of $L$ and,
+as suggested by the notation, [is a norm](https://en.wikipedia.org/wiki/Operator_norm) on $\linop$.
 
 In addition to being a norm, it enjoys the submultiplicative property $\| AB
-\| \leq \| A \| \| B\|$ for all $A, B \in \mathcal L(\mathbb B)$.
+\| \leq \| A \| \| B\|$ for all $A, B \in \linop$.
+
+(In fact $\linop$ is a [unital Banach algebra](https://en.wikipedia.org/wiki/Banach_algebra) when multiplication is identified with operator composition.)
+
 
 
 ### The Exponential Function
 
-Given $A \in \mathcal L(\mathbb B)$, the exponential of $A$ is defined as
+Given $A \in \linop$, the exponential of $A$ is the element of
+$\linop$ defined as
 
 $$
     e^A  
-    = \sum_{k \geq 0} \frac{1}{k!} A^k
-    = I + tA + \frac{1}{2!} A^2 + \cdots
+    = \sum_{k \geq 0} \frac{A^k}{k!} 
+    = I + A + \frac{A^2}{2!} + \cdots
 $$
 
 This is the same as the definition for the matrix exponential.
 
-The exponential map $A \mapsto e^A$ has the following properties:
+The exponential function arises naturally as the solution to ODEs in Banach
+space, one example of which (as we shall see) is distribution flows
+associated with continuous time Markov chains.
 
-* For each $A \in \mathcal L(\mathbb B)$, we have $e^A \in \mathcal L(\mathbb
-  B)$ and $\| e^A \| \leq e^{\| A \|}$.
-* 
+The exponential map has the following properties:
+
+* For each $A \in \linop$, the operator $e^A$ is a well defined element of $\linop$ and and $\| e^A \| \leq e^{\| A \|}$.
+* $e^0 = I$, where $0$ is the zero element of $\linop$.
+* If $A, B \in \linop$ and $AB = BA$, then $e^{A + B} = e^A e^B$
+* If $A \in \linop$, then $e^A$ is invertible and $(e^A)^{-1} = e^{-A}$.
+
+The last fact is easily checked from the previous ones.
+
 
 
 ### Some Calculus in Banach Space
+
+Consider a function 
+
+$$
+    \RR_+ \ni t \mapsto U_t \in \linop
+$$
+
+We say that this function is differentiable at $\tau \in \RR_+$ if there exists
+an element $T$ of $\linop$ such that
+
+$$
+    \frac{U_{\tau+h} - U_\tau}{h} \to T 
+    \; \text{ as } h \to 0
+$$ (devlim)
+
+In this case, $T$ is called the **derivative** of the function $t \mapsto U_t$ at $\tau$ and we write
+
+$$
+    T = U'_\tau 
+    \; \text{ or } \;
+    T = \frac{d}{dt} U_t \, \Big|_{t=\tau}
+$$
+
+(Convergence of operators is in operator norm.  If $\tau = 0$, then the limit
+in {eq}`devlim` is the right limit.)
+
+For example, if $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
+see that $V$ is the derivative of $t \mapsto U_t$ at every $t \in \RR_+$.
+
+A more interesting example is the exponential map $t \mapsto e^{tA}$, where
+$A$ is a fixed element of $\linop$.
+
+Analogous to the matrix and scalar cases, we have the following result:
+
+```{proof:lemma} Differentiability of the exponential map
+:label: diffexpmap
+
+For all $A \in \linop$ and all $t \geq 0$, the map $t \mapsto e^{tA}$ is
+differentiable and 
+
+$$
+    \frac{d}{dt} e^{tA} = e^{tA} A = A e^{tA}
+$$ (expdiffer)
+```
+
+```{proof:proof}
+To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
+
+$$
+    e^{(t+h)A} - e^{tA} - e^{tA} A
+    = e^{tA} (e^{hA} - I - A)
+$$
+
+Since the norm on $\linop$ is submultiplicative, it suffices to show that 
+$\| e^{hA} - I - A \| = o(h)$ as $h \to 0$.
+
+Using the definition of the exponential, this is easily verified,
+completing the proof of the first equality in {eq}`expdiffer`.
+
+The proof of the second equality is similar.
+```
 
 
 
 ## Semigroups and Generators
 
-Some discussion of the abstract Cauchy problem.
+For continuous time Markov chains where the state space $S$ is finite, we
+saw that Markov semigroups often take the form $P_t = e^{tQ}$ for some
+intensity matrix $Q$.
 
-A general discussion of strongly continuous semigroups and their generators.
+This is a very nice situation because it means that
 
-Introduce the notion of an infinitesimal generator.
+* the entire semigroup is characterized by its infinitesimal description $Q$
+  and
+* the semigroup can be retrieved from $Q$ via the exponential function.
 
-Key result: one-to-one pairing between bounded linear operators on $\ell_1(S)$
-and uniformly continuous semigroups.
+It turns out that, when $S$ is finite, this is always true:  if $(P_t)$ is a
+Markov semigroup, then there exists an intensity matrix $Q$ satisfying $P_t = e^{tQ}$
+for all $t$.
+
+Moreover, this statement is again true when $S$ is infinite, provided that
+some restrictions are placed on the semigroup.
+
+Our aim is to make these statements precise, starting in an abstract setting
+and then specializing.
 
 
+### Operator Semigroups
+
+Let $U_t$ be an element of $\linop$ for all $t \in \RR_+$
+
+We say that $(U_t)$ is a **evolution semigroup** on $\linop$ if $U_0 = I$ and
+$U_{s + t} = U_s U_t$ for all $s, t \geq 0$.
+
+The idea is that $(U_t)$ generates a path in $\BB$ from any starting point $g \in \BB$, so that $U_t g$ is interpreted as the location of the state after $t$ units of time.
+
+An evolution semigroup $(U_t)$ is called 
+
+* a $C_0$ **semigroup** on $\BB$ if, for each $g \in \BB$, the map $t \mapsto U_t g$ from $\RR_+$ to $\BB$ is continuous, and
+* a **uniformly continuous semigroup** on $\BB$ if the map $t \mapsto U_t$ from $\RR_+$ to $\linop$ is continuous.
+
+In what follows we abbreviate uniformly continuous to UC.
+
+```{note}
+Be careful: the definition of a UC semigroup requires that 
+$t \mapsto U_t$ is continuous as a map into $\linop$, rather than uniformly
+continuous.  
+
+The UC terminology comes about because, for a UC semigroup, we have, by
+definition of the operator norm,
+
+$$
+    s \to t
+    \; \implies \;
+    \sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0
+$$
+
+```
+
+Here's an example of a UC semigroup.
+
+(Later we will see that it is the *only* example of a UC semigroup.)
+
+```{proof:example} Exponential curves are UC semigroups
+:label: ecuc
+
+If $U_t = e^{tA}$ for $t \in \RR_+$ and $A \in \linop$, then $(U_t)$
+is a uniformly continuous semigroup on $\BB$.
+```
+
+The claim that $(U_t)$ is an evolution semigroup follows directly from the
+properties of the exponential function given above.
+
+Uniform continuity can be established using arguments similar to those in our
+proof of differentiability in Lemma {proof:numref}`diffexpmap`.  
+
+Since norm convergence on $\linop$ implies pointwise convergence, every
+uniformly continuous semigroup is a $C_0$ semigroup.
+
+The reverse is certainly not true --- there are many important $C_0$ semigroups that fail to be uniformly continuous.
+
+In fact semigroups associated with PDEs, diffusions and other Markov processes
+on continuous state spaces are typically $C_0$ but not uniformly continuous.
+
+There are also important examples of Markov semigroups on infinite
+discrete state spaces that fail to be uniformly continuous.
+
+However, we will soon see that, for most continuous time Markov chains used in
+applications, the semigroups are uniformly continuous.
+
+
+
+
+### Generators
+
+Consider a continuous time Markov chain on a finite state space with intensity
+matrix $Q$.
+
+The Markov semigroup $(P_t)$ is fully specified by this infinitesimal
+description $Q$, in the sense that 
+
+* $P_t = e^{tQ}$ for all $t \geq 0$ and (equivalently)
+* the forward and backward equations hold: $P_t' = P_t Q = Q P_t$.
+
+Since $P_0 = I$, the matrix $Q$ can be recovered from the semigroup via 
+
+$$
+    Q = P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h} 
+$$
+
+In the more abstract setting of $C_0$ semigroups, we say that $Q$ is the
+generator of the semigroup $P_t$.
+
+More specifically, given a $C_0$ semigroup $(U_t)$, we say that a linear
+operator $A$ from $\BB$ to itself is the **generator** of $(U_t)$ if 
+
+$$
+    A g = \lim_{h \downarrow 0} \frac{U_h g - g}{h} 
+$$
+
+for all $g \in \BB$ such that the limit exists.  
+
+The set of points where the limit exists (the domain of the generator) is
+denoted by $D(A)$.
+
+There are two key problems to consider here.
+
+One is that the limit fails to exist, which is eminently possible, given that
+$C_0$ semigroups are not required to be differentiable.
+
+The other problem is that, even though the limit exists, the linear operator
+$A$ is not bounded, and hence is somewhat more difficult to work with.
+
+Fortunately, given the applications we wish to consider, we can focus on UC
+semigroups, which are very well behaved.[^fnhy]
+
+[^fnhy]: For the general theory of $C_0$ semigroups, an excellent treatment can be found in {cite}`bobrowski2005functional`.
+
+
+### A Characterization of Uniformly Continuous Semigroups
+
+We saw in Example {proof:numref}`ecuc` that exponential curves are UC
+semigroups.
+
+The next theorem tells us that there are no other examples.
+
+```{proof:theorem} UC Semigroups are Exponential Curves
+:label: ucsgec
+
+If $(U_t)$ is a UC semigroup on $\BB$, then there exists an $A \in \linop$
+such that $U_t = e^{tA}$ for all $t \geq 0$.  Moreover,
+ $A$ is the generator of $(U_t)$ and
+ $U_t' = A U_t = U_t A$ for all $t \geq 0$.
+```
+
+The last two claims in Theorem {proof:numref}`ucsgec` follow directly from the
+first claim.
+
+For a proof of the first claim in Theorem {proof:numref}`ucsgec`, see, for
+example, Chapter 7 of {cite}`bobrowski2005functional`.
+
+While slightly more complicated in the Banach setting, the proof is
+reminiscent of the idea that any function $f$ from $\RR_+$ to itself
+satisfying 
+
+* $f(s)f(t) = f(s+t)$ for all $s,t \geq 0$ and
+* $f(s) \to 1$ as $s \to 0$
+
+also satisfies $f(t) = e^{ta}$ for some $a \in \RR$.
+
+We proved something quite similar in {ref}`our discussion <exp_unique>` of
+the memoryless property of the exponential function.
+
+The statement $U_t' = A U_t = U_t A$ is  a generalization of the Kolmogorov
+forward and backward equations.
 
 
 
 ## Exercises
 
-To be added.
+Add a discussion of the abstract Cauchy problem here, with exercises?
 
 ## Solutions
 

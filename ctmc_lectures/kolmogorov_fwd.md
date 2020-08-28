@@ -60,8 +60,6 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 {ref}`Previously <invdistflows>` we generated this figure, which shows how distributions evolve over time for the inventory model under a certain parameterization:
 
 ```{glue:figure} flow_fig
-:name: "flow_fig"
-
 Probability flows for the inventory model.
 ```
 
@@ -177,7 +175,7 @@ write down the difference equation
 $$
     \psi_{t+1} = G(\psi_t)
     \quad \text{with } \psi_0 \in \mathcal D \text{ given}.
-$$ (gdiff)
+$$ (gdiff2)
 
 Because $G$ is a linear map from a finite dimensional space to itself, it can
 be represented by a matrix.
@@ -185,7 +183,7 @@ be represented by a matrix.
 Moreover, a matrix $P$ is a Markov matrix if and only if $\psi \mapsto
 \psi P$ sends $\mathcal D$ into itself (check it if you haven't already).
 
-So, under the stated conditions, our difference equation {eq}`gdiff` uniquely
+So, under the stated conditions, our difference equation {eq}`gdiff2` uniquely
 identifies a Markov matrix, along with an initial condition $\psi_0$.
 
 Together, these objects identify the joint distribution of a discrete time Markov chain, as {ref}`previously described <jdfin>`.
