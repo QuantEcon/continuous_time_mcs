@@ -15,11 +15,9 @@ kernelspec:
 
 # Memoryless Distributions
 
-In this lecture we examine some building blocks for continuous time Markov
-chains.  
-
 
 ## Overview
+
 
 Markov processes are, by definition, forgetful.
 
@@ -53,19 +51,15 @@ from scipy.special import factorial, binom
 
 ## The Geometric Distribution
 
-[roadmap]
-
-### Motivation
-
 Consider betting on a roulette wheel and suppose that red has come up four times in a row.
 
 Since five reds in a row is an unlikely event, many people instinctively feel
 that black is more likely on the fifth spin --- "Surely black will come up this time!"
 
-But rational thought tells us this is wrong: the four previous reds make no
+But rational thought tells us such instincts are wrong: the four previous reds make no
 difference to the outcome of the next spin.
 
-(Many casinos offer free alcoholic beverages to discourage such rational assessment.)
+(Many casinos offer free alcoholic beverages in order to discourage this kind of rational analysis.)
 
 A more mathematical restatement of this phenomenon is: the geometric distribution is memoryless.
 
@@ -128,8 +122,8 @@ The right hand side simplifies to $\theta$, completing the proof of {eq}`memgeo`
 
 
 Later, when we construct continuous time Markov chains, we will need to
-specify the distribution of the **holding times** (also called **wait
-times**), which are the time intervals between jumps.
+specify the distribution of the holding times, which are the time intervals
+between jumps.
 
 As discussed above (and again below), the holding time distribution must be
 memoryless, so that the chain satisfies the Markov property.
@@ -143,23 +137,21 @@ A random variable $Y$ on $\RR_+$ is called **exponential with rate $\lambda$**, 
 
 $$
     \PP\{Y > y\} = e^{-\lambda y}
-    \quad \text{  for all } 
-    y \geq 0
+    \qquad (y \geq 0)
 $$
 
 
 
-
-
+(geomtoexp)=
 ### From Geometric to Exponential
 
 The exponential distribution can be regarded as the "limit" of the geometric
-distribution, as we now argue informally.
+distribution.
 
-Suppose that 
+To illustrate, let us suppose that 
 
-* customers enter a shop at discrete times $t_1, t_2, \ldots$
-* these times are evenly spaced, with $h = t_{i+1} - t_i$ for all $i$
+* customers enter a shop at discrete times $t_0, t_1, \ldots$
+* these times are evenly spaced, so that $h = t_{i+1} - t_i$ for some $h > 0$ and all $i \in \ZZ_+$
 * at each $t_i$, either zero or one customers enter (no more because $h$ is small) 
 * entry at each $t_i$ occurs with probability $\lambda h$ and is independent over $i$.
 
@@ -205,18 +197,25 @@ In this sense, the exponential is the limit of the geometric distribution.
 
 ### Memoryless Property of the Exponential Distribution
 
-The exponential distribution is the only memoryless distribution supported on $\RR_+$.
+The exponential distribution is the only memoryless distribution supported on $\RR_+$, as the next theorem attests.
 
-More specifically, a random variable $X$ supported on $\RR_+$ has 
-the exponential distribution with some rate $\lambda > 0$ if and only if,
-for all positive $s, t$,
+```{proof:theorem} Characterization of the Exponential Distribution
+:label: exp_unique
+
+If $X$ is a random variable $X$ supported on $\RR_+$, then  
+there exists a $\lambda > 0$ such that $X \sim \Exp(\lambda)$
+ if and only if, for all positive $s, t$,
 
 $$
     \PP \{X > s + t \,|\, X > s \} = \PP \{X > t\}
 $$ (memexpo)
 
+```
+
+```{proof:proof}
+
 To see that {eq}`memexpo` holds when $X$ is exponential with rate $\lambda$,
-observe that
+fix $s, t > 0$ and observe that
 
 $$
     \frac{ \PP \{X > s + t \text{ and } X > s \} }
@@ -228,16 +227,8 @@ $$
     = e^{-\lambda t}
 $$
 
-
-(exp_unique)=
-### Uniqueness
-
-Let's look at the claim that memorylessness implies the exponential distribution.
-
-The proof is a bit longer but not overly difficult.
-
-Let $X$ be a random variable supported on $\RR_+$ such that
-{eq}`memexpo` holds.
+To see that the converse holds, let $X$ be a random variable supported on $\RR_+$
+such that {eq}`memexpo` holds.
 
 The "exceedance" function $f(s) := \PP\{X > s\}$ then has three properties:
 
@@ -289,7 +280,7 @@ $$
 $$
 
 Taking the limit in $n$ completes the proof.
-
+```
 
 (fail_mem)=
 ### Failure of Memorylessness

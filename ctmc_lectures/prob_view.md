@@ -18,10 +18,9 @@ kernelspec:
 
 ## Overview
 
-Let $S$ be a finite state space and let $Q$ be an intensity matrix on $S$.
+Let $S$ be a countable state space and let $Q$ be an intensity matrix on $S$.
 
-(Although $S$ is held finite for now, all ideas covered here carry over
-smoothly to the infinite case with appropriate definitions.)
+% (Although $S$ is held finite for now, all ideas covered here carry over smoothly to the infinite case with appropriate definitions.)
 
 We have {doc}`discovered <kolmogorov_fwd>` that $Q$ generates a uniquely
 defined Markov semigroup, and hence a continuous time Markov chain via the
@@ -72,21 +71,18 @@ $$
     Q(x, y) = \lambda(x) (K(x, y) - I(x, y))
 $$ (jcinmat)
 
-As we now show, this is the **only** possibility, in the sense that every intensity
-matrix admits the representation {eq}`jcinmat` for some rate function $\lambda$ and Markov matrix $K$.
+As we now show, this is the **only** possibility, in the sense that every
+intensity matrix admits the representation {eq}`jcinmat` for some rate
+function $\lambda$ and Markov matrix $K$.
 
-
+(constlk)=
 ### Construction 
 
-For the moment, assume that $Q(x, x) < 0$ for all $x$ in $S$, which means that
-there is at least some probability of leaving every state.
+Given an intensity matrix $Q$, set $\lambda(x) = -Q(x, x)$ for all $x$.
 
-(The general case is treated in the exercises.)
+Note that $\lambda$ maps $S$ to $\RR_+$.
 
-Given such a $Q$, we set $\lambda(x) = -Q(x, x)$ for all $x$, so that
-$\lambda$ is a positive rate matrix.
-
-Next we set 
+Next we build $K$, first for all $x$ with $\lambda(x) > 0$ via
 
 $$
     K(x,y) = 
@@ -98,6 +94,20 @@ $$
 $$
 
 
+and second for $x$ with $\lambda(x) = 0$ via
+
+$$
+    K(x,y) = 
+    \begin{cases}
+        1 & \text{ if } x = y
+        \\
+        0 & \text{ otherwise } 
+    \end{cases}
+$$
+
+It is a (solved) exercise to show that $K$ is a Markov matrix on $S$ and, for
+the pair $(\lambda, K)$ just defined, the intensity matrix $Q$ satisfies
+{eq}`jcinmat`.
 
 ## Simulation
 
@@ -121,8 +131,11 @@ Exponential clocks.
 
 ### Exercise 1
 
-General construction of jump chain from $Q$.
+Let $Q$ be any intensity matrix on $S$.
 
+Show that for the pair $(\lambda, K)$ defined 
+{ref}`in the jump chain construction <constlk>`, $K$ is a Markov matrix on $S$ and the intensity matrix $Q$ satisfies
+{eq}`jcinmat`.
 
 ## Solutions
 
