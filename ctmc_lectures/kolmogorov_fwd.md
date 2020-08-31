@@ -38,7 +38,7 @@ In order to avoid being distracted by technicalities, we continue to defer our
 treatment of infinite state spaces, assuming throughout this lecture that $|S|
 = n$.
 
-As before, $\mathcal D$ is the set of all distributions on $S$.
+As before, $\dD$ is the set of all distributions on $S$.
 
 We will use the following imports
 
@@ -83,12 +83,12 @@ Let $(X_t)$ be a discrete time Markov chain with Markov matrix $P$.
 
 $$
     \psi_{t+1} = \psi_t P, 
-    \qquad \psi_0 \text{ a given element of } \mathcal D,
+    \qquad \psi_0 \text{ a given element of } \dD,
 $$
 
 where distributions are understood as row vectors.
 
-Here's a visualization for the case $|S|=3$, so that $\mathcal D$ is the unit
+Here's a visualization for the case $|S|=3$, so that $\dD$ is the unit
 simplex in $\RR^3$.
 
 The initial condition is `` (0, 0, 1)`` and the Markov matrix is
@@ -169,19 +169,19 @@ There's a sense in which a discrete time Markov chain "is" a homogeneous
 linear difference equation in distribution space.
 
 To clarify this, suppose we 
-take $G$ to be a linear map from $\mathcal D$ to itself and
+take $G$ to be a linear map from $\dD$ to itself and
 write down the difference equation 
 
 $$
     \psi_{t+1} = G(\psi_t)
-    \quad \text{with } \psi_0 \in \mathcal D \text{ given}.
+    \quad \text{with } \psi_0 \in \dD \text{ given}.
 $$ (gdiff2)
 
 Because $G$ is a linear map from a finite dimensional space to itself, it can
 be represented by a matrix.
 
 Moreover, a matrix $P$ is a Markov matrix if and only if $\psi \mapsto
-\psi P$ sends $\mathcal D$ into itself (check it if you haven't already).
+\psi P$ sends $\dD$ into itself (check it if you haven't already).
 
 So, under the stated conditions, our difference equation {eq}`gdiff2` uniquely
 identifies a Markov matrix, along with an initial condition $\psi_0$.
@@ -192,15 +192,15 @@ Together, these objects identify the joint distribution of a discrete time Marko
 ### Shifting to Continuous Time
 
 We have just argued that a discrete time Markov chain "is" a linear difference
-equation evolving in $\mathcal D$.
+equation evolving in $\dD$.
 
 This strongly suggests that a continuous time Markov chain "is" a linear ODE
-evolving in $\mathcal D$.
+evolving in $\dD$.
 
 In this scenario,
 
 1. distributions update according to an automous linear differential equation and
-2. the vector field is such that trajectories remain in $\mathcal D$.
+2. the vector field is such that trajectories remain in $\dD$.
 
 This intuition is correct and highly beneficial.  
 
@@ -214,7 +214,7 @@ Consider linear differential equation given by
 
 $$
     \psi_t' = \psi_t Q, 
-    \qquad \psi_0 \text{ a given element of } \mathcal D,
+    \qquad \psi_0 \text{ a given element of } \dD,
 $$ (ode_mc)
 
 where 
@@ -368,19 +368,19 @@ this fundamental object.
 
 
 In the simulation above, $Q$ was chosen with some care, so that the flow
-remains in $\mathcal D$.
+remains in $\dD$.
 
 What are the exact properties we require on $Q$ such that $\psi_t$ is always
-in $\mathcal D$?
+in $\dD$?
 
 This is an important question, because we are setting up an exact
-correspondence between linear ODEs that evolve in $\mathcal D$ and continuous
+correspondence between linear ODEs that evolve in $\dD$ and continuous
 time Markov chains.
 
 Recall that the linear update rule $\psi \mapsto \psi P$ is invariant on
-$\mathcal D$ if and only if $P$ is a Markov matrix.
+$\dD$ if and only if $P$ is a Markov matrix.
 
-So now we can rephrase our key question regarding invariance on $\mathcal D$:
+So now we can rephrase our key question regarding invariance on $\dD$:
 
 What properties do we need to impose on $Q$ so that $P_t = e^{tQ}$ is a Markov matrix
 for all $t$?
@@ -390,68 +390,18 @@ sums and $Q(x, y) \geq 0$ whenever $x \not= y$.
 
 (Some authors call this a transition rate matrix or a $Q$ matrix.)
 
-Having zero row sums can be expressed as $Q \mathbb 1 = 0$ where $\mathbb 1$
-is a column vector of ones.
+```{proof:theorem}
+:label: intvsmk
 
-As a small exercise, you can check that the following is true
-
-$$
-    Q \text{ has zero row sums }
-    \iff
-    Q^k \mathbb 1 = 0 \text{ for all } k \geq 1
-$$ (zrsnec)
-
-**Theorem** If $Q$ is an $n \times n$ matrix and $P_t := e^{tQ}$, then the
+If $Q$ is an $n \times n$ matrix and $P_t := e^{tQ}$, then the
 following statements are equivalent:
 
 1. $P_t$ is a Markov matrix for all $t$.
 1. $Q$ is an intensity matrix.
+```
 
-*Proof:*  Suppose first that $Q$ is an intensity matrix and set $P_t =
-e^{tQ}$ for all $t$.
-
-By the definition of the exponential function, for all $t \geq 0$,
-
-$$
-    P_t \mathbb 1 = \mathbb 1 + tQ \mathbb 1 + \frac{1}{2!} t^2 Q^2 \mathbb 1 + \cdots
-$$
-
-From {eq}`zrsnec`, we see that $P_t$ has unit row sums.
-
-In addition, we can use the definition of the matrix exponential to obtain,
- for any $x, y$ and $t \geq 0$,
-
-$$
-    P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
-$$ (otp)
-
-This implies that both off-diagonal and on-diagonal elements of $P_t$ are nonnegative for all $t$ in a neighborhood of zero.
-
-Nonnegativity extends to arbitrary $t$ from the semigroup property and the fact that
-products of nonnegative matrices are nonnegative.
-
-Hence $P_t$ is a Markov matrix.
-
-Regarding the converse implication, suppose that $P_t = e^{tQ}$ is a Markov
-matrix for all $t$.
-
-Because $P_t$ has unit row sums and differentiation is linear, 
-we can employ the Kolmogorov backward equation to obtain
-
-$$
-    Q  \mathbb 1
-      = Q P_t \mathbb 1
-      = \left( \frac{d}{d t} P_t \right) \mathbb 1
-      = \frac{d}{d t} (P_t \mathbb 1)
-      = \frac{d}{d t} \mathbb 1
-      = 0
-$$
-
-Hence $Q$ has zero row sums.
-
-Moreover, in view of {eq}`otp`, the off diagonal elements of $Q$ must be positive.
-
-Hence $Q$ is a intensity matrix.
+The proof is related to that of {proof:ref}`jctosg` and is found as 
+a solved exercise below.
 
 
 
@@ -473,7 +423,7 @@ rate at $x$.
 
 We can differentiate to obtain the Kolmogorov forward equation $P_t' = P_t Q$.
 
-We can also premultiply by $\psi_0 \in \mathcal D$ to get $\psi_t' = \psi_t
+We can also premultiply by $\psi_0 \in \dD$ to get $\psi_t' = \psi_t
 Q$, which is the Fokker--Planck equation.
 
 From this discussion it is clear that $Q$ corresponds to the intensity matrix
@@ -558,6 +508,14 @@ $$ (qeqagain)
 
 Show that $Q$ is an intensity matrix and that {eq}`genfl` holds.
 
+### Exercise 3 
+
+Prove {proof:ref}`intvsmk` by adapting the arguments in {proof:ref}`jctosg`.
+(This is nontrivial but worth at least trying.)
+
+Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
+
+
 
 ## Solutions
 
@@ -609,3 +567,54 @@ $$
     = \lambda (1 - 1)
     = 0
 $$
+
+### Solution to Exercise 3
+
+
+Suppose that $Q$ is an intensity matrix, fix $t \geq 0$ and set $P_t = e^{tQ}$.
+
+The proof from {proof:ref}`jctosg` that $P_t$ has unit row sums applies
+directly to the current case.
+
+The proof of nonnegativity of $P_t$ can be applied after some
+modifications.
+
+To this end, set $m := \max_x |Q(x,x)|$ and $\hat P := I + Q / m$.
+
+You can check that $\hat P$ is a Markov matrix and that $Q = m( \hat P - I)$.
+
+The rest of the proof of nonnegativity of $P_t$ is unchanged and we will not repeat it.
+
+We conclude that $P_t$ is a Markov matrix.
+
+Regarding the converse implication, suppose that $P_t = e^{tQ}$ is a Markov
+matrix for all $t$ and let $1$ be a column vector of ones.
+
+Because $P_t$ has unit row sums and differentiation is linear, 
+we can employ the Kolmogorov backward equation to obtain
+
+$$
+    Q 1
+      = Q P_t 1
+      = \left( \frac{d}{d t} P_t \right) 1
+      = \frac{d}{d t} (P_t 1)
+      = \frac{d}{d t} 1
+      = 0
+$$
+
+Hence $Q$ has zero row sums.
+
+We can use the definition of the matrix exponential to obtain,
+ for any $x, y$ and $t \geq 0$,
+
+$$
+    P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
+$$ (otp)
+
+From this equality and the assumption that $P_t$ is a Markov matrix for all
+$t$, we see that the off diagonal elements of $Q$ must be
+nonnegative.
+
+Hence $Q$ is a intensity matrix.
+
+

@@ -10,15 +10,20 @@ sphinx:
       TeX:
         Macros:
           "Exp" : ["\\operatorname{Exp}"]
+          "Binomial" : ["\\operatorname{Binomial}"]
+          "Poisson" : ["\\operatorname{Poisson}"]
           "BB" : ["\\mathbb{B}"]
           "EE" : ["\\mathbb{E}"]
           "PP" : ["\\mathbb{P}"]
           "RR" : ["\\mathbb{R}"]
           "NN" : ["\\mathbb{N}"]
           "ZZ" : ["\\mathbb{Z}"]
+          "dD" : ["\\mathcal{D}"]
+          "fF" : ["\\mathcal{F}"]
           "linop" : ["\\mathcal{L}(\\mathbb{B})"]
+          "linopell" : ["\\mathcal{L}(\\ell_1)"]
   extra_extensions:
-    - sphinxcontrib.proof
+    - sphinxcontrib.prettyproof
 
 latex:
   latex_engine: "xelatex"

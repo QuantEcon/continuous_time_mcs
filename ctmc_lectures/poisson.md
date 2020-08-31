@@ -15,25 +15,11 @@ kernelspec:
 
 # Poisson Processes
 
-Now we turn to on Poisson processes.
-
-We will use the following imports
-
-```{code-cell} ipython3
-import numpy as np
-import matplotlib.pyplot as plt
-import quantecon as qe
-from numba import njit
-from scipy.special import factorial, binom
-```
-
 
 ## Overview
 
-Poisson processes are a kind of **counting process**, in that they count the
-number of "arrivals" occurring by a given time.
-
-(Examples: the number of visitors to a website, the number of customers arriving at a restaurant.)
+Counting processes count the number of "arrivals" occurring by a given time
+(e.g., the number of visitors to a website, the number of customers arriving at a restaurant, etc.)
 
 Counting processes become Poisson processes when the time interval between
 arrivals is IID and exponentially distributed.
@@ -46,6 +32,16 @@ a continuous time Markov chain.
 
 In addition, when continuous time Markov chains jump between states, the time
 between jumps is *necessarily* exponentially distributed.
+
+In discussing Poisson processes, we will use the following imports:
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+import quantecon as qe
+from numba import njit
+from scipy.special import factorial, binom
+```
 
 
 
@@ -102,6 +98,11 @@ $$
 $$
 
 As a function of $t$, the process $N_t$ is called a **counting process**.
+
+The jump times $(J_k)$ are sometimes called **arrival times** and the
+intervals $J_k - J_{k-1}$ are called **wait times** or **holding times**.
+
+
 
 
 ### Exponential Holding Times
@@ -225,10 +226,10 @@ $$ (binpois)
 
 (The exercises ask you to examine this claim visually.)
 
-We now return to the environment where we linked the geometric distribution to
-the exponential.
+We now return to {ref}`the environment <geomtoexp>` where we linked the
+geometric distribution to the exponential.
 
-That is, we fix small $h > 0$ and let $t_i := ih$ for all $i$.
+That is, we fix small $h > 0$ and let $t_i := ih$ for all $i \in \ZZ_+$.
 
 Let $(V_i)$ be IID binary random variables with $\PP\{V_i = 1\} = h \lambda$ for some $\lambda > 0$.
 
@@ -239,7 +240,7 @@ Linking to our previous discussion,
 * Visits occur with probability $h \lambda$, which is proportional to the
   length of the interval between grid points.
 
-We learned above that the holding time (wait time) until the first visit is
+We learned that the wait time until the first visit is
 approximately exponential with rate $t \lambda$.
 
 Since $(V_i)$ is IID, the same is true for the second wait time and so on.
@@ -281,7 +282,7 @@ plt.show()
 We expect from the discussion above that $(\hat N_t)$ approximates a Poisson process.
 
 This intuition is correct because, fixing $t$, letting $k := \max\{i \in
-\NN \,:\, t_i \leq t\}$ and applying {eq}`binpois`, we have
+\ZZ_+ \,:\, t_i \leq t\}$ and applying {eq}`binpois`, we have
 
 $$
     \hat N_t 
@@ -328,11 +329,10 @@ $$
    \sim  \text{Poisson}(t\lambda)
 $$
 
-In particular, increments are stationary.
+In particular, increments are stationary (the distribution depends on $t$ but not $s$).
 
 The approximation also illustrates independence of increments, since, in the
 approximation, increments depend on separate subsets of $(V_i)$.
-
 
 
 
@@ -364,21 +364,24 @@ Theorem 2.4.3 of {cite}`norris1998markov`.
 ### The Restarting Property
 
 An important consequence of stationary independent increments is the
-restarting property, which means that the Poisson process can restart itself at any
-time.
+restarting property, which means that, when simulating, we can freely stop and
+restart a Poisson process at any time:
 
-Formally, if $(N_t)$ is a Poisson process, $s > 0$ and 
+```{proof:theorem}
+If $(N_t)$ is a Poisson process, $s > 0$ and 
 $(M_t)$ is defined by $M_t = N_{s+t} - N_s$ for $t \geq 0$, then $(M_t)$ is a 
 Poisson process independent of $(N_r)_{r \leq s}$.
+```
 
+```{proof:proof}
 Independence of $(M_t)$ and $(N_r)_{r \leq s}$ follows from indepenence of the
 increments of $(N_t)$.
 
 In view of the uniqueness statement above, we can verify that $(M_t)$ is a
-Poisson process by showing that $(M_t)$ starts at zero, is supported on
+Poisson process by showing that $(M_t)$ starts at zero, takes values in 
 $\ZZ_+$ and has stationary independent increments.
 
-It is clear that $(M_t)$ starts at zero and is supported on $\ZZ_+$.
+It is clear that $(M_t)$ starts at zero and takes values in $\ZZ_+$.
 
 In addition, if we take any $t < t'$, then
 
@@ -393,7 +396,7 @@ the increments are independent as well.
     
 We conclude that $(N_{s+t} - N_s)_{t \geq 0}$ is indeed a 
 Poisson process independent of $(N_r)_{r \leq s}$.
-
+```
 
 
 
@@ -402,10 +405,10 @@ Poisson process independent of $(N_r)_{r \leq s}$.
 Exercise 1
 ----------
 
-Fix $\lambda > 0$ and draw $\{W_i\}$ as IID exponentials with rate $\lambda$
+Fix $\lambda > 0$ and draw $\{W_i\}$ as IID exponentials with rate $\lambda$.
 
 Set $J_n := W_1 + \cdots W_n$ with $J_0 = 0$ and
-    $N_t := \sum_{n \geq 0} n \mathbb 1\{ J_n \leq t < J_{n+1} \}$
+    $N_t := \sum_{n \geq 0} n \mathbb 1\{ J_n \leq t < J_{n+1} \}$.
 
 Provide a visual test of the claim that $N_t$ is Poisson with parameter $t
 \lambda$.
@@ -420,17 +423,9 @@ Exercise 2
 ----------
 
 
-In the lecture we used the fact that
+In the lecture we used the fact that $\Binomial(n, \theta) \approx \Poisson(n \theta)$ when $n$ is large and $\theta$ is small.
 
-$$
-    \text{Binomial}(n, \theta) 
-    \approx
-    \text{Poisson}(n \theta)
-$$
-
-when $n$ is large and $\theta$ is small.
-
-Check this informally by plotting the distributions side by side.
+Investigate this relationship by plotting the distributions side by side.
 
 Experiment with different values of $n$ and $\theta$.
 
