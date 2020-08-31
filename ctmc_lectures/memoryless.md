@@ -395,8 +395,7 @@ This connects to Poisson process theory, as we shall soon see.
 
 ## Exercises
 
-### Exercise 1
-
+````{proof:exercise}
 Due to its memoryless property, we can "stop" and "restart" an exponential
 draw without changing its distribution.
 
@@ -410,10 +409,10 @@ In particular, consider the random variable $X$ defined as follows:
 * If not, draw $Z$ independently from $\Exp(\lambda)$ and set $X = s + Z$.
 
 Show that $X \sim \Exp(\lambda)$.
+````
 
 
-### Exercise 2
-
+````{proof:exercise}
 Fix $\lambda = 0.5$ and $s=1.0$.
 
 Simulate 1,000 draws of $X$ using the algorithm above.
@@ -424,8 +423,7 @@ and compare to $t \mapsto e^{-\lambda t}$.
 Is the fit good?  How about if the number of draws is increased?
 
 Are the results in line with those of the previous exercise?
-
-
+````
 ## Solutions
 
 
