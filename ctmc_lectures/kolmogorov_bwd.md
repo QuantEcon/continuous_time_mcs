@@ -89,7 +89,7 @@ This assumption was made purely for convenience and seems unlikely to hold true.
 When we relax it, the jump intensities depend on the state.
 
 (jumpchainalgo)=
-### Algorithmic Construction
+### Embedded Jump Chain Algorithm
 
 We start with two primitives
 
@@ -107,19 +107,20 @@ Now we take $y$ as the new state for the process and repeat.
 
 More explicitly, assuming initial condition $\psi$, we
 
-1. draw $Y_0$ from $\psi$, set $J_0 = 0$ and $n=1$.
-1. Draw $W_n$ independently from Exp$(\lambda(Y_{n-1}))$.
-1. Set $J_n = J_{n-1} + W_n$.
-1. Set $X_t = Y_{n-1}$ for $t$ in $[J_{n-1}, J_n)$.
-1. Draw $Y_n$ from $K(Y_{n-1}, \cdot)$.
-1. Set $n = n+1$ and go to step 2.
+1. draw $Y_0$ from $\psi$, set $J_0 = 0$ and $k=1$.
+1. Draw $W_k$ independently from Exp$(\lambda(Y_{k-1}))$.
+1. Set $J_k = J_{k-1} + W_k$.
+1. Set $X_t = Y_{k-1}$ for $t$ in $[J_{k-1}, J_k)$.
+1. Draw $Y_k$ from $K(Y_{k-1}, \cdot)$.
+1. Set $k = k+1$ and go to step 2.
 
-The sequence $(W_n)$ is drawn as an IID sequence and $(W_n)$ and $(Y_n)$ are
+The sequence $(W_k)$ is drawn as an IID sequence and $(W_k)$ and $(Y_k)$ are
 drawn independently.
 
 The restriction $K(x,x) = 0$ for all $x$ implies that $(X_t)$ actually jumps at each jump time.
 
-We call the algorithm stated above the **jump chain algorithm** for the pair $\lambda, K$.
+We call the algorithm stated above the **embedded jump chain algorithm** for
+the jump chain pair $\lambda, K$.
 
 ## Computing the Semigroup
 
@@ -151,9 +152,7 @@ $$ (kbinteg)
 which, we claim, holds for all $t \geq 0$ and $x, y$ in $S$.
 
 Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed
-via the jump chain algorithm, while 
-$K P_{t-\tau}$ is the product of two Markov matrices as previously
-defined.
+via the jump chain algorithm, while $K P_{t-\tau}$ is the matrix product of $K$ and $P_{t-\tau}$.
 
 Let's see why {eq}`kbinteg` holds.
 
@@ -300,13 +299,21 @@ Let's investigate further the properties of the exponential solution.
 
 ### Checking the Transition Semigroup Properties
 
-While we have confirmed that $(P_t)$ defined by $P_t = e^{t Q}$ solves the
-Kolmogorov backward equation, we have not yet shown that this solution is in
-fact a Markov semigroup.
+While we have confirmed that $P_t = e^{t Q}$ solves the Kolmogorov backward
+equation, we still need to check that this solution is a Markov semigroup.
 
-Let's now tie up this loose end.
+```{proof:lemma} From Jump Chain to Semigroup
+:label: jctosg
 
-First
+Let $\lambda$ map $S$ to $\RR_+$ and let $K$ be a Markov matrix on $S$.
+If $P_t = e^{t Q}$ for all $t \geq 0$, where
+$Q(x, y) = \lambda(x) (K(x, y) - I(x, y))$, then $(P_t)$ is a Markov
+semigroup on $S$.
+```
+
+
+```{proof:proof}
+Observe first that $Q$ has zero row sums, since
 
 $$
     \sum_y Q(x, y) 
@@ -314,8 +321,13 @@ $$
     = 0
 $$
 
-Hence, if $1$ is a column vector of ones, then $Q 1$ is the
-zero vector.
+As a small exercise, you can check that the following is true
+
+$$
+    Q \text{ has zero row sums }
+    \iff
+    Q^k 1 = 0 \text{ for all } k \geq 1
+$$ (zrsnec)
 
 This implies that $Q^k 1 = 0$ for all $k$ and, as a result, for any $t \geq
 0$,
@@ -327,9 +339,10 @@ $$
     = I1 = 1
 $$
 
-We have now shown that each $P_t$ has unit row sums, so all that remains to
-check is positivity of all elements (which can easily fail for matrix
-exponentials).
+In other words, each $P_t$ has unit row sums. 
+
+Next we check positivity of all elements of $P_t$ (which can easily fail for
+matrix exponentials).
 
 To this end, adopting an argument from {cite}`stroock2013introduction`, we
 set $m := \max_x \lambda(x)$ and $\hat P := I + Q / m$.
@@ -353,6 +366,12 @@ $$
 It is clear from this representation that all entries of $e^{tQ}$ are
 nonnegative.
 
+Finally, we need to check the continuity condition $P_t(x, y) \to I(x,y)$ as
+$t \to 0$, which is also part of the definition of a Markov semigroup.
+This is immediate, in the present case, because the exponential function is
+continuous, and hence $P_t = e^{tQ} \to e^0 = I$.
+```
+
 We can now be reassured that our solution to the Kolmogorov backward equation
 is indeed a Markov semigroup.
 
@@ -362,8 +381,9 @@ is indeed a Markov semigroup.
 Might there be another, entirely different Markov semigroup that also
 satisfies the Kolmogorov backward equation?
 
-The answer is no --- linear ODEs with constant coefficients and fixed initial
-conditions (in this case $P_0 = I$) have unique solutions.
+The answer is no:  linear ODEs in finite dimensional vector space with
+constant coefficients and fixed initial conditions (in this case $P_0 = I$)
+have unique solutions.
 
 In fact it's not hard to supply a proof --- see the exercises.
 

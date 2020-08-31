@@ -51,24 +51,25 @@ Readers are assumed to have some basic familiarity with Banach spaces.
 
 Throughout this lecture, $(\BB, \| \cdot \|)$ is a Banach space.
 
-You will recall that a **linear operator** on $\BB$ is a map $L$ from $\BB$ to
+You will recall that a **linear operator** on $\BB$ is a map $A$ from $\BB$ to
 itself satisfying 
 
 $$
-    L(\alpha g + \beta h) = \alpha L g + \beta L h,
+    A(\alpha g + \beta h) = \alpha A g + \beta A h,
     \quad
     \forall \, g, h \in \BB, \;\; \alpha, \beta \in \RR
 $$
 
-The operator $L$ is called **bounded** if
+The operator $A$ is called **bounded** if
 
 $$
-    \| L \| := \sup_{g \in \BB, \, \| g \| \leq 1} \| L g \| < \infty
+    \| A \| := \sup_{g \in \BB, \, \| g \| \leq 1} \| A g \| < \infty
 $$ (norml)
 
 This is the usual definition of a [bounded linear operator](https://en.wikipedia.org/wiki/Bounded_operator) on a normed linear space.
 
-The set of all bounded linear operators on $\BB$ is denoted by $\linop$.
+The set of all bounded linear operators on $\BB$ is denoted by $\linop$ and is
+itself a Banach space.
 
 Let $I$ be the identity in $\linop$, satisfying $Ig = g$ for all $g \in \BB$.
 
@@ -84,7 +85,7 @@ and so on.
 
 We write $A B$ to indicate composition of the operators $A, B \in \linop$.
 
-The value defined in {eq}`norml` is called the **operator norm** of $L$ and,
+The value defined in {eq}`norml` is called the **operator norm** of $A$ and,
 as suggested by the notation, [is a norm](https://en.wikipedia.org/wiki/Operator_norm) on $\linop$.
 
 In addition to being a norm, it enjoys the submultiplicative property $\| AB
@@ -103,7 +104,7 @@ $$
     e^A  
     = \sum_{k \geq 0} \frac{A^k}{k!} 
     = I + A + \frac{A^2}{2!} + \cdots
-$$
+$$ (opexpo)
 
 This is the same as the definition for the matrix exponential.
 
@@ -113,7 +114,7 @@ associated with continuous time Markov chains.
 
 The exponential map has the following properties:
 
-* For each $A \in \linop$, the operator $e^A$ is a well defined element of $\linop$ and and $\| e^A \| \leq e^{\| A \|}$.
+* For each $A \in \linop$, the operator $e^A$ is a well defined element of $\linop$ with $\| e^A \| \leq e^{\| A \|}$.
 * $e^0 = I$, where $0$ is the zero element of $\linop$.
 * If $A, B \in \linop$ and $AB = BA$, then $e^{A + B} = e^A e^B$
 * If $A \in \linop$, then $e^A$ is invertible and $(e^A)^{-1} = e^{-A}$.
@@ -122,7 +123,7 @@ The last fact is easily checked from the previous ones.
 
 
 
-### Some Calculus in Banach Space
+### Operator Calculus 
 
 Consider a function 
 
@@ -130,7 +131,10 @@ $$
     \RR_+ \ni t \mapsto U_t \in \linop
 $$
 
-We say that this function is differentiable at $\tau \in \RR_+$ if there exists
+which we can think of as a time path in $\linop$, such as a flow of Markov
+operators.
+
+We say that this function is **differentiable at $\tau \in \RR_+$** if there exists
 an element $T$ of $\linop$ such that
 
 $$
@@ -147,7 +151,7 @@ $$
 $$
 
 (Convergence of operators is in operator norm.  If $\tau = 0$, then the limit
-in {eq}`devlim` is the right limit.)
+$h \to 0$ in {eq}`devlim` is the right limit.)
 
 For example, if $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
 see that $V$ is the derivative of $t \mapsto U_t$ at every $t \in \RR_+$.
@@ -160,31 +164,14 @@ Analogous to the matrix and scalar cases, we have the following result:
 ```{proof:lemma} Differentiability of the exponential map
 :label: diffexpmap
 
-For all $A \in \linop$ and all $t \geq 0$, the map $t \mapsto e^{tA}$ is
-differentiable and 
+For all $A \in \linop$, the map $t \mapsto e^{tA}$ is everywhere differentiable and 
 
 $$
     \frac{d}{dt} e^{tA} = e^{tA} A = A e^{tA}
 $$ (expdiffer)
 ```
 
-```{proof:proof}
-To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
-
-$$
-    e^{(t+h)A} - e^{tA} - e^{tA} A
-    = e^{tA} (e^{hA} - I - A)
-$$
-
-Since the norm on $\linop$ is submultiplicative, it suffices to show that 
-$\| e^{hA} - I - A \| = o(h)$ as $h \to 0$.
-
-Using the definition of the exponential, this is easily verified,
-completing the proof of the first equality in {eq}`expdiffer`.
-
-The proof of the second equality is similar.
-```
-
+The proof is a (solved) exercise (see below).
 
 
 ## Semigroups and Generators
@@ -193,15 +180,12 @@ For continuous time Markov chains where the state space $S$ is finite, we
 saw that Markov semigroups often take the form $P_t = e^{tQ}$ for some
 intensity matrix $Q$.
 
-This is a very nice situation because it means that
-
-* the entire semigroup is characterized by its infinitesimal description $Q$
-  and
-* the semigroup can be retrieved from $Q$ via the exponential function.
+This is ideal because the entire semigroup is characterized in a simple way by
+its infinitesimal description $Q$.
 
 It turns out that, when $S$ is finite, this is always true:  if $(P_t)$ is a
-Markov semigroup, then there exists an intensity matrix $Q$ satisfying $P_t = e^{tQ}$
-for all $t$.
+Markov semigroup, then there exists an intensity matrix $Q$ satisfying $P_t =
+e^{tQ}$ for all $t$.
 
 Moreover, this statement is again true when $S$ is infinite, provided that
 some restrictions are placed on the semigroup.
@@ -224,7 +208,7 @@ An evolution semigroup $(U_t)$ is called
 * a $C_0$ **semigroup** on $\BB$ if, for each $g \in \BB$, the map $t \mapsto U_t g$ from $\RR_+$ to $\BB$ is continuous, and
 * a **uniformly continuous semigroup** on $\BB$ if the map $t \mapsto U_t$ from $\RR_+$ to $\linop$ is continuous.
 
-In what follows we abbreviate uniformly continuous to UC.
+In what follows we abbreviate "uniformly continuous" to UC.
 
 ```{note}
 Be careful: the definition of a UC semigroup requires that 
@@ -242,9 +226,6 @@ $$
 
 ```
 
-Here's an example of a UC semigroup.
-
-(Later we will see that it is the *only* example of a UC semigroup.)
 
 ```{proof:example} Exponential curves are UC semigroups
 :label: ecuc
@@ -257,7 +238,8 @@ The claim that $(U_t)$ is an evolution semigroup follows directly from the
 properties of the exponential function given above.
 
 Uniform continuity can be established using arguments similar to those in our
-proof of differentiability in Lemma {proof:numref}`diffexpmap`.  
+proof of differentiability in {proof:ref}`diffexpmap`, which is a
+solved exericse.
 
 Since norm convergence on $\linop$ implies pointwise convergence, every
 uniformly continuous semigroup is a $C_0$ semigroup.
@@ -294,9 +276,9 @@ $$
 $$
 
 In the more abstract setting of $C_0$ semigroups, we say that $Q$ is the
-generator of the semigroup $P_t$.
+"generator" of the semigroup $P_t$.
 
-More specifically, given a $C_0$ semigroup $(U_t)$, we say that a linear
+More generally, given a $C_0$ semigroup $(U_t)$, we say that a linear
 operator $A$ from $\BB$ to itself is the **generator** of $(U_t)$ if 
 
 $$
@@ -310,22 +292,28 @@ denoted by $D(A)$.
 
 There are two key problems to consider here.
 
-One is that the limit fails to exist, which is eminently possible, given that
-$C_0$ semigroups are not required to be differentiable.
+One is that the limit fails to exist for some $g \in \BB$, which is eminently
+possible, given that $C_0$ semigroups are not required to be differentiable.
+
+* It can be shown that $D(A)$ is always dense in $\BB$ however --- see 7.4.15
+  of {cite}`bobrowski2005functional`.
 
 The other problem is that, even though the limit exists, the linear operator
-$A$ is not bounded, and hence is somewhat more difficult to work with.
+$A$ is not bounded (i.e., not an element of $\linop$), and hence relatively
+difficult to work with.
 
 Fortunately, given the applications we wish to consider, we can focus on UC
-semigroups, which are very well behaved.[^fnhy]
+semigroups, where these problems do not arise.[^fnhy]
+
+The next section gives details.
 
 [^fnhy]: For the general theory of $C_0$ semigroups, an excellent treatment can be found in {cite}`bobrowski2005functional`.
 
 
 ### A Characterization of Uniformly Continuous Semigroups
 
-We saw in Example {proof:numref}`ecuc` that exponential curves are UC
-semigroups.
+We saw in {proof:ref}`ecuc` that exponential curves are an example
+of a UC semigroup.
 
 The next theorem tells us that there are no other examples.
 
@@ -338,34 +326,71 @@ such that $U_t = e^{tA}$ for all $t \geq 0$.  Moreover,
  $U_t' = A U_t = U_t A$ for all $t \geq 0$.
 ```
 
-The last two claims in Theorem {proof:numref}`ucsgec` follow directly from the
+The last two claims in {proof:ref}`ucsgec` follow directly from the
 first claim.
 
-For a proof of the first claim in Theorem {proof:numref}`ucsgec`, see, for
+For a proof of the first claim in {proof:ref}`ucsgec`, see, for
 example, Chapter 7 of {cite}`bobrowski2005functional`.
 
-While slightly more complicated in the Banach setting, the proof is
-reminiscent of the idea that any function $f$ from $\RR_+$ to itself
+While slightly more complicated in the Banach setting, the proof is a direct
+extension of the fact that any continuous function $f$ from $\RR$ to itself
 satisfying 
 
 * $f(s)f(t) = f(s+t)$ for all $s,t \geq 0$ and
-* $f(s) \to 1$ as $s \to 0$
+* $f(0) = 1$ 
 
 also satisfies $f(t) = e^{ta}$ for some $a \in \RR$.
 
-We proved something quite similar in {ref}`our discussion <exp_unique>` of
+We proved something quite similar in {proof:ref}`exp_unique`, on 
 the memoryless property of the exponential function.
 
-The statement $U_t' = A U_t = U_t A$ is  a generalization of the Kolmogorov
+For more discussion along these see, for example, {cite}`sahoo2011introduction`. 
+The statement $U_t' = A U_t = U_t A$ is a generalization of the Kolmogorov
 forward and backward equations.
+
+
+
+
 
 
 
 ## Exercises
 
+### Exercise 1
+
+Prove {proof:ref}`expdiffer`.
+
+### Exercise 2
+
 Add a discussion of the abstract Cauchy problem here, with exercises?
+
+See p 208 of Lasota and Mackey.
+
+### Exercise 3
+
+Given an example of a semigroup that is $C_0$ but not UC?  How about a
+translation?
+
 
 ## Solutions
 
 To be added.
 
+### Solution to Exercise 1
+
+```{proof:proof}
+To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
+
+$$
+    e^{(t+h)A} - e^{tA} - e^{tA} A
+    = e^{tA} (e^{hA} - I - A)
+$$
+
+Since the norm on $\linop$ is submultiplicative, it suffices to show that 
+$\| e^{hA} - I - A \| = o(h)$ as $h \to 0$.
+
+Using the definition of the exponential, this is easily verified,
+completing the proof of the first equality in {eq}`expdiffer`.
+
+The proof of the second equality is similar.
+```
