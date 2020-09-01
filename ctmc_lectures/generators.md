@@ -45,11 +45,65 @@ bound.[^footnotepp]
 
 Readers are assumed to have some basic familiarity with Banach spaces.
 
+## Motivation
+
+The general theory of continuous semigroups of operators is motivated by
+the problem of solving linear ODEs in infinite dimensional spaces.
+
+More specifically, the problem is to solve initial value problems such as 
+
+$$
+    x'_t = A x_t,
+    \quad x_0 \text{ given}
+$$ (abscp)
+
+where 
+
+* $x_t$ takes value in a Banach space at each time $t$,
+* $A$ is a linear operator and
+* the time derivative $x'_t$ uses a definition appropriate for a Banach
+  space.
+
+This problem is also called the "abstract Cauchy problem".
+
+Why do we need solve such problems?
+
+One example comes from PDEs.  
+
+PDEs tell us how functions change over time, starting from an infinitesimal
+description.
+
+When $x_t$ is a point in a function space, this fits into the framework of
+{eq}`abscp`.[^fnpde]
+
+[^fnpdf]: For an excellent introduction to operator semigroups, combined with
+  applications to PDEs, see {cite}`applebaum2019semigroups`.
+
+Another example comes from Markov processes, where, as we have seen, the flow
+of distributions over time can be represented as a linear ODE in distribution
+space.
+
+If the number of state is infinite, then the space of distributions is
+infinite dimensional.
+
+This is another version of {eq}`abscp`, and we return to it after a discussion
+of the general theory.
+
+To give a high level view of the results below, the solution to the Cauchy
+problem is represented as a trajectory $t \mapsto U_t x_0$ from the initial
+value $x_0$ under a semigroup of maps $(U_t)$.
+
+The operator $A$ in {eq}`abscp` is called the "generator" of $(U_t)$ and is
+its infinitesimal description.
+
 
 
 ## Preliminaries
 
 Throughout this lecture, $(\BB, \| \cdot \|)$ is a Banach space.
+
+
+### The Space of Linear Operators
 
 You will recall that a **linear operator** on $\BB$ is a map $A$ from $\BB$ to
 itself satisfying 
@@ -71,7 +125,6 @@ This is the usual definition of a [bounded linear operator](https://en.wikipedia
 The set of all bounded linear operators on $\BB$ is denoted by $\linop$ and is
 itself a Banach space.
 
-Let $I$ be the identity in $\linop$, satisfying $Ig = g$ for all $g \in \BB$.
 
 Sums and scalar products of elements of $\linop$ are defined in the usual way,
 so that, for $\alpha \in \RR$, $A, B \in \linop$ and $g \in \BB$, we have 
@@ -91,7 +144,10 @@ as suggested by the notation, [is a norm](https://en.wikipedia.org/wiki/Operator
 In addition to being a norm, it enjoys the submultiplicative property $\| AB
 \| \leq \| A \| \| B\|$ for all $A, B \in \linop$.
 
-(In fact $\linop$ is a [unital Banach algebra](https://en.wikipedia.org/wiki/Banach_algebra) when multiplication is identified with operator composition.)
+
+Let $I$ be the identity in $\linop$, satisfying $Ig = g$ for all $g \in \BB$.
+
+(In fact $\linop$ is a [unital Banach algebra](https://en.wikipedia.org/wiki/Banach_algebra) when multiplication is identified with operator composition and $I$ is adopted as the unit.)
 
 
 
@@ -208,23 +264,13 @@ An evolution semigroup $(U_t)$ is called
 * a $C_0$ **semigroup** on $\BB$ if, for each $g \in \BB$, the map $t \mapsto U_t g$ from $\RR_+$ to $\BB$ is continuous, and
 * a **uniformly continuous semigroup** on $\BB$ if the map $t \mapsto U_t$ from $\RR_+$ to $\linop$ is continuous.
 
-In what follows we abbreviate "uniformly continuous" to UC.
+In what follows we abbreviate "uniformly continuous" to UC.[^ucnote]
 
-```{note}
-Be careful: the definition of a UC semigroup requires that 
+[^ucnote]: Be careful: the definition of a UC semigroup requires that 
 $t \mapsto U_t$ is continuous as a map into $\linop$, rather than uniformly
-continuous.  
-
-The UC terminology comes about because, for a UC semigroup, we have, by
-definition of the operator norm,
-
-$$
-    s \to t
-    \; \implies \;
-    \sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0
-$$
-
-```
+continuous.  The UC terminology comes about because, for a UC semigroup, we
+have, by definition of the operator norm,
+$\sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0$ when $s \to t$.
 
 
 ```{proof:example} Exponential curves are UC semigroups
@@ -237,9 +283,8 @@ is a uniformly continuous semigroup on $\BB$.
 The claim that $(U_t)$ is an evolution semigroup follows directly from the
 properties of the exponential function given above.
 
-Uniform continuity can be established using arguments similar to those in our
-proof of differentiability in {proof:ref}`diffexpmap`, which is a
-solved exericse.
+Uniform continuity can be established using arguments similar to those in the
+proof of differentiability in {proof:ref}`diffexpmap`. 
 
 Since norm convergence on $\linop$ implies pointwise convergence, every
 uniformly continuous semigroup is a $C_0$ semigroup.
@@ -283,31 +328,38 @@ operator $A$ from $\BB$ to itself is the **generator** of $(U_t)$ if
 
 $$
     A g = \lim_{h \downarrow 0} \frac{U_h g - g}{h} 
-$$
+$$ (defgenr)
 
 for all $g \in \BB$ such that the limit exists.  
 
 The set of points where the limit exists (the domain of the generator) is
 denoted by $D(A)$.
 
-There are two key problems to consider here.
+At this point we would like to write {eq}`defgenr` as $A = U'_0$, or express
+$U_t$ as $e^{tA}$, analogous to the Markov case.
 
-One is that the limit fails to exist for some $g \in \BB$, which is eminently
-possible, given that $C_0$ semigroups are not required to be differentiable.
+There are problems, however.
 
-* It can be shown that $D(A)$ is always dense in $\BB$ however --- see 7.4.15
-  of {cite}`bobrowski2005functional`.
+One problem is that the limit in {eq}`defgenr` can fail to exist for some $g
+\in \BB$.
+
+Indeed, why should the limit exist, given that $C_0$ semigroups are not
+required to be differentiable?
 
 The other problem is that, even though the limit exists, the linear operator
-$A$ is not bounded (i.e., not an element of $\linop$), and hence relatively
-difficult to work with.
+$A$ is not bounded (i.e., not an element of $\linop$), so 
+a statement like $U_t = e^{tA}$ is problematic.
 
-Fortunately, given the applications we wish to consider, we can focus on UC
-semigroups, where these problems do not arise.[^fnhy]
+It turns out that, despite these issues, the theory of $C_0$ semigroups is
+powerful, and, with some work, the technical issues can be
+circumvented.[^fnhy]
+
+[^fnhy]: An excellent treatment of the general theory of $C_0$ semigroups, can be found in {cite}`bobrowski2005functional`.
+
+Even better, for the applications we wish to consider, we can focus on UC
+semigroups, where these problems do not arise.
 
 The next section gives details.
-
-[^fnhy]: For the general theory of $C_0$ semigroups, an excellent treatment can be found in {cite}`bobrowski2005functional`.
 
 
 ### A Characterization of Uniformly Continuous Semigroups
@@ -322,18 +374,21 @@ The next theorem tells us that there are no other examples.
 
 If $(U_t)$ is a UC semigroup on $\BB$, then there exists an $A \in \linop$
 such that $U_t = e^{tA}$ for all $t \geq 0$.  Moreover,
- $A$ is the generator of $(U_t)$ and
- $U_t' = A U_t = U_t A$ for all $t \geq 0$.
+
+* $U_t$ is differentiable at every $t \geq 0$,
+* $A$ is the generator of $(U_t)$ and
+* $U_t' = A U_t = U_t A$ for all $t \geq 0$.
 ```
 
-The last two claims in {proof:ref}`ucsgec` follow directly from the
+The last three claims in {proof:ref}`ucsgec` follow directly from the
 first claim.
 
-For a proof of the first claim in {proof:ref}`ucsgec`, see, for
-example, Chapter 7 of {cite}`bobrowski2005functional`.
+The statement $U_t' = A U_t = U_t A$ is a
+generalization of the Kolmogorov forward and backward equations.
 
-While slightly more complicated in the Banach setting, the proof is a direct
-extension of the fact that any continuous function $f$ from $\RR$ to itself
+While slightly more complicated in the Banach setting, the proof of the first
+claim (existence of an exponential representation) is a direct extension of
+the fact that any continuous function $f$ from $\RR$ to itself
 satisfying 
 
 * $f(s)f(t) = f(s+t)$ for all $s,t \geq 0$ and
@@ -344,11 +399,12 @@ also satisfies $f(t) = e^{ta}$ for some $a \in \RR$.
 We proved something quite similar in {proof:ref}`exp_unique`, on 
 the memoryless property of the exponential function.
 
-For more discussion along these see, for example, {cite}`sahoo2011introduction`. 
-The statement $U_t' = A U_t = U_t A$ is a generalization of the Kolmogorov
-forward and backward equations.
+For more discussion of the scalar case, see, for example,
+{cite}`sahoo2011introduction`.  
 
-
+For a full proof of the first claim in {proof:ref}`ucsgec`, in the setting of
+a Banach algebra, see, for
+example, Chapter 7 of {cite}`bobrowski2005functional`.
 
 
 
@@ -358,27 +414,34 @@ forward and backward equations.
 
 ### Exercise 1
 
-Prove {proof:ref}`expdiffer`.
+Prove that {eq}`expdiffer` holds for all $A \in \linop$.
 
 ### Exercise 2
 
-Add a discussion of the abstract Cauchy problem here, with exercises?
+In many texts, a $C_0$ semigroup is defined as an evolution semigroup $(U_t)$
+such that 
 
-See p 208 of Lasota and Mackey.
+$$
+    U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
+$$ (czsg2)
 
-### Exercise 3
+Our aim is to show that {eq}`czsg2` implies continuity at every point $t$, as
+in the definition we used above.
 
-Given an example of a semigroup that is $C_0$ but not UC?  How about a
-translation?
+The [Banach--Steinhaus Theorem](https://en.wikipedia.org/wiki/Uniform_boundedness_principle) can be used to show that, for an evolution semigroup $(U_t)$ satisfying {eq}`czsg2`, there exist finite constants $\omega$ and $M$ such that
 
+$$ 
+    \| U_t \| \leq e^{t\omega} M 
+    \quad \text{for all } \; t \geq 0
+$$ (sgbound)
+
+Using this and {eq}`czsg2`, show that, for any $g \in \BB$, the map $t \mapsto
+U_t g$ is continuous at all $t$.
 
 ## Solutions
 
-To be added.
-
 ### Solution to Exercise 1
 
-```{proof:proof}
 To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
 
 $$
@@ -393,4 +456,24 @@ Using the definition of the exponential, this is easily verified,
 completing the proof of the first equality in {eq}`expdiffer`.
 
 The proof of the second equality is similar.
-```
+
+
+### Solution to Exercise 2
+
+Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
+$\omega$ and $M$ be as in {eq}`sgbound`.
+
+Pick any $g \in \BB$,  $t > 0$ and $h_n \downarrow 0$.  
+
+On one hand, $U_{t+ h_n} g = U_{h_n} U_t g \to U_t g$ by {eq}`czsg2`.
+
+On the other hand, from {eq}`sgbound` and the definition of the operator norm,
+
+$$
+    \| U_{t-h_n} g - U_t g\|
+    = \|  U_{t-h_n} ( g - U_{h_n} g) \|
+    \leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
+    \to 0
+$$
+
+as $n \to \infty$.  This completes the proof.

@@ -13,12 +13,23 @@ kernelspec:
 ---
 
 
-## UC Markov Semigroups
+# UC Markov Semigroups
 
-Let's translate these results into the setting of Markov semigroups
+## Overview
+
+In our previous lecture we covered some of the general theory of continuous
+semigroups, with a particular focus on UC semigroups.
+
+Next we translate these results into the setting of Markov semigroups.
+
+The main aim is to give a one-to-one correspondence between UC Markov
+semigroups and "well-behaved" intensity matrices.
+
+We will also give some brief discussion of intensity matricies that fall
+outside this class, and the processes they generate.
 
 
-### Notation and Terminology
+## Notation and Terminology
 
 Let $S$ be an arbitrary countable set.
 
@@ -60,7 +71,7 @@ Below we give sufficient conditions that can be checked in applications.
 
 
 
-### A Unique Pairing
+## A Unique Pairing
 
 Let $Q$ be a conservative intensity matrix on $S$.
 
@@ -70,28 +81,30 @@ as an element of $\linopell$ for all $t \geq 0$.
 Moreover, $(P_t)$ defined by $P_t = e^{tQ}$ defines a uniformly continuous
 Markov semigroup on $S$.
 
-[proof]
-
 ```{proof:theorem}
 :label: usmg
 
 If $(P_t)$ is a uniformly continuous Markov semigroup, then there
-exists a conservative intensity matrix $Q$ such that $P_t = e^{tQ}$ for all $t
-\geq 0$.
+exists a conservative intensity matrix $Q$ such that $P_t = e^{tQ}$ for all $t \geq 0$.
+
 ```
 
 
 
 ### Sufficient Conditions
 
+Our definition of a conservative intensity matrix works for the theory above
+but it lacks probabilistic interpretation and is  
+
 Bounded jump intensities imply a conservative intensity matrix.
 
-Once we restrict attention to 
 
 
 
 
-### Beyond Conservative Intensity Matrices
+
+
+## Beyond Conservative Intensity Matrices
 
 Note that, for the unbounded case, the situation is trickier.
 
