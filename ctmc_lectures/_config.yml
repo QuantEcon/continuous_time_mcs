@@ -20,6 +20,7 @@ sphinx:
           "ZZ" : ["\\mathbb{Z}"]
           "dD" : ["\\mathcal{D}"]
           "fF" : ["\\mathcal{F}"]
+          "lL" : ["\\mathcal{L}"]
           "linop" : ["\\mathcal{L}(\\mathbb{B})"]
           "linopell" : ["\\mathcal{L}(\\ell_1)"]
 
