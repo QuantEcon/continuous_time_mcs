@@ -25,6 +25,9 @@ sphinx:
   extra_extensions:
     - sphinxcontrib.prettyproof
 
+execute:
+  execute_notebooks: cache
+
 latex:
   latex_engine: "xelatex"
   latex_documents:
