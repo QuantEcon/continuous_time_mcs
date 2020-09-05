@@ -1,0 +1,954 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kolmogorov Backward Equation &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Kolmogorov Forward Equation" href="kolmogorov_fwd.html" />
+    <link rel="prev" title="The Markov Property" href="markov_prop.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Continuous Time Markov Chains
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="memoryless.html">
+   Memoryless Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="poisson.html">
+   Poisson Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_prop.html">
+   The Markov Property
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Kolmogorov Backward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_fwd.html">
+   The Kolmogorov Forward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generators.html">
+   Semigroups and Generators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uc_mc_semigroups.html">
+   UC Markov Semigroups
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prob_view.html">
+   A Probabilistic View
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ergodicity.html">
+   Stationarity and Ergodicity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/kolmogorov_bwd.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/kolmogorov_bwd.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/kolmogorov_bwd.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-dependent-jump-intensities">
+   State Dependent Jump Intensities
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#embedded-jump-chain-algorithm">
+     Embedded Jump Chain Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-the-semigroup">
+   Computing the Semigroup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-integral-equation">
+     An Integral Equation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kolmogorov-s-differential-equation">
+     Kolmogorov’s Differential Equation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-solution">
+     Exponential Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-the-solution">
+   Properties of the Solution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-the-transition-semigroup-properties">
+     Checking the Transition Semigroup Properties
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniqueness">
+     Uniqueness
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-the-inventory-model">
+   Application: The Inventory Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-1">
+     Solution to Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-2">
+     Solution to Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-3">
+     Solution to Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="kolmogorov-backward-equation">
+<h1>Kolmogorov Backward Equation<a class="headerlink" href="#kolmogorov-backward-equation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>As models become more complex, deriving analytical representations of the
+Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> becomes harder.</p>
+<p>This is analogous to the idea that solutions to continuous time models often
+lack analytical solutions.</p>
+<p>For example, when studying deterministic paths in continuous time,
+infinitesimal descriptions (ODEs and PDEs) are often more intuitive and easier
+to write down than the associated solutions.</p>
+<p>(This is one of the shining insights of mathematics, beginning with the work
+of great scientists such as Isaac Newton.)</p>
+<p>We will see in this lecture that the same is true for continuous time Markov
+chains.</p>
+<p>To help us focus on intuition in this lecture, rather than technicalities, the state space is assumed to be finite, with <span class="math notranslate nohighlight">\(|S|=n\)</span>.</p>
+<p>Later we will investigate the case where <span class="math notranslate nohighlight">\(|S| = \infty\)</span>.</p>
+<p>We will use the following imports</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">expm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="state-dependent-jump-intensities">
+<span id="sdji"></span><h2>State Dependent Jump Intensities<a class="headerlink" href="#state-dependent-jump-intensities" title="Permalink to this headline">¶</a></h2>
+<p>As we have seen, continuous time Markov chains jump between states, and hence can
+have the form</p>
+<div class="math notranslate nohighlight">
+\[
+    X_t = \sum_{k \geq 0} Y_k \mathbb 1\{J_k \leq t &lt; J_{k+1}\}
+    \qquad (t \geq 0)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\((J_k)\)</span> are jump times and <span class="math notranslate nohighlight">\((Y_k)\)</span> are the states at each jump.</p>
+<p>(We are assuming that <span class="math notranslate nohighlight">\(J_k \to \infty\)</span> with probability one, so that <span class="math notranslate nohighlight">\(X_t\)</span> is well
+defined for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>, but this is always true for when holding times are exponential and the state space is finite.)</p>
+<p>In the <a class="reference internal" href="markov_prop.html"><span class="doc">previous lecture</span></a>,</p>
+<ul class="simple">
+<li><p>the sequence <span class="math notranslate nohighlight">\((Y_k)\)</span> was drawn from a Markov matrix <span class="math notranslate nohighlight">\(K\)</span> and called the embedded jump chain, while</p></li>
+<li><p>the holding times <span class="math notranslate nohighlight">\(W_k := J_k - J_{k-1}\)</span> were IID and Exp<span class="math notranslate nohighlight">\((\lambda)\)</span> for some
+constant jump intensity <span class="math notranslate nohighlight">\(\lambda\)</span>.</p></li>
+</ul>
+<p>In this lecture, we will generalize by allowing the jump intensity to vary
+with the state.</p>
+<p>This difference sounds minor but in fact it will allow us to reach full generality
+in our description of continuous time Markov chains, as
+clarified below.</p>
+<div class="section" id="motivation">
+<h3>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h3>
+<p>As a motivating example, recall <a class="reference internal" href="markov_prop.html#inventory-dynam"><span class="std std-ref">the inventory model</span></a>,
+where we assumed that the wait time for the next customer was equal
+to the wait time for new inventory.</p>
+<p>This assumption was made purely for convenience and seems unlikely to hold true.</p>
+<p>When we relax it, the jump intensities depend on the state.</p>
+</div>
+<div class="section" id="embedded-jump-chain-algorithm">
+<span id="jumpchainalgo"></span><h3>Embedded Jump Chain Algorithm<a class="headerlink" href="#embedded-jump-chain-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>We start with three primitives</p>
+<ol class="simple">
+<li><p>An initial condition <span class="math notranslate nohighlight">\(\psi\)</span>,</p></li>
+<li><p>a Markov matrix <span class="math notranslate nohighlight">\(K\)</span> on <span class="math notranslate nohighlight">\(S\)</span> satisfying <span class="math notranslate nohighlight">\(K(x, x) = 0\)</span> for all <span class="math notranslate nohighlight">\(x \in S\)</span>
+and</p></li>
+<li><p>a function <span class="math notranslate nohighlight">\(\lambda\)</span> mapping <span class="math notranslate nohighlight">\(S\)</span> to <span class="math notranslate nohighlight">\((0, \infty)\)</span>.</p></li>
+</ol>
+<p>The process <span class="math notranslate nohighlight">\((X_t)\)</span></p>
+<ul class="simple">
+<li><p>starts at state <span class="math notranslate nohighlight">\(x\)</span>, draw from <span class="math notranslate nohighlight">\(\psi\)</span>,</p></li>
+<li><p>waits there for an exponential time <span class="math notranslate nohighlight">\(W\)</span> with rate <span class="math notranslate nohighlight">\(\lambda(x)\)</span> and then</p></li>
+<li><p>updates to a new state <span class="math notranslate nohighlight">\(y\)</span> drawn from <span class="math notranslate nohighlight">\(K(x, \cdot)\)</span>.</p></li>
+</ul>
+<p>Now we take <span class="math notranslate nohighlight">\(y\)</span> as the new state for the process and repeat.</p>
+<p>Here is the same algorithm written more explicitly:</p>
+<div class="proof algorithm admonition" id="ejc_algo">
+<p class="admonition-title"><span class="caption-number">Algorithm 6 </span> (Embedded Jump Chain Algorithm)</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Inputs</strong> <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>, rate function <span class="math notranslate nohighlight">\(\lambda\)</span>, Markov matrix <span class="math notranslate nohighlight">\(K\)</span></p>
+<p><strong>Outputs</strong> Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span></p>
+<ol class="simple">
+<li><p>draw <span class="math notranslate nohighlight">\(Y_0\)</span> from <span class="math notranslate nohighlight">\(\psi\)</span>, set <span class="math notranslate nohighlight">\(J_0 = 0\)</span> and <span class="math notranslate nohighlight">\(k=1\)</span>.</p></li>
+<li><p>Draw <span class="math notranslate nohighlight">\(W_k\)</span> independently from Exp<span class="math notranslate nohighlight">\((\lambda(Y_{k-1}))\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(J_k = J_{k-1} + W_k\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(X_t = Y_{k-1}\)</span> for <span class="math notranslate nohighlight">\(t\)</span> in <span class="math notranslate nohighlight">\([J_{k-1}, J_k)\)</span>.</p></li>
+<li><p>Draw <span class="math notranslate nohighlight">\(Y_k\)</span> from <span class="math notranslate nohighlight">\(K(Y_{k-1}, \cdot)\)</span>.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(k = k+1\)</span> and go to step 2.</p></li>
+</ol>
+</div>
+</div><p>The sequence <span class="math notranslate nohighlight">\((W_k)\)</span> is drawn as an IID sequence and <span class="math notranslate nohighlight">\((W_k)\)</span> and <span class="math notranslate nohighlight">\((Y_k)\)</span> are
+drawn independently.</p>
+<p>The restriction <span class="math notranslate nohighlight">\(K(x,x) = 0\)</span> for all <span class="math notranslate nohighlight">\(x\)</span> implies that <span class="math notranslate nohighlight">\((X_t)\)</span> actually jumps at each jump time.</p>
+</div>
+</div>
+<div class="section" id="computing-the-semigroup">
+<h2>Computing the Semigroup<a class="headerlink" href="#computing-the-semigroup" title="Permalink to this headline">¶</a></h2>
+<p>For the jump process <span class="math notranslate nohighlight">\((X_t)\)</span> with time varying intensities described in the
+jump chain algorithm, calculating the Markov semigroup is not a trivial exercise.</p>
+<p>The approach we adopt is</p>
+<ol class="simple">
+<li><p>use probabilistic reasoning to obtain an integral equation that the
+semigroup must satisfy.</p></li>
+<li><p>Convert the integral equation into a differential equation that is easier
+to work with.</p></li>
+<li><p>Solve this differential equation to obtain the Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>.</p></li>
+</ol>
+<p>The differential equation in question has a special name:  the Kolmogorov backward equation.</p>
+<div class="section" id="an-integral-equation">
+<h3>An Integral Equation<a class="headerlink" href="#an-integral-equation" title="Permalink to this headline">¶</a></h3>
+<p>Here is the first step in the sequence listed above.</p>
+<div class="proof lemma admonition" id="lemma-1">
+<p class="admonition-title"><span class="caption-number">Lemma 7 </span> (An Integral Equation)</p>
+<div class="lemma-content section" id="proof-content">
+<p>The semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> of the jump chain with rate function <span class="math notranslate nohighlight">\(\lambda\)</span> and Markov matrix <span class="math notranslate nohighlight">\(K\)</span> obeys the integral equation</p>
+<div class="math notranslate nohighlight" id="equation-kbinteg">
+<span class="eqno">(21)<a class="headerlink" href="#equation-kbinteg" title="Permalink to this equation">¶</a></span>\[
+    P_t(x, y) = e^{-t \lambda(x)} I(x, y)
+    + \lambda(x) 
+      \int_0^t (K P_{t-\tau})(x, y) e^{- \tau \lambda(x)} d \tau
+\]</div>
+<p>for all <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(x, y\)</span> in <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</div>
+</div><p>Here <span class="math notranslate nohighlight">\((P_t)\)</span> is the Markov semigroup of <span class="math notranslate nohighlight">\((X_t)\)</span>, the process constructed via
+<a class="reference internal" href="#ejc_algo">Algorithm 6</a>, while <span class="math notranslate nohighlight">\(K P_{t-\tau}\)</span> is the matrix product of <span class="math notranslate nohighlight">\(K\)</span> and
+<span class="math notranslate nohighlight">\(P_{t-\tau}\)</span>.</p>
+<div class="proof admonition" id="proof">
+<p>Proof. Conditioning implicitly on <span class="math notranslate nohighlight">\(X_0 = x\)</span>, the semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> must satisfy</p>
+<div class="math notranslate nohighlight" id="equation-pt-split">
+<span class="eqno">(22)<a class="headerlink" href="#equation-pt-split" title="Permalink to this equation">¶</a></span>\[
+    P_t(x, y) 
+    = \PP\{X_t = y\}
+    = \PP\{X_t = y, \; J_1 &gt; t \}
+        + \PP\{X_t = y, \; J_1 \leq t \}
+\]</div>
+<p>Regarding the first term on the right hand side of <a class="reference internal" href="#equation-pt-split">(22)</a>, we have</p>
+<div class="math notranslate nohighlight" id="equation-pt-first">
+<span class="eqno">(23)<a class="headerlink" href="#equation-pt-first" title="Permalink to this equation">¶</a></span>\[
+    \PP\{X_t = y, \; J_1 &gt; t \}
+        = I(x, y) P\{J_1 &gt; t \}
+        = I(x, y) e^{- t \lambda(x)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(I(x, y) = \mathbb 1\{x = y\}\)</span>.</p>
+<p>For the second term on the right hand side of <a class="reference internal" href="#equation-pt-split">(22)</a>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{X_t = y, \; J_1 &gt; t \}
+    = \EE 
+        \left[
+            \mathbb 1\{J_1 &gt; t\} \PP\{X_t = y \,|\, W_1, Y_1\}
+        \right]
+    = \EE 
+        \left[
+            \mathbb 1\{J_1 &gt; t\} P_{t - J_1} (Y_1, y) 
+        \right]
+\]</div>
+<p>Evaluating the expectation and using the independence of <span class="math notranslate nohighlight">\(J_1\)</span> and <span class="math notranslate nohighlight">\(Y_1\)</span>, this becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+    \PP\{X_t = y, \; J_1 &gt; t \}
+    &amp; = \int_0^\infty
+            \mathbb 1\{\tau &gt; t\}
+            \sum_z K(x, z) P_{t - \tau} (z, y)  \lambda(x) e^{-\tau \lambda(x)} 
+            d \tau
+        \\
+    &amp; = \lambda(x)
+            \int_0^t
+            \sum_z K(x, z) P_{t - \tau} (z, y)  e^{-\tau \lambda(x)} 
+            d \tau
+\end{aligned}
+\end{split}\]</div>
+<p>Combining this result with <a class="reference internal" href="#equation-pt-split">(22)</a> and <a class="reference internal" href="#equation-pt-first">(23)</a> gives
+<a class="reference internal" href="#equation-kbinteg">(21)</a>.</p>
+</div>
+</div>
+<div class="section" id="kolmogorov-s-differential-equation">
+<h3>Kolmogorov’s Differential Equation<a class="headerlink" href="#kolmogorov-s-differential-equation" title="Permalink to this headline">¶</a></h3>
+<p>We have now confirmed that the semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> associated with the jump
+chain process <span class="math notranslate nohighlight">\((X_t)\)</span> satisfies <a class="reference internal" href="#equation-kbinteg">(21)</a>.</p>
+<p>Equation <a class="reference internal" href="#equation-kbinteg">(21)</a> is important but we can simplify it further without
+losing information by taking the time derivative.</p>
+<p>This leads to our main result for the lecture</p>
+<div class="proof theorem admonition" id="theorem-2">
+<p class="admonition-title"><span class="caption-number">Theorem 8 </span> (Kolmogorov Backward Equation)</p>
+<div class="theorem-content section" id="proof-content">
+<p>The semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> of the jump chain with rate function <span class="math notranslate nohighlight">\(\lambda\)</span> and Markov matrix <span class="math notranslate nohighlight">\(K\)</span> satisfies the <strong>Kolmogorov backward equation</strong></p>
+<div class="math notranslate nohighlight" id="equation-kolbackeq">
+<span class="eqno">(24)<a class="headerlink" href="#equation-kolbackeq" title="Permalink to this equation">¶</a></span>\[
+    P'_t = Q P_t 
+    \quad \text{where } \;
+    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+\]</div>
+</div>
+</div><p>The derivative on the left hand side of <a class="reference internal" href="#equation-kolbackeq">(24)</a> is taken element by
+element, with respect to <span class="math notranslate nohighlight">\(t\)</span>, so that</p>
+<div class="math notranslate nohighlight">
+\[
+    P'_t(x, y) = \left( \frac{d}{dt} P_t(x, y) \right)
+    \qquad ((x, y) \in S \times S)
+\]</div>
+<p>The proof that differentiating <a class="reference internal" href="#equation-kbinteg">(21)</a> yields <a class="reference internal" href="#equation-kolbackeq">(24)</a> is an
+important exercise (see below).</p>
+</div>
+<div class="section" id="exponential-solution">
+<h3>Exponential Solution<a class="headerlink" href="#exponential-solution" title="Permalink to this headline">¶</a></h3>
+<p>The Kolmogorov backward equation is a matrix-valued differential equation.</p>
+<p>Recall that, for a scalar differential equation <span class="math notranslate nohighlight">\(y'_t = a y_t\)</span> with constant
+<span class="math notranslate nohighlight">\(a\)</span> and initial condition <span class="math notranslate nohighlight">\(y_0\)</span>, the solution is <span class="math notranslate nohighlight">\(y_t = e^{ta} y_0\)</span>.</p>
+<p>This, along with <span class="math notranslate nohighlight">\(P_0 = I\)</span>, encourages us to guess that the solution to
+Kolmogorov’s backward equation <a class="reference internal" href="#equation-kolbackeq">(24)</a> is</p>
+<div class="math notranslate nohighlight" id="equation-expsol">
+<span class="eqno">(25)<a class="headerlink" href="#equation-expsol" title="Permalink to this equation">¶</a></span>\[
+    P_t = e^{t Q} 
+\]</div>
+<p>where the right hand side is the <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_exponential">matrix exponential</a>, with definition</p>
+<div class="math notranslate nohighlight" id="equation-expofun">
+<span class="eqno">(26)<a class="headerlink" href="#equation-expofun" title="Permalink to this equation">¶</a></span>\[
+    e^{tQ} 
+    = \sum_{k \geq 0} \frac{1}{k!} (tQ)^k
+    = I + tQ + \frac{t^2}{2!} Q^2 + \cdots
+\]</div>
+<p>Working element by element, it is not difficult to confirm that
+the derivative of the exponential function <span class="math notranslate nohighlight">\(t \mapsto e^{tQ}\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-expoderiv">
+<span class="eqno">(27)<a class="headerlink" href="#equation-expoderiv" title="Permalink to this equation">¶</a></span>\[
+    \frac{d}{dt} e^{t Q} = Q e^{t Q} = e^{t Q} Q
+\]</div>
+<p>Hence, differentiating <a class="reference internal" href="#equation-expsol">(25)</a> gives <span class="math notranslate nohighlight">\(P'_t = Q e^{t Q} = Q P_t\)</span>, which
+convinces us that the exponential solution satisfies <a class="reference internal" href="#equation-kolbackeq">(24)</a>.</p>
+<p>Notice that our solution</p>
+<div class="math notranslate nohighlight" id="equation-psolq">
+<span class="eqno">(28)<a class="headerlink" href="#equation-psolq" title="Permalink to this equation">¶</a></span>\[
+    P_t = e^{t Q} 
+    \quad \text{where } \;
+    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+\]</div>
+<p>for the semigroup of the jump process <span class="math notranslate nohighlight">\((X_t)\)</span> associated with the jump matrix
+<span class="math notranslate nohighlight">\(K\)</span> and the jump intensity function <span class="math notranslate nohighlight">\(\lambda \colon S \to (0, \infty)\)</span> is
+consistent with our earlier result.</p>
+<p>In particular, we <a class="reference internal" href="markov_prop.html#consjumptransemi"><span class="std std-ref">showed</span></a> that, for the model with
+constant jump intensity <span class="math notranslate nohighlight">\(\lambda\)</span>, we have <span class="math notranslate nohighlight">\(P_t = e^{t \lambda (K - I)}\)</span>.</p>
+<p>This is obviously a special case of <a class="reference internal" href="#equation-psolq">(28)</a>.</p>
+</div>
+</div>
+<div class="section" id="properties-of-the-solution">
+<h2>Properties of the Solution<a class="headerlink" href="#properties-of-the-solution" title="Permalink to this headline">¶</a></h2>
+<p>Let’s investigate further the properties of the exponential solution.</p>
+<div class="section" id="checking-the-transition-semigroup-properties">
+<h3>Checking the Transition Semigroup Properties<a class="headerlink" href="#checking-the-transition-semigroup-properties" title="Permalink to this headline">¶</a></h3>
+<p>While we have confirmed that <span class="math notranslate nohighlight">\(P_t = e^{t Q}\)</span> solves the Kolmogorov backward
+equation, we still need to check that this solution is a Markov semigroup.</p>
+<div class="proof lemma admonition" id="jctosg">
+<p class="admonition-title"><span class="caption-number">Lemma 9 </span> (From Jump Chain to Semigroup)</p>
+<div class="lemma-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\lambda\)</span> map <span class="math notranslate nohighlight">\(S\)</span> to <span class="math notranslate nohighlight">\(\RR_+\)</span> and let <span class="math notranslate nohighlight">\(K\)</span> be a Markov matrix on <span class="math notranslate nohighlight">\(S\)</span>.
+If <span class="math notranslate nohighlight">\(P_t = e^{t Q}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>, where
+<span class="math notranslate nohighlight">\(Q(x, y) = \lambda(x) (K(x, y) - I(x, y))\)</span>, then <span class="math notranslate nohighlight">\((P_t)\)</span> is a Markov
+semigroup on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Observe first that <span class="math notranslate nohighlight">\(Q\)</span> has zero row sums, since</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_y Q(x, y) 
+    = \lambda(x) \sum_y (K(x, y) - I(x, y))
+    = 0
+\]</div>
+<p>As a small exercise, you can check that the following is true</p>
+<div class="math notranslate nohighlight" id="equation-zrsnec">
+<span class="eqno">(29)<a class="headerlink" href="#equation-zrsnec" title="Permalink to this equation">¶</a></span>\[
+    Q \text{ has zero row sums }
+    \iff
+    Q^k 1 = 0 \text{ for all } k \geq 1
+\]</div>
+<p>This implies that <span class="math notranslate nohighlight">\(Q^k 1 = 0\)</span> for all <span class="math notranslate nohighlight">\(k\)</span> and, as a result, for any <span class="math notranslate nohighlight">\(t \geq
+0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    P_t 1
+    = e^{tQ} 1
+    = I1 + tQ1 + \frac{t^2}{2!} Q^2 1 + \cdots
+    = I1 = 1
+\]</div>
+<p>In other words, each <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums.</p>
+<p>Next we check positivity of all elements of <span class="math notranslate nohighlight">\(P_t\)</span> (which can easily fail for
+matrix exponentials).</p>
+<p>To this end, adopting an argument from <a class="bibtex reference internal" href="zreferences.html#stroock2013introduction" id="id1">[Str13]</a>, we
+set <span class="math notranslate nohighlight">\(m := \max_x \lambda(x)\)</span> and <span class="math notranslate nohighlight">\(\hat P := I + Q / m\)</span>.</p>
+<p>It is not difficult to check that <span class="math notranslate nohighlight">\(\hat P\)</span> is a Markov matrix and <span class="math notranslate nohighlight">\(Q = m( \hat
+P - I)\)</span>.</p>
+<p>Recalling that, for matrix exponentials, <span class="math notranslate nohighlight">\(e^{A+B} = e^A e^B\)</span> whenever <span class="math notranslate nohighlight">\(AB =
+BA\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    e^{tQ} 
+    = e^{tm (\hat P - I)} 
+    = e^{-tm I} e^{tm \hat P}
+    = e^{-tm} 
+        \left( 
+            I + tm \hat P + \frac{(tm)^2}{2!} \hat P^2 + \cdots
+        \right)
+\]</div>
+<p>It is clear from this representation that all entries of <span class="math notranslate nohighlight">\(e^{tQ}\)</span> are
+nonnegative.</p>
+<p>Finally, we need to check the continuity condition <span class="math notranslate nohighlight">\(P_t(x, y) \to I(x,y)\)</span> as
+<span class="math notranslate nohighlight">\(t \to 0\)</span>, which is also part of the definition of a Markov semigroup.
+This is immediate, in the present case, because the exponential function is
+continuous, and hence <span class="math notranslate nohighlight">\(P_t = e^{tQ} \to e^0 = I\)</span>.</p>
+</div>
+<p>We can now be reassured that our solution to the Kolmogorov backward equation
+is indeed a Markov semigroup.</p>
+</div>
+<div class="section" id="uniqueness">
+<h3>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h3>
+<p>Might there be another, entirely different Markov semigroup that also
+satisfies the Kolmogorov backward equation?</p>
+<p>The answer is no:  linear ODEs in finite dimensional vector space with
+constant coefficients and fixed initial conditions (in this case <span class="math notranslate nohighlight">\(P_0 = I\)</span>)
+have unique solutions.</p>
+<p>In fact it’s not hard to supply a proof — see the exercises.</p>
+</div>
+</div>
+<div class="section" id="application-the-inventory-model">
+<h2>Application: The Inventory Model<a class="headerlink" href="#application-the-inventory-model" title="Permalink to this headline">¶</a></h2>
+<p>Let us look at a modified version of the inventory model where jump
+intensities depend on the state.</p>
+<p>In particular, the wait time for new inventory will now be exponential at rate
+<span class="math notranslate nohighlight">\(\gamma\)</span>.</p>
+<p>The arrival rate for customers will still be denoted by <span class="math notranslate nohighlight">\(\lambda\)</span> and allowed
+to differ from <span class="math notranslate nohighlight">\(\gamma\)</span>.</p>
+<p>For parameters we take</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">α</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">γ</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our plan is to investigate the distribution <span class="math notranslate nohighlight">\(\psi_T\)</span> of <span class="math notranslate nohighlight">\(X_T\)</span> at <span class="math notranslate nohighlight">\(T=30\)</span>.</p>
+<p>We will do this by simulating many independent draws of <span class="math notranslate nohighlight">\(X_T\)</span> and
+histogramming them.</p>
+<p>(In the exercises you are asked to calculate <span class="math notranslate nohighlight">\(\psi_T\)</span> a different way, via
+<a class="reference internal" href="#equation-psolq">(28)</a>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">draw_X</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">X_0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate one draw of X_T given X_0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">J</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">X_0</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">max_iter</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">γ</span> <span class="k">if</span> <span class="n">Y</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span><span class="o">/</span><span class="n">λ</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># W ~ E(λ)</span>
+        <span class="n">J</span> <span class="o">+=</span> <span class="n">W</span>
+        <span class="k">if</span> <span class="n">J</span> <span class="o">&gt;=</span> <span class="n">T</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Y</span>
+        <span class="c1"># Otherwise update Y</span>
+        <span class="k">if</span> <span class="n">Y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">geometric</span><span class="p">(</span><span class="n">α</span><span class="p">)</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+        <span class="n">m</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">independent_draws</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_draws</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="s2">&quot;Generate a vector of independent draws of X_T.&quot;</span>
+
+    <span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">num_draws</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_draws</span><span class="p">):</span>
+        <span class="n">X_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+        <span class="n">draws</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">draw_X</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">X_0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">draws</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span> 
+<span class="n">draws</span> <span class="o">=</span> <span class="n">independent_draws</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">num_draws</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">draws</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)],</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;inventory&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/kolmogorov_bwd_6_0.png" src="_images/kolmogorov_bwd_6_0.png" />
+</div>
+</div>
+<p>If you experiment with the code above, you will see that the large amount of
+mass on zero is due to the low arrival rate <span class="math notranslate nohighlight">\(\gamma\)</span> for inventory.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>In the discussion above, we generated an approximation of <span class="math notranslate nohighlight">\(\psi_T\)</span> when
+<span class="math notranslate nohighlight">\(T=30\)</span>, the initial condition is Binomial<span class="math notranslate nohighlight">\((n, 0.25)\)</span> and parameters
+are set to</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">α</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">γ</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The calculation was done by simulating independent draws and histogramming.</p>
+<p>Try to generate the same figure using <a class="reference internal" href="#equation-psolq">(28)</a> instead, modifying code from
+<span class="xref std std-ref">our lecture</span> on the Markov property.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Prove that differentiating <a class="reference internal" href="#equation-kbinteg">(21)</a> at each <span class="math notranslate nohighlight">\((x, y)\)</span> yields <a class="reference internal" href="#equation-kolbackeq">(24)</a>.</p>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>We claimed above that the solution <span class="math notranslate nohighlight">\(P_t = e^{t Q}\)</span> is the unique
+Markov semigroup satisfying the backward equation <span class="math notranslate nohighlight">\(P'_t = Q P_t\)</span>.</p>
+<p>Try to supply a proof.</p>
+<p>(This is not an easy exercise but worth thinking about in any case.)</p>
+</div>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Here is one solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Embedded jump chain matrix</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">α</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Jump intensities as a function of the state</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">λ</span>
+<span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">γ</span>
+
+<span class="c1"># Q matrix</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">P_t</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ψ</span> <span class="o">@</span> <span class="n">expm</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">Q</span><span class="p">)</span>
+
+<span class="n">ψ_0</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ψ_T</span> <span class="o">=</span> <span class="n">P_t</span><span class="p">(</span><span class="n">ψ_0</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">ψ_T</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;inventory&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/kolmogorov_bwd_10_0.png" src="_images/kolmogorov_bwd_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-exercise-2">
+<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>One can easily verify that, when <span class="math notranslate nohighlight">\(f\)</span> is a differentiable function and <span class="math notranslate nohighlight">\(\alpha &gt;
+0\)</span>, we have</p>
+<div class="math notranslate nohighlight" id="equation-gdiff">
+<span class="eqno">(30)<a class="headerlink" href="#equation-gdiff" title="Permalink to this equation">¶</a></span>\[
+    g(t) = e^{- t \alpha} f(t)
+    \quad \implies \quad
+    g'(t) = e^{- t \alpha} f'(t) - \alpha g(t)
+\]</div>
+<p>Note also that, with the change of variable <span class="math notranslate nohighlight">\(s = t - \tau\)</span>, we can rewrite
+<a class="reference internal" href="#equation-kbinteg">(21)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-kbinteg2">
+<span class="eqno">(31)<a class="headerlink" href="#equation-kbinteg2" title="Permalink to this equation">¶</a></span>\[
+    P_t(x, y) = 
+    e^{-t \lambda(x)} 
+    \left\{ 
+        I(x, y)
+        + \lambda(x) 
+        \int_0^t (K P_s)(x, y) e^{s \lambda(x)} d s
+    \right\}
+\]</div>
+<p>Applying <a class="reference internal" href="#equation-gdiff">(30)</a> yields</p>
+<div class="math notranslate nohighlight">
+\[
+    P'_t(x, y) 
+    = e^{-t \lambda(x)} 
+        \left\{ 
+             \lambda(x) 
+             (K P_t)(x, y) e^{t \lambda(x)} 
+        \right\}
+        - \lambda(x) P_t(x, y)
+\]</div>
+<p>After minor rearrangements this becomes</p>
+<div class="math notranslate nohighlight">
+\[
+    P'_t(x, y) 
+    = \lambda(x) [ (K - I)  P_t](x, y) 
+\]</div>
+<p>which is identical to <a class="reference internal" href="#equation-kolbackeq">(24)</a>.</p>
+</div>
+<div class="section" id="solution-to-exercise-3">
+<h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Here is one proof of uniqueness.</p>
+<p>Suppose that <span class="math notranslate nohighlight">\((\hat P_t)\)</span> is another Markov semigroup satisfying
+<span class="math notranslate nohighlight">\(P'_t = Q P_t\)</span>.</p>
+<p>Fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and let <span class="math notranslate nohighlight">\(V_s\)</span> be defined by <span class="math notranslate nohighlight">\(V_s = P_s \hat P_{t-s}\)</span> for all <span class="math notranslate nohighlight">\(s
+\geq 0\)</span>.</p>
+<p>Note that <span class="math notranslate nohighlight">\(V_0 = \hat P_t\)</span> and <span class="math notranslate nohighlight">\(V_t = P_t\)</span>.</p>
+<p>Note also that <span class="math notranslate nohighlight">\(s \mapsto V_s\)</span> is differentiable, with derivative</p>
+<div class="math notranslate nohighlight">
+\[
+    V'_s 
+    = P'_s \hat P_{t-s} - P_s \hat P'_{t-s}
+    = P_s Q \hat P_{t-s} - P_s Q \hat P_{t-s}
+    = 0
+\]</div>
+<p>where, in the second last equality, we used <a class="reference internal" href="#equation-expoderiv">(27)</a>.</p>
+<p>Hence <span class="math notranslate nohighlight">\(V_s\)</span> is constant, so our previous observations <span class="math notranslate nohighlight">\(V_0 = \hat P_t\)</span> and <span class="math notranslate nohighlight">\(V_t = P_t\)</span>
+now yield <span class="math notranslate nohighlight">\(\hat P_t = P_t\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(t\)</span> was arbitrary, the proof is now done.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="markov_prop.html" title="previous page">The Markov Property</a>
+    <a class='right-next' id="next-link" href="kolmogorov_fwd.html" title="next page">The Kolmogorov Forward Equation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

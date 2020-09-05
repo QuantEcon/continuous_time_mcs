@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Poisson Processes &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Markov Property" href="markov_prop.html" />
+    <link rel="prev" title="Memoryless Distributions" href="memoryless.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Continuous Time Markov Chains
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="memoryless.html">
+   Memoryless Distributions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Poisson Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_prop.html">
+   The Markov Property
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_bwd.html">
+   Kolmogorov Backward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_fwd.html">
+   The Kolmogorov Forward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generators.html">
+   Semigroups and Generators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uc_mc_semigroups.html">
+   UC Markov Semigroups
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prob_view.html">
+   A Probabilistic View
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ergodicity.html">
+   Stationarity and Ergodicity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/poisson.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/poisson.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/poisson.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#counting-processes">
+   Counting Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jumps-and-counts">
+     Jumps and Counts
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-holding-times">
+     Exponential Holding Times
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stationary-independent-increments">
+   Stationary Independent Increments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uniqueness">
+   Uniqueness
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-restarting-property">
+     The Restarting Property
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2">
+   Exercise 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-1">
+     Solution to Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-2">
+     Solution to Exercise 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="poisson-processes">
+<h1>Poisson Processes<a class="headerlink" href="#poisson-processes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Counting processes count the number of “arrivals” occurring by a given time
+(e.g., the number of visitors to a website, the number of customers arriving at a restaurant, etc.)</p>
+<p>Counting processes become Poisson processes when the time interval between
+arrivals is IID and exponentially distributed.</p>
+<p>Exponential distributions and Poisson processes have deep connections to
+continuous time Markov chains.</p>
+<p>For example, Poisson processes are one of the simplest nontrivial examples of
+a continuous time Markov chain.</p>
+<p>In addition, when continuous time Markov chains jump between states, the time
+between jumps is <em>necessarily</em> exponentially distributed.</p>
+<p>In discussing Poisson processes, we will use the following imports:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">binom</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="counting-processes">
+<h2>Counting Processes<a class="headerlink" href="#counting-processes" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start with the general case of an arbitrary counting process.</p>
+<div class="section" id="jumps-and-counts">
+<h3>Jumps and Counts<a class="headerlink" href="#jumps-and-counts" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((J_k)\)</span> be an increasing sequence of nonnegative random variables
+satisfying  <span class="math notranslate nohighlight">\(J_k \to \infty\)</span> with probability one.</p>
+<p>For example, <span class="math notranslate nohighlight">\(J_k\)</span> might be the time the <span class="math notranslate nohighlight">\(k\)</span>-th customer arrives at a shop.</p>
+<p>Then</p>
+<div class="math notranslate nohighlight" id="equation-defcount">
+<span class="eqno">(6)<a class="headerlink" href="#equation-defcount" title="Permalink to this equation">¶</a></span>\[
+    N_t := \sum_{k \geq 0} k \mathbb{1} \{ J_k \leq t &lt; J_{k+1} \}
+\]</div>
+<p>is the number of customers that have visited by time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>The next figure illustrate the definition of <span class="math notranslate nohighlight">\(N_t\)</span> for a given jump sequence <span class="math notranslate nohighlight">\(\{J_k\}\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ks</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">Js</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Ks</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Js</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Ks</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">Ks</span><span class="p">,</span> <span class="n">Js</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Js</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$N_t$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Js</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Ks</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Ks</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">Ks</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">Js</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+       <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;$J_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">$&#39;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)],</span>
+       <span class="n">yticks</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+       <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;$t$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/poisson_3_0.png" src="_images/poisson_3_0.png" />
+</div>
+</div>
+<p>An alternative but equivalent definition is</p>
+<div class="math notranslate nohighlight">
+\[
+    N_t = \max \{k \geq 0 \,|\, J_k \leq t \}
+\]</div>
+<p>As a function of <span class="math notranslate nohighlight">\(t\)</span>, the process <span class="math notranslate nohighlight">\(N_t\)</span> is called a <strong>counting process</strong>.</p>
+<p>The jump times <span class="math notranslate nohighlight">\((J_k)\)</span> are sometimes called <strong>arrival times</strong> and the
+intervals <span class="math notranslate nohighlight">\(J_k - J_{k-1}\)</span> are called <strong>wait times</strong> or <strong>holding times</strong>.</p>
+</div>
+<div class="section" id="exponential-holding-times">
+<h3>Exponential Holding Times<a class="headerlink" href="#exponential-holding-times" title="Permalink to this headline">¶</a></h3>
+<p>A Poisson process is a counting process with independent exponential holding times.</p>
+<p>In particular, suppose that the arrival times are given by <span class="math notranslate nohighlight">\(J_0 = 0\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+    J_k := W_1 + \cdots W_k 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\((W_i)\)</span> are IID exponential with some fixed rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>Then the associated counting process <span class="math notranslate nohighlight">\((N_t)\)</span> is called a <strong>Poisson process</strong> with rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>The rationale behind the name is that, for each <span class="math notranslate nohighlight">\(t &gt; 0\)</span>, the random variable
+<span class="math notranslate nohighlight">\(N_t\)</span> has the Poisson distribution with parameter <span class="math notranslate nohighlight">\(t \lambda\)</span>.</p>
+<p>In other words,</p>
+<div class="math notranslate nohighlight" id="equation-poissondist">
+<span class="eqno">(7)<a class="headerlink" href="#equation-poissondist" title="Permalink to this equation">¶</a></span>\[ 
+    \PP\{N_t = k\} 
+    = e^{-t \lambda} \frac{(t \lambda)^k }{k!}
+    \qquad (k = 0, 1, \ldots)
+\]</div>
+<p>For example, since <span class="math notranslate nohighlight">\(N_t = 0\)</span> if and only if <span class="math notranslate nohighlight">\(W_1 &gt; t\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[ 
+    \PP\{N_t =0\} 
+    = \PP\{W_1 &gt; t\}
+    = e^{-t \lambda}
+\]</div>
+<p>and the right hand side agrees with <a class="reference internal" href="#equation-poissondist">(7)</a> when <span class="math notranslate nohighlight">\(k=0\)</span>.</p>
+<p>This sets up a proof by induction, which is time consuming but not difficult
+— the details can be found in <span class="math notranslate nohighlight">\(\S29\)</span> of <a class="bibtex reference internal" href="zreferences.html#howard2017elements" id="id1">[How17]</a>.</p>
+<p>Another way to show that <span class="math notranslate nohighlight">\(N_t\)</span> is Poisson with rate <span class="math notranslate nohighlight">\(\lambda\)</span> is appeal to
+<a class="reference internal" href="memoryless.html#erlexp">Lemma 2</a>.</p>
+<p>We observe that</p>
+<div class="math notranslate nohighlight">
+\[ 
+    \PP\{N_t \leq n\} 
+    = \PP\{J_{n+1} &gt; t\} 
+    = 1 - \PP\{J_{n+1} \leq t\}
+\]</div>
+<p>Inserting the expression for the Erlang CDF in <a class="reference internal" href="memoryless.html#equation-erlcdf">(5)</a> with shape <span class="math notranslate nohighlight">\(n+1\)</span> and
+rate <span class="math notranslate nohighlight">\(\lambda\)</span>, we obtain</p>
+<div class="math notranslate nohighlight">
+\[ 
+    \PP\{N_t \leq n\} 
+    = \sum_{k=0}^{n} \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+\]</div>
+<p>This is the (integer valued) CDF for the Poisson distribution with parameter
+<span class="math notranslate nohighlight">\(t \lambda\)</span>.</p>
+<p>An exercise at the end of the lecture asks you to verify that <span class="math notranslate nohighlight">\(N(t)\)</span> is Poisson-<span class="math notranslate nohighlight">\((t \lambda )\)</span> informally via simulation.</p>
+<p>The next figure shows one realization of a Poisson process <span class="math notranslate nohighlight">\((N_t)\)</span>, with jumps
+at each new arrival.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">Ws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+<span class="n">Js</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">Ws</span><span class="p">)</span>
+<span class="n">Ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">Js</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Ys</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">Ys</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">Js</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Js</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$N_t$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Js</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Ys</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Ys</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span>
+       <span class="n">yticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">Ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+       <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/poisson_5_0.png" src="_images/poisson_5_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stationary-independent-increments">
+<h2>Stationary Independent Increments<a class="headerlink" href="#stationary-independent-increments" title="Permalink to this headline">¶</a></h2>
+<p>One of the defining features of a Poisson process is that it has stationary
+and independent increments.</p>
+<p>This is due to the memoryless property of exponentials.</p>
+<p>It means in particular that</p>
+<ol class="simple">
+<li><p>the variables <span class="math notranslate nohighlight">\(\{N_{t_{i+1}} - N_{t_i}\}_{i \in I}\)</span> are independent for any
+strictly increasing finite sequence <span class="math notranslate nohighlight">\((t_i)_{i \in I}\)</span> and</p></li>
+<li><p>the distribution of <span class="math notranslate nohighlight">\(N_{t+h} - N_t\)</span> depends on <span class="math notranslate nohighlight">\(h\)</span> but not <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+</ol>
+<p>A detailed proof can be found in Theorem 2.4.3 of <a class="bibtex reference internal" href="zreferences.html#norris1998markov" id="id2">[Nor98]</a>.</p>
+<p>Instead of repeating this, we provide some intuition from a discrete
+approximation.</p>
+<p>In the discussion below, we use the following well known fact:  If
+<span class="math notranslate nohighlight">\((\theta_n)\)</span> is a sequence such that <span class="math notranslate nohighlight">\(n \theta_n\)</span> converges, then</p>
+<div class="math notranslate nohighlight" id="equation-binpois">
+<span class="eqno">(8)<a class="headerlink" href="#equation-binpois" title="Permalink to this equation">¶</a></span>\[
+    \text{Binomial}(n, \theta_n) 
+    \approx
+    \text{Poisson}(n \theta_n)
+    \quad \text{for large } n
+\]</div>
+<p>(The exercises ask you to examine this claim visually.)</p>
+<p>We now return to <a class="reference internal" href="memoryless.html#geomtoexp"><span class="std std-ref">the environment</span></a> where we linked the
+geometric distribution to the exponential.</p>
+<p>That is, we fix small <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and let <span class="math notranslate nohighlight">\(t_i := ih\)</span> for all <span class="math notranslate nohighlight">\(i \in \ZZ_+\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\((V_i)\)</span> be IID binary random variables with <span class="math notranslate nohighlight">\(\PP\{V_i = 1\} = h \lambda\)</span> for some <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>.</p>
+<p>Linking to our previous discussion,</p>
+<ul class="simple">
+<li><p>either one or zero customers visits a shop at each <span class="math notranslate nohighlight">\(t_i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_i = 1\)</span> means that a customer visits at time <span class="math notranslate nohighlight">\(t_i\)</span>.</p></li>
+<li><p>Visits occur with probability <span class="math notranslate nohighlight">\(h \lambda\)</span>, which is proportional to the
+length of the interval between grid points.</p></li>
+</ul>
+<p>We learned that the wait time until the first visit is
+approximately exponential with rate <span class="math notranslate nohighlight">\(t \lambda\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\((V_i)\)</span> is IID, the same is true for the second wait time and so on.</p>
+<p>Moreover, these wait times are independent, since they depend on separate
+subsets of <span class="math notranslate nohighlight">\((V_i)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\hat N_t\)</span> count the number of visits by time <span class="math notranslate nohighlight">\(t\)</span>, as shown in the next figure.</p>
+<p>(<span class="math notranslate nohighlight">\(V_i = 1\)</span> is indicated by a vertical line at <span class="math notranslate nohighlight">\(t_i = i h\)</span>.)</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">T</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">p</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">N</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># max of N</span>
+
+<span class="n">t_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">t_ticks</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;$t_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">$&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t_grid</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">t_grid</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">t_ticks</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">t_grid</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\hat N_t$&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t_grid</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">((</span><span class="n">i</span><span class="p">,),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="p">(</span><span class="n">m</span><span class="p">,),</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/poisson_7_0.png" src="_images/poisson_7_0.png" />
+</div>
+</div>
+<p>We expect from the discussion above that <span class="math notranslate nohighlight">\((\hat N_t)\)</span> approximates a Poisson process.</p>
+<p>This intuition is correct because, fixing <span class="math notranslate nohighlight">\(t\)</span>, letting <span class="math notranslate nohighlight">\(k := \max\{i \in
+\ZZ_+ \,:\, t_i \leq t\}\)</span> and applying <a class="reference internal" href="#equation-binpois">(8)</a>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat N_t 
+    = \sum_{i=1}^k V_i
+    \sim \text{Binomial}(k, h \lambda)
+    \approx
+    \text{Poisson}(k h \lambda )
+\]</div>
+<p>Using the fact that <span class="math notranslate nohighlight">\(kh = t_k \approx t\)</span> as <span class="math notranslate nohighlight">\(h \to 0\)</span>, we see
+that <span class="math notranslate nohighlight">\(\hat N_t\)</span> is approximately Poisson with rate <span class="math notranslate nohighlight">\(t \lambda\)</span>, just as we
+expected.</p>
+<p>This approximate construction of a Poisson process helps illustrate the
+property of stationary independent increments.</p>
+<p>For example, if we fix <span class="math notranslate nohighlight">\(s, t\)</span>, then <span class="math notranslate nohighlight">\(\hat N_{s + t} - \hat N_s\)</span> is the number of visits
+between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(s+t\)</span>, so that</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat N_{s+t} - \hat N_s
+    = \sum_i V_i \mathbb 1\{ s \leq t_i &lt; s + t \}
+\]</div>
+<p>Suppose there are <span class="math notranslate nohighlight">\(k\)</span> grid points between <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(s+t\)</span>, so that <span class="math notranslate nohighlight">\(t \approx
+kh\)</span>.</p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat N_{s+t} - \hat N_s
+    \sim \text{Binomial}(k, h \lambda )
+    \approx 
+    \text{Poisson}(k h \lambda )
+    \approx 
+    \text{Poisson}(t\lambda)
+\]</div>
+<p>This illustrates the idea that, for a Poisson process <span class="math notranslate nohighlight">\((N_t)\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+   N_{s+t} - N_s 
+   \sim  \text{Poisson}(t\lambda)
+\]</div>
+<p>In particular, increments are stationary (the distribution depends on <span class="math notranslate nohighlight">\(t\)</span> but not <span class="math notranslate nohighlight">\(s\)</span>).</p>
+<p>The approximation also illustrates independence of increments, since, in the
+approximation, increments depend on separate subsets of <span class="math notranslate nohighlight">\((V_i)\)</span>.</p>
+</div>
+<div class="section" id="uniqueness">
+<h2>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h2>
+<p>What other counting processes have stationary independent increments?</p>
+<p>Remarkably, the answer is none:</p>
+<div class="proof theorem admonition" id="theorem-0">
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Characterization of Poisson Processes)</p>
+<div class="theorem-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\((M_t)\)</span> is a stochastic process supported on <span class="math notranslate nohighlight">\(\ZZ_+\)</span> and starting at 0 with
+the property that its increments are stationary and independent, then <span class="math notranslate nohighlight">\((M_t)\)</span> is a Poisson process.</p>
+</div>
+</div><p>In particular, there exists a <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+    M_{s + t} - M_s
+   \sim  \text{Poisson}(t\lambda)
+\]</div>
+<p>for any <span class="math notranslate nohighlight">\(s, t\)</span>.</p>
+<p>The proof is similar to our earlier proof that the exponential distribution is
+the only memoryless distribution.</p>
+<p>Details can be found in Section 6.2 of <a class="bibtex reference internal" href="zreferences.html#pardoux2008markov" id="id3">[Par08]</a> or
+Theorem 2.4.3 of <a class="bibtex reference internal" href="zreferences.html#norris1998markov" id="id4">[Nor98]</a>.</p>
+<div class="section" id="the-restarting-property">
+<span id="restart-prop"></span><h3>The Restarting Property<a class="headerlink" href="#the-restarting-property" title="Permalink to this headline">¶</a></h3>
+<p>An important consequence of stationary independent increments is the
+restarting property, which means that, when simulating, we can freely stop and
+restart a Poisson process at any time:</p>
+<div class="proof theorem admonition" id="theorem-1">
+<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (Poisson Processes can be Pause and Restarted)</p>
+<div class="theorem-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\((N_t)\)</span> is a Poisson process, <span class="math notranslate nohighlight">\(s &gt; 0\)</span> and
+<span class="math notranslate nohighlight">\((M_t)\)</span> is defined by <span class="math notranslate nohighlight">\(M_t = N_{s+t} - N_s\)</span> for <span class="math notranslate nohighlight">\(t \geq 0\)</span>, then <span class="math notranslate nohighlight">\((M_t)\)</span> is a
+Poisson process independent of <span class="math notranslate nohighlight">\((N_r)_{r \leq s}\)</span>.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Independence of <span class="math notranslate nohighlight">\((M_t)\)</span> and <span class="math notranslate nohighlight">\((N_r)_{r \leq s}\)</span> follows from indepenence of the
+increments of <span class="math notranslate nohighlight">\((N_t)\)</span>.</p>
+<p>In view of the uniqueness statement above, we can verify that <span class="math notranslate nohighlight">\((M_t)\)</span> is a
+Poisson process by showing that <span class="math notranslate nohighlight">\((M_t)\)</span> starts at zero, takes values in
+<span class="math notranslate nohighlight">\(\ZZ_+\)</span> and has stationary independent increments.</p>
+<p>It is clear that <span class="math notranslate nohighlight">\((M_t)\)</span> starts at zero and takes values in <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
+<p>In addition, if we take any <span class="math notranslate nohighlight">\(t &lt; t'\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    M_{t'} - M_t = N_{s+t'} - N_{s + t}
+   \sim  \text{Poisson}((t' - t) \lambda)
+\]</div>
+<p>Hence <span class="math notranslate nohighlight">\((M_t)\)</span> has stationary increments and,
+using the relation <span class="math notranslate nohighlight">\(M_{t'} - M_t = N_{s+t'} - N_{s + t}\)</span> again,
+the increments are independent as well.</p>
+<p>We conclude that <span class="math notranslate nohighlight">\((N_{s+t} - N_s)_{t \geq 0}\)</span> is indeed a
+Poisson process independent of <span class="math notranslate nohighlight">\((N_r)_{r \leq s}\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Fix <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> and draw <span class="math notranslate nohighlight">\(\{W_i\}\)</span> as IID exponentials with rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>Set <span class="math notranslate nohighlight">\(J_n := W_1 + \cdots W_n\)</span> with <span class="math notranslate nohighlight">\(J_0 = 0\)</span> and
+<span class="math notranslate nohighlight">\(N_t := \sum_{n \geq 0} n \mathbb 1\{ J_n \leq t &lt; J_{n+1} \}\)</span>.</p>
+<p>Provide a visual test of the claim that <span class="math notranslate nohighlight">\(N_t\)</span> is Poisson with parameter <span class="math notranslate nohighlight">\(t
+\lambda\)</span>.</p>
+<p>Do this by fixing <span class="math notranslate nohighlight">\(t = T\)</span>, generating many independent draws of <span class="math notranslate nohighlight">\(N_T\)</span> and
+comparing the empirical distribution of the sample with a Poisson
+distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)</span>.</p>
+<p>Try first with <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(T=10\)</span>.</p>
+</div>
+<div class="section" id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<p>In the lecture we used the fact that <span class="math notranslate nohighlight">\(\Binomial(n, \theta) \approx \Poisson(n \theta)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
+<p>Investigate this relationship by plotting the distributions side by side.</p>
+<p>Experiment with different values of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Here is one solution.</p>
+<p>The figure shows that the fit is already good with a modest sample size.</p>
+<p>Increasing the sample size will further improve the fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span> <span class="nf">poisson</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="s2">&quot;Poisson pmf with rate r.&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="n">k</span><span class="p">)</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">draw_Nt</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mf">1e5</span><span class="p">):</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">max_iter</span><span class="p">:</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span>
+        <span class="n">J</span> <span class="o">+=</span> <span class="n">W</span>
+        <span class="k">if</span> <span class="n">J</span> <span class="o">&gt;</span> <span class="n">T</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">draw_Nt_sample</span><span class="p">(</span><span class="n">num_draws</span><span class="p">):</span>
+    <span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">num_draws</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_draws</span><span class="p">):</span>
+        <span class="n">draws</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">draw_Nt</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">draws</span>
+
+
+<span class="n">sample_size</span> <span class="o">=</span> <span class="mi">10_000</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">draw_Nt_sample</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
+<span class="n">max_val</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_val</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="p">[</span><span class="n">poisson</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">T</span> <span class="o">*</span> <span class="n">λ</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">],</span> 
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;poisson&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="o">==</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">],</span> 
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;empirical&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/poisson_9_0.png" src="_images/poisson_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="solution-to-exercise-2">
+<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Here is one solution.  It shows that the approximation is good when <span class="math notranslate nohighlight">\(n\)</span> is
+large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binomial</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="c1"># Binomial(n, p) pmf evaluated at k</span>
+    <span class="k">return</span> <span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="o">**</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">)</span>
+
+<span class="n">θ_vals</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span>
+
+<span class="n">n_vals</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_vals</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">θ</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">n_vals</span><span class="p">,</span> <span class="n">θ_vals</span><span class="p">,</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()):</span>
+
+    <span class="n">k_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">binom_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">binomial</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">θ</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_grid</span><span class="p">]</span>
+    <span class="n">poisson_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">poisson</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="n">θ</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_grid</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_grid</span><span class="p">,</span> <span class="n">binom_vals</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;binomial&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_grid</span><span class="p">,</span> <span class="n">poisson_vals</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Poisson&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">$ and $</span><span class="se">\\</span><span class="s1">theta = </span><span class="si">{</span><span class="n">θ</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/poisson_11_0.png" src="_images/poisson_11_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="memoryless.html" title="previous page">Memoryless Distributions</a>
+    <a class='right-next' id="next-link" href="markov_prop.html" title="next page">The Markov Property</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

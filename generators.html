@@ -1,0 +1,795 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Semigroups and Generators &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="UC Markov Semigroups" href="uc_mc_semigroups.html" />
+    <link rel="prev" title="The Kolmogorov Forward Equation" href="kolmogorov_fwd.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Continuous Time Markov Chains
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="memoryless.html">
+   Memoryless Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="poisson.html">
+   Poisson Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_prop.html">
+   The Markov Property
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_bwd.html">
+   Kolmogorov Backward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_fwd.html">
+   The Kolmogorov Forward Equation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Semigroups and Generators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uc_mc_semigroups.html">
+   UC Markov Semigroups
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prob_view.html">
+   A Probabilistic View
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ergodicity.html">
+   Stationarity and Ergodicity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/generators.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/generators.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/generators.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminaries">
+   Preliminaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-space-of-linear-operators">
+     The Space of Linear Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-exponential-function">
+     The Exponential Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operator-calculus">
+     Operator Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   Semigroups and Generators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operator-semigroups">
+     Operator Semigroups
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generators">
+     Generators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-characterization-of-uniformly-continuous-semigroups">
+     A Characterization of Uniformly Continuous Semigroups
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-1">
+     Solution to Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-2">
+     Solution to Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-3">
+     Solution to Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="semigroups-and-generators">
+<h1>Semigroups and Generators<a class="headerlink" href="#semigroups-and-generators" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>We have seen in previous lectures that every intensity matrix generates a
+Markov semigroup.</p>
+<p>We have also hinted that the pairing is one-to-one, in a sense to be made precise.</p>
+<p>To clarify these ideas, we start in an
+abstract setting, with an arbitrary initial value problem.</p>
+<p>In this setting we introduce general operator semigroups and their generators.</p>
+<p>Once this is done, we will be able to return to the Markov case and fully
+clarify the connection between intensity matrices and Markov semigroups.</p>
+<p>The material below is relatively technical, with most of the
+complications driven by the fact that the state space can be infinite.</p>
+<p>Such technicalities are hard to avoid, since so many interesting Markov chains
+do have infinite state spaces.</p>
+<ul class="simple">
+<li><p>Our very first example – the Poisson process – has an infinite state space.</p></li>
+<li><p>Another example is the study of queues, which often have no natural upper
+bound.<a class="footnote-reference brackets" href="#footnotepp" id="id1">1</a></p></li>
+</ul>
+<p>Readers are assumed to have some basic familiarity with Banach spaces.</p>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>The general theory of continuous semigroups of operators is motivated by
+the problem of solving linear ODEs in infinite dimensional spaces.<a class="footnote-reference brackets" href="#fnpde" id="id2">2</a></p>
+<p>More specifically, the challenge is to solve initial value problems such as</p>
+<div class="math notranslate nohighlight" id="equation-abscp">
+<span class="eqno">(38)<a class="headerlink" href="#equation-abscp" title="Permalink to this equation">¶</a></span>\[
+    x'_t = A x_t,
+    \quad x_0 \text{ given}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_t\)</span> takes value in a Banach space at each time <span class="math notranslate nohighlight">\(t\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is a linear operator and</p></li>
+<li><p>the time derivative <span class="math notranslate nohighlight">\(x'_t\)</span> uses a definition appropriate for a Banach
+space.</p></li>
+</ul>
+<p>This problem is also called the “abstract Cauchy problem”.</p>
+<p>Why do we need solve such problems?</p>
+<p>One example comes from PDEs.</p>
+<p>PDEs tell us how functions change over time, starting from an infinitesimal
+description.</p>
+<p>When <span class="math notranslate nohighlight">\(x_t\)</span> is a point in a function space, this fits into the framework of
+<a class="reference internal" href="#equation-abscp">(38)</a>.</p>
+<p>Another example comes from Markov processes, where, as we have seen, the flow
+of distributions over time can be represented as a linear ODE in distribution
+space.</p>
+<p>If the number of state is infinite, then the space of distributions is
+infinite dimensional.</p>
+<p>This is another version of <a class="reference internal" href="#equation-abscp">(38)</a>, and we return to it after a discussion
+of the general theory.</p>
+<p>To give a high level view of the results below, the solution to the Cauchy
+problem is represented as a trajectory <span class="math notranslate nohighlight">\(t \mapsto U_t x_0\)</span> from the initial
+value <span class="math notranslate nohighlight">\(x_0\)</span> under a semigroup of maps <span class="math notranslate nohighlight">\((U_t)\)</span>.</p>
+<p>The operator <span class="math notranslate nohighlight">\(A\)</span> in <a class="reference internal" href="#equation-abscp">(38)</a> is called the “generator” of <span class="math notranslate nohighlight">\((U_t)\)</span> and is
+its infinitesimal description.</p>
+</div>
+<div class="section" id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+<p>Throughout this lecture, <span class="math notranslate nohighlight">\((\BB, \| \cdot \|)\)</span> is a Banach space.</p>
+<div class="section" id="the-space-of-linear-operators">
+<h3>The Space of Linear Operators<a class="headerlink" href="#the-space-of-linear-operators" title="Permalink to this headline">¶</a></h3>
+<p>You will recall that a <strong>linear operator</strong> on <span class="math notranslate nohighlight">\(\BB\)</span> is a map <span class="math notranslate nohighlight">\(A\)</span> from <span class="math notranslate nohighlight">\(\BB\)</span> to
+itself satisfying</p>
+<div class="math notranslate nohighlight">
+\[
+    A(\alpha g + \beta h) = \alpha A g + \beta A h,
+    \quad
+    \forall \, g, h \in \BB, \;\; \alpha, \beta \in \RR
+\]</div>
+<p>The operator <span class="math notranslate nohighlight">\(A\)</span> is called <strong>bounded</strong> if</p>
+<div class="math notranslate nohighlight" id="equation-norml">
+<span class="eqno">(39)<a class="headerlink" href="#equation-norml" title="Permalink to this equation">¶</a></span>\[
+    \| A \| := \sup_{g \in \BB, \, \| g \| \leq 1} \| A g \| &lt; \infty
+\]</div>
+<p>This is the usual definition of a <a class="reference external" href="https://en.wikipedia.org/wiki/Bounded_operator">bounded linear operator</a> on a normed linear space.</p>
+<p>The set of all bounded linear operators on <span class="math notranslate nohighlight">\(\BB\)</span> is denoted by <span class="math notranslate nohighlight">\(\linop\)</span> and is
+itself a Banach space.</p>
+<p>Sums and scalar products of elements of <span class="math notranslate nohighlight">\(\linop\)</span> are defined in the usual way,
+so that, for <span class="math notranslate nohighlight">\(\alpha \in \RR\)</span>, <span class="math notranslate nohighlight">\(A, B \in \linop\)</span> and <span class="math notranslate nohighlight">\(g \in \BB\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    (A + B) g = Ag + Bg, 
+    \quad (\alpha A) g = \alpha (A g)
+\]</div>
+<p>and so on.</p>
+<p>We write <span class="math notranslate nohighlight">\(A B\)</span> to indicate composition of the operators <span class="math notranslate nohighlight">\(A, B \in \linop\)</span>.</p>
+<p>The value defined in <a class="reference internal" href="#equation-norml">(39)</a> is called the <strong>operator norm</strong> of <span class="math notranslate nohighlight">\(A\)</span> and,
+as suggested by the notation, <a class="reference external" href="https://en.wikipedia.org/wiki/Operator_norm">is a norm</a> on <span class="math notranslate nohighlight">\(\linop\)</span>.</p>
+<p>In addition to being a norm, it enjoys the submultiplicative property <span class="math notranslate nohighlight">\(\| AB
+\| \leq \| A \| \| B\|\)</span> for all <span class="math notranslate nohighlight">\(A, B \in \linop\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(I\)</span> be the identity in <span class="math notranslate nohighlight">\(\linop\)</span>, satisfying <span class="math notranslate nohighlight">\(Ig = g\)</span> for all <span class="math notranslate nohighlight">\(g \in \BB\)</span>.</p>
+<p>(In fact <span class="math notranslate nohighlight">\(\linop\)</span> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Banach_algebra">unital Banach algebra</a> when multiplication is identified with operator composition and <span class="math notranslate nohighlight">\(I\)</span> is adopted as the unit.)</p>
+</div>
+<div class="section" id="the-exponential-function">
+<h3>The Exponential Function<a class="headerlink" href="#the-exponential-function" title="Permalink to this headline">¶</a></h3>
+<p>Given <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the exponential of <span class="math notranslate nohighlight">\(A\)</span> is the element of
+<span class="math notranslate nohighlight">\(\linop\)</span> defined as</p>
+<div class="math notranslate nohighlight" id="equation-opexpo">
+<span class="eqno">(40)<a class="headerlink" href="#equation-opexpo" title="Permalink to this equation">¶</a></span>\[
+    e^A  
+    = \sum_{k \geq 0} \frac{A^k}{k!} 
+    = I + A + \frac{A^2}{2!} + \cdots
+\]</div>
+<p>This is the same as the definition for the matrix exponential.The exponential function arises naturally as the solution to ODEs in Banach
+space, one example of which (as we shall see) is distribution flows
+associated with continuous time Markov chains.</p>
+<p>The exponential map has the following properties:</p>
+<ul class="simple">
+<li><p>For each <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the operator <span class="math notranslate nohighlight">\(e^A\)</span> is a well defined element of <span class="math notranslate nohighlight">\(\linop\)</span> with <span class="math notranslate nohighlight">\(\| e^A \| \leq e^{\| A \|}\)</span>.<a class="footnote-reference brackets" href="#fncoex" id="id3">3</a></p></li>
+<li><p><span class="math notranslate nohighlight">\(e^0 = I\)</span>, where <span class="math notranslate nohighlight">\(0\)</span> is the zero element of <span class="math notranslate nohighlight">\(\linop\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A, B \in \linop\)</span> and <span class="math notranslate nohighlight">\(AB = BA\)</span>, then <span class="math notranslate nohighlight">\(e^{A + B} = e^A e^B\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A \in \linop\)</span>, then <span class="math notranslate nohighlight">\(e^A\)</span> is invertible and <span class="math notranslate nohighlight">\((e^A)^{-1} = e^{-A}\)</span>.</p></li>
+</ul>
+<p>The last fact is easily checked from the previous ones.</p>
+</div>
+<div class="section" id="operator-calculus">
+<h3>Operator Calculus<a class="headerlink" href="#operator-calculus" title="Permalink to this headline">¶</a></h3>
+<p>Consider a function</p>
+<div class="math notranslate nohighlight">
+\[
+    \RR_+ \ni t \mapsto U_t \in \linop
+\]</div>
+<p>which we can think of as a time path in <span class="math notranslate nohighlight">\(\linop\)</span>, such as a flow of Markov
+operators.</p>
+<p>We say that this function is <strong>differentiable at <span class="math notranslate nohighlight">\(\tau \in \RR_+\)</span></strong> if there exists
+an element <span class="math notranslate nohighlight">\(T\)</span> of <span class="math notranslate nohighlight">\(\linop\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-devlim">
+<span class="eqno">(41)<a class="headerlink" href="#equation-devlim" title="Permalink to this equation">¶</a></span>\[
+    \frac{U_{\tau+h} - U_\tau}{h} \to T 
+    \; \text{ as } h \to 0
+\]</div>
+<p>In this case, <span class="math notranslate nohighlight">\(T\)</span> is called the <strong>derivative</strong> of the function <span class="math notranslate nohighlight">\(t \mapsto U_t\)</span> at <span class="math notranslate nohighlight">\(\tau\)</span> and we write</p>
+<div class="math notranslate nohighlight">
+\[
+    T = U'_\tau 
+    \; \text{ or } \;
+    T = \frac{d}{dt} U_t \, \Big|_{t=\tau}
+\]</div>
+<p>(Convergence of operators is in operator norm.  If <span class="math notranslate nohighlight">\(\tau = 0\)</span>, then the limit
+<span class="math notranslate nohighlight">\(h \to 0\)</span> in <a class="reference internal" href="#equation-devlim">(41)</a> is the right limit.)</p>
+<div class="proof example admonition" id="example-0">
+<p class="admonition-title"><span class="caption-number">Example 12 </span></p>
+<div class="example-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(U_t = t V\)</span> for some fixed <span class="math notranslate nohighlight">\(V \in \linop\)</span>, then it is easy to
+see that <span class="math notranslate nohighlight">\(V\)</span> is the derivative of <span class="math notranslate nohighlight">\(t \mapsto U_t\)</span> at every <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>.</p>
+</div>
+</div><div class="proof example admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 13 </span></p>
+<div class="example-content section" id="proof-content">
+<p>In <a class="reference internal" href="kolmogorov_fwd.html"><span class="doc">our discussion</span></a> of the Kolmogorov forward equation
+when <span class="math notranslate nohighlight">\(S\)</span> is finite, we introduced the derivative of a map <span class="math notranslate nohighlight">\(t
+\mapsto P_t\)</span>, where each <span class="math notranslate nohighlight">\(P_t\)</span> is a matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>The derivative was defined by differentiating <span class="math notranslate nohighlight">\(P_t\)</span> element-by-element.</p>
+<p>This coincides with the operator-theoretic definition in <a class="reference internal" href="#equation-devlim">(41)</a> when <span class="math notranslate nohighlight">\(S\)</span>
+is finite, because then the space <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> is finite dimensional, and
+hence pointwise and norm convergence coincide.</p>
+</div>
+</div><p>Analogous to the matrix and scalar cases, we have the following result:</p>
+<div class="proof lemma admonition" id="diffexpmap">
+<p class="admonition-title"><span class="caption-number">Lemma 14 </span> (Differentiability of the Exponential Curve)</p>
+<div class="lemma-content section" id="proof-content">
+<p>For all <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the exponential curve <span class="math notranslate nohighlight">\(t \mapsto e^{tA}\)</span> is everywhere differentiable and</p>
+<div class="math notranslate nohighlight" id="equation-expdiffer">
+<span class="eqno">(42)<a class="headerlink" href="#equation-expdiffer" title="Permalink to this equation">¶</a></span>\[
+    \frac{d}{dt} e^{tA} = e^{tA} A = A e^{tA}
+\]</div>
+</div>
+</div><p>The proof is a (solved) exercise (see below).</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Semigroups and Generators<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>For continuous time Markov chains where the state space <span class="math notranslate nohighlight">\(S\)</span> is finite, we
+saw that Markov semigroups often take the form <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for some
+intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>This is ideal because the entire semigroup is characterized in a simple way by
+its infinitesimal description <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>It turns out that, when <span class="math notranslate nohighlight">\(S\)</span> is finite, this is always true:  if <span class="math notranslate nohighlight">\((P_t)\)</span> is a
+Markov semigroup, then there exists an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> satisfying <span class="math notranslate nohighlight">\(P_t =
+e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Moreover, this statement is again true when <span class="math notranslate nohighlight">\(S\)</span> is infinite, provided that
+some restrictions are placed on the semigroup.</p>
+<p>Our aim is to make these statements precise, starting in an abstract setting
+and then specializing.</p>
+<div class="section" id="operator-semigroups">
+<h3>Operator Semigroups<a class="headerlink" href="#operator-semigroups" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(U_t\)</span> be an element of <span class="math notranslate nohighlight">\(\linop\)</span> for all <span class="math notranslate nohighlight">\(t \in \RR_+\)</span></p>
+<p>We say that <span class="math notranslate nohighlight">\((U_t)\)</span> is an <strong>evolution semigroup</strong> on <span class="math notranslate nohighlight">\(\linop\)</span> if <span class="math notranslate nohighlight">\(U_0 = I\)</span> and
+<span class="math notranslate nohighlight">\(U_{s + t} = U_s U_t\)</span> for all <span class="math notranslate nohighlight">\(s, t \geq 0\)</span>.</p>
+<p>The idea is that <span class="math notranslate nohighlight">\((U_t)\)</span> generates a path in <span class="math notranslate nohighlight">\(\BB\)</span> from any starting point <span class="math notranslate nohighlight">\(g \in \BB\)</span>, so that <span class="math notranslate nohighlight">\(U_t g\)</span> is interpreted as the location of the state after <span class="math notranslate nohighlight">\(t\)</span> units of time.</p>
+<p>An evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span> is called</p>
+<ul class="simple">
+<li><p>a <span class="math notranslate nohighlight">\(C_0\)</span> <strong>semigroup</strong> on <span class="math notranslate nohighlight">\(\BB\)</span> if, for each <span class="math notranslate nohighlight">\(g \in \BB\)</span>, the map <span class="math notranslate nohighlight">\(t \mapsto U_t g\)</span> from <span class="math notranslate nohighlight">\(\RR_+\)</span> to <span class="math notranslate nohighlight">\(\BB\)</span> is continuous, and</p></li>
+<li><p>a <strong>uniformly continuous semigroup</strong> on <span class="math notranslate nohighlight">\(\BB\)</span> if the map <span class="math notranslate nohighlight">\(t \mapsto U_t\)</span> from <span class="math notranslate nohighlight">\(\RR_+\)</span> to <span class="math notranslate nohighlight">\(\linop\)</span> is continuous.</p></li>
+</ul>
+<p>In what follows we abbreviate “uniformly continuous” to UC.<a class="footnote-reference brackets" href="#ucnote" id="id5">4</a></p>
+<div class="proof example admonition" id="ecuc">
+<p class="admonition-title"><span class="caption-number">Example 15 </span> (Exponential curves are UC semigroups)</p>
+<div class="example-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for <span class="math notranslate nohighlight">\(t \in \RR_+\)</span> and <span class="math notranslate nohighlight">\(A \in \linop\)</span>, then <span class="math notranslate nohighlight">\((U_t)\)</span>
+is a uniformly continuous semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>.</p>
+</div>
+</div><p>The claim that <span class="math notranslate nohighlight">\((U_t)\)</span> is an evolution semigroup follows directly from the
+properties of the exponential function given above.</p>
+<p>Uniform continuity can be established using arguments similar to those in the
+proof of differentiability in <a class="reference internal" href="#diffexpmap">Lemma 14</a>.</p>
+<p>Since norm convergence on <span class="math notranslate nohighlight">\(\linop\)</span> implies pointwise convergence, every
+uniformly continuous semigroup is a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup.</p>
+<p>The reverse is certainly not true — there are many important <span class="math notranslate nohighlight">\(C_0\)</span> semigroups that fail to be uniformly continuous.</p>
+<p>In fact semigroups associated with PDEs, diffusions and other Markov processes
+on continuous state spaces are typically <span class="math notranslate nohighlight">\(C_0\)</span> but not uniformly continuous.</p>
+<p>There are also important examples of Markov semigroups on infinite
+discrete state spaces that fail to be uniformly continuous.</p>
+<p>However, we will soon see that, for most continuous time Markov chains used in
+applications, the semigroups are uniformly continuous.</p>
+</div>
+<div class="section" id="generators">
+<h3>Generators<a class="headerlink" href="#generators" title="Permalink to this headline">¶</a></h3>
+<p>Consider a continuous time Markov chain on a finite state space with intensity
+matrix <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>The Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is fully specified by this infinitesimal
+description <span class="math notranslate nohighlight">\(Q\)</span>, in the sense that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span> and (equivalently)</p></li>
+<li><p>the forward and backward equations hold: <span class="math notranslate nohighlight">\(P_t' = P_t Q = Q P_t\)</span>.</p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(P_0 = I\)</span>, the matrix <span class="math notranslate nohighlight">\(Q\)</span> can be recovered from the semigroup via</p>
+<div class="math notranslate nohighlight">
+\[
+    Q = P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h} 
+\]</div>
+<p>In the more abstract setting of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, we say that <span class="math notranslate nohighlight">\(Q\)</span> is the
+“generator” of the semigroup <span class="math notranslate nohighlight">\(P_t\)</span>.</p>
+<p>More generally, given a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>, we say that a linear
+operator <span class="math notranslate nohighlight">\(A\)</span> from <span class="math notranslate nohighlight">\(\BB\)</span> to itself is the <strong>generator</strong> of <span class="math notranslate nohighlight">\((U_t)\)</span> if</p>
+<div class="math notranslate nohighlight" id="equation-defgenr">
+<span class="eqno">(43)<a class="headerlink" href="#equation-defgenr" title="Permalink to this equation">¶</a></span>\[
+    A g = \lim_{h \downarrow 0} \frac{U_h g - g}{h} 
+\]</div>
+<p>for all <span class="math notranslate nohighlight">\(g \in \BB\)</span> such that the limit exists.</p>
+<p>The set of points where the limit exists (the domain of the generator) is
+denoted by <span class="math notranslate nohighlight">\(D(A)\)</span>.</p>
+<p>At this point we would like to write <a class="reference internal" href="#equation-defgenr">(43)</a> as <span class="math notranslate nohighlight">\(A = U'_0\)</span>, or express
+<span class="math notranslate nohighlight">\(U_t\)</span> as <span class="math notranslate nohighlight">\(e^{tA}\)</span>, analogous to the Markov case.</p>
+<p>There are problems, however.</p>
+<p>One problem is that the limit in <a class="reference internal" href="#equation-defgenr">(43)</a> can fail to exist for some <span class="math notranslate nohighlight">\(g
+\in \BB\)</span>.</p>
+<p>Indeed, why should the limit exist, given that <span class="math notranslate nohighlight">\(C_0\)</span> semigroups are not
+required to be differentiable?</p>
+<p>The other problem is that, even though the limit exists, the linear operator
+<span class="math notranslate nohighlight">\(A\)</span> is not bounded (i.e., not an element of <span class="math notranslate nohighlight">\(\linop\)</span>), so
+a statement like <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> is problematic.</p>
+<p>It turns out that, despite these issues, the theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups is
+powerful, and, with some work, the technical issues can be
+circumvented.<a class="footnote-reference brackets" href="#fnhy" id="id6">5</a></p>
+<p>Even better, for the applications we wish to consider, we can focus on UC
+semigroups, where these problems do not arise.</p>
+<p>The next section gives details.</p>
+</div>
+<div class="section" id="a-characterization-of-uniformly-continuous-semigroups">
+<h3>A Characterization of Uniformly Continuous Semigroups<a class="headerlink" href="#a-characterization-of-uniformly-continuous-semigroups" title="Permalink to this headline">¶</a></h3>
+<p>We saw in <a class="reference internal" href="#ecuc">Example 15</a> that exponential curves are an example
+of a UC semigroup.</p>
+<p>The next theorem tells us that there are no other examples.</p>
+<div class="proof theorem admonition" id="ucsgec">
+<p class="admonition-title"><span class="caption-number">Theorem 16 </span> (UC Semigroups are Exponential Curves)</p>
+<div class="theorem-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\((U_t)\)</span> is a UC semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>, then there exists an <span class="math notranslate nohighlight">\(A \in \linop\)</span>
+such that <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.  Moreover,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U_t\)</span> is differentiable at every <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is the generator of <span class="math notranslate nohighlight">\((U_t)\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p></li>
+</ul>
+</div>
+</div><p>The last three claims in <a class="reference internal" href="#ucsgec">Theorem 16</a> follow directly from the
+first claim.</p>
+<p>The statement <span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> is a
+generalization of the Kolmogorov forward and backward equations.</p>
+<p>While slightly more complicated in the Banach setting, the proof of the first
+claim (existence of an exponential representation) is a direct extension of
+the fact that any continuous function <span class="math notranslate nohighlight">\(f\)</span> from <span class="math notranslate nohighlight">\(\RR\)</span> to itself
+satisfying</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(s)f(t) = f(s+t)\)</span> for all <span class="math notranslate nohighlight">\(s,t \geq 0\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(0) = 1\)</span></p></li>
+</ul>
+<p>also satisfies <span class="math notranslate nohighlight">\(f(t) = e^{ta}\)</span> for some <span class="math notranslate nohighlight">\(a \in \RR\)</span>.</p>
+<p>We proved something quite similar in <a class="reference internal" href="memoryless.html#exp_unique">Theorem 1</a>, on
+the memoryless property of the exponential function.</p>
+<p>For more discussion of the scalar case, see, for example,
+<a class="bibtex reference internal" href="zreferences.html#sahoo2011introduction" id="id7">[SK11]</a>.</p>
+<p>For a full proof of the first claim in <a class="reference internal" href="#ucsgec">Theorem 16</a>, in the setting of
+a Banach algebra, see, for
+example, Chapter 7 of <a class="bibtex reference internal" href="zreferences.html#bobrowski2005functional" id="id8">[Bob05]</a>.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Prove that <a class="reference internal" href="#equation-expdiffer">(42)</a> holds for all <span class="math notranslate nohighlight">\(A \in \linop\)</span>.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>In many texts, a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup is defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
+such that</p>
+<div class="math notranslate nohighlight" id="equation-czsg2">
+<span class="eqno">(44)<a class="headerlink" href="#equation-czsg2" title="Permalink to this equation">¶</a></span>\[
+    U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
+\]</div>
+<p>Our aim is to show that <a class="reference internal" href="#equation-czsg2">(44)</a> implies continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
+in the definition we used above.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Uniform_boundedness_principle">Banach–Steinhaus Theorem</a> can be used to show that, for an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span> satisfying <a class="reference internal" href="#equation-czsg2">(44)</a>, there exist finite constants <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-sgbound">
+<span class="eqno">(45)<a class="headerlink" href="#equation-sgbound" title="Permalink to this equation">¶</a></span>\[ 
+    \| U_t \| \leq e^{t\omega} M 
+    \quad \text{for all } \; t \geq 0
+\]</div>
+<p>Using this and <a class="reference internal" href="#equation-czsg2">(44)</a>, show that, for any <span class="math notranslate nohighlight">\(g \in \BB\)</span>, the map <span class="math notranslate nohighlight">\(t \mapsto
+U_t g\)</span> is continuous at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Following on from the previous exercise,
+a UC semigroup is often defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
+such that</p>
+<div class="math notranslate nohighlight" id="equation-czsg3">
+<span class="eqno">(46)<a class="headerlink" href="#equation-czsg3" title="Permalink to this equation">¶</a></span>\[
+    \| U_t - I \| \to 0 \text{ as } t \to 0 
+\]</div>
+<p>Show that <a class="reference internal" href="#equation-czsg3">(46)</a> implies norm continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
+in the definition we used above.</p>
+<p>In particular, show that, for any <span class="math notranslate nohighlight">\(t_n \to t\)</span>, we have
+<span class="math notranslate nohighlight">\(\| U_{t_n} - U_t \| \to 0\)</span>  as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
+</div>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>To show the first equality, fix <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>, take <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and observe that</p>
+<div class="math notranslate nohighlight">
+\[
+    e^{(t+h)A} - e^{tA} - e^{tA} A
+    = e^{tA} (e^{hA} - I - A)
+\]</div>
+<p>Since the norm on <span class="math notranslate nohighlight">\(\linop\)</span> is submultiplicative, it suffices to show that
+<span class="math notranslate nohighlight">\(\| e^{hA} - I - A \| = o(h)\)</span> as <span class="math notranslate nohighlight">\(h \to 0\)</span>.</p>
+<p>Using the definition of the exponential, this is easily verified,
+completing the proof of the first equality in <a class="reference internal" href="#equation-expdiffer">(42)</a>.</p>
+<p>The proof of the second equality is similar.</p>
+</div>
+<div class="section" id="solution-to-exercise-2">
+<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(44)</a> and let
+<span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(45)</a>.</p>
+<p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span>.</p>
+<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} g = U_{h_n} U_t g \to U_t g\)</span> by <a class="reference internal" href="#equation-czsg2">(44)</a>.</p>
+<p>On the other hand, from <a class="reference internal" href="#equation-sgbound">(45)</a> and the definition of the operator norm,</p>
+<div class="math notranslate nohighlight">
+\[
+    \| U_{t-h_n} g - U_t g\|
+    = \|  U_{t-h_n} ( g - U_{h_n} g) \|
+    \leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
+    \to 0
+\]</div>
+<p>as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.  This completes the proof.</p>
+</div>
+<div class="section" id="solution-to-exercise-3">
+<h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>The solution is similar to that of the previous exercise.</p>
+<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg3">(46)</a>,
+fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and take <span class="math notranslate nohighlight">\((h_n)\)</span> to be a scalar sequence satisfying <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span>.</p>
+<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} = U_{h_n} U_t \to U_t \)</span> by <a class="reference internal" href="#equation-czsg3">(46)</a>.</p>
+<p>On the other hand, from the submultiplicative property of the operator norm
+and <a class="reference internal" href="#equation-sgbound">(45)</a>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \| U_{t-h_n} - U_t \|
+    = \|  U_{t-h_n} ( I - U_{h_n}) \|
+    \leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
+\]</div>
+<p>This converges to 0 as <span class="math notranslate nohighlight">\(n \to \infty\)</span>, completing our proof.</p>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="footnotepp"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.</p>
+</dd>
+<dt class="label" id="fnpde"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>An excellent introduction to operator semigroups, combined with
+applications to PDEs and Markov processes, can be found in <span class="bibtex" id="id9">[applebaum2019semigroups]</span>.</p>
+</dd>
+<dt class="label" id="fncoex"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Convergence of the sum in <a class="reference internal" href="#equation-opexpo">(40)</a> follows from boundedness of <span class="math notranslate nohighlight">\(A\)</span> and the fact that <span class="math notranslate nohighlight">\(\linop\)</span> is a Banach space.</p>
+</dd>
+<dt class="label" id="ucnote"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p>Be careful: the definition of a UC semigroup requires that
+<span class="math notranslate nohighlight">\(t \mapsto U_t\)</span> is continuous as a map into <span class="math notranslate nohighlight">\(\linop\)</span>, rather than uniformly
+continuous.  The UC terminology comes about because, for a UC semigroup, we
+have, by definition of the operator norm,
+<span class="math notranslate nohighlight">\(\sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0\)</span> when <span class="math notranslate nohighlight">\(s \to t\)</span>.</p>
+</dd>
+<dt class="label" id="fnhy"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
+<dd><p>An excellent treatment of the general theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, can be found in <a class="bibtex reference internal" href="zreferences.html#bobrowski2005functional" id="id10">[Bob05]</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="kolmogorov_fwd.html" title="previous page">The Kolmogorov Forward Equation</a>
+    <a class='right-next' id="next-link" href="uc_mc_semigroups.html" title="next page">UC Markov Semigroups</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

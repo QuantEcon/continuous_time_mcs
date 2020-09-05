@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>UC Markov Semigroups &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="A Probabilistic View" href="prob_view.html" />
+    <link rel="prev" title="Semigroups and Generators" href="generators.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Continuous Time Markov Chains
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="memoryless.html">
+   Memoryless Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="poisson.html">
+   Poisson Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_prop.html">
+   The Markov Property
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_bwd.html">
+   Kolmogorov Backward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_fwd.html">
+   The Kolmogorov Forward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generators.html">
+   Semigroups and Generators
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   UC Markov Semigroups
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prob_view.html">
+   A Probabilistic View
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ergodicity.html">
+   Stationarity and Ergodicity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/uc_mc_semigroups.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/uc_mc_semigroups.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/uc_mc_semigroups.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notation-and-terminology">
+   Notation and Terminology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-unique-pairing">
+   A Unique Pairing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-necessary-and-sufficient-condition">
+     A Necessary and Sufficient Condition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-finite-state-case">
+     The Finite State Case
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beyond-bounded-intensity-matrices">
+   Beyond Bounded Intensity Matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-1">
+     Solution to Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-2">
+     Solution to Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-3">
+     Solution to Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-4">
+     Solution to Exercise 4
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="uc-markov-semigroups">
+<h1>UC Markov Semigroups<a class="headerlink" href="#uc-markov-semigroups" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In our previous lecture we covered some of the general theory of continuous
+operator semigroups.</p>
+<p>Next we translate these results into the setting of Markov semigroups.</p>
+<p>The main aim is to give an exact one-to-one correspondence between UC
+Markov semigroups and “conservative” intensity matrices on a countable set <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>Conservativeness is defined below and relates to “nonexplosiveness” of the
+associated Markov matrix.</p>
+<p>We will also give a brief discussion of intensity matricies that fall
+outside this class, along with the processes they generate.</p>
+</div>
+<div class="section" id="notation-and-terminology">
+<h2>Notation and Terminology<a class="headerlink" href="#notation-and-terminology" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(S\)</span> be an arbitrary countable set.</p>
+<p>Let <span class="math notranslate nohighlight">\(\ell_1\)</span> be the Banach space of <strong>summable functions</strong> on <span class="math notranslate nohighlight">\(S\)</span>; that is, all <span class="math notranslate nohighlight">\(g \, \colon S \to \RR\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[
+    \| g \| := \sum_x |g(x)| &lt; \infty
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\dD\)</span>, the set of distributions on <span class="math notranslate nohighlight">\(S\)</span>, is contained in <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
+<p>Each Markov matrix <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(S\)</span> can and will be identifed with a linear operator
+<span class="math notranslate nohighlight">\(f \mapsto fP\)</span> on <span class="math notranslate nohighlight">\(\ell_1\)</span> via</p>
+<div class="math notranslate nohighlight" id="equation-mmismo">
+<span class="eqno">(47)<a class="headerlink" href="#equation-mmismo" title="Permalink to this equation">¶</a></span>\[
+    (fP)(y) = \sum_x f(x) P(x, y)
+    \qquad (f \in \ell_1, \; y \in S)
+\]</div>
+<p>To be consistent with earlier notation, we are writing the argument of <span class="math notranslate nohighlight">\(P\)</span> to
+the left and applying <span class="math notranslate nohighlight">\(P\)</span> to it as if premultiplying <span class="math notranslate nohighlight">\(P\)</span> by a row vector.</p>
+<p>In the exercises you are asked to verify that <a class="reference internal" href="#equation-mmismo">(47)</a> defines
+a bounded linear operator on <span class="math notranslate nohighlight">\(\ell_1\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-propp">
+<span class="eqno">(48)<a class="headerlink" href="#equation-propp" title="Permalink to this equation">¶</a></span>\[
+    \|P\| = 1 \text{ and } \phi P \in \dD \text{ whenever } \phi \in \dD
+\]</div>
+<p>Note that composition of <span class="math notranslate nohighlight">\(P\)</span> with itself is equivalent to powers of the matrix
+under matrix multiplication.</p>
+<p>For an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> we can try to introduce the associated
+operator analogously, via</p>
+<div class="math notranslate nohighlight" id="equation-imislo">
+<span class="eqno">(49)<a class="headerlink" href="#equation-imislo" title="Permalink to this equation">¶</a></span>\[
+    (fQ)(y) = \sum_x f(x) Q(x, y)
+    \qquad (f \in \ell_1, \; y \in S)
+\]</div>
+<p>However, the sum in <a class="reference internal" href="#equation-imislo">(49)</a> is not always well defined.<a class="footnote-reference brackets" href="#fnim" id="id1">1</a></p>
+<p>We say that an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> is <strong>conservative</strong> if the sum in
+<a class="reference internal" href="#equation-imislo">(49)</a> is well defined at all <span class="math notranslate nohighlight">\(y\)</span> and, in addition, the mapping <span class="math notranslate nohighlight">\(f
+\mapsto fQ\)</span> in <a class="reference internal" href="#equation-imislo">(49)</a> is a bounded linear operator on <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
+<p>Below we show how this property can be checked in applications.</p>
+</div>
+<div class="section" id="a-unique-pairing">
+<h2>A Unique Pairing<a class="headerlink" href="#a-unique-pairing" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(Q\)</span> be a conservative intensity matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(Q\)</span> is in <span class="math notranslate nohighlight">\(\linopell\)</span>, the operator exponential <span class="math notranslate nohighlight">\(e^{tQ}\)</span> is well defined
+as an element of <span class="math notranslate nohighlight">\(\linopell\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
+<p>Moreover, by <a class="reference internal" href="generators.html#ecuc">Example 15</a>, the family <span class="math notranslate nohighlight">\((P_t)\)</span> in <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> defined by
+<span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> defines a UC Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>(Here, a Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is both a collection of Markov matrices and a
+collection of operators, as in <a class="reference internal" href="#equation-mmismo">(47)</a>.)</p>
+<p>The next theorem says that this is the only way UC Markov semigroups can arise.</p>
+<div class="proof theorem admonition" id="usmg">
+<p class="admonition-title"><span class="caption-number">Theorem 17 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC Markov semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>, then there
+exists a conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>, it follows from
+<a class="reference internal" href="generators.html#ucsgec">Theorem 16</a> that there exists a <span class="math notranslate nohighlight">\(Q \in \lL(\ell_1)\)</span> such that
+<span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
+<p>We need only show that <span class="math notranslate nohighlight">\(Q\)</span> is a conservative intensity matrix.</p>
+<p>Because <span class="math notranslate nohighlight">\((P_t)\)</span> is a Markov semigroup, <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix for all <span class="math notranslate nohighlight">\(t\)</span>,
+and, since <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>, it follows that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity
+matrix.</p>
+<p>We proved this for the case <span class="math notranslate nohighlight">\(|S| &lt; \infty\)</span> in <a class="reference internal" href="kolmogorov_fwd.html#intvsmk">Theorem 10</a> and
+one can verify that the same arguments go through when <span class="math notranslate nohighlight">\(|S| = \infty\)</span>.</p>
+<p>As <span class="math notranslate nohighlight">\(Q \in \lL(\ell_1)\)</span>, we know that <span class="math notranslate nohighlight">\(Q\)</span> is a bounded operator, so <span class="math notranslate nohighlight">\(Q\)</span> is a
+conservative intensity matrix.</p>
+</div>
+<p>From <a class="reference internal" href="#usmg">Theorem 17</a> we can easily deduce that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_t\)</span> is differentiable at every <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is the generator of <span class="math notranslate nohighlight">\((P_t)\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_t' = Q P_t = P_t Q\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_0' = Q\)</span></p></li>
+</ul>
+<p>In fact these results are just a special case of the claims in <a class="reference internal" href="generators.html#ucsgec">Theorem 16</a>.</p>
+<p>The second last of these results is the Kolmogorov forward and backward equations.</p>
+<p>The last of these results shows that we can obtain the intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> by differentiating <span class="math notranslate nohighlight">\(P_t\)</span> at <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<div class="proof example admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 18 </span></p>
+<div class="example-content section" id="proof-content">
+<p>Let us consider again the Poisson process <span class="math notranslate nohighlight">\((N_t)\)</span> with rate <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>
+in light of the discussion above.</p>
+<p>The corresponding semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is UC and hence there exists a
+conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> with <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
+<p>This fact can be established by proving UC property and then appealing to
+<a class="reference internal" href="#usmg">Theorem 17</a>.</p>
+<p>Another alternative, easier in this case, is to supply the intensity matrix
+<span class="math notranslate nohighlight">\(Q\)</span> directly and then verify that <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> holds.</p>
+<p>The semigroup for a Poisson process with rate <span class="math notranslate nohighlight">\(\lambda\)</span> was given in
+<a class="reference internal" href="markov_prop.html#equation-poissemi">(17)</a> and is repeated here:</p>
+<div class="math notranslate nohighlight" id="equation-poissemi2">
+<span class="eqno">(50)<a class="headerlink" href="#equation-poissemi2" title="Permalink to this equation">¶</a></span>\[\begin{split}
+    P_t(j, k) 
+    = 
+    \begin{cases}
+    e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}  
+        &amp; \text{ if } j \leq k
+        \\
+    0 &amp; \text{ otherwise}
+    \end{cases}
+\end{split}\]</div>
+<p>For the intensity matrix we take</p>
+<div class="math notranslate nohighlight" id="equation-poissonq">
+<span class="eqno">(51)<a class="headerlink" href="#equation-poissonq" title="Permalink to this equation">¶</a></span>\[\begin{split}
+    Q := 
+    \begin{pmatrix}
+    -\lambda &amp; \lambda &amp; 0 &amp; 0 &amp; 0 &amp; \cdots
+    \\
+    0 &amp; -\lambda &amp; \lambda &amp; 0 &amp; 0 &amp; \cdots
+    \\
+    0 &amp; 0 &amp; -\lambda &amp; \lambda &amp; 0 &amp; \cdots
+    \\
+    0 &amp; 0 &amp; 0 &amp; -\lambda &amp; \lambda &amp; \cdots
+    \\
+    \vdots &amp; \vdots  &amp; \vdots  &amp; \vdots  &amp; \vdots 
+    \end{pmatrix}
+\end{split}\]</div>
+<p>The form of <span class="math notranslate nohighlight">\(Q\)</span> is intuitive: probability flows out of state <span class="math notranslate nohighlight">\(i\)</span> and into
+state <span class="math notranslate nohighlight">\(i+1\)</span> at the rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>It is immediate that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix, as claimed.</p>
+<p>The exercises ask you to confirm that <span class="math notranslate nohighlight">\(Q\)</span> is in <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span>.</p>
+<p>To prove that <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for any <span class="math notranslate nohighlight">\(t \geq 0\)</span>, we first decompose <span class="math notranslate nohighlight">\(Q\)</span> as <span class="math notranslate nohighlight">\(Q
+= \lambda (K - I)\)</span>, where <span class="math notranslate nohighlight">\(K\)</span> is defined by</p>
+<div class="math notranslate nohighlight">
+\[
+    K(i, j) = \mathbb 1\{j = i + 1\}
+\]</div>
+<p>For given <span class="math notranslate nohighlight">\(t \geq 0\)</span>, we then have</p>
+<div class="math notranslate nohighlight">
+\[
+    e^{tQ}
+    = e^{\lambda t (K-I)}
+    = e^{\lambda t} e^{\lambda t K}
+    = e^{\lambda t} 
+    \sum_{m \geq 0} \frac{(\lambda t K)^m}{m!}
+\]</div>
+<p>The exercises ask you to verify that, for the powers of <span class="math notranslate nohighlight">\(K\)</span>, we have <span class="math notranslate nohighlight">\(K^m(i,
+j) = \mathbb 1\{j = i + m\}\)</span>.</p>
+<p>Inserting this expression for <span class="math notranslate nohighlight">\(K^m\)</span> leads to</p>
+<div class="math notranslate nohighlight">
+\[
+    e^{tQ}(i, j)
+    = e^{\lambda t} 
+    \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{j = i + m\}
+    = e^{\lambda t} 
+    \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{m = j-i\}
+\]</div>
+<p>This is identical to <a class="reference internal" href="#equation-poissemi2">(50)</a>.</p>
+<p>It now follows that <span class="math notranslate nohighlight">\(t \mapsto P_t \in \lL(\ell_1)\)</span> is differentiable at every
+<span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> is the generator of <span class="math notranslate nohighlight">\((P_t)\)</span>, with <span class="math notranslate nohighlight">\(P_0' = Q\)</span>.</p>
+</div>
+</div><div class="section" id="a-necessary-and-sufficient-condition">
+<h3>A Necessary and Sufficient Condition<a class="headerlink" href="#a-necessary-and-sufficient-condition" title="Permalink to this headline">¶</a></h3>
+<p>Our definition of a conservative intensity matrix works for the theory above
+but can be hard to check in appliations and lacks probabilistic intuition.</p>
+<p>Fortunately, we have the following simple charcterization.</p>
+<div class="proof lemma admonition" id="scintcon">
+<p class="admonition-title"><span class="caption-number">Lemma 19 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>An intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is conservative if and only if <span class="math notranslate nohighlight">\(\sup_x |Q(x,
+x)|\)</span> is finite.</p>
+</div>
+</div><p>The proof is a solved exercise.</p>
+<div class="proof example admonition" id="jccs">
+<p class="admonition-title"><span class="caption-number">Example 20 </span></p>
+<div class="example-content section" id="proof-content">
+<p>Recall the jump chain setting where, repeating <a class="reference internal" href="kolmogorov_bwd.html#equation-kolbackeq">(24)</a>, we defined <span class="math notranslate nohighlight">\(Q\)</span>
+via</p>
+<div class="math notranslate nohighlight" id="equation-kolbackeq-inf">
+<span class="eqno">(52)<a class="headerlink" href="#equation-kolbackeq-inf" title="Permalink to this equation">¶</a></span>\[
+    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+\]</div>
+<p>The function <span class="math notranslate nohighlight">\(\lambda \colon S \to \RR_+\)</span> gives the jump rate at each state,
+while <span class="math notranslate nohighlight">\(K\)</span> is the Markov matrix for the embedded discrete time jump chain.</p>
+<p>Previously we discussed this in the case where <span class="math notranslate nohighlight">\(S\)</span> is finite but there is no
+need to restrict attention to that case.</p>
+<p>For general countable <span class="math notranslate nohighlight">\(S\)</span>, the matrix <span class="math notranslate nohighlight">\(Q\)</span> defined in <a class="reference internal" href="#equation-kolbackeq-inf">(52)</a> is
+still an intensity matrix.</p>
+<p>If we continue to assume that <span class="math notranslate nohighlight">\(K(x,x) = 0\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>, then <span class="math notranslate nohighlight">\(Q(x,x) = -
+\lambda(x)\)</span>.</p>
+<p>Hence, <span class="math notranslate nohighlight">\(Q\)</span> is conservative if and only if <span class="math notranslate nohighlight">\(\sup_x \lambda(x)\)</span> is finite.</p>
+<p>In other words, <span class="math notranslate nohighlight">\(Q\)</span> is conservative if the set of jump rates is bounded.</p>
+</div>
+</div><p>This example shows that requiring <span class="math notranslate nohighlight">\(Q\)</span> to be conservative is a relatively mild
+restriction.</p>
+</div>
+<div class="section" id="the-finite-state-case">
+<h3>The Finite State Case<a class="headerlink" href="#the-finite-state-case" title="Permalink to this headline">¶</a></h3>
+<p>It is immediate from <a class="reference internal" href="#scintcon">Lemma 19</a> that every intensity matrix is
+conservative when the state space <span class="math notranslate nohighlight">\(S\)</span> is finite.</p>
+<p>Hence, in this setting, every intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> defines a UC Markov
+semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> via <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span>.</p>
+<p>Conversely, if <span class="math notranslate nohighlight">\(S\)</span> is finite, then any Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC Markov
+semigroup.</p>
+<p>To see this, recall that, as a Markov semigroup, <span class="math notranslate nohighlight">\((P_t)\)</span> satisfies
+<span class="math notranslate nohighlight">\(\lim_{t \to 0} P_t(x, y) = I(x,y)\)</span> for all <span class="math notranslate nohighlight">\(x,y\)</span> in <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>In any finite dimensional space, pointwise convergence implies norm
+convergence, so <span class="math notranslate nohighlight">\(P_t \to I\)</span> in operator norm as <span class="math notranslate nohighlight">\(t \to 0\)</span> from above.</p>
+<p>As we saw previously, this is enough to ensure that <span class="math notranslate nohighlight">\(t \mapsto P_t\)</span> is norm
+continuous everywhere on <span class="math notranslate nohighlight">\(\RR_+\)</span>.</p>
+<p>Hence <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC Markov semigroup, as claimed.</p>
+<p>Combining these results with <a class="reference internal" href="#usmg">Theorem 17</a>, we conclude that, when <span class="math notranslate nohighlight">\(S\)</span> is
+finite, there is a one-to-one correspondence between Markov semigroups and
+intensity matrices.</p>
+</div>
+</div>
+<div class="section" id="beyond-bounded-intensity-matrices">
+<h2>Beyond Bounded Intensity Matrices<a class="headerlink" href="#beyond-bounded-intensity-matrices" title="Permalink to this headline">¶</a></h2>
+<p>If we do run into an application where an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> is not
+conservative, what might we expect?</p>
+<p>In this scenario, we can at least hope that <span class="math notranslate nohighlight">\(Q\)</span> is the generator of a <span class="math notranslate nohighlight">\(C_0\)</span>
+semigroup.</p>
+<p>Since <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix, we can be sure that this semigroup will be a
+Markov semigroup.</p>
+<p>To know when <span class="math notranslate nohighlight">\(Q\)</span> will be the generator of a <span class="math notranslate nohighlight">\(C_0\)</span>
+semigroup, we need to look to the <a class="reference external" href="https://en.wikipedia.org/wiki/Hille%E2%80%93Yosida_theorem">Hille-Yoshida
+Theorem</a> and
+sufficient conditions derived from it.</p>
+<p>While we omit a detailed treatment, it is worth noting that the issue is
+linked to explosions.</p>
+<p>To see the connection, recall that some initial value problems do not lead to a
+valid solution defined for all <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>.</p>
+<p>An example is the scalar problem <span class="math notranslate nohighlight">\(x'_t = 1 + x_t^2\)</span>, which has solution <span class="math notranslate nohighlight">\(x_t =
+\tan (t - c)\)</span> for some constant <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<p>But this solution equals <span class="math notranslate nohighlight">\(+\infty\)</span> for <span class="math notranslate nohighlight">\(t \geq c + \pi/2\)</span>.</p>
+<p>The problem is that the time path explodes to infinity in finite time.</p>
+<p>The same issue can occur for Markov processes, if jump rates grow sufficiently
+quickly.</p>
+<p>For more discussion, see, for example, Section 2.7 of <a class="bibtex reference internal" href="zreferences.html#norris1998markov" id="id2">[Nor98]</a>.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(P\)</span> be a Markov matrix on <span class="math notranslate nohighlight">\(S\)</span> and identify it with the linear operator in
+<a class="reference internal" href="#equation-mmismo">(47)</a>.  Verify the claims in <a class="reference internal" href="#equation-propp">(48)</a>.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Prove the claim in <a class="reference internal" href="#scintcon">Lemma 19</a>.</p>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Confirm that <span class="math notranslate nohighlight">\(Q\)</span> defined in <a class="reference internal" href="#equation-poissonq">(51)</a> induces a bounded linear operator on
+<span class="math notranslate nohighlight">\(\ell_1\)</span> via <a class="reference internal" href="#equation-imislo">(49)</a>.</p>
+</div>
+<div class="section" id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(K\)</span> be defined on <span class="math notranslate nohighlight">\(\ZZ_+ \times \ZZ_+\)</span> by <span class="math notranslate nohighlight">\(K(i, j) = \mathbb 1\{j = i + 1\}\)</span>.</p>
+<p>Show that, with <span class="math notranslate nohighlight">\(K^m\)</span> representing the <span class="math notranslate nohighlight">\(m\)</span>-th matrix product of <span class="math notranslate nohighlight">\(K\)</span> with itself,
+we have <span class="math notranslate nohighlight">\(K^m(i, j) = \mathbb 1\{j = i + m\}\)</span> for any <span class="math notranslate nohighlight">\(i, j \in \ZZ_+\)</span>.</p>
+</div>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>To determine the norm of <span class="math notranslate nohighlight">\(P\)</span>, we use the definition in <a class="reference internal" href="generators.html#equation-norml">(39)</a>.</p>
+<p>If <span class="math notranslate nohighlight">\(f \in \ell_1\)</span> and <span class="math notranslate nohighlight">\(\| f \| \leq 1\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \| f P \| 
+    \leq \sum_y \sum_x |f(x)| P(x, y)
+    = \sum_x |f(x)| \sum_y P(x, y)
+    = \sum_x |f(x)| 
+    = \| f \|
+\]</div>
+<p>Hence <span class="math notranslate nohighlight">\(\| P \| \leq 1\)</span>.</p>
+<p>To see that equality holds we can repeat this argument with <span class="math notranslate nohighlight">\(f \geq 0\)</span>,
+obtaining <span class="math notranslate nohighlight">\(\| fP \| = \|f\|\)</span>.</p>
+<p>Now pick any <span class="math notranslate nohighlight">\(\phi \in \dD\)</span>.</p>
+<p>Clearly <span class="math notranslate nohighlight">\(\phi P \geq 0\)</span>, and</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_y (\phi P)(y)
+    \sum_y \sum_x \phi (x) P(x, y)
+    \sum_x \phi (x) \sum_y P(x, y)
+    = 1
+\]</div>
+<p>Hence <span class="math notranslate nohighlight">\(\phi P \in \dD\)</span> as claimed.</p>
+</div>
+<div class="section" id="solution-to-exercise-2">
+<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Here is one solution.</p>
+<p>Let <span class="math notranslate nohighlight">\(Q\)</span> be an intensity matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>Suppose first that <span class="math notranslate nohighlight">\(m := \sup_x |Q(x,x)|\)</span> is finite.</p>
+<p>Set <span class="math notranslate nohighlight">\(\hat P := I + Q / m\)</span>.</p>
+<p>It is not hard to check that <span class="math notranslate nohighlight">\(\hat P\)</span> is a Markov matrix and that <span class="math notranslate nohighlight">\(Q = m( \hat
+P - I)\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(\hat P\)</span> is a Markov matrix, it induces a bounded linear operator on
+<span class="math notranslate nohighlight">\(\ell_1\)</span> via <a class="reference internal" href="#equation-mmismo">(47)</a>.</p>
+<p>As <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> is a linear space, we see that <span class="math notranslate nohighlight">\(Q\)</span> is likewise in
+<span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span>.</p>
+<p>In particular, <span class="math notranslate nohighlight">\(Q\)</span> is a bounded operator, and hence conservative.</p>
+<p>Next, suppose that <span class="math notranslate nohighlight">\(Q\)</span> is conservative and yet <span class="math notranslate nohighlight">\(\sup_x |Q(x,x)|\)</span> is infinite.</p>
+<p>Choose <span class="math notranslate nohighlight">\(x \in S\)</span> such that <span class="math notranslate nohighlight">\(|Q(x, x)| &gt; \| Q\|\)</span></p>
+<p>Let <span class="math notranslate nohighlight">\(f \in \ell_1\)</span> be defined by <span class="math notranslate nohighlight">\(f(z) = \mathbb 1\{z = x\}\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(\|f\| = 1\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \| Q \| 
+    \geq \| f Q \|
+    = \sum_y \left| \sum_z f(z) Q(z, y) \right|
+    = \sum_y | Q(x, y) |
+    \geq | Q(x, x) |
+\]</div>
+<p>Contradiction.</p>
+</div>
+<div class="section" id="solution-to-exercise-3">
+<h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Linearity is obvious so we focus on boundedness.</p>
+<p>For any <span class="math notranslate nohighlight">\(f \in \ell_1\)</span> and this choice of <span class="math notranslate nohighlight">\(Q\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_y |(fQ)(y)|
+    \leq \sum_y \sum_x |f(x) Q(x, y)|
+    \leq \lambda \sum_y \sum_x |f(y) - f(y+1)|
+\]</div>
+<p>Applying the triangle inequality, we see that the right hand side is dominated
+by <span class="math notranslate nohighlight">\(2 \lambda \| f\|\)</span>.</p>
+<p>Hence <span class="math notranslate nohighlight">\(\| fQ \| \leq 2 \lambda \|f\|\)</span>, which implies that <span class="math notranslate nohighlight">\(Q \in \lL(\ell_1)\)</span>
+as required.</p>
+</div>
+<div class="section" id="solution-to-exercise-4">
+<h3>Solution to Exercise 4<a class="headerlink" href="#solution-to-exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>The statement <span class="math notranslate nohighlight">\(K^m(i, j) = \mathbb 1\{j = i + m\}\)</span> holds by definition when
+<span class="math notranslate nohighlight">\(m=1\)</span>.</p>
+<p>Now suppose it holds at arbitrary <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>We then have, by definition of composition (matrix multiplication),</p>
+<div class="math notranslate nohighlight">
+\[
+    K^{m+1}(i, j)
+    = \sum_n K(i, n) K^m (n, j)
+    = \sum_n K(i, n) \mathbb 1\{j = i + m\}
+    = K(i, m-j)
+\]</div>
+<p>Applying the definition <span class="math notranslate nohighlight">\(K(i, j) = \mathbb 1\{j = i + 1\}\)</span> completes verification of the claim.</p>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="fnim"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Previously, we introduced the notion of an intensity matrix when <span class="math notranslate nohighlight">\(S\)</span>
+is finite and the definition is essentially unchanged in the current
+setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S \times S \to \RR\)</span> is called an
+<strong>intensity matrix</strong> if <span class="math notranslate nohighlight">\(Q\)</span> has zero row sums and <span class="math notranslate nohighlight">\(Q(x, y) \geq 0\)</span> whenever
+<span class="math notranslate nohighlight">\(x \not= y\)</span>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="generators.html" title="previous page">Semigroups and Generators</a>
+    <a class='right-next' id="next-link" href="prob_view.html" title="next page">A Probabilistic View</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stationarity and Ergodicity &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bibliography" href="zreferences.html" />
+    <link rel="prev" title="A Probabilistic View" href="prob_view.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Continuous Time Markov Chains
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="memoryless.html">
+   Memoryless Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="poisson.html">
+   Poisson Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_prop.html">
+   The Markov Property
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_bwd.html">
+   Kolmogorov Backward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_fwd.html">
+   The Kolmogorov Forward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generators.html">
+   Semigroups and Generators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uc_mc_semigroups.html">
+   UC Markov Semigroups
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prob_view.html">
+   A Probabilistic View
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Stationarity and Ergodicity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/ergodicity.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/ergodicity.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ergodicity.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stationary-distributions">
+   Stationary Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#irreducibility-and-uniqueness">
+   Irreducibility and Uniqueness
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-stabiltiy">
+   Asymptotic Stabiltiy
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="stationarity-and-ergodicity">
+<h1>Stationarity and Ergodicity<a class="headerlink" href="#stationarity-and-ergodicity" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>To be added.</p>
+<p>Use the distribution flow figures from markov_prop.md, this time starting from
+many different distributions.</p>
+<p>Suggests ergodicity.</p>
+<p>We will use the following imports</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.art3d</span> <span class="kn">import</span> <span class="n">Poly3DCollection</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stationary-distributions">
+<h2>Stationary Distributions<a class="headerlink" href="#stationary-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup on countable state space <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>A distribution <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> is called <strong>stationary</strong> for <span class="math notranslate nohighlight">\((P_t)\)</span> if</p>
+<div class="math notranslate nohighlight">
+\[
+    \psi P_t = \psi 
+    \text{ for all } t \geq 0
+\]</div>
+<p>In many cases, it is easier to use the generator of the semigroup to identify
+stationary distributions.</p>
+<p>The next result makes this possible.</p>
+<p>It is analogous to the idea that a point <span class="math notranslate nohighlight">\(\bar x\)</span> in <span class="math notranslate nohighlight">\(\RR^d\)</span> is stationary for
+a vector ODE <span class="math notranslate nohighlight">\(x'_t = F(x_t)\)</span> when <span class="math notranslate nohighlight">\(F(\bar x) = 0\)</span>.</p>
+<p>It holds true under weaker conditions but the version stated here is easy to
+prove and sufficient for most cases we consider.</p>
+<div class="proof theorem admonition" id="statfromq">
+<p class="admonition-title"><span class="caption-number">Theorem 23 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>For a conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> and
+associated Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>, a distribution <span class="math notranslate nohighlight">\(\psi\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is stationary
+for <span class="math notranslate nohighlight">\((P_t)\)</span> if and only if <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Suppose first that <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(Q\)</span> is conservative, <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC semigroup with <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for
+all <span class="math notranslate nohighlight">\(t\)</span>, and hence, for any <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \psi e^{tQ} = \psi + t \psi Q + t^2 \frac{\psi Q^2}{2!} 
+    + \cdots
+\]</div>
+<p>From <span class="math notranslate nohighlight">\(\psi Q = 0\)</span> we get <span class="math notranslate nohighlight">\(\psi Q^k = 0\)</span> for all <span class="math notranslate nohighlight">\(k \in \NN\)</span>, so the last
+display yields <span class="math notranslate nohighlight">\(\psi P_t = \psi\)</span>.</p>
+<p>Hence <span class="math notranslate nohighlight">\(\psi\)</span> is stationary for <span class="math notranslate nohighlight">\((P_t)\)</span>.</p>
+<p>Now suppose that <span class="math notranslate nohighlight">\(\psi\)</span> is stationary for <span class="math notranslate nohighlight">\((P_t)\)</span> and set <span class="math notranslate nohighlight">\(D_t := (1/t) (P_t -
+I)\)</span>.</p>
+<p>From the triangle inequality and the definition of the operator norm, for any given <span class="math notranslate nohighlight">\(t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \| \psi Q \| 
+    \leq \| \psi (Q - D_t) \| + \| \psi D_t \|
+    \leq \| Q - D_t \| + \| \psi D_t \|
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is UC and <span class="math notranslate nohighlight">\(Q\)</span> is its generator, we have <span class="math notranslate nohighlight">\(\| D_t - Q \| \to 0\)</span> in
+<span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> as <span class="math notranslate nohighlight">\(t \to 0\)</span> from the right.</p>
+<p>Hence <span class="math notranslate nohighlight">\(\| \psi Q \| \leq \liminf_{t \to 0} \| \psi D_t \|\)</span>.</p>
+<p>As <span class="math notranslate nohighlight">\(\psi\)</span> is stationary, <span class="math notranslate nohighlight">\(\psi D_t = 0\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Hence <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>, as was to be shown.</p>
+</div>
+</div>
+<div class="section" id="irreducibility-and-uniqueness">
+<h2>Irreducibility and Uniqueness<a class="headerlink" href="#irreducibility-and-uniqueness" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>We say that state <span class="math notranslate nohighlight">\(y\)</span> is <strong>accessible</strong> from state <span class="math notranslate nohighlight">\(x\)</span> if
+there exists a <span class="math notranslate nohighlight">\(t \geq 0\)</span> such that <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span>.</p>
+<p>A Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is called <strong>irreducible</strong> if <span class="math notranslate nohighlight">\(y\)</span> is
+accessible from <span class="math notranslate nohighlight">\(x\)</span> for every <span class="math notranslate nohighlight">\((x,y) \in S \times S\)</span>.</p>
+<p>We seek a characterization of irreducibility of <span class="math notranslate nohighlight">\((P_t)\)</span> in terms of its
+generator.</p>
+<p>As a first step, we will say there is a <strong><span class="math notranslate nohighlight">\(Q\)</span>-positive probability flow</strong> from <span class="math notranslate nohighlight">\(x\)</span>
+to <span class="math notranslate nohighlight">\(y\)</span> if there exists a finite sequence <span class="math notranslate nohighlight">\((z_i)_{i=1}^m\)</span> in <span class="math notranslate nohighlight">\(S\)</span> starting at
+<span class="math notranslate nohighlight">\(x=z_1\)</span> and ending at <span class="math notranslate nohighlight">\(y=z_m\)</span> such that <span class="math notranslate nohighlight">\(Q(z_i, z_{i+1}) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<div class="proof lemma admonition" id="equivirr">
+<p class="admonition-title"><span class="caption-number">Lemma 24 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>For distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, the following statements are equivalent:</p>
+<ol class="simple">
+<li><p>The state <span class="math notranslate nohighlight">\(y\)</span> is accessible from <span class="math notranslate nohighlight">\(x\)</span> under <span class="math notranslate nohighlight">\((P_t)\)</span>.</p></li>
+<li><p>There is a positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> under <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
+</ol>
+</div>
+</div><p>((prove only for the UC case?))</p>
+<div class="proof admonition" id="proof">
+<p>Proof. For distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we have</p>
+<div class="math notranslate nohighlight" id="equation-ptexpan">
+<span class="eqno">(54)<a class="headerlink" href="#equation-ptexpan" title="Permalink to this equation">¶</a></span>\[
+    P_t(x, y) = t Q(x,y) + \frac{t^2}{2!} Q^2(x, y) + \cdots
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(x\)</span> is accessible from <span class="math notranslate nohighlight">\(y\)</span>, then <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for some <span class="math notranslate nohighlight">\(t &gt; 0\)</span>, and hence
+<span class="math notranslate nohighlight">\(Q^k(x,y) &gt; 0\)</span> for at least one <span class="math notranslate nohighlight">\(k \in \NN\)</span>.</p>
+<p>Writing out the matrix product as a sum, we now have</p>
+<div class="math notranslate nohighlight" id="equation-qkassum">
+<span class="eqno">(55)<a class="headerlink" href="#equation-qkassum" title="Permalink to this equation">¶</a></span>\[
+    Q^k(x,y) =
+    \sum_{z_1}
+    \sum_{z_2}
+    \cdots
+    \sum_{z_{k-1}}
+        Q(x, z_1) Q(z_1, z_2) \cdots Q(z_{k-1}, y) 
+        &gt; 0
+\]</div>
+<p>It follows that at least one element of the sum must be strictly positive, so
+positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> is established.</p>
+<p>To prove the converse, suppose there is positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to
+<span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>We can then take a finite sequence <span class="math notranslate nohighlight">\((z_i)_{i=1}^m\)</span> starting at <span class="math notranslate nohighlight">\(x\)</span> and ending
+at <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(Q(z_i, z_{i+1}) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>We can and do assume that <span class="math notranslate nohighlight">\((z_i)_{i=0}^m\)</span> is the shortest such sequence
+(otherwise just pick the shortest one).</p>
+<p>Because any shorter sequence <span class="math notranslate nohighlight">\((u_i)_{i=1}^k\)</span> linking <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> has <span class="math notranslate nohighlight">\(Q(u_i, u_{i+1}) = 0\)</span> for some <span class="math notranslate nohighlight">\(i\)</span>, <a class="reference internal" href="#equation-qkassum">(55)</a> implies that <span class="math notranslate nohighlight">\(Q^k(x,y) = 0\)</span> for all <span class="math notranslate nohighlight">\(k &lt; m\)</span>.</p>
+<p>Hence, by <a class="reference internal" href="#equation-ptexpan">(54)</a>, we have <span class="math notranslate nohighlight">\(P_t(x, y) = t^m Q^m(x, y) + o(t^m)\)</span>.</p>
+<p>As <span class="math notranslate nohighlight">\(Q^m(x, y) &gt; 0\)</span>, we see that <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for sufficiently small <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</div>
+<p>Irreducible implies aperiodic.</p>
+<div class="proof theorem admonition" id="theorem-2">
+<p class="admonition-title"><span class="caption-number">Theorem 25 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>For a ((UC)) Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>, the following statements are
+equivalent:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_t(x,y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and all <span class="math notranslate nohighlight">\((x,y) \in S \times S\)</span>.</p></li>
+</ol>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. To be added.</p>
+</div>
+<p>Irreducible implies uniqueness.</p>
+</div>
+<div class="section" id="asymptotic-stabiltiy">
+<h2>Asymptotic Stabiltiy<a class="headerlink" href="#asymptotic-stabiltiy" title="Permalink to this headline">¶</a></h2>
+<p>To be added.</p>
+<p>Include Foguel alternative?</p>
+<p>Thm 6.2 of RR and MTK.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="prob_view.html" title="previous page">A Probabilistic View</a>
+    <a class='right-next' id="next-link" href="zreferences.html" title="next page">Bibliography</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,1349 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Markov Property &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kolmogorov Backward Equation" href="kolmogorov_bwd.html" />
+    <link rel="prev" title="Poisson Processes" href="poisson.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Continuous Time Markov Chains
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="memoryless.html">
+   Memoryless Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="poisson.html">
+   Poisson Processes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The Markov Property
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_bwd.html">
+   Kolmogorov Backward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_fwd.html">
+   The Kolmogorov Forward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generators.html">
+   Semigroups and Generators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uc_mc_semigroups.html">
+   UC Markov Semigroups
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prob_view.html">
+   A Probabilistic View
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ergodicity.html">
+   Stationarity and Ergodicity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/markov_prop.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/markov_prop.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/markov_prop.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting">
+     Setting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markov-processes">
+   Markov Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-time-finite-state">
+     Discrete Time, Finite State
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-joint-distribution">
+       The Joint Distribution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extending-to-countable-state-spaces">
+     Extending to Countable State Spaces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-continuous-time-case">
+     The Continuous Time Case
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-canonical-chain">
+     The Canonical Chain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-and-probabilistic-constructions">
+     Simulation and Probabilistic Constructions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implications-of-the-markov-property">
+   Implications of the Markov Property
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-failure-of-the-markov-property">
+     Example: Failure of the Markov Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#restrictions-imposed-by-the-markov-property">
+     Restrictions Imposed by the Markov Property
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-of-markov-processes">
+   Examples of Markov Processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-poisson-processes">
+     Example: Poisson Processes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-model-of-inventory-dynamics">
+   A Model of Inventory Dynamics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#representation">
+     Representation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation">
+     Simulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-embedded-jump-chain">
+     The Embedded Jump Chain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markov-property">
+     Markov Property
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jump-processes-with-constant-rates">
+   Jump Processes with Constant Rates
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construction">
+     Construction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Markov Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transition-semigroup">
+     Transition Semigroup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distribution-flows-for-the-inventory-model">
+   Distribution Flows for the Inventory Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-1">
+     Solution to Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-2">
+     Solution to Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-3">
+     Solution to Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-4">
+     Solution to Exercise 4
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-markov-property">
+<h1>The Markov Property<a class="headerlink" href="#the-markov-property" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>A continuous time stochastic process is said to have the Markov property if
+that the past and future are independent given the current state.</p>
+<p>(A more formal definition is provided below.)</p>
+<p>As we will see, the Markov property imposes a large amount of structure on
+continuous time processes.</p>
+<p>This structure leads to elegant and powerful results on
+evolution and dynamics.</p>
+<p>At the same time, the Markov property is general enough to cover many applied
+problems, as described in <a class="reference internal" href="intro.html"><span class="doc">the introduction</span></a>.</p>
+<div class="section" id="setting">
+<h3>Setting<a class="headerlink" href="#setting" title="Permalink to this headline">¶</a></h3>
+<p>In this lecture, the state space where dynamics
+evolve will be a <a class="reference external" href="https://en.wikipedia.org/wiki/Countable_set">countable set</a>,
+denoted henceforth by <span class="math notranslate nohighlight">\(S\)</span>, with typical elements <span class="math notranslate nohighlight">\(x, y\)</span>.</p>
+<p>(Note that “countable” is understood to include finite.)</p>
+<p>Regarding notation, in what follows, <span class="math notranslate nohighlight">\(\sum_{x \in S}\)</span> is abbreviated to
+<span class="math notranslate nohighlight">\(\sum_x\)</span>, the supremum <span class="math notranslate nohighlight">\(\sup_{x \in S}\)</span> is abbreviated to <span class="math notranslate nohighlight">\(\sup_x\)</span> and so on.</p>
+<p>A <strong>distribution</strong> on <span class="math notranslate nohighlight">\(S\)</span> is a function <span class="math notranslate nohighlight">\(\phi\)</span> from <span class="math notranslate nohighlight">\(S\)</span> to <span class="math notranslate nohighlight">\(\RR_+\)</span> with
+<span class="math notranslate nohighlight">\(\sum_x \phi(x) = 1\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\dD\)</span> denote the set of all distributions on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>To economize on terminology, we define a <strong>matrix</strong> <span class="math notranslate nohighlight">\(A\)</span> on <span class="math notranslate nohighlight">\(S\)</span> to be a map
+from <span class="math notranslate nohighlight">\(S \times S\)</span> to <span class="math notranslate nohighlight">\(\RR\)</span>.</p>
+<p>When <span class="math notranslate nohighlight">\(S\)</span> is finite, this reduces to the usual notion of a matrix, and,
+whenever you see expressions such as <span class="math notranslate nohighlight">\(A(x,y)\)</span> below, you can
+mentally identify them with more familiar matrix
+notation, such as <span class="math notranslate nohighlight">\(A_{ij}\)</span>, if you wish.</p>
+<p>The product of two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> is defined by</p>
+<div class="math notranslate nohighlight" id="equation-kernprod">
+<span class="eqno">(9)<a class="headerlink" href="#equation-kernprod" title="Permalink to this equation">¶</a></span>\[
+    (A B)(x, y) = \sum_z A(x, z) B(z, y)
+    \qquad ((x, y) \in S \times S)
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(S\)</span> is finite, then this is just ordinary matrix multiplication.</p>
+<p>In statements involving matrix algebra, we <em>always treat distributions as row
+vectors</em>, so that, for <span class="math notranslate nohighlight">\(\phi \in \dD\)</span> and given matrix <span class="math notranslate nohighlight">\(A\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    (\phi A)(y) = \sum_x \phi(x) A(x, y) 
+\]</div>
+<p>We will use the following imports</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">expm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="markov-processes">
+<h2>Markov Processes<a class="headerlink" href="#markov-processes" title="Permalink to this headline">¶</a></h2>
+<p>We now introduce the definition of Markov processes, first reviewing the
+discrete case and then shifting to continuous time.</p>
+<div class="section" id="discrete-time-finite-state">
+<span id="finstatediscretemc"></span><h3>Discrete Time, Finite State<a class="headerlink" href="#discrete-time-finite-state" title="Permalink to this headline">¶</a></h3>
+<p>The simplest Markov processes are those with a discrete time parameter and finite state space.</p>
+<p>Assume for now that <span class="math notranslate nohighlight">\(S\)</span> has <span class="math notranslate nohighlight">\(n\)</span> elements and let <span class="math notranslate nohighlight">\(P\)</span> be a <strong>Markov matrix</strong>,
+which means that <span class="math notranslate nohighlight">\(P(x,y) \geq 0\)</span> and <span class="math notranslate nohighlight">\(\sum_y P(x,y) = 1\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>In applications, <span class="math notranslate nohighlight">\(P(x, y)\)</span> represents the probability of transitioning from <span class="math notranslate nohighlight">\(x\)</span> to
+<span class="math notranslate nohighlight">\(y\)</span> in one step.</p>
+<p>A <strong>Markov chain</strong> <span class="math notranslate nohighlight">\((X_t)_{t \in \ZZ_+}\)</span> on <span class="math notranslate nohighlight">\(S\)</span> with Markov
+matrix <span class="math notranslate nohighlight">\(P\)</span> is a sequence of random variables satisfying</p>
+<div class="math notranslate nohighlight" id="equation-markovpropd">
+<span class="eqno">(10)<a class="headerlink" href="#equation-markovpropd" title="Permalink to this equation">¶</a></span>\[
+    \PP\{X_{t+1} = y \,|\, X_0, X_1, \ldots, X_t \} = P (X_t, y)
+\]</div>
+<p>with probability one for all <span class="math notranslate nohighlight">\(y \in S\)</span> and any <span class="math notranslate nohighlight">\(t \in \ZZ_+\)</span>.</p>
+<p>In addition to connecting probabilities to the Markov matrix,
+<a class="reference internal" href="#equation-markovpropd">(10)</a> says that the process depends on its history only through
+the current state.</p>
+<p>We <a class="reference external" href="https://python.quantecon.org/finite_markov.html">recall that</a>, if <span class="math notranslate nohighlight">\(X_t\)</span>
+has distribution <span class="math notranslate nohighlight">\(\phi\)</span>, then <span class="math notranslate nohighlight">\(X_{t+1}\)</span> has distribution <span class="math notranslate nohighlight">\(\phi P\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(\phi\)</span> is understood as a row vector, the meaning is</p>
+<div class="math notranslate nohighlight" id="equation-update-rule">
+<span class="eqno">(11)<a class="headerlink" href="#equation-update-rule" title="Permalink to this equation">¶</a></span>\[
+    (\phi P)(y) = \sum_x \phi(x) P(x, y) 
+    \qquad (y \in S)
+\]</div>
+<div class="section" id="the-joint-distribution">
+<span id="jdfin"></span><h4>The Joint Distribution<a class="headerlink" href="#the-joint-distribution" title="Permalink to this headline">¶</a></h4>
+<p>In general, for given Markov matrix <span class="math notranslate nohighlight">\(P\)</span>, there can be many Markov chains
+<span class="math notranslate nohighlight">\((X_t)\)</span> that satisfy <a class="reference internal" href="#equation-markovpropd">(10)</a>.</p>
+<p>This is due to the more general observation that, for a given distribution
+<span class="math notranslate nohighlight">\(\phi\)</span>, we can construct many random variables having distribution <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p>(The exercises below ask for one example.)</p>
+<p>Hence <span class="math notranslate nohighlight">\(P\)</span> is, in a sense, a more primitive object than <span class="math notranslate nohighlight">\((X_t)\)</span>.</p>
+<p>There is another way to see the fundamental importance of <span class="math notranslate nohighlight">\(P\)</span>, which is by
+constructing the joint distribution of <span class="math notranslate nohighlight">\((X_t)\)</span> from <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(S^\infty\)</span> represent the space of <span class="math notranslate nohighlight">\(S\)</span>-valued sequences <span class="math notranslate nohighlight">\((x_0, x_1, x_2, \ldots)\)</span>.</p>
+<p>Fix an initial condition <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and a Markov matrix <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>The <strong>joint distribution</strong> of a Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> satisfying
+<a class="reference internal" href="#equation-markovpropd">(10)</a> and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span> is the distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> over
+<span class="math notranslate nohighlight">\(S^\infty\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-jointdeq">
+<span class="eqno">(12)<a class="headerlink" href="#equation-jointdeq" title="Permalink to this equation">¶</a></span>\[
+    \PP\{ X_{t_1} = y_1, \ldots, X_{t_k} = y_k \}
+    =
+    \mathbf P_\psi\{ (x_t) \in S^\infty \,:\, 
+        x_{t_i} = y_i \text{ for } i = 1, \ldots m\}
+\]</div>
+<p>for any <span class="math notranslate nohighlight">\(m\)</span> positive integers <span class="math notranslate nohighlight">\(t_i\)</span> and <span class="math notranslate nohighlight">\(m\)</span> elements  <span class="math notranslate nohighlight">\(y_i\)</span> of the state space <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>(Joint distributions of discrete time processes are uniquely defined by their
+values at finite collections of times — see, for example, Theorem 7.2 of <a class="bibtex reference internal" href="zreferences.html#walsh2012knowing" id="id1">[Wal12]</a>.)</p>
+<p>We can construct <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> by first defining <span class="math notranslate nohighlight">\(P_\psi^n\)</span> over
+the the finite Cartiesian product <span class="math notranslate nohighlight">\(S^{n+1}\)</span> via</p>
+<div class="math notranslate nohighlight" id="equation-mathjointd">
+<span class="eqno">(13)<a class="headerlink" href="#equation-mathjointd" title="Permalink to this equation">¶</a></span>\[
+    \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
+        = \psi(x_0)
+        P(x_0, x_1)
+        \times \cdots \times
+        P(x_{n-1}, x_n)
+\]</div>
+<p>For any Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> satisfying <a class="reference internal" href="#equation-markovpropd">(10)</a> and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>,
+the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n)\)</span> has joint distribution <span class="math notranslate nohighlight">\(\mathbf
+P_\psi^n\)</span>.</p>
+<p>This is a solved exercise below.</p>
+<p>The last step is to show that the family <span class="math notranslate nohighlight">\((\mathbf P_\psi^n)\)</span> defined at each
+<span class="math notranslate nohighlight">\(n \in \NN\)</span> extends uniquely to a distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> over the
+infinite sequences in <span class="math notranslate nohighlight">\(S^\infty\)</span>.</p>
+<p>That this is true follows from a well known <a class="reference external" href="https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem">theorem of Kolmogorov</a>.</p>
+<p>Hence <span class="math notranslate nohighlight">\(P\)</span> defines the joint distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> when paired with any initial condition <span class="math notranslate nohighlight">\(\psi\)</span>.</p>
+</div>
+</div>
+<div class="section" id="extending-to-countable-state-spaces">
+<h3>Extending to Countable State Spaces<a class="headerlink" href="#extending-to-countable-state-spaces" title="Permalink to this headline">¶</a></h3>
+<p>When <span class="math notranslate nohighlight">\(S\)</span> is infinite, the same idea carries through.</p>
+<p>Consistent with the finite case, a <strong>Markov matrix</strong> is a map
+<span class="math notranslate nohighlight">\(P\)</span> from <span class="math notranslate nohighlight">\(S \times S\)</span> to <span class="math notranslate nohighlight">\(\RR_+\)</span> satisfying</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_y P(x, y) = 1 
+    \text{ for all } x \in S
+\]</div>
+<p>The definition of a Markov chain <span class="math notranslate nohighlight">\((X_t)_{t \in \ZZ_+}\)</span> on <span class="math notranslate nohighlight">\(S\)</span> with Markov matrix  <span class="math notranslate nohighlight">\(P\)</span> is exactly as in <a class="reference internal" href="#equation-markovpropd">(10)</a>.</p>
+<p>Given Markov matrix <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(\phi \in \dD\)</span>, we define <span class="math notranslate nohighlight">\(\phi P\)</span> by
+<a class="reference internal" href="#equation-update-rule">(11)</a>.</p>
+<p>Then, as before, <span class="math notranslate nohighlight">\(\phi P\)</span> can be understood as the distribution of
+<span class="math notranslate nohighlight">\(X_{t+1}\)</span> when <span class="math notranslate nohighlight">\(X_t\)</span> has distribution <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
+<p>The function <span class="math notranslate nohighlight">\(\phi P\)</span> is in <span class="math notranslate nohighlight">\(\dD\)</span>, since, by <a class="reference internal" href="#equation-update-rule">(11)</a>, it is
+nonnegative and</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_y (\phi P)(y) 
+    = \sum_y \sum_x P(x, y) \phi(x)
+    = \sum_x \sum_y P(x, y) \phi(x)
+    = \sum_x \phi(x)
+    = 1
+\]</div>
+<p>(Swapping the order of infinite sums is justified here by the fact that all
+elements are nonnegative — a version of Tonelli’s theorem).</p>
+<p>If <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are Markov matrices on <span class="math notranslate nohighlight">\(S\)</span>, then, using the definition in
+<a class="reference internal" href="#equation-kernprod">(9)</a>,</p>
+<div class="math notranslate nohighlight">
+\[
+    (P Q)(x, y) := \sum_z P(x, z) Q(z, y)
+\]</div>
+<p>It is not difficult to check that <span class="math notranslate nohighlight">\(P Q\)</span> is again a Markov matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>The elements of <span class="math notranslate nohighlight">\(P^k\)</span>, the <span class="math notranslate nohighlight">\(k\)</span>-th product of <span class="math notranslate nohighlight">\(P\)</span> with itself, give <span class="math notranslate nohighlight">\(k\)</span> step transition probabilities.</p>
+<p>For example, we have</p>
+<div class="math notranslate nohighlight" id="equation-kernprodk">
+<span class="eqno">(14)<a class="headerlink" href="#equation-kernprodk" title="Permalink to this equation">¶</a></span>\[
+    P^k(x, y) 
+    = (P^{k-j} P^j)(x, y) = \sum_z P^{k-j}(x, z) P^j(z, y)
+\]</div>
+<p>which is a version of the (discrete time) Chapman-Kolmogorov equation.</p>
+<p>Equation <a class="reference internal" href="#equation-kernprodk">(14)</a> can be obtained from the law of total probability: if
+<span class="math notranslate nohighlight">\((X_t)\)</span> is a Markov chain with Markov matrix <span class="math notranslate nohighlight">\(P\)</span> and initial condition <span class="math notranslate nohighlight">\(X_0 =
+x\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{X_k = y\}
+    = \sum_z \PP\{X_k = y \,|\, X_j=z\} \PP\{X_j=z\}
+\]</div>
+<p>All of the <a class="reference internal" href="#jdfin"><span class="std std-ref">preceding discussion</span></a> on the connection between <span class="math notranslate nohighlight">\(P\)</span>
+and the joint distribution of <span class="math notranslate nohighlight">\((X_t)\)</span> when <span class="math notranslate nohighlight">\(S\)</span> is finite carries over
+to the current setting.</p>
+</div>
+<div class="section" id="the-continuous-time-case">
+<h3>The Continuous Time Case<a class="headerlink" href="#the-continuous-time-case" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>continuous time stochastic process</strong> on <span class="math notranslate nohighlight">\(S\)</span> is a collection <span class="math notranslate nohighlight">\((X_t)\)</span> of <span class="math notranslate nohighlight">\(S\)</span>-valued
+random variables <span class="math notranslate nohighlight">\(X_t\)</span> defined on a common probability space and indexed by <span class="math notranslate nohighlight">\(t
+\in \RR_+\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(I\)</span> be the Markov matrix on <span class="math notranslate nohighlight">\(S\)</span> defined by <span class="math notranslate nohighlight">\(I(x,y) = \mathbb 1\{x = y\}\)</span>.</p>
+<p>A <strong>Markov semigroup</strong> is a family <span class="math notranslate nohighlight">\((P_t)\)</span> of Markov matrices
+on <span class="math notranslate nohighlight">\(S\)</span> satisfying</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_0 = I\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim_{t \to 0} P_t(x, y) = I(x,y)\)</span> for all <span class="math notranslate nohighlight">\(x,y\)</span> in <span class="math notranslate nohighlight">\(S\)</span>, and</p></li>
+<li><p>the semigroup property <span class="math notranslate nohighlight">\(P_{s + t} = P_s P_t\)</span> for all <span class="math notranslate nohighlight">\(s, t \geq 0\)</span>.</p></li>
+</ol>
+<p>The interpretation of <span class="math notranslate nohighlight">\(P_t(x, y)\)</span> is the probability of moving from state <span class="math notranslate nohighlight">\(x\)</span>
+to state <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(t\)</span> units of time.</p>
+<p>As such it is natural that <span class="math notranslate nohighlight">\(P_0(x,y) = 1\)</span> if <span class="math notranslate nohighlight">\(x=y\)</span> and zero otherwise, which
+is condition 1.</p>
+<p>Condition 2 is continuity with respect to <span class="math notranslate nohighlight">\(t\)</span>, which might seem restrictive
+but it is in fact very mild.</p>
+<p>For all practical applications, probabilities do not jump — although the
+chain <span class="math notranslate nohighlight">\((X_t)\)</span> itself can of course jump from state to state as time
+goes by.<a class="footnote-reference brackets" href="#footnote1" id="id2">1</a></p>
+<p>The semigroup property in condition 3 is nothing more than a continuous
+time version of the Chapman-Kolmogorov equation.</p>
+<p>This becomes clearer if we write it more explicitly as</p>
+<div class="math notranslate nohighlight" id="equation-chapkol-ct2">
+<span class="eqno">(15)<a class="headerlink" href="#equation-chapkol-ct2" title="Permalink to this equation">¶</a></span>\[
+    P_{s+t}(x, y) 
+    = \sum_z P_s(x, z) P_t(z, y)
+\]</div>
+<p>A stochastic process <span class="math notranslate nohighlight">\((X_t)\)</span> is called a (time homogeneous) <strong>continuous time
+Markov chain</strong> on <span class="math notranslate nohighlight">\(S\)</span> with Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> if</p>
+<div class="math notranslate nohighlight" id="equation-markovprop">
+<span class="eqno">(16)<a class="headerlink" href="#equation-markovprop" title="Permalink to this equation">¶</a></span>\[
+    \PP\{X_{s + t} = y \,|\, \fF_s \}
+    = P_t (X_s, y)
+\]</div>
+<p>with probability one for all <span class="math notranslate nohighlight">\(y \in S\)</span> and <span class="math notranslate nohighlight">\(s, t \geq 0\)</span>.</p>
+<p>Here <span class="math notranslate nohighlight">\(\fF_s\)</span> is the history <span class="math notranslate nohighlight">\((X_r)_{r \leq s}\)</span> of the process up until
+time <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>If you are an economist you might call <span class="math notranslate nohighlight">\(\fF_s\)</span> the “information set” at time
+<span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>If you are familiar with measure theory, you can understand <span class="math notranslate nohighlight">\(\fF_s\)</span> as
+the <span class="math notranslate nohighlight">\(\sigma\)</span>-algebra generated by <span class="math notranslate nohighlight">\((X_r)_{r \leq s}\)</span>.</p>
+<p>Analogous to the discrete time case, the joint
+distribution of <span class="math notranslate nohighlight">\((X_t)\)</span> is determined by its Markov semigroup plus an
+initial condition.</p>
+<p>This distribution is defined over the set of all right continuous functions
+<span class="math notranslate nohighlight">\(\RR_+ \ni t \mapsto x_t \in S\)</span>, which we call <span class="math notranslate nohighlight">\(rcS\)</span>.</p>
+<p>Next one builds finite dimensional distributions over <span class="math notranslate nohighlight">\(rcS\)</span> using
+expressions similar to <a class="reference internal" href="#equation-mathjointd">(13)</a>.</p>
+<p>Finally, the Kolmogorov extension theorem is applied, similar to the discrete
+time case.</p>
+<p>Corollary 6.4 of <a class="bibtex reference internal" href="zreferences.html#le2016brownian" id="id3">[LG16]</a> provides full details.</p>
+</div>
+<div class="section" id="the-canonical-chain">
+<h3>The Canonical Chain<a class="headerlink" href="#the-canonical-chain" title="Permalink to this headline">¶</a></h3>
+<p>Given a Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span>, does there always exist a continuous
+time Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> such that <a class="reference internal" href="#equation-markovprop">(16)</a> holds?</p>
+<p>The answer is affirmative.</p>
+<p>To illustrate, pick any Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span> and fix initial
+condition <span class="math notranslate nohighlight">\(\psi\)</span>.</p>
+<p>Next, create the corresponding joint distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> over
+<span class="math notranslate nohighlight">\(rcS\)</span>, as described above.</p>
+<p>Now, for each <span class="math notranslate nohighlight">\(t \geq 0\)</span>, let <span class="math notranslate nohighlight">\(\pi_t\)</span> be the point evaluation functional on
+<span class="math notranslate nohighlight">\(rcS\)</span>, that maps right continuous function <span class="math notranslate nohighlight">\((x_\tau)\)</span> into its time <span class="math notranslate nohighlight">\(t\)</span> value
+<span class="math notranslate nohighlight">\(x_t\)</span>.</p>
+<p>Finally, let <span class="math notranslate nohighlight">\(X_t\)</span> be an <span class="math notranslate nohighlight">\(S\)</span>-valued function on <span class="math notranslate nohighlight">\(rcS\)</span> defined at <span class="math notranslate nohighlight">\((x_\tau) \in rcS\)</span> by <span class="math notranslate nohighlight">\(\pi_t ( (x_\tau))\)</span>.</p>
+<p>In other words, after <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> picks out some time path <span class="math notranslate nohighlight">\((x_\tau) \in
+rcS\)</span>, the Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> simply reports this time path.</p>
+<p>Hence <span class="math notranslate nohighlight">\((X_t)\)</span> automatically has the correct distribution.</p>
+<p>The chain <span class="math notranslate nohighlight">\((X_t)\)</span> constructed in this way is called the <strong>canonical chain</strong>
+for the semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> and initial condition <span class="math notranslate nohighlight">\(\psi\)</span>.</p>
+</div>
+<div class="section" id="simulation-and-probabilistic-constructions">
+<h3>Simulation and Probabilistic Constructions<a class="headerlink" href="#simulation-and-probabilistic-constructions" title="Permalink to this headline">¶</a></h3>
+<p>While we have answered the existence question in the affirmative,
+the canonical construction is quite abstract.</p>
+<p>Moreover, there is little information about how we might simulate such a chain.</p>
+<p>Fortunately, it turns out that there are more concrete ways to build
+continuous time Markov chains from the objects that describe their
+distributions.</p>
+<p>We will learn about these in a <a class="reference internal" href="prob_view.html"><span class="doc">later lecture</span></a>.</p>
+</div>
+</div>
+<div class="section" id="implications-of-the-markov-property">
+<h2>Implications of the Markov Property<a class="headerlink" href="#implications-of-the-markov-property" title="Permalink to this headline">¶</a></h2>
+<p>The Markov property carries some strong implications that are not immediately
+obvious.</p>
+<p>Let’s take some time to explore them.</p>
+<div class="section" id="example-failure-of-the-markov-property">
+<h3>Example: Failure of the Markov Property<a class="headerlink" href="#example-failure-of-the-markov-property" title="Permalink to this headline">¶</a></h3>
+<p>Let’s look at how the Markov property can fail, via an intuitive rather than
+formal discussion.</p>
+<p>Let <span class="math notranslate nohighlight">\((X_t)\)</span> be a continuous time stochastic process with state space <span class="math notranslate nohighlight">\(S = \{0, 1\}\)</span>.</p>
+<p>The process starts at <span class="math notranslate nohighlight">\(0\)</span> and updates at follows:</p>
+<ol class="simple">
+<li><p>Draw <span class="math notranslate nohighlight">\(W\)</span> independently from a fixed Pareto distribution.</p></li>
+<li><p>Hold <span class="math notranslate nohighlight">\((X_t)\)</span> in its current state for <span class="math notranslate nohighlight">\(W\)</span> units of time and then switch
+to the other state.</p></li>
+<li><p>Go to step 1.</p></li>
+</ol>
+<p>What is the probability that <span class="math notranslate nohighlight">\(X_{s+h} = i\)</span> given both the history <span class="math notranslate nohighlight">\((X_r)_{r \leq s}\)</span> and current information <span class="math notranslate nohighlight">\(X_s = i\)</span>?</p>
+<p>If <span class="math notranslate nohighlight">\(h\)</span> is small, then this is close to the
+probability that there are zero switches over the time interval <span class="math notranslate nohighlight">\((s, s+h]\)</span>.</p>
+<p>To calculate this probability, it would be helpful to know how long the
+state has been at current state <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>This is because the Pareto distribution <a class="reference internal" href="memoryless.html#fail-mem"><span class="std std-ref">is not memoryless</span></a>.</p>
+<p>(With a Pareto distribution, if we know that <span class="math notranslate nohighlight">\(X_t\)</span> has been at <span class="math notranslate nohighlight">\(i\)</span> for a long
+time, then a switch in the near future becomes more likely.)</p>
+<p>As a result, the history prior to <span class="math notranslate nohighlight">\(X_s\)</span> is useful for predicting <span class="math notranslate nohighlight">\(X_{s+h}\)</span>,
+even when we know <span class="math notranslate nohighlight">\(X_s\)</span>.</p>
+<p>Thus, the Markov property fails.</p>
+</div>
+<div class="section" id="restrictions-imposed-by-the-markov-property">
+<h3>Restrictions Imposed by the Markov Property<a class="headerlink" href="#restrictions-imposed-by-the-markov-property" title="Permalink to this headline">¶</a></h3>
+<p>From the discussion above, we see that, for continuous time Markov chains,
+the length of time between jumps must be memoryless.</p>
+<p>Recall that, by <a class="reference internal" href="memoryless.html#exp_unique">Theorem 1</a>, the only memoryless
+distribution supported on <span class="math notranslate nohighlight">\(\RR_+\)</span> is the exponential distribution.</p>
+<p>Hence, a continuous time Markov chain waits at states for an
+exponential amount of time and then jumps.</p>
+<p>The way that the new state is chosen must also satisfy the Markov property,
+which adds another restriction.</p>
+<p>In summary, we already understand the following about continuous time Markov chains:</p>
+<ol class="simple">
+<li><p>Holding times are independent exponential draws.</p></li>
+<li><p>New states are chosen in a ``Markovian’’ way, independent of the past given the current state.</p></li>
+</ol>
+<p>We just need to clarify the details in these steps to have a complete description.</p>
+</div>
+</div>
+<div class="section" id="examples-of-markov-processes">
+<h2>Examples of Markov Processes<a class="headerlink" href="#examples-of-markov-processes" title="Permalink to this headline">¶</a></h2>
+<p>Let’s look at some examples of processes that possess the Markov property.</p>
+<div class="section" id="example-poisson-processes">
+<h3>Example: Poisson Processes<a class="headerlink" href="#example-poisson-processes" title="Permalink to this headline">¶</a></h3>
+<p>The Poisson process discussed in our <a class="reference internal" href="poisson.html"><span class="doc">previous lecture</span></a> is a
+Markov process on state space <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
+<p>To obtain the Markov semigroup, we observe that, for <span class="math notranslate nohighlight">\(k \geq j\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{N_{s + t} = k \,|\, N_s = j\}
+    = \PP\{N_{s + t} - N_s = k - j \,|\, N_s = j\}
+    = \PP\{N_{s + t} - N_s = k - j\}
+\]</div>
+<p>where the last step is due to independence of increments.</p>
+<p>From stationarity of increments we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{N_{s + t} - N_s = k - j\}
+    = \PP\{N_t = k - j\}
+    = e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}
+\]</div>
+<p>In summary, the Markov semigroup is</p>
+<div class="math notranslate nohighlight" id="equation-poissemi">
+<span class="eqno">(17)<a class="headerlink" href="#equation-poissemi" title="Permalink to this equation">¶</a></span>\[
+    P_t(j, k) 
+    = e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}  
+\]</div>
+<p>whenever <span class="math notranslate nohighlight">\(j \leq k\)</span> and <span class="math notranslate nohighlight">\(P_t(j, k) = 0\)</span> otherwise.</p>
+<p>This chain of equalities was obtained with <span class="math notranslate nohighlight">\(N_s = j\)</span> for arbitrary <span class="math notranslate nohighlight">\(j\)</span>, so we
+can replace <span class="math notranslate nohighlight">\(j\)</span> with <span class="math notranslate nohighlight">\(N_s\)</span> in <a class="reference internal" href="#equation-poissemi">(17)</a> to verify the Markov property <a class="reference internal" href="#equation-markovprop">(16)</a> for the Poisson process.</p>
+<p>Under <a class="reference internal" href="#equation-poissemi">(17)</a>, each <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix and <span class="math notranslate nohighlight">\((P_t)\)</span> is a
+Markov semigroup.</p>
+<p>The proof of the semigroup property is a solved exercise below.<a class="footnote-reference brackets" href="#footnote2" id="id4">2</a></p>
+</div>
+</div>
+<div class="section" id="a-model-of-inventory-dynamics">
+<span id="inventory-dynam"></span><h2>A Model of Inventory Dynamics<a class="headerlink" href="#a-model-of-inventory-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X_t\)</span> be the inventory of a firm at time <span class="math notranslate nohighlight">\(t\)</span>, taking values in the
+integers <span class="math notranslate nohighlight">\(0, 1, \ldots, b\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(X_t &gt; 0\)</span>, then a customer arrives after <span class="math notranslate nohighlight">\(W\)</span>
+units of time, where <span class="math notranslate nohighlight">\(W \sim E(\lambda)\)</span> for some fixed <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>.</p>
+<p>Upon arrival, each customer purchases <span class="math notranslate nohighlight">\(\min\{U, X_t\}\)</span> units, where <span class="math notranslate nohighlight">\(U\)</span> is an
+IID draw from the geometric distribution started at 1 rather than 0:</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{U = k\} = (1-\alpha)^{k-1} \alpha
+    \qquad (k = 1, 2, \ldots, \; \alpha \in (0, 1))
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(X_t = 0\)</span>, then no customers arrive and the firm places an order for <span class="math notranslate nohighlight">\(b\)</span> units.</p>
+<p>The order arrives after a delay of <span class="math notranslate nohighlight">\(D\)</span> units of time, where <span class="math notranslate nohighlight">\(D \sim E(\lambda)\)</span>.</p>
+<p>(We use the same <span class="math notranslate nohighlight">\(\lambda\)</span> here just for convenience, to simplify the exposition.)</p>
+<div class="section" id="representation">
+<h3>Representation<a class="headerlink" href="#representation" title="Permalink to this headline">¶</a></h3>
+<p>The inventory process jumps to a new value either when a new customer arrives
+or when new stock arrives.</p>
+<p>Between these arrival times it is constant.</p>
+<p>Hence, to track <span class="math notranslate nohighlight">\(X_t\)</span>, it is enough to track the jump times and the new values
+taken at the jumps.</p>
+<p>In what follows, we denote the jump times by <span class="math notranslate nohighlight">\(\{J_k\}\)</span> and the values at jumps
+by <span class="math notranslate nohighlight">\(\{Y_k\}\)</span>.</p>
+<p>Then we construct the state process via</p>
+<div class="math notranslate nohighlight" id="equation-xfromy">
+<span class="eqno">(18)<a class="headerlink" href="#equation-xfromy" title="Permalink to this equation">¶</a></span>\[
+    X_t = \sum_{k \geq 0} Y_k \mathbb 1\{J_k \leq t &lt; J_{k+1}\}
+    \qquad (t \geq 0)
+\]</div>
+</div>
+<div class="section" id="simulation">
+<h3>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h3>
+<p>Let’s simulate this process, starting at <span class="math notranslate nohighlight">\(X_0 = 0\)</span>.</p>
+<p>As above,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(J_k\)</span> is the time of the <span class="math notranslate nohighlight">\(k\)</span>-th jump (up or down) in inventory.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y_k\)</span> is the size of the inventory after the <span class="math notranslate nohighlight">\(k\)</span>-th jump.</p></li>
+<li><p><span class="math notranslate nohighlight">\((X_t)\)</span> is defined from these objects via <a class="reference internal" href="#equation-xfromy">(18)</a>.</p></li>
+</ul>
+<p>Here’s a function that generates and returns one path <span class="math notranslate nohighlight">\(t \mapsto X_t\)</span>.</p>
+<p>(We are not aiming for computational efficiency at this stage.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sim_path</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">α</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a path for inventory starting at b, up to time T.</span>
+
+<span class="sd">    Return the path as a function X(t) constructed from (J_k) and (Y_k).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">J</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span>
+    <span class="n">J_vals</span><span class="p">,</span> <span class="n">Y_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">J</span><span class="p">],</span> <span class="p">[</span><span class="n">Y</span><span class="p">]</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span>  <span class="c1"># W ~ E(λ)</span>
+        <span class="n">J</span> <span class="o">+=</span> <span class="n">W</span>
+        <span class="n">J_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">J</span> <span class="o">&gt;=</span> <span class="n">T</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="c1"># Update Y</span>
+        <span class="k">if</span> <span class="n">Y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">geometric</span><span class="p">(</span><span class="n">α</span><span class="p">)</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+        <span class="n">Y_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+    
+    <span class="n">Y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y_vals</span><span class="p">)</span>
+    <span class="n">J_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">J_vals</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">X</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Y_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">J_vals</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Y_vals</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">X</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot the process <span class="math notranslate nohighlight">\((X_t)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sim_path</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="p">[</span><span class="n">X</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X_t$&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;inventory&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/markov_prop_5_0.png" src="_images/markov_prop_5_0.png" />
+</div>
+</div>
+<p>As expected, inventory falls and then jumps back up to <span class="math notranslate nohighlight">\(b\)</span>.</p>
+</div>
+<div class="section" id="the-embedded-jump-chain">
+<h3>The Embedded Jump Chain<a class="headerlink" href="#the-embedded-jump-chain" title="Permalink to this headline">¶</a></h3>
+<p>In models such as the one described above, the embedded discrete time
+process <span class="math notranslate nohighlight">\((Y_k)\)</span> is called the “embedded jump chain”.</p>
+<p>It is easy to see that <span class="math notranslate nohighlight">\((Y_k)\)</span> is discrete time finite state Markov chain.</p>
+<p>Its Markov matrix <span class="math notranslate nohighlight">\(K\)</span> is
+given by  <span class="math notranslate nohighlight">\(K(x, y) = \mathbb 1\{y=b\}\)</span> when <span class="math notranslate nohighlight">\(x=0\)</span> and,  when <span class="math notranslate nohighlight">\(0 &lt; x \leq b\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-ijumpkern">
+<span class="eqno">(19)<a class="headerlink" href="#equation-ijumpkern" title="Permalink to this equation">¶</a></span>\[\begin{split}
+    K(x, y)
+    =
+    \begin{cases}
+    \mathbb 0 &amp; \text{ if }  y \geq x
+    \\
+    \PP\{x - U = y\} = (1-\alpha)^{x-y-1} \alpha 
+        &amp; \text{ if } 0 &lt; y &lt; x
+    \\
+    \PP\{U \geq x\} = (1-\alpha)^{x-1}
+        &amp; \text{ if } y = 0
+    \end{cases}
+\end{split}\]</div>
+</div>
+<div class="section" id="markov-property">
+<h3>Markov Property<a class="headerlink" href="#markov-property" title="Permalink to this headline">¶</a></h3>
+<p>The inventory model just described has the Markov property precisely because</p>
+<ol class="simple">
+<li><p>the jump chain <span class="math notranslate nohighlight">\((Y_k)\)</span> is Markov in discrete time and</p></li>
+<li><p>the holding times are independent exponential draws.</p></li>
+</ol>
+<p>Rather than providing more details on these points here, let us first describe
+a more general setting where the arguments will be clearer and more useful.</p>
+</div>
+</div>
+<div class="section" id="jump-processes-with-constant-rates">
+<h2>Jump Processes with Constant Rates<a class="headerlink" href="#jump-processes-with-constant-rates" title="Permalink to this headline">¶</a></h2>
+<p>The examples we have focused on so far are special cases of Markov processes
+with constant jump intensities.</p>
+<p>This processes turn out to be very representative (although the constant jump intensity will later be relaxed).</p>
+<p>Let’s now summarize the model and its properties.</p>
+<div class="section" id="construction">
+<h3>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h3>
+<p>The data for a Markov process on <span class="math notranslate nohighlight">\(S\)</span> with constant jump rates are</p>
+<ul class="simple">
+<li><p>a parameter <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> called the <strong>jump rate</strong>, which governs the jump
+intensities and</p></li>
+<li><p>a Markov matrix <span class="math notranslate nohighlight">\(K\)</span> on <span class="math notranslate nohighlight">\(S\)</span>, called the <strong>jump matrix</strong>.</p></li>
+</ul>
+<p>To run the process we also need an initial condition <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>.</p>
+<p>The process <span class="math notranslate nohighlight">\((X_t)\)</span> is constructed by holding at each state for an
+exponential amount of time, with rate <span class="math notranslate nohighlight">\(\lambda\)</span>, and then updating to a
+new state via <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p>In more detail, the construction is</p>
+<div class="proof algorithm admonition" id="algorithm-0">
+<p class="admonition-title"><span class="caption-number">Algorithm 5 </span> (Constant Rate Jump Chain)</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Inputs</strong> <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>, positive constant <span class="math notranslate nohighlight">\(\lambda\)</span>, Markov matrix <span class="math notranslate nohighlight">\(K\)</span></p>
+<p><strong>Outputs</strong> Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span></p>
+<ol class="simple">
+<li><p>draw <span class="math notranslate nohighlight">\(Y_0\)</span> from <span class="math notranslate nohighlight">\(\psi\)</span></p></li>
+<li><p>set <span class="math notranslate nohighlight">\(k = 1\)</span> and <span class="math notranslate nohighlight">\(J_0 = 0\)</span></p></li>
+<li><p>draw <span class="math notranslate nohighlight">\(W_k\)</span> from Exp<span class="math notranslate nohighlight">\((\lambda)\)</span> and set <span class="math notranslate nohighlight">\(J_k = J_{k-1} + W_k\)</span></p></li>
+<li><p>set <span class="math notranslate nohighlight">\(X_t = Y_{k-1}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span> such that <span class="math notranslate nohighlight">\(J_{k-1} \leq t &lt; J_k\)</span>.</p></li>
+<li><p>draw <span class="math notranslate nohighlight">\(Y_k\)</span> from <span class="math notranslate nohighlight">\(K(Y_{k-1}, \cdot)\)</span></p></li>
+<li><p>set <span class="math notranslate nohighlight">\(k = k+1\)</span> and go to step 3.</p></li>
+</ol>
+</div>
+</div><p>An alternative, more parsimonious way to express the same process is to take</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((N_t)\)</span> to be a Poisson process with rate <span class="math notranslate nohighlight">\(\lambda\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\((Y_k)\)</span> to be a discrete time Markov chain with Markov matrix <span class="math notranslate nohighlight">\(K\)</span></p></li>
+</ul>
+<p>and then set</p>
+<div class="math notranslate nohighlight">
+\[
+    X_t := Y_{N_t} \text{ for all } t \geq 0
+\]</div>
+<p>As before, the discrete time process <span class="math notranslate nohighlight">\((Y_k)\)</span> is called the <strong>embedded jump chain</strong>.</p>
+<p>(Not to be confused with <span class="math notranslate nohighlight">\((X_t)\)</span>, which is often called a “jump process” or
+“jump chain” due to the fact that it changes states with jumps.)</p>
+<p>The draws <span class="math notranslate nohighlight">\((W_k)\)</span> are called the <strong>wait times</strong> or <strong>holding times</strong>.</p>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>The Poisson process with rate <span class="math notranslate nohighlight">\(\lambda\)</span> is a jump process on <span class="math notranslate nohighlight">\(S = \ZZ_+\)</span>.</p>
+<p>The holding times are obviously exponential with constant rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>The jump matrix is just <span class="math notranslate nohighlight">\(K(i, j) = \mathbb 1\{j = i+1\}\)</span>, so that the state
+jumps up by one at every <span class="math notranslate nohighlight">\(J_k\)</span>.</p>
+<p>The inventory model is also a jump process with constant rate <span class="math notranslate nohighlight">\(\lambda\)</span>, this
+time on <span class="math notranslate nohighlight">\(S = \{0, 1, \ldots, b\}\)</span>.</p>
+<p>The jump matrix was given in <a class="reference internal" href="#equation-ijumpkern">(19)</a>.</p>
+</div>
+<div class="section" id="id5">
+<h3>Markov Property<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Let’s show that the jump process <span class="math notranslate nohighlight">\((X_t)\)</span> constructed above satisfies the
+Markov property, and obtain the Markov semigroup at the same time.</p>
+<p>We will use two facts:</p>
+<ul class="simple">
+<li><p>the jump chain <span class="math notranslate nohighlight">\((Y_k)\)</span> has the Markov property in discrete
+time and</p></li>
+<li><p>the Poisson process has stationary independent increments.</p></li>
+</ul>
+<p>From these facts it is intuitive that the distribution of <span class="math notranslate nohighlight">\(X_{t+s}\)</span> given
+the whole history <span class="math notranslate nohighlight">\(\fF_s = \{ (N_r)_{r \leq s}, (Y_k)_{k \leq N_s} \}\)</span>
+depends only on <span class="math notranslate nohighlight">\(X_s\)</span>.</p>
+<p>Indeed, if we know <span class="math notranslate nohighlight">\(X_s\)</span>, then we can simply</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="poisson.html#restart-prop"><span class="std std-ref">restart</span></a> the Poisson process from <span class="math notranslate nohighlight">\(N_s\)</span> and then</p></li>
+<li><p>starting from <span class="math notranslate nohighlight">\(X_s = Y_{N_s}\)</span>, update the embedded jump chain <span class="math notranslate nohighlight">\((Y_k)\)</span> using <span class="math notranslate nohighlight">\(K\)</span> each time a new jump occurs.</p></li>
+</ul>
+<p>Let’s write this more mathematically.</p>
+<p>Fixing <span class="math notranslate nohighlight">\(y \in S\)</span> and <span class="math notranslate nohighlight">\(s, t \geq 0\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{X_{s + t} = y \,|\, \fF_s \}
+      = \PP\{Y_{N_{s + t}} = y \,|\, \fF_s \}
+      = \PP\{Y_{N_s + N_{s + t} - N_s} = y \,|\, \fF_s \}
+\]</div>
+<p><a class="reference internal" href="poisson.html#restart-prop"><span class="std std-ref">Recalling</span></a> that <span class="math notranslate nohighlight">\(N_{s + t} - N_s\)</span> is Poisson distributed with rate <span class="math notranslate nohighlight">\(t \lambda\)</span>, independent of the history <span class="math notranslate nohighlight">\(\fF_s\)</span>, we can write the display above as</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{X_{s + t} = y \,|\, \fF_s \}
+    =
+    \sum_{k \geq 0}
+    \PP\{Y_{N_s + k} = y \,|\, \fF_s \}
+       \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+\]</div>
+<p>Because the embedded jump chain is Markov with Markov matrix <span class="math notranslate nohighlight">\(K\)</span>, we can simplify further to</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{X_{s + t} = y \,|\, \fF_s \}
+    = \sum_{k \geq 0}
+    K^k(Y_{N_s}, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+    = K^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+\]</div>
+<p>Since the expression above depends only on <span class="math notranslate nohighlight">\(X_s\)</span>,
+we have proved that <span class="math notranslate nohighlight">\((X_t)\)</span> has the Markov property.</p>
+</div>
+<div class="section" id="transition-semigroup">
+<span id="consjumptransemi"></span><h3>Transition Semigroup<a class="headerlink" href="#transition-semigroup" title="Permalink to this headline">¶</a></h3>
+<p>The Markov semigroup can be obtained from our final result, conditioning
+on <span class="math notranslate nohighlight">\(X_s = x\)</span> to get</p>
+<div class="math notranslate nohighlight">
+\[
+    P^t(x, y) = \PP\{X_{s + t} = y \,|\, X_s = x \}
+    = e^{-t \lambda} \sum_{k \geq 0}
+        K^k(x, y) \frac{(t \lambda )^k}{k!} 
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(S\)</span> is finite, we can write this in matrix form and use the definition of
+the <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_exponential">matrix exponential</a> to
+get</p>
+<div class="math notranslate nohighlight">
+\[
+    P^t 
+    = e^{-t \lambda}
+        \sum_{k \geq 0}
+        \frac{(t \lambda K)^k}{k!} 
+    = e^{-t \lambda} e^{t \lambda K}
+    = e^{t \lambda (K - I)}
+\]</div>
+<p>This is a simple and elegant representation of the Markov semigroup that
+makes it easy to understand and analyze distribution dynamics.</p>
+<p>For example, if <span class="math notranslate nohighlight">\(X_0\)</span> has distribution <span class="math notranslate nohighlight">\(\psi\)</span>, then <span class="math notranslate nohighlight">\(X_t\)</span> has distribution</p>
+<div class="math notranslate nohighlight" id="equation-distflowconst">
+<span class="eqno">(20)<a class="headerlink" href="#equation-distflowconst" title="Permalink to this equation">¶</a></span>\[
+    \psi P_t = \psi e^{t \lambda (K - I)}
+\]</div>
+<p>We just need to plug in <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(K\)</span> to obtain the entire flow <span class="math notranslate nohighlight">\(t \mapsto \psi P_t\)</span>.</p>
+<p>We will soon extend this representation to the case where <span class="math notranslate nohighlight">\(S\)</span> is infinite.</p>
+</div>
+</div>
+<div class="section" id="distribution-flows-for-the-inventory-model">
+<span id="invdistflows"></span><h2>Distribution Flows for the Inventory Model<a class="headerlink" href="#distribution-flows-for-the-inventory-model" title="Permalink to this headline">¶</a></h2>
+<p>Let’s apply these ideas to the inventory model described above.</p>
+<p>We fix</p>
+<ul class="simple">
+<li><p>the parameters <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> in the inventory model and</p></li>
+<li><p>an initial condition <span class="math notranslate nohighlight">\(X_0 \sim \psi_0\)</span>, where <span class="math notranslate nohighlight">\(\psi_0\)</span> is an arbitrary
+distribution on <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+<p>The state <span class="math notranslate nohighlight">\(S\)</span> is set to <span class="math notranslate nohighlight">\(\{0, \ldots, b\}\)</span> and the matrix <span class="math notranslate nohighlight">\(K\)</span> is defined by
+<a class="reference internal" href="#equation-ijumpkern">(19)</a>.</p>
+<p>Now we run time forward.</p>
+<p>We are interesting in computing the flow of distributions <span class="math notranslate nohighlight">\(t \mapsto \psi_t\)</span>,
+where <span class="math notranslate nohighlight">\(\psi_t\)</span> is the distribution of <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
+<p>According to the theory developed above, we have two options:</p>
+<p>Option 1 is to use simulation.</p>
+<p>The first step is to simulate many independent observations the process <span class="math notranslate nohighlight">\((X_t^m)_{m=1}^M\)</span>.</p>
+<p>(Here <span class="math notranslate nohighlight">\(m\)</span> indicates simulation number <span class="math notranslate nohighlight">\(m\)</span>, which you might think of as the outcome
+for firm <span class="math notranslate nohighlight">\(m\)</span>.)</p>
+<p>Next, for any given <span class="math notranslate nohighlight">\(t\)</span>, we define <span class="math notranslate nohighlight">\(\hat \psi_t \in \dD\)</span> as the
+histogram of observations at time <span class="math notranslate nohighlight">\(t\)</span>, or, equivalently the cross-sectional
+distribution at <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \hat \psi_t(x) := \frac{1}{M} \sum_{m=1}^M \mathbb 1\{X_t = x\}
+    \qquad (x \in S)
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\hat \psi_t(x)\)</span> will be close to <span class="math notranslate nohighlight">\(\PP\{X_t = x\}\)</span> by the law of
+large numbers.</p>
+<p>In other words, in the limit we recover <span class="math notranslate nohighlight">\(\psi_t\)</span>.</p>
+<p>Option 2 is to insert the parameters into the right hand side of <a class="reference internal" href="#equation-distflowconst">(20)</a>
+and compute <span class="math notranslate nohighlight">\(\psi_t\)</span> as <span class="math notranslate nohighlight">\(\psi_0 P_t\)</span>.</p>
+<p>The figure below is created using option 2, with <span class="math notranslate nohighlight">\(\alpha = 0.6\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(b=10\)</span>.</p>
+<p>For the initial distribution we pick a binomial distribution.</p>
+<p>Since we cannot compute the entire uncountable flow <span class="math notranslate nohighlight">\(t \mapsto \psi_t\)</span>, we
+iterate forward 200 steps at time increments <span class="math notranslate nohighlight">\(h=0.1\)</span>.</p>
+<p>In the figure, hot colors indicate initial conditions and early dates (so that the
+distribution “cools” over time)</p>
+<div class="figure align-default" id="flow-fig">
+<div class="cell_output docutils container">
+<img alt="_images/markov_prop_7_0.png" src="_images/markov_prop_7_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Probability flows for the inventory model.</span><a class="headerlink" href="#flow-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>In the (solved) exercises you will be asked to try to reproduce this figure.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Consider the binary (Bernoulli) distribution where outcomes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> each have
+probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
+<p>Construct two different random variables with this distribution.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Show by direct calculation that the Poisson matrices <span class="math notranslate nohighlight">\((P_t)\)</span> defined in
+<a class="reference internal" href="#equation-poissemi">(17)</a> satisfy the semigroup property <a class="reference internal" href="#equation-chapkol-ct2">(15)</a>.</p>
+<p>Hints</p>
+<ul class="simple">
+<li><p>Recall that <span class="math notranslate nohighlight">\(P_t(j, k) = 0\)</span> whenever <span class="math notranslate nohighlight">\(j &gt; k\)</span>.</p></li>
+<li><p>Consider using the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_theorem">binomial formula</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Consider the distribution over <span class="math notranslate nohighlight">\(S^{n+1}\)</span> previously shown in <a class="reference internal" href="#equation-mathjointd">(13)</a>, which is</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
+        = \psi(x_0)
+        P(x_0, x_1)
+        \times \cdots \times
+        P(x_{n-1}, x_n)
+\]</div>
+<p>Show that, for any Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> satisfying <a class="reference internal" href="#equation-markovpropd">(10)</a>
+and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>, the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n)\)</span> has joint
+distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>.</p>
+</div>
+<div class="section" id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Try to produce your own version of the figure <a class="reference internal" href="#flow-fig"><span class="std std-ref">Probability flows for the inventory model.</span></a>.</p>
+<p>The initial condition is <code class="docutils literal notranslate"><span class="pre">ψ_0</span> <span class="pre">=</span> <span class="pre">binom.pmf(states,</span> <span class="pre">n,</span> <span class="pre">0.25)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
+</div>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>This is easy.</p>
+<p>One example is to take <span class="math notranslate nohighlight">\(U\)</span> to be uniform on <span class="math notranslate nohighlight">\((0, 1)\)</span> and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(U &lt;
+0.5\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
+<p>Then <span class="math notranslate nohighlight">\(X\)</span> has the desired distribution.</p>
+<p>Alternatively, we could take <span class="math notranslate nohighlight">\(Z\)</span> to be standard normal and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(Z &lt;
+0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
+</div>
+<div class="section" id="solution-to-exercise-2">
+<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Fixing <span class="math notranslate nohighlight">\(s, t \in \RR_+\)</span> and <span class="math notranslate nohighlight">\(j \leq k\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+    \sum_{i \geq 0} P_s(j, i) P_t(i, k)
+    &amp; = 
+    e^{-\lambda (s+t)} 
+    \sum_{j \leq i \leq k}
+        \frac{ (\lambda s)^{i-j} }{(i-j)!}  
+        \frac{ (\lambda t)^{k-i} }{(k-i)!}  
+    \\
+    &amp; = 
+    e^{-\lambda (s+t)} \lambda^{k-j}
+    \sum_{0 \leq \ell \leq k-j}
+        \frac{  s^\ell }{\ell!}  
+        \frac{ t^{k-j - \ell} }{(k-j - \ell)!}  
+    \\
+    &amp; = 
+    e^{-\lambda (s+t)} \lambda^{k-j}
+    \sum_{0 \leq \ell \leq k-j}
+        \binom{k-j}{\ell}
+        \frac{s^\ell t^{k-j - \ell}}{(k-j)!}  
+\end{aligned}
+\end{split}\]</div>
+<p>Applying the binomial formula, we can write this as</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{i \geq 0} P_s(j, i) P_t(i, k)
+    =
+    e^{-\lambda (s+t)} 
+    \frac{(\lambda (s + t))^{k-j}}{(k-j)!}
+    = P_{s+t}(j, k)
+\]</div>
+<p>Hence <a class="reference internal" href="#equation-chapkol-ct2">(15)</a> holds, and the semigroup property is satisfied.</p>
+</div>
+<div class="section" id="solution-to-exercise-3">
+<h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((X_t)\)</span> be a Markov chain satisfying <a class="reference internal" href="#equation-markovpropd">(10)</a> and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>.</p>
+<p>When <span class="math notranslate nohighlight">\(n=0\)</span>, we have <span class="math notranslate nohighlight">\(\mathbf P_\psi^n = \mathbf P_\psi^0 = \psi\)</span>, and this
+agrees with the distribution of the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n) = (X_0)\)</span>.</p>
+<p>Now suppose the same is true at arbitrary <span class="math notranslate nohighlight">\(n-1\)</span>, in the sense that
+the distribution of <span class="math notranslate nohighlight">\((X_0, \ldots, X_{n-1})\)</span> is equal to <span class="math notranslate nohighlight">\(\mathbf P_\psi^{n-1}\)</span> as
+defined above.</p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \PP \{X_0 = x_0, \ldots, X_n = x_n\}
+    = \PP \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
+    \\
+        \times \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
+\end{split}\]</div>
+<p>From the Markov property and the induction hypothesis, the right hand side is</p>
+<div class="math notranslate nohighlight">
+\[
+    P (x_{n-1}, x_n )
+    \mathbf P_\psi^n(x_0, x_1, \ldots, x_{n-1})
+    =
+        P (x_n, x_{n+1} )
+        \psi(x_0)
+        P(x_0, x_1)
+        \times \cdots \times
+        P(x_{n-1}, x_{n-1})
+\]</div>
+<p>The last expression equals <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>, which concludes the proof.</p>
+</div>
+<div class="section" id="solution-to-exercise-4">
+<h3>Solution to Exercise 4<a class="headerlink" href="#solution-to-exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Here is one approach.</p>
+<p>(The statements involving <code class="docutils literal notranslate"><span class="pre">glue</span></code> are specific to this book and can be deleted
+by most readers.  They store the output so it can be displayed elsewhere.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">α</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">α</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">P_t</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ψ</span> <span class="o">@</span> <span class="n">expm</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">λ</span> <span class="o">*</span> <span class="p">(</span><span class="n">K</span> <span class="o">-</span> <span class="n">I</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_distribution_dynamics</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ψ_0</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">ψ</span> <span class="o">=</span> <span class="n">ψ_0</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet_r</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">steps</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">ψ</span><span class="p">,</span> <span class="n">zs</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">zdir</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+        <span class="n">ψ</span> <span class="o">=</span> <span class="n">P_t</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">step_size</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">step_size</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;inventory&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">)</span>
+
+
+<span class="n">ψ_0</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">plot_distribution_dynamics</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ψ_0</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;flow_fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/markov_prop_7_1.png" src="_images/markov_prop_7_1.png" />
+</div>
+</div>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="footnote1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>On a technical level, right continuity of paths for <span class="math notranslate nohighlight">\((X_t)\)</span> implies condition 2, as proved in Theorem 2.12 of <a class="bibtex reference internal" href="zreferences.html#liggett2010continuous" id="id6">[Lig10]</a>.  Right continuity of paths allows for jumps, but insists on only finitely many jumps in any bounded interval.</p>
+</dd>
+<dt class="label" id="footnote2"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p>In the definition of <span class="math notranslate nohighlight">\(P_t\)</span> in <a class="reference internal" href="#equation-poissemi">(17)</a>, we use the convention that <span class="math notranslate nohighlight">\(0^0 = 1\)</span>, which leads to <span class="math notranslate nohighlight">\(P_0 = I\)</span> and <span class="math notranslate nohighlight">\(\lim_{t \to 0} P_t(j, k) = I(j,k)\)</span> for all <span class="math notranslate nohighlight">\(j,k\)</span>.  These facts, along with the semigroup property, imply that <span class="math notranslate nohighlight">\((P_t)\)</span> is a valid Markov semigroup.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="poisson.html" title="previous page">Poisson Processes</a>
+    <a class='right-next' id="next-link" href="kolmogorov_bwd.html" title="next page">Kolmogorov Backward Equation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

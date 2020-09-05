@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Memoryless Distributions &#8212; Continuous Time Markov Chains</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Poisson Processes" href="poisson.html" />
+    <link rel="prev" title="Continuous Time Markov Chains" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Continuous Time Markov Chains
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Memoryless Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="poisson.html">
+   Poisson Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_prop.html">
+   The Markov Property
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_bwd.html">
+   Kolmogorov Backward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kolmogorov_fwd.html">
+   The Kolmogorov Forward Equation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generators.html">
+   Semigroups and Generators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="uc_mc_semigroups.html">
+   UC Markov Semigroups
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prob_view.html">
+   A Probabilistic View
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ergodicity.html">
+   Stationarity and Ergodicity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="_sources/memoryless.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/memoryless.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/memoryless.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-geometric-distribution">
+   The Geometric Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#memorylessness">
+     Memorylessness
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-exponential-distribution">
+   The Exponential Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-geometric-to-exponential">
+     From Geometric to Exponential
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#memoryless-property-of-the-exponential-distribution">
+     Memoryless Property of the Exponential Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#failure-of-memorylessness">
+     Failure of Memorylessness
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sums-of-exponentials">
+   Sums of Exponentials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-1">
+     Solution to Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-2">
+     Solution to Exercise 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="memoryless-distributions">
+<h1>Memoryless Distributions<a class="headerlink" href="#memoryless-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Markov processes are, by definition, forgetful.</p>
+<p>In particular, for any Markov processes, the distribution over future outcomes
+depends only on the current state, rather than the entire history.</p>
+<p>In the case of continuous time Markov chains, which jump between discrete
+states, this requires that the amount of elapsed time since the last jump is
+not helpful in predicting the timing of the next jump.</p>
+<p>In other words, the jump times are “memoryless”.</p>
+<p>It is remarkable that the only distribution on <span class="math notranslate nohighlight">\(\RR_+\)</span> with this
+property is the exponential distribution.</p>
+<p>Similarly, the only memoryless distribution on <span class="math notranslate nohighlight">\(\ZZ_+\)</span> is the geometric
+distribution.</p>
+<p>This lecture tries to clarify these ideas.</p>
+<p>We will use the following imports:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">binom</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-geometric-distribution">
+<h2>The Geometric Distribution<a class="headerlink" href="#the-geometric-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Consider betting on a roulette wheel and suppose that red has come up four times in a row.</p>
+<p>Since five reds in a row is an unlikely event, many people instinctively feel
+that black is more likely on the fifth spin — “Surely black will come up this time!”</p>
+<p>But rational thought tells us such instincts are wrong: the four previous reds make no
+difference to the outcome of the next spin.</p>
+<p>(Many casinos offer an unlimited supply of free alcoholic beverages in order to discourage this kind of rational analysis.)</p>
+<p>A mathematical restatement of this phenomenon is: the geometric distribution is memoryless.</p>
+<div class="section" id="memorylessness">
+<h3>Memorylessness<a class="headerlink" href="#memorylessness" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable supported on the nonnegative integers <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
+<p>We say that <span class="math notranslate nohighlight">\(X\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_distribution">geometrically distributed</a> if, for some <span class="math notranslate nohighlight">\(\theta\)</span> satisfying <span class="math notranslate nohighlight">\(0 \leq \theta \leq 1\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-geodist">
+<span class="eqno">(1)<a class="headerlink" href="#equation-geodist" title="Permalink to this equation">¶</a></span>\[ 
+    \PP\{X = k\} = (1-\theta)^k \theta 
+    \qquad (k = 0, 1, \ldots)
+\]</div>
+<p>An example can be constructed from the discussion of the roulette wheel above.</p>
+<p>Suppose that,</p>
+<ul class="simple">
+<li><p>the outcome of each spin is either red or black,</p></li>
+<li><p>spins are labeled by <span class="math notranslate nohighlight">\(0, 1, 2, \ldots\)</span>,</p></li>
+<li><p>on each spin, black occurs with probability <span class="math notranslate nohighlight">\(\theta\)</span> and</p></li>
+<li><p>outcomes across spins are independent.</p></li>
+</ul>
+<p>Then <a class="reference internal" href="#equation-geodist">(1)</a> is the probability that the first occurrence of black is at spin <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>(The outcome “black” fails <span class="math notranslate nohighlight">\(k\)</span> times and then succeeds.)</p>
+<p>Consistent with our discussion in the introduction, the geometric distribution
+is memoryless.</p>
+<p>For example, given any nonnegative integer <span class="math notranslate nohighlight">\(m\)</span>, we have</p>
+<div class="math notranslate nohighlight" id="equation-memgeo">
+<span class="eqno">(2)<a class="headerlink" href="#equation-memgeo" title="Permalink to this equation">¶</a></span>\[
+    \PP \{X = m + 1 \,|\, X &gt; m \} = \theta
+\]</div>
+<p>In other words, regardless of how long we have seen only red outcomes, the
+probability of black on the next spin is the same as the unconditional
+probability of getting black on the very first spin.</p>
+<p>To show this, we note that the left hand side is</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{ \PP \{X = m + 1 \text{ and } X &gt; m \} }
+    {\PP \{X \geq m\}}
+    =
+    \frac{ \PP \{X = m + 1 \} }
+    {\PP \{X &gt; m\}}
+    = \frac{ (1-\theta)^{m+1} \theta }
+        {\sum_{k &gt; m} (1-\theta)^k \theta }
+\]</div>
+<p>The right hand side simplifies to <span class="math notranslate nohighlight">\(\theta\)</span>, completing the proof of <a class="reference internal" href="#equation-memgeo">(2)</a>.</p>
+</div>
+</div>
+<div class="section" id="the-exponential-distribution">
+<h2>The Exponential Distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Later, when we construct continuous time Markov chains, we will need to
+specify the distribution of the holding times, which are the time intervals
+between jumps.</p>
+<p>As discussed above (and again below), the holding time distribution must be
+memoryless, so that the chain satisfies the Markov property.</p>
+<p>While the geometric distribution is memoryless, its discrete support makes it
+a poor fit for the continuous time case.</p>
+<p>Hence we turn to the <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_distribution">exponential distribution</a>, which is supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>.</p>
+<p>A random variable <span class="math notranslate nohighlight">\(Y\)</span> on <span class="math notranslate nohighlight">\(\RR_+\)</span> is called <strong>exponential with rate <span class="math notranslate nohighlight">\(\lambda\)</span></strong>, denoted by <span class="math notranslate nohighlight">\(Y \sim \Exp(\lambda)\)</span>, if</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{Y &gt; y\} = e^{-\lambda y}
+    \qquad (y \geq 0)
+\]</div>
+<div class="section" id="from-geometric-to-exponential">
+<span id="geomtoexp"></span><h3>From Geometric to Exponential<a class="headerlink" href="#from-geometric-to-exponential" title="Permalink to this headline">¶</a></h3>
+<p>The exponential distribution can be regarded as the “limit” of the geometric
+distribution.</p>
+<p>To illustrate, let us suppose that</p>
+<ul class="simple">
+<li><p>customers enter a shop at discrete times <span class="math notranslate nohighlight">\(t_0, t_1, \ldots\)</span></p></li>
+<li><p>these times are evenly spaced, so that <span class="math notranslate nohighlight">\(h = t_{i+1} - t_i\)</span> for some <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and all <span class="math notranslate nohighlight">\(i \in \ZZ_+\)</span></p></li>
+<li><p>at each <span class="math notranslate nohighlight">\(t_i\)</span>, either zero or one customers enter (no more because <span class="math notranslate nohighlight">\(h\)</span> is small)</p></li>
+<li><p>entry at each <span class="math notranslate nohighlight">\(t_i\)</span> occurs with probability <span class="math notranslate nohighlight">\(\lambda h\)</span> and is independent over <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+<p>The fact that the entry probability is proportional to <span class="math notranslate nohighlight">\(h\)</span> is important in
+what follows.</p>
+<p>You can imagine many customers passing by the shop, each entering
+independently.</p>
+<p>If we halve the time interval, then we also halve the probability that a
+customer enters.</p>
+<p>Let</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y\)</span> be the time of the first arrival at the shop,</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> be a given positive number and</p></li>
+<li><p><span class="math notranslate nohighlight">\(i(h)\)</span> be the largest integer such that <span class="math notranslate nohighlight">\(t_{i(h)} \leq t\)</span>.</p></li>
+</ul>
+<p>Note that, as <span class="math notranslate nohighlight">\(h \to 0\)</span>, the grid becomes finer and <span class="math notranslate nohighlight">\(t_{i(h)} = i(h) h  \to t\)</span>.</p>
+<p>Writing <span class="math notranslate nohighlight">\(i(h)\)</span> as <span class="math notranslate nohighlight">\(i\)</span> and using the geometric distribution, the probability that
+the first arrival occurs after <span class="math notranslate nohighlight">\(t_{i}\)</span> is <span class="math notranslate nohighlight">\((1-\lambda h)^{i}\)</span>.</p>
+<p>Hence</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{Y &gt; t_{i} \}
+    = (1-\lambda h)^i
+    = \left( 1- \frac{\lambda i h}{i} \right)^i
+\]</div>
+<p>Using the fact that <span class="math notranslate nohighlight">\(e^x = \lim_{i \to \infty}(1 + x/i)^i\)</span> for all <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(i
+h = t_i \to t\)</span>, we obtain, for large <span class="math notranslate nohighlight">\(i\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{Y &gt; t\}
+    \approx
+    e^{- \lambda t}
+\]</div>
+<p>In this sense, the exponential is the limit of the geometric distribution.</p>
+</div>
+<div class="section" id="memoryless-property-of-the-exponential-distribution">
+<h3>Memoryless Property of the Exponential Distribution<a class="headerlink" href="#memoryless-property-of-the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
+<p>The exponential distribution is the only memoryless distribution supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>, as the next theorem attests.</p>
+<div class="proof theorem admonition" id="exp_unique">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Characterization of the Exponential Distribution)</p>
+<div class="theorem-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is a random variable supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>, then there exists a
+<span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> such that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span> if and only if, for all
+positive <span class="math notranslate nohighlight">\(s, t\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-memexpo">
+<span class="eqno">(3)<a class="headerlink" href="#equation-memexpo" title="Permalink to this equation">¶</a></span>\[
+    \PP \{X &gt; s + t \,|\, X &gt; s \} = \PP \{X &gt; t\}
+\]</div>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. To see that <a class="reference internal" href="#equation-memexpo">(3)</a> holds when <span class="math notranslate nohighlight">\(X\)</span> is exponential with rate <span class="math notranslate nohighlight">\(\lambda\)</span>,
+fix <span class="math notranslate nohighlight">\(s, t &gt; 0\)</span> and observe that</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{ \PP \{X &gt; s + t \text{ and } X &gt; s \} }
+    {\PP \{X &gt; s\}}
+    =
+    \frac{ \PP \{X &gt; s + t \} }
+    {\PP \{X &gt; s\}}
+    = \frac{e^{-\lambda s - \lambda t}}{e^{-\lambda s}}
+    = e^{-\lambda t}
+\]</div>
+<p>To see that the converse holds, let <span class="math notranslate nohighlight">\(X\)</span> be a random variable supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>
+such that <a class="reference internal" href="#equation-memexpo">(3)</a> holds.</p>
+<p>The “exceedance” function <span class="math notranslate nohighlight">\(f(s) := \PP\{X &gt; s\}\)</span> then has three properties:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is decreasing on <span class="math notranslate nohighlight">\(\RR_+\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(0 &lt; f(t) &lt; 1\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(s + t) = f(s) f(t)\)</span> for all <span class="math notranslate nohighlight">\(s, t &gt; 0\)</span>.</p></li>
+</ol>
+<p>The first property is common to all exceedance functions, the second is due to
+the fact that <span class="math notranslate nohighlight">\(X\)</span> is supported on all of <span class="math notranslate nohighlight">\(\RR_+\)</span>, and the
+third is <a class="reference internal" href="#equation-memexpo">(3)</a>.</p>
+<p>From these three properties we will show that</p>
+<div class="math notranslate nohighlight" id="equation-implex">
+<span class="eqno">(4)<a class="headerlink" href="#equation-implex" title="Permalink to this equation">¶</a></span>\[
+    f(t) = f(1)^t  \;\; \forall \, t \geq 0
+\]</div>
+<p>This is sufficient to prove the claim because then <span class="math notranslate nohighlight">\(\lambda := - \ln f(1)\)</span> is a positive real number (by property 2) and, moreover,</p>
+<div class="math notranslate nohighlight">
+\[ 
+    f(t) 
+    = \exp( \ln ( f(1) ) t) 
+    = \exp( - \lambda t) 
+\]</div>
+<p>To see that <a class="reference internal" href="#equation-implex">(4)</a> holds, fix positive integers <span class="math notranslate nohighlight">\(m,n\)</span>.</p>
+<p>We can use property 3 to obtain both</p>
+<div class="math notranslate nohighlight">
+\[
+    f(m/n) = f(1/n)^m
+    \quad \text{and} \quad
+    f(1) = f(1/n)^n
+\]</div>
+<p>It follows that <span class="math notranslate nohighlight">\(f(m/n)^n = f(1/n)^{m n} = f(1)^m\)</span> and, raising to the power
+of <span class="math notranslate nohighlight">\(1/n\)</span>, we get <a class="reference internal" href="#equation-implex">(4)</a> when <span class="math notranslate nohighlight">\(t=m/n\)</span>.</p>
+<p>The discussion so far confirms that <a class="reference internal" href="#equation-implex">(4)</a> holds when <span class="math notranslate nohighlight">\(t\)</span> is rational.</p>
+<p>So now take any <span class="math notranslate nohighlight">\(t \geq 0\)</span> and rational sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span>
+converging to <span class="math notranslate nohighlight">\(t\)</span> with <span class="math notranslate nohighlight">\(a_n \leq t \leq b_n\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>By property 1 we have <span class="math notranslate nohighlight">\(f(a_n) \leq f(t) \leq f(b_n)\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[
+    f(1)^{a_n} \leq f(t) \leq f(1)^{b_n}
+    \quad \forall \, n \in \NN
+\]</div>
+<p>Taking the limit in <span class="math notranslate nohighlight">\(n\)</span> completes the proof.</p>
+</div>
+</div>
+<div class="section" id="failure-of-memorylessness">
+<span id="fail-mem"></span><h3>Failure of Memorylessness<a class="headerlink" href="#failure-of-memorylessness" title="Permalink to this headline">¶</a></h3>
+<p>We know from the proceeding section that any distribution on <span class="math notranslate nohighlight">\(\RR_+\)</span> other
+than the exponential distribution fails to be memoryless.</p>
+<p>Here’s an example that helps to clarify (although the support of the distribution is a proper subset of <span class="math notranslate nohighlight">\(\RR_+\)</span>).</p>
+<p>A random variable <span class="math notranslate nohighlight">\(Y\)</span> has the Pareto distribution with positive parameters <span class="math notranslate nohighlight">\(t_0, \alpha\)</span> if</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    f(t) 
+    := \PP\{Y &gt; t\} 
+    = 
+    \begin{cases}
+    1 &amp; \text{ if } t \leq t_0
+    \\
+    (t_0 / t)^\alpha &amp; \text{ if } t &gt; t_0
+    \end{cases}
+\end{split}\]</div>
+<p>As a result,  with <span class="math notranslate nohighlight">\(s &gt; t_0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP \{Y &gt; s + t \,|\, Y &gt; s \}
+    =
+    \frac{ \PP \{Y &gt; s + t \} }
+    {\PP \{Y &gt; s\}}
+    = \left( \frac{t}{t + s} \right)^\alpha
+\]</div>
+<p>Since this probability falls with <span class="math notranslate nohighlight">\(s\)</span>, the distribution is not memoryless.</p>
+<p>If we have waited many hours for an event (i.e., <span class="math notranslate nohighlight">\(s\)</span> is large), then the
+probability of waiting another hour is relatively small.</p>
+</div>
+</div>
+<div class="section" id="sums-of-exponentials">
+<h2>Sums of Exponentials<a class="headerlink" href="#sums-of-exponentials" title="Permalink to this headline">¶</a></h2>
+<p>A random variable <span class="math notranslate nohighlight">\(W\)</span> on <span class="math notranslate nohighlight">\(\RR_+\)</span> is said to have the <a class="reference external" href="https://en.wikipedia.org/wiki/Erlang_distribution">Erlang
+distribution</a> if its
+density has the form</p>
+<div class="math notranslate nohighlight">
+\[ 
+    f(t) = \frac{\lambda^n  t^{n-1}}{(n-1)!} e^{-\lambda t}
+    \qquad (t \geq 0)
+\]</div>
+<p>for some <span class="math notranslate nohighlight">\(n \in \NN\)</span> and <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>.</p>
+<p>The parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span> are called the <strong>shape</strong> and <strong>rate</strong>
+parameters respectively.</p>
+<p>The next figure shows the shape for two parameterizations.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Erlang</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">λ</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">λ</span><span class="p">,</span> <span class="n">n</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">λ</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">λ</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">λ</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="n">Erlang</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">Erlang</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_grid</span><span class="p">,</span> <span class="n">e</span><span class="p">(</span><span class="n">t_grid</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$n=</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s1">, \lambda=</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">λ</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/memoryless_3_0.png" src="_images/memoryless_3_0.png" />
+</div>
+</div>
+<p>The CDF of the Erlang distribution is</p>
+<div class="math notranslate nohighlight" id="equation-erlcdf">
+<span class="eqno">(5)<a class="headerlink" href="#equation-erlcdf" title="Permalink to this equation">¶</a></span>\[
+    F(t) 
+    = \PP\{W \leq t\}
+    = 1 - \sum_{k=0}^{n-1} \frac{(\lambda t)^k}{k!} e^{-\lambda t}
+\]</div>
+<p>The Erlang distribution is of interest to us because of the following fact.</p>
+<div class="proof lemma admonition" id="erlexp">
+<p class="admonition-title"><span class="caption-number">Lemma 2 </span> (Distribution of Sum of Exponentials)</p>
+<div class="lemma-content section" id="proof-content">
+<p>If, for some <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, the sequence <span class="math notranslate nohighlight">\((W_i)\)</span> is IID and exponentially
+distributed with rate <span class="math notranslate nohighlight">\(\lambda\)</span>, then <span class="math notranslate nohighlight">\(J_n := \sum_{i=1}^n W_i\)</span> has the Erlang
+distribution with shape <span class="math notranslate nohighlight">\(n\)</span> and rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</div>
+</div><p>This connects to Poisson process theory, as we shall soon see.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Due to its memoryless property, we can “stop” and “restart” an exponential
+draw without changing its distribution.</p>
+<p>To illustrate this, we can think of fixing <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, drawing from
+<span class="math notranslate nohighlight">\(\Exp(\lambda)\)</span>, and stopping and restarting whenever a threshold <span class="math notranslate nohighlight">\(s\)</span> is crossed.</p>
+<p>In particular, consider the random variable <span class="math notranslate nohighlight">\(X\)</span> defined as follows:</p>
+<ul class="simple">
+<li><p>Draw <span class="math notranslate nohighlight">\(Y\)</span> from <span class="math notranslate nohighlight">\(\Exp(\lambda)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(Y \leq s\)</span>, set <span class="math notranslate nohighlight">\(X = Y\)</span>.</p></li>
+<li><p>If not, draw <span class="math notranslate nohighlight">\(Z\)</span> independently from <span class="math notranslate nohighlight">\(\Exp(\lambda)\)</span> and set <span class="math notranslate nohighlight">\(X = s + Z\)</span>.</p></li>
+</ul>
+<p>Show that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Fix <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(s=1.0\)</span>.</p>
+<p>Simulate 1,000 draws of <span class="math notranslate nohighlight">\(X\)</span> using the algorithm above.</p>
+<p>Plot the fraction of the sample exceeding <span class="math notranslate nohighlight">\(t\)</span> for each <span class="math notranslate nohighlight">\(t \geq 0\)</span> (on a grid)
+and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambda t}\)</span>.</p>
+<p>Is the fit good?  How about if the number of draws is increased?</p>
+<p>Are the results in line with those of the previous exercise?</p>
+</div>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be constructed as in the statement of the exercise and fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
+<p>Notice that <span class="math notranslate nohighlight">\(X &gt; s + t\)</span> if and only if <span class="math notranslate nohighlight">\(Y &gt; s\)</span> and <span class="math notranslate nohighlight">\(Z &gt; t\)</span>.</p>
+<p>As a result of this fact and independence,</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{X &gt; s + t\}
+    = \PP\{Y &gt; s \} \PP\{Z &gt; t\}
+    = e^{-\lambda(s + t)}
+\]</div>
+<p>At the same time,</p>
+<div class="math notranslate nohighlight">
+\[
+    \PP\{X &gt; s - t\}
+    = \PP\{Y &gt; s - t \} 
+    = e^{-\lambda(s - t)}
+\]</div>
+<p>Either way, we have <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>, as was to be shown.</p>
+</div>
+<div class="section" id="solution-to-exercise-2">
+<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Here’s one solution, starting with 1,000 draws.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span> 
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<span class="n">t_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span> <span class="nf">draw_X</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1_000</span><span class="p">):</span>
+    <span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Y</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">Y</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">Z</span>
+        <span class="n">draws</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="k">return</span> <span class="n">draws</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="n">draw_X</span><span class="p">()</span>
+<span class="n">empirical_exceedance</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">draws</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_grid</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_grid</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">λ</span> <span class="o">*</span> <span class="n">t_grid</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exponential exceedance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_grid</span><span class="p">,</span> <span class="n">empirical_exceedance</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;empirical exceedance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/memoryless_5_0.png" src="_images/memoryless_5_0.png" />
+</div>
+</div>
+<p>The fit is already very close, which matches with the theory in Exercise 1.</p>
+<p>The two lines become indistinguishable as <span class="math notranslate nohighlight">\(n\)</span> is increased further.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="n">draw_X</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+<span class="n">empirical_exceedance</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">draws</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_grid</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_grid</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">λ</span> <span class="o">*</span> <span class="n">t_grid</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exponential exceedance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_grid</span><span class="p">,</span> <span class="n">empirical_exceedance</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;empirical exceedance&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/memoryless_7_0.png" src="_images/memoryless_7_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Continuous Time Markov Chains</a>
+    <a class='right-next' id="next-link" href="poisson.html" title="next page">Poisson Processes</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By John Stachurski<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
