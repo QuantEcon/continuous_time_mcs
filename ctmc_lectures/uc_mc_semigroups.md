@@ -18,15 +18,18 @@ kernelspec:
 ## Overview
 
 In our previous lecture we covered some of the general theory of continuous
-semigroups, with a particular focus on UC semigroups.
+operator semigroups. 
 
 Next we translate these results into the setting of Markov semigroups.
 
-The main aim is to give a one-to-one correspondence between UC Markov
-semigroups and "well-behaved" intensity matrices.
+The main aim is to give an exact one-to-one correspondence between UC
+Markov semigroups and "conservative" intensity matrices on a countable set $S$.
 
-We will also give some brief discussion of intensity matricies that fall
-outside this class, and the processes they generate.
+Conservativeness is defined below and relates to "nonexplosiveness" of the
+associated Markov matrix.
+
+We will also give a brief discussion of intensity matricies that fall
+outside this class, along with the processes they generate.
 
 
 ## Notation and Terminology
@@ -50,10 +53,17 @@ $$
 $$ (mmismo)
 
 To be consistent with earlier notation, we are writing the argument of $P$ to
-the left and applying $P$ to it like premultiplying with a row vector.
+the left and applying $P$ to it as if premultiplying $P$ by a row vector.
 
 In the exercises you are asked to verify that {eq}`mmismo` defines
-a bounded linear operator on $\ell_1$ that maps $\dD$ to itself.
+a bounded linear operator on $\ell_1$ such that 
+
+$$
+    \|P\| = 1 \text{ and } \phi P \in \dD \text{ whenever } \phi \in \dD
+$$ (propp)
+
+Note that composition of $P$ with itself is equivalent to powers of the matrix
+under matrix multiplication.
 
 For an intensity matrix $Q$ on $S$ we can try to introduce the associated
 operator analogously, via
@@ -63,12 +73,20 @@ $$
     \qquad (f \in \ell_1, \; y \in S)
 $$ (imislo)
 
-However, the sum in {eq}`imislo` is not always well defined.
+However, the sum in {eq}`imislo` is not always well defined.[^fnim]
 
-We say that an intensity matrix $Q$ is **conservative** if {eq}`imislo`
-is well defined, and it defines a bounded linear operator on $\ell_1$.
+[^fnim]: Previously, we introduced the notion of an intensity matrix when $S$
+  is finite and the definition is essentially unchanged in the current
+  setting.  In particular, $Q \colon S \times S \to \RR$ is called an
+  **intensity matrix** if $Q$ has zero row sums and $Q(x, y) \geq 0$ whenever
+  $x \not= y$.
 
-Below we give sufficient conditions that can be checked in applications.    
+We say that an intensity matrix $Q$ is **conservative** if the sum in
+{eq}`imislo` is well defined at all $y$ and, in addition, the mapping $f
+\mapsto fQ$ in {eq}`imislo` is a bounded linear operator on $\ell_1$.
+
+Below we show how this property can be checked in applications.    
+
 
 
 
@@ -80,26 +98,25 @@ Since $Q$ is in $\linopell$, the operator exponential $e^{tQ}$ is well defined
 as an element of $\linopell$ for all $t \geq 0$.
 
 Moreover, by {proof:ref}`ecuc`, the family $(P_t)$ in $\lL(\ell_1)$ defined by
-$P_t = e^{tQ}$ defines a uniformly continuous Markov semigroup on $S$.
+$P_t = e^{tQ}$ defines a UC Markov semigroup on $S$.
 
 (Here, a Markov semigroup $(P_t)$ is both a collection of Markov matrices and a
 collection of operators, as in {eq}`mmismo`.)
 
-The next theorem says that this is the only way uniformly continuous
-semigroups can arise.
+The next theorem says that this is the only way UC Markov semigroups can arise.
 
 ```{proof:theorem}
 :label: usmg
 
-If $(P_t)$ is a uniformly continuous Markov semigroup on $\ell_1$, then there
+If $(P_t)$ is a UC Markov semigroup on $\ell_1$, then there
 exists a conservative intensity matrix $Q$ such that $P_t = e^{tQ}$ for all $t \geq 0$.
 
 ```
 
 ```{proof:proof}
-Let $(P_t)$ be a uniformly continuous Markov semigroup on $\ell_1$.
+Let $(P_t)$ be a UC Markov semigroup on $\ell_1$.
 
-Since $(P_t)$ be a uniformly continuous semigroup on $\ell_1$, it follows from
+Since $(P_t)$ is a UC semigroup on $\ell_1$, it follows from
 {proof:ref}`ucsgec` that there exists a $Q \in \lL(\ell_1)$ such that 
 $P_t = e^{tQ}$ for all $t \geq 0$.
 
@@ -130,39 +147,109 @@ The second last of these results is the Kolmogorov forward and backward equation
 The last of these results shows that we can obtain the intensity matrix $Q$ by differentiating $P_t$ at $t=0$.
 
 ```{proof:example}
-Return to Poisson processes.
+Let us consider again the Poisson process $(N_t)$ with rate $\lambda > 0$ 
+in light of the discussion above.
 
-We know the Markov semigroup, given in {eq}`poissemi`.  
+The corresponding semigroup $(P_t)$ is UC and hence there exists a
+conservative intensity matrix $Q$ with $P_t = e^{tQ}$ for all $t \geq 0$.
 
-Show has an exponential representation, with appropriate $Q$. So it's UC.
+This fact can be established by proving UC property and then appealing to
+{proof:ref}`usmg`. 
 
-Hence all of the statements above are true (derivatives in Banach sense).
+Another alternative, easier in this case, is to supply the intensity matrix
+$Q$ directly and then verify that $P_t = e^{tQ}$ holds.
 
-Interpret $Q$.
+The semigroup for a Poisson process with rate $\lambda$ was given in
+{eq}`poissemi` and is repeated here: 
 
-Interpret Fokker--Planck equation?
+$$
+    P_t(j, k) 
+    = 
+    \begin{cases}
+    e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}  
+        & \text{ if } j \leq k
+        \\
+    0 & \text{ otherwise}
+    \end{cases}
+$$ (poissemi2)
+
+For the intensity matrix we take
+
+$$
+    Q := 
+    \begin{pmatrix}
+    -\lambda & \lambda & 0 & 0 & 0 & \cdots
+    \\
+    0 & -\lambda & \lambda & 0 & 0 & \cdots
+    \\
+    0 & 0 & -\lambda & \lambda & 0 & \cdots
+    \\
+    0 & 0 & 0 & -\lambda & \lambda & \cdots
+    \\
+    \vdots & \vdots  & \vdots  & \vdots  & \vdots 
+    \end{pmatrix}
+$$ (poissonq)
+
+The form of $Q$ is intuitive: probability flows out of state $i$ and into
+state $i+1$ at the rate $\lambda$.
+
+It is immediate that $Q$ is an intensity matrix, as claimed.
+
+The exercises ask you to confirm that $Q$ is in $\lL(\ell_1)$.
+
+To prove that $P_t = e^{tQ}$ for any $t \geq 0$, we first decompose $Q$ as $Q
+= \lambda (K - I)$, where $K$ is defined by 
+
+$$
+    K(i, j) = \mathbb 1\{j = i + 1\}
+$$
+
+For given $t \geq 0$, we then have
+
+$$
+    e^{tQ}
+    = e^{\lambda t (K-I)}
+    = e^{\lambda t} e^{\lambda t K}
+    = e^{\lambda t} 
+    \sum_{m \geq 0} \frac{(\lambda t K)^m}{m!}
+$$
+
+
+The exercises ask you to verify that, for the powers of $K$, we have $K^m(i,
+j) = \mathbb 1\{j = i + m\}$.
+
+Inserting this expression for $K^m$ leads to 
+
+$$
+    e^{tQ}(i, j)
+    = e^{\lambda t} 
+    \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{j = i + m\}
+    = e^{\lambda t} 
+    \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{m = j-i\}
+$$
+
+This is identical to {eq}`poissemi2`.
+
+It now follows that $t \mapsto P_t \in \lL(\ell_1)$ is differentiable at every
+$t \geq 0$ and $Q$ is the generator of $(P_t)$, with $P_0' = Q$.
 
 ```
 
 
 
-### Sufficient Conditions
+### A Necessary and Sufficient Condition
 
 Our definition of a conservative intensity matrix works for the theory above
-but, on the downside, it
+but can be hard to check in appliations and lacks probabilistic intuition. 
 
-* can be hard to check in appliations and
-* lacks probabilistic intuition. 
-
-Here we give a sufficient condition for an intensity matrix to be
-conservative.
+Fortunately, we have the following simple charcterization.
 
 
 ```{proof:lemma} 
 :label: scintcon
 
-Let $Q$ be an intensity matrix on $S$.  If $\sup_x |Q(x, x)|$ is finite, then
-$Q$ is conservative.
+An intensity matrix $Q$ on $S$ is conservative if and only if $\sup_x |Q(x,
+x)|$ is finite.
 
 ```
 
@@ -171,6 +258,8 @@ The proof is a solved exercise.
 
 
 ```{proof:example}
+:label: jccs
+
 Recall the jump chain setting where, repeating {eq}`kolbackeq`, we defined $Q$
 via
 
@@ -190,21 +279,45 @@ still an intensity matrix.
 If we continue to assume that $K(x,x) = 0$ for all $x$, then $Q(x,x) = -
 \lambda(x)$.
 
-Hence, the condition in {proof:ref}`scintcon` holds if and only if $\sup_x \lambda(x)$ is finite.
+Hence, $Q$ is conservative if and only if $\sup_x \lambda(x)$ is finite.
 
-In other words, the condition requires that jump rate are bounded.
+In other words, $Q$ is conservative if the set of jump rates is bounded.
 ```
 
 This example shows that requiring $Q$ to be conservative is a relatively mild
 restriction.
 
-Jump rates are bounded in most applications and, even when they are not,
-$Q$ might still be conservative (since the condition is only sufficient).
+
+
+### The Finite State Case
+
+It is immediate from {proof:ref}`scintcon` that every intensity matrix is
+conservative when the state space $S$ is finite.
+
+Hence, in this setting, every intensity matrix $Q$ on $S$ defines a UC Markov
+semigroup $(P_t)$ via $P_t = e^{tQ}$.
+
+Conversely, if $S$ is finite, then any Markov semigroup $(P_t)$ is a UC Markov
+semigroup.
+
+To see this, recall that, as a Markov semigroup, $(P_t)$ satisfies 
+$\lim_{t \to 0} P_t(x, y) = I(x,y)$ for all $x,y$ in $S$. 
+
+In any finite dimensional space, pointwise convergence implies norm
+convergence, so $P_t \to I$ in operator norm as $t \to 0$ from above.
+
+As we saw previously, this is enough to ensure that $t \mapsto P_t$ is norm
+continuous everywhere on $\RR_+$.
+
+Hence $(P_t)$ is a UC Markov semigroup, as claimed.
+
+Combining these results with {proof:ref}`usmg`, we conclude that, when $S$ is
+finite, there is a one-to-one correspondence between Markov semigroups and
+intensity matrices.
 
 
 
-
-## Beyond Conservative Intensity Matrices
+## Beyond Bounded Intensity Matrices
 
 If we do run into an application where an intensity matrix $Q$ is not
 conservative, what might we expect?
@@ -244,30 +357,137 @@ For more discussion, see, for example, Section 2.7 of {cite}`norris1998markov`.
 
 ### Exercise 1
 
+Let $P$ be a Markov matrix on $S$ and identify it with the linear operator in
+{eq}`mmismo`.  Verify the claims in {eq}`propp`.
+
+### Exercise 2
+
 Prove the claim in {proof:ref}`scintcon`.
 
+### Exercise 3
+
+Confirm that $Q$ defined in {eq}`poissonq` induces a bounded linear operator on
+$\ell_1$ via {eq}`imislo`.
+
+
+### Exercise 4
+
+Let $K$ be defined on $\ZZ_+ \times \ZZ_+$ by $K(i, j) = \mathbb 1\{j = i + 1\}$. 
+
+Show that, with $K^m$ representing the $m$-th matrix product of $K$ with itself, 
+we have $K^m(i, j) = \mathbb 1\{j = i + m\}$ for any $i, j \in \ZZ_+$.
+    
 
 ## Solutions
 
 ### Solution to Exercise 1
 
+To determine the norm of $P$, we use the definition in {eq}`norml`.
+
+If $f \in \ell_1$ and $\| f \| \leq 1$, then 
+
+$$
+    \| f P \| 
+    \leq \sum_y \sum_x |f(x)| P(x, y)
+    = \sum_x |f(x)| \sum_y P(x, y)
+    = \sum_x |f(x)| 
+    = \| f \|
+$$
+
+Hence $\| P \| \leq 1$.  
+
+To see that equality holds we can repeat this argument with $f \geq 0$,
+obtaining $\| fP \| = \|f\|$.
+
+Now pick any $\phi \in \dD$.  
+
+Clearly $\phi P \geq 0$, and 
+
+$$
+    \sum_y (\phi P)(y)
+    \sum_y \sum_x \phi (x) P(x, y)
+    \sum_x \phi (x) \sum_y P(x, y)
+    = 1
+$$
+
+Hence $\phi P \in \dD$ as claimed.
+
+### Solution to Exercise 2
+
 
 Here is one solution.
 
-Let $Q$ be an intensity matrix satisfying the bound in {proof:ref}`scintcon`.
+Let $Q$ be an intensity matrix on $S$.
 
-Set $m := \sup_x |Q(x,x)|$ and $\hat P := I + Q / m$.
+Suppose first that $m := \sup_x |Q(x,x)|$ is finite.
+
+Set $\hat P := I + Q / m$.
 
 It is not hard to check that $\hat P$ is a Markov matrix and that $Q = m( \hat
 P - I)$.
 
-Since $\hat P$ is a Markov matrix, it induces a bounded linear operator on $\ell_1$ via
-{eq}`mmismo`.  
+Since $\hat P$ is a Markov matrix, it induces a bounded linear operator on
+$\ell_1$ via {eq}`mmismo`.  
 
 As $\lL(\ell_1)$ is a linear space, we see that $Q$ is likewise in
-$\lL(\ell_1)$, in which case it is conservative.
+$\lL(\ell_1)$. 
+
+In particular, $Q$ is a bounded operator, and hence conservative.
+
+Next, suppose that $Q$ is conservative and yet $\sup_x |Q(x,x)|$ is infinite.
+
+Choose $x \in S$ such that $|Q(x, x)| > \| Q\|$
+
+Let $f \in \ell_1$ be defined by $f(z) = \mathbb 1\{z = x\}$.
+
+Since $\|f\| = 1$, we have
+
+$$
+    \| Q \| 
+    \geq \| f Q \|
+    = \sum_y \left| \sum_z f(z) Q(z, y) \right|
+    = \sum_y | Q(x, y) |
+    \geq | Q(x, x) |
+$$
+
+Contradiction.
+
+### Solution to Exercise 3
+
+Linearity is obvious so we focus on boundedness.
+
+For any $f \in \ell_1$ and this choice of $Q$, we have
+
+$$
+    \sum_y |(fQ)(y)|
+    \leq \sum_y \sum_x |f(x) Q(x, y)|
+    \leq \lambda \sum_y \sum_x |f(y) - f(y+1)|
+$$
+
+Applying the triangle inequality, we see that the right hand side is dominated
+by $2 \lambda \| f\|$.
+
+Hence $\| fQ \| \leq 2 \lambda \|f\|$, which implies that $Q \in \lL(\ell_1)$
+as required.
 
 
 
+### Solution to Exercise 4
+
+The statement $K^m(i, j) = \mathbb 1\{j = i + m\}$ holds by definition when
+$m=1$.
+
+Now suppose it holds at arbitrary $m$.
+
+We then have, by definition of composition (matrix multiplication),
+
+$$
+    K^{m+1}(i, j)
+    = \sum_n K(i, n) K^m (n, j)
+    = \sum_n K(i, n) \mathbb 1\{j = i + m\}
+    = K(i, m-j)
+$$
+
+Applying the definition $K(i, j) = \mathbb 1\{j = i + 1\}$ completes verification of the claim.
 
 

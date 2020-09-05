@@ -48,9 +48,12 @@ Readers are assumed to have some basic familiarity with Banach spaces.
 ## Motivation
 
 The general theory of continuous semigroups of operators is motivated by
-the problem of solving linear ODEs in infinite dimensional spaces.
+the problem of solving linear ODEs in infinite dimensional spaces.[^fnpde]
 
-More specifically, the problem is to solve initial value problems such as 
+[^fnpde]: An excellent introduction to operator semigroups, combined with
+  applications to PDEs and Markov processes, can be found in {cite}`applebaum2019semigroups`.
+
+More specifically, the challenge is to solve initial value problems such as 
 
 $$
     x'_t = A x_t,
@@ -74,10 +77,7 @@ PDEs tell us how functions change over time, starting from an infinitesimal
 description.
 
 When $x_t$ is a point in a function space, this fits into the framework of
-{eq}`abscp`.[^fnpde]
-
-[^fnpdf]: For an excellent introduction to operator semigroups, combined with
-  applications to PDEs, see {cite}`applebaum2019semigroups`.
+{eq}`abscp`.
 
 Another example comes from Markov processes, where, as we have seen, the flow
 of distributions over time can be represented as a linear ODE in distribution
@@ -162,20 +162,21 @@ $$
     = I + A + \frac{A^2}{2!} + \cdots
 $$ (opexpo)
 
-This is the same as the definition for the matrix exponential.
-
-The exponential function arises naturally as the solution to ODEs in Banach
+This is the same as the definition for the matrix exponential.The exponential function arises naturally as the solution to ODEs in Banach
 space, one example of which (as we shall see) is distribution flows
 associated with continuous time Markov chains.
 
 The exponential map has the following properties:
 
-* For each $A \in \linop$, the operator $e^A$ is a well defined element of $\linop$ with $\| e^A \| \leq e^{\| A \|}$.
+* For each $A \in \linop$, the operator $e^A$ is a well defined element of $\linop$ with $\| e^A \| \leq e^{\| A \|}$.[^fncoex]
 * $e^0 = I$, where $0$ is the zero element of $\linop$.
 * If $A, B \in \linop$ and $AB = BA$, then $e^{A + B} = e^A e^B$
 * If $A \in \linop$, then $e^A$ is invertible and $(e^A)^{-1} = e^{-A}$.
 
 The last fact is easily checked from the previous ones.
+
+
+[^fncoex]: Convergence of the sum in {eq}`opexpo` follows from boundedness of $A$ and the fact that $\linop$ is a Banach space.
 
 
 
@@ -209,18 +210,29 @@ $$
 (Convergence of operators is in operator norm.  If $\tau = 0$, then the limit
 $h \to 0$ in {eq}`devlim` is the right limit.)
 
-For example, if $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
+```{proof:example}
+If $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
 see that $V$ is the derivative of $t \mapsto U_t$ at every $t \in \RR_+$.
+```
 
-A more interesting example is the exponential map $t \mapsto e^{tA}$, where
-$A$ is a fixed element of $\linop$.
+```{proof:example}
+In {doc}`our discussion <kolmogorov_fwd>` of the Kolmogorov forward equation 
+when $S$ is finite, we introduced the derivative of a map $t
+\mapsto P_t$, where each $P_t$ is a matrix on $S$.
+
+The derivative was defined by differentiating $P_t$ element-by-element.
+
+This coincides with the operator-theoretic definition in {eq}`devlim` when $S$
+is finite, because then the space $\lL(\ell_1)$ is finite dimensional, and
+hence pointwise and norm convergence coincide.
+```
 
 Analogous to the matrix and scalar cases, we have the following result:
 
-```{proof:lemma} Differentiability of the exponential map
+```{proof:lemma} Differentiability of the Exponential Curve
 :label: diffexpmap
 
-For all $A \in \linop$, the map $t \mapsto e^{tA}$ is everywhere differentiable and 
+For all $A \in \linop$, the exponential curve $t \mapsto e^{tA}$ is everywhere differentiable and 
 
 $$
     \frac{d}{dt} e^{tA} = e^{tA} A = A e^{tA}
@@ -254,7 +266,7 @@ and then specializing.
 
 Let $U_t$ be an element of $\linop$ for all $t \in \RR_+$
 
-We say that $(U_t)$ is a **evolution semigroup** on $\linop$ if $U_0 = I$ and
+We say that $(U_t)$ is an **evolution semigroup** on $\linop$ if $U_0 = I$ and
 $U_{s + t} = U_s U_t$ for all $s, t \geq 0$.
 
 The idea is that $(U_t)$ generates a path in $\BB$ from any starting point $g \in \BB$, so that $U_t g$ is interpreted as the location of the state after $t$ units of time.
@@ -438,6 +450,25 @@ $$ (sgbound)
 Using this and {eq}`czsg2`, show that, for any $g \in \BB$, the map $t \mapsto
 U_t g$ is continuous at all $t$.
 
+
+### Exercise 3
+
+Following on from the previous exercise, 
+a UC semigroup is often defined as an evolution semigroup $(U_t)$
+such that 
+
+$$
+    \| U_t - I \| \to 0 \text{ as } t \to 0 
+$$ (czsg3)
+
+Show that {eq}`czsg3` implies norm continuity at every point $t$, as
+in the definition we used above.
+
+In particular, show that, for any $t_n \to t$, we have
+$\| U_{t_n} - U_t \| \to 0$  as $n \to \infty$.
+
+
+
 ## Solutions
 
 ### Solution to Exercise 1
@@ -477,3 +508,23 @@ $$
 $$
 
 as $n \to \infty$.  This completes the proof.
+
+### Solution to Exercise 3
+
+The solution is similar to that of the previous exercise.
+
+Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg3`,
+fix $t > 0$ and take $(h_n)$ to be a scalar sequence satisfying $h_n \downarrow 0$.  
+
+On one hand, $U_{t+ h_n} = U_{h_n} U_t \to U_t $ by {eq}`czsg3`.
+
+On the other hand, from the submultiplicative property of the operator norm
+and {eq}`sgbound`,
+
+$$
+    \| U_{t-h_n} - U_t \|
+    = \|  U_{t-h_n} ( I - U_{h_n}) \|
+    \leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
+$$
+
+This converges to 0 as $n \to \infty$, completing our proof.

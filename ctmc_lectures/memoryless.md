@@ -59,17 +59,16 @@ that black is more likely on the fifth spin --- "Surely black will come up this 
 But rational thought tells us such instincts are wrong: the four previous reds make no
 difference to the outcome of the next spin.
 
-(Many casinos offer free alcoholic beverages in order to discourage this kind of rational analysis.)
+(Many casinos offer an unlimited supply of free alcoholic beverages in order to discourage this kind of rational analysis.)
 
-A more mathematical restatement of this phenomenon is: the geometric distribution is memoryless.
+A mathematical restatement of this phenomenon is: the geometric distribution is memoryless.
 
-This restatement will be clarified below.
 
 ### Memorylessness
 
 Let $X$ be a random variable supported on the nonnegative integers $\ZZ_+$.
 
-We say that $X$ is [geometrically distributed](https://en.wikipedia.org/wiki/Geometric_distribution) if, for some $\theta \in [0, 1]$,
+We say that $X$ is [geometrically distributed](https://en.wikipedia.org/wiki/Geometric_distribution) if, for some $\theta$ satisfying $0 \leq \theta \leq 1$, 
 
 $$ 
     \PP\{X = k\} = (1-\theta)^k \theta 
@@ -202,9 +201,9 @@ The exponential distribution is the only memoryless distribution supported on $\
 ```{proof:theorem} Characterization of the Exponential Distribution
 :label: exp_unique
 
-If $X$ is a random variable $X$ supported on $\RR_+$, then  
-there exists a $\lambda > 0$ such that $X \sim \Exp(\lambda)$
- if and only if, for all positive $s, t$,
+If $X$ is a random variable supported on $\RR_+$, then there exists a
+$\lambda > 0$ such that $X \sim \Exp(\lambda)$ if and only if, for all
+positive $s, t$,
 
 $$
     \PP \{X > s + t \,|\, X > s \} = \PP \{X > t\}
@@ -374,9 +373,13 @@ $$ (erlcdf)
 
 The Erlang distribution is of interest to us because of the following fact.
 
+```{proof:lemma} Distribution of Sum of Exponentials
+:label: erlexp
+
 If, for some $\lambda > 0$, the sequence $(W_i)$ is IID and exponentially
 distributed with rate $\lambda$, then $J_n := \sum_{i=1}^n W_i$ has the Erlang
 distribution with shape $n$ and rate $\lambda$.
+```
 
 This connects to Poisson process theory, as we shall soon see.
 

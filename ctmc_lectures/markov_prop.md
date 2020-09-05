@@ -49,11 +49,12 @@ $\sum_x \phi(x) = 1$.
 
 Let $\dD$ denote the set of all distributions on $S$.
 
-To economize on terminology, we define a **matrix** to be a map $A$ from $S
-\times S$ to $\RR$.
+To economize on terminology, we define a **matrix** $A$ on $S$ to be a map 
+from $S \times S$ to $\RR$.
 
-When $S$ is finite, this reduces to the usual notion of a matrix, and you can
-mentally identify expressions like $A(x,y)$ with more familiar matrix
+When $S$ is finite, this reduces to the usual notion of a matrix, and,
+whenever you see expressions such as $A(x,y)$ below, you can
+mentally identify them with more familiar matrix
 notation, such as $A_{ij}$, if you wish.
 
 The product of two matrices $A$ and $B$ is defined by 
@@ -102,7 +103,8 @@ discrete case and then shifting to continuous time.
 
 The simplest Markov processes are those with a discrete time parameter and finite state space.
 
-Assume for now that $S$ has $n$ elements and let $P$ be a Markov matrix (i.e., nonnegative with unit row sums) of size $n \times n$.
+Assume for now that $S$ has $n$ elements and let $P$ be a **Markov matrix**,
+which means that $P(x,y) \geq 0$ and $\sum_y P(x,y) = 1$ for all $x$.
 
 In applications, $P(x, y)$ represents the probability of transitioning from $x$ to
 $y$ in one step.
@@ -121,12 +123,12 @@ In addition to connecting probabilities to the Markov matrix,
 the current state.
 
 We [recall that](https://python.quantecon.org/finite_markov.html), if $X_t$
-has distribution $\psi$, then $X_{t+1}$ has distribution $\psi P$.
+has distribution $\phi$, then $X_{t+1}$ has distribution $\phi P$.
 
-Since $\psi$ is understood as a row vector, the meaning is
+Since $\phi$ is understood as a row vector, the meaning is
 
 $$
-    (\psi P)(y) = \sum_x \psi(x) P(x, y) 
+    (\phi P)(y) = \sum_x \phi(x) P(x, y) 
     \qquad (y \in S)
 $$ (update_rule)
 
@@ -224,8 +226,8 @@ $$
     = 1
 $$ 
 
-Swapping the order of infinite sums is justified here by the fact that all
-elements are nonnegative (a version of Tonelli's theorem).
+(Swapping the order of infinite sums is justified here by the fact that all
+elements are nonnegative --- a version of Tonelli's theorem).
 
 If $P$ and $Q$ are Markov matrices on $S$, then, using the definition in
 {eq}`kernprod`, 
@@ -370,8 +372,8 @@ for the semigroup $(P_t)$ and initial condition $\psi$.
 
 ### Simulation and Probabilistic Constructions
 
-While we have answered the existence question in the affirmative, by
-constructing a canonical chain, the construction is quite abstract.
+While we have answered the existence question in the affirmative, 
+the canonical construction is quite abstract.
 
 Moreover, there is little information about how we might simulate such a chain.
 
@@ -380,6 +382,7 @@ continuous time Markov chains from the objects that describe their
 distributions.
 
 We will learn about these in a {doc}`later lecture <prob_view>`.
+
 
 
 ## Implications of the Markov Property
@@ -682,12 +685,20 @@ new state via $K$.
 
 In more detail, the construction is
 
+```{proof:algorithm} Constant Rate Jump Chain
+
+**Inputs** $\psi \in \dD$, positive constant $\lambda$, Markov matrix $K$
+
+**Outputs** Markov chain $(X_t)$
+
 1. draw $Y_0$ from $\psi$ 
 1. set $k = 1$ and $J_0 = 0$
 1. draw $W_k$ from Exp$(\lambda)$ and set $J_k = J_{k-1} + W_k$
 1. set $X_t = Y_{k-1}$ for all $t$ such that $J_{k-1} \leq t < J_k$.
 1. draw $Y_k$ from $K(Y_{k-1}, \cdot)$ 
 1. set $k = k+1$ and go to step 3.
+
+```
 
 An alternative, more parsimonious way to express the same process is to take 
 

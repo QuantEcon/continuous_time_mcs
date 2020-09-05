@@ -89,23 +89,31 @@ This assumption was made purely for convenience and seems unlikely to hold true.
 When we relax it, the jump intensities depend on the state.
 
 (jumpchainalgo)=
-### Embedded Jump Chain Algorithm
+### Jump Chain Algorithm
 
-We start with two primitives
+We start with three primitives
 
-1. A Markov matrix $K$ on $S$ satisfying $K(x, x) = 0$ for all $x \in S$
+1. An initial condition $\psi$, 
+1. a Markov matrix $K$ on $S$ satisfying $K(x, x) = 0$ for all $x \in S$
    and
-1. A function $\lambda$ mapping $S$ to $(0, \infty)$.
+1. a function $\lambda$ mapping $S$ to $(0, \infty)$.
 
 The process $(X_t)$ 
 
-* starts at state $x$, 
+* starts at state $x$, draw from $\psi$,
 * waits there for an exponential time $W$ with rate $\lambda(x)$ and then
 * updates to a new state $y$ drawn from $K(x, \cdot)$.
 
 Now we take $y$ as the new state for the process and repeat.
 
-More explicitly, assuming initial condition $\psi$, we
+Here is the same algorithm written more explicitly: 
+
+```{proof:algorithm} Jump Chain Algorithm
+:label: ejc_algo
+
+**Inputs** $\psi \in \dD$, rate function $\lambda$, Markov matrix $K$
+
+**Outputs** Markov chain $(X_t)$
 
 1. draw $Y_0$ from $\psi$, set $J_0 = 0$ and $k=1$.
 1. Draw $W_k$ independently from Exp$(\lambda(Y_{k-1}))$.
@@ -114,13 +122,13 @@ More explicitly, assuming initial condition $\psi$, we
 1. Draw $Y_k$ from $K(Y_{k-1}, \cdot)$.
 1. Set $k = k+1$ and go to step 2.
 
+```
+
 The sequence $(W_k)$ is drawn as an IID sequence and $(W_k)$ and $(Y_k)$ are
 drawn independently.
 
 The restriction $K(x,x) = 0$ for all $x$ implies that $(X_t)$ actually jumps at each jump time.
 
-We call the algorithm stated above the **embedded jump chain algorithm** for
-the jump chain pair $\lambda, K$.
 
 ## Computing the Semigroup
 
@@ -135,13 +143,18 @@ The approach we adopt is
    to work with.
 1. Solve this differential equation to obtain the Markov semigroup $(P_t)$.
 
-
 The differential equation in question has a special name:  the Kolmogorov backward equation.
 
 
 ### An Integral Equation
 
-The integral equation referred to above is
+
+Here is the first step in the sequence listed above.
+
+
+```{proof:lemma} An Integral Equation
+
+The semigroup $(P_t)$ of the jump chain with rate function $\lambda$ and Markov matrix $K$ obeys the integral equation 
 
 $$
     P_t(x, y) = e^{-t \lambda(x)} I(x, y)
@@ -149,12 +162,14 @@ $$
       \int_0^t (K P_{t-\tau})(x, y) e^{- \tau \lambda(x)} d \tau
 $$ (kbinteg)
 
-which, we claim, holds for all $t \geq 0$ and $x, y$ in $S$.
+for all $t \geq 0$ and $x, y$ in $S$.
+```
 
-Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed
-via the jump chain algorithm, while $K P_{t-\tau}$ is the matrix product of $K$ and $P_{t-\tau}$.
+Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed via
+{proof:ref}`ejc_algo`, while $K P_{t-\tau}$ is the matrix product of $K$ and
+$P_{t-\tau}$.
 
-Let's see why {eq}`kbinteg` holds.
+```{proof:proof}
 
 Conditioning implicitly on $X_0 = x$, the semigroup $(P_t)$ must satisfy 
 
@@ -164,7 +179,6 @@ $$
     = \PP\{X_t = y, \; J_1 > t \}
         + \PP\{X_t = y, \; J_1 \leq t \}
 $$ (pt_split)
-
 
 Regarding the first term on the right hand side of {eq}`pt_split`, we have 
 
@@ -209,7 +223,7 @@ $$
 
 Combining this result with {eq}`pt_split` and {eq}`pt_first` gives
 {eq}`kbinteg`.
-
+```
 
 
 ### Kolmogorov's Differential Equation
@@ -220,14 +234,19 @@ chain process $(X_t)$ satisfies {eq}`kbinteg`.
 Equation {eq}`kbinteg` is important but we can simplify it further without
 losing information by taking the time derivative.
 
-Doing so leads to the **Kolmogorov backward equation**, which is, for this
-model
+This leads to our main result for the lecture
+
+
+```{proof:theorem} Kolmogorov Backward Equation
+
+The semigroup $(P_t)$ of the jump chain with rate function $\lambda$ and Markov matrix $K$ satisfies the **Kolmogorov backward equation**
 
 $$
     P'_t = Q P_t 
     \quad \text{where } \;
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 $$ (kolbackeq)
+```
 
 The derivative on the left hand side of {eq}`kolbackeq` is taken element by
 element, with respect to $t$, so that
