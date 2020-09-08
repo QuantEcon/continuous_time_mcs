@@ -6,6 +6,5 @@
 - file: kolmogorov_fwd
 - file: generators
 - file: uc_mc_semigroups
-- file: prob_view
 - file: ergodicity
 - file: zreferences
