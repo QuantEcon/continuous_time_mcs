@@ -114,11 +114,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="prob_view.html">
-   A Probabilistic View
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ergodicity.html">
    Stationarity and Ergodicity
   </a>
@@ -234,8 +229,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#embedded-jump-chain-algorithm">
-     Embedded Jump Chain Algorithm
+    <a class="reference internal nav-link" href="#jump-chain-algorithm">
+     Jump Chain Algorithm
     </a>
    </li>
   </ul>
@@ -402,8 +397,8 @@ to the wait time for new inventory.</p>
 <p>This assumption was made purely for convenience and seems unlikely to hold true.</p>
 <p>When we relax it, the jump intensities depend on the state.</p>
 </div>
-<div class="section" id="embedded-jump-chain-algorithm">
-<span id="jumpchainalgo"></span><h3>Embedded Jump Chain Algorithm<a class="headerlink" href="#embedded-jump-chain-algorithm" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="jump-chain-algorithm">
+<span id="jumpchainalgo"></span><h3>Jump Chain Algorithm<a class="headerlink" href="#jump-chain-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>We start with three primitives</p>
 <ol class="simple">
 <li><p>An initial condition <span class="math notranslate nohighlight">\(\psi\)</span>,</p></li>
@@ -420,7 +415,7 @@ and</p></li>
 <p>Now we take <span class="math notranslate nohighlight">\(y\)</span> as the new state for the process and repeat.</p>
 <p>Here is the same algorithm written more explicitly:</p>
 <div class="proof algorithm admonition" id="ejc_algo">
-<p class="admonition-title"><span class="caption-number">Algorithm 6 </span> (Embedded Jump Chain Algorithm)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 6 </span> (Jump Chain Algorithm)</p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Inputs</strong> <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>, rate function <span class="math notranslate nohighlight">\(\lambda\)</span>, Markov matrix <span class="math notranslate nohighlight">\(K\)</span></p>
 <p><strong>Outputs</strong> Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span></p>

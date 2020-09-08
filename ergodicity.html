@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bibliography" href="zreferences.html" />
-    <link rel="prev" title="A Probabilistic View" href="prob_view.html" />
+    <link rel="prev" title="UC Markov Semigroups" href="uc_mc_semigroups.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -111,11 +111,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="uc_mc_semigroups.html">
    UC Markov Semigroups
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="prob_view.html">
-   A Probabilistic View
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -197,7 +192,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ergodicity.md"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ergodicity.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -227,6 +222,18 @@
   <a class="reference internal nav-link" href="#stationary-distributions">
    Stationary Distributions
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stationarity-via-the-generator">
+     Stationarity via the Generator
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#irreducibility-and-uniqueness">
@@ -237,6 +244,72 @@
   <a class="reference internal nav-link" href="#asymptotic-stabiltiy">
    Asymptotic Stabiltiy
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contractivity">
+     Contractivity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniqueness">
+     Uniqueness
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stability-from-the-skeleton">
+     Stability from the Skeleton
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stability-via-drift">
+     Stability via Drift
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions">
+   Solutions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-1">
+     Solution to Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-2">
+     Solution to Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-to-exercise-3">
+     Solution to Exercise 3
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -252,10 +325,25 @@
 <h1>Stationarity and Ergodicity<a class="headerlink" href="#stationarity-and-ergodicity" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>To be added.</p>
-<p>Use the distribution flow figures from markov_prop.md, this time starting from
-many different distributions.</p>
-<p>Suggests ergodicity.</p>
+<p>In this lecture we discuss stability and equilibrium behavior for continuous
+time Markov chains.</p>
+<p>To give one example of why this theory matters, consider queues, which are
+often modeled as continuous time Markov chains.</p>
+<p>Queueing theory is used in applications such as</p>
+<ul class="simple">
+<li><p>treatment of patients arriving at a hospital</p></li>
+<li><p>optimal design of manufacturing processes</p></li>
+<li><p>requests to a file server</p></li>
+<li><p>air traffic</p></li>
+<li><p>customers waiting on a help line</p></li>
+</ul>
+<p>A key topic in queueing theory is average behavior over the long run.</p>
+<ul class="simple">
+<li><p>Will the length of the queue grow without bounds?</p></li>
+<li><p>If not, is there some kind of long run equilibrium?</p></li>
+<li><p>If so, what is the average waiting time in this equilibrium?</p></li>
+<li><p>What is the average length of the queue over a week, or a month?</p></li>
+</ul>
 <p>We will use the following imports</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -264,7 +352,9 @@ many different distributions.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
 <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">expm</span>
 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.art3d</span> <span class="kn">import</span> <span class="n">Poly3DCollection</span>
 </pre></div>
@@ -274,31 +364,135 @@ many different distributions.</p>
 </div>
 <div class="section" id="stationary-distributions">
 <h2>Stationary Distributions<a class="headerlink" href="#stationary-distributions" title="Permalink to this headline">¶</a></h2>
-<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup on countable state space <span class="math notranslate nohighlight">\(S\)</span>.</p>
-<p>A distribution <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> is called <strong>stationary</strong> for <span class="math notranslate nohighlight">\((P_t)\)</span> if</p>
+<div class="section" id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(S\)</span> be countable.</p>
+<p>Recall that, for a discrete time Markov chain with Markov matrix <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(S\)</span>, a
+distribution <span class="math notranslate nohighlight">\(\psi\)</span> is called stationary for <span class="math notranslate nohighlight">\(P\)</span> if <span class="math notranslate nohighlight">\(\psi P = \psi\)</span>.</p>
+<p>This means that if <span class="math notranslate nohighlight">\(X_t\)</span> has distribution <span class="math notranslate nohighlight">\(\psi\)</span>, then so does <span class="math notranslate nohighlight">\(X_{t+1}\)</span>.</p>
+<p>For continuous time Markov chains, the definition is analogous.</p>
+<p>Given a Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>, a distribution <span class="math notranslate nohighlight">\(\psi^* \in \dD\)</span> is called
+<strong>stationary</strong> for <span class="math notranslate nohighlight">\((P_t)\)</span> if</p>
 <div class="math notranslate nohighlight">
 \[
-    \psi P_t = \psi 
+    \psi^* P_t = \psi^* 
     \text{ for all } t \geq 0
 \]</div>
+<p>As one example, we look <a class="reference internal" href="kolmogorov_fwd.html#solvode"><span class="std std-ref">again</span></a> at the chain on <span class="math notranslate nohighlight">\(S = \{0, 1,
+2\}\)</span> with intensity matrix</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+     <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+     <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following figure was shown before, except that now there is a black dot
+that the three trajectories seem to be converging to.</p>
+<p>(Recall that, in the color scheme, trajectories cool as time evolves.)</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unit_simplex</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+    <span class="n">vtx</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+           <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+    
+    <span class="n">tri</span> <span class="o">=</span> <span class="n">Poly3DCollection</span><span class="p">([</span><span class="n">vtx</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">tri</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_collection3d</span><span class="p">(</span><span class="n">tri</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">zlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+           <span class="n">xticks</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">yticks</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">zticks</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;$(1, 0, 0)$&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;$(0, 1, 0)$&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_zticklabels</span><span class="p">([</span><span class="s1">&#39;$(0, 0, 1)$&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">majorTicks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_pad</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">majorTicks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_pad</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">majorTicks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_pad</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+
+    <span class="c1"># Move axis to origin</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">_axinfo</span><span class="p">[</span><span class="s1">&#39;juggled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">_axinfo</span><span class="p">[</span><span class="s1">&#39;juggled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">_axinfo</span><span class="p">[</span><span class="s1">&#39;juggled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">ax</span>
+
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">ψ_00</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">))</span>
+<span class="n">ψ_01</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
+<span class="n">ψ_02</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">unit_simplex</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>    
+
+<span class="k">def</span> <span class="nf">flow_plot</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">jet_r</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+    <span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">z_vals</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">y_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">z_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">ψ</span> <span class="o">=</span> <span class="n">ψ</span> <span class="o">@</span> <span class="n">expm</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">Q</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">z_vals</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">depthshade</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">flow_plot</span><span class="p">(</span><span class="n">ψ_00</span><span class="p">)</span>
+<span class="n">flow_plot</span><span class="p">(</span><span class="n">ψ_01</span><span class="p">)</span>
+<span class="n">flow_plot</span><span class="p">(</span><span class="n">ψ_02</span><span class="p">)</span>
+
+<span class="c1"># Add stationary distribution</span>
+<span class="n">P_1</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">qe</span><span class="o">.</span><span class="n">MarkovChain</span><span class="p">(</span><span class="n">P_1</span><span class="p">)</span>
+<span class="n">ψ</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">stationary_distributions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ψ</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ψ</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ψ</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">depthshade</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ergodicity_5_0.png" src="_images/ergodicity_5_0.png" />
+</div>
+</div>
+<p>This black dot is the stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> of the Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> generated by <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>It was calculated the <code class="docutils literal notranslate"><span class="pre">stationary_distributions</span></code> attribute of QuantEcon’s
+<a class="reference external" href="https://quanteconpy.readthedocs.io/en/latest/markov.html"><code class="docutils literal notranslate"><span class="pre">MarkovChain</span></code> class</a>, by arbitrarily setting <span class="math notranslate nohighlight">\(t=1\)</span> and solving <span class="math notranslate nohighlight">\(\psi P_1 = \psi\)</span>.</p>
+<p>Below we show that, for this choice of <span class="math notranslate nohighlight">\(Q\)</span>, the stationary distribution
+<span class="math notranslate nohighlight">\(\psi^*\)</span> is unique in <span class="math notranslate nohighlight">\(\dD\)</span>, due to irreducibility.</p>
+<p>Moreover, <span class="math notranslate nohighlight">\(\psi P_t \to \psi^*\)</span> as <span class="math notranslate nohighlight">\(t \to \infty\)</span> for any <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>, as
+suggested by the figure.</p>
+</div>
+<div class="section" id="stationarity-via-the-generator">
+<h3>Stationarity via the Generator<a class="headerlink" href="#stationarity-via-the-generator" title="Permalink to this headline">¶</a></h3>
 <p>In many cases, it is easier to use the generator of the semigroup to identify
-stationary distributions.</p>
-<p>The next result makes this possible.</p>
-<p>It is analogous to the idea that a point <span class="math notranslate nohighlight">\(\bar x\)</span> in <span class="math notranslate nohighlight">\(\RR^d\)</span> is stationary for
+stationary distributions rather than the semigroup itself.</p>
+<p>This is analogous to the idea that a point <span class="math notranslate nohighlight">\(\bar x\)</span> in <span class="math notranslate nohighlight">\(\RR^d\)</span> is stationary for
 a vector ODE <span class="math notranslate nohighlight">\(x'_t = F(x_t)\)</span> when <span class="math notranslate nohighlight">\(F(\bar x) = 0\)</span>.</p>
-<p>It holds true under weaker conditions but the version stated here is easy to
-prove and sufficient for most cases we consider.</p>
+<p>(Here <span class="math notranslate nohighlight">\(F\)</span> is the infinitesimal description, and hence analogous to the generator.)</p>
+<p>The next result holds true under weaker conditions but the version stated here
+is easy to prove and sufficient for applications we consider.</p>
 <div class="proof theorem admonition" id="statfromq">
 <p class="admonition-title"><span class="caption-number">Theorem 23 </span></p>
 <div class="theorem-content section" id="proof-content">
-<p>For a conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> and
-associated Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>, a distribution <span class="math notranslate nohighlight">\(\psi\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is stationary
-for <span class="math notranslate nohighlight">\((P_t)\)</span> if and only if <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup with generator <span class="math notranslate nohighlight">\(Q\)</span>.  A distribution
+<span class="math notranslate nohighlight">\(\psi\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is stationary for <span class="math notranslate nohighlight">\((P_t)\)</span> if and only if <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
 </div>
 </div><div class="proof admonition" id="proof">
-<p>Proof. Suppose first that <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
-<p>Since <span class="math notranslate nohighlight">\(Q\)</span> is conservative, <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC semigroup with <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for
-all <span class="math notranslate nohighlight">\(t\)</span>, and hence, for any <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
+<p>Proof. Fix <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and suppose first that <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC Markov semigroup, we have <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>,
+and hence, for any <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
     \psi e^{tQ} = \psi + t \psi Q + t^2 \frac{\psi Q^2}{2!} 
@@ -317,10 +511,11 @@ I)\)</span>.</p>
     \leq \| Q - D_t \| + \| \psi D_t \|
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is UC and <span class="math notranslate nohighlight">\(Q\)</span> is its generator, we have <span class="math notranslate nohighlight">\(\| D_t - Q \| \to 0\)</span> in
-<span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> as <span class="math notranslate nohighlight">\(t \to 0\)</span> from the right.</p>
+<span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> as <span class="math notranslate nohighlight">\(t \to 0\)</span>.</p>
 <p>Hence <span class="math notranslate nohighlight">\(\| \psi Q \| \leq \liminf_{t \to 0} \| \psi D_t \|\)</span>.</p>
-<p>As <span class="math notranslate nohighlight">\(\psi\)</span> is stationary, <span class="math notranslate nohighlight">\(\psi D_t = 0\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>As <span class="math notranslate nohighlight">\(\psi\)</span> is stationary for <span class="math notranslate nohighlight">\((P_t)\)</span>, we have <span class="math notranslate nohighlight">\(\psi D_t = 0\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Hence <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>, as was to be shown.</p>
+</div>
 </div>
 </div>
 <div class="section" id="irreducibility-and-uniqueness">
@@ -328,34 +523,40 @@ I)\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>We say that state <span class="math notranslate nohighlight">\(y\)</span> is <strong>accessible</strong> from state <span class="math notranslate nohighlight">\(x\)</span> if
 there exists a <span class="math notranslate nohighlight">\(t \geq 0\)</span> such that <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span>.</p>
-<p>A Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is called <strong>irreducible</strong> if <span class="math notranslate nohighlight">\(y\)</span> is
-accessible from <span class="math notranslate nohighlight">\(x\)</span> for every <span class="math notranslate nohighlight">\((x,y) \in S \times S\)</span>.</p>
+<p>We say that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> <strong>communicate</strong> if <span class="math notranslate nohighlight">\(x\)</span> is accessible from <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(y\)</span>
+is accessible from <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>A Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is called <strong>irreducible</strong> if
+every pair <span class="math notranslate nohighlight">\(x,y\)</span> in <span class="math notranslate nohighlight">\(S\)</span> communicates.</p>
 <p>We seek a characterization of irreducibility of <span class="math notranslate nohighlight">\((P_t)\)</span> in terms of its
 generator.</p>
 <p>As a first step, we will say there is a <strong><span class="math notranslate nohighlight">\(Q\)</span>-positive probability flow</strong> from <span class="math notranslate nohighlight">\(x\)</span>
-to <span class="math notranslate nohighlight">\(y\)</span> if there exists a finite sequence <span class="math notranslate nohighlight">\((z_i)_{i=1}^m\)</span> in <span class="math notranslate nohighlight">\(S\)</span> starting at
-<span class="math notranslate nohighlight">\(x=z_1\)</span> and ending at <span class="math notranslate nohighlight">\(y=z_m\)</span> such that <span class="math notranslate nohighlight">\(Q(z_i, z_{i+1}) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<div class="proof lemma admonition" id="equivirr">
-<p class="admonition-title"><span class="caption-number">Lemma 24 </span></p>
-<div class="lemma-content section" id="proof-content">
-<p>For distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, the following statements are equivalent:</p>
+to <span class="math notranslate nohighlight">\(y\)</span> if there exists a finite sequence <span class="math notranslate nohighlight">\((z_i)_{i=0}^m\)</span> in <span class="math notranslate nohighlight">\(S\)</span> starting at
+<span class="math notranslate nohighlight">\(x=z_0\)</span> and ending at <span class="math notranslate nohighlight">\(y=z_m\)</span> such that <span class="math notranslate nohighlight">\(Q(z_i, z_{i+1}) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<div class="proof theorem admonition" id="equivirr">
+<p class="admonition-title"><span class="caption-number">Theorem 24 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup with generator <span class="math notranslate nohighlight">\(Q\)</span>.
+For distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, the following statements are equivalent:</p>
 <ol class="simple">
 <li><p>The state <span class="math notranslate nohighlight">\(y\)</span> is accessible from <span class="math notranslate nohighlight">\(x\)</span> under <span class="math notranslate nohighlight">\((P_t)\)</span>.</p></li>
-<li><p>There is a positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> under <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
+<li><p>There is a <span class="math notranslate nohighlight">\(Q\)</span>-positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p></li>
 </ol>
 </div>
-</div><p>((prove only for the UC case?))</p>
-<div class="proof admonition" id="proof">
-<p>Proof. For distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we have</p>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Pick any two distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>It is obvious that statement 3 implies statement 1, so we need only prove
+(1 <span class="math notranslate nohighlight">\(\implies\)</span> 2) and (2 <span class="math notranslate nohighlight">\(\implies\)</span> 3).</p>
+<p>Starting with (1 <span class="math notranslate nohighlight">\(\implies\)</span> 2), recall that</p>
 <div class="math notranslate nohighlight" id="equation-ptexpan">
-<span class="eqno">(54)<a class="headerlink" href="#equation-ptexpan" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(57)<a class="headerlink" href="#equation-ptexpan" title="Permalink to this equation">¶</a></span>\[
     P_t(x, y) = t Q(x,y) + \frac{t^2}{2!} Q^2(x, y) + \cdots
 \]</div>
-<p>If <span class="math notranslate nohighlight">\(x\)</span> is accessible from <span class="math notranslate nohighlight">\(y\)</span>, then <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for some <span class="math notranslate nohighlight">\(t &gt; 0\)</span>, and hence
+<p>If <span class="math notranslate nohighlight">\(x\)</span> is accessible from <span class="math notranslate nohighlight">\(y\)</span>, then <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for some <span class="math notranslate nohighlight">\(t &gt; 0\)</span>, so
 <span class="math notranslate nohighlight">\(Q^k(x,y) &gt; 0\)</span> for at least one <span class="math notranslate nohighlight">\(k \in \NN\)</span>.</p>
 <p>Writing out the matrix product as a sum, we now have</p>
 <div class="math notranslate nohighlight" id="equation-qkassum">
-<span class="eqno">(55)<a class="headerlink" href="#equation-qkassum" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(58)<a class="headerlink" href="#equation-qkassum" title="Permalink to this equation">¶</a></span>\[
     Q^k(x,y) =
     \sum_{z_1}
     \sum_{z_2}
@@ -364,39 +565,317 @@ to <span class="math notranslate nohighlight">\(y\)</span> if there exists a fin
         Q(x, z_1) Q(z_1, z_2) \cdots Q(z_{k-1}, y) 
         &gt; 0
 \]</div>
-<p>It follows that at least one element of the sum must be strictly positive, so
-positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> is established.</p>
-<p>To prove the converse, suppose there is positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to
-<span class="math notranslate nohighlight">\(y\)</span>.</p>
-<p>We can then take a finite sequence <span class="math notranslate nohighlight">\((z_i)_{i=1}^m\)</span> starting at <span class="math notranslate nohighlight">\(x\)</span> and ending
-at <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(Q(z_i, z_{i+1}) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>We can and do assume that <span class="math notranslate nohighlight">\((z_i)_{i=0}^m\)</span> is the shortest such sequence
-(otherwise just pick the shortest one).</p>
-<p>Because any shorter sequence <span class="math notranslate nohighlight">\((u_i)_{i=1}^k\)</span> linking <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> has <span class="math notranslate nohighlight">\(Q(u_i, u_{i+1}) = 0\)</span> for some <span class="math notranslate nohighlight">\(i\)</span>, <a class="reference internal" href="#equation-qkassum">(55)</a> implies that <span class="math notranslate nohighlight">\(Q^k(x,y) = 0\)</span> for all <span class="math notranslate nohighlight">\(k &lt; m\)</span>.</p>
-<p>Hence, by <a class="reference internal" href="#equation-ptexpan">(54)</a>, we have <span class="math notranslate nohighlight">\(P_t(x, y) = t^m Q^m(x, y) + o(t^m)\)</span>.</p>
-<p>As <span class="math notranslate nohighlight">\(Q^m(x, y) &gt; 0\)</span>, we see that <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for sufficiently small <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>It follows that at least one element of the sum must be strictly positive.</p>
+<p>Therefore, a <span class="math notranslate nohighlight">\(Q\)</span>-positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> exists.</p>
+<p>Turning to (2 <span class="math notranslate nohighlight">\(\implies\)</span> 3), first note that, for arbitrary states <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>, if <span class="math notranslate nohighlight">\(Q(u, v) &gt; 0\)</span> then <span class="math notranslate nohighlight">\(P_t(u, v) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
+<p>To see this, let <span class="math notranslate nohighlight">\((\lambda, K)\)</span> be the jump chain pair constructed from <span class="math notranslate nohighlight">\(Q\)</span> via
+<a class="reference internal" href="uc_mc_semigroups.html#equation-lambdafromq">(54)</a>, <a class="reference internal" href="uc_mc_semigroups.html#equation-kfromqxx">(55)</a> and <a class="reference internal" href="uc_mc_semigroups.html#equation-kfromqxy">(56)</a>.</p>
+<p>Observe that, since <span class="math notranslate nohighlight">\(Q(u, v) &gt; 0\)</span>, we must have <span class="math notranslate nohighlight">\(\lambda(u) &gt; 0\)</span>.</p>
+<p>As a consequence, applying <a class="reference internal" href="uc_mc_semigroups.html#equation-kfromqxy">(56)</a>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    K(u, v) = \frac{Q(u, v)}{\lambda(u)} &gt; 0
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\((Y_k)\)</span> and <span class="math notranslate nohighlight">\((J_k)\)</span> be the embedded jump chain and jump sequence generated
+by <a class="reference internal" href="kolmogorov_bwd.html#ejc_algo">Algorithm 6</a>, with <span class="math notranslate nohighlight">\(Y_0 = u\)</span>.</p>
+<p>With <span class="math notranslate nohighlight">\(E_1 \sim \Exp(1)\)</span> and <span class="math notranslate nohighlight">\(E_2 \sim \Exp(1)\)</span>, we have, for any <span class="math notranslate nohighlight">\(t &gt; 0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+    P_t(u, v) 
+    &amp; \geq \PP \{J_1 \leq t, \, Y_1 = v, \, J_2 &gt; t \}
+    \\
+    &amp; \geq \PP \{E_1 \leq t\lambda(u), \, E_2 &gt; t\lambda(v) \} \PP\{ Y_1 = v  \}
+    \\
+    &amp; = \PP \{E_1 \leq t\lambda(u)\} 
+        \PP \{ E_2 &gt; t\lambda(v) \} K(u, v) 
+    \\
+    &amp; &gt; 0
+\end{aligned}
+\end{split}\]</div>
+<p>Now suppose there is a <span class="math notranslate nohighlight">\(Q\)</span>-positive probability flow <span class="math notranslate nohighlight">\((z_i)_{i=0}^m\)</span> from <span class="math notranslate nohighlight">\(x\)</span>
+to <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>If we fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and repeatedly apply <a class="reference internal" href="markov_prop.html#equation-chapkol-ct2">(15)</a> along with the last
+result, we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+    P_t(x, y)
+    \geq
+    \prod_{i=0}^{m-1} P_{t/m} (z_i, z_{i+1}) &gt; 0
+\]</div>
 </div>
-<p>Irreducible implies aperiodic.</p>
-<div class="proof theorem admonition" id="theorem-2">
-<p class="admonition-title"><span class="caption-number">Theorem 25 </span></p>
-<div class="theorem-content section" id="proof-content">
-<p>For a ((UC)) Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>, the following statements are
+<p><a class="reference internal" href="#equivirr">Theorem 24</a> leads directly to the following strong result.</p>
+<div class="proof corollary admonition" id="perimposs">
+<p class="admonition-title"><span class="caption-number">Corollary 25 </span></p>
+<div class="corollary-content section" id="proof-content">
+<p>For a UC Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>, the following statements are
 equivalent:</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible.</p></li>
 <li><p><span class="math notranslate nohighlight">\(P_t(x,y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and all <span class="math notranslate nohighlight">\((x,y) \in S \times S\)</span>.</p></li>
 </ol>
 </div>
-</div><div class="proof admonition" id="proof">
-<p>Proof. To be added.</p>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To obtain stable long run behavior in discrete time Markov chains, it is
+common to assume that the chain is aperiodic.</p>
+<p>This needs to be assumed on top of irreducibility if one wishes to rule out
+all dependence on initial conditions.</p>
+<p><a class="reference internal" href="#perimposs">Corollary 25</a> shows that periodicity is not a concern for irreducible
+continuous time Markov chains.</p>
+<p>Positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> at some <span class="math notranslate nohighlight">\(t &gt; 0\)</span> immediately implies
+positive flow for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
 </div>
-<p>Irreducible implies uniqueness.</p>
 </div>
 <div class="section" id="asymptotic-stabiltiy">
 <h2>Asymptotic Stabiltiy<a class="headerlink" href="#asymptotic-stabiltiy" title="Permalink to this headline">¶</a></h2>
-<p>To be added.</p>
-<p>Include Foguel alternative?</p>
-<p>Thm 6.2 of RR and MTK.</p>
+<p>We call Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> <strong>asymptotically stable</strong> if <span class="math notranslate nohighlight">\((P_t)\)</span> has a
+unique stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> in <span class="math notranslate nohighlight">\(\dD\)</span> and</p>
+<div class="math notranslate nohighlight" id="equation-asyms">
+<span class="eqno">(59)<a class="headerlink" href="#equation-asyms" title="Permalink to this equation">¶</a></span>\[
+    \| \psi P_t - \psi^* \| \to 0 \text{ as } t \to \infty
+    \text{ for all } \psi \in \dD
+\]</div>
+<p>Our aim is to establish conditions for asymptotic stability of Markov
+semigroups.</p>
+<div class="section" id="contractivity">
+<h3>Contractivity<a class="headerlink" href="#contractivity" title="Permalink to this headline">¶</a></h3>
+<p>Let’s recall some useful facts about the discrete time case.</p>
+<p>First, if <span class="math notranslate nohighlight">\(P\)</span> is any Markov matrix, we have, in the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm,</p>
+<div class="math notranslate nohighlight" id="equation-allmocontract">
+<span class="eqno">(60)<a class="headerlink" href="#equation-allmocontract" title="Permalink to this equation">¶</a></span>\[
+    \| \psi P \| \leq \| \psi \|
+    \text{ for all } \psi \in \dD
+\]</div>
+<p>This is because, given <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \| \psi P \|
+    = \sum_y \left| \sum_x \psi(x) P(x, y) \right|
+    \leq \sum_y \sum_x | \psi(x) | P(x, y)
+    = \| \psi \|
+\]</div>
+<p>By linearity, for <span class="math notranslate nohighlight">\(\psi, \phi \in \dD\)</span>, we then have</p>
+<div class="math notranslate nohighlight">
+\[
+    \| \psi P - \phi P \| \leq \| \psi - \phi \|
+\]</div>
+<p>Hence every Markov operator is contracting on <span class="math notranslate nohighlight">\(\dD\)</span>.</p>
+<p>Moreover, if <span class="math notranslate nohighlight">\(P\)</span> is everywhere positive, then this inequality is strict:</p>
+<div class="proof lemma admonition" id="strictcontract">
+<p class="admonition-title"><span class="caption-number">Lemma 26 </span> (Strict Contractivity)</p>
+<div class="lemma-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(P\)</span> is a Markov matrix and <span class="math notranslate nohighlight">\(P(x, y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(x, y\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \| \psi P - \phi P \| &lt; \| \psi - \phi \|
+    \text{ for all } \psi, \phi \in \dD
+    \text{ with } \psi \not= \phi
+\]</div>
+</div>
+</div><p>The proof follows from the strict triangle inequality, as opposed to the weak
+triangle inequality we used to obtain <a class="reference internal" href="#equation-allmocontract">(60)</a>.</p>
+<p>See, for example, Proposition 3.1.2 of <a class="bibtex reference internal" href="zreferences.html#lasota1994chaos" id="id1">[LM94]</a> or Lemma 8.2.3 of <a class="bibtex reference internal" href="zreferences.html#stachurski2009economic" id="id2">[Sta09]</a>.</p>
+</div>
+<div class="section" id="uniqueness">
+<h3>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h3>
+<p>Irreducibility of a given Markov chain implies that there are no disjoint
+absorbing sets.</p>
+<p>This in turn leads to uniqueness of stationary distributions:</p>
+<div class="proof theorem admonition" id="uniirr">
+<p class="admonition-title"><span class="caption-number">Theorem 27 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.  If <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible, then
+<span class="math notranslate nohighlight">\((P_t)\)</span> has at most one stationary distribution.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Suppose to the contrary that <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> are both stationary for
+<span class="math notranslate nohighlight">\((P_t)\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible, we know that <span class="math notranslate nohighlight">\(P_1(x,y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(x,y \in S\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\psi \not= \phi\)</span>, then, due to positivity of <span class="math notranslate nohighlight">\(P_1\)</span>, the strict inequality
+in <a class="reference internal" href="#strictcontract">Lemma 26</a> holds.</p>
+<p>At the same time, by stationarity, <span class="math notranslate nohighlight">\(\| \psi P - \phi P \| = \| \psi - \phi
+\|\)</span>.  Contradiction.</p>
+</div>
+<div class="proof example admonition" id="example-5">
+<p class="admonition-title"><span class="caption-number">Example 28 </span></p>
+<div class="example-content section" id="proof-content">
+<p>An M/M/1 queue with parameters <span class="math notranslate nohighlight">\(\mu, \lambda\)</span> is a continuous time Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> on <span class="math notranslate nohighlight">\(S = \ZZ_+\)</span> with with intensity matrix</p>
+<div class="math notranslate nohighlight" id="equation-mm1q">
+<span class="eqno">(61)<a class="headerlink" href="#equation-mm1q" title="Permalink to this equation">¶</a></span>\[\begin{split}
+Q=\begin{pmatrix}
+    -\lambda &amp; \lambda &amp; 0 &amp; 0 &amp; \cdots \\
+    \mu &amp; -(\mu + \lambda) &amp; \lambda &amp; 0 &amp; \cdots \\
+    0 &amp; \mu &amp; -(\mu + \lambda) &amp; \lambda &amp; \cdots\\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
+\end{pmatrix}
+\end{split}\]</div>
+<p>The chain <span class="math notranslate nohighlight">\((X_t)\)</span> records the length of the queue at each moment in time.</p>
+<p>The intensity matrix captures the idea that customers flow into the queue at
+rate <span class="math notranslate nohighlight">\(\lambda\)</span> and are served (and hence leave the queue) at rate <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> are both positive, then there is a <span class="math notranslate nohighlight">\(Q\)</span>-positive
+probability flow between any two states, in both directions, so the
+corresponding semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible.</p>
+<p><a class="reference internal" href="#uniirr">Theorem 27</a> now tells us that <span class="math notranslate nohighlight">\((P_t)\)</span> has at most one stationary
+distribution.</p>
+</div>
+</div></div>
+<div class="section" id="stability-from-the-skeleton">
+<h3>Stability from the Skeleton<a class="headerlink" href="#stability-from-the-skeleton" title="Permalink to this headline">¶</a></h3>
+<p>Recall the definition of asymptotic stability given in <a class="reference internal" href="#equation-asyms">(59)</a>.</p>
+<p>Analogously, we call an individual Markov operator <span class="math notranslate nohighlight">\(P\)</span> asymptotically stable if
+<span class="math notranslate nohighlight">\(P\)</span> has a unique stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> in <span class="math notranslate nohighlight">\(\dD\)</span> and
+<span class="math notranslate nohighlight">\(\psi P^n \to \psi^*\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span> for all <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>.</p>
+<p>The next result gives a connection between discrete and continuous stability.</p>
+<p>The critical ingredient linking these two concepts is the contractivity in
+<a class="reference internal" href="#equation-allmocontract">(60)</a>.</p>
+<div class="proof lemma admonition" id="stabskel">
+<p class="admonition-title"><span class="caption-number">Lemma 29 </span></p>
+<div class="lemma-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup. If there exists an <span class="math notranslate nohighlight">\(s &gt; 0\)</span> such that the
+Markov matrix <span class="math notranslate nohighlight">\(P_s\)</span> is asymptotically stable, then <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically
+stable with the same stationary distribution.</p>
+</div>
+</div><div class="proof admonition" id="proof">
+<p>Proof. Let <span class="math notranslate nohighlight">\((P_t)\)</span> and <span class="math notranslate nohighlight">\(s\)</span> be as in the statement of <a class="reference internal" href="#stabskel">Lemma 29</a>.</p>
+<p>Let <span class="math notranslate nohighlight">\(\psi^*\)</span> be the stationary distribution of <span class="math notranslate nohighlight">\(P_s\)</span>.  Fix <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and
+<span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>.</p>
+<p>By stability of <span class="math notranslate nohighlight">\(P_s\)</span>, we can take an <span class="math notranslate nohighlight">\(n \in \NN\)</span> such that
+<span class="math notranslate nohighlight">\(\| \psi P_s^n - \psi^* \| &lt; \epsilon\)</span>.</p>
+<p>Pick any <span class="math notranslate nohighlight">\(t &gt; sn\)</span>.  Set <span class="math notranslate nohighlight">\(h := t - sn\)</span>.</p>
+<p>By the contractivity in <a class="reference internal" href="#equation-allmocontract">(60)</a> and <span class="math notranslate nohighlight">\(P_{sn} = P_s^n\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+    \| \psi P_t - \psi^* \|
+    = \| \psi P_{sn} P_h - \psi^* P_h \|
+    \leq \| \psi P_{sn} - \psi^* \|
+    &lt; \epsilon.
+\]</div>
+<p>Hence asymptotic stability holds</p>
+</div>
+</div>
+<div class="section" id="stability-via-drift">
+<h3>Stability via Drift<a class="headerlink" href="#stability-via-drift" title="Permalink to this headline">¶</a></h3>
+<p>In this section we address drift conditions, which are a powerful method for
+obtaining asymptotic stability when the state space can be infinite.</p>
+<p>The idea is to show that the state tends to drift back to a finite set over
+time.</p>
+<p>Such drift, when combined with the contractivity in
+<a class="reference internal" href="#strictcontract">Lemma 26</a>, is enough to give global stability.</p>
+<p>The next theorem gives a useful version of this class of results.</p>
+<div class="proof theorem admonition" id="sdrift">
+<p class="admonition-title"><span class="caption-number">Theorem 30 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup with intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>.  If <span class="math notranslate nohighlight">\((P_t)\)</span> is
+irreducible and there exists a function <span class="math notranslate nohighlight">\(v \colon S \to \RR_+\)</span>, a finite set
+<span class="math notranslate nohighlight">\(F \subset S\)</span> and positive constants <span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \sum_y Q(x, y) v(y) 
+    \leq 
+    \begin{cases}
+    M &amp; \text{ if } x \in F \text{ and }
+    \\
+    - \epsilon &amp; \text{ otherwise } 
+    \end{cases}
+\end{split}\]</div>
+<p>then <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
+</div>
+</div><p>The proof of <a class="reference internal" href="#sdrift">Theorem 30</a> can be found in <a class="bibtex reference internal" href="zreferences.html#pichor2012stochastic" id="id3">[PichorRTKaminska12]</a>.</p>
+<div class="proof example admonition" id="example-8">
+<p class="admonition-title"><span class="caption-number">Example 31 </span></p>
+<div class="example-content section" id="proof-content">
+<p>Consider again the M/M/1 queue on <span class="math notranslate nohighlight">\(\ZZ_+\)</span> with intensity matrix <a class="reference internal" href="#equation-mm1q">(61)</a>.</p>
+<p>Suppose that <span class="math notranslate nohighlight">\(\lambda &lt; \mu\)</span>.</p>
+<p>It is intuitive that, in this case, the queue length will not
+tend to infinity (since the service rate is higher than the arrival rate).</p>
+<p>This intuition can be confirmed via <a class="reference internal" href="#sdrift">Theorem 30</a>, after setting <span class="math notranslate nohighlight">\(v(i) =
+i\)</span>.</p>
+<p>Indeed, we have, for any <span class="math notranslate nohighlight">\(i \geq 1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{j \geq 0} Q(i, j) v(j) 
+    = (i-1) \mu - i (\mu + \lambda) + (i+1) \lambda
+    = \lambda - \mu
+\]</div>
+<p>Setting <span class="math notranslate nohighlight">\(F=\{0\}\)</span> and <span class="math notranslate nohighlight">\(\epsilon = \mu - \lambda\)</span>, we see that the conditions
+of <a class="reference internal" href="#sdrift">Theorem 30</a> hold.</p>
+<p>Hence the associated semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
+</div>
+</div><div class="proof corollary admonition" id="sfinite">
+<p class="admonition-title"><span class="caption-number">Corollary 32 </span></p>
+<div class="corollary-content section" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\((P_t)\)</span> is an irreducible UC Markov semigroup and <span class="math notranslate nohighlight">\(S\)</span> is finite, then
+<span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
+</div>
+</div><p>A solved exercise below asks you to confirm this.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup.  True or false:
+for this semigroup, every state <span class="math notranslate nohighlight">\(x\)</span> is accessible from itself.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((\lambda_k)\)</span> be a bounded sequence in <span class="math notranslate nohighlight">\((0, \infty)\)</span>.</p>
+<p>A <strong>pure birth process</strong> starting at zero is a continuous time Markov process
+<span class="math notranslate nohighlight">\((X_t)\)</span> on state space <span class="math notranslate nohighlight">\(\ZZ_+\)</span> with intensity matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q=\begin{pmatrix}
+    -\lambda_0 &amp; \lambda_0 &amp; 0 &amp; 0 &amp; \cdots \\
+    0 &amp; -\lambda_1 &amp; \lambda_1 &amp; 0 &amp; \cdots \\
+    0 &amp; 0 &amp; -\lambda_2 &amp; \lambda_2 &amp; \cdots\\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
+\end{pmatrix}
+\end{split}\]</div>
+<p>Show that <span class="math notranslate nohighlight">\((P_t)\)</span>, the corresponding Markov semigroup, has no stationary
+distribution.</p>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Confirm that <a class="reference internal" href="#sdrift">Theorem 30</a> implies <a class="reference internal" href="#sfinite">Corollary 32</a>.</p>
+</div>
+</div>
+<div class="section" id="solutions">
+<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solution-to-exercise-1">
+<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>The statement is true.  With <span class="math notranslate nohighlight">\(t=0\)</span> we have <span class="math notranslate nohighlight">\(P_t(x,x) = I(x,x) = 1 &gt; 0\)</span>.</p>
+</div>
+<div class="section" id="solution-to-exercise-2">
+<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Suppose to the contrary that <span class="math notranslate nohighlight">\(\phi \in \dD\)</span> and <span class="math notranslate nohighlight">\(\phi Q = 0\)</span>.</p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+    (\phi Q)(j) 
+    = \sum_{i \geq 0} \phi(i) Q(i, j)
+    = - \lambda_j \phi(j) + \lambda_j \phi(j+1) 
+    = 0
+\]</div>
+<p>It follows that <span class="math notranslate nohighlight">\(\phi\)</span> is constant on <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
+<p>But <span class="math notranslate nohighlight">\(\dD\)</span> contains no constant functions when the state space is infinite.
+(Why?)</p>
+<p>Contradiction.</p>
+</div>
+<div class="section" id="solution-to-exercise-3">
+<h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be an irreducible UC Markov semigroup and let <span class="math notranslate nohighlight">\(S\)</span> be finite.</p>
+<p>Pick any positive constants <span class="math notranslate nohighlight">\(M, \epsilon\)</span> and set <span class="math notranslate nohighlight">\(v = M\)</span> and <span class="math notranslate nohighlight">\(F = S\)</span>.</p>
+<p>We then have</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_y Q(x, y) v(y)
+    = M \sum_y Q(x, y) 
+    = 0
+\]</div>
+<p>Hence the drift condition in <a class="reference internal" href="#sdrift">Theorem 30</a> holds and <span class="math notranslate nohighlight">\((P_t)\)</span> is
+asymptotically stable.</p>
+</div>
 </div>
 </div>
 
@@ -428,7 +907,7 @@ equivalent:</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="prob_view.html" title="previous page">A Probabilistic View</a>
+    <a class='left-prev' id="prev-link" href="uc_mc_semigroups.html" title="previous page">UC Markov Semigroups</a>
     <a class='right-next' id="next-link" href="zreferences.html" title="next page">Bibliography</a>
 
     </div>

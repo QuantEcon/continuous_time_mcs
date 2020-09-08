@@ -89,7 +89,7 @@ This assumption was made purely for convenience and seems unlikely to hold true.
 When we relax it, the jump intensities depend on the state.
 
 (jumpchainalgo)=
-### Embedded Jump Chain Algorithm
+### Jump Chain Algorithm
 
 We start with three primitives
 
@@ -108,7 +108,7 @@ Now we take $y$ as the new state for the process and repeat.
 
 Here is the same algorithm written more explicitly: 
 
-```{proof:algorithm} Embedded Jump Chain Algorithm
+```{proof:algorithm} Jump Chain Algorithm
 :label: ejc_algo
 
 **Inputs** $\psi \in \dD$, rate function $\lambda$, Markov matrix $K$
