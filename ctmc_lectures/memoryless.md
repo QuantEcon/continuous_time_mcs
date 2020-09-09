@@ -89,9 +89,9 @@ Then {eq}`geodist` is the probability that the first occurrence of black is at s
 (The outcome "black" fails $k$ times and then succeeds.)
 
 Consistent with our discussion in the introduction, the geometric distribution
-is memoryless.
+is **memoryless**.
 
-For example, given any nonnegative integer $m$, we have
+In particular, given any nonnegative integer $m$, we have
 
 $$
     \PP \{X = m + 1 \,|\, X > m \} = \theta
@@ -101,7 +101,8 @@ In other words, regardless of how long we have seen only red outcomes, the
 probability of black on the next spin is the same as the unconditional
 probability of getting black on the very first spin.
 
-To show this, we note that the left hand side is
+To establish {eq}`memgeo`, we use basic properties of the geometric
+distribution to obtain.
 
 $$
     \frac{ \PP \{X = m + 1 \text{ and } X > m \} }
@@ -110,10 +111,9 @@ $$
     \frac{ \PP \{X = m + 1 \} }
     {\PP \{X > m\}}
     = \frac{ (1-\theta)^{m+1} \theta }
-        {\sum_{k > m} (1-\theta)^k \theta }
+        {(1-\theta)^{m+1} }
+    = \theta
 $$
-
-The right hand side simplifies to $\theta$, completing the proof of {eq}`memgeo`.
 
 
 
