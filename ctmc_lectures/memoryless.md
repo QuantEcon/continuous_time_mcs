@@ -271,10 +271,10 @@ The discussion so far confirms that {eq}`implex` holds when $t$ is rational.
 So now take any $t \geq 0$ and rational sequences $(a_n)$ and $(b_n)$
 converging to $t$ with $a_n \leq t \leq b_n$ for all $n$.
 
-By property 1 we have $f(a_n) \leq f(t) \leq f(b_n)$ for all $n$, so
+By property 1 we have $f(b_n) \leq f(t) \leq f(a_n)$ for all $n$, so
 
 $$
-    f(1)^{a_n} \leq f(t) \leq f(1)^{b_n}
+    f(1)^{b_n} \leq f(t) \leq f(1)^{a_n}
     \quad \forall \, n \in \NN
 $$
 
