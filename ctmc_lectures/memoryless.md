@@ -437,7 +437,7 @@ $$
     = e^{-\lambda(s + t)}
 $$
 
-At the same time,
+At the same time, $X > s-t$ if and only if $Y > s-t$. We get
 
 $$
     \PP\{X > s - t\}
