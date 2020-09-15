@@ -94,7 +94,7 @@ plt.show()
 An alternative but equivalent definition is
 
 $$
-    N_t = \max \{k \geq 0 \,|\, J_k \leq t \}
+    N_t := \max \{k \geq 0 \,|\, J_k \leq t \}
 $$
 
 As a function of $t$, the process $N_t$ is called a **counting process**.
@@ -109,10 +109,10 @@ intervals $J_k - J_{k-1}$ are called **wait times** or **holding times**.
 
 A Poisson process is a counting process with independent exponential holding times.
 
-In particular, suppose that the arrival times are given by $J_0 = 0$ and 
+In particular, suppose that the arrival times are given by $J_0 := 0$ and 
 
 $$
-    J_k := W_1 + \cdots W_k 
+    J_k := W_1 + \cdots + W_k 
 $$
 
 where $(W_i)$ are IID exponential with some fixed rate $\lambda$.
