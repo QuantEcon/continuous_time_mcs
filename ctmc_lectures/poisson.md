@@ -120,7 +120,7 @@ where $(W_i)$ are IID exponential with some fixed rate $\lambda$.
 Then the associated counting process $(N_t)$ is called a **Poisson process** with rate $\lambda$.
 
 The rationale behind the name is that, for each $t > 0$, the random variable
-$N_t$ has the Poisson distribution with parameter $t \lambda$.
+$N_t$ has the Poisson distribution with parameter $t \lambda$, denoted by $N_t \sim \text{Poisson}(t \lambda)$.
 
 In other words, 
 
@@ -165,7 +165,7 @@ $$
 This is the (integer valued) CDF for the Poisson distribution with parameter
 $t \lambda$.
 
-An exercise at the end of the lecture asks you to verify that $N(t)$ is Poisson-$(t \lambda )$ informally via simulation.
+An exercise at the end of the lecture asks you to verify that $N_t$ is Poisson$(t \lambda )$ informally via simulation.
 
 The next figure shows one realization of a Poisson process $(N_t)$, with jumps
 at each new arrival.
