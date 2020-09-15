@@ -204,6 +204,8 @@ and independent increments.
 
 This is due to the memoryless property of exponentials.
 
+Assume $I := \ZZ_+$.
+
 It means in particular that
 
 1. the variables $\{N_{t_{i+1}} - N_{t_i}\}_{i \in I}$ are independent for any
