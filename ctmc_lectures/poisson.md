@@ -94,7 +94,7 @@ plt.show()
 An alternative but equivalent definition is
 
 $$
-    N_t = \max \{k \geq 0 \,|\, J_k \leq t \}
+    N_t := \max \{k \geq 0 \,|\, J_k \leq t \}
 $$
 
 As a function of $t$, the process $N_t$ is called a **counting process**.
@@ -143,7 +143,7 @@ and the right hand side agrees with {eq}`poissondist` when $k=0$.
 This sets up a proof by induction, which is time consuming but not difficult
 --- the details can be found in $\S29$ of {cite}`howard2017elements`.
 
-Another way to show that $N_t$ is Poisson with rate $\lambda$ is appeal to 
+Another way to show that $N_t$ is Poisson with rate $\lambda$ is to appeal to 
 {proof:ref}`erlexp`.
 
 We observe that
@@ -165,7 +165,7 @@ $$
 This is the (integer valued) CDF for the Poisson distribution with parameter
 $t \lambda$.
 
-An exercise at the end of the lecture asks you to verify that $N(t)$ is Poisson-$(t \lambda )$ informally via simulation.
+An exercise at the end of the lecture asks you to verify that $N_t$ is Poisson-$(t \lambda )$ informally via simulation.
 
 The next figure shows one realization of a Poisson process $(N_t)$, with jumps
 at each new arrival.
@@ -374,7 +374,7 @@ An important consequence of stationary independent increments is the
 restarting property, which means that, when simulating, we can freely stop and
 restart a Poisson process at any time:
 
-```{proof:theorem} Poisson Processes can be Pause and Restarted
+```{proof:theorem} Poisson Processes can be Paused and Restarted
 If $(N_t)$ is a Poisson process, $s > 0$ and 
 $(M_t)$ is defined by $M_t = N_{s+t} - N_s$ for $t \geq 0$, then $(M_t)$ is a 
 Poisson process independent of $(N_r)_{r \leq s}$.
