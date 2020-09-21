@@ -55,7 +55,7 @@ from $S \times S$ to $\RR$.
 When $S$ is finite, this reduces to the usual notion of a matrix, and,
 whenever you see expressions such as $A(x,y)$ below, you can
 mentally identify them with more familiar matrix
-notation, such as $A_{ij}$, if you wish.
+notation, such as $A_{xy}$, if you wish.
 
 The product of two matrices $A$ and $B$ is defined by 
 
