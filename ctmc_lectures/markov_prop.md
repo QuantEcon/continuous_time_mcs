@@ -123,7 +123,7 @@ In addition to connecting probabilities to the Markov matrix,
 the current state.
 
 We [recall that](https://python.quantecon.org/finite_markov.html), if $X_t$
-has distribution $\phi$, then $X_{t+1}$ has distribution $\phi P$.
+has a distribution $\phi$, then $X_{t+1}$ has the distribution $\phi P$.
 
 Since $\phi$ is understood as a row vector, the meaning is
 
@@ -135,11 +135,11 @@ $$ (update_rule)
 (jdfin)=
 #### The Joint Distribution
 
-In general, for given Markov matrix $P$, there can be many Markov chains
+In general, for a given Markov matrix $P$, there can be many Markov chains
 $(X_t)$ that satisfy {eq}`markovpropd`.
 
 This is due to the more general observation that, for a given distribution
-$\phi$, we can construct many random variables having distribution $\phi$.
+$\phi$, we can construct many random variables having the distribution $\phi$.
 
 (The exercises below ask for one example.)
 
@@ -189,7 +189,7 @@ The last step is to show that the family $(\mathbf P_\psi^n)$ defined at each
 $n \in \NN$ extends uniquely to a distribution $\mathbf P_\psi$ over the
 infinite sequences in $S^\infty$.
 
-That this is true follows from a well known [theorem of Kolmogorov](https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem).
+That this is true follows from the well known [theorem of Kolmogorov](https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem).
 
 Hence $P$ defines the joint distribution $\mathbf P_\psi$ when paired with any initial condition $\psi$.
 
@@ -213,7 +213,7 @@ Given Markov matrix $P$ and $\phi \in \dD$, we define $\phi P$ by
 {eq}`update_rule`.
     
 Then, as before, $\phi P$ can be understood as the distribution of 
-$X_{t+1}$ when $X_t$ has distribution $\phi$.
+$X_{t+1}$ when $X_t$ has a distribution $\phi$.
 
 The function $\phi P$ is in $\dD$, since, by {eq}`update_rule`, it is
 nonnegative and
