@@ -169,7 +169,7 @@ for any $m$ positive integers $t_i$ and $m$ elements  $y_i$ of the state space $
 values at finite collections of times --- see, for example, Theorem 7.2 of {cite}`walsh2012knowing`.)
 
 We can construct $\mathbf P_\psi$ by first defining $P_\psi^n$ over 
-the the finite Cartiesian product $S^{n+1}$ via
+the finite Cartesian product $S^{n+1}$ via
 
 $$
     \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
@@ -664,7 +664,7 @@ a more general setting where the arguments will be clearer and more useful.
 The examples we have focused on so far are special cases of Markov processes
 with constant jump intensities.
 
-This processes turn out to be very representative (although the constant jump intensity will later be relaxed).
+These processes turn out to be very representative (although the constant jump intensity will later be relaxed).
 
 Let's now summarize the model and its properties.
 
@@ -846,7 +846,7 @@ The state $S$ is set to $\{0, \ldots, b\}$ and the matrix $K$ is defined by
 
 Now we run time forward.
 
-We are interesting in computing the flow of distributions $t \mapsto \psi_t$,
+We are interested in computing the flow of distributions $t \mapsto \psi_t$,
 where $\psi_t$ is the distribution of $X_t$.
 
 According to the theory developed above, we have two options:
