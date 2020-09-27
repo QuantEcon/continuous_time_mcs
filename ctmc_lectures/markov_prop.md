@@ -784,7 +784,7 @@ $$
     \PP\{X_{s + t} = y \,|\, \fF_s \}
     = \sum_{k \geq 0}
     K^k(Y_{N_s}, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
-    = K^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+    = \sum_{k \geq 0} K^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
 Since the expression above depends only on $X_s$,
