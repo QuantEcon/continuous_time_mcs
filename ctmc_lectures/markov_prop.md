@@ -268,13 +268,13 @@ to the current setting.
 
 ### The Continuous Time Case
 
-A **continuous time stochastic process** on $S$ is a collection $(X_t)$ of $S$-valued
+A **continuous time stochastic process** on $S$, $(X_t)$, is a collection of $S$-valued
 random variables $X_t$ defined on a common probability space and indexed by $t
 \in \RR_+$.
 
 Let $I$ be the Markov matrix on $S$ defined by $I(x,y) = \mathbb 1\{x = y\}$.
 
-A **Markov semigroup** is a family $(P_t)$ of Markov matrices
+A **Markov semigroup** $(P_t)$ is a family of Markov matrices
 on $S$ satisfying 
 
 1. $P_0 = I$,
