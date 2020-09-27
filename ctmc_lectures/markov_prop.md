@@ -355,7 +355,7 @@ condition $\psi$.
 Next, create the corresponding joint distribution $\mathbf P_\psi$ over
 $rcS$, as described above.
 
-Now, for each $t \geq 0$, let $\pi_t$ be the point evaluation functional on
+Now, for each $t \geq 0$, let $\pi_t$ be the [point evaluation functional](https://en.wikipedia.org/wiki/Functional_(mathematics)) on
 $rcS$, that maps right continuous function $(x_\tau)$ into its time $t$ value
 $x_t$.
 
