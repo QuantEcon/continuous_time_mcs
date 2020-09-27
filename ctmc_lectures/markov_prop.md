@@ -227,7 +227,7 @@ $$
 $$ 
 
 (Swapping the order of infinite sums is justified here by the fact that all
-elements are nonnegative --- a version of Tonelli's theorem).
+elements are nonnegative --- a version of Tonelli's theorem, a successor of [Fubini's theorem](https://en.wikipedia.org/wiki/Fubini_theorem)).
 
 If $P$ and $Q$ are Markov matrices on $S$, then, using the definition in
 {eq}`kernprod`, 
