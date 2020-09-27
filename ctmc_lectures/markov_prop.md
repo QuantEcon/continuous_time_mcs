@@ -935,7 +935,7 @@ distribution $\mathbf P_\psi^n$.
 
 ### Exercise 4
 
-Try to produce your own version of the figure {ref}`flow_fig`.
+Try to produce your own version of the figure {ref}`flow_fig`
 
 The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
 
