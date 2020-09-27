@@ -867,7 +867,7 @@ $$
     \qquad (x \in S)
 $$
 
-Then $\hat \psi_t(x)$ will be close to $\PP\{X_t = x\}$ by the law of
+Then as $M \to \infty$, $\hat \psi_t(x)$ will be close to $\PP\{X_t = x\}$ by the law of
 large numbers.
 
 In other words, in the limit we recover $\psi_t$.
