@@ -333,7 +333,7 @@ initial condition.
 This distribution is defined over the set of all right continuous functions
 $\RR_+ \ni t \mapsto x_t \in S$, which we call $rcS$.
 
-Next one builds finite dimensional distributions over $rcS$ using
+Next one builds [finite dimensional distributions](https://en.wikipedia.org/wiki/Finite-dimensional_distribution) over $rcS$ using
 expressions similar to {eq}`mathjointd`.
 
 Finally, the Kolmogorov extension theorem is applied, similar to the discrete
