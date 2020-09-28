@@ -157,7 +157,7 @@ The **joint distribution** of a Markov chain $(X_t)$ satisfying
 $S^\infty$ such that
 
 $$
-    \PP\{ X_{t_1} = y_1, \ldots, X_{t_k} = y_k \}
+    \PP\{ X_{t_1} = y_1, \ldots, X_{t_m} = y_m \}
     =
     \mathbf P_\psi\{ (x_t) \in S^\infty \,:\, 
         x_{t_i} = y_i \text{ for } i = 1, \ldots m\}
