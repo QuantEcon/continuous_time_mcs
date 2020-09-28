@@ -399,7 +399,7 @@ formal discussion.
 
 Let $(X_t)$ be a continuous time stochastic process with state space $S = \{0, 1\}$.
 
-The process starts at $0$ and updates as follows:
+The process starts at $0$ and updates at follows:
 
 1. Draw $W$ independently from a fixed Pareto distribution.
 1. Hold $(X_t)$ in its current state for $W$ units of time and then switch
@@ -508,7 +508,7 @@ Let $X_t$ be the inventory of a firm at time $t$, taking values in the
 integers $0, 1, \ldots, b$.
 
 If $X_t > 0$, then a customer arrives after $W$
-units of time, where $W \sim E(\lambda)$ for some fixed $\lambda > 0$.
+units of time, where $W \sim \Exp (\lambda)$ for some fixed $\lambda > 0$.
 
 Upon arrival, each customer purchases $\min\{U, X_t\}$ units, where $U$ is an
 IID draw from the geometric distribution started at 1 rather than 0:
@@ -520,7 +520,7 @@ $$
 
 If $X_t = 0$, then no customers arrive and the firm places an order for $b$ units.
 
-The order arrives after a delay of $D$ units of time, where $D \sim E(\lambda)$.
+The order arrives after a delay of $D$ units of time, where $D \sim \Exp (\lambda)$.
 
 (We use the same $\lambda$ here just for convenience, to simplify the exposition.)
 
@@ -573,7 +573,7 @@ def sim_path(T=10, seed=123, λ=0.5, α=0.7, b=10):
     np.random.seed(seed)
 
     while True:
-        W = np.random.exponential(scale=1/λ)  # W ~ E(λ)
+        W = np.random.exponential(scale=1/λ)  # W ~ Exp(λ)
         J += W
         J_vals.append(J)
         if J >= T:
