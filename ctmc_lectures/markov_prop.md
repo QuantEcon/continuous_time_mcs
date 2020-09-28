@@ -798,7 +798,7 @@ The Markov semigroup can be obtained from our final result, conditioning
 on $X_s = x$ to get
 
 $$
-    P^t(x, y) = \PP\{X_{s + t} = y \,|\, X_s = x \}
+    P_t(x, y) = \PP\{X_{s + t} = y \,|\, X_s = x \}
     = e^{-t \lambda} \sum_{k \geq 0}
         K^k(x, y) \frac{(t \lambda )^k}{k!} 
 $$
@@ -808,7 +808,7 @@ the [matrix exponential](https://en.wikipedia.org/wiki/Matrix_exponential) to
 get
 
 $$
-    P^t 
+    P_t 
     = e^{-t \lambda}
         \sum_{k \geq 0}
         \frac{(t \lambda K)^k}{k!} 
