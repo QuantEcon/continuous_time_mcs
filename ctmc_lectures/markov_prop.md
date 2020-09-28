@@ -1019,13 +1019,13 @@ From the Markov property and the induction hypothesis, the right hand side is
 
 $$
     P (x_{n-1}, x_n )
-    \mathbf P_\psi^n(x_0, x_1, \ldots, x_{n-1})
+    \mathbf P_\psi^{n-1}(x_0, x_1, \ldots, x_{n-1})
     =
-        P (x_n, x_{n+1} )
+        P (x_{n-1}, x_n )
         \psi(x_0)
         P(x_0, x_1)
         \times \cdots \times
-        P(x_{n-1}, x_{n-1})
+        P(x_{n-2}, x_{n-1})
 $$
 
 The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
