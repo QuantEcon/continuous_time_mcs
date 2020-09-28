@@ -399,7 +399,7 @@ formal discussion.
 
 Let $(X_t)$ be a continuous time stochastic process with state space $S = \{0, 1\}$.
 
-The process starts at $0$ and updates at follows:
+The process starts at $0$ and updates as follows:
 
 1. Draw $W$ independently from a fixed Pareto distribution.
 1. Hold $(X_t)$ in its current state for $W$ units of time and then switch
