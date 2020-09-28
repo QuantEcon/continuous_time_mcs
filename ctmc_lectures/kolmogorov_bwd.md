@@ -115,7 +115,7 @@ Here is the same algorithm written more explicitly:
 
 **Outputs** Markov chain $(X_t)$
 
-1. draw $Y_0$ from $\psi$, set $J_0 = 0$ and $k=1$.
+1. Draw $Y_0$ from $\psi$, set $J_0 = 0$ and $k=1$.
 1. Draw $W_k$ independently from Exp$(\lambda(Y_{k-1}))$.
 1. Set $J_k = J_{k-1} + W_k$.
 1. Set $X_t = Y_{k-1}$ for $t$ in $[J_{k-1}, J_k)$.
@@ -137,7 +137,7 @@ jump chain algorithm, calculating the Markov semigroup is not a trivial exercise
 
 The approach we adopt is
 
-1. use probabilistic reasoning to obtain an integral equation that the
+1. Use probabilistic reasoning to obtain an integral equation that the
    semigroup must satisfy.
 1. Convert the integral equation into a differential equation that is easier
    to work with.
