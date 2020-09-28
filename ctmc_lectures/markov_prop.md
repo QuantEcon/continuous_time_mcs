@@ -195,9 +195,9 @@ Hence $P$ defines the joint distribution $\mathbf P_\psi$ when paired with any i
 
 
 
-### Extending to Infinitely Countable State Spaces
+### Extending to Infinite (Countable) State Spaces
 
-When $S$ is infinitely countable, the same idea carries through.
+When $S$ is infinite, the same idea carries through.
 
 Consistent with the finite case, a **Markov matrix** is a map
 $P$ from $S \times S$ to $\RR_+$ satisfying
