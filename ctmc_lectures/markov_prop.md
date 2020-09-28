@@ -18,7 +18,7 @@ kernelspec:
 
 
 A continuous time stochastic process is said to have the Markov property if
-that the past and future are independent given the current state.
+its past and future are independent given the current state.
 
 (A more formal definition is provided below.)
 
