@@ -195,7 +195,7 @@ Hence $P$ defines the joint distribution $\mathbf P_\psi$ when paired with any i
 
 
 
-### Extending to Countable State Spaces
+### Extending to Infinite (Countable) State Spaces
 
 When $S$ is infinite, the same idea carries through.
 
