@@ -853,7 +853,7 @@ According to the theory developed above, we have two options:
 
 Option 1 is to use simulation.
 
-The first step is to simulate many independent observations the process $(X_t^m)_{m=1}^M$.
+The first step is to simulate many independent observations of the process $(X_t^m)_{m=1}^M$.
 
 (Here $m$ indicates simulation number $m$, which you might think of as the outcome
 for firm $m$.)
