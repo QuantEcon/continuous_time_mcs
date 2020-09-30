@@ -340,7 +340,8 @@ $$
     = 0
 $$
 
-As a small exercise, you can check that the following is true
+As a small exercise, you can check that, with $1$
+representing a column vector of ones, the following is true
 
 $$
     Q \text{ has zero row sums }
