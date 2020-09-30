@@ -193,14 +193,14 @@ where $I(x, y) = \mathbb 1\{x = y\}$.
 For the second term on the right hand side of {eq}`pt_split`, we have 
 
 $$
-    \PP\{X_t = y, \; J_1 > t \}
+    \PP\{X_t = y, \; J_1 \leq t \}
     = \EE 
         \left[
-            \mathbb 1\{J_1 > t\} \PP\{X_t = y \,|\, W_1, Y_1\}
+            \mathbb 1\{J_1 \leq t\} \PP\{X_t = y \,|\, W_1, Y_1\}
         \right]
     = \EE 
         \left[
-            \mathbb 1\{J_1 > t\} P_{t - J_1} (Y_1, y) 
+            \mathbb 1\{J_1 \leq t\} P_{t - J_1} (Y_1, y) 
         \right]
 $$
 
@@ -208,9 +208,9 @@ Evaluating the expectation and using the independence of $J_1$ and $Y_1$, this b
 
 $$
 \begin{aligned}
-    \PP\{X_t = y, \; J_1 > t \}
+    \PP\{X_t = y, \; J_1 \leq t \}
     & = \int_0^\infty
-            \mathbb 1\{\tau > t\}
+            \mathbb 1\{\tau \leq t\}
             \sum_z K(x, z) P_{t - \tau} (z, y)  \lambda(x) e^{-\tau \lambda(x)} 
             d \tau
         \\
