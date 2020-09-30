@@ -341,12 +341,12 @@ distribution path.
 By comparison, the Kolmogorov forward equation is (like the backward equation)
 a differential equation in matrices.
 
-(And matrices are really maps, that send vectors into vectors.)
+(And matrices are really maps, which send vectors into vectors.)
 
 Operating at this level is less intuitive and more abstract than working with the
 Fokker--Planck equation.
 
-But, in the end, the object that we want to describe is a the Markov
+But, in the end, the object that we want to describe is a Markov
 semigroup.
 
 The Kolmogorov forward and backward equations are the ODEs that define
