@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Kolmogorov Backward Equation
+# The Kolmogorov Backward Equation
 
 ## Overview 
 
