@@ -23,7 +23,7 @@ This is analogous to the idea that solutions to continuous time models often
 lack analytical solutions.
 
 For example, when studying deterministic paths in continuous time,
-infinitesimal descriptions (ODEs and PDEs) are often more intuitive and easier
+infinitesimal descriptions ([ODEs](https://en.wikipedia.org/wiki/Ordinary_differential_equation) and [PDEs](https://en.wikipedia.org/wiki/Partial_differential_equation)) are often more intuitive and easier
 to write down than the associated solutions.
 
 (This is one of the shining insights of mathematics, beginning with the work
