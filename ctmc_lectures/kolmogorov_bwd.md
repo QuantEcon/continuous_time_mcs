@@ -360,7 +360,7 @@ $$
 
 In other words, each $P_t$ has unit row sums. 
 
-Next we check positivity of all elements of $P_t$ (which can easily fail for
+Next we check nonnegativity of all elements of $P_t$ (which can easily fail for
 matrix exponentials).
 
 To this end, adopting an argument from {cite}`stroock2013introduction`, we
