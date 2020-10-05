@@ -547,7 +547,7 @@ $$
     = \frac{P_t (P_h - I)}{h}  
 $$
 
-Taking $h \downarrow 0$ and using the definition of $Q$ gives $P_t' = P_t Q$,
+Taking $h \downarrow 0$ and using the definition of $Q$ give $P_t' = P_t Q$,
 which is the Kolmogorov forward equation.
 
 For the backward equation we observe that 
@@ -628,6 +628,6 @@ From this equality and the assumption that $P_t$ is a Markov matrix for all
 $t$, we see that the off diagonal elements of $Q$ must be
 nonnegative.
 
-Hence $Q$ is a intensity matrix.
+Hence $Q$ is an intensity matrix.
 
 
