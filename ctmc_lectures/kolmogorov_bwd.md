@@ -482,7 +482,7 @@ draws = independent_draws(T, num_draws=100_000)
 fig, ax = plt.subplots()
 
 ax.bar(range(n), [np.mean(draws == i) for i in range(n)], width=0.8, alpha=0.6)
-ax.set(xlabel="inventory")
+ax.set_xlabel("inventory", fontsize=14)
 
 plt.show()
 ```
@@ -566,7 +566,7 @@ def P_t(ψ, t):
 fig, ax = plt.subplots()
 
 ax.bar(range(n), ψ_T, width=0.8, alpha=0.6)
-ax.set(xlabel="inventory")
+ax.set_xlabel("inventory", fontsize=14)
 
 plt.show()
 ```
