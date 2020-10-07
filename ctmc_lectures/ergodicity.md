@@ -30,7 +30,7 @@ Queueing theory is used in applications such as
 * optimal design of manufacturing processes 
 * requests to a file server 
 * air traffic
-* customers waiting on a help line
+* customers waiting on a helpline
 
 A key topic in queueing theory is average behavior over the long run.
 
@@ -382,7 +382,7 @@ positive flow for all $t > 0$.
 
 
 
-## Asymptotic Stabiltiy
+## Asymptotic Stabilitiy
 
 We call Markov semigroup $(P_t)$ **asymptotically stable** if $(P_t)$ has a
 unique stationary distribution $\psi^*$ in $\dD$ and
