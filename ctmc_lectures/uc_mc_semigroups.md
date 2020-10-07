@@ -35,7 +35,7 @@ The main aim is to give an exact one-to-one correspondence between
 Conservativeness is defined below and relates to "nonexplosiveness" of the
 associated Markov chain.
 
-We will also give a brief discussion of intensity matricies that do not have
+We will also give a brief discussion of intensity matrices that do not have
 this property, along with the processes they generate.
 
 
@@ -249,7 +249,7 @@ $t \geq 0$ and $Q$ is the generator of $(P_t)$, with $P_0' = Q$.
 Our definition of a conservative intensity matrix works for the theory above
 but can be hard to check in appliations and lacks probabilistic intuition. 
 
-Fortunately, we have the following simple charcterization.
+Fortunately, we have the following simple characterization.
 
 
 ```{proof:lemma} 
@@ -360,7 +360,7 @@ As we now show, every intensity matrix admits the decomposition in
 
 ### Jump Chain Decomposition
 
-Given a intensity matrix $Q$, set 
+Given an intensity matrix $Q$, set 
 
 $$
     \lambda(x) := -Q(x, x)
@@ -453,7 +453,7 @@ this produces a Markov chain with Markov semigroup
 $(P_t)$ where $P_t = e^{tQ}$ for $Q$ satisfying {eq}`jcinmat`.
 
 (Although our argument assumed finite $S$, the proof goes through when
-$S$ is contably infinite and $Q$ is conservative with very minor changes.)
+$S$ is countably infinite and $Q$ is conservative with very minor changes.)
 
 In particular, $(X_t)$ is a continuous time Markov chain with intensity matrix
 $Q$.
