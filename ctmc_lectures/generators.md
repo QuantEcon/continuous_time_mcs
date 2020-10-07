@@ -69,7 +69,7 @@ where
 
 This problem is also called the "abstract Cauchy problem".
 
-Why do we need solve such problems?
+Why do we need to solve such problems?
 
 One example comes from PDEs.  
 
