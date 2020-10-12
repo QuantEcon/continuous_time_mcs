@@ -289,7 +289,7 @@ $\sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0$ when $s \to t$.
 :label: ecuc
 
 If $U_t = e^{tA}$ for $t \in \RR_+$ and $A \in \linop$, then $(U_t)$
-is a uniformly continuous semigroup on $\BB$.
+is a UC semigroup on $\BB$.
 ```
 
 The claim that $(U_t)$ is an evolution semigroup follows directly from the
@@ -299,18 +299,18 @@ Uniform continuity can be established using arguments similar to those in the
 proof of differentiability in {proof:ref}`diffexpmap`. 
 
 Since norm convergence on $\linop$ implies pointwise convergence, every
-uniformly continuous semigroup is a $C_0$ semigroup.
+UC semigroup is a $C_0$ semigroup.
 
-The reverse is certainly not true --- there are many important $C_0$ semigroups that fail to be uniformly continuous.
+The reverse is certainly not true --- there are many important $C_0$ semigroups that fail to be UC.
 
 In fact semigroups associated with PDEs, diffusions and other Markov processes
-on continuous state spaces are typically $C_0$ but not uniformly continuous.
+on continuous state spaces are typically $C_0$ but not UC.
 
 There are also important examples of Markov semigroups on infinite
-discrete state spaces that fail to be uniformly continuous.
+discrete state spaces that fail to be UC.
 
 However, we will soon see that, for most continuous time Markov chains used in
-applications, the semigroups are uniformly continuous.
+applications, the semigroups are UC.
 
 
 
@@ -374,7 +374,7 @@ semigroups, where these problems do not arise.
 The next section gives details.
 
 
-### A Characterization of Uniformly Continuous Semigroups
+### A Characterization of UC Semigroups
 
 We saw in {proof:ref}`ecuc` that exponential curves are an example
 of a UC semigroup.
