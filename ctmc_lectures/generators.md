@@ -43,7 +43,7 @@ bound.[^footnotepp]
 
 [^footnotepp]: In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.
 
-Readers are assumed to have some basic familiarity with Banach spaces.
+Readers are assumed to have some basic familiarity with [Banach spaces](https://en.wikipedia.org/wiki/Banach_space).
 
 ## Motivation
 
