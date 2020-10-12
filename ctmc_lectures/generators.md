@@ -38,7 +38,7 @@ Such technicalities are hard to avoid, since so many interesting Markov chains
 do have infinite state spaces.
 
 * Our very first example -- the Poisson process -- has an infinite state space.
-* Another example is the study of queues, which often have no natural upper
+* Another example is the study of queues, which often has no natural upper
 bound.[^footnotepp]
 
 [^footnotepp]: In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.
@@ -62,7 +62,7 @@ $$ (abscp)
 
 where 
 
-* $x_t$ takes value in a Banach space at each time $t$,
+* $x_t$ takes a value in a Banach space at each time $t$,
 * $A$ is a linear operator and
 * the time derivative $x'_t$ uses a definition appropriate for a Banach
   space.
