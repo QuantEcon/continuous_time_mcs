@@ -494,7 +494,7 @@ The proof of the second equality is similar.
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
 $\omega$ and $M$ be as in {eq}`sgbound`.
 
-Pick any $g \in \BB$,  $t > 0$ and $h_n \downarrow 0$ as $n \to \infty$.  
+Pick any $g \in \BB$,  $t > 0$ and $h_n \downarrow 0$.  
 
 On one hand, $U_{t+ h_n} g = U_{h_n} U_t g \to U_t g$ by {eq}`czsg2`.
 
@@ -514,7 +514,7 @@ as $n \to \infty$.  This completes the proof.
 The solution is similar to that of the previous exercise.
 
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg3`,
-fix $t > 0$ and take $(h_n)$ to be a scalar sequence satisfying $h_n \downarrow 0$ as $n \to \infty$.  
+fix $t > 0$ and take $(h_n)$ to be a scalar sequence satisfying $h_n \downarrow 0$.  
 
 On one hand, $U_{t+ h_n} = U_{h_n} U_t \to U_t $ by {eq}`czsg3`.
 
