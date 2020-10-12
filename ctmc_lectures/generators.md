@@ -162,7 +162,7 @@ $$
     = I + A + \frac{A^2}{2!} + \cdots
 $$ (opexpo)
 
-This is the same as the definition for the matrix exponential.The exponential function arises naturally as the solution to ODEs in Banach
+This is the same as the definition for the matrix exponential. The exponential function arises naturally as the solution to ODEs in Banach
 space, one example of which (as we shall see) is distribution flows
 associated with continuous time Markov chains.
 
