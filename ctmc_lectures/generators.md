@@ -333,7 +333,7 @@ $$
 $$
 
 In the more abstract setting of $C_0$ semigroups, we say that $Q$ is the
-"generator" of the semigroup $P_t$.
+"generator" of the semigroup $(P_t)$.
 
 More generally, given a $C_0$ semigroup $(U_t)$, we say that a linear
 operator $A$ from $\BB$ to itself is the **generator** of $(U_t)$ if 
