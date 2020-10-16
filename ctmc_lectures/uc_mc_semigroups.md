@@ -49,7 +49,7 @@ $$
     \| g \| := \sum_x |g(x)| < \infty
 $$
 
-Note that $\dD$, the set of distributions on $S$, is contained in $\ell_1$.
+Note that $\dD$, the set of all distributions on $S$, is contained in $\ell_1$.
 
 Each Markov matrix $P$ on $S$ can and will be identifed with a linear operator
 $f \mapsto fP$ on $\ell_1$ via 
@@ -127,7 +127,7 @@ Since $(P_t)$ is a UC semigroup on $\ell_1$, it follows from
 {proof:ref}`ucsgec` that there exists a $Q \in \lL(\ell_1)$ such that 
 $P_t = e^{tQ}$ for all $t \geq 0$.
 
-We need only show that $Q$ is a conservative intensity matrix.
+We only need to show that $Q$ is a conservative intensity matrix.
 
 Because $(P_t)$ is a Markov semigroup, $P_t$ is a Markov matrix for all $t$,
 and, since $P_t = e^{tQ}$ for all $t$, it follows that $Q$ is an intensity
@@ -327,7 +327,7 @@ intensity matrices.
 ## From Intensity Matrix to Jump Chain
 
 We now understand that there is a one-to-one pairing between conservative
-intenintensity matrices and UC Markov semigroups.
+intensity matrices and UC Markov semigroups.
 
 These ideas are important from an analytical perspective.
 
