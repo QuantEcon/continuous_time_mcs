@@ -105,7 +105,7 @@ Since $Q$ is in $\linopell$, the operator exponential $e^{tQ}$ is well defined
 as an element of $\linopell$ for all $t \geq 0$.
 
 Moreover, by {proof:ref}`ecuc`, the family $(P_t)$ in $\lL(\ell_1)$ defined by
-$P_t = e^{tQ}$ defines a UC Markov semigroup on $S$.
+$P_t = e^{tQ}$ defines a UC Markov semigroup on $\ell_1$.
 
 (Here, a Markov semigroup $(P_t)$ is both a collection of Markov matrices and a
 collection of operators, as in {eq}`mmismo`.)
