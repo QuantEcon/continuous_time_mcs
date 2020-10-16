@@ -216,8 +216,8 @@ For given $t \geq 0$, we then have
 $$
     e^{tQ}
     = e^{\lambda t (K-I)}
-    = e^{\lambda t} e^{\lambda t K}
-    = e^{\lambda t} 
+    = e^{-\lambda t} e^{\lambda t K}
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t K)^m}{m!}
 $$
 
@@ -229,9 +229,9 @@ Inserting this expression for $K^m$ leads to
 
 $$
     e^{tQ}(i, j)
-    = e^{\lambda t} 
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{j = i + m\}
-    = e^{\lambda t} 
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{m = j-i\}
 $$
 
