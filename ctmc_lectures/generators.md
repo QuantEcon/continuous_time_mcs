@@ -138,8 +138,8 @@ and so on.
 
 We write $A B$ to indicate composition of the operators $A, B \in \linop$.
 
-The value defined in {eq}`norml` is called the **operator norm** of $A$ and,
-as suggested by the notation, [is a norm](https://en.wikipedia.org/wiki/Operator_norm) on $\linop$.
+The value defined in {eq}`norml` is called the [**operator norm**](https://en.wikipedia.org/wiki/Operator_norm) of $A$ and,
+as suggested by the notation, is a norm on $\linop$.
 
 In addition to being a norm, it enjoys the submultiplicative property $\| AB
 \| \leq \| A \| \| B\|$ for all $A, B \in \linop$.
