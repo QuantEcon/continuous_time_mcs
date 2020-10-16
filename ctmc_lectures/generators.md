@@ -516,7 +516,7 @@ The solution is similar to that of the previous exercise.
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg3`,
 fix $t > 0$ and take $(h_n)$ to be a scalar sequence satisfying $h_n \downarrow 0$ as $n \to \infty$.  
 
-On one hand, $U_{t+ h_n} = U_{h_n} U_t \to U_t $ by {eq}`czsg3`.
+On one hand, $U_{t+ h_n} = U_{h_n} U_t \to U_t$ by {eq}`czsg3`.
 
 On the other hand, from the submultiplicative property of the operator norm
 and {eq}`sgbound`,
