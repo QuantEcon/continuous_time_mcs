@@ -639,8 +639,8 @@ We then have, by definition of composition (matrix multiplication),
 $$
     K^{m+1}(i, j)
     = \sum_n K(i, n) K^m (n, j)
-    = \sum_n K(i, n) \mathbb 1\{j = i + m\}
-    = K(i, m-j)
+    = \sum_n K(i, n) \mathbb 1\{j = n + m\}
+    = K(i, j-m)
 $$
 
 Applying the definition $K(i, j) = \mathbb 1\{j = i + 1\}$ completes verification of the claim.
