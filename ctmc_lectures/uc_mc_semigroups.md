@@ -304,8 +304,7 @@ conservative when the state space $S$ is finite.
 Hence, in this setting, every intensity matrix $Q$ on $S$ defines a UC Markov
 semigroup $(P_t)$ via $P_t = e^{tQ}$.
 
-Conversely, if $S$ is finite, then any Markov semigroup $(P_t)$ is a UC Markov
-semigroup.
+Conversely, if $S$ is finite, then any Markov semigroup $(P_t)$ is UC.
 
 To see this, recall that, as a Markov semigroup, $(P_t)$ satisfies 
 $\lim_{t \to 0} P_t(x, y) = I(x,y)$ for all $x,y$ in $S$. 
