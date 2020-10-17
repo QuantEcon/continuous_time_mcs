@@ -359,7 +359,7 @@ Indeed, why should the limit exist, given that $C_0$ semigroups are not
 required to be differentiable?
 
 The other problem is that, even though the limit exists, the linear operator
-$A$ is not bounded (i.e., not an element of $\linop$), so 
+$A$ might be unbounded (i.e., not an element of $\linop$), in which case 
 a statement like $U_t = e^{tA}$ is problematic.
 
 It turns out that, despite these issues, the theory of $C_0$ semigroups is
