@@ -63,7 +63,7 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 ### Definition
 
-Let $S$ be countable.
+Let $S$ be countable and $\dD$ be the set of all distributions.
 
 Recall that, for a discrete time Markov chain with Markov matrix $P$ on $S$, a
 distribution $\psi$ is called stationary for $P$ if $\psi P = \psi$.
