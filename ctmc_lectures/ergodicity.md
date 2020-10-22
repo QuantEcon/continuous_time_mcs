@@ -448,7 +448,7 @@ See, for example, Proposition 3.1.2 of {cite}`lasota1994chaos` or Lemma 8.2.3 of
 ### Uniqueness
 
 Irreducibility of a given Markov chain implies that there are no disjoint
-absorbing sets.
+[absorbing sets](https://en.wikipedia.org/wiki/Absorbing_set).
 
 This in turn leads to uniqueness of stationary distributions:
 
