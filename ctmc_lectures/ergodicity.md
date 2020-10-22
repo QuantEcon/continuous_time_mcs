@@ -596,8 +596,8 @@ Suppose that $\lambda < \mu$.
 It is intuitive that, in this case, the queue length will not 
 tend to infinity (since the service rate is higher than the arrival rate).
 
-This intuition can be confirmed via {proof:ref}`sdrift`, after setting $v(i) =
-i$.
+This intuition can be confirmed via {proof:ref}`sdrift`, after setting $v(j) =
+j$.
 
 Indeed, we have, for any $i \geq 1$,
 
