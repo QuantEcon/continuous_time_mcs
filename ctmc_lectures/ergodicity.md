@@ -544,10 +544,10 @@ $$
     \| \psi P_t - \psi^* \|
     = \| \psi P_{sn} P_h - \psi^* P_h \|
     \leq \| \psi P_{sn} - \psi^* \|
-    < \epsilon.
+    < \epsilon
 $$
 
-Hence asymptotic stability holds
+Hence asymptotic stability holds for $(P_t)$.
 
 ```
 
