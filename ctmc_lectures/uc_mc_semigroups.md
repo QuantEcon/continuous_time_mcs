@@ -560,8 +560,8 @@ Clearly $\phi P \geq 0$, and
 
 $$
     \sum_y (\phi P)(y)
-    \sum_y \sum_x \phi (x) P(x, y)
-    \sum_x \phi (x) \sum_y P(x, y)
+    =\sum_y \sum_x \phi (x) P(x, y)
+    =\sum_x \phi (x) \sum_y P(x, y)
     = 1
 $$
 
