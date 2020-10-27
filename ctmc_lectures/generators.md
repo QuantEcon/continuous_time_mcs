@@ -223,7 +223,7 @@ when $S$ is finite, we introduced the derivative of a map $t
 The derivative was defined by differentiating $P_t$ element-by-element.
 
 This coincides with the operator-theoretic definition in {eq}`devlim` when $S$
-is finite, because then the space $\lL(\ell_1)$ is finite dimensional, and
+is finite, because then the space $\lL(\ell_1)$, which consists of all bounded linear operators on $\ell_1$, is finite dimensional, and
 hence pointwise and norm convergence coincide.
 ```
 
