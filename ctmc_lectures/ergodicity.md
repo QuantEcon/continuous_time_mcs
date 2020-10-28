@@ -227,9 +227,9 @@ $$
 $$
 
 Since $(P_t)$ is UC and $Q$ is its generator, we have $\| D_t - Q \| \to 0$ in
-$\lL(\ell_1)$ as $t \to 0$.
+$\lL(\ell_1)$ as $t \to 0^+$.
 
-Hence $\| \psi Q \| \leq \liminf_{t \to 0} \| \psi D_t \|$.
+Hence $\| \psi Q \| \leq \liminf_{t \downarrow 0} \| \psi D_t \|$.
 
 As $\psi$ is stationary for $(P_t)$, we have $\psi D_t = 0$ for all $t$.
 
