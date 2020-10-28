@@ -666,12 +666,12 @@ The statement is true.  With $t=0$ we have $P_t(x,x) = I(x,x) = 1 > 0$.
 
 Suppose to the contrary that $\phi \in \dD$ and $\phi Q = 0$.
 
-Then 
+Then, for any $j \geq 1$,
 
 $$
     (\phi Q)(j) 
     = \sum_{i \geq 0} \phi(i) Q(i, j)
-    = - \lambda_j \phi(j) + \lambda_j \phi(j+1) 
+    = - \lambda_j \phi(j) + \lambda_{j-1} \phi(j-1) 
     = 0
 $$
 
