@@ -72,7 +72,7 @@ This means that if $X_t$ has distribution $\psi$, then so does $X_{t+1}$.
 
 For continuous time Markov chains, the definition is analogous.
 
-Given a Markov semigroup on $S$, a distribution $\psi^* \in \dD$ is called
+Given a Markov semigroup $(P_t)$ on $S$, a distribution $\psi^* \in \dD$ is called
 **stationary** for $(P_t)$ if
 
 $$
