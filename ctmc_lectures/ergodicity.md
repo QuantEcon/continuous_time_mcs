@@ -240,7 +240,7 @@ Hence $\psi Q = 0$, as was to be shown.
 
 ## Irreducibility and Uniqueness
 
-Let $(P_t)$ be a Markov semigroup on $S$.
+Let $(P_t)$ be a Markov semigroup on $S$ and consider arbitrary states $x, y \in S$.
 
 We say that state $y$ is **accessible** from state $x$ if
 there exists a $t \geq 0$ such that $P_t(x, y) > 0$.
