@@ -607,7 +607,7 @@ $$
     = \lambda - \mu
 $$
 
-Setting $F=\{0\}$ and $\epsilon = \mu - \lambda$, we see that the conditions
+Setting $F=\{0\}$ and $M = \lambda - \mu = - \epsilon$, we see that the conditions
 of {proof:ref}`sdrift` hold.
 
 Hence the associated semigroup $(P_t)$ is asymptotically stable.
