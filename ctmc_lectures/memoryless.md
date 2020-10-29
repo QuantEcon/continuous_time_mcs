@@ -198,7 +198,7 @@ In this sense, the exponential is the limit of the geometric distribution.
 
 The exponential distribution is the only memoryless distribution supported on $\RR_+$, as the next theorem attests.
 
-```{proof:theorem} Characterization of the Exponential Distribution
+```{prf:theorem} Characterization of the Exponential Distribution
 :label: exp_unique
 
 If $X$ is a random variable supported on $\RR_+$, then there exists a
@@ -211,7 +211,7 @@ $$ (memexpo)
 
 ```
 
-```{proof:proof}
+```{prf:proof}
 
 To see that {eq}`memexpo` holds when $X$ is exponential with rate $\lambda$,
 fix $s, t > 0$ and observe that
@@ -373,7 +373,7 @@ $$ (erlcdf)
 
 The Erlang distribution is of interest to us because of the following fact.
 
-```{proof:lemma} Distribution of Sum of Exponentials
+```{prf:lemma} Distribution of Sum of Exponentials
 :label: erlexp
 
 If, for some $\lambda > 0$, the sequence $(W_i)$ is IID and exponentially

@@ -192,14 +192,14 @@ The next result holds true under weaker conditions but the version stated here
 is easy to prove and sufficient for applications we consider.
 
 
-```{proof:theorem}
+```{prf:theorem}
 :label: statfromq
 
 Let $(P_t)$ be a UC Markov semigroup with generator $Q$.  A distribution
 $\psi$ on $S$ is stationary for $(P_t)$ if and only if $\psi Q = 0$.
 ```
 
-```{proof:proof}
+```{prf:proof}
 Fix $\psi \in \dD$ and suppose first that $\psi Q = 0$.
 
 Since $(P_t)$ is a UC Markov semigroup, we have $P_t = e^{tQ}$ for all $t$,
@@ -259,7 +259,7 @@ to $y$ if there exists a finite sequence $(z_i)_{i=0}^m$ in $S$ starting at
 $x=z_0$ and ending at $y=z_m$ such that $Q(z_i, z_{i+1}) > 0$ for all $i$.
 
 
-```{proof:theorem}
+```{prf:theorem}
 :label: equivirr
 
 Let $(P_t)$ be a UC Markov semigroup with generator $Q$.
@@ -271,7 +271,7 @@ For distinct states $x$ and $y$, the following statements are equivalent:
 ```
 
 
-```{proof:proof}
+```{prf:proof}
 Pick any two distinct states $x$ and $y$.
 
 It is obvious that statement 3 implies statement 1, so we need only prove 
@@ -318,7 +318,7 @@ $$
 
 
 Let $(Y_k)$ and $(J_k)$ be the embedded jump chain and jump sequence generated
-by {proof:ref}`ejc_algo`, with $Y_0 = u$.
+by {prf:ref}`ejc_algo`, with $Y_0 = u$.
 
 With $E_1 \sim \Exp(1)$ and $E_2 \sim \Exp(1)$, we have, for any $t > 0$,
 
@@ -352,9 +352,9 @@ $$
 
 ```
 
-{proof:ref}`equivirr` leads directly to the following strong result.
+{prf:ref}`equivirr` leads directly to the following strong result.
 
-```{proof:corollary}
+```{prf:corollary}
 :label: perimposs
 For a UC Markov semigroup $(P_t)$, the following statements are
 equivalent:
@@ -371,7 +371,7 @@ common to assume that the chain is aperiodic.
 This needs to be assumed on top of irreducibility if one wishes to rule out
 all dependence on initial conditions.
 
-{proof:ref}`perimposs` shows that periodicity is not a concern for irreducible
+{prf:ref}`perimposs` shows that periodicity is not a concern for irreducible
 continuous time Markov chains.
 
 Positive probability flow from $x$ to $y$ at some $t > 0$ immediately implies
@@ -427,7 +427,7 @@ Hence every Markov operator is contracting on $\dD$.
 
 Moreover, if $P$ is everywhere positive, then this inequality is strict:
 
-```{proof:lemma} Strict Contractivity
+```{prf:lemma} Strict Contractivity
 :label: strictcontract
 
 If $P$ is a Markov matrix and $P(x, y) > 0$ for all $x, y$, then 
@@ -452,7 +452,7 @@ Irreducibility of a given Markov chain implies that there are no disjoint
 
 This in turn leads to uniqueness of stationary distributions:
 
-```{proof:theorem}
+```{prf:theorem}
 :label: uniirr
 
 Let $(P_t)$ be a UC Markov semigroup on $S$.  If $(P_t)$ is irreducible, then
@@ -460,21 +460,21 @@ $(P_t)$ has at most one stationary distribution.
 ```
 
 
-```{proof:proof}
+```{prf:proof}
 Suppose to the contrary that $\psi$ and $\phi$ are both stationary for
 $(P_t)$.
 
 Since $(P_t)$ is irreducible, we know that $P_1(x,y) > 0$ for all $x,y \in S$.
 
 If $\psi \not= \phi$, then, due to positivity of $P_1$, the strict inequality
-in {proof:ref}`strictcontract` holds.
+in {prf:ref}`strictcontract` holds.
 
 At the same time, by stationarity, $\| \psi P - \phi P \| = \| \psi - \phi
 \|$.  Contradiction.
 ```
 
 
-```{proof:example}
+```{prf:example}
 
 An M/M/1 queue with parameters $\mu, \lambda$ is a continuous time Markov chain $(X_t)$ on $S = \ZZ_+$ with with intensity matrix
 
@@ -496,7 +496,7 @@ If $\lambda$ and $\mu$ are both positive, then there is a $Q$-positive
 probability flow between any two states, in both directions, so the
 corresponding semigroup $(P_t)$ is irreducible.
 
-{proof:ref}`uniirr` now tells us that $(P_t)$ has at most one stationary
+{prf:ref}`uniirr` now tells us that $(P_t)$ has at most one stationary
 distribution.
 
 ```
@@ -515,7 +515,7 @@ The next result gives a connection between discrete and continuous stability.
 The critical ingredient linking these two concepts is the contractivity in
 {eq}`allmocontract`.
 
-```{proof:lemma}
+```{prf:lemma}
 :label: stabskel
 
 Let $(P_t)$ be a Markov semigroup. If there exists an $s > 0$ such that the
@@ -524,9 +524,9 @@ stable with the same stationary distribution.
 
 ```
 
-```{proof:proof}
+```{prf:proof}
 
-Let $(P_t)$ and $s$ be as in the statement of {proof:ref}`stabskel`.
+Let $(P_t)$ and $s$ be as in the statement of {prf:ref}`stabskel`.
 
 
 Let $\psi^*$ be the stationary distribution of $P_s$.  Fix $\psi \in \dD$ and 
@@ -561,11 +561,11 @@ The idea is to show that the state tends to drift back to a finite set over
 time.
 
 Such drift, when combined with the contractivity in
-{proof:ref}`strictcontract`, is enough to give global stability.
+{prf:ref}`strictcontract`, is enough to give global stability.
 
 The next theorem gives a useful version of this class of results.
 
-```{proof:theorem}
+```{prf:theorem}
 :label: sdrift
 
 Let $(P_t)$ be a UC Markov semigroup with intensity matrix $Q$.  If $(P_t)$ is
@@ -585,9 +585,9 @@ $$
 then $(P_t)$ is asymptotically stable.
 ```
 
-The proof of {proof:ref}`sdrift` can be found in {cite}`pichor2012stochastic`.
+The proof of {prf:ref}`sdrift` can be found in {cite}`pichor2012stochastic`.
 
-```{proof:example}
+```{prf:example}
 
 Consider again the M/M/1 queue on $\ZZ_+$ with intensity matrix {eq}`mm1q`.
 
@@ -596,7 +596,7 @@ Suppose that $\lambda < \mu$.
 It is intuitive that, in this case, the queue length will not 
 tend to infinity (since the service rate is higher than the arrival rate).
 
-This intuition can be confirmed via {proof:ref}`sdrift`, after setting $v(j) =
+This intuition can be confirmed via {prf:ref}`sdrift`, after setting $v(j) =
 j$.
 
 Indeed, we have, for any $i \geq 1$,
@@ -608,14 +608,14 @@ $$
 $$
 
 Setting $F=\{0\}$ and $M = \lambda - \mu = - \epsilon$, we see that the conditions
-of {proof:ref}`sdrift` hold.
+of {prf:ref}`sdrift` hold.
 
 Hence the associated semigroup $(P_t)$ is asymptotically stable.
 
 ```
 
 
-```{proof:corollary}
+```{prf:corollary}
 :label: sfinite
 
 If $(P_t)$ is an irreducible UC Markov semigroup and $S$ is finite, then
@@ -653,7 +653,7 @@ distribution.
 
 ### Exercise 3
 
-Confirm that {proof:ref}`sdrift` implies {proof:ref}`sfinite`.
+Confirm that {prf:ref}`sdrift` implies {prf:ref}`sfinite`.
 
 
 ## Solutions
@@ -696,5 +696,5 @@ $$
     = 0
 $$
 
-Hence the drift condition in {proof:ref}`sdrift` holds and $(P_t)$ is
+Hence the drift condition in {prf:ref}`sdrift` holds and $(P_t)$ is
 asymptotically stable.

@@ -108,7 +108,7 @@ Now we take $y$ as the new state for the process and repeat.
 
 Here is the same algorithm written more explicitly: 
 
-```{proof:algorithm} Jump Chain Algorithm
+```{prf:algorithm} Jump Chain Algorithm
 :label: ejc_algo
 
 **Inputs** $\psi \in \dD$, rate function $\lambda$, Markov matrix $K$
@@ -152,7 +152,7 @@ The differential equation in question has a special name:  the Kolmogorov backwa
 Here is the first step in the sequence listed above.
 
 
-```{proof:lemma} An Integral Equation
+```{prf:lemma} An Integral Equation
 
 The semigroup $(P_t)$ of the jump chain with rate function $\lambda$ and Markov matrix $K$ obeys the integral equation 
 
@@ -166,10 +166,10 @@ for all $t \geq 0$ and $x, y$ in $S$.
 ```
 
 Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed via
-{proof:ref}`ejc_algo`, while $K P_{t-\tau}$ is the matrix product of $K$ and
+{prf:ref}`ejc_algo`, while $K P_{t-\tau}$ is the matrix product of $K$ and
 $P_{t-\tau}$.
 
-```{proof:proof}
+```{prf:proof}
 
 Conditioning implicitly on $X_0 = x$, the semigroup $(P_t)$ must satisfy 
 
@@ -237,7 +237,7 @@ losing information by taking the time derivative.
 This leads to our main result for the lecture
 
 
-```{proof:theorem} Kolmogorov Backward Equation
+```{prf:theorem} Kolmogorov Backward Equation
 
 The semigroup $(P_t)$ of the jump chain with rate function $\lambda$ and Markov matrix $K$ satisfies the **Kolmogorov backward equation**
 
@@ -321,7 +321,7 @@ Let's investigate further the properties of the exponential solution.
 While we have confirmed that $P_t = e^{t Q}$ solves the Kolmogorov backward
 equation, we still need to check that this solution is a Markov semigroup.
 
-```{proof:lemma} From Jump Chain to Semigroup
+```{prf:lemma} From Jump Chain to Semigroup
 :label: jctosg
 
 Let $\lambda$ map $S$ to $\RR_+$ and let $K$ be a Markov matrix on $S$.
@@ -331,7 +331,7 @@ semigroup on $S$.
 ```
 
 
-```{proof:proof}
+```{prf:proof}
 Observe first that $Q$ has zero row sums, since
 
 $$
