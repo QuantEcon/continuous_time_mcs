@@ -144,7 +144,7 @@ This sets up a proof by induction, which is time consuming but not difficult
 --- the details can be found in $\S29$ of {cite}`howard2017elements`.
 
 Another way to show that $N_t$ is Poisson with rate $\lambda$ is to appeal to 
-{proof:ref}`erlexp`.
+{prf:ref}`erlexp`.
 
 We observe that
 
@@ -345,7 +345,7 @@ What other counting processes have stationary independent increments?
 
 Remarkably, the answer is none: 
 
-```{proof:theorem}  Characterization of Poisson Processes
+```{prf:theorem}  Characterization of Poisson Processes
 
 If $(M_t)$ is a stochastic process supported on $\ZZ_+$ and starting at 0 with
 the property that its increments are stationary and independent, then $(M_t)$ is a Poisson process.
@@ -374,13 +374,13 @@ An important consequence of stationary independent increments is the
 restarting property, which means that, when simulating, we can freely stop and
 restart a Poisson process at any time:
 
-```{proof:theorem} Poisson Processes can be Paused and Restarted
+```{prf:theorem} Poisson Processes can be Paused and Restarted
 If $(N_t)$ is a Poisson process, $s > 0$ and 
 $(M_t)$ is defined by $M_t = N_{s+t} - N_s$ for $t \geq 0$, then $(M_t)$ is a 
 Poisson process independent of $(N_r)_{r \leq s}$.
 ```
 
-```{proof:proof}
+```{prf:proof}
 Independence of $(M_t)$ and $(N_r)_{r \leq s}$ follows from indepenence of the
 increments of $(N_t)$.
 

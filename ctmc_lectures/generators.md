@@ -210,12 +210,12 @@ $$
 (Convergence of operators is in operator norm.  If $\tau = 0$, then the limit
 $h \to 0$ in {eq}`devlim` is the right limit.)
 
-```{proof:example}
+```{prf:example}
 If $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
 see that $V$ is the derivative of $t \mapsto U_t$ at every $t \in \RR_+$.
 ```
 
-```{proof:example}
+```{prf:example}
 In {doc}`our discussion <kolmogorov_fwd>` of the Kolmogorov forward equation 
 when $S$ is finite, we introduced the derivative of a map $t
 \mapsto P_t$, where each $P_t$ is a matrix on $S$.
@@ -229,7 +229,7 @@ hence pointwise and norm convergence coincide.
 
 Analogous to the matrix and scalar cases, we have the following result:
 
-```{proof:lemma} Differentiability of the Exponential Curve
+```{prf:lemma} Differentiability of the Exponential Curve
 :label: diffexpmap
 
 For all $A \in \linop$, the exponential curve $t \mapsto e^{tA}$ is everywhere differentiable and 
@@ -285,7 +285,7 @@ have, by definition of the operator norm,
 $\sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0$ when $s \to t$.
 
 
-```{proof:example} Exponential curves are UC semigroups
+```{prf:example} Exponential curves are UC semigroups
 :label: ecuc
 
 If $U_t = e^{tA}$ for $t \in \RR_+$ and $A \in \linop$, then $(U_t)$
@@ -296,7 +296,7 @@ The claim that $(U_t)$ is an evolution semigroup follows directly from the
 properties of the exponential function given above.
 
 Uniform continuity can be established using arguments similar to those in the
-proof of differentiability in {proof:ref}`diffexpmap`. 
+proof of differentiability in {prf:ref}`diffexpmap`. 
 
 Since norm convergence on $\linop$ implies pointwise convergence, every
 uniformly continuous semigroup is a $C_0$ semigroup.
@@ -376,12 +376,12 @@ The next section gives details.
 
 ### A Characterization of Uniformly Continuous Semigroups
 
-We saw in {proof:ref}`ecuc` that exponential curves are an example
+We saw in {prf:ref}`ecuc` that exponential curves are an example
 of a UC semigroup.
 
 The next theorem tells us that there are no other examples.
 
-```{proof:theorem} UC Semigroups are Exponential Curves
+```{prf:theorem} UC Semigroups are Exponential Curves
 :label: ucsgec
 
 If $(U_t)$ is a UC semigroup on $\BB$, then there exists an $A \in \linop$
@@ -392,7 +392,7 @@ such that $U_t = e^{tA}$ for all $t \geq 0$.  Moreover,
 * $U_t' = A U_t = U_t A$ for all $t \geq 0$.
 ```
 
-The last three claims in {proof:ref}`ucsgec` follow directly from the
+The last three claims in {prf:ref}`ucsgec` follow directly from the
 first claim.
 
 The statement $U_t' = A U_t = U_t A$ is a
@@ -408,13 +408,13 @@ satisfying
 
 also satisfies $f(t) = e^{ta}$ for some $a \in \RR$.
 
-We proved something quite similar in {proof:ref}`exp_unique`, on 
+We proved something quite similar in {prf:ref}`exp_unique`, on 
 the memoryless property of the exponential function.
 
 For more discussion of the scalar case, see, for example,
 {cite}`sahoo2011introduction`.  
 
-For a full proof of the first claim in {proof:ref}`ucsgec`, in the setting of
+For a full proof of the first claim in {prf:ref}`ucsgec`, in the setting of
 a Banach algebra, see, for
 example, Chapter 7 of {cite}`bobrowski2005functional`.
 

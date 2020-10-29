@@ -431,7 +431,7 @@ Thus, the Markov property fails.
 From the discussion above, we see that, for continuous time Markov chains,
 the length of time between jumps must be memoryless.
 
-Recall that, by {proof:ref}`exp_unique`, the only memoryless
+Recall that, by {prf:ref}`exp_unique`, the only memoryless
 distribution supported on $\RR_+$ is the exponential distribution.
 
 Hence, a continuous time Markov chain waits at states for an
@@ -685,7 +685,7 @@ new state via $K$.
 
 In more detail, the construction is
 
-```{proof:algorithm} Constant Rate Jump Chain
+```{prf:algorithm} Constant Rate Jump Chain
 
 **Inputs** $\psi \in \dD$, positive constant $\lambda$, Markov matrix $K$
 
