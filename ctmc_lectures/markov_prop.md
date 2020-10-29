@@ -12,6 +12,7 @@ kernelspec:
   name: python3
 ---
 
+(markov_prop)=
 # The Markov Property 
 
 ## Overview
