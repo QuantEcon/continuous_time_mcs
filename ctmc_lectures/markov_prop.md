@@ -381,7 +381,7 @@ Fortunately, it turns out that there are more concrete ways to build
 continuous time Markov chains from the objects that describe their
 distributions.
 
-We will learn about these in a {doc}`later lecture <prob_view>`.
+We will learn about these in a {doc}`later lecture <ucmc>`.
 
 
 
