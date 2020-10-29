@@ -25,7 +25,7 @@ sphinx:
           "linopell" : ["\\mathcal{L}(\\ell_1)"]
 
   extra_extensions:
-    - sphinxcontrib.prettyproof
+    - sphinx_proof
 
 execute:
   execute_notebooks: cache
