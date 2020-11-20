@@ -634,7 +634,7 @@ for this semigroup, every state $x$ is accessible from itself.
 
 ### Exercise 2
 
-Let $(\lambda_k)$ be a bounded sequence in $(0, \infty)$.
+Let $(\lambda_k)$ be a bounded non-increasing sequence in $(0, \infty)$.
 
 A **pure birth process** starting at zero is a continuous time Markov process
 $(X_t)$ on state space $\ZZ_+$ with intensity matrix
@@ -675,9 +675,21 @@ $$
     = 0
 $$
 
-It follows that $\phi$ is constant on $\ZZ_+$.
+Since $(\lambda_k)$ is non-increasing, it follows that
 
-But $\dD$ contains no constant functions when the state space is infinite.
+$$
+    \frac{\phi(j)}{\phi(j-1)} = \frac{\lambda_{j-1}}{\lambda_j} \geq 1
+$$
+
+Therefore, for any $j\geq 1$, it must be:
+
+$$
+    \phi(j) \geq \phi(j-1)
+$$
+
+It follows that $\phi$ is non-decreasing on $\ZZ_+$.
+
+But $\dD$ contains no non-decreasing functions when the state space is infinite.
 (Why?)
 
 Contradiction.
