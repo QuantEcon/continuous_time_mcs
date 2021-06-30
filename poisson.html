@@ -1,23 +1,40 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Poisson Processes &#8212; Continuous Time Markov Chains</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -25,10 +42,10 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": null, "Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -40,14 +57,14 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The Markov Property" href="markov_prop.html" />
     <link rel="prev" title="Memoryless Distributions" href="memoryless.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -56,28 +73,25 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
-  
-</a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    Continuous Time Markov Chains
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
    Memoryless Distributions
@@ -95,7 +109,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   Kolmogorov Backward Equation
+   The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1">
@@ -125,9 +139,8 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+    </div>
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -142,25 +155,25 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
@@ -175,17 +188,18 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
-        <!-- Source interaction buttons -->
 
+            <!-- Source interaction buttons -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Launch buttons -->
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -204,15 +218,16 @@
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    Overview
@@ -286,7 +301,8 @@
  </li>
 </ul>
 
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -365,7 +381,7 @@ satisfying  <span class="math notranslate nohighlight">\(J_k \to \infty\)</span>
 <p>An alternative but equivalent definition is</p>
 <div class="math notranslate nohighlight">
 \[
-    N_t = \max \{k \geq 0 \,|\, J_k \leq t \}
+    N_t := \max \{k \geq 0 \,|\, J_k \leq t \}
 \]</div>
 <p>As a function of <span class="math notranslate nohighlight">\(t\)</span>, the process <span class="math notranslate nohighlight">\(N_t\)</span> is called a <strong>counting process</strong>.</p>
 <p>The jump times <span class="math notranslate nohighlight">\((J_k)\)</span> are sometimes called <strong>arrival times</strong> and the
@@ -399,8 +415,8 @@ intervals <span class="math notranslate nohighlight">\(J_k - J_{k-1}\)</span> ar
 \]</div>
 <p>and the right hand side agrees with <a class="reference internal" href="#equation-poissondist">(7)</a> when <span class="math notranslate nohighlight">\(k=0\)</span>.</p>
 <p>This sets up a proof by induction, which is time consuming but not difficult
-— the details can be found in <span class="math notranslate nohighlight">\(\S29\)</span> of <a class="bibtex reference internal" href="zreferences.html#howard2017elements" id="id1">[How17]</a>.</p>
-<p>Another way to show that <span class="math notranslate nohighlight">\(N_t\)</span> is Poisson with rate <span class="math notranslate nohighlight">\(\lambda\)</span> is appeal to
+— the details can be found in <span class="math notranslate nohighlight">\(\S29\)</span> of <span id="id1">[<a class="reference internal" href="zreferences.html#id13">Howard, 2017</a>]</span>.</p>
+<p>Another way to show that <span class="math notranslate nohighlight">\(N_t\)</span> is Poisson with rate <span class="math notranslate nohighlight">\(\lambda\)</span> is to appeal to
 <a class="reference internal" href="memoryless.html#erlexp">Lemma 2</a>.</p>
 <p>We observe that</p>
 <div class="math notranslate nohighlight">
@@ -418,7 +434,7 @@ rate <span class="math notranslate nohighlight">\(\lambda\)</span>, we obtain</p
 \]</div>
 <p>This is the (integer valued) CDF for the Poisson distribution with parameter
 <span class="math notranslate nohighlight">\(t \lambda\)</span>.</p>
-<p>An exercise at the end of the lecture asks you to verify that <span class="math notranslate nohighlight">\(N(t)\)</span> is Poisson-<span class="math notranslate nohighlight">\((t \lambda )\)</span> informally via simulation.</p>
+<p>An exercise at the end of the lecture asks you to verify that <span class="math notranslate nohighlight">\(N_t\)</span> is Poisson-<span class="math notranslate nohighlight">\((t \lambda )\)</span> informally via simulation.</p>
 <p>The next figure shows one realization of a Poisson process <span class="math notranslate nohighlight">\((N_t)\)</span>, with jumps
 at each new arrival.</p>
 <div class="cell tag_hide-input docutils container">
@@ -456,13 +472,13 @@ at each new arrival.</p>
 <p>One of the defining features of a Poisson process is that it has stationary
 and independent increments.</p>
 <p>This is due to the memoryless property of exponentials.</p>
-<p>It means in particular that</p>
+<p>It means that</p>
 <ol class="simple">
 <li><p>the variables <span class="math notranslate nohighlight">\(\{N_{t_{i+1}} - N_{t_i}\}_{i \in I}\)</span> are independent for any
 strictly increasing finite sequence <span class="math notranslate nohighlight">\((t_i)_{i \in I}\)</span> and</p></li>
 <li><p>the distribution of <span class="math notranslate nohighlight">\(N_{t+h} - N_t\)</span> depends on <span class="math notranslate nohighlight">\(h\)</span> but not <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
 </ol>
-<p>A detailed proof can be found in Theorem 2.4.3 of <a class="bibtex reference internal" href="zreferences.html#norris1998markov" id="id2">[Nor98]</a>.</p>
+<p>A detailed proof can be found in Theorem 2.4.3 of <span id="id2">[<a class="reference internal" href="zreferences.html#id12">Norris, 1998</a>]</span>.</p>
 <p>Instead of repeating this, we provide some intuition from a discrete
 approximation.</p>
 <p>In the discussion below, we use the following well known fact:  If
@@ -588,15 +604,15 @@ the property that its increments are stationary and independent, then <span clas
 <p>for any <span class="math notranslate nohighlight">\(s, t\)</span>.</p>
 <p>The proof is similar to our earlier proof that the exponential distribution is
 the only memoryless distribution.</p>
-<p>Details can be found in Section 6.2 of <a class="bibtex reference internal" href="zreferences.html#pardoux2008markov" id="id3">[Par08]</a> or
-Theorem 2.4.3 of <a class="bibtex reference internal" href="zreferences.html#norris1998markov" id="id4">[Nor98]</a>.</p>
+<p>Details can be found in Section 6.2 of <span id="id3">[<a class="reference internal" href="zreferences.html#id11">Pardoux, 2008</a>]</span> or
+Theorem 2.4.3 of <span id="id4">[<a class="reference internal" href="zreferences.html#id12">Norris, 1998</a>]</span>.</p>
 <div class="section" id="the-restarting-property">
 <span id="restart-prop"></span><h3>The Restarting Property<a class="headerlink" href="#the-restarting-property" title="Permalink to this headline">¶</a></h3>
 <p>An important consequence of stationary independent increments is the
 restarting property, which means that, when simulating, we can freely stop and
 restart a Poisson process at any time:</p>
 <div class="proof theorem admonition" id="theorem-1">
-<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (Poisson Processes can be Pause and Restarted)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (Poisson Processes can be Paused and Restarted)</p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((N_t)\)</span> is a Poisson process, <span class="math notranslate nohighlight">\(s &gt; 0\)</span> and
 <span class="math notranslate nohighlight">\((M_t)\)</span> is defined by <span class="math notranslate nohighlight">\(M_t = N_{s+t} - N_s\)</span> for <span class="math notranslate nohighlight">\(t \geq 0\)</span>, then <span class="math notranslate nohighlight">\((M_t)\)</span> is a
@@ -762,15 +778,15 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="memoryless.html" title="previous page">Memoryless Distributions</a>
     <a class='right-next' id="next-link" href="markov_prop.html" title="next page">The Markov Property</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -778,7 +794,7 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
         
           By John Stachurski<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -787,8 +803,9 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    <script src="_static/js/index.js"></script>
-    
+  
   </body>
 </html>

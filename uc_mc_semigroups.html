@@ -1,23 +1,40 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UC Markov Semigroups &#8212; Continuous Time Markov Chains</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -25,10 +42,10 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": null, "Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -40,14 +57,14 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Stationarity and Ergodicity" href="ergodicity.html" />
     <link rel="prev" title="Semigroups and Generators" href="generators.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -56,28 +73,25 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
-  
-</a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    Continuous Time Markov Chains
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
    Memoryless Distributions
@@ -95,7 +109,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   Kolmogorov Backward Equation
+   The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1">
@@ -125,9 +139,8 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+    </div>
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -142,25 +155,25 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
@@ -175,17 +188,18 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
-        <!-- Source interaction buttons -->
 
+            <!-- Source interaction buttons -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Launch buttons -->
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -204,15 +218,16 @@
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    Overview
@@ -338,7 +353,8 @@
  </li>
 </ul>
 
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -362,7 +378,7 @@ semigroups.</p>
 </ul>
 <p>Conservativeness is defined below and relates to “nonexplosiveness” of the
 associated Markov chain.</p>
-<p>We will also give a brief discussion of intensity matricies that do not have
+<p>We will also give a brief discussion of intensity matrices that do not have
 this property, along with the processes they generate.</p>
 </div>
 <div class="section" id="notation-and-terminology">
@@ -373,7 +389,7 @@ this property, along with the processes they generate.</p>
 \[
     \| g \| := \sum_x |g(x)| &lt; \infty
 \]</div>
-<p>Note that <span class="math notranslate nohighlight">\(\dD\)</span>, the set of distributions on <span class="math notranslate nohighlight">\(S\)</span>, is contained in <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\dD\)</span>, the set of all distributions on <span class="math notranslate nohighlight">\(S\)</span>, is contained in <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
 <p>Each Markov matrix <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(S\)</span> can and will be identifed with a linear operator
 <span class="math notranslate nohighlight">\(f \mapsto fP\)</span> on <span class="math notranslate nohighlight">\(\ell_1\)</span> via</p>
 <div class="math notranslate nohighlight" id="equation-mmismo">
@@ -410,7 +426,7 @@ operator analogously, via</p>
 <p>Since <span class="math notranslate nohighlight">\(Q\)</span> is in <span class="math notranslate nohighlight">\(\linopell\)</span>, the operator exponential <span class="math notranslate nohighlight">\(e^{tQ}\)</span> is well defined
 as an element of <span class="math notranslate nohighlight">\(\linopell\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
 <p>Moreover, by <a class="reference internal" href="generators.html#ecuc">Example 15</a>, the family <span class="math notranslate nohighlight">\((P_t)\)</span> in <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> defined by
-<span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> defines a UC Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> defines a UC Markov semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
 <p>(Here, a Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is both a collection of Markov matrices and a
 collection of operators, as in <a class="reference internal" href="#equation-mmismo">(47)</a>.)</p>
 <p>The next theorem says that this is the only way UC Markov semigroups can arise.</p>
@@ -425,7 +441,7 @@ exists a conservative intensity matrix <span class="math notranslate nohighlight
 <p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>, it follows from
 <a class="reference internal" href="generators.html#ucsgec">Theorem 16</a> that there exists a <span class="math notranslate nohighlight">\(Q \in \lL(\ell_1)\)</span> such that
 <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
-<p>We need only show that <span class="math notranslate nohighlight">\(Q\)</span> is a conservative intensity matrix.</p>
+<p>We only need to show that <span class="math notranslate nohighlight">\(Q\)</span> is a conservative intensity matrix.</p>
 <p>Because <span class="math notranslate nohighlight">\((P_t)\)</span> is a Markov semigroup, <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix for all <span class="math notranslate nohighlight">\(t\)</span>,
 and, since <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>, it follows that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity
 matrix.</p>
@@ -499,8 +515,8 @@ state <span class="math notranslate nohighlight">\(i+1\)</span> at the rate <spa
 \[
     e^{tQ}
     = e^{\lambda t (K-I)}
-    = e^{\lambda t} e^{\lambda t K}
-    = e^{\lambda t} 
+    = e^{-\lambda t} e^{\lambda t K}
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t K)^m}{m!}
 \]</div>
 <p>The exercises ask you to verify that, for the powers of <span class="math notranslate nohighlight">\(K\)</span>, we have <span class="math notranslate nohighlight">\(K^m(i,
@@ -509,9 +525,9 @@ j) = \mathbb 1\{j = i + m\}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
     e^{tQ}(i, j)
-    = e^{\lambda t} 
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{j = i + m\}
-    = e^{\lambda t} 
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{m = j-i\}
 \]</div>
 <p>This is identical to <a class="reference internal" href="#equation-poissemi2">(50)</a>.</p>
@@ -522,7 +538,7 @@ j) = \mathbb 1\{j = i + m\}\)</span>.</p>
 <h3>A Necessary and Sufficient Condition<a class="headerlink" href="#a-necessary-and-sufficient-condition" title="Permalink to this headline">¶</a></h3>
 <p>Our definition of a conservative intensity matrix works for the theory above
 but can be hard to check in appliations and lacks probabilistic intuition.</p>
-<p>Fortunately, we have the following simple charcterization.</p>
+<p>Fortunately, we have the following simple characterization.</p>
 <div class="proof lemma admonition" id="scintcon">
 <p class="admonition-title"><span class="caption-number">Lemma 19 </span></p>
 <div class="lemma-content section" id="proof-content">
@@ -576,7 +592,7 @@ intensity matrices.</p>
 <div class="section" id="from-intensity-matrix-to-jump-chain">
 <h2>From Intensity Matrix to Jump Chain<a class="headerlink" href="#from-intensity-matrix-to-jump-chain" title="Permalink to this headline">¶</a></h2>
 <p>We now understand that there is a one-to-one pairing between conservative
-intenintensity matrices and UC Markov semigroups.</p>
+intensity matrices and UC Markov semigroups.</p>
 <p>These ideas are important from an analytical perspective.</p>
 <p>Now we provide another point of view, more connected to probability.</p>
 <p>This point of view is important for both theory and computation.</p>
@@ -598,7 +614,7 @@ chain pair <span class="math notranslate nohighlight">\((\lambda, K)\)</span>.)<
 </div>
 <div class="section" id="jump-chain-decomposition">
 <h3>Jump Chain Decomposition<a class="headerlink" href="#jump-chain-decomposition" title="Permalink to this headline">¶</a></h3>
-<p>Given a intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>, set</p>
+<p>Given an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>, set</p>
 <div class="math notranslate nohighlight" id="equation-lambdafromq">
 <span class="eqno">(54)<a class="headerlink" href="#equation-lambdafromq" title="Permalink to this equation">¶</a></span>\[
     \lambda(x) := -Q(x, x)
@@ -675,7 +691,7 @@ chain given any conservative intensity matrix <span class="math notranslate nohi
 this produces a Markov chain with Markov semigroup
 <span class="math notranslate nohighlight">\((P_t)\)</span> where <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for <span class="math notranslate nohighlight">\(Q\)</span> satisfying <a class="reference internal" href="#equation-jcinmat">(53)</a>.</p>
 <p>(Although our argument assumed finite <span class="math notranslate nohighlight">\(S\)</span>, the proof goes through when
-<span class="math notranslate nohighlight">\(S\)</span> is contably infinite and <span class="math notranslate nohighlight">\(Q\)</span> is conservative with very minor changes.)</p>
+<span class="math notranslate nohighlight">\(S\)</span> is countably infinite and <span class="math notranslate nohighlight">\(Q\)</span> is conservative with very minor changes.)</p>
 <p>In particular, <span class="math notranslate nohighlight">\((X_t)\)</span> is a continuous time Markov chain with intensity matrix
 <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 </div>
@@ -702,7 +718,7 @@ valid solution defined for all <span class="math notranslate nohighlight">\(t \i
 <p>The problem is that the time path explodes to infinity in finite time.</p>
 <p>The same issue can occur for Markov processes, if jump rates grow sufficiently
 quickly.</p>
-<p>For more discussion, see, for example, Section 2.7 of <a class="bibtex reference internal" href="zreferences.html#norris1998markov" id="id2">[Nor98]</a>.</p>
+<p>For more discussion, see, for example, Section 2.7 of <span id="id2">[<a class="reference internal" href="zreferences.html#id12">Norris, 1998</a>]</span>.</p>
 </div>
 <div class="section" id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
@@ -755,8 +771,8 @@ obtaining <span class="math notranslate nohighlight">\(\| fP \| = \|f\|\)</span>
 <div class="math notranslate nohighlight">
 \[
     \sum_y (\phi P)(y)
-    \sum_y \sum_x \phi (x) P(x, y)
-    \sum_x \phi (x) \sum_y P(x, y)
+    =\sum_y \sum_x \phi (x) P(x, y)
+    =\sum_x \phi (x) \sum_y P(x, y)
     = 1
 \]</div>
 <p>Hence <span class="math notranslate nohighlight">\(\phi P \in \dD\)</span> as claimed.</p>
@@ -813,8 +829,8 @@ as required.</p>
 \[
     K^{m+1}(i, j)
     = \sum_n K(i, n) K^m (n, j)
-    = \sum_n K(i, n) \mathbb 1\{j = i + m\}
-    = K(i, m-j)
+    = \sum_n K(i, n) \mathbb 1\{j = n + m\}
+    = K(i, j-m)
 \]</div>
 <p>Applying the definition <span class="math notranslate nohighlight">\(K(i, j) = \mathbb 1\{j = i + 1\}\)</span> completes verification of the claim.</p>
 </div>
@@ -841,7 +857,7 @@ matrix.</p>
 <p>The proof that <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\((\lambda, K)\)</span> satisfy <a class="reference internal" href="#equation-jcinmat">(53)</a> is mechanical and
 the details are omitted.</p>
 <p>(Try working case-by-case, with <span class="math notranslate nohighlight">\(\lambda(x) = 0, x=y\)</span>, <span class="math notranslate nohighlight">\(\lambda(x) &gt; 0, x=y\)</span>, etc.)</p>
-<hr class="docutils" />
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fnim"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Previously, we introduced the notion of an intensity matrix when <span class="math notranslate nohighlight">\(S\)</span>
@@ -877,15 +893,15 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="generators.html" title="previous page">Semigroups and Generators</a>
     <a class='right-next' id="next-link" href="ergodicity.html" title="next page">Stationarity and Ergodicity</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -893,7 +909,7 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
         
           By John Stachurski<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -902,8 +918,9 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    <script src="_static/js/index.js"></script>
-    
+  
   </body>
 </html>

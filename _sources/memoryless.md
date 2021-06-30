@@ -89,9 +89,9 @@ Then {eq}`geodist` is the probability that the first occurrence of black is at s
 (The outcome "black" fails $k$ times and then succeeds.)
 
 Consistent with our discussion in the introduction, the geometric distribution
-is memoryless.
+is **memoryless**.
 
-For example, given any nonnegative integer $m$, we have
+In particular, given any nonnegative integer $m$, we have
 
 $$
     \PP \{X = m + 1 \,|\, X > m \} = \theta
@@ -101,7 +101,8 @@ In other words, regardless of how long we have seen only red outcomes, the
 probability of black on the next spin is the same as the unconditional
 probability of getting black on the very first spin.
 
-To show this, we note that the left hand side is
+To establish {eq}`memgeo`, we use basic properties of the geometric
+distribution to obtain.
 
 $$
     \frac{ \PP \{X = m + 1 \text{ and } X > m \} }
@@ -110,10 +111,9 @@ $$
     \frac{ \PP \{X = m + 1 \} }
     {\PP \{X > m\}}
     = \frac{ (1-\theta)^{m+1} \theta }
-        {\sum_{k > m} (1-\theta)^k \theta }
+        {(1-\theta)^{m+1} }
+    = \theta
 $$
-
-The right hand side simplifies to $\theta$, completing the proof of {eq}`memgeo`.
 
 
 
@@ -198,7 +198,7 @@ In this sense, the exponential is the limit of the geometric distribution.
 
 The exponential distribution is the only memoryless distribution supported on $\RR_+$, as the next theorem attests.
 
-```{proof:theorem} Characterization of the Exponential Distribution
+```{prf:theorem} Characterization of the Exponential Distribution
 :label: exp_unique
 
 If $X$ is a random variable supported on $\RR_+$, then there exists a
@@ -211,7 +211,7 @@ $$ (memexpo)
 
 ```
 
-```{proof:proof}
+```{prf:proof}
 
 To see that {eq}`memexpo` holds when $X$ is exponential with rate $\lambda$,
 fix $s, t > 0$ and observe that
@@ -271,10 +271,10 @@ The discussion so far confirms that {eq}`implex` holds when $t$ is rational.
 So now take any $t \geq 0$ and rational sequences $(a_n)$ and $(b_n)$
 converging to $t$ with $a_n \leq t \leq b_n$ for all $n$.
 
-By property 1 we have $f(a_n) \leq f(t) \leq f(b_n)$ for all $n$, so
+By property 1 we have $f(b_n) \leq f(t) \leq f(a_n)$ for all $n$, so
 
 $$
-    f(1)^{a_n} \leq f(t) \leq f(1)^{b_n}
+    f(1)^{b_n} \leq f(t) \leq f(1)^{a_n}
     \quad \forall \, n \in \NN
 $$
 
@@ -373,7 +373,7 @@ $$ (erlcdf)
 
 The Erlang distribution is of interest to us because of the following fact.
 
-```{proof:lemma} Distribution of Sum of Exponentials
+```{prf:lemma} Distribution of Sum of Exponentials
 :label: erlexp
 
 If, for some $\lambda > 0$, the sequence $(W_i)$ is IID and exponentially
@@ -437,7 +437,7 @@ $$
     = e^{-\lambda(s + t)}
 $$
 
-At the same time,
+At the same time, $X > s-t$ if and only if $Y > s-t$, so
 
 $$
     \PP\{X > s - t\}

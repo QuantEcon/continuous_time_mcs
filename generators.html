@@ -1,23 +1,40 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Semigroups and Generators &#8212; Continuous Time Markov Chains</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -25,10 +42,10 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": null, "Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -40,14 +57,14 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="UC Markov Semigroups" href="uc_mc_semigroups.html" />
     <link rel="prev" title="The Kolmogorov Forward Equation" href="kolmogorov_fwd.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -56,28 +73,25 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
-  
-</a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    Continuous Time Markov Chains
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
    Memoryless Distributions
@@ -95,7 +109,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   Kolmogorov Backward Equation
+   The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1">
@@ -125,9 +139,8 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+    </div>
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -142,25 +155,25 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
@@ -175,17 +188,18 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
-        <!-- Source interaction buttons -->
 
+            <!-- Source interaction buttons -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Launch buttons -->
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -204,15 +218,16 @@
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    Overview
@@ -313,7 +328,8 @@
  </li>
 </ul>
 
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -342,7 +358,7 @@ do have infinite state spaces.</p>
 <li><p>Another example is the study of queues, which often have no natural upper
 bound.<a class="footnote-reference brackets" href="#footnotepp" id="id1">1</a></p></li>
 </ul>
-<p>Readers are assumed to have some basic familiarity with Banach spaces.</p>
+<p>Readers are assumed to have some basic familiarity with <a class="reference external" href="https://en.wikipedia.org/wiki/Banach_space">Banach spaces</a>.</p>
 </div>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
@@ -362,7 +378,7 @@ the problem of solving linear ODEs in infinite dimensional spaces.<a class="foot
 space.</p></li>
 </ul>
 <p>This problem is also called the “abstract Cauchy problem”.</p>
-<p>Why do we need solve such problems?</p>
+<p>Why do we need to solve such problems?</p>
 <p>One example comes from PDEs.</p>
 <p>PDEs tell us how functions change over time, starting from an infinitesimal
 description.</p>
@@ -411,8 +427,8 @@ so that, for <span class="math notranslate nohighlight">\(\alpha \in \RR\)</span
 \]</div>
 <p>and so on.</p>
 <p>We write <span class="math notranslate nohighlight">\(A B\)</span> to indicate composition of the operators <span class="math notranslate nohighlight">\(A, B \in \linop\)</span>.</p>
-<p>The value defined in <a class="reference internal" href="#equation-norml">(39)</a> is called the <strong>operator norm</strong> of <span class="math notranslate nohighlight">\(A\)</span> and,
-as suggested by the notation, <a class="reference external" href="https://en.wikipedia.org/wiki/Operator_norm">is a norm</a> on <span class="math notranslate nohighlight">\(\linop\)</span>.</p>
+<p>The value defined in <a class="reference internal" href="#equation-norml">(39)</a> is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Operator_norm"><strong>operator norm</strong></a> of <span class="math notranslate nohighlight">\(A\)</span> and,
+as suggested by the notation, is a norm on <span class="math notranslate nohighlight">\(\linop\)</span>.</p>
 <p>In addition to being a norm, it enjoys the submultiplicative property <span class="math notranslate nohighlight">\(\| AB
 \| \leq \| A \| \| B\|\)</span> for all <span class="math notranslate nohighlight">\(A, B \in \linop\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(I\)</span> be the identity in <span class="math notranslate nohighlight">\(\linop\)</span>, satisfying <span class="math notranslate nohighlight">\(Ig = g\)</span> for all <span class="math notranslate nohighlight">\(g \in \BB\)</span>.</p>
@@ -428,7 +444,7 @@ as suggested by the notation, <a class="reference external" href="https://en.wik
     = \sum_{k \geq 0} \frac{A^k}{k!} 
     = I + A + \frac{A^2}{2!} + \cdots
 \]</div>
-<p>This is the same as the definition for the matrix exponential.The exponential function arises naturally as the solution to ODEs in Banach
+<p>This is the same as the definition for the matrix exponential. The exponential function arises naturally as the solution to ODEs in Banach
 space, one example of which (as we shall see) is distribution flows
 associated with continuous time Markov chains.</p>
 <p>The exponential map has the following properties:</p>
@@ -479,7 +495,7 @@ when <span class="math notranslate nohighlight">\(S\)</span> is finite, we intro
 \mapsto P_t\)</span>, where each <span class="math notranslate nohighlight">\(P_t\)</span> is a matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>The derivative was defined by differentiating <span class="math notranslate nohighlight">\(P_t\)</span> element-by-element.</p>
 <p>This coincides with the operator-theoretic definition in <a class="reference internal" href="#equation-devlim">(41)</a> when <span class="math notranslate nohighlight">\(S\)</span>
-is finite, because then the space <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> is finite dimensional, and
+is finite, because then the space <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span>, which consists of all bounded linear operators on <span class="math notranslate nohighlight">\(\ell_1\)</span>, is finite dimensional, and
 hence pointwise and norm convergence coincide.</p>
 </div>
 </div><p>Analogous to the matrix and scalar cases, we have the following result:</p>
@@ -557,7 +573,7 @@ description <span class="math notranslate nohighlight">\(Q\)</span>, in the sens
     Q = P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h} 
 \]</div>
 <p>In the more abstract setting of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, we say that <span class="math notranslate nohighlight">\(Q\)</span> is the
-“generator” of the semigroup <span class="math notranslate nohighlight">\(P_t\)</span>.</p>
+“generator” of the semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>.</p>
 <p>More generally, given a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>, we say that a linear
 operator <span class="math notranslate nohighlight">\(A\)</span> from <span class="math notranslate nohighlight">\(\BB\)</span> to itself is the <strong>generator</strong> of <span class="math notranslate nohighlight">\((U_t)\)</span> if</p>
 <div class="math notranslate nohighlight" id="equation-defgenr">
@@ -575,7 +591,7 @@ denoted by <span class="math notranslate nohighlight">\(D(A)\)</span>.</p>
 <p>Indeed, why should the limit exist, given that <span class="math notranslate nohighlight">\(C_0\)</span> semigroups are not
 required to be differentiable?</p>
 <p>The other problem is that, even though the limit exists, the linear operator
-<span class="math notranslate nohighlight">\(A\)</span> is not bounded (i.e., not an element of <span class="math notranslate nohighlight">\(\linop\)</span>), so
+<span class="math notranslate nohighlight">\(A\)</span> might be unbounded (i.e., not an element of <span class="math notranslate nohighlight">\(\linop\)</span>), in which case
 a statement like <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> is problematic.</p>
 <p>It turns out that, despite these issues, the theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups is
 powerful, and, with some work, the technical issues can be
@@ -616,10 +632,10 @@ satisfying</p>
 <p>We proved something quite similar in <a class="reference internal" href="memoryless.html#exp_unique">Theorem 1</a>, on
 the memoryless property of the exponential function.</p>
 <p>For more discussion of the scalar case, see, for example,
-<a class="bibtex reference internal" href="zreferences.html#sahoo2011introduction" id="id7">[SK11]</a>.</p>
+<span id="id7">[<a class="reference internal" href="zreferences.html#id6">Sahoo and Kannappan, 2011</a>]</span>.</p>
 <p>For a full proof of the first claim in <a class="reference internal" href="#ucsgec">Theorem 16</a>, in the setting of
 a Banach algebra, see, for
-example, Chapter 7 of <a class="bibtex reference internal" href="zreferences.html#bobrowski2005functional" id="id8">[Bob05]</a>.</p>
+example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zreferences.html#id7">Bobrowski, 2005</a>]</span>.</p>
 </div>
 </div>
 <div class="section" id="exercises">
@@ -682,7 +698,7 @@ completing the proof of the first equality in <a class="reference internal" href
 <h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(44)</a> and let
 <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(45)</a>.</p>
-<p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span>.</p>
+<p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
 <p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} g = U_{h_n} U_t g \to U_t g\)</span> by <a class="reference internal" href="#equation-czsg2">(44)</a>.</p>
 <p>On the other hand, from <a class="reference internal" href="#equation-sgbound">(45)</a> and the definition of the operator norm,</p>
 <div class="math notranslate nohighlight">
@@ -698,8 +714,8 @@ completing the proof of the first equality in <a class="reference internal" href
 <h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
 <p>The solution is similar to that of the previous exercise.</p>
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg3">(46)</a>,
-fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and take <span class="math notranslate nohighlight">\((h_n)\)</span> to be a scalar sequence satisfying <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span>.</p>
-<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} = U_{h_n} U_t \to U_t \)</span> by <a class="reference internal" href="#equation-czsg3">(46)</a>.</p>
+fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and take <span class="math notranslate nohighlight">\((h_n)\)</span> to be a scalar sequence satisfying <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
+<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} = U_{h_n} U_t \to U_t\)</span> by <a class="reference internal" href="#equation-czsg3">(46)</a>.</p>
 <p>On the other hand, from the submultiplicative property of the operator norm
 and <a class="reference internal" href="#equation-sgbound">(45)</a>,</p>
 <div class="math notranslate nohighlight">
@@ -709,14 +725,14 @@ and <a class="reference internal" href="#equation-sgbound">(45)</a>,</p>
     \leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
 \]</div>
 <p>This converges to 0 as <span class="math notranslate nohighlight">\(n \to \infty\)</span>, completing our proof.</p>
-<hr class="docutils" />
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="footnotepp"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.</p>
 </dd>
 <dt class="label" id="fnpde"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>An excellent introduction to operator semigroups, combined with
-applications to PDEs and Markov processes, can be found in <a class="bibtex reference internal" href="zreferences.html#applebaum2019semigroups" id="id9">[App19]</a>.</p>
+applications to PDEs and Markov processes, can be found in <span id="id9">[<a class="reference internal" href="zreferences.html#id5">Applebaum, 2019</a>]</span>.</p>
 </dd>
 <dt class="label" id="fncoex"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p>Convergence of the sum in <a class="reference internal" href="#equation-opexpo">(40)</a> follows from boundedness of <span class="math notranslate nohighlight">\(A\)</span> and the fact that <span class="math notranslate nohighlight">\(\linop\)</span> is a Banach space.</p>
@@ -729,7 +745,7 @@ have, by definition of the operator norm,
 <span class="math notranslate nohighlight">\(\sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0\)</span> when <span class="math notranslate nohighlight">\(s \to t\)</span>.</p>
 </dd>
 <dt class="label" id="fnhy"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
-<dd><p>An excellent treatment of the general theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, can be found in <a class="bibtex reference internal" href="zreferences.html#bobrowski2005functional" id="id10">[Bob05]</a>.</p>
+<dd><p>An excellent treatment of the general theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, can be found in <span id="id10">[<a class="reference internal" href="zreferences.html#id7">Bobrowski, 2005</a>]</span>.</p>
 </dd>
 </dl>
 </div>
@@ -758,15 +774,15 @@ have, by definition of the operator norm,
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="kolmogorov_fwd.html" title="previous page">The Kolmogorov Forward Equation</a>
     <a class='right-next' id="next-link" href="uc_mc_semigroups.html" title="next page">UC Markov Semigroups</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -774,7 +790,7 @@ have, by definition of the operator norm,
         
           By John Stachurski<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -783,8 +799,9 @@ have, by definition of the operator norm,
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    <script src="_static/js/index.js"></script>
-    
+  
   </body>
 </html>

@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Kolmogorov Backward Equation
+# The Kolmogorov Backward Equation
 
 ## Overview 
 
@@ -23,7 +23,7 @@ This is analogous to the idea that solutions to continuous time models often
 lack analytical solutions.
 
 For example, when studying deterministic paths in continuous time,
-infinitesimal descriptions (ODEs and PDEs) are often more intuitive and easier
+infinitesimal descriptions ([ODEs](https://en.wikipedia.org/wiki/Ordinary_differential_equation) and [PDEs](https://en.wikipedia.org/wiki/Partial_differential_equation)) are often more intuitive and easier
 to write down than the associated solutions.
 
 (This is one of the shining insights of mathematics, beginning with the work
@@ -108,14 +108,14 @@ Now we take $y$ as the new state for the process and repeat.
 
 Here is the same algorithm written more explicitly: 
 
-```{proof:algorithm} Jump Chain Algorithm
+```{prf:algorithm} Jump Chain Algorithm
 :label: ejc_algo
 
 **Inputs** $\psi \in \dD$, rate function $\lambda$, Markov matrix $K$
 
 **Outputs** Markov chain $(X_t)$
 
-1. draw $Y_0$ from $\psi$, set $J_0 = 0$ and $k=1$.
+1. Draw $Y_0$ from $\psi$, set $J_0 = 0$ and $k=1$.
 1. Draw $W_k$ independently from Exp$(\lambda(Y_{k-1}))$.
 1. Set $J_k = J_{k-1} + W_k$.
 1. Set $X_t = Y_{k-1}$ for $t$ in $[J_{k-1}, J_k)$.
@@ -137,7 +137,7 @@ jump chain algorithm, calculating the Markov semigroup is not a trivial exercise
 
 The approach we adopt is
 
-1. use probabilistic reasoning to obtain an integral equation that the
+1. Use probabilistic reasoning to obtain an integral equation that the
    semigroup must satisfy.
 1. Convert the integral equation into a differential equation that is easier
    to work with.
@@ -152,7 +152,7 @@ The differential equation in question has a special name:  the Kolmogorov backwa
 Here is the first step in the sequence listed above.
 
 
-```{proof:lemma} An Integral Equation
+```{prf:lemma} An Integral Equation
 
 The semigroup $(P_t)$ of the jump chain with rate function $\lambda$ and Markov matrix $K$ obeys the integral equation 
 
@@ -166,10 +166,10 @@ for all $t \geq 0$ and $x, y$ in $S$.
 ```
 
 Here $(P_t)$ is the Markov semigroup of $(X_t)$, the process constructed via
-{proof:ref}`ejc_algo`, while $K P_{t-\tau}$ is the matrix product of $K$ and
+{prf:ref}`ejc_algo`, while $K P_{t-\tau}$ is the matrix product of $K$ and
 $P_{t-\tau}$.
 
-```{proof:proof}
+```{prf:proof}
 
 Conditioning implicitly on $X_0 = x$, the semigroup $(P_t)$ must satisfy 
 
@@ -193,14 +193,14 @@ where $I(x, y) = \mathbb 1\{x = y\}$.
 For the second term on the right hand side of {eq}`pt_split`, we have 
 
 $$
-    \PP\{X_t = y, \; J_1 > t \}
+    \PP\{X_t = y, \; J_1 \leq t \}
     = \EE 
         \left[
-            \mathbb 1\{J_1 > t\} \PP\{X_t = y \,|\, W_1, Y_1\}
+            \mathbb 1\{J_1 \leq t\} \PP\{X_t = y \,|\, W_1, Y_1\}
         \right]
     = \EE 
         \left[
-            \mathbb 1\{J_1 > t\} P_{t - J_1} (Y_1, y) 
+            \mathbb 1\{J_1 \leq t\} P_{t - J_1} (Y_1, y) 
         \right]
 $$
 
@@ -208,9 +208,9 @@ Evaluating the expectation and using the independence of $J_1$ and $Y_1$, this b
 
 $$
 \begin{aligned}
-    \PP\{X_t = y, \; J_1 > t \}
+    \PP\{X_t = y, \; J_1 \leq t \}
     & = \int_0^\infty
-            \mathbb 1\{\tau > t\}
+            \mathbb 1\{\tau \leq t\}
             \sum_z K(x, z) P_{t - \tau} (z, y)  \lambda(x) e^{-\tau \lambda(x)} 
             d \tau
         \\
@@ -237,7 +237,7 @@ losing information by taking the time derivative.
 This leads to our main result for the lecture
 
 
-```{proof:theorem} Kolmogorov Backward Equation
+```{prf:theorem} Kolmogorov Backward Equation
 
 The semigroup $(P_t)$ of the jump chain with rate function $\lambda$ and Markov matrix $K$ satisfies the **Kolmogorov backward equation**
 
@@ -321,7 +321,7 @@ Let's investigate further the properties of the exponential solution.
 While we have confirmed that $P_t = e^{t Q}$ solves the Kolmogorov backward
 equation, we still need to check that this solution is a Markov semigroup.
 
-```{proof:lemma} From Jump Chain to Semigroup
+```{prf:lemma} From Jump Chain to Semigroup
 :label: jctosg
 
 Let $\lambda$ map $S$ to $\RR_+$ and let $K$ be a Markov matrix on $S$.
@@ -331,7 +331,7 @@ semigroup on $S$.
 ```
 
 
-```{proof:proof}
+```{prf:proof}
 Observe first that $Q$ has zero row sums, since
 
 $$
@@ -340,7 +340,8 @@ $$
     = 0
 $$
 
-As a small exercise, you can check that the following is true
+As a small exercise, you can check that, with $1$
+representing a column vector of ones, the following is true
 
 $$
     Q \text{ has zero row sums }
@@ -360,7 +361,7 @@ $$
 
 In other words, each $P_t$ has unit row sums. 
 
-Next we check positivity of all elements of $P_t$ (which can easily fail for
+Next we check nonnegativity of all elements of $P_t$ (which can easily fail for
 matrix exponentials).
 
 To this end, adopting an argument from {cite}`stroock2013introduction`, we
@@ -481,7 +482,7 @@ draws = independent_draws(T, num_draws=100_000)
 fig, ax = plt.subplots()
 
 ax.bar(range(n), [np.mean(draws == i) for i in range(n)], width=0.8, alpha=0.6)
-ax.set(xlabel="inventory")
+ax.set_xlabel("inventory", fontsize=14)
 
 plt.show()
 ```
@@ -565,7 +566,7 @@ def P_t(ψ, t):
 fig, ax = plt.subplots()
 
 ax.bar(range(n), ψ_T, width=0.8, alpha=0.6)
-ax.set(xlabel="inventory")
+ax.set_xlabel("inventory", fontsize=14)
 
 plt.show()
 ```

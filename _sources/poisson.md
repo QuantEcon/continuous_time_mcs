@@ -94,7 +94,7 @@ plt.show()
 An alternative but equivalent definition is
 
 $$
-    N_t = \max \{k \geq 0 \,|\, J_k \leq t \}
+    N_t := \max \{k \geq 0 \,|\, J_k \leq t \}
 $$
 
 As a function of $t$, the process $N_t$ is called a **counting process**.
@@ -143,8 +143,8 @@ and the right hand side agrees with {eq}`poissondist` when $k=0$.
 This sets up a proof by induction, which is time consuming but not difficult
 --- the details can be found in $\S29$ of {cite}`howard2017elements`.
 
-Another way to show that $N_t$ is Poisson with rate $\lambda$ is appeal to 
-{proof:ref}`erlexp`.
+Another way to show that $N_t$ is Poisson with rate $\lambda$ is to appeal to 
+{prf:ref}`erlexp`.
 
 We observe that
 
@@ -165,7 +165,7 @@ $$
 This is the (integer valued) CDF for the Poisson distribution with parameter
 $t \lambda$.
 
-An exercise at the end of the lecture asks you to verify that $N(t)$ is Poisson-$(t \lambda )$ informally via simulation.
+An exercise at the end of the lecture asks you to verify that $N_t$ is Poisson-$(t \lambda )$ informally via simulation.
 
 The next figure shows one realization of a Poisson process $(N_t)$, with jumps
 at each new arrival.
@@ -204,7 +204,7 @@ and independent increments.
 
 This is due to the memoryless property of exponentials.
 
-It means in particular that
+It means that
 
 1. the variables $\{N_{t_{i+1}} - N_{t_i}\}_{i \in I}$ are independent for any
    strictly increasing finite sequence $(t_i)_{i \in I}$ and
@@ -345,7 +345,7 @@ What other counting processes have stationary independent increments?
 
 Remarkably, the answer is none: 
 
-```{proof:theorem}  Characterization of Poisson Processes
+```{prf:theorem}  Characterization of Poisson Processes
 
 If $(M_t)$ is a stochastic process supported on $\ZZ_+$ and starting at 0 with
 the property that its increments are stationary and independent, then $(M_t)$ is a Poisson process.
@@ -374,13 +374,13 @@ An important consequence of stationary independent increments is the
 restarting property, which means that, when simulating, we can freely stop and
 restart a Poisson process at any time:
 
-```{proof:theorem} Poisson Processes can be Pause and Restarted
+```{prf:theorem} Poisson Processes can be Paused and Restarted
 If $(N_t)$ is a Poisson process, $s > 0$ and 
 $(M_t)$ is defined by $M_t = N_{s+t} - N_s$ for $t \geq 0$, then $(M_t)$ is a 
 Poisson process independent of $(N_r)_{r \leq s}$.
 ```
 
-```{proof:proof}
+```{prf:proof}
 Independence of $(M_t)$ and $(N_r)_{r \leq s}$ follows from indepenence of the
 increments of $(N_t)$.
 

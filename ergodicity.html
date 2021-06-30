@@ -1,23 +1,40 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stationarity and Ergodicity &#8212; Continuous Time Markov Chains</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -25,10 +42,10 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": null, "Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -40,14 +57,14 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bibliography" href="zreferences.html" />
     <link rel="prev" title="UC Markov Semigroups" href="uc_mc_semigroups.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -56,28 +73,25 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
-  
-</a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Continuous Time Markov Chains</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    Continuous Time Markov Chains
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
    Memoryless Distributions
@@ -95,7 +109,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   Kolmogorov Backward Equation
+   The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1">
@@ -125,9 +139,8 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+    </div>
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -142,25 +155,25 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         <a class="dropdown-buttons"
@@ -175,24 +188,25 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
-        <!-- Source interaction buttons -->
 
+            <!-- Source interaction buttons -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Launch buttons -->
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ergodicity.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ergodicity.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -204,15 +218,16 @@
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    Overview
@@ -241,8 +256,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#asymptotic-stabiltiy">
-   Asymptotic Stabiltiy
+  <a class="reference internal nav-link" href="#asymptotic-stabilitiy">
+   Asymptotic Stabilitiy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -313,7 +328,8 @@
  </li>
 </ul>
 
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -335,7 +351,7 @@ often modeled as continuous time Markov chains.</p>
 <li><p>optimal design of manufacturing processes</p></li>
 <li><p>requests to a file server</p></li>
 <li><p>air traffic</p></li>
-<li><p>customers waiting on a help line</p></li>
+<li><p>customers waiting on a helpline</p></li>
 </ul>
 <p>A key topic in queueing theory is average behavior over the long run.</p>
 <ul class="simple">
@@ -371,7 +387,7 @@ often modeled as continuous time Markov chains.</p>
 distribution <span class="math notranslate nohighlight">\(\psi\)</span> is called stationary for <span class="math notranslate nohighlight">\(P\)</span> if <span class="math notranslate nohighlight">\(\psi P = \psi\)</span>.</p>
 <p>This means that if <span class="math notranslate nohighlight">\(X_t\)</span> has distribution <span class="math notranslate nohighlight">\(\psi\)</span>, then so does <span class="math notranslate nohighlight">\(X_{t+1}\)</span>.</p>
 <p>For continuous time Markov chains, the definition is analogous.</p>
-<p>Given a Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>, a distribution <span class="math notranslate nohighlight">\(\psi^* \in \dD\)</span> is called
+<p>Given a Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span>, a distribution <span class="math notranslate nohighlight">\(\psi^* \in \dD\)</span> is called
 <strong>stationary</strong> for <span class="math notranslate nohighlight">\((P_t)\)</span> if</p>
 <div class="math notranslate nohighlight">
 \[
@@ -467,7 +483,7 @@ that the three trajectories seem to be converging to.</p>
 </div>
 </div>
 <p>This black dot is the stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> of the Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> generated by <span class="math notranslate nohighlight">\(Q\)</span>.</p>
-<p>It was calculated the <code class="docutils literal notranslate"><span class="pre">stationary_distributions</span></code> attribute of QuantEcon’s
+<p>It was calculated using the <code class="docutils literal notranslate"><span class="pre">stationary_distributions</span></code> attribute of QuantEcon’s
 <a class="reference external" href="https://quanteconpy.readthedocs.io/en/latest/markov.html"><code class="docutils literal notranslate"><span class="pre">MarkovChain</span></code> class</a>, by arbitrarily setting <span class="math notranslate nohighlight">\(t=1\)</span> and solving <span class="math notranslate nohighlight">\(\psi P_1 = \psi\)</span>.</p>
 <p>Below we show that, for this choice of <span class="math notranslate nohighlight">\(Q\)</span>, the stationary distribution
 <span class="math notranslate nohighlight">\(\psi^*\)</span> is unique in <span class="math notranslate nohighlight">\(\dD\)</span>, due to irreducibility.</p>
@@ -511,8 +527,8 @@ I)\)</span>.</p>
     \leq \| Q - D_t \| + \| \psi D_t \|
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is UC and <span class="math notranslate nohighlight">\(Q\)</span> is its generator, we have <span class="math notranslate nohighlight">\(\| D_t - Q \| \to 0\)</span> in
-<span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> as <span class="math notranslate nohighlight">\(t \to 0\)</span>.</p>
-<p>Hence <span class="math notranslate nohighlight">\(\| \psi Q \| \leq \liminf_{t \to 0} \| \psi D_t \|\)</span>.</p>
+<span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span> as <span class="math notranslate nohighlight">\(t \to 0^+\)</span>.</p>
+<p>Hence <span class="math notranslate nohighlight">\(\| \psi Q \| \leq \liminf_{t \downarrow 0} \| \psi D_t \|\)</span>.</p>
 <p>As <span class="math notranslate nohighlight">\(\psi\)</span> is stationary for <span class="math notranslate nohighlight">\((P_t)\)</span>, we have <span class="math notranslate nohighlight">\(\psi D_t = 0\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Hence <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>, as was to be shown.</p>
 </div>
@@ -520,7 +536,7 @@ I)\)</span>.</p>
 </div>
 <div class="section" id="irreducibility-and-uniqueness">
 <h2>Irreducibility and Uniqueness<a class="headerlink" href="#irreducibility-and-uniqueness" title="Permalink to this headline">¶</a></h2>
-<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span> and consider arbitrary states <span class="math notranslate nohighlight">\(x, y \in S\)</span>.</p>
 <p>We say that state <span class="math notranslate nohighlight">\(y\)</span> is <strong>accessible</strong> from state <span class="math notranslate nohighlight">\(x\)</span> if
 there exists a <span class="math notranslate nohighlight">\(t \geq 0\)</span> such that <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span>.</p>
 <p>We say that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> <strong>communicate</strong> if <span class="math notranslate nohighlight">\(x\)</span> is accessible from <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(y\)</span>
@@ -627,8 +643,8 @@ continuous time Markov chains.</p>
 positive flow for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
 </div>
 </div>
-<div class="section" id="asymptotic-stabiltiy">
-<h2>Asymptotic Stabiltiy<a class="headerlink" href="#asymptotic-stabiltiy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="asymptotic-stabilitiy">
+<h2>Asymptotic Stabilitiy<a class="headerlink" href="#asymptotic-stabilitiy" title="Permalink to this headline">¶</a></h2>
 <p>We call Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> <strong>asymptotically stable</strong> if <span class="math notranslate nohighlight">\((P_t)\)</span> has a
 unique stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> in <span class="math notranslate nohighlight">\(\dD\)</span> and</p>
 <div class="math notranslate nohighlight" id="equation-asyms">
@@ -675,12 +691,12 @@ semigroups.</p>
 </div>
 </div><p>The proof follows from the strict triangle inequality, as opposed to the weak
 triangle inequality we used to obtain <a class="reference internal" href="#equation-allmocontract">(60)</a>.</p>
-<p>See, for example, Proposition 3.1.2 of <a class="bibtex reference internal" href="zreferences.html#lasota1994chaos" id="id1">[LM94]</a> or Lemma 8.2.3 of <a class="bibtex reference internal" href="zreferences.html#stachurski2009economic" id="id2">[Sta09]</a>.</p>
+<p>See, for example, Proposition 3.1.2 of <span id="id1">[<a class="reference internal" href="zreferences.html#id3">Lasota and Mackey, 1994</a>]</span> or Lemma 8.2.3 of <span id="id2">[<a class="reference internal" href="zreferences.html#id4">Stachurski, 2009</a>]</span>.</p>
 </div>
 <div class="section" id="uniqueness">
 <h3>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h3>
 <p>Irreducibility of a given Markov chain implies that there are no disjoint
-absorbing sets.</p>
+<a class="reference external" href="https://en.wikipedia.org/wiki/Absorbing_set">absorbing sets</a>.</p>
 <p>This in turn leads to uniqueness of stationary distributions:</p>
 <div class="proof theorem admonition" id="uniirr">
 <p class="admonition-title"><span class="caption-number">Theorem 27 </span></p>
@@ -749,9 +765,9 @@ stable with the same stationary distribution.</p>
     \| \psi P_t - \psi^* \|
     = \| \psi P_{sn} P_h - \psi^* P_h \|
     \leq \| \psi P_{sn} - \psi^* \|
-    &lt; \epsilon.
+    &lt; \epsilon
 \]</div>
-<p>Hence asymptotic stability holds</p>
+<p>Hence asymptotic stability holds for <span class="math notranslate nohighlight">\((P_t)\)</span>.</p>
 </div>
 </div>
 <div class="section" id="stability-via-drift">
@@ -781,7 +797,7 @@ irreducible and there exists a function <span class="math notranslate nohighligh
 \end{split}\]</div>
 <p>then <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
 </div>
-</div><p>The proof of <a class="reference internal" href="#sdrift">Theorem 30</a> can be found in <a class="bibtex reference internal" href="zreferences.html#pichor2012stochastic" id="id3">[PichorRTKaminska12]</a>.</p>
+</div><p>The proof of <a class="reference internal" href="#sdrift">Theorem 30</a> can be found in <span id="id3">[<a class="reference internal" href="zreferences.html#id2">Pichór <em>et al.</em>, 2012</a>]</span>.</p>
 <div class="proof example admonition" id="example-8">
 <p class="admonition-title"><span class="caption-number">Example 31 </span></p>
 <div class="example-content section" id="proof-content">
@@ -789,8 +805,8 @@ irreducible and there exists a function <span class="math notranslate nohighligh
 <p>Suppose that <span class="math notranslate nohighlight">\(\lambda &lt; \mu\)</span>.</p>
 <p>It is intuitive that, in this case, the queue length will not
 tend to infinity (since the service rate is higher than the arrival rate).</p>
-<p>This intuition can be confirmed via <a class="reference internal" href="#sdrift">Theorem 30</a>, after setting <span class="math notranslate nohighlight">\(v(i) =
-i\)</span>.</p>
+<p>This intuition can be confirmed via <a class="reference internal" href="#sdrift">Theorem 30</a>, after setting <span class="math notranslate nohighlight">\(v(j) =
+j\)</span>.</p>
 <p>Indeed, we have, for any <span class="math notranslate nohighlight">\(i \geq 1\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -798,7 +814,7 @@ i\)</span>.</p>
     = (i-1) \mu - i (\mu + \lambda) + (i+1) \lambda
     = \lambda - \mu
 \]</div>
-<p>Setting <span class="math notranslate nohighlight">\(F=\{0\}\)</span> and <span class="math notranslate nohighlight">\(\epsilon = \mu - \lambda\)</span>, we see that the conditions
+<p>Setting <span class="math notranslate nohighlight">\(F=\{0\}\)</span> and <span class="math notranslate nohighlight">\(M = \lambda - \mu = - \epsilon\)</span>, we see that the conditions
 of <a class="reference internal" href="#sdrift">Theorem 30</a> hold.</p>
 <p>Hence the associated semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
 </div>
@@ -820,7 +836,7 @@ for this semigroup, every state <span class="math notranslate nohighlight">\(x\)
 </div>
 <div class="section" id="exercise-2">
 <h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
-<p>Let <span class="math notranslate nohighlight">\((\lambda_k)\)</span> be a bounded sequence in <span class="math notranslate nohighlight">\((0, \infty)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\((\lambda_k)\)</span> be a bounded non-increasing sequence in <span class="math notranslate nohighlight">\((0, \infty)\)</span>.</p>
 <p>A <strong>pure birth process</strong> starting at zero is a continuous time Markov process
 <span class="math notranslate nohighlight">\((X_t)\)</span> on state space <span class="math notranslate nohighlight">\(\ZZ_+\)</span> with intensity matrix</p>
 <div class="math notranslate nohighlight">
@@ -849,16 +865,26 @@ distribution.</p>
 <div class="section" id="solution-to-exercise-2">
 <h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Suppose to the contrary that <span class="math notranslate nohighlight">\(\phi \in \dD\)</span> and <span class="math notranslate nohighlight">\(\phi Q = 0\)</span>.</p>
-<p>Then</p>
+<p>Then, for any <span class="math notranslate nohighlight">\(j \geq 1\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
     (\phi Q)(j) 
     = \sum_{i \geq 0} \phi(i) Q(i, j)
-    = - \lambda_j \phi(j) + \lambda_j \phi(j+1) 
+    = - \lambda_j \phi(j) + \lambda_{j-1} \phi(j-1) 
     = 0
 \]</div>
-<p>It follows that <span class="math notranslate nohighlight">\(\phi\)</span> is constant on <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
-<p>But <span class="math notranslate nohighlight">\(\dD\)</span> contains no constant functions when the state space is infinite.
+<p>Since <span class="math notranslate nohighlight">\((\lambda_k)\)</span> is non-increasing, it follows that</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{\phi(j)}{\phi(j-1)} = \frac{\lambda_{j-1}}{\lambda_j} \geq 1
+\]</div>
+<p>Therefore, for any <span class="math notranslate nohighlight">\(j\geq 1\)</span>, it must be:</p>
+<div class="math notranslate nohighlight">
+\[
+    \phi(j) \geq \phi(j-1)
+\]</div>
+<p>It follows that <span class="math notranslate nohighlight">\(\phi\)</span> is non-decreasing on <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
+<p>But <span class="math notranslate nohighlight">\(\dD\)</span> contains no non-decreasing functions when the state space is infinite.
 (Why?)</p>
 <p>Contradiction.</p>
 </div>
@@ -901,15 +927,15 @@ asymptotically stable.</p>
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="uc_mc_semigroups.html" title="previous page">UC Markov Semigroups</a>
     <a class='right-next' id="next-link" href="zreferences.html" title="next page">Bibliography</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -917,7 +943,7 @@ asymptotically stable.</p>
         
           By John Stachurski<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -926,8 +952,9 @@ asymptotically stable.</p>
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    <script src="_static/js/index.js"></script>
-    
+  
   </body>
 </html>

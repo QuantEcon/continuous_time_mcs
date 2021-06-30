@@ -85,8 +85,8 @@ $$
 
 where distributions are understood as row vectors.
 
-Here's a visualization for the case $S = \{0, 1, 2\}$, so that $\dD$ is the unit
-simplex in $\RR^3$.
+Here's a visualization for the case $S = \{0, 1, 2\}$, so that $\dD$ is the [standard
+simplex](https://en.wikipedia.org/wiki/Simplex#The_standard_simplex) in $\RR^3$.
 
 The initial condition is `` (0, 0, 1)`` and the Markov matrix is
 
@@ -341,12 +341,12 @@ distribution path.
 By comparison, the Kolmogorov forward equation is (like the backward equation)
 a differential equation in matrices.
 
-(And matrices are really maps, that send vectors into vectors.)
+(And matrices are really maps, which send vectors into vectors.)
 
 Operating at this level is less intuitive and more abstract than working with the
 Fokker--Planck equation.
 
-But, in the end, the object that we want to describe is a the Markov
+But, in the end, the object that we want to describe is a Markov
 semigroup.
 
 The Kolmogorov forward and backward equations are the ODEs that define
@@ -380,7 +380,7 @@ for all $t$?
 A square matrix $Q$ is called an **intensity matrix** if $Q$ has zero row
 sums and $Q(x, y) \geq 0$ whenever $x \not= y$.
 
-```{proof:theorem}
+```{prf:theorem}
 :label: intvsmk
 
 If $Q$ is a matrix on $S$ and $P_t := e^{tQ}$, then the following statements
@@ -390,10 +390,10 @@ are equivalent:
 1. $Q$ is an intensity matrix.
 ```
 
-The proof is related to that of {proof:ref}`jctosg` and is found as 
+The proof is related to that of {prf:ref}`jctosg` and is found as 
 a solved exercise below.
 
-```{proof:corollary}
+```{prf:corollary}
 :label: intvsmk_c
 
 If $Q$ is an intensity matrix on finite $S$ and $P_t = e^{tQ}$ for all $t \geq 0$,
@@ -410,7 +410,7 @@ some mild restrictions on $Q$.
 ## Jump Chains
 
 Let's return to the chain $(X_t)$ created from jump chain pair $(\lambda, K)$ in
-{proof:ref}`ejc_algo`.
+{prf:ref}`ejc_algo`.
 
 We found that the semigroup is given by 
 
@@ -523,7 +523,7 @@ Show that $Q$ is an intensity matrix and that {eq}`genfl` holds.
 
 ### Exercise 3 
 
-Prove {proof:ref}`intvsmk` by adapting the arguments in {proof:ref}`jctosg`.
+Prove {prf:ref}`intvsmk` by adapting the arguments in {prf:ref}`jctosg`.
 (This is nontrivial but worth at least trying.)
 
 Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
@@ -547,7 +547,7 @@ $$
     = \frac{P_t (P_h - I)}{h}  
 $$
 
-Taking $h \downarrow 0$ and using the definition of $Q$ gives $P_t' = P_t Q$,
+Taking $h \downarrow 0$ and using the definition of $Q$ give $P_t' = P_t Q$,
 which is the Kolmogorov forward equation.
 
 For the backward equation we observe that 
@@ -586,7 +586,7 @@ $$
 
 Suppose that $Q$ is an intensity matrix, fix $t \geq 0$ and set $P_t = e^{tQ}$.
 
-The proof from {proof:ref}`jctosg` that $P_t$ has unit row sums applies
+The proof from {prf:ref}`jctosg` that $P_t$ has unit row sums applies
 directly to the current case.
 
 The proof of nonnegativity of $P_t$ can be applied after some
@@ -628,6 +628,6 @@ From this equality and the assumption that $P_t$ is a Markov matrix for all
 $t$, we see that the off diagonal elements of $Q$ must be
 nonnegative.
 
-Hence $Q$ is a intensity matrix.
+Hence $Q$ is an intensity matrix.
 
 

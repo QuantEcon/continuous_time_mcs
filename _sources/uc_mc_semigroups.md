@@ -35,7 +35,7 @@ The main aim is to give an exact one-to-one correspondence between
 Conservativeness is defined below and relates to "nonexplosiveness" of the
 associated Markov chain.
 
-We will also give a brief discussion of intensity matricies that do not have
+We will also give a brief discussion of intensity matrices that do not have
 this property, along with the processes they generate.
 
 
@@ -49,7 +49,7 @@ $$
     \| g \| := \sum_x |g(x)| < \infty
 $$
 
-Note that $\dD$, the set of distributions on $S$, is contained in $\ell_1$.
+Note that $\dD$, the set of all distributions on $S$, is contained in $\ell_1$.
 
 Each Markov matrix $P$ on $S$ can and will be identifed with a linear operator
 $f \mapsto fP$ on $\ell_1$ via 
@@ -104,15 +104,15 @@ Let $Q$ be a conservative intensity matrix on $S$.
 Since $Q$ is in $\linopell$, the operator exponential $e^{tQ}$ is well defined
 as an element of $\linopell$ for all $t \geq 0$.
 
-Moreover, by {proof:ref}`ecuc`, the family $(P_t)$ in $\lL(\ell_1)$ defined by
-$P_t = e^{tQ}$ defines a UC Markov semigroup on $S$.
+Moreover, by {prf:ref}`ecuc`, the family $(P_t)$ in $\lL(\ell_1)$ defined by
+$P_t = e^{tQ}$ defines a UC Markov semigroup on $\ell_1$.
 
 (Here, a Markov semigroup $(P_t)$ is both a collection of Markov matrices and a
 collection of operators, as in {eq}`mmismo`.)
 
 The next theorem says that this is the only way UC Markov semigroups can arise.
 
-```{proof:theorem}
+```{prf:theorem}
 :label: usmg
 
 If $(P_t)$ is a UC Markov semigroup on $\ell_1$, then there
@@ -120,40 +120,40 @@ exists a conservative intensity matrix $Q$ such that $P_t = e^{tQ}$ for all $t \
 
 ```
 
-```{proof:proof}
+```{prf:proof}
 Let $(P_t)$ be a UC Markov semigroup on $\ell_1$.
 
 Since $(P_t)$ is a UC semigroup on $\ell_1$, it follows from
-{proof:ref}`ucsgec` that there exists a $Q \in \lL(\ell_1)$ such that 
+{prf:ref}`ucsgec` that there exists a $Q \in \lL(\ell_1)$ such that 
 $P_t = e^{tQ}$ for all $t \geq 0$.
 
-We need only show that $Q$ is a conservative intensity matrix.
+We only need to show that $Q$ is a conservative intensity matrix.
 
 Because $(P_t)$ is a Markov semigroup, $P_t$ is a Markov matrix for all $t$,
 and, since $P_t = e^{tQ}$ for all $t$, it follows that $Q$ is an intensity
 matrix.
 
-We proved this for the case $|S| < \infty$ in {proof:ref}`intvsmk` and
+We proved this for the case $|S| < \infty$ in {prf:ref}`intvsmk` and
 one can verify that the same arguments go through when $|S| = \infty$.
 
 As $Q \in \lL(\ell_1)$, we know that $Q$ is a bounded operator, so $Q$ is a
 conservative intensity matrix.  
 ```
 
-From {proof:ref}`usmg` we can easily deduce that 
+From {prf:ref}`usmg` we can easily deduce that 
 
 * $P_t$ is differentiable at every $t \geq 0$,
 * $Q$ is the generator of $(P_t)$ and
 * $P_t' = Q P_t = P_t Q$ for all $t \geq 0$.
 * $P_0' = Q$
 
-In fact these results are just a special case of the claims in {proof:ref}`ucsgec`.
+In fact these results are just a special case of the claims in {prf:ref}`ucsgec`.
 
 The second last of these results is the Kolmogorov forward and backward equations.
 
 The last of these results shows that we can obtain the intensity matrix $Q$ by differentiating $P_t$ at $t=0$.
 
-```{proof:example}
+```{prf:example}
 Let us consider again the Poisson process $(N_t)$ with rate $\lambda > 0$ 
 in light of the discussion above.
 
@@ -161,7 +161,7 @@ The corresponding semigroup $(P_t)$ is UC and hence there exists a
 conservative intensity matrix $Q$ with $P_t = e^{tQ}$ for all $t \geq 0$.
 
 This fact can be established by proving UC property and then appealing to
-{proof:ref}`usmg`. 
+{prf:ref}`usmg`. 
 
 Another alternative, easier in this case, is to supply the intensity matrix
 $Q$ directly and then verify that $P_t = e^{tQ}$ holds.
@@ -216,8 +216,8 @@ For given $t \geq 0$, we then have
 $$
     e^{tQ}
     = e^{\lambda t (K-I)}
-    = e^{\lambda t} e^{\lambda t K}
-    = e^{\lambda t} 
+    = e^{-\lambda t} e^{\lambda t K}
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t K)^m}{m!}
 $$
 
@@ -229,9 +229,9 @@ Inserting this expression for $K^m$ leads to
 
 $$
     e^{tQ}(i, j)
-    = e^{\lambda t} 
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{j = i + m\}
-    = e^{\lambda t} 
+    = e^{-\lambda t} 
     \sum_{m \geq 0} \frac{(\lambda t )^m}{m!} \mathbb 1\{m = j-i\}
 $$
 
@@ -249,10 +249,10 @@ $t \geq 0$ and $Q$ is the generator of $(P_t)$, with $P_0' = Q$.
 Our definition of a conservative intensity matrix works for the theory above
 but can be hard to check in appliations and lacks probabilistic intuition. 
 
-Fortunately, we have the following simple charcterization.
+Fortunately, we have the following simple characterization.
 
 
-```{proof:lemma} 
+```{prf:lemma} 
 :label: scintcon
 
 An intensity matrix $Q$ on $S$ is conservative if and only if $\sup_x |Q(x,
@@ -264,7 +264,7 @@ The proof is a solved exercise.
 
 
 
-```{proof:example}
+```{prf:example}
 :label: jccs
 
 Recall the jump chain setting where, repeating {eq}`kolbackeq`, we defined $Q$
@@ -298,7 +298,7 @@ restriction.
 
 ### The Finite State Case
 
-It is immediate from {proof:ref}`scintcon` that every intensity matrix is
+It is immediate from {prf:ref}`scintcon` that every intensity matrix is
 conservative when the state space $S$ is finite.
 
 Hence, in this setting, every intensity matrix $Q$ on $S$ defines a UC Markov
@@ -318,7 +318,7 @@ continuous everywhere on $\RR_+$.
 
 Hence $(P_t)$ is a UC Markov semigroup, as claimed.
 
-Combining these results with {proof:ref}`usmg`, we conclude that, when $S$ is
+Combining these results with {prf:ref}`usmg`, we conclude that, when $S$ is
 finite, there is a one-to-one correspondence between Markov semigroups and
 intensity matrices.
 
@@ -327,7 +327,7 @@ intensity matrices.
 ## From Intensity Matrix to Jump Chain
 
 We now understand that there is a one-to-one pairing between conservative
-intenintensity matrices and UC Markov semigroups.
+intensity matrices and UC Markov semigroups.
 
 These ideas are important from an analytical perspective.
 
@@ -351,7 +351,7 @@ $$ (jcinmat)
 is an intensity matrix.
 
 (We saw in {doc}`an earlier lecture <kolmogorov_bwd>` that $Q$ is the intensity
-matrix for the jump chain $(X_t)$ built via {proof:ref}`ejc_algo` from jump
+matrix for the jump chain $(X_t)$ built via {prf:ref}`ejc_algo` from jump
 chain pair $(\lambda, K)$.)
 
 As we now show, every intensity matrix admits the decomposition in
@@ -360,7 +360,7 @@ As we now show, every intensity matrix admits the decomposition in
 
 ### Jump Chain Decomposition
 
-Given a intensity matrix $Q$, set 
+Given an intensity matrix $Q$, set 
 
 $$
     \lambda(x) := -Q(x, x)
@@ -405,7 +405,7 @@ We call $(\lambda, K)$ the **jump chain decomposition** of $Q$.
 
 We summarize in a lemma.
 
-```{proof:lemma}
+```{prf:lemma}
 :label: imatjc
 
 A matrix $Q$ on $S$ is an intensity matrix if and only if there exists a jump
@@ -416,15 +416,15 @@ chain pair $(\lambda, K)$ such that {eq}`jcinmat` holds.
 ### The Conservative Case
 
 
-We know from {proof:ref}`jccs` that an intensity matrix $Q$ is conservative
+We know from {prf:ref}`jccs` that an intensity matrix $Q$ is conservative
 if and only if $\lambda$ is bounded.
 
-Moreover, we saw in {proof:ref}`usmg` that the pairing between conservative
+Moreover, we saw in {prf:ref}`usmg` that the pairing between conservative
 intensity matrices and UC Markov semigroups is one-to-one.
 
 This leads to the following result.
 
-```{proof:theorem}
+```{prf:theorem}
 On $S$, there exists a one-to-one correspondence between the following sets of
 objects:
 
@@ -445,7 +445,7 @@ chain given any conservative intensity matrix $Q$.
 The steps are
 
 1. Decompose $Q$ into a jump chain pair $(\lambda, K)$.
-2. Simulate via {proof:ref}`ejc_algo`.
+2. Simulate via {prf:ref}`ejc_algo`.
 
 
 Recalling our discussion of the Kolmogorov backward equation, we know that 
@@ -453,7 +453,7 @@ this produces a Markov chain with Markov semigroup
 $(P_t)$ where $P_t = e^{tQ}$ for $Q$ satisfying {eq}`jcinmat`.
 
 (Although our argument assumed finite $S$, the proof goes through when
-$S$ is contably infinite and $Q$ is conservative with very minor changes.)
+$S$ is countably infinite and $Q$ is conservative with very minor changes.)
 
 In particular, $(X_t)$ is a continuous time Markov chain with intensity matrix
 $Q$.
@@ -506,7 +506,7 @@ Let $P$ be a Markov matrix on $S$ and identify it with the linear operator in
 
 ### Exercise 2
 
-Prove the claim in {proof:ref}`scintcon`.
+Prove the claim in {prf:ref}`scintcon`.
 
 ### Exercise 3
 
@@ -560,8 +560,8 @@ Clearly $\phi P \geq 0$, and
 
 $$
     \sum_y (\phi P)(y)
-    \sum_y \sum_x \phi (x) P(x, y)
-    \sum_x \phi (x) \sum_y P(x, y)
+    =\sum_y \sum_x \phi (x) P(x, y)
+    =\sum_x \phi (x) \sum_y P(x, y)
     = 1
 $$
 
@@ -639,8 +639,8 @@ We then have, by definition of composition (matrix multiplication),
 $$
     K^{m+1}(i, j)
     = \sum_n K(i, n) K^m (n, j)
-    = \sum_n K(i, n) \mathbb 1\{j = i + m\}
-    = K(i, m-j)
+    = \sum_n K(i, n) \mathbb 1\{j = n + m\}
+    = K(i, j-m)
 $$
 
 Applying the definition $K(i, j) = \mathbb 1\{j = i + 1\}$ completes verification of the claim.

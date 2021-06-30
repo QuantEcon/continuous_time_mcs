@@ -43,7 +43,7 @@ bound.[^footnotepp]
 
 [^footnotepp]: In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.
 
-Readers are assumed to have some basic familiarity with Banach spaces.
+Readers are assumed to have some basic familiarity with [Banach spaces](https://en.wikipedia.org/wiki/Banach_space).
 
 ## Motivation
 
@@ -69,7 +69,7 @@ where
 
 This problem is also called the "abstract Cauchy problem".
 
-Why do we need solve such problems?
+Why do we need to solve such problems?
 
 One example comes from PDEs.  
 
@@ -138,8 +138,8 @@ and so on.
 
 We write $A B$ to indicate composition of the operators $A, B \in \linop$.
 
-The value defined in {eq}`norml` is called the **operator norm** of $A$ and,
-as suggested by the notation, [is a norm](https://en.wikipedia.org/wiki/Operator_norm) on $\linop$.
+The value defined in {eq}`norml` is called the [**operator norm**](https://en.wikipedia.org/wiki/Operator_norm) of $A$ and,
+as suggested by the notation, is a norm on $\linop$.
 
 In addition to being a norm, it enjoys the submultiplicative property $\| AB
 \| \leq \| A \| \| B\|$ for all $A, B \in \linop$.
@@ -162,7 +162,7 @@ $$
     = I + A + \frac{A^2}{2!} + \cdots
 $$ (opexpo)
 
-This is the same as the definition for the matrix exponential.The exponential function arises naturally as the solution to ODEs in Banach
+This is the same as the definition for the matrix exponential. The exponential function arises naturally as the solution to ODEs in Banach
 space, one example of which (as we shall see) is distribution flows
 associated with continuous time Markov chains.
 
@@ -210,12 +210,12 @@ $$
 (Convergence of operators is in operator norm.  If $\tau = 0$, then the limit
 $h \to 0$ in {eq}`devlim` is the right limit.)
 
-```{proof:example}
+```{prf:example}
 If $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
 see that $V$ is the derivative of $t \mapsto U_t$ at every $t \in \RR_+$.
 ```
 
-```{proof:example}
+```{prf:example}
 In {doc}`our discussion <kolmogorov_fwd>` of the Kolmogorov forward equation 
 when $S$ is finite, we introduced the derivative of a map $t
 \mapsto P_t$, where each $P_t$ is a matrix on $S$.
@@ -223,13 +223,13 @@ when $S$ is finite, we introduced the derivative of a map $t
 The derivative was defined by differentiating $P_t$ element-by-element.
 
 This coincides with the operator-theoretic definition in {eq}`devlim` when $S$
-is finite, because then the space $\lL(\ell_1)$ is finite dimensional, and
+is finite, because then the space $\lL(\ell_1)$, which consists of all bounded linear operators on $\ell_1$, is finite dimensional, and
 hence pointwise and norm convergence coincide.
 ```
 
 Analogous to the matrix and scalar cases, we have the following result:
 
-```{proof:lemma} Differentiability of the Exponential Curve
+```{prf:lemma} Differentiability of the Exponential Curve
 :label: diffexpmap
 
 For all $A \in \linop$, the exponential curve $t \mapsto e^{tA}$ is everywhere differentiable and 
@@ -285,7 +285,7 @@ have, by definition of the operator norm,
 $\sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0$ when $s \to t$.
 
 
-```{proof:example} Exponential curves are UC semigroups
+```{prf:example} Exponential curves are UC semigroups
 :label: ecuc
 
 If $U_t = e^{tA}$ for $t \in \RR_+$ and $A \in \linop$, then $(U_t)$
@@ -296,7 +296,7 @@ The claim that $(U_t)$ is an evolution semigroup follows directly from the
 properties of the exponential function given above.
 
 Uniform continuity can be established using arguments similar to those in the
-proof of differentiability in {proof:ref}`diffexpmap`. 
+proof of differentiability in {prf:ref}`diffexpmap`. 
 
 Since norm convergence on $\linop$ implies pointwise convergence, every
 uniformly continuous semigroup is a $C_0$ semigroup.
@@ -333,7 +333,7 @@ $$
 $$
 
 In the more abstract setting of $C_0$ semigroups, we say that $Q$ is the
-"generator" of the semigroup $P_t$.
+"generator" of the semigroup $(P_t)$.
 
 More generally, given a $C_0$ semigroup $(U_t)$, we say that a linear
 operator $A$ from $\BB$ to itself is the **generator** of $(U_t)$ if 
@@ -359,7 +359,7 @@ Indeed, why should the limit exist, given that $C_0$ semigroups are not
 required to be differentiable?
 
 The other problem is that, even though the limit exists, the linear operator
-$A$ is not bounded (i.e., not an element of $\linop$), so 
+$A$ might be unbounded (i.e., not an element of $\linop$), in which case 
 a statement like $U_t = e^{tA}$ is problematic.
 
 It turns out that, despite these issues, the theory of $C_0$ semigroups is
@@ -376,12 +376,12 @@ The next section gives details.
 
 ### A Characterization of Uniformly Continuous Semigroups
 
-We saw in {proof:ref}`ecuc` that exponential curves are an example
+We saw in {prf:ref}`ecuc` that exponential curves are an example
 of a UC semigroup.
 
 The next theorem tells us that there are no other examples.
 
-```{proof:theorem} UC Semigroups are Exponential Curves
+```{prf:theorem} UC Semigroups are Exponential Curves
 :label: ucsgec
 
 If $(U_t)$ is a UC semigroup on $\BB$, then there exists an $A \in \linop$
@@ -392,7 +392,7 @@ such that $U_t = e^{tA}$ for all $t \geq 0$.  Moreover,
 * $U_t' = A U_t = U_t A$ for all $t \geq 0$.
 ```
 
-The last three claims in {proof:ref}`ucsgec` follow directly from the
+The last three claims in {prf:ref}`ucsgec` follow directly from the
 first claim.
 
 The statement $U_t' = A U_t = U_t A$ is a
@@ -408,13 +408,13 @@ satisfying
 
 also satisfies $f(t) = e^{ta}$ for some $a \in \RR$.
 
-We proved something quite similar in {proof:ref}`exp_unique`, on 
+We proved something quite similar in {prf:ref}`exp_unique`, on 
 the memoryless property of the exponential function.
 
 For more discussion of the scalar case, see, for example,
 {cite}`sahoo2011introduction`.  
 
-For a full proof of the first claim in {proof:ref}`ucsgec`, in the setting of
+For a full proof of the first claim in {prf:ref}`ucsgec`, in the setting of
 a Banach algebra, see, for
 example, Chapter 7 of {cite}`bobrowski2005functional`.
 
@@ -494,7 +494,7 @@ The proof of the second equality is similar.
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
 $\omega$ and $M$ be as in {eq}`sgbound`.
 
-Pick any $g \in \BB$,  $t > 0$ and $h_n \downarrow 0$.  
+Pick any $g \in \BB$,  $t > 0$ and $h_n \downarrow 0$ as $n \to \infty$.  
 
 On one hand, $U_{t+ h_n} g = U_{h_n} U_t g \to U_t g$ by {eq}`czsg2`.
 
@@ -514,9 +514,9 @@ as $n \to \infty$.  This completes the proof.
 The solution is similar to that of the previous exercise.
 
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg3`,
-fix $t > 0$ and take $(h_n)$ to be a scalar sequence satisfying $h_n \downarrow 0$.  
+fix $t > 0$ and take $(h_n)$ to be a scalar sequence satisfying $h_n \downarrow 0$ as $n \to \infty$.  
 
-On one hand, $U_{t+ h_n} = U_{h_n} U_t \to U_t $ by {eq}`czsg3`.
+On one hand, $U_{t+ h_n} = U_{h_n} U_t \to U_t$ by {eq}`czsg3`.
 
 On the other hand, from the submultiplicative property of the operator norm
 and {eq}`sgbound`,

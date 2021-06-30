@@ -3,5 +3,5 @@
 
 ## References
 
-```{bibliography} references.bib
+```{bibliography} 
 ```

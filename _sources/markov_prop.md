@@ -18,7 +18,7 @@ kernelspec:
 
 
 A continuous time stochastic process is said to have the Markov property if
-that the past and future are independent given the current state.
+its past and future are independent given the current state.
 
 (A more formal definition is provided below.)
 
@@ -122,7 +122,7 @@ In addition to connecting probabilities to the Markov matrix,
 {eq}`markovpropd` says that the process depends on its history only through
 the current state.
 
-We [recall that](https://python.quantecon.org/finite_markov.html), if $X_t$
+We [recall that](https://python.quantecon.org/finite_markov.html#Marginal-Distributions), if $X_t$
 has distribution $\phi$, then $X_{t+1}$ has distribution $\phi P$.
 
 Since $\phi$ is understood as a row vector, the meaning is
@@ -157,7 +157,7 @@ The **joint distribution** of a Markov chain $(X_t)$ satisfying
 $S^\infty$ such that
 
 $$
-    \PP\{ X_{t_1} = y_1, \ldots, X_{t_k} = y_k \}
+    \PP\{ X_{t_1} = y_1, \ldots, X_{t_m} = y_m \}
     =
     \mathbf P_\psi\{ (x_t) \in S^\infty \,:\, 
         x_{t_i} = y_i \text{ for } i = 1, \ldots m\}
@@ -169,7 +169,7 @@ for any $m$ positive integers $t_i$ and $m$ elements  $y_i$ of the state space $
 values at finite collections of times --- see, for example, Theorem 7.2 of {cite}`walsh2012knowing`.)
 
 We can construct $\mathbf P_\psi$ by first defining $P_\psi^n$ over 
-the the finite Cartiesian product $S^{n+1}$ via
+the finite Cartesian product $S^{n+1}$ via
 
 $$
     \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
@@ -195,7 +195,7 @@ Hence $P$ defines the joint distribution $\mathbf P_\psi$ when paired with any i
 
 
 
-### Extending to Countable State Spaces
+### Extending to Infinite (Countable) State Spaces
 
 When $S$ is infinite, the same idea carries through.
 
@@ -333,7 +333,7 @@ initial condition.
 This distribution is defined over the set of all right continuous functions
 $\RR_+ \ni t \mapsto x_t \in S$, which we call $rcS$.
 
-Next one builds finite dimensional distributions over $rcS$ using
+Next one builds [finite dimensional distributions](https://en.wikipedia.org/wiki/Finite-dimensional_distribution) over $rcS$ using
 expressions similar to {eq}`mathjointd`.
 
 Finally, the Kolmogorov extension theorem is applied, similar to the discrete
@@ -355,8 +355,8 @@ condition $\psi$.
 Next, create the corresponding joint distribution $\mathbf P_\psi$ over
 $rcS$, as described above.
 
-Now, for each $t \geq 0$, let $\pi_t$ be the point evaluation functional on
-$rcS$, that maps right continuous function $(x_\tau)$ into its time $t$ value
+Now, for each $t \geq 0$, let $\pi_t$ be the time $t$ projection on
+$rcS$, which maps any right continuous function $(x_\tau)$ into its time $t$ value
 $x_t$.
 
 Finally, let $X_t$ be an $S$-valued function on $rcS$ defined at $(x_\tau) \in rcS$ by $\pi_t ( (x_\tau))$.
@@ -431,7 +431,7 @@ Thus, the Markov property fails.
 From the discussion above, we see that, for continuous time Markov chains,
 the length of time between jumps must be memoryless.
 
-Recall that, by {proof:ref}`exp_unique`, the only memoryless
+Recall that, by {prf:ref}`exp_unique`, the only memoryless
 distribution supported on $\RR_+$ is the exponential distribution.
 
 Hence, a continuous time Markov chain waits at states for an
@@ -508,7 +508,7 @@ Let $X_t$ be the inventory of a firm at time $t$, taking values in the
 integers $0, 1, \ldots, b$.
 
 If $X_t > 0$, then a customer arrives after $W$
-units of time, where $W \sim E(\lambda)$ for some fixed $\lambda > 0$.
+units of time, where $W \sim \Exp (\lambda)$ for some fixed $\lambda > 0$.
 
 Upon arrival, each customer purchases $\min\{U, X_t\}$ units, where $U$ is an
 IID draw from the geometric distribution started at 1 rather than 0:
@@ -520,7 +520,7 @@ $$
 
 If $X_t = 0$, then no customers arrive and the firm places an order for $b$ units.
 
-The order arrives after a delay of $D$ units of time, where $D \sim E(\lambda)$.
+The order arrives after a delay of $D$ units of time, where $D \sim \Exp (\lambda)$.
 
 (We use the same $\lambda$ here just for convenience, to simplify the exposition.)
 
@@ -573,7 +573,7 @@ def sim_path(T=10, seed=123, λ=0.5, α=0.7, b=10):
     np.random.seed(seed)
 
     while True:
-        W = np.random.exponential(scale=1/λ)  # W ~ E(λ)
+        W = np.random.exponential(scale=1/λ)  # W ~ Exp(λ)
         J += W
         J_vals.append(J)
         if J >= T:
@@ -664,7 +664,7 @@ a more general setting where the arguments will be clearer and more useful.
 The examples we have focused on so far are special cases of Markov processes
 with constant jump intensities.
 
-This processes turn out to be very representative (although the constant jump intensity will later be relaxed).
+These processes turn out to be very representative (although the constant jump intensity will later be relaxed).
 
 Let's now summarize the model and its properties.
 
@@ -685,7 +685,7 @@ new state via $K$.
 
 In more detail, the construction is
 
-```{proof:algorithm} Constant Rate Jump Chain
+```{prf:algorithm} Constant Rate Jump Chain
 
 **Inputs** $\psi \in \dD$, positive constant $\lambda$, Markov matrix $K$
 
@@ -784,7 +784,7 @@ $$
     \PP\{X_{s + t} = y \,|\, \fF_s \}
     = \sum_{k \geq 0}
     K^k(Y_{N_s}, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
-    = K^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
+    = \sum_{k \geq 0} K^k(X_s, y) \frac{(t \lambda )^k}{k!} e^{-t \lambda}
 $$
 
 Since the expression above depends only on $X_s$,
@@ -798,7 +798,7 @@ The Markov semigroup can be obtained from our final result, conditioning
 on $X_s = x$ to get
 
 $$
-    P^t(x, y) = \PP\{X_{s + t} = y \,|\, X_s = x \}
+    P_t(x, y) = \PP\{X_{s + t} = y \,|\, X_s = x \}
     = e^{-t \lambda} \sum_{k \geq 0}
         K^k(x, y) \frac{(t \lambda )^k}{k!} 
 $$
@@ -808,7 +808,7 @@ the [matrix exponential](https://en.wikipedia.org/wiki/Matrix_exponential) to
 get
 
 $$
-    P^t 
+    P_t 
     = e^{-t \lambda}
         \sum_{k \geq 0}
         \frac{(t \lambda K)^k}{k!} 
@@ -846,14 +846,14 @@ The state $S$ is set to $\{0, \ldots, b\}$ and the matrix $K$ is defined by
 
 Now we run time forward.
 
-We are interesting in computing the flow of distributions $t \mapsto \psi_t$,
+We are interested in computing the flow of distributions $t \mapsto \psi_t$,
 where $\psi_t$ is the distribution of $X_t$.
 
 According to the theory developed above, we have two options:
 
 Option 1 is to use simulation.
 
-The first step is to simulate many independent observations the process $(X_t^m)_{m=1}^M$.
+The first step is to simulate many independent observations of the process $(X_t^m)_{m=1}^M$.
 
 (Here $m$ indicates simulation number $m$, which you might think of as the outcome
 for firm $m$.)
@@ -867,7 +867,7 @@ $$
     \qquad (x \in S)
 $$
 
-Then $\hat \psi_t(x)$ will be close to $\PP\{X_t = x\}$ by the law of
+When $M$ is large, $\hat \psi_t(x)$ will be close to $\PP\{X_t = x\}$ by the law of
 large numbers.
 
 In other words, in the limit we recover $\psi_t$.
@@ -935,7 +935,7 @@ distribution $\mathbf P_\psi^n$.
 
 ### Exercise 4
 
-Try to produce your own version of the figure {ref}`flow_fig`.
+Try to produce your own version of the figure {ref}`flow_fig`
 
 The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
 
@@ -1019,13 +1019,13 @@ From the Markov property and the induction hypothesis, the right hand side is
 
 $$
     P (x_{n-1}, x_n )
-    \mathbf P_\psi^n(x_0, x_1, \ldots, x_{n-1})
+    \mathbf P_\psi^{n-1}(x_0, x_1, \ldots, x_{n-1})
     =
-        P (x_n, x_{n+1} )
+        P (x_{n-1}, x_n )
         \psi(x_0)
         P(x_0, x_1)
         \times \cdots \times
-        P(x_{n-1}, x_{n-1})
+        P(x_{n-2}, x_{n-1})
 $$
 
 The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
