@@ -4,15 +4,16 @@ Continuous Time Markov Chains
 **Authors**: [Thomas J. Sargent](http://www.tomsargent.com/) and [John
 Stachurski](https://johnstachurski.net/)
 
-This lecture series provides a short introduction to the 
-fascinating field of continuous time Markov chains.  It will, in time, be
-integrated into our [QuantEcon lectures](https://quantecon.org/python-lectures/).
-Focus is shared between theory, applications and computation.  Mathematical
-ideas are combined with computer code to help clarify and build intuition, as
-well as to bridge the gap between theory and applications.
+This lecture series provides a short introduction to the field of continuous
+time Markov chains.  Focus is shared between theory, applications and
+computation.  Mathematical ideas are combined with computer code to help
+clarify and build intuition, as well as to bridge the gap between theory and
+applications.
+
 The presentation is relatively rigorous but the aim is towards applications
 rather than mathematical curiosities (which are plentiful, if one starts to
-look).  Applications are mainly drawn from economics and operations research.
+look).  Applications are drawn from economics, finance and operations
+research.
 
 
 ```{admonition} Solved exercises

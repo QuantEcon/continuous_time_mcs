@@ -1,4 +1,6 @@
-- file: intro
+format: jb-book
+root: intro
+chapters:
 - file: memoryless
 - file: poisson
 - file: markov_prop
