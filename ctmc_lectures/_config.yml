@@ -4,6 +4,7 @@ author: John Stachurski
 # logo: logo.png
 
 sphinx:
+    html_theme: quantecon_book_theme
     config:
         bibtex_reference_style: author_year
         mathjax_config:
