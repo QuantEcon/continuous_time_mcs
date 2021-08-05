@@ -21,3 +21,5 @@ JIT compilation via [Numba](http://numba.pydata.org/).  QuantEcon provides an
 [introduction to these topics](https://python-programming.quantecon.org/).
 
 
+```{tableofcontents}
+```
