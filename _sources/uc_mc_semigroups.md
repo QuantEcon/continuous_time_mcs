@@ -12,7 +12,6 @@ kernelspec:
   name: python3
 ---
 
-
 # UC Markov Semigroups
 
 ## Overview
