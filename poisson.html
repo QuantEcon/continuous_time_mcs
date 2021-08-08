@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Poisson Processes &#8212; Continuous Time Markov Chains</title>
+    <title>2. Poisson Processes &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -61,8 +61,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Markov Property" href="markov_prop.html" />
-    <link rel="prev" title="Memoryless Distributions" href="memoryless.html" />
+    <link rel="next" title="3. The Markov Property" href="markov_prop.html" />
+    <link rel="prev" title="1. Memoryless Distributions" href="memoryless.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="John Stachurski" />
@@ -112,71 +112,71 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   Overview
+   2.1. Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#counting-processes">
-   Counting Processes
+   2.2. Counting Processes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#jumps-and-counts">
-     Jumps and Counts
+     2.2.1. Jumps and Counts
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-holding-times">
-     Exponential Holding Times
+     2.2.2. Exponential Holding Times
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stationary-independent-increments">
-   Stationary Independent Increments
+   2.3. Stationary Independent Increments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#uniqueness">
-   Uniqueness
+   2.4. Uniqueness
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-restarting-property">
-     The Restarting Property
+     2.4.1. The Restarting Property
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   Exercises
+   2.5. Exercises
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1">
-   Exercise 1
+   2.6. Exercise 1
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2">
-   Exercise 2
+   2.7. Exercise 2
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
-   Solutions
+   2.8. Solutions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     Solution to Exercise 1
+     2.8.1. Solution to Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     Solution to Exercise 2
+     2.8.2. Solution to Exercise 2
     </a>
    </li>
   </ul>
@@ -227,9 +227,9 @@
                     <div>
                         
   <div class="section" id="poisson-processes">
-<h1>Poisson Processes<a class="headerlink" href="#poisson-processes" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>Poisson Processes<a class="headerlink" href="#poisson-processes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Counting processes count the number of “arrivals” occurring by a given time
 (e.g., the number of visitors to a website, the number of customers arriving at a restaurant, etc.)</p>
 <p>Counting processes become Poisson processes when the time interval between
@@ -254,16 +254,16 @@ between jumps is <em>necessarily</em> exponentially distributed.</p>
 </div>
 </div>
 <div class="section" id="counting-processes">
-<h2>Counting Processes<a class="headerlink" href="#counting-processes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2. </span>Counting Processes<a class="headerlink" href="#counting-processes" title="Permalink to this headline">¶</a></h2>
 <p>Let’s start with the general case of an arbitrary counting process.</p>
 <div class="section" id="jumps-and-counts">
-<h3>Jumps and Counts<a class="headerlink" href="#jumps-and-counts" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.1. </span>Jumps and Counts<a class="headerlink" href="#jumps-and-counts" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\((J_k)\)</span> be an increasing sequence of nonnegative random variables
 satisfying  <span class="math notranslate nohighlight">\(J_k \to \infty\)</span> with probability one.</p>
 <p>For example, <span class="math notranslate nohighlight">\(J_k\)</span> might be the time the <span class="math notranslate nohighlight">\(k\)</span>-th customer arrives at a shop.</p>
 <p>Then</p>
 <div class="math notranslate nohighlight" id="equation-defcount">
-<span class="eqno">(6)<a class="headerlink" href="#equation-defcount" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-defcount" title="Permalink to this equation">¶</a></span>\[
     N_t := \sum_{k \geq 0} k \mathbb{1} \{ J_k \leq t &lt; J_{k+1} \}
 \]</div>
 <p>is the number of customers that have visited by time <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -304,7 +304,7 @@ satisfying  <span class="math notranslate nohighlight">\(J_k \to \infty\)</span>
 intervals <span class="math notranslate nohighlight">\(J_k - J_{k-1}\)</span> are called <strong>wait times</strong> or <strong>holding times</strong>.</p>
 </div>
 <div class="section" id="exponential-holding-times">
-<h3>Exponential Holding Times<a class="headerlink" href="#exponential-holding-times" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2. </span>Exponential Holding Times<a class="headerlink" href="#exponential-holding-times" title="Permalink to this headline">¶</a></h3>
 <p>A Poisson process is a counting process with independent exponential holding times.</p>
 <p>In particular, suppose that the arrival times are given by <span class="math notranslate nohighlight">\(J_0 = 0\)</span> and</p>
 <div class="math notranslate nohighlight">
@@ -317,7 +317,7 @@ intervals <span class="math notranslate nohighlight">\(J_k - J_{k-1}\)</span> ar
 <span class="math notranslate nohighlight">\(N_t\)</span> has the Poisson distribution with parameter <span class="math notranslate nohighlight">\(t \lambda\)</span>.</p>
 <p>In other words,</p>
 <div class="math notranslate nohighlight" id="equation-poissondist">
-<span class="eqno">(7)<a class="headerlink" href="#equation-poissondist" title="Permalink to this equation">¶</a></span>\[ 
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-poissondist" title="Permalink to this equation">¶</a></span>\[ 
     \PP\{N_t = k\} 
     = e^{-t \lambda} \frac{(t \lambda)^k }{k!}
     \qquad (k = 0, 1, \ldots)
@@ -329,11 +329,11 @@ intervals <span class="math notranslate nohighlight">\(J_k - J_{k-1}\)</span> ar
     = \PP\{W_1 &gt; t\}
     = e^{-t \lambda}
 \]</div>
-<p>and the right hand side agrees with <a class="reference internal" href="#equation-poissondist">(7)</a> when <span class="math notranslate nohighlight">\(k=0\)</span>.</p>
+<p>and the right hand side agrees with <a class="reference internal" href="#equation-poissondist">(2.2)</a> when <span class="math notranslate nohighlight">\(k=0\)</span>.</p>
 <p>This sets up a proof by induction, which is time consuming but not difficult
 — the details can be found in <span class="math notranslate nohighlight">\(\S29\)</span> of <span id="id1">[<a class="reference internal" href="zreferences.html#id13">Howard, 2017</a>]</span>.</p>
 <p>Another way to show that <span class="math notranslate nohighlight">\(N_t\)</span> is Poisson with rate <span class="math notranslate nohighlight">\(\lambda\)</span> is to appeal to
-<a class="reference internal" href="memoryless.html#erlexp">Lemma 2</a>.</p>
+<a class="reference internal" href="memoryless.html#erlexp">Lemma 1.2</a>.</p>
 <p>We observe that</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -341,7 +341,7 @@ intervals <span class="math notranslate nohighlight">\(J_k - J_{k-1}\)</span> ar
     = \PP\{J_{n+1} &gt; t\} 
     = 1 - \PP\{J_{n+1} \leq t\}
 \]</div>
-<p>Inserting the expression for the Erlang CDF in <a class="reference internal" href="memoryless.html#equation-erlcdf">(5)</a> with shape <span class="math notranslate nohighlight">\(n+1\)</span> and
+<p>Inserting the expression for the Erlang CDF in <a class="reference internal" href="memoryless.html#equation-erlcdf">(1.5)</a> with shape <span class="math notranslate nohighlight">\(n+1\)</span> and
 rate <span class="math notranslate nohighlight">\(\lambda\)</span>, we obtain</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -384,7 +384,7 @@ at each new arrival.</p>
 </div>
 </div>
 <div class="section" id="stationary-independent-increments">
-<h2>Stationary Independent Increments<a class="headerlink" href="#stationary-independent-increments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3. </span>Stationary Independent Increments<a class="headerlink" href="#stationary-independent-increments" title="Permalink to this headline">¶</a></h2>
 <p>One of the defining features of a Poisson process is that it has stationary
 and independent increments.</p>
 <p>This is due to the memoryless property of exponentials.</p>
@@ -400,7 +400,7 @@ approximation.</p>
 <p>In the discussion below, we use the following well known fact:  If
 <span class="math notranslate nohighlight">\((\theta_n)\)</span> is a sequence such that <span class="math notranslate nohighlight">\(n \theta_n\)</span> converges, then</p>
 <div class="math notranslate nohighlight" id="equation-binpois">
-<span class="eqno">(8)<a class="headerlink" href="#equation-binpois" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-binpois" title="Permalink to this equation">¶</a></span>\[
     \text{Binomial}(n, \theta_n) 
     \approx
     \text{Poisson}(n \theta_n)
@@ -458,7 +458,7 @@ subsets of <span class="math notranslate nohighlight">\((V_i)\)</span>.</p>
 </div>
 <p>We expect from the discussion above that <span class="math notranslate nohighlight">\((\hat N_t)\)</span> approximates a Poisson process.</p>
 <p>This intuition is correct because, fixing <span class="math notranslate nohighlight">\(t\)</span>, letting <span class="math notranslate nohighlight">\(k := \max\{i \in
-\ZZ_+ \,:\, t_i \leq t\}\)</span> and applying <a class="reference internal" href="#equation-binpois">(8)</a>, we have</p>
+\ZZ_+ \,:\, t_i \leq t\}\)</span> and applying <a class="reference internal" href="#equation-binpois">(2.3)</a>, we have</p>
 <div class="math notranslate nohighlight">
 \[
     \hat N_t 
@@ -502,11 +502,11 @@ kh\)</span>.</p>
 approximation, increments depend on separate subsets of <span class="math notranslate nohighlight">\((V_i)\)</span>.</p>
 </div>
 <div class="section" id="uniqueness">
-<h2>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h2>
 <p>What other counting processes have stationary independent increments?</p>
 <p>Remarkably, the answer is none:</p>
 <div class="proof theorem admonition" id="theorem-0">
-<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Characterization of Poisson Processes)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 2.1 </span> (Characterization of Poisson Processes)</p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((M_t)\)</span> is a stochastic process supported on <span class="math notranslate nohighlight">\(\ZZ_+\)</span> and starting at 0 with
 the property that its increments are stationary and independent, then <span class="math notranslate nohighlight">\((M_t)\)</span> is a Poisson process.</p>
@@ -523,12 +523,12 @@ the only memoryless distribution.</p>
 <p>Details can be found in Section 6.2 of <span id="id3">[<a class="reference internal" href="zreferences.html#id11">Pardoux, 2008</a>]</span> or
 Theorem 2.4.3 of <span id="id4">[<a class="reference internal" href="zreferences.html#id12">Norris, 1998</a>]</span>.</p>
 <div class="section" id="the-restarting-property">
-<span id="restart-prop"></span><h3>The Restarting Property<a class="headerlink" href="#the-restarting-property" title="Permalink to this headline">¶</a></h3>
+<span id="restart-prop"></span><h3><span class="section-number">2.4.1. </span>The Restarting Property<a class="headerlink" href="#the-restarting-property" title="Permalink to this headline">¶</a></h3>
 <p>An important consequence of stationary independent increments is the
 restarting property, which means that, when simulating, we can freely stop and
 restart a Poisson process at any time:</p>
 <div class="proof theorem admonition" id="theorem-1">
-<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (Poisson Processes can be Paused and Restarted)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 2.2 </span> (Poisson Processes can be Paused and Restarted)</p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((N_t)\)</span> is a Poisson process, <span class="math notranslate nohighlight">\(s &gt; 0\)</span> and
 <span class="math notranslate nohighlight">\((M_t)\)</span> is defined by <span class="math notranslate nohighlight">\(M_t = N_{s+t} - N_s\)</span> for <span class="math notranslate nohighlight">\(t \geq 0\)</span>, then <span class="math notranslate nohighlight">\((M_t)\)</span> is a
@@ -556,10 +556,10 @@ Poisson process independent of <span class="math notranslate nohighlight">\((N_r
 </div>
 </div>
 <div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="exercise-1">
-<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.6. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
 <p>Fix <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> and draw <span class="math notranslate nohighlight">\(\{W_i\}\)</span> as IID exponentials with rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>Set <span class="math notranslate nohighlight">\(J_n := W_1 + \cdots W_n\)</span> with <span class="math notranslate nohighlight">\(J_0 = 0\)</span> and
 <span class="math notranslate nohighlight">\(N_t := \sum_{n \geq 0} n \mathbb 1\{ J_n \leq t &lt; J_{n+1} \}\)</span>.</p>
@@ -571,15 +571,15 @@ distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)<
 <p>Try first with <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(T=10\)</span>.</p>
 </div>
 <div class="section" id="exercise-2">
-<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
 <p>In the lecture we used the fact that <span class="math notranslate nohighlight">\(\Binomial(n, \theta) \approx \Poisson(n \theta)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
 <p>Investigate this relationship by plotting the distributions side by side.</p>
 <p>Experiment with different values of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 </div>
 <div class="section" id="solutions">
-<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.8. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="solution-to-exercise-1">
-<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.8.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>Here is one solution.</p>
 <p>The figure shows that the fit is already good with a modest sample size.</p>
 <p>Increasing the sample size will further improve the fit.</p>
@@ -634,7 +634,7 @@ distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)<
 </div>
 </div>
 <div class="section" id="solution-to-exercise-2">
-<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.8.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Here is one solution.  It shows that the approximation is good when <span class="math notranslate nohighlight">\(n\)</span> is
 large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
 <div class="cell docutils container">
@@ -724,47 +724,47 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
-   Memoryless Distributions
+   1. Memoryless Distributions
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Poisson Processes
+   2. Poisson Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_prop.html">
-   The Markov Property
+   3. The Markov Property
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   The Kolmogorov Backward Equation
+   4. The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_fwd.html">
-   The Kolmogorov Forward Equation
+   5. The Kolmogorov Forward Equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="generators.html">
-   Semigroups and Generators
+   6. Semigroups and Generators
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="uc_mc_semigroups.html">
-   UC Markov Semigroups
+   7. UC Markov Semigroups
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ergodicity.html">
-   Stationarity and Ergodicity
+   8. Stationarity and Ergodicity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   Bibliography
+   9. Bibliography
   </a>
  </li>
 </ul>

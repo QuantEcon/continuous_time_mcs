@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Kolmogorov Forward Equation &#8212; Continuous Time Markov Chains</title>
+    <title>5. The Kolmogorov Forward Equation &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -61,8 +61,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Semigroups and Generators" href="generators.html" />
-    <link rel="prev" title="The Kolmogorov Backward Equation" href="kolmogorov_bwd.html" />
+    <link rel="next" title="6. Semigroups and Generators" href="generators.html" />
+    <link rel="prev" title="4. The Kolmogorov Backward Equation" href="kolmogorov_bwd.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="John Stachurski" />
@@ -112,103 +112,103 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   Overview
+   5.1. Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#from-difference-equations-to-odes">
-   From Difference Equations to ODEs
+   5.2. From Difference Equations to ODEs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#review-of-the-discrete-time-case">
-     Review of the Discrete Time Case
+     5.2.1. Review of the Discrete Time Case
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#shifting-to-continuous-time">
-     Shifting to Continuous Time
+     5.2.2. Shifting to Continuous Time
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#odes-in-distribution-space">
-   ODEs in Distribution Space
+   5.3. ODEs in Distribution Space
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solutions-to-linear-vector-odes">
-     Solutions to Linear Vector ODEs
+     5.3.1. Solutions to Linear Vector ODEs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#forwards-vs-backwards-equations">
-     Forwards vs Backwards Equations
+     5.3.2. Forwards vs Backwards Equations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matrix-vs-vector-valued-odes">
-     Matrix- vs Vector-Valued ODEs
+     5.3.3. Matrix- vs Vector-Valued ODEs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#preserving-distributions">
-     Preserving Distributions
+     5.3.4. Preserving Distributions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#jump-chains">
-   Jump Chains
+   5.4. Jump Chains
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   Summary
+   5.5. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   Exercises
+   5.6. Exercises
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1">
-     Exercise 1
+     5.6.1. Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-2">
-     Exercise 2
+     5.6.2. Exercise 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-3">
-     Exercise 3
+     5.6.3. Exercise 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
-   Solutions
+   5.7. Solutions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     Solution to Exercise 1
+     5.7.1. Solution to Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     Solution to Exercise 2
+     5.7.2. Solution to Exercise 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-3">
-     Solution to Exercise 3
+     5.7.3. Solution to Exercise 3
     </a>
    </li>
   </ul>
@@ -259,9 +259,9 @@
                     <div>
                         
   <div class="section" id="the-kolmogorov-forward-equation">
-<h1>The Kolmogorov Forward Equation<a class="headerlink" href="#the-kolmogorov-forward-equation" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>The Kolmogorov Forward Equation<a class="headerlink" href="#the-kolmogorov-forward-equation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In this lecture we approach continuous time Markov chains from a more
 analytical perspective.</p>
 <p>The emphasis will be on describing distribution flows through vector-valued
@@ -295,13 +295,13 @@ treatment of infinite state spaces, assuming throughout this lecture that <span 
 </div>
 </div>
 <div class="section" id="from-difference-equations-to-odes">
-<h2>From Difference Equations to ODEs<a class="headerlink" href="#from-difference-equations-to-odes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>From Difference Equations to ODEs<a class="headerlink" href="#from-difference-equations-to-odes" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="markov_prop.html#invdistflows"><span class="std std-ref">Previously</span></a> we generated this figure, which shows how distributions evolve over time for the inventory model under a certain parameterization:</p>
 <div class="figure align-default" id="id1">
 <div class="cell_output docutils container">
 <img alt="_images/markov_prop_7_0.png" src="_images/markov_prop_7_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Probability flows for the inventory model.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Probability flows for the inventory model.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>(Hot colors indicate early dates and cool colors denote later dates.)</p>
 <p>We also learned how this flow is related to
@@ -309,7 +309,7 @@ the Kolmogorov backward equation, which is an ODE.</p>
 <p>In this section we examine distribution flows and their connection to
 ODEs and continuous time Markov chains more systematically.</p>
 <div class="section" id="review-of-the-discrete-time-case">
-<h3>Review of the Discrete Time Case<a class="headerlink" href="#review-of-the-discrete-time-case" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.1. </span>Review of the Discrete Time Case<a class="headerlink" href="#review-of-the-discrete-time-case" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\((X_t)\)</span> be a discrete time Markov chain with Markov matrix <span class="math notranslate nohighlight">\(P\)</span>.</p>
 <p><a class="reference internal" href="markov_prop.html#finstatediscretemc"><span class="std std-ref">Recall that</span></a>, in the discrete time case, the distribution <span class="math notranslate nohighlight">\(\psi_t\)</span> of <span class="math notranslate nohighlight">\(X_t\)</span> updates according to</p>
 <div class="math notranslate nohighlight">
@@ -406,7 +406,7 @@ linear difference equation in distribution space.</p>
 take <span class="math notranslate nohighlight">\(G\)</span> to be a linear map from <span class="math notranslate nohighlight">\(\dD\)</span> to itself and
 write down the difference equation</p>
 <div class="math notranslate nohighlight" id="equation-gdiff2">
-<span class="eqno">(32)<a class="headerlink" href="#equation-gdiff2" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-gdiff2" title="Permalink to this equation">¶</a></span>\[
     \psi_{t+1} = G(\psi_t)
     \quad \text{with } \psi_0 \in \dD \text{ given}.
 \]</div>
@@ -414,12 +414,12 @@ write down the difference equation</p>
 be represented by a matrix.</p>
 <p>Moreover, a matrix <span class="math notranslate nohighlight">\(P\)</span> is a Markov matrix if and only if <span class="math notranslate nohighlight">\(\psi \mapsto
 \psi P\)</span> sends <span class="math notranslate nohighlight">\(\dD\)</span> into itself (check it if you haven’t already).</p>
-<p>So, under the stated conditions, our difference equation <a class="reference internal" href="#equation-gdiff2">(32)</a> uniquely
+<p>So, under the stated conditions, our difference equation <a class="reference internal" href="#equation-gdiff2">(5.1)</a> uniquely
 identifies a Markov matrix, along with an initial condition <span class="math notranslate nohighlight">\(\psi_0\)</span>.</p>
 <p>Together, these objects identify the joint distribution of a discrete time Markov chain, as <a class="reference internal" href="markov_prop.html#jdfin"><span class="std std-ref">previously described</span></a>.</p>
 </div>
 <div class="section" id="shifting-to-continuous-time">
-<h3>Shifting to Continuous Time<a class="headerlink" href="#shifting-to-continuous-time" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.2. </span>Shifting to Continuous Time<a class="headerlink" href="#shifting-to-continuous-time" title="Permalink to this headline">¶</a></h3>
 <p>We have just argued that a discrete time Markov chain can be identified with a
 linear difference equation evolving in <span class="math notranslate nohighlight">\(\dD\)</span>.</p>
 <p>This strongly suggests that a continuous time Markov chain can be identified
@@ -429,10 +429,10 @@ with a linear ODE evolving in <span class="math notranslate nohighlight">\(\dD\)
 </div>
 </div>
 <div class="section" id="odes-in-distribution-space">
-<h2>ODEs in Distribution Space<a class="headerlink" href="#odes-in-distribution-space" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.3. </span>ODEs in Distribution Space<a class="headerlink" href="#odes-in-distribution-space" title="Permalink to this headline">¶</a></h2>
 <p>Consider linear differential equation given by</p>
 <div class="math notranslate nohighlight" id="equation-ode-mc">
-<span class="eqno">(33)<a class="headerlink" href="#equation-ode-mc" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-ode-mc" title="Permalink to this equation">¶</a></span>\[
     \psi_t' = \psi_t Q, 
     \qquad \psi_0 \text{ a given element of } \dD,
 \]</div>
@@ -452,15 +452,15 @@ with a linear ODE evolving in <span class="math notranslate nohighlight">\(\dD\)
     \end{pmatrix}
 \]</div>
 <div class="section" id="solutions-to-linear-vector-odes">
-<span id="solvode"></span><h3>Solutions to Linear Vector ODEs<a class="headerlink" href="#solutions-to-linear-vector-odes" title="Permalink to this headline">¶</a></h3>
+<span id="solvode"></span><h3><span class="section-number">5.3.1. </span>Solutions to Linear Vector ODEs<a class="headerlink" href="#solutions-to-linear-vector-odes" title="Permalink to this headline">¶</a></h3>
 <p>Using the matrix exponential, the unique solution to the initial value problem
-<a class="reference internal" href="#equation-ode-mc">(33)</a> is</p>
+<a class="reference internal" href="#equation-ode-mc">(5.2)</a> is</p>
 <div class="math notranslate nohighlight" id="equation-cmc-sol">
-<span class="eqno">(34)<a class="headerlink" href="#equation-cmc-sol" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-cmc-sol" title="Permalink to this equation">¶</a></span>\[
     \psi_t = \psi_0 P_t 
     \quad \text{where } P_t := e^{tQ}
 \]</div>
-<p>To check that <a class="reference internal" href="#equation-cmc-sol">(34)</a> is a solution, we use <a class="reference internal" href="kolmogorov_bwd.html#equation-expoderiv">(27)</a> again to get</p>
+<p>To check that <a class="reference internal" href="#equation-cmc-sol">(5.3)</a> is a solution, we use <a class="reference internal" href="kolmogorov_bwd.html#equation-expoderiv">(4.7)</a> again to get</p>
 <div class="math notranslate nohighlight">
 \[
     \frac{d}{d t} P_t =  Q e^{tQ} = e^{tQ} Q 
@@ -482,9 +482,9 @@ the <a class="reference internal" href="kolmogorov_bwd.html"><span class="doc">K
     = \psi_0 P_t Q
     = \psi_t Q
 \]</div>
-<p>This confirms that <a class="reference internal" href="#equation-cmc-sol">(34)</a> solves <a class="reference internal" href="#equation-ode-mc">(33)</a>.</p>
-<p>Here’s an example of three distribution flows with dynamics generated  by <a class="reference internal" href="#equation-ode-mc">(33)</a>,  one starting from each vertex.</p>
-<p>The code uses <a class="reference internal" href="#equation-cmc-sol">(34)</a> with matrix <span class="math notranslate nohighlight">\(Q\)</span> given by</p>
+<p>This confirms that <a class="reference internal" href="#equation-cmc-sol">(5.3)</a> solves <a class="reference internal" href="#equation-ode-mc">(5.2)</a>.</p>
+<p>Here’s an example of three distribution flows with dynamics generated  by <a class="reference internal" href="#equation-ode-mc">(5.2)</a>,  one starting from each vertex.</p>
+<p>The code uses <a class="reference internal" href="#equation-cmc-sol">(5.3)</a> with matrix <span class="math notranslate nohighlight">\(Q\)</span> given by</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -530,7 +530,7 @@ the <a class="reference internal" href="kolmogorov_bwd.html"><span class="doc">K
 <p>(Distributions cool over time, so initial conditions are hot colors.)</p>
 </div>
 <div class="section" id="forwards-vs-backwards-equations">
-<h3>Forwards vs Backwards Equations<a class="headerlink" href="#forwards-vs-backwards-equations" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.2. </span>Forwards vs Backwards Equations<a class="headerlink" href="#forwards-vs-backwards-equations" title="Permalink to this headline">¶</a></h3>
 <p>As the above discussion shows, we can take the Kolmogorov forward equation
 <span class="math notranslate nohighlight">\(P_t' = P_t Q\)</span> and premultiply by any distribution <span class="math notranslate nohighlight">\(\psi_0\)</span> to get the
 distribution ODE <span class="math notranslate nohighlight">\(\psi'_t = \psi_t Q\)</span>.</p>
@@ -547,7 +547,7 @@ ODE tells us how expectations evolve, conditioning backward to time zero.</p>
 <p>Both the forward and the backward equations uniquely pin down the same solution <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> when combined with the initial condition <span class="math notranslate nohighlight">\(P_0 = I\)</span>.</p>
 </div>
 <div class="section" id="matrix-vs-vector-valued-odes">
-<h3>Matrix- vs Vector-Valued ODEs<a class="headerlink" href="#matrix-vs-vector-valued-odes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.3. </span>Matrix- vs Vector-Valued ODEs<a class="headerlink" href="#matrix-vs-vector-valued-odes" title="Permalink to this headline">¶</a></h3>
 <p>The ODE <span class="math notranslate nohighlight">\(\psi'_t = \psi_t Q\)</span> is sometimes called the
 <strong>Fokker–Planck equation</strong> (although this terminology is most commonly used
 in the context of diffusions).</p>
@@ -564,7 +564,7 @@ semigroup.</p>
 this fundamental object.</p>
 </div>
 <div class="section" id="preserving-distributions">
-<h3>Preserving Distributions<a class="headerlink" href="#preserving-distributions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.4. </span>Preserving Distributions<a class="headerlink" href="#preserving-distributions" title="Permalink to this headline">¶</a></h3>
 <p>In the simulation above, <span class="math notranslate nohighlight">\(Q\)</span> was chosen with some care, so that the flow
 remains in <span class="math notranslate nohighlight">\(\dD\)</span>.</p>
 <p>What are the exact properties we require on <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(\psi_t\)</span> is always
@@ -580,7 +580,7 @@ for all <span class="math notranslate nohighlight">\(t\)</span>?</p>
 <p>A square matrix <span class="math notranslate nohighlight">\(Q\)</span> is called an <strong>intensity matrix</strong> if <span class="math notranslate nohighlight">\(Q\)</span> has zero row
 sums and <span class="math notranslate nohighlight">\(Q(x, y) \geq 0\)</span> whenever <span class="math notranslate nohighlight">\(x \not= y\)</span>.</p>
 <div class="proof theorem admonition" id="intvsmk">
-<p class="admonition-title"><span class="caption-number">Theorem 10 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 5.1 </span></p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(Q\)</span> is a matrix on <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(P_t := e^{tQ}\)</span>, then the following statements
 are equivalent:</p>
@@ -589,10 +589,10 @@ are equivalent:</p>
 <li><p><span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix.</p></li>
 </ol>
 </div>
-</div><p>The proof is related to that of <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 9</a> and is found as
+</div><p>The proof is related to that of <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.4</a> and is found as
 a solved exercise below.</p>
 <div class="proof corollary admonition" id="intvsmk_c">
-<p class="admonition-title"><span class="caption-number">Corollary 11 </span></p>
+<p class="admonition-title"><span class="caption-number">Corollary 5.2 </span></p>
 <div class="corollary-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix on finite <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>,
 then <span class="math notranslate nohighlight">\((P_t)\)</span> is a Markov semigroup.</p>
@@ -603,9 +603,9 @@ some mild restrictions on <span class="math notranslate nohighlight">\(Q\)</span
 </div>
 </div>
 <div class="section" id="jump-chains">
-<h2>Jump Chains<a class="headerlink" href="#jump-chains" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4. </span>Jump Chains<a class="headerlink" href="#jump-chains" title="Permalink to this headline">¶</a></h2>
 <p>Let’s return to the chain <span class="math notranslate nohighlight">\((X_t)\)</span> created from jump chain pair <span class="math notranslate nohighlight">\((\lambda, K)\)</span> in
-<a class="reference internal" href="kolmogorov_bwd.html#ejc_algo">Algorithm 6</a>.</p>
+<a class="reference internal" href="kolmogorov_bwd.html#ejc_algo">Algorithm 4.1</a>.</p>
 <p>We found that the semigroup is given by</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -632,7 +632,7 @@ Q\)</span>, which is the Fokker–Planck equation.</p>
 minus the outflow.</p>
 </div>
 <div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>We have seen that any intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> defines a Markov semigroup via <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span>.</p>
 <p>Henceforth, we will say that <span class="math notranslate nohighlight">\((X_t)\)</span> is <strong>a Markov chain with intensity matrix</strong> <span class="math notranslate nohighlight">\(Q\)</span> if
 <span class="math notranslate nohighlight">\((X_t)\)</span> is a Markov chain with Markov semigroup <span class="math notranslate nohighlight">\((e^{tQ})\)</span>.</p>
@@ -657,15 +657,15 @@ understood as follows:</p>
 </ul>
 </div>
 <div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.6.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup such that <span class="math notranslate nohighlight">\(t \mapsto P_t(x, y)\)</span> is
 differentiable at all <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\((x, y) \in S \times S\)</span>.</p>
 <p>(The derivative at <span class="math notranslate nohighlight">\(t=0\)</span> is the usual right derivative.)</p>
 <p>Define (pointwise, at each <span class="math notranslate nohighlight">\((x,y)\)</span>),</p>
 <div class="math notranslate nohighlight" id="equation-genfl">
-<span class="eqno">(35)<a class="headerlink" href="#equation-genfl" title="Permalink to this equation">¶</a></span>\[ 
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-genfl" title="Permalink to this equation">¶</a></span>\[ 
     Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
 \]</div>
 <p>Assuming that this limit exists, and hence <span class="math notranslate nohighlight">\(Q\)</span> is well-defined, show that</p>
@@ -678,7 +678,7 @@ differentiable at all <span class="math notranslate nohighlight">\(t \geq 0\)</s
 <p>both hold. (These are the Kolmogorov forward and backward equations.)</p>
 </div>
 <div class="section" id="exercise-2">
-<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.6.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Recall <a class="reference internal" href="kolmogorov_bwd.html#sdji"><span class="std std-ref">our model</span></a> of jump chains with state-dependent jump
 intensities given by rate function <span class="math notranslate nohighlight">\(x \mapsto \lambda(x)\)</span>.</p>
 <p>After a wait time with exponential rate <span class="math notranslate nohighlight">\(\lambda(x) \in (0, \infty)\)</span>, the
@@ -686,22 +686,22 @@ state transitions from <span class="math notranslate nohighlight">\(x\)</span> t
 <p>We found that the associated semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> satisfies the Kolmogorov
 backward equation <span class="math notranslate nohighlight">\(P'_t = Q P_t\)</span> with</p>
 <div class="math notranslate nohighlight" id="equation-qeqagain">
-<span class="eqno">(36)<a class="headerlink" href="#equation-qeqagain" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-qeqagain" title="Permalink to this equation">¶</a></span>\[
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 \]</div>
-<p>Show that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix and that <a class="reference internal" href="#equation-genfl">(35)</a> holds.</p>
+<p>Show that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix and that <a class="reference internal" href="#equation-genfl">(5.4)</a> holds.</p>
 </div>
 <div class="section" id="exercise-3">
-<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
-<p>Prove <a class="reference internal" href="#intvsmk">Theorem 10</a> by adapting the arguments in <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 9</a>.
+<h3><span class="section-number">5.6.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Prove <a class="reference internal" href="#intvsmk">Theorem 5.1</a> by adapting the arguments in <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.4</a>.
 (This is nontrivial but worth at least trying.)</p>
 <p>Hint: The constant <span class="math notranslate nohighlight">\(m\)</span> in the proof can be set to <span class="math notranslate nohighlight">\(\max_x |Q(x, x)|\)</span>.</p>
 </div>
 </div>
 <div class="section" id="solutions">
-<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="solution-to-exercise-1">
-<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup and let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in the statement
 of the exercise.</p>
 <p>Fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(h &gt; 0\)</span>.</p>
@@ -724,8 +724,8 @@ which is the Kolmogorov forward equation.</p>
 <p>also holds.  Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> gives the Kolmogorov backward equation.</p>
 </div>
 <div class="section" id="solution-to-exercise-2">
-<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
-<p>Let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in <a class="reference internal" href="#equation-qeqagain">(36)</a>.</p>
+<h3><span class="section-number">5.7.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in <a class="reference internal" href="#equation-qeqagain">(5.5)</a>.</p>
 <p>We need to show that <span class="math notranslate nohighlight">\(Q\)</span> is nonnegative off the diagonal and has zero row
 sums.</p>
 <p>The first assertion is immediate from nonnegativity of <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
@@ -740,9 +740,9 @@ as a column vector of ones,</p>
 \]</div>
 </div>
 <div class="section" id="solution-to-exercise-3">
-<h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.3. </span>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
 <p>Suppose that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix, fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and set <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span>.</p>
-<p>The proof from <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 9</a> that <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums applies
+<p>The proof from <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.4</a> that <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums applies
 directly to the current case.</p>
 <p>The proof of nonnegativity of <span class="math notranslate nohighlight">\(P_t\)</span> can be applied after some
 modifications.</p>
@@ -767,7 +767,7 @@ we can employ the Kolmogorov backward equation to obtain</p>
 <p>We can use the definition of the matrix exponential to obtain,
 for any <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-otp">
-<span class="eqno">(37)<a class="headerlink" href="#equation-otp" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-otp" title="Permalink to this equation">¶</a></span>\[
     P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
 \]</div>
 <p>From this equality and the assumption that <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix for all
@@ -830,47 +830,47 @@ nonnegative.</p>
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
-   Memoryless Distributions
+   1. Memoryless Distributions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="poisson.html">
-   Poisson Processes
+   2. Poisson Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_prop.html">
-   The Markov Property
+   3. The Markov Property
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   The Kolmogorov Backward Equation
+   4. The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   The Kolmogorov Forward Equation
+   5. The Kolmogorov Forward Equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="generators.html">
-   Semigroups and Generators
+   6. Semigroups and Generators
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="uc_mc_semigroups.html">
-   UC Markov Semigroups
+   7. UC Markov Semigroups
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ergodicity.html">
-   Stationarity and Ergodicity
+   8. Stationarity and Ergodicity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   Bibliography
+   9. Bibliography
   </a>
  </li>
 </ul>

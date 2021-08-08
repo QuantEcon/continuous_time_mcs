@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Semigroups and Generators &#8212; Continuous Time Markov Chains</title>
+    <title>6. Semigroups and Generators &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -61,8 +61,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="UC Markov Semigroups" href="uc_mc_semigroups.html" />
-    <link rel="prev" title="The Kolmogorov Forward Equation" href="kolmogorov_fwd.html" />
+    <link rel="next" title="7. UC Markov Semigroups" href="uc_mc_semigroups.html" />
+    <link rel="prev" title="5. The Kolmogorov Forward Equation" href="kolmogorov_fwd.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="John Stachurski" />
@@ -112,98 +112,98 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   Overview
+   6.1. Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#motivation">
-   Motivation
+   6.2. Motivation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preliminaries">
-   Preliminaries
+   6.3. Preliminaries
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-space-of-linear-operators">
-     The Space of Linear Operators
+     6.3.1. The Space of Linear Operators
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-exponential-function">
-     The Exponential Function
+     6.3.2. The Exponential Function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#operator-calculus">
-     Operator Calculus
+     6.3.3. Operator Calculus
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Semigroups and Generators
+   6.4. Semigroups and Generators
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#operator-semigroups">
-     Operator Semigroups
+     6.4.1. Operator Semigroups
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#generators">
-     Generators
+     6.4.2. Generators
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-characterization-of-uniformly-continuous-semigroups">
-     A Characterization of Uniformly Continuous Semigroups
+     6.4.3. A Characterization of Uniformly Continuous Semigroups
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   Exercises
+   6.5. Exercises
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1">
-     Exercise 1
+     6.5.1. Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-2">
-     Exercise 2
+     6.5.2. Exercise 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-3">
-     Exercise 3
+     6.5.3. Exercise 3
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
-   Solutions
+   6.6. Solutions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     Solution to Exercise 1
+     6.6.1. Solution to Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     Solution to Exercise 2
+     6.6.2. Solution to Exercise 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-3">
-     Solution to Exercise 3
+     6.6.3. Solution to Exercise 3
     </a>
    </li>
   </ul>
@@ -254,9 +254,9 @@
                     <div>
                         
   <div class="section" id="semigroups-and-generators">
-<h1>Semigroups and Generators<a class="headerlink" href="#semigroups-and-generators" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>Semigroups and Generators<a class="headerlink" href="#semigroups-and-generators" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>We have seen in previous lectures that every intensity matrix generates a
 Markov semigroup.</p>
 <p>We have also hinted that the pairing is one-to-one, in a sense to be made precise.</p>
@@ -277,12 +277,12 @@ bound.<a class="footnote-reference brackets" href="#footnotepp" id="id1">1</a></
 <p>Readers are assumed to have some basic familiarity with <a class="reference external" href="https://en.wikipedia.org/wiki/Banach_space">Banach spaces</a>.</p>
 </div>
 <div class="section" id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>The general theory of continuous semigroups of operators is motivated by
 the problem of solving linear ODEs in infinite dimensional spaces.<a class="footnote-reference brackets" href="#fnpde" id="id2">2</a></p>
 <p>More specifically, the challenge is to solve initial value problems such as</p>
 <div class="math notranslate nohighlight" id="equation-abscp">
-<span class="eqno">(38)<a class="headerlink" href="#equation-abscp" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-abscp" title="Permalink to this equation">¶</a></span>\[
     x'_t = A x_t,
     \quad x_0 \text{ given}
 \]</div>
@@ -299,25 +299,25 @@ space.</p></li>
 <p>PDEs tell us how functions change over time, starting from an infinitesimal
 description.</p>
 <p>When <span class="math notranslate nohighlight">\(x_t\)</span> is a point in a function space, this fits into the framework of
-<a class="reference internal" href="#equation-abscp">(38)</a>.</p>
+<a class="reference internal" href="#equation-abscp">(6.1)</a>.</p>
 <p>Another example comes from Markov processes, where, as we have seen, the flow
 of distributions over time can be represented as a linear ODE in distribution
 space.</p>
 <p>If the number of state is infinite, then the space of distributions is
 infinite dimensional.</p>
-<p>This is another version of <a class="reference internal" href="#equation-abscp">(38)</a>, and we return to it after a discussion
+<p>This is another version of <a class="reference internal" href="#equation-abscp">(6.1)</a>, and we return to it after a discussion
 of the general theory.</p>
 <p>To give a high level view of the results below, the solution to the Cauchy
 problem is represented as a trajectory <span class="math notranslate nohighlight">\(t \mapsto U_t x_0\)</span> from the initial
 value <span class="math notranslate nohighlight">\(x_0\)</span> under a semigroup of maps <span class="math notranslate nohighlight">\((U_t)\)</span>.</p>
-<p>The operator <span class="math notranslate nohighlight">\(A\)</span> in <a class="reference internal" href="#equation-abscp">(38)</a> is called the “generator” of <span class="math notranslate nohighlight">\((U_t)\)</span> and is
+<p>The operator <span class="math notranslate nohighlight">\(A\)</span> in <a class="reference internal" href="#equation-abscp">(6.1)</a> is called the “generator” of <span class="math notranslate nohighlight">\((U_t)\)</span> and is
 its infinitesimal description.</p>
 </div>
 <div class="section" id="preliminaries">
-<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
 <p>Throughout this lecture, <span class="math notranslate nohighlight">\((\BB, \| \cdot \|)\)</span> is a Banach space.</p>
 <div class="section" id="the-space-of-linear-operators">
-<h3>The Space of Linear Operators<a class="headerlink" href="#the-space-of-linear-operators" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.1. </span>The Space of Linear Operators<a class="headerlink" href="#the-space-of-linear-operators" title="Permalink to this headline">¶</a></h3>
 <p>You will recall that a <strong>linear operator</strong> on <span class="math notranslate nohighlight">\(\BB\)</span> is a map <span class="math notranslate nohighlight">\(A\)</span> from <span class="math notranslate nohighlight">\(\BB\)</span> to
 itself satisfying</p>
 <div class="math notranslate nohighlight">
@@ -328,7 +328,7 @@ itself satisfying</p>
 \]</div>
 <p>The operator <span class="math notranslate nohighlight">\(A\)</span> is called <strong>bounded</strong> if</p>
 <div class="math notranslate nohighlight" id="equation-norml">
-<span class="eqno">(39)<a class="headerlink" href="#equation-norml" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-norml" title="Permalink to this equation">¶</a></span>\[
     \| A \| := \sup_{g \in \BB, \, \| g \| \leq 1} \| A g \| &lt; \infty
 \]</div>
 <p>This is the usual definition of a <a class="reference external" href="https://en.wikipedia.org/wiki/Bounded_operator">bounded linear operator</a> on a normed linear space.</p>
@@ -343,7 +343,7 @@ so that, for <span class="math notranslate nohighlight">\(\alpha \in \RR\)</span
 \]</div>
 <p>and so on.</p>
 <p>We write <span class="math notranslate nohighlight">\(A B\)</span> to indicate composition of the operators <span class="math notranslate nohighlight">\(A, B \in \linop\)</span>.</p>
-<p>The value defined in <a class="reference internal" href="#equation-norml">(39)</a> is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Operator_norm"><strong>operator norm</strong></a> of <span class="math notranslate nohighlight">\(A\)</span> and,
+<p>The value defined in <a class="reference internal" href="#equation-norml">(6.2)</a> is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Operator_norm"><strong>operator norm</strong></a> of <span class="math notranslate nohighlight">\(A\)</span> and,
 as suggested by the notation, is a norm on <span class="math notranslate nohighlight">\(\linop\)</span>.</p>
 <p>In addition to being a norm, it enjoys the submultiplicative property <span class="math notranslate nohighlight">\(\| AB
 \| \leq \| A \| \| B\|\)</span> for all <span class="math notranslate nohighlight">\(A, B \in \linop\)</span>.</p>
@@ -351,11 +351,11 @@ as suggested by the notation, is a norm on <span class="math notranslate nohighl
 <p>(In fact <span class="math notranslate nohighlight">\(\linop\)</span> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Banach_algebra">unital Banach algebra</a> when multiplication is identified with operator composition and <span class="math notranslate nohighlight">\(I\)</span> is adopted as the unit.)</p>
 </div>
 <div class="section" id="the-exponential-function">
-<h3>The Exponential Function<a class="headerlink" href="#the-exponential-function" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2. </span>The Exponential Function<a class="headerlink" href="#the-exponential-function" title="Permalink to this headline">¶</a></h3>
 <p>Given <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the exponential of <span class="math notranslate nohighlight">\(A\)</span> is the element of
 <span class="math notranslate nohighlight">\(\linop\)</span> defined as</p>
 <div class="math notranslate nohighlight" id="equation-opexpo">
-<span class="eqno">(40)<a class="headerlink" href="#equation-opexpo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-opexpo" title="Permalink to this equation">¶</a></span>\[
     e^A  
     = \sum_{k \geq 0} \frac{A^k}{k!} 
     = I + A + \frac{A^2}{2!} + \cdots
@@ -373,7 +373,7 @@ associated with continuous time Markov chains.</p>
 <p>The last fact is easily checked from the previous ones.</p>
 </div>
 <div class="section" id="operator-calculus">
-<h3>Operator Calculus<a class="headerlink" href="#operator-calculus" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.3. </span>Operator Calculus<a class="headerlink" href="#operator-calculus" title="Permalink to this headline">¶</a></h3>
 <p>Consider a function</p>
 <div class="math notranslate nohighlight">
 \[
@@ -384,7 +384,7 @@ operators.</p>
 <p>We say that this function is <strong>differentiable at <span class="math notranslate nohighlight">\(\tau \in \RR_+\)</span></strong> if there exists
 an element <span class="math notranslate nohighlight">\(T\)</span> of <span class="math notranslate nohighlight">\(\linop\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-devlim">
-<span class="eqno">(41)<a class="headerlink" href="#equation-devlim" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-devlim" title="Permalink to this equation">¶</a></span>\[
     \frac{U_{\tau+h} - U_\tau}{h} \to T 
     \; \text{ as } h \to 0
 \]</div>
@@ -396,31 +396,31 @@ an element <span class="math notranslate nohighlight">\(T\)</span> of <span clas
     T = \frac{d}{dt} U_t \, \Big|_{t=\tau}
 \]</div>
 <p>(Convergence of operators is in operator norm.  If <span class="math notranslate nohighlight">\(\tau = 0\)</span>, then the limit
-<span class="math notranslate nohighlight">\(h \to 0\)</span> in <a class="reference internal" href="#equation-devlim">(41)</a> is the right limit.)</p>
+<span class="math notranslate nohighlight">\(h \to 0\)</span> in <a class="reference internal" href="#equation-devlim">(6.4)</a> is the right limit.)</p>
 <div class="proof example admonition" id="example-0">
-<p class="admonition-title"><span class="caption-number">Example 12 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 6.1 </span></p>
 <div class="example-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(U_t = t V\)</span> for some fixed <span class="math notranslate nohighlight">\(V \in \linop\)</span>, then it is easy to
 see that <span class="math notranslate nohighlight">\(V\)</span> is the derivative of <span class="math notranslate nohighlight">\(t \mapsto U_t\)</span> at every <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>.</p>
 </div>
 </div><div class="proof example admonition" id="example-1">
-<p class="admonition-title"><span class="caption-number">Example 13 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 6.2 </span></p>
 <div class="example-content section" id="proof-content">
 <p>In <a class="reference internal" href="kolmogorov_fwd.html"><span class="doc">our discussion</span></a> of the Kolmogorov forward equation
 when <span class="math notranslate nohighlight">\(S\)</span> is finite, we introduced the derivative of a map <span class="math notranslate nohighlight">\(t
 \mapsto P_t\)</span>, where each <span class="math notranslate nohighlight">\(P_t\)</span> is a matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>The derivative was defined by differentiating <span class="math notranslate nohighlight">\(P_t\)</span> element-by-element.</p>
-<p>This coincides with the operator-theoretic definition in <a class="reference internal" href="#equation-devlim">(41)</a> when <span class="math notranslate nohighlight">\(S\)</span>
+<p>This coincides with the operator-theoretic definition in <a class="reference internal" href="#equation-devlim">(6.4)</a> when <span class="math notranslate nohighlight">\(S\)</span>
 is finite, because then the space <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span>, which consists of all bounded linear operators on <span class="math notranslate nohighlight">\(\ell_1\)</span>, is finite dimensional, and
 hence pointwise and norm convergence coincide.</p>
 </div>
 </div><p>Analogous to the matrix and scalar cases, we have the following result:</p>
 <div class="proof lemma admonition" id="diffexpmap">
-<p class="admonition-title"><span class="caption-number">Lemma 14 </span> (Differentiability of the Exponential Curve)</p>
+<p class="admonition-title"><span class="caption-number">Lemma 6.3 </span> (Differentiability of the Exponential Curve)</p>
 <div class="lemma-content section" id="proof-content">
 <p>For all <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the exponential curve <span class="math notranslate nohighlight">\(t \mapsto e^{tA}\)</span> is everywhere differentiable and</p>
 <div class="math notranslate nohighlight" id="equation-expdiffer">
-<span class="eqno">(42)<a class="headerlink" href="#equation-expdiffer" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-expdiffer" title="Permalink to this equation">¶</a></span>\[
     \frac{d}{dt} e^{tA} = e^{tA} A = A e^{tA}
 \]</div>
 </div>
@@ -428,7 +428,7 @@ hence pointwise and norm convergence coincide.</p>
 </div>
 </div>
 <div class="section" id="id4">
-<h2>Semigroups and Generators<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4. </span>Semigroups and Generators<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>For continuous time Markov chains where the state space <span class="math notranslate nohighlight">\(S\)</span> is finite, we
 saw that Markov semigroups often take the form <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for some
 intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>.</p>
@@ -442,7 +442,7 @@ some restrictions are placed on the semigroup.</p>
 <p>Our aim is to make these statements precise, starting in an abstract setting
 and then specializing.</p>
 <div class="section" id="operator-semigroups">
-<h3>Operator Semigroups<a class="headerlink" href="#operator-semigroups" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.4.1. </span>Operator Semigroups<a class="headerlink" href="#operator-semigroups" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(U_t\)</span> be an element of <span class="math notranslate nohighlight">\(\linop\)</span> for all <span class="math notranslate nohighlight">\(t \in \RR_+\)</span></p>
 <p>We say that <span class="math notranslate nohighlight">\((U_t)\)</span> is an <strong>evolution semigroup</strong> on <span class="math notranslate nohighlight">\(\linop\)</span> if <span class="math notranslate nohighlight">\(U_0 = I\)</span> and
 <span class="math notranslate nohighlight">\(U_{s + t} = U_s U_t\)</span> for all <span class="math notranslate nohighlight">\(s, t \geq 0\)</span>.</p>
@@ -454,7 +454,7 @@ and then specializing.</p>
 </ul>
 <p>In what follows we abbreviate “uniformly continuous” to UC.<a class="footnote-reference brackets" href="#ucnote" id="id5">4</a></p>
 <div class="proof example admonition" id="ecuc">
-<p class="admonition-title"><span class="caption-number">Example 15 </span> (Exponential curves are UC semigroups)</p>
+<p class="admonition-title"><span class="caption-number">Example 6.4 </span> (Exponential curves are UC semigroups)</p>
 <div class="example-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for <span class="math notranslate nohighlight">\(t \in \RR_+\)</span> and <span class="math notranslate nohighlight">\(A \in \linop\)</span>, then <span class="math notranslate nohighlight">\((U_t)\)</span>
 is a uniformly continuous semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>.</p>
@@ -462,7 +462,7 @@ is a uniformly continuous semigroup on <span class="math notranslate nohighlight
 </div><p>The claim that <span class="math notranslate nohighlight">\((U_t)\)</span> is an evolution semigroup follows directly from the
 properties of the exponential function given above.</p>
 <p>Uniform continuity can be established using arguments similar to those in the
-proof of differentiability in <a class="reference internal" href="#diffexpmap">Lemma 14</a>.</p>
+proof of differentiability in <a class="reference internal" href="#diffexpmap">Lemma 6.3</a>.</p>
 <p>Since norm convergence on <span class="math notranslate nohighlight">\(\linop\)</span> implies pointwise convergence, every
 uniformly continuous semigroup is a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup.</p>
 <p>The reverse is certainly not true — there are many important <span class="math notranslate nohighlight">\(C_0\)</span> semigroups that fail to be uniformly continuous.</p>
@@ -474,7 +474,7 @@ discrete state spaces that fail to be uniformly continuous.</p>
 applications, the semigroups are uniformly continuous.</p>
 </div>
 <div class="section" id="generators">
-<h3>Generators<a class="headerlink" href="#generators" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.4.2. </span>Generators<a class="headerlink" href="#generators" title="Permalink to this headline">¶</a></h3>
 <p>Consider a continuous time Markov chain on a finite state space with intensity
 matrix <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <p>The Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is fully specified by this infinitesimal
@@ -493,16 +493,16 @@ description <span class="math notranslate nohighlight">\(Q\)</span>, in the sens
 <p>More generally, given a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>, we say that a linear
 operator <span class="math notranslate nohighlight">\(A\)</span> from <span class="math notranslate nohighlight">\(\BB\)</span> to itself is the <strong>generator</strong> of <span class="math notranslate nohighlight">\((U_t)\)</span> if</p>
 <div class="math notranslate nohighlight" id="equation-defgenr">
-<span class="eqno">(43)<a class="headerlink" href="#equation-defgenr" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.6)<a class="headerlink" href="#equation-defgenr" title="Permalink to this equation">¶</a></span>\[
     A g = \lim_{h \downarrow 0} \frac{U_h g - g}{h} 
 \]</div>
 <p>for all <span class="math notranslate nohighlight">\(g \in \BB\)</span> such that the limit exists.</p>
 <p>The set of points where the limit exists (the domain of the generator) is
 denoted by <span class="math notranslate nohighlight">\(D(A)\)</span>.</p>
-<p>At this point we would like to write <a class="reference internal" href="#equation-defgenr">(43)</a> as <span class="math notranslate nohighlight">\(A = U'_0\)</span>, or express
+<p>At this point we would like to write <a class="reference internal" href="#equation-defgenr">(6.6)</a> as <span class="math notranslate nohighlight">\(A = U'_0\)</span>, or express
 <span class="math notranslate nohighlight">\(U_t\)</span> as <span class="math notranslate nohighlight">\(e^{tA}\)</span>, analogous to the Markov case.</p>
 <p>There are problems, however.</p>
-<p>One problem is that the limit in <a class="reference internal" href="#equation-defgenr">(43)</a> can fail to exist for some <span class="math notranslate nohighlight">\(g
+<p>One problem is that the limit in <a class="reference internal" href="#equation-defgenr">(6.6)</a> can fail to exist for some <span class="math notranslate nohighlight">\(g
 \in \BB\)</span>.</p>
 <p>Indeed, why should the limit exist, given that <span class="math notranslate nohighlight">\(C_0\)</span> semigroups are not
 required to be differentiable?</p>
@@ -517,12 +517,12 @@ semigroups, where these problems do not arise.</p>
 <p>The next section gives details.</p>
 </div>
 <div class="section" id="a-characterization-of-uniformly-continuous-semigroups">
-<h3>A Characterization of Uniformly Continuous Semigroups<a class="headerlink" href="#a-characterization-of-uniformly-continuous-semigroups" title="Permalink to this headline">¶</a></h3>
-<p>We saw in <a class="reference internal" href="#ecuc">Example 15</a> that exponential curves are an example
+<h3><span class="section-number">6.4.3. </span>A Characterization of Uniformly Continuous Semigroups<a class="headerlink" href="#a-characterization-of-uniformly-continuous-semigroups" title="Permalink to this headline">¶</a></h3>
+<p>We saw in <a class="reference internal" href="#ecuc">Example 6.4</a> that exponential curves are an example
 of a UC semigroup.</p>
 <p>The next theorem tells us that there are no other examples.</p>
 <div class="proof theorem admonition" id="ucsgec">
-<p class="admonition-title"><span class="caption-number">Theorem 16 </span> (UC Semigroups are Exponential Curves)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 6.5 </span> (UC Semigroups are Exponential Curves)</p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((U_t)\)</span> is a UC semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>, then there exists an <span class="math notranslate nohighlight">\(A \in \linop\)</span>
 such that <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.  Moreover,</p>
@@ -532,7 +532,7 @@ such that <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for
 <li><p><span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p></li>
 </ul>
 </div>
-</div><p>The last three claims in <a class="reference internal" href="#ucsgec">Theorem 16</a> follow directly from the
+</div><p>The last three claims in <a class="reference internal" href="#ucsgec">Theorem 6.5</a> follow directly from the
 first claim.</p>
 <p>The statement <span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> is a
 generalization of the Kolmogorov forward and backward equations.</p>
@@ -545,59 +545,59 @@ satisfying</p>
 <li><p><span class="math notranslate nohighlight">\(f(0) = 1\)</span></p></li>
 </ul>
 <p>also satisfies <span class="math notranslate nohighlight">\(f(t) = e^{ta}\)</span> for some <span class="math notranslate nohighlight">\(a \in \RR\)</span>.</p>
-<p>We proved something quite similar in <a class="reference internal" href="memoryless.html#exp_unique">Theorem 1</a>, on
+<p>We proved something quite similar in <a class="reference internal" href="memoryless.html#exp_unique">Theorem 1.1</a>, on
 the memoryless property of the exponential function.</p>
 <p>For more discussion of the scalar case, see, for example,
 <span id="id7">[<a class="reference internal" href="zreferences.html#id6">Sahoo and Kannappan, 2011</a>]</span>.</p>
-<p>For a full proof of the first claim in <a class="reference internal" href="#ucsgec">Theorem 16</a>, in the setting of
+<p>For a full proof of the first claim in <a class="reference internal" href="#ucsgec">Theorem 6.5</a>, in the setting of
 a Banach algebra, see, for
 example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zreferences.html#id7">Bobrowski, 2005</a>]</span>.</p>
 </div>
 </div>
 <div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
-<p>Prove that <a class="reference internal" href="#equation-expdiffer">(42)</a> holds for all <span class="math notranslate nohighlight">\(A \in \linop\)</span>.</p>
+<h3><span class="section-number">6.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Prove that <a class="reference internal" href="#equation-expdiffer">(6.5)</a> holds for all <span class="math notranslate nohighlight">\(A \in \linop\)</span>.</p>
 </div>
 <div class="section" id="exercise-2">
-<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>In many texts, a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup is defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
 such that</p>
 <div class="math notranslate nohighlight" id="equation-czsg2">
-<span class="eqno">(44)<a class="headerlink" href="#equation-czsg2" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.7)<a class="headerlink" href="#equation-czsg2" title="Permalink to this equation">¶</a></span>\[
     U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
 \]</div>
-<p>Our aim is to show that <a class="reference internal" href="#equation-czsg2">(44)</a> implies continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
+<p>Our aim is to show that <a class="reference internal" href="#equation-czsg2">(6.7)</a> implies continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
 in the definition we used above.</p>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Uniform_boundedness_principle">Banach–Steinhaus Theorem</a> can be used to show that, for an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span> satisfying <a class="reference internal" href="#equation-czsg2">(44)</a>, there exist finite constants <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Uniform_boundedness_principle">Banach–Steinhaus Theorem</a> can be used to show that, for an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span> satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a>, there exist finite constants <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-sgbound">
-<span class="eqno">(45)<a class="headerlink" href="#equation-sgbound" title="Permalink to this equation">¶</a></span>\[ 
+<span class="eqno">(6.8)<a class="headerlink" href="#equation-sgbound" title="Permalink to this equation">¶</a></span>\[ 
     \| U_t \| \leq e^{t\omega} M 
     \quad \text{for all } \; t \geq 0
 \]</div>
-<p>Using this and <a class="reference internal" href="#equation-czsg2">(44)</a>, show that, for any <span class="math notranslate nohighlight">\(g \in \BB\)</span>, the map <span class="math notranslate nohighlight">\(t \mapsto
+<p>Using this and <a class="reference internal" href="#equation-czsg2">(6.7)</a>, show that, for any <span class="math notranslate nohighlight">\(g \in \BB\)</span>, the map <span class="math notranslate nohighlight">\(t \mapsto
 U_t g\)</span> is continuous at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
 </div>
 <div class="section" id="exercise-3">
-<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.5.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
 <p>Following on from the previous exercise,
 a UC semigroup is often defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
 such that</p>
 <div class="math notranslate nohighlight" id="equation-czsg3">
-<span class="eqno">(46)<a class="headerlink" href="#equation-czsg3" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.9)<a class="headerlink" href="#equation-czsg3" title="Permalink to this equation">¶</a></span>\[
     \| U_t - I \| \to 0 \text{ as } t \to 0 
 \]</div>
-<p>Show that <a class="reference internal" href="#equation-czsg3">(46)</a> implies norm continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
+<p>Show that <a class="reference internal" href="#equation-czsg3">(6.9)</a> implies norm continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
 in the definition we used above.</p>
 <p>In particular, show that, for any <span class="math notranslate nohighlight">\(t_n \to t\)</span>, we have
 <span class="math notranslate nohighlight">\(\| U_{t_n} - U_t \| \to 0\)</span>  as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
 </div>
 </div>
 <div class="section" id="solutions">
-<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="solution-to-exercise-1">
-<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>To show the first equality, fix <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>, take <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and observe that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -607,16 +607,16 @@ in the definition we used above.</p>
 <p>Since the norm on <span class="math notranslate nohighlight">\(\linop\)</span> is submultiplicative, it suffices to show that
 <span class="math notranslate nohighlight">\(\| e^{hA} - I - A \| = o(h)\)</span> as <span class="math notranslate nohighlight">\(h \to 0\)</span>.</p>
 <p>Using the definition of the exponential, this is easily verified,
-completing the proof of the first equality in <a class="reference internal" href="#equation-expdiffer">(42)</a>.</p>
+completing the proof of the first equality in <a class="reference internal" href="#equation-expdiffer">(6.5)</a>.</p>
 <p>The proof of the second equality is similar.</p>
 </div>
 <div class="section" id="solution-to-exercise-2">
-<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
-<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(44)</a> and let
-<span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(45)</a>.</p>
+<h3><span class="section-number">6.6.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a> and let
+<span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(6.8)</a>.</p>
 <p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
-<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} g = U_{h_n} U_t g \to U_t g\)</span> by <a class="reference internal" href="#equation-czsg2">(44)</a>.</p>
-<p>On the other hand, from <a class="reference internal" href="#equation-sgbound">(45)</a> and the definition of the operator norm,</p>
+<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} g = U_{h_n} U_t g \to U_t g\)</span> by <a class="reference internal" href="#equation-czsg2">(6.7)</a>.</p>
+<p>On the other hand, from <a class="reference internal" href="#equation-sgbound">(6.8)</a> and the definition of the operator norm,</p>
 <div class="math notranslate nohighlight">
 \[
     \| U_{t-h_n} g - U_t g\|
@@ -627,13 +627,13 @@ completing the proof of the first equality in <a class="reference internal" href
 <p>as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.  This completes the proof.</p>
 </div>
 <div class="section" id="solution-to-exercise-3">
-<h3>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.3. </span>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
 <p>The solution is similar to that of the previous exercise.</p>
-<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg3">(46)</a>,
+<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg3">(6.9)</a>,
 fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and take <span class="math notranslate nohighlight">\((h_n)\)</span> to be a scalar sequence satisfying <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
-<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} = U_{h_n} U_t \to U_t\)</span> by <a class="reference internal" href="#equation-czsg3">(46)</a>.</p>
+<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} = U_{h_n} U_t \to U_t\)</span> by <a class="reference internal" href="#equation-czsg3">(6.9)</a>.</p>
 <p>On the other hand, from the submultiplicative property of the operator norm
-and <a class="reference internal" href="#equation-sgbound">(45)</a>,</p>
+and <a class="reference internal" href="#equation-sgbound">(6.8)</a>,</p>
 <div class="math notranslate nohighlight">
 \[
     \| U_{t-h_n} - U_t \|
@@ -651,7 +651,7 @@ and <a class="reference internal" href="#equation-sgbound">(45)</a>,</p>
 applications to PDEs and Markov processes, can be found in <span id="id9">[<a class="reference internal" href="zreferences.html#id5">Applebaum, 2019</a>]</span>.</p>
 </dd>
 <dt class="label" id="fncoex"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>Convergence of the sum in <a class="reference internal" href="#equation-opexpo">(40)</a> follows from boundedness of <span class="math notranslate nohighlight">\(A\)</span> and the fact that <span class="math notranslate nohighlight">\(\linop\)</span> is a Banach space.</p>
+<dd><p>Convergence of the sum in <a class="reference internal" href="#equation-opexpo">(6.3)</a> follows from boundedness of <span class="math notranslate nohighlight">\(A\)</span> and the fact that <span class="math notranslate nohighlight">\(\linop\)</span> is a Banach space.</p>
 </dd>
 <dt class="label" id="ucnote"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
 <dd><p>Be careful: the definition of a UC semigroup requires that
@@ -720,47 +720,47 @@ have, by definition of the operator norm,
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
-   Memoryless Distributions
+   1. Memoryless Distributions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="poisson.html">
-   Poisson Processes
+   2. Poisson Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_prop.html">
-   The Markov Property
+   3. The Markov Property
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   The Kolmogorov Backward Equation
+   4. The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_fwd.html">
-   The Kolmogorov Forward Equation
+   5. The Kolmogorov Forward Equation
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Semigroups and Generators
+   6. Semigroups and Generators
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="uc_mc_semigroups.html">
-   UC Markov Semigroups
+   7. UC Markov Semigroups
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ergodicity.html">
-   Stationarity and Ergodicity
+   8. Stationarity and Ergodicity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   Bibliography
+   9. Bibliography
   </a>
  </li>
 </ul>

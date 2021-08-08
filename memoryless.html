@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memoryless Distributions &#8212; Continuous Time Markov Chains</title>
+    <title>1. Memoryless Distributions &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -61,7 +61,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Poisson Processes" href="poisson.html" />
+    <link rel="next" title="2. Poisson Processes" href="poisson.html" />
     <link rel="prev" title="Continuous Time Markov Chains" href="intro.html" />
 
 <!-- Normal Meta Tags -->
@@ -112,78 +112,78 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   Overview
+   1.1. Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-geometric-distribution">
-   The Geometric Distribution
+   1.2. The Geometric Distribution
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#memorylessness">
-     Memorylessness
+     1.2.1. Memorylessness
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-exponential-distribution">
-   The Exponential Distribution
+   1.3. The Exponential Distribution
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#from-geometric-to-exponential">
-     From Geometric to Exponential
+     1.3.1. From Geometric to Exponential
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#memoryless-property-of-the-exponential-distribution">
-     Memoryless Property of the Exponential Distribution
+     1.3.2. Memoryless Property of the Exponential Distribution
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#failure-of-memorylessness">
-     Failure of Memorylessness
+     1.3.3. Failure of Memorylessness
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sums-of-exponentials">
-   Sums of Exponentials
+   1.4. Sums of Exponentials
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
-   Exercises
+   1.5. Exercises
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1">
-     Exercise 1
+     1.5.1. Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-2">
-     Exercise 2
+     1.5.2. Exercise 2
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
-   Solutions
+   1.6. Solutions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     Solution to Exercise 1
+     1.6.1. Solution to Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     Solution to Exercise 2
+     1.6.2. Solution to Exercise 2
     </a>
    </li>
   </ul>
@@ -234,9 +234,9 @@
                     <div>
                         
   <div class="section" id="memoryless-distributions">
-<h1>Memoryless Distributions<a class="headerlink" href="#memoryless-distributions" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Memoryless Distributions<a class="headerlink" href="#memoryless-distributions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Markov processes are, by definition, forgetful.</p>
 <p>In particular, for any Markov processes, the distribution over future outcomes
 depends only on the current state, rather than the entire history.</p>
@@ -263,7 +263,7 @@ distribution.</p>
 </div>
 </div>
 <div class="section" id="the-geometric-distribution">
-<h2>The Geometric Distribution<a class="headerlink" href="#the-geometric-distribution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>The Geometric Distribution<a class="headerlink" href="#the-geometric-distribution" title="Permalink to this headline">¶</a></h2>
 <p>Consider betting on a roulette wheel and suppose that red has come up four times in a row.</p>
 <p>Since five reds in a row is an unlikely event, many people instinctively feel
 that black is more likely on the fifth spin — “Surely black will come up this time!”</p>
@@ -272,11 +272,11 @@ difference to the outcome of the next spin.</p>
 <p>(Many casinos offer an unlimited supply of free alcoholic beverages in order to discourage this kind of rational analysis.)</p>
 <p>A mathematical restatement of this phenomenon is: the geometric distribution is memoryless.</p>
 <div class="section" id="memorylessness">
-<h3>Memorylessness<a class="headerlink" href="#memorylessness" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.2.1. </span>Memorylessness<a class="headerlink" href="#memorylessness" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable supported on the nonnegative integers <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
 <p>We say that <span class="math notranslate nohighlight">\(X\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_distribution">geometrically distributed</a> if, for some <span class="math notranslate nohighlight">\(\theta\)</span> satisfying <span class="math notranslate nohighlight">\(0 \leq \theta \leq 1\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-geodist">
-<span class="eqno">(1)<a class="headerlink" href="#equation-geodist" title="Permalink to this equation">¶</a></span>\[ 
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-geodist" title="Permalink to this equation">¶</a></span>\[ 
     \PP\{X = k\} = (1-\theta)^k \theta 
     \qquad (k = 0, 1, \ldots)
 \]</div>
@@ -288,19 +288,19 @@ difference to the outcome of the next spin.</p>
 <li><p>on each spin, black occurs with probability <span class="math notranslate nohighlight">\(\theta\)</span> and</p></li>
 <li><p>outcomes across spins are independent.</p></li>
 </ul>
-<p>Then <a class="reference internal" href="#equation-geodist">(1)</a> is the probability that the first occurrence of black is at spin <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Then <a class="reference internal" href="#equation-geodist">(1.1)</a> is the probability that the first occurrence of black is at spin <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <p>(The outcome “black” fails <span class="math notranslate nohighlight">\(k\)</span> times and then succeeds.)</p>
 <p>Consistent with our discussion in the introduction, the geometric distribution
 is <strong>memoryless</strong>.</p>
 <p>In particular, given any nonnegative integer <span class="math notranslate nohighlight">\(m\)</span>, we have</p>
 <div class="math notranslate nohighlight" id="equation-memgeo">
-<span class="eqno">(2)<a class="headerlink" href="#equation-memgeo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-memgeo" title="Permalink to this equation">¶</a></span>\[
     \PP \{X = m + 1 \,|\, X &gt; m \} = \theta
 \]</div>
 <p>In other words, regardless of how long we have seen only red outcomes, the
 probability of black on the next spin is the same as the unconditional
 probability of getting black on the very first spin.</p>
-<p>To establish <a class="reference internal" href="#equation-memgeo">(2)</a>, we use basic properties of the geometric
+<p>To establish <a class="reference internal" href="#equation-memgeo">(1.2)</a>, we use basic properties of the geometric
 distribution to obtain.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -316,7 +316,7 @@ distribution to obtain.</p>
 </div>
 </div>
 <div class="section" id="the-exponential-distribution">
-<h2>The Exponential Distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3. </span>The Exponential Distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h2>
 <p>Later, when we construct continuous time Markov chains, we will need to
 specify the distribution of the holding times, which are the time intervals
 between jumps.</p>
@@ -332,7 +332,7 @@ a poor fit for the continuous time case.</p>
     \qquad (y \geq 0)
 \]</div>
 <div class="section" id="from-geometric-to-exponential">
-<span id="geomtoexp"></span><h3>From Geometric to Exponential<a class="headerlink" href="#from-geometric-to-exponential" title="Permalink to this headline">¶</a></h3>
+<span id="geomtoexp"></span><h3><span class="section-number">1.3.1. </span>From Geometric to Exponential<a class="headerlink" href="#from-geometric-to-exponential" title="Permalink to this headline">¶</a></h3>
 <p>The exponential distribution can be regarded as the “limit” of the geometric
 distribution.</p>
 <p>To illustrate, let us suppose that</p>
@@ -375,21 +375,21 @@ h = t_i \to t\)</span>, we obtain, for large <span class="math notranslate nohig
 <p>In this sense, the exponential is the limit of the geometric distribution.</p>
 </div>
 <div class="section" id="memoryless-property-of-the-exponential-distribution">
-<h3>Memoryless Property of the Exponential Distribution<a class="headerlink" href="#memoryless-property-of-the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3.2. </span>Memoryless Property of the Exponential Distribution<a class="headerlink" href="#memoryless-property-of-the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
 <p>The exponential distribution is the only memoryless distribution supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>, as the next theorem attests.</p>
 <div class="proof theorem admonition" id="exp_unique">
-<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Characterization of the Exponential Distribution)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 1.1 </span> (Characterization of the Exponential Distribution)</p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a random variable supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>, then there exists a
 <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> such that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span> if and only if, for all
 positive <span class="math notranslate nohighlight">\(s, t\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-memexpo">
-<span class="eqno">(3)<a class="headerlink" href="#equation-memexpo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-memexpo" title="Permalink to this equation">¶</a></span>\[
     \PP \{X &gt; s + t \,|\, X &gt; s \} = \PP \{X &gt; t\}
 \]</div>
 </div>
 </div><div class="proof admonition" id="proof">
-<p>Proof. To see that <a class="reference internal" href="#equation-memexpo">(3)</a> holds when <span class="math notranslate nohighlight">\(X\)</span> is exponential with rate <span class="math notranslate nohighlight">\(\lambda\)</span>,
+<p>Proof. To see that <a class="reference internal" href="#equation-memexpo">(1.3)</a> holds when <span class="math notranslate nohighlight">\(X\)</span> is exponential with rate <span class="math notranslate nohighlight">\(\lambda\)</span>,
 fix <span class="math notranslate nohighlight">\(s, t &gt; 0\)</span> and observe that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -402,7 +402,7 @@ fix <span class="math notranslate nohighlight">\(s, t &gt; 0\)</span> and observ
     = e^{-\lambda t}
 \]</div>
 <p>To see that the converse holds, let <span class="math notranslate nohighlight">\(X\)</span> be a random variable supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>
-such that <a class="reference internal" href="#equation-memexpo">(3)</a> holds.</p>
+such that <a class="reference internal" href="#equation-memexpo">(1.3)</a> holds.</p>
 <p>The “exceedance” function <span class="math notranslate nohighlight">\(f(s) := \PP\{X &gt; s\}\)</span> then has three properties:</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(f\)</span> is decreasing on <span class="math notranslate nohighlight">\(\RR_+\)</span>,</p></li>
@@ -411,10 +411,10 @@ such that <a class="reference internal" href="#equation-memexpo">(3)</a> holds.<
 </ol>
 <p>The first property is common to all exceedance functions, the second is due to
 the fact that <span class="math notranslate nohighlight">\(X\)</span> is supported on all of <span class="math notranslate nohighlight">\(\RR_+\)</span>, and the
-third is <a class="reference internal" href="#equation-memexpo">(3)</a>.</p>
+third is <a class="reference internal" href="#equation-memexpo">(1.3)</a>.</p>
 <p>From these three properties we will show that</p>
 <div class="math notranslate nohighlight" id="equation-implex">
-<span class="eqno">(4)<a class="headerlink" href="#equation-implex" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-implex" title="Permalink to this equation">¶</a></span>\[
     f(t) = f(1)^t  \;\; \forall \, t \geq 0
 \]</div>
 <p>This is sufficient to prove the claim because then <span class="math notranslate nohighlight">\(\lambda := - \ln f(1)\)</span> is a positive real number (by property 2) and, moreover,</p>
@@ -424,7 +424,7 @@ third is <a class="reference internal" href="#equation-memexpo">(3)</a>.</p>
     = \exp( \ln ( f(1) ) t) 
     = \exp( - \lambda t) 
 \]</div>
-<p>To see that <a class="reference internal" href="#equation-implex">(4)</a> holds, fix positive integers <span class="math notranslate nohighlight">\(m,n\)</span>.</p>
+<p>To see that <a class="reference internal" href="#equation-implex">(1.4)</a> holds, fix positive integers <span class="math notranslate nohighlight">\(m,n\)</span>.</p>
 <p>We can use property 3 to obtain both</p>
 <div class="math notranslate nohighlight">
 \[
@@ -433,8 +433,8 @@ third is <a class="reference internal" href="#equation-memexpo">(3)</a>.</p>
     f(1) = f(1/n)^n
 \]</div>
 <p>It follows that <span class="math notranslate nohighlight">\(f(m/n)^n = f(1/n)^{m n} = f(1)^m\)</span> and, raising to the power
-of <span class="math notranslate nohighlight">\(1/n\)</span>, we get <a class="reference internal" href="#equation-implex">(4)</a> when <span class="math notranslate nohighlight">\(t=m/n\)</span>.</p>
-<p>The discussion so far confirms that <a class="reference internal" href="#equation-implex">(4)</a> holds when <span class="math notranslate nohighlight">\(t\)</span> is rational.</p>
+of <span class="math notranslate nohighlight">\(1/n\)</span>, we get <a class="reference internal" href="#equation-implex">(1.4)</a> when <span class="math notranslate nohighlight">\(t=m/n\)</span>.</p>
+<p>The discussion so far confirms that <a class="reference internal" href="#equation-implex">(1.4)</a> holds when <span class="math notranslate nohighlight">\(t\)</span> is rational.</p>
 <p>So now take any <span class="math notranslate nohighlight">\(t \geq 0\)</span> and rational sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span>
 converging to <span class="math notranslate nohighlight">\(t\)</span> with <span class="math notranslate nohighlight">\(a_n \leq t \leq b_n\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <p>By property 1 we have <span class="math notranslate nohighlight">\(f(b_n) \leq f(t) \leq f(a_n)\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>, so</p>
@@ -447,7 +447,7 @@ converging to <span class="math notranslate nohighlight">\(t\)</span> with <span
 </div>
 </div>
 <div class="section" id="failure-of-memorylessness">
-<span id="fail-mem"></span><h3>Failure of Memorylessness<a class="headerlink" href="#failure-of-memorylessness" title="Permalink to this headline">¶</a></h3>
+<span id="fail-mem"></span><h3><span class="section-number">1.3.3. </span>Failure of Memorylessness<a class="headerlink" href="#failure-of-memorylessness" title="Permalink to this headline">¶</a></h3>
 <p>We know from the proceeding section that any distribution on <span class="math notranslate nohighlight">\(\RR_+\)</span> other
 than the exponential distribution fails to be memoryless.</p>
 <p>Here’s an example that helps to clarify (although the support of the distribution is a proper subset of <span class="math notranslate nohighlight">\(\RR_+\)</span>).</p>
@@ -478,7 +478,7 @@ probability of waiting another hour is relatively small.</p>
 </div>
 </div>
 <div class="section" id="sums-of-exponentials">
-<h2>Sums of Exponentials<a class="headerlink" href="#sums-of-exponentials" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Sums of Exponentials<a class="headerlink" href="#sums-of-exponentials" title="Permalink to this headline">¶</a></h2>
 <p>A random variable <span class="math notranslate nohighlight">\(W\)</span> on <span class="math notranslate nohighlight">\(\RR_+\)</span> is said to have the <a class="reference external" href="https://en.wikipedia.org/wiki/Erlang_distribution">Erlang
 distribution</a> if its
 density has the form</p>
@@ -522,14 +522,14 @@ parameters respectively.</p>
 </div>
 <p>The CDF of the Erlang distribution is</p>
 <div class="math notranslate nohighlight" id="equation-erlcdf">
-<span class="eqno">(5)<a class="headerlink" href="#equation-erlcdf" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-erlcdf" title="Permalink to this equation">¶</a></span>\[
     F(t) 
     = \PP\{W \leq t\}
     = 1 - \sum_{k=0}^{n-1} \frac{(\lambda t)^k}{k!} e^{-\lambda t}
 \]</div>
 <p>The Erlang distribution is of interest to us because of the following fact.</p>
 <div class="proof lemma admonition" id="erlexp">
-<p class="admonition-title"><span class="caption-number">Lemma 2 </span> (Distribution of Sum of Exponentials)</p>
+<p class="admonition-title"><span class="caption-number">Lemma 1.2 </span> (Distribution of Sum of Exponentials)</p>
 <div class="lemma-content section" id="proof-content">
 <p>If, for some <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, the sequence <span class="math notranslate nohighlight">\((W_i)\)</span> is IID and exponentially
 distributed with rate <span class="math notranslate nohighlight">\(\lambda\)</span>, then <span class="math notranslate nohighlight">\(J_n := \sum_{i=1}^n W_i\)</span> has the Erlang
@@ -538,9 +538,9 @@ distribution with shape <span class="math notranslate nohighlight">\(n\)</span> 
 </div><p>This connects to Poisson process theory, as we shall soon see.</p>
 </div>
 <div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>Due to its memoryless property, we can “stop” and “restart” an exponential
 draw without changing its distribution.</p>
 <p>To illustrate this, we can think of fixing <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, drawing from
@@ -554,7 +554,7 @@ draw without changing its distribution.</p>
 <p>Show that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>.</p>
 </div>
 <div class="section" id="exercise-2">
-<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Fix <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(s=1.0\)</span>.</p>
 <p>Simulate 1,000 draws of <span class="math notranslate nohighlight">\(X\)</span> using the algorithm above.</p>
 <p>Plot the fraction of the sample exceeding <span class="math notranslate nohighlight">\(t\)</span> for each <span class="math notranslate nohighlight">\(t \geq 0\)</span> (on a grid)
@@ -564,9 +564,9 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 </div>
 <div class="section" id="solutions">
-<h2>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="solution-to-exercise-1">
-<h3>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.6.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be constructed as in the statement of the exercise and fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
 <p>Notice that <span class="math notranslate nohighlight">\(X &gt; s + t\)</span> if and only if <span class="math notranslate nohighlight">\(Y &gt; s\)</span> and <span class="math notranslate nohighlight">\(Z &gt; t\)</span>.</p>
 <p>As a result of this fact and independence,</p>
@@ -586,7 +586,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 <p>Either way, we have <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>, as was to be shown.</p>
 </div>
 <div class="section" id="solution-to-exercise-2">
-<h3>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.6.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Here’s one solution, starting with 1,000 draws.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -697,47 +697,47 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Memoryless Distributions
+   1. Memoryless Distributions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="poisson.html">
-   Poisson Processes
+   2. Poisson Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_prop.html">
-   The Markov Property
+   3. The Markov Property
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_bwd.html">
-   The Kolmogorov Backward Equation
+   4. The Kolmogorov Backward Equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="kolmogorov_fwd.html">
-   The Kolmogorov Forward Equation
+   5. The Kolmogorov Forward Equation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="generators.html">
-   Semigroups and Generators
+   6. Semigroups and Generators
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="uc_mc_semigroups.html">
-   UC Markov Semigroups
+   7. UC Markov Semigroups
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ergodicity.html">
-   Stationarity and Ergodicity
+   8. Stationarity and Ergodicity
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   Bibliography
+   9. Bibliography
   </a>
  </li>
 </ul>
