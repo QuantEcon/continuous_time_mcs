@@ -1,12 +1,14 @@
 format: jb-book
 root: intro
+options:
+  numbered: true
 chapters:
-- file: memoryless
-- file: poisson
-- file: markov_prop
-- file: kolmogorov_bwd
-- file: kolmogorov_fwd
-- file: generators
-- file: uc_mc_semigroups
-- file: ergodicity
-- file: zreferences
+  - file: memoryless
+  - file: poisson
+  - file: markov_prop
+  - file: kolmogorov_bwd
+  - file: kolmogorov_fwd
+  - file: generators
+  - file: uc_mc_semigroups
+  - file: ergodicity
+  - file: zreferences
