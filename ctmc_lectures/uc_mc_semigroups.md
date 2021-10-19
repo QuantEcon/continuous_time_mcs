@@ -498,44 +498,49 @@ For more discussion, see, for example, Section 2.7 of {cite}`norris1998markov`.
 
 ## Exercises
 
-### Exercise 1
+```{exercise}
+:label: uc-mc-semigroups-ex-1
 
 Let $P$ be a Markov matrix on $S$ and identify it with the linear operator in
 {eq}`mmismo`.  Verify the claims in {eq}`propp`.
+```
 
-### Exercise 2
+```{exercise}
+:label: uc-mc-semigroups-ex-2
 
 Prove the claim in {prf:ref}`scintcon`.
+```
 
-### Exercise 3
+```{exercise}
+:label: uc-mc-semigroups-ex-3
 
 Confirm that $Q$ defined in {eq}`poissonq` induces a bounded linear operator on
 $\ell_1$ via {eq}`imislo`.
+```
 
-
-### Exercise 4
+```{exercise}
+:label: uc-mc-semigroups-ex-4
 
 Let $K$ be defined on $\ZZ_+ \times \ZZ_+$ by $K(i, j) = \mathbb 1\{j = i + 1\}$. 
 
 Show that, with $K^m$ representing the $m$-th matrix product of $K$ with itself, 
 we have $K^m(i, j) = \mathbb 1\{j = i + m\}$ for any $i, j \in \ZZ_+$.
-    
-### Exercise 5
+```
+
+```{exercise}
+:label: uc-mc-semigroups-ex-5
 
 Let $Q$ be any intensity matrix on $S$.
 
 Prove that the jump chain decomposition of $Q$ is in fact a jump chain pair.
 
 Prove that, in addition, this decomposition $(\lambda, K)$ satisfies {eq}`jcinmat`.
-
-
-
+```
 
 
 ## Solutions
 
-### Solution to Exercise 1
-
+```{solution} uc-mc-semigroups-ex-1
 To determine the norm of $P$, we use the definition in {eq}`norml`.
 
 If $f \in \ell_1$ and $\| f \| \leq 1$, then 
@@ -565,10 +570,10 @@ $$
 $$
 
 Hence $\phi P \in \dD$ as claimed.
+```
 
-### Solution to Exercise 2
 
-
+```{solution} uc-mc-semigroups-ex-2
 Here is one solution.
 
 Let $Q$ be an intensity matrix on $S$.
@@ -605,8 +610,10 @@ $$
 $$
 
 Contradiction.
+```
 
-### Solution to Exercise 3
+
+```{solution} uc-mc-semigroups-ex-3
 
 Linearity is obvious so we focus on boundedness.
 
@@ -623,10 +630,10 @@ by $2 \lambda \| f\|$.
 
 Hence $\| fQ \| \leq 2 \lambda \|f\|$, which implies that $Q \in \lL(\ell_1)$
 as required.
+```
 
 
-
-### Solution to Exercise 4
+```{solution} uc-mc-semigroups-ex-4
 
 The statement $K^m(i, j) = \mathbb 1\{j = i + m\}$ holds by definition when
 $m=1$.
@@ -643,9 +650,10 @@ $$
 $$
 
 Applying the definition $K(i, j) = \mathbb 1\{j = i + 1\}$ completes verification of the claim.
+```
 
 
-### Solution to Exercise 5
+```{solution} uc-mc-semigroups-ex-5
 
 Let $Q$ be an intensity matrix and let $(\lambda, K)$ be the jump chain
 decomposition of $Q$.
@@ -677,4 +685,4 @@ the details are omitted.
 
 (Try working case-by-case, with $\lambda(x) = 0, x=y$, $\lambda(x) > 0, x=y$, etc.)
 
-
+```
