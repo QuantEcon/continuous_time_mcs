@@ -949,6 +949,12 @@ The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1
 
 ## Solutions
 
+```{note}
+code is currently not supported in `sphinx-exercise`
+so code-cell solutions are immediately after this
+solution block.
+```
+
 ```{solution} markov-prop-1
 
 This is easy.
@@ -1039,18 +1045,12 @@ The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
 ```
 
 
-````{solution} markov-prop-4
+```{solution} markov-prop-4
 Here is one approach.
 
 (The statements involving ``glue`` are specific to this book and can be deleted
 by most readers.  They store the output so it can be displayed elsewhere.)
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
 ```
-````
 
 ```{code-cell} ipython3
 α = 0.6

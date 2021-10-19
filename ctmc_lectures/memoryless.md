@@ -424,6 +424,11 @@ Are the results in line with those of the previous exercise?
 
 ## Solutions
 
+```{note}
+code is currently not supported in `sphinx-exercise`
+so code-cell solutions are immediately after this
+solution block.
+```
 
 ```{solution} memoryless-ex-1
 
@@ -451,18 +456,11 @@ Either way, we have $X \sim \Exp(\lambda)$, as was to be shown.
 ```
 
 
-````{solution} memoryless-ex-2
+```{solution} memoryless-ex-2
 Here's one solution, starting with 1,000 draws.
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
 ```
-````
 
 ```{code-cell} ipython3
-
 λ = 0.5 
 np.random.seed(1234)
 t_grid = np.linspace(0, 10, 200)

@@ -534,16 +534,15 @@ Try to supply a proof.
 
 ## Solutions
 
-````{solution} kolmogorov-bwd-1
-
-Here is one solution:
-
 ```{note}
 code is currently not supported in `sphinx-exercise`
 so code-cell solutions are immediately after this
 solution block.
 ```
-````
+
+```{solution} kolmogorov-bwd-1
+Here is one solution:
+```
 
 ```{code-cell} ipython3
 α = 0.6
@@ -587,7 +586,6 @@ ax.set_xlabel("inventory", fontsize=14)
 
 plt.show()
 ```
-
 
 
 ```{solution} kolmogorov-bwd-2
