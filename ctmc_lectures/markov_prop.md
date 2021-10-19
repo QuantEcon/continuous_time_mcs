@@ -897,16 +897,18 @@ In the (solved) exercises you will be asked to try to reproduce this figure.
 
 ## Exercises
 
-### Exercise 1
+```{exercise}
+:label: markov-prop-1
 
 Consider the binary (Bernoulli) distribution where outcomes $0$ and $1$ each have
 probability $0.5$.
 
 Construct two different random variables with this distribution.
+```
 
 
-
-### Exercise 2
+```{exercise}
+:label: markov-prop-2
 
 Show by direct calculation that the Poisson matrices $(P_t)$ defined in 
 {eq}`poissemi` satisfy the semigroup property {eq}`chapkol_ct2`.
@@ -915,9 +917,11 @@ Hints
 
 * Recall that $P_t(j, k) = 0$ whenever $j > k$.
 * Consider using the [binomial formula](https://en.wikipedia.org/wiki/Binomial_theorem).
+```
 
 
-### Exercise 3
+```{exercise}
+:label: markov-prop-3
 
 Consider the distribution over $S^{n+1}$ previously shown in {eq}`mathjointd`, which is
 
@@ -932,17 +936,20 @@ $$
 Show that, for any Markov chain $(X_t)$ satisfying {eq}`markovpropd`
 and $X_0 \sim \psi$, the restriction $(X_0, \ldots, X_n)$ has joint
 distribution $\mathbf P_\psi^n$.
+```
 
-### Exercise 4
+
+```{exercise}
+:label: markov-prop-4
 
 Try to produce your own version of the figure {ref}`flow_fig`
 
 The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
-
+```
 
 ## Solutions
 
-### Solution to Exercise 1
+```{solution} markov-prop-1
 
 This is easy.
 
@@ -953,10 +960,10 @@ Then $X$ has the desired distribution.
 
 Alternatively, we could take $Z$ to be standard normal and set $X=0$ if $Z <
 0$ and $1$ otherwise.
- 
+```
 
-### Solution to Exercise 2
 
+```{solution} markov-prop-2
 Fixing $s, t \in \RR_+$ and $j \leq k$, we have 
 
 $$
@@ -993,10 +1000,10 @@ $$
 $$
 
 Hence {eq}`chapkol_ct2` holds, and the semigroup property is satisfied.
+```
 
 
-### Solution to Exercise 3 
-
+```{solution} markov-prop-3
 Let $(X_t)$ be a Markov chain satisfying {eq}`markovpropd` and $X_0 \sim \psi$.
 
 When $n=0$, we have $\mathbf P_\psi^n = \mathbf P_\psi^0 = \psi$, and this
@@ -1029,14 +1036,21 @@ $$
 $$
 
 The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
+```
 
 
-### Solution to Exercise 4 
-
+````{solution} markov-prop-4
 Here is one approach.
 
 (The statements involving ``glue`` are specific to this book and can be deleted
 by most readers.  They store the output so it can be displayed elsewhere.)
+
+```{note}
+code is currently not supported in `sphinx-exercise`
+so code-cell solutions are immediately after this
+solution block.
+```
+````
 
 ```{code-cell} ipython3
 α = 0.6
