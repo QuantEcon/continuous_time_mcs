@@ -39,6 +39,7 @@ sphinx:
 
     extra_extensions:
         - sphinx_proof
+        - sphinx_exercise
 
 execute:
     execute_notebooks: cache

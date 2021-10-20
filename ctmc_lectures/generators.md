@@ -211,11 +211,13 @@ $$
 $h \to 0$ in {eq}`devlim` is the right limit.)
 
 ```{prf:example}
+:label: generators-prf-1
 If $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
 see that $V$ is the derivative of $t \mapsto U_t$ at every $t \in \RR_+$.
 ```
 
 ```{prf:example}
+:label: generators-prf-2
 In {doc}`our discussion <kolmogorov_fwd>` of the Kolmogorov forward equation 
 when $S$ is finite, we introduced the derivative of a map $t
 \mapsto P_t$, where each $P_t$ is a matrix on $S$.
@@ -424,14 +426,17 @@ example, Chapter 7 of {cite}`bobrowski2005functional`.
 
 ## Exercises
 
-### Exercise 1
+```{exercise}
+:label: generators-ex-1
 
 Prove that {eq}`expdiffer` holds for all $A \in \linop$.
+```
 
-### Exercise 2
+```{exercise}
+:label: generators-ex-2
 
 In many texts, a $C_0$ semigroup is defined as an evolution semigroup $(U_t)$
-such that 
+such that
 
 $$
     U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
@@ -442,16 +447,17 @@ in the definition we used above.
 
 The [Banach--Steinhaus Theorem](https://en.wikipedia.org/wiki/Uniform_boundedness_principle) can be used to show that, for an evolution semigroup $(U_t)$ satisfying {eq}`czsg2`, there exist finite constants $\omega$ and $M$ such that
 
-$$ 
-    \| U_t \| \leq e^{t\omega} M 
+$$
+    \| U_t \| \leq e^{t\omega} M
     \quad \text{for all } \; t \geq 0
 $$ (sgbound)
 
 Using this and {eq}`czsg2`, show that, for any $g \in \BB$, the map $t \mapsto
 U_t g$ is continuous at all $t$.
+```
 
-
-### Exercise 3
+```{exercise}
+:label: generators-ex-3
 
 Following on from the previous exercise, 
 a UC semigroup is often defined as an evolution semigroup $(U_t)$
@@ -466,12 +472,12 @@ in the definition we used above.
 
 In particular, show that, for any $t_n \to t$, we have
 $\| U_{t_n} - U_t \| \to 0$  as $n \to \infty$.
-
+```
 
 
 ## Solutions
 
-### Solution to Exercise 1
+```{solution} ergodicity-ex-1
 
 To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
 
@@ -487,9 +493,9 @@ Using the definition of the exponential, this is easily verified,
 completing the proof of the first equality in {eq}`expdiffer`.
 
 The proof of the second equality is similar.
+```
 
-
-### Solution to Exercise 2
+```{solution} ergodicity-ex-2
 
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
 $\omega$ and $M$ be as in {eq}`sgbound`.
@@ -508,8 +514,9 @@ $$
 $$
 
 as $n \to \infty$.  This completes the proof.
+```
 
-### Solution to Exercise 3
+```{solution} ergodicity-ex-3
 
 The solution is similar to that of the previous exercise.
 
@@ -528,3 +535,4 @@ $$
 $$
 
 This converges to 0 as $n \to \infty$, completing our proof.
+```

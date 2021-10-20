@@ -14,7 +14,7 @@ kernelspec:
 
 # The Kolmogorov Backward Equation
 
-## Overview 
+## Overview
 
 As models become more complex, deriving analytical representations of the
 Markov semigroup $(P_t)$ becomes harder.
@@ -477,7 +477,7 @@ def independent_draws(T=10, num_draws=100):
 
 ```{code-cell} ipython3
 T = 30
-n = b + 1 
+n = b + 1
 draws = independent_draws(T, num_draws=100_000)
 fig, ax = plt.subplots()
 
@@ -495,13 +495,14 @@ mass on zero is due to the low arrival rate $\gamma$ for inventory.
 
 ## Exercises
 
-### Exercise 1
+````{exercise}
+:label: kolmogorov-bwd-1
 
 In the discussion above, we generated an approximation of $\psi_T$ when
 $T=30$, the initial condition is Binomial$(n, 0.25)$ and parameters
 are set to
 
-```{code-cell} ipython3
+```ipython3
 α = 0.6
 λ = 0.5
 γ = 0.1
@@ -511,13 +512,17 @@ b = 10
 The calculation was done by simulating independent draws and histogramming.
 
 Try to generate the same figure using {eq}`psolq` instead, modifying code from
-{ref}`our lecture <markov_prop>` on the Markov property.
+{doc}`our lecture <markov_prop>` on the Markov property.
+````
 
-### Exercise 2
+```{exercise}
+:label: kolmogorov-bwd-2
 
 Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`.
+```
 
-### Exercise 3
+```{exercise}
+:label: kolmogorov-bwd-3
 
 We claimed above that the solution $P_t = e^{t Q}$ is the unique
 Markov semigroup satisfying the backward equation $P'_t = Q P_t$.
@@ -525,15 +530,26 @@ Markov semigroup satisfying the backward equation $P'_t = Q P_t$.
 Try to supply a proof.
 
 (This is not an easy exercise but worth thinking about in any case.)
-
+```
 
 ## Solutions
 
-### Solution to Exercise 1
+```{note}
+code is currently not supported in `sphinx-exercise`
+so code-cell solutions are immediately after this
+solution block.
+```
 
+```{solution} kolmogorov-bwd-1
 Here is one solution:
+```
 
 ```{code-cell} ipython3
+α = 0.6
+λ = 0.5
+γ = 0.1
+b = 10
+
 states = np.arange(n)
 I = np.identity(n)
 
@@ -572,8 +588,7 @@ plt.show()
 ```
 
 
-
-### Solution to Exercise 2
+```{solution} kolmogorov-bwd-2
 
 One can easily verify that, when $f$ is a differentiable function and $\alpha >
 0$, we have
@@ -588,11 +603,11 @@ Note also that, with the change of variable $s = t - \tau$, we can rewrite
 {eq}`kbinteg` as
 
 $$
-    P_t(x, y) = 
-    e^{-t \lambda(x)} 
-    \left\{ 
+    P_t(x, y) =
+    e^{-t \lambda(x)}
+    \left\{
         I(x, y)
-        + \lambda(x) 
+        + \lambda(x)
         \int_0^t (K P_s)(x, y) e^{s \lambda(x)} d s
     \right\}
 $$ (kbinteg2)
@@ -600,11 +615,11 @@ $$ (kbinteg2)
 Applying {eq}`gdiff` yields
 
 $$
-    P'_t(x, y) 
-    = e^{-t \lambda(x)} 
+    P'_t(x, y)
+    = e^{-t \lambda(x)}
         \left\{ 
-             \lambda(x) 
-             (K P_t)(x, y) e^{t \lambda(x)} 
+             \lambda(x)
+             (K P_t)(x, y) e^{t \lambda(x)}
         \right\}
         - \lambda(x) P_t(x, y)
 $$
@@ -612,18 +627,19 @@ $$
 After minor rearrangements this becomes
 
 $$
-    P'_t(x, y) 
-    = \lambda(x) [ (K - I)  P_t](x, y) 
+    P'_t(x, y)
+    = \lambda(x) [ (K - I)  P_t](x, y)
 $$
 
 which is identical to {eq}`kolbackeq`.
+```
 
 
-### Solution to Exercise 3
+```{solution} kolmogorov-bwd-3
 
 Here is one proof of uniqueness.
 
-Suppose that $(\hat P_t)$ is another Markov semigroup satisfying 
+Suppose that $(\hat P_t)$ is another Markov semigroup satisfying
 $P'_t = Q P_t$.
 
 Fix $t > 0$ and let $V_s$ be defined by $V_s = P_s \hat P_{t-s}$ for all $s
@@ -647,5 +663,4 @@ Hence $V_s$ is constant, so our previous observations $V_0 = \hat P_t$ and $V_t 
 now yield $\hat P_t = P_t$.
 
 Since $t$ was arbitrary, the proof is now done.
-
-
+```
