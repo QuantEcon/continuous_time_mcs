@@ -1,6 +1,6 @@
 # Book settings
 title: Continuous Time Markov Chains
-author: John Stachurski
+author: Thomas J. Sargent & John Stachurski
 logo: _static/qe-logo-large.png
 description: These lectures provides a short introduction to continuous time Markov chains designed and written by Thomas J. Sargent and John Stachurski.
 
@@ -11,7 +11,8 @@ sphinx:
             header_organisation_url: https://quantecon.org
             header_organisation: QuantEcon
             repository_url: https://github.com/jstac/continuous_time_mcs
-            # nb_repository_url: https://github.com/QuantEcon/lecture-python.notebooks
+            nb_repository_url: https://github.com/QuantEcon/continuous_time_mcs.notebooks
+            nb_branch: main
             twitter: quantecon
             twitter_logo_url: https://assets.quantecon.org/img/qe-twitter-logo.png
             og_logo_url: https://assets.quantecon.org/img/qe-og-logo.png
@@ -37,9 +38,22 @@ sphinx:
                     "linop" : ["\\mathcal{L}(\\mathbb{B})"]
                     "linopell" : ["\\mathcal{L}(\\ell_1)"]
 
+        tojupyter_target_html: true
+        tojupyter_urlpath: "https://jstac.github.io/continuous_time_mcs/"
+        tojupyter_image_urlpath: "https://jstac.github.io/continuous_time_mcs/_static/"
+        tojupyter_lang_synonyms: ["ipython", "ipython3", "python"]
+        tojupyter_kernels:
+            python3:
+                kernelspec:
+                display_name: "Python"
+                language: python3
+                name: python3
+                file_extension: ".py"
+        tojupyter_images_markdown: true
     extra_extensions:
         - sphinx_proof
         - sphinx_exercise
+        - sphinx_tojupyter
 
 execute:
     execute_notebooks: cache
