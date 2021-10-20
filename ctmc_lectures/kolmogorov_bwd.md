@@ -512,7 +512,7 @@ b = 10
 The calculation was done by simulating independent draws and histogramming.
 
 Try to generate the same figure using {eq}`psolq` instead, modifying code from
-{ref}`our lecture <markov_prop>` on the Markov property.
+{doc}`our lecture <markov_prop>` on the Markov property.
 ````
 
 ```{exercise}

@@ -153,6 +153,7 @@ The second last of these results is the Kolmogorov forward and backward equation
 The last of these results shows that we can obtain the intensity matrix $Q$ by differentiating $P_t$ at $t=0$.
 
 ```{prf:example}
+:label: uc-mc-semigroups-prf-1
 Let us consider again the Poisson process $(N_t)$ with rate $\lambda > 0$ 
 in light of the discussion above.
 

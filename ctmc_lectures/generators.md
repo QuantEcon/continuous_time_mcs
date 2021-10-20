@@ -211,11 +211,13 @@ $$
 $h \to 0$ in {eq}`devlim` is the right limit.)
 
 ```{prf:example}
+:label: generators-prf-1
 If $U_t = t V$ for some fixed $V \in \linop$, then it is easy to
 see that $V$ is the derivative of $t \mapsto U_t$ at every $t \in \RR_+$.
 ```
 
 ```{prf:example}
+:label: generators-prf-2
 In {doc}`our discussion <kolmogorov_fwd>` of the Kolmogorov forward equation 
 when $S$ is finite, we introduced the derivative of a map $t
 \mapsto P_t$, where each $P_t$ is a matrix on $S$.
