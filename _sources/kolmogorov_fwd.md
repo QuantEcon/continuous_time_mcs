@@ -390,7 +390,7 @@ are equivalent:
 1. $Q$ is an intensity matrix.
 ```
 
-The proof is related to that of {prf:ref}`jctosg` and is found as 
+The proof is related to that of {prf:ref}`jctosg` and is found as
 a solved exercise below.
 
 ```{prf:corollary}
@@ -436,8 +436,8 @@ Q$, which is the Fokker--Planck equation.
 More explicitly, for given $y \in S$,
 
 $$
-    \psi_t'(y) 
-    = \sum_{x \not= y} \psi_t(x) \lambda(x) K(x, y) - \psi_t(y) \lambda(y) 
+    \psi_t'(y)
+    = \sum_{x \not= y} \psi_t(x) \lambda(x) K(x, y) - \psi_t(y) \lambda(y)
 $$
 
 The rate of probability flow into $y$ is equal to the inflow from other states
@@ -449,7 +449,7 @@ minus the outflow.
 
 We have seen that any intensity matrix $Q$ on $S$ defines a Markov semigroup via $P_t = e^{tQ}$.
 
-Henceforth, we will say that $(X_t)$ is **a Markov chain with intensity matrix** $Q$ if 
+Henceforth, we will say that $(X_t)$ is **a Markov chain with intensity matrix** $Q$ if
 $(X_t)$ is a Markov chain with Markov semigroup $(e^{tQ})$.
 
 While our discussion has been in the context of a finite state space, later we
@@ -462,7 +462,7 @@ is a Markov chain with intensity matrix $Q$ for some suitably chosen $Q$.
 Later we will prove this to be universally true when $S$ is finite and true
 under mild conditions when $S$ is countably infinite.
 
-Intensity matrices are important because 
+Intensity matrices are important because
 
 1. they are the natural infinitesimal descriptions of Markov semigroups,
 2. they are often easy to write down in applications and
@@ -480,7 +480,8 @@ Later, we will see that, for a given intensity matrix $Q$, the elements are
 
 ## Exercises
 
-### Exercise 1
+```{exercise}
+:label: kolmogorov-fwd-1
 
 Let $(P_t)$ be a Markov semigroup such that $t \mapsto P_t(x, y)$ is
 differentiable at all $t \geq 0$ and $(x, y) \in S \times S$.
@@ -489,7 +490,7 @@ differentiable at all $t \geq 0$ and $(x, y) \in S \times S$.
 
 Define (pointwise, at each $(x,y)$),
 
-$$ 
+$$
     Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
 $$ (genfl)
 
@@ -498,13 +499,14 @@ Assuming that this limit exists, and hence $Q$ is well-defined, show that
 $$
     P'_t = P_t Q
     \quad \text{and} \quad
-    P'_t = Q P_t 
+    P'_t = Q P_t
 $$
 
 both hold. (These are the Kolmogorov forward and backward equations.)
+```
 
-
-### Exercise 2
+```{exercise}
+:label: kolmogorov-fwd-2
 
 Recall {ref}`our model <sdji>` of jump chains with state-dependent jump
 intensities given by rate function $x \mapsto \lambda(x)$.
@@ -513,56 +515,58 @@ After a wait time with exponential rate $\lambda(x) \in (0, \infty)$, the
 state transitions from $x$ to $y$ with probability $K(x,y)$.
 
 We found that the associated semigroup $(P_t)$ satisfies the Kolmogorov
-backward equation $P'_t = Q P_t$ with 
+backward equation $P'_t = Q P_t$ with
 
 $$
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 $$ (qeqagain)
 
 Show that $Q$ is an intensity matrix and that {eq}`genfl` holds.
+```
 
-### Exercise 3 
+```{exercise}
+:label: kolmogorov-fwd-3
 
 Prove {prf:ref}`intvsmk` by adapting the arguments in {prf:ref}`jctosg`.
 (This is nontrivial but worth at least trying.)
 
 Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
-
+```
 
 
 ## Solutions
 
-### Solution to Exercise 1
+```{solution} kolmogorov-fwd-1
 
 Let $(P_t)$ be a Markov semigroup and let $Q$ be as defined in the statement
 of the exercise.
 
-Fix $t \geq 0$ and $h > 0$. 
+Fix $t \geq 0$ and $h > 0$.
 
 Combining the semigroup property and linearity with the restriction $P_0 = I$, we get
 
 $$
-    \frac{P_{t+h} - P_t}{h}  
-    = \frac{P_t P_h - P_t}{h}  
-    = \frac{P_t (P_h - I)}{h}  
+    \frac{P_{t+h} - P_t}{h}
+    = \frac{P_t P_h - P_t}{h}
+    = \frac{P_t (P_h - I)}{h}
 $$
 
 Taking $h \downarrow 0$ and using the definition of $Q$ give $P_t' = P_t Q$,
 which is the Kolmogorov forward equation.
 
-For the backward equation we observe that 
+For the backward equation we observe that
 
 $$
-    \frac{P_{t+h} - P_t}{h}  
-    = \frac{P_h P_t - P_t}{h}  
-    = \frac{(P_h - I) P_t}{h}  
+    \frac{P_{t+h} - P_t}{h}
+    = \frac{P_h P_t - P_t}{h}
+    = \frac{(P_h - I) P_t}{h}
 $$
 
 also holds.  Taking $h \downarrow 0$ gives the Kolmogorov backward equation.
+```
 
 
-
-### Solution to Exercise 2
+```{solution} kolmogorov-fwd-2
 
 Let $Q$ be as defined in {eq}`qeqagain`.
 
@@ -575,14 +579,15 @@ For the second, we use the fact that $K$ is a Markov matrix, so that, with $1$
 as a column vector of ones,
 
 $$
-    Q 1 
+    Q 1
     = \lambda (K 1 - 1)
     = \lambda (1 - 1)
     = 0
 $$
+```
 
-### Solution to Exercise 3
 
+```{solution} kolmogorov-fwd-3
 
 Suppose that $Q$ is an intensity matrix, fix $t \geq 0$ and set $P_t = e^{tQ}$.
 
@@ -603,7 +608,7 @@ We conclude that $P_t$ is a Markov matrix.
 Regarding the converse implication, suppose that $P_t = e^{tQ}$ is a Markov
 matrix for all $t$ and let $1$ be a column vector of ones.
 
-Because $P_t$ has unit row sums and differentiation is linear, 
+Because $P_t$ has unit row sums and differentiation is linear,
 we can employ the Kolmogorov backward equation to obtain
 
 $$
@@ -629,5 +634,4 @@ $t$, we see that the off diagonal elements of $Q$ must be
 nonnegative.
 
 Hence $Q$ is an intensity matrix.
-
-
+```

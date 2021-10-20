@@ -9,7 +9,25 @@
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
+    <script>
+        MathJax = {
+          loader: {load: ['[tex]/boldsymbol']},
+          tex: {
+            packages: {'[+]': ['boldsymbol']},
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true,
+            macros: {
+                "argmax" : "arg\\,max",
+                "argmin" : "arg\\,min"
+            }
+          },
+          svg: {
+            fontCache: 'global',
+            scale: 0.92,
+            displayAlign: "center",
+          },
+        };
+    </script>
     
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -27,13 +45,14 @@
       
 
     
+    <link rel="stylesheet" href="_static/quantecon-book-theme.b2c9c855ebbf206c0b4223812193cad1.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -44,21 +63,64 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="_static/quantecon-book-theme.a5462485f8dd312884626d20cc9f547c.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Poisson Processes" href="poisson.html" />
@@ -158,35 +220,11 @@
   <a class="reference internal nav-link" href="#exercises">
    1.5. Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
-     1.5.1. Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
-     1.5.2. Exercise 2
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
    1.6. Solutions
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     1.6.1. Solution to Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     1.6.2. Solution to Exercise 2
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -529,7 +567,7 @@ parameters respectively.</p>
 \]</div>
 <p>The Erlang distribution is of interest to us because of the following fact.</p>
 <div class="proof lemma admonition" id="erlexp">
-<p class="admonition-title"><span class="caption-number">Lemma 1.2 </span> (Distribution of Sum of Exponentials)</p>
+<p class="admonition-title"><span class="caption-number">Lemma 1.1 </span> (Distribution of Sum of Exponentials)</p>
 <div class="lemma-content section" id="proof-content">
 <p>If, for some <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, the sequence <span class="math notranslate nohighlight">\((W_i)\)</span> is IID and exponentially
 distributed with rate <span class="math notranslate nohighlight">\(\lambda\)</span>, then <span class="math notranslate nohighlight">\(J_n := \sum_{i=1}^n W_i\)</span> has the Erlang
@@ -539,8 +577,9 @@ distribution with shape <span class="math notranslate nohighlight">\(n\)</span> 
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="exercise-1">
-<h3><span class="section-number">1.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="memoryless-ex-1">
+<p class="admonition-title"><span class="caption-number">Exercise 1.1 </span></p>
+<div class="section" id="exercise-content">
 <p>Due to its memoryless property, we can “stop” and “restart” an exponential
 draw without changing its distribution.</p>
 <p>To illustrate this, we can think of fixing <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, drawing from
@@ -553,8 +592,9 @@ draw without changing its distribution.</p>
 </ul>
 <p>Show that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>.</p>
 </div>
-<div class="section" id="exercise-2">
-<h3><span class="section-number">1.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="memoryless-ex-2">
+<p class="admonition-title"><span class="caption-number">Exercise 1.2 </span></p>
+<div class="section" id="exercise-content">
 <p>Fix <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(s=1.0\)</span>.</p>
 <p>Simulate 1,000 draws of <span class="math notranslate nohighlight">\(X\)</span> using the algorithm above.</p>
 <p>Plot the fraction of the sample exceeding <span class="math notranslate nohighlight">\(t\)</span> for each <span class="math notranslate nohighlight">\(t \geq 0\)</span> (on a grid)
@@ -562,11 +602,18 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 <p>Is the fit good?  How about if the number of draws is increased?</p>
 <p>Are the results in line with those of the previous exercise?</p>
 </div>
-</div>
+</div></div>
 <div class="section" id="solutions">
 <h2><span class="section-number">1.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="solution-to-exercise-1">
-<h3><span class="section-number">1.6.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
+so code-cell solutions are immediately after this
+solution block.</p>
+</div>
+<div class="solution admonition" id="memoryless-solution-4">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#memoryless-ex-1"><span>Solution to </span> Exercise 1.1</a></p>
+<div class="section" id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be constructed as in the statement of the exercise and fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
 <p>Notice that <span class="math notranslate nohighlight">\(X &gt; s + t\)</span> if and only if <span class="math notranslate nohighlight">\(Y &gt; s\)</span> and <span class="math notranslate nohighlight">\(Z &gt; t\)</span>.</p>
 <p>As a result of this fact and independence,</p>
@@ -585,10 +632,12 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 \]</div>
 <p>Either way, we have <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>, as was to be shown.</p>
 </div>
-<div class="section" id="solution-to-exercise-2">
-<h3><span class="section-number">1.6.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="memoryless-solution-5">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#memoryless-ex-2"><span>Solution to </span> Exercise 1.2</a></p>
+<div class="section" id="solution-content">
 <p>Here’s one solution, starting with 1,000 draws.</p>
-<div class="cell docutils container">
+</div>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span> 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
@@ -622,9 +671,14 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 <img alt="_images/memoryless_5_0.png" src="_images/memoryless_5_0.png" />
 </div>
 </div>
+<div class="solution admonition" id="memoryless-solution-6">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#memoryless-ex-2"><span>Solution to </span> Exercise 1.2</a></p>
+<div class="section" id="solution-content">
+<p><strong>Solution Continued:</strong></p>
 <p>The fit is already very close, which matches with the theory in Exercise 1.</p>
 <p>The two lines become indistinguishable as <span class="math notranslate nohighlight">\(n\)</span> is increased further.</p>
-<div class="cell docutils container">
+</div>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">draws</span> <span class="o">=</span> <span class="n">draw_X</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
@@ -639,7 +693,6 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/memoryless_7_0.png" src="_images/memoryless_7_0.png" />
-</div>
 </div>
 </div>
 </div>
@@ -680,8 +733,6 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
                 </footer> <!-- .page__footer -->
 
             </div> <!-- .page -->
-
-            
 
             
             <div class="sidebar bd-sidebar inactive" id="site-navigation">
@@ -773,7 +824,8 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                        <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/memoryless.ipynb" download><i data-feather="download-cloud"></i></a></li>
+                        <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/memoryless.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
@@ -786,7 +838,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="" download><p>Book (PDF)</p></a>
+                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>

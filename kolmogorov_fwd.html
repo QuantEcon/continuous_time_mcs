@@ -9,7 +9,25 @@
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
+    <script>
+        MathJax = {
+          loader: {load: ['[tex]/boldsymbol']},
+          tex: {
+            packages: {'[+]': ['boldsymbol']},
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true,
+            macros: {
+                "argmax" : "arg\\,max",
+                "argmin" : "arg\\,min"
+            }
+          },
+          svg: {
+            fontCache: 'global',
+            scale: 0.92,
+            displayAlign: "center",
+          },
+        };
+    </script>
     
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -27,13 +45,14 @@
       
 
     
+    <link rel="stylesheet" href="_static/quantecon-book-theme.b2c9c855ebbf206c0b4223812193cad1.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -44,21 +63,50 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="_static/quantecon-book-theme.a5462485f8dd312884626d20cc9f547c.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6. Semigroups and Generators" href="generators.html" />
@@ -173,45 +221,11 @@
   <a class="reference internal nav-link" href="#exercises">
    5.6. Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
-     5.6.1. Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
-     5.6.2. Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-3">
-     5.6.3. Exercise 3
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
    5.7. Solutions
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     5.7.1. Solution to Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     5.7.2. Solution to Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-3">
-     5.7.3. Solution to Exercise 3
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -589,10 +603,10 @@ are equivalent:</p>
 <li><p><span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix.</p></li>
 </ol>
 </div>
-</div><p>The proof is related to that of <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.4</a> and is found as
+</div><p>The proof is related to that of <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a> and is found as
 a solved exercise below.</p>
 <div class="proof corollary admonition" id="intvsmk_c">
-<p class="admonition-title"><span class="caption-number">Corollary 5.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Corollary 5.1 </span></p>
 <div class="corollary-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix on finite <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>,
 then <span class="math notranslate nohighlight">\((P_t)\)</span> is a Markov semigroup.</p>
@@ -625,8 +639,8 @@ Q\)</span>, which is the Fokker–Planck equation.</p>
 <p>More explicitly, for given <span class="math notranslate nohighlight">\(y \in S\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-    \psi_t'(y) 
-    = \sum_{x \not= y} \psi_t(x) \lambda(x) K(x, y) - \psi_t(y) \lambda(y) 
+    \psi_t'(y)
+    = \sum_{x \not= y} \psi_t(x) \lambda(x) K(x, y) - \psi_t(y) \lambda(y)
 \]</div>
 <p>The rate of probability flow into <span class="math notranslate nohighlight">\(y\)</span> is equal to the inflow from other states
 minus the outflow.</p>
@@ -658,14 +672,15 @@ understood as follows:</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">5.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="exercise-1">
-<h3><span class="section-number">5.6.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="kolmogorov-fwd-1">
+<p class="admonition-title"><span class="caption-number">Exercise 5.1 </span></p>
+<div class="section" id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup such that <span class="math notranslate nohighlight">\(t \mapsto P_t(x, y)\)</span> is
 differentiable at all <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\((x, y) \in S \times S\)</span>.</p>
 <p>(The derivative at <span class="math notranslate nohighlight">\(t=0\)</span> is the usual right derivative.)</p>
 <p>Define (pointwise, at each <span class="math notranslate nohighlight">\((x,y)\)</span>),</p>
 <div class="math notranslate nohighlight" id="equation-genfl">
-<span class="eqno">(5.4)<a class="headerlink" href="#equation-genfl" title="Permalink to this equation">¶</a></span>\[ 
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-genfl" title="Permalink to this equation">¶</a></span>\[
     Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
 \]</div>
 <p>Assuming that this limit exists, and hence <span class="math notranslate nohighlight">\(Q\)</span> is well-defined, show that</p>
@@ -673,12 +688,13 @@ differentiable at all <span class="math notranslate nohighlight">\(t \geq 0\)</s
 \[
     P'_t = P_t Q
     \quad \text{and} \quad
-    P'_t = Q P_t 
+    P'_t = Q P_t
 \]</div>
 <p>both hold. (These are the Kolmogorov forward and backward equations.)</p>
 </div>
-<div class="section" id="exercise-2">
-<h3><span class="section-number">5.6.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="kolmogorov-fwd-2">
+<p class="admonition-title"><span class="caption-number">Exercise 5.2 </span></p>
+<div class="section" id="exercise-content">
 <p>Recall <a class="reference internal" href="kolmogorov_bwd.html#sdji"><span class="std std-ref">our model</span></a> of jump chains with state-dependent jump
 intensities given by rate function <span class="math notranslate nohighlight">\(x \mapsto \lambda(x)\)</span>.</p>
 <p>After a wait time with exponential rate <span class="math notranslate nohighlight">\(\lambda(x) \in (0, \infty)\)</span>, the
@@ -691,40 +707,43 @@ backward equation <span class="math notranslate nohighlight">\(P'_t = Q P_t\)</s
 \]</div>
 <p>Show that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix and that <a class="reference internal" href="#equation-genfl">(5.4)</a> holds.</p>
 </div>
-<div class="section" id="exercise-3">
-<h3><span class="section-number">5.6.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
-<p>Prove <a class="reference internal" href="#intvsmk">Theorem 5.1</a> by adapting the arguments in <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.4</a>.
+</div><div class="exercise admonition" id="kolmogorov-fwd-3">
+<p class="admonition-title"><span class="caption-number">Exercise 5.3 </span></p>
+<div class="section" id="exercise-content">
+<p>Prove <a class="reference internal" href="#intvsmk">Theorem 5.1</a> by adapting the arguments in <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a>.
 (This is nontrivial but worth at least trying.)</p>
 <p>Hint: The constant <span class="math notranslate nohighlight">\(m\)</span> in the proof can be set to <span class="math notranslate nohighlight">\(\max_x |Q(x, x)|\)</span>.</p>
 </div>
-</div>
+</div></div>
 <div class="section" id="solutions">
 <h2><span class="section-number">5.7. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="solution-to-exercise-1">
-<h3><span class="section-number">5.7.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="solution admonition" id="kolmogorov_fwd-solution-5">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#kolmogorov-fwd-1"><span>Solution to </span> Exercise 5.1</a></p>
+<div class="section" id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup and let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in the statement
 of the exercise.</p>
 <p>Fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(h &gt; 0\)</span>.</p>
 <p>Combining the semigroup property and linearity with the restriction <span class="math notranslate nohighlight">\(P_0 = I\)</span>, we get</p>
 <div class="math notranslate nohighlight">
 \[
-    \frac{P_{t+h} - P_t}{h}  
-    = \frac{P_t P_h - P_t}{h}  
-    = \frac{P_t (P_h - I)}{h}  
+    \frac{P_{t+h} - P_t}{h}
+    = \frac{P_t P_h - P_t}{h}
+    = \frac{P_t (P_h - I)}{h}
 \]</div>
 <p>Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> and using the definition of <span class="math notranslate nohighlight">\(Q\)</span> give <span class="math notranslate nohighlight">\(P_t' = P_t Q\)</span>,
 which is the Kolmogorov forward equation.</p>
 <p>For the backward equation we observe that</p>
 <div class="math notranslate nohighlight">
 \[
-    \frac{P_{t+h} - P_t}{h}  
-    = \frac{P_h P_t - P_t}{h}  
-    = \frac{(P_h - I) P_t}{h}  
+    \frac{P_{t+h} - P_t}{h}
+    = \frac{P_h P_t - P_t}{h}
+    = \frac{(P_h - I) P_t}{h}
 \]</div>
 <p>also holds.  Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> gives the Kolmogorov backward equation.</p>
 </div>
-<div class="section" id="solution-to-exercise-2">
-<h3><span class="section-number">5.7.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="kolmogorov_fwd-solution-6">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#kolmogorov-fwd-2"><span>Solution to </span> Exercise 5.2</a></p>
+<div class="section" id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in <a class="reference internal" href="#equation-qeqagain">(5.5)</a>.</p>
 <p>We need to show that <span class="math notranslate nohighlight">\(Q\)</span> is nonnegative off the diagonal and has zero row
 sums.</p>
@@ -733,16 +752,17 @@ sums.</p>
 as a column vector of ones,</p>
 <div class="math notranslate nohighlight">
 \[
-    Q 1 
+    Q 1
     = \lambda (K 1 - 1)
     = \lambda (1 - 1)
     = 0
 \]</div>
 </div>
-<div class="section" id="solution-to-exercise-3">
-<h3><span class="section-number">5.7.3. </span>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="kolmogorov_fwd-solution-7">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#kolmogorov-fwd-3"><span>Solution to </span> Exercise 5.3</a></p>
+<div class="section" id="solution-content">
 <p>Suppose that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix, fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and set <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span>.</p>
-<p>The proof from <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.4</a> that <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums applies
+<p>The proof from <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a> that <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums applies
 directly to the current case.</p>
 <p>The proof of nonnegativity of <span class="math notranslate nohighlight">\(P_t\)</span> can be applied after some
 modifications.</p>
@@ -775,7 +795,7 @@ for any <span class="math notranslate nohighlight">\(x, y\)</span> and <span cla
 nonnegative.</p>
 <p>Hence <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix.</p>
 </div>
-</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -813,8 +833,6 @@ nonnegative.</p>
                 </footer> <!-- .page__footer -->
 
             </div> <!-- .page -->
-
-            
 
             
             <div class="sidebar bd-sidebar inactive" id="site-navigation">
@@ -906,7 +924,8 @@ nonnegative.</p>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                        <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/kolmogorov_fwd.ipynb" download><i data-feather="download-cloud"></i></a></li>
+                        <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/kolmogorov_fwd.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
@@ -919,7 +938,7 @@ nonnegative.</p>
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="" download><p>Book (PDF)</p></a>
+                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>

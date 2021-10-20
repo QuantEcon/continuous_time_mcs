@@ -626,14 +626,14 @@ A solved exercise below asks you to confirm this.
 
 ## Exercises
 
-### Exercise 1
-
+```{exercise}
+:label: ergodicity-ex-1
 Let $(P_t)$ be a Markov semigroup.  True or false:
-for this semigroup, every state $x$ is accessible from itself. 
+for this semigroup, every state $x$ is accessible from itself.
+```
 
-
-### Exercise 2
-
+```{exercise}
+:label: ergodicity-ex-2
 Let $(\lambda_k)$ be a bounded non-increasing sequence in $(0, \infty)$.
 
 A **pure birth process** starting at zero is a continuous time Markov process
@@ -650,20 +650,22 @@ $$
 
 Show that $(P_t)$, the corresponding Markov semigroup, has no stationary
 distribution.
+```
 
-### Exercise 3
 
+```{exercise}
+:label: ergodicity-ex-3
 Confirm that {prf:ref}`sdrift` implies {prf:ref}`sfinite`.
-
+```
 
 ## Solutions
 
-### Solution to Exercise 1
-
+```{solution} ergodicity-ex-1
 The statement is true.  With $t=0$ we have $P_t(x,x) = I(x,x) = 1 > 0$.
+```
 
-### Solution to Exercise 2
 
+```{solution} ergodicity-ex-2
 Suppose to the contrary that $\phi \in \dD$ and $\phi Q = 0$.
 
 Then, for any $j \geq 1$,
@@ -693,9 +695,10 @@ But $\dD$ contains no non-decreasing functions when the state space is infinite.
 (Why?)
 
 Contradiction.
+```
 
-### Solution to Exercise 3
 
+```{solution} ergodicity-ex-3
 Let $(P_t)$ be an irreducible UC Markov semigroup and let $S$ be finite.
 
 Pick any positive constants $M, \epsilon$ and set $v = M$ and $F = S$.
@@ -704,9 +707,10 @@ We then have
 
 $$
     \sum_y Q(x, y) v(y)
-    = M \sum_y Q(x, y) 
+    = M \sum_y Q(x, y)
     = 0
 $$
 
 Hence the drift condition in {prf:ref}`sdrift` holds and $(P_t)$ is
 asymptotically stable.
+```

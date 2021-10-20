@@ -9,7 +9,25 @@
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
+    <script>
+        MathJax = {
+          loader: {load: ['[tex]/boldsymbol']},
+          tex: {
+            packages: {'[+]': ['boldsymbol']},
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true,
+            macros: {
+                "argmax" : "arg\\,max",
+                "argmin" : "arg\\,min"
+            }
+          },
+          svg: {
+            fontCache: 'global',
+            scale: 0.92,
+            displayAlign: "center",
+          },
+        };
+    </script>
     
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -27,13 +45,14 @@
       
 
     
+    <link rel="stylesheet" href="_static/quantecon-book-theme.b2c9c855ebbf206c0b4223812193cad1.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -44,21 +63,29 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="_static/quantecon-book-theme.a5462485f8dd312884626d20cc9f547c.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="7. UC Markov Semigroups" href="uc_mc_semigroups.html" />
@@ -168,45 +195,11 @@
   <a class="reference internal nav-link" href="#exercises">
    6.5. Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
-     6.5.1. Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
-     6.5.2. Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-3">
-     6.5.3. Exercise 3
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
    6.6. Solutions
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     6.6.1. Solution to Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     6.6.2. Solution to Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-3">
-     6.6.3. Solution to Exercise 3
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -397,13 +390,13 @@ an element <span class="math notranslate nohighlight">\(T\)</span> of <span clas
 \]</div>
 <p>(Convergence of operators is in operator norm.  If <span class="math notranslate nohighlight">\(\tau = 0\)</span>, then the limit
 <span class="math notranslate nohighlight">\(h \to 0\)</span> in <a class="reference internal" href="#equation-devlim">(6.4)</a> is the right limit.)</p>
-<div class="proof example admonition" id="example-0">
+<div class="proof example admonition" id="generators-prf-1">
 <p class="admonition-title"><span class="caption-number">Example 6.1 </span></p>
 <div class="example-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(U_t = t V\)</span> for some fixed <span class="math notranslate nohighlight">\(V \in \linop\)</span>, then it is easy to
 see that <span class="math notranslate nohighlight">\(V\)</span> is the derivative of <span class="math notranslate nohighlight">\(t \mapsto U_t\)</span> at every <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>.</p>
 </div>
-</div><div class="proof example admonition" id="example-1">
+</div><div class="proof example admonition" id="generators-prf-2">
 <p class="admonition-title"><span class="caption-number">Example 6.2 </span></p>
 <div class="example-content section" id="proof-content">
 <p>In <a class="reference internal" href="kolmogorov_fwd.html"><span class="doc">our discussion</span></a> of the Kolmogorov forward equation
@@ -416,7 +409,7 @@ hence pointwise and norm convergence coincide.</p>
 </div>
 </div><p>Analogous to the matrix and scalar cases, we have the following result:</p>
 <div class="proof lemma admonition" id="diffexpmap">
-<p class="admonition-title"><span class="caption-number">Lemma 6.3 </span> (Differentiability of the Exponential Curve)</p>
+<p class="admonition-title"><span class="caption-number">Lemma 6.1 </span> (Differentiability of the Exponential Curve)</p>
 <div class="lemma-content section" id="proof-content">
 <p>For all <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the exponential curve <span class="math notranslate nohighlight">\(t \mapsto e^{tA}\)</span> is everywhere differentiable and</p>
 <div class="math notranslate nohighlight" id="equation-expdiffer">
@@ -454,7 +447,7 @@ and then specializing.</p>
 </ul>
 <p>In what follows we abbreviate “uniformly continuous” to UC.<a class="footnote-reference brackets" href="#ucnote" id="id5">4</a></p>
 <div class="proof example admonition" id="ecuc">
-<p class="admonition-title"><span class="caption-number">Example 6.4 </span> (Exponential curves are UC semigroups)</p>
+<p class="admonition-title"><span class="caption-number">Example 6.3 </span> (Exponential curves are UC semigroups)</p>
 <div class="example-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for <span class="math notranslate nohighlight">\(t \in \RR_+\)</span> and <span class="math notranslate nohighlight">\(A \in \linop\)</span>, then <span class="math notranslate nohighlight">\((U_t)\)</span>
 is a uniformly continuous semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>.</p>
@@ -462,7 +455,7 @@ is a uniformly continuous semigroup on <span class="math notranslate nohighlight
 </div><p>The claim that <span class="math notranslate nohighlight">\((U_t)\)</span> is an evolution semigroup follows directly from the
 properties of the exponential function given above.</p>
 <p>Uniform continuity can be established using arguments similar to those in the
-proof of differentiability in <a class="reference internal" href="#diffexpmap">Lemma 6.3</a>.</p>
+proof of differentiability in <a class="reference internal" href="#diffexpmap">Lemma 6.1</a>.</p>
 <p>Since norm convergence on <span class="math notranslate nohighlight">\(\linop\)</span> implies pointwise convergence, every
 uniformly continuous semigroup is a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup.</p>
 <p>The reverse is certainly not true — there are many important <span class="math notranslate nohighlight">\(C_0\)</span> semigroups that fail to be uniformly continuous.</p>
@@ -518,11 +511,11 @@ semigroups, where these problems do not arise.</p>
 </div>
 <div class="section" id="a-characterization-of-uniformly-continuous-semigroups">
 <h3><span class="section-number">6.4.3. </span>A Characterization of Uniformly Continuous Semigroups<a class="headerlink" href="#a-characterization-of-uniformly-continuous-semigroups" title="Permalink to this headline">¶</a></h3>
-<p>We saw in <a class="reference internal" href="#ecuc">Example 6.4</a> that exponential curves are an example
+<p>We saw in <a class="reference internal" href="#ecuc">Example 6.3</a> that exponential curves are an example
 of a UC semigroup.</p>
 <p>The next theorem tells us that there are no other examples.</p>
 <div class="proof theorem admonition" id="ucsgec">
-<p class="admonition-title"><span class="caption-number">Theorem 6.5 </span> (UC Semigroups are Exponential Curves)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 6.1 </span> (UC Semigroups are Exponential Curves)</p>
 <div class="theorem-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((U_t)\)</span> is a UC semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>, then there exists an <span class="math notranslate nohighlight">\(A \in \linop\)</span>
 such that <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.  Moreover,</p>
@@ -532,7 +525,7 @@ such that <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for
 <li><p><span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p></li>
 </ul>
 </div>
-</div><p>The last three claims in <a class="reference internal" href="#ucsgec">Theorem 6.5</a> follow directly from the
+</div><p>The last three claims in <a class="reference internal" href="#ucsgec">Theorem 6.1</a> follow directly from the
 first claim.</p>
 <p>The statement <span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> is a
 generalization of the Kolmogorov forward and backward equations.</p>
@@ -549,19 +542,21 @@ satisfying</p>
 the memoryless property of the exponential function.</p>
 <p>For more discussion of the scalar case, see, for example,
 <span id="id7">[<a class="reference internal" href="zreferences.html#id6">Sahoo and Kannappan, 2011</a>]</span>.</p>
-<p>For a full proof of the first claim in <a class="reference internal" href="#ucsgec">Theorem 6.5</a>, in the setting of
+<p>For a full proof of the first claim in <a class="reference internal" href="#ucsgec">Theorem 6.1</a>, in the setting of
 a Banach algebra, see, for
 example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zreferences.html#id7">Bobrowski, 2005</a>]</span>.</p>
 </div>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">6.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="exercise-1">
-<h3><span class="section-number">6.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="generators-ex-1">
+<p class="admonition-title"><span class="caption-number">Exercise 6.1 </span></p>
+<div class="section" id="exercise-content">
 <p>Prove that <a class="reference internal" href="#equation-expdiffer">(6.5)</a> holds for all <span class="math notranslate nohighlight">\(A \in \linop\)</span>.</p>
 </div>
-<div class="section" id="exercise-2">
-<h3><span class="section-number">6.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="generators-ex-2">
+<p class="admonition-title"><span class="caption-number">Exercise 6.2 </span></p>
+<div class="section" id="exercise-content">
 <p>In many texts, a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup is defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
 such that</p>
 <div class="math notranslate nohighlight" id="equation-czsg2">
@@ -572,15 +567,16 @@ such that</p>
 in the definition we used above.</p>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Uniform_boundedness_principle">Banach–Steinhaus Theorem</a> can be used to show that, for an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span> satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a>, there exist finite constants <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-sgbound">
-<span class="eqno">(6.8)<a class="headerlink" href="#equation-sgbound" title="Permalink to this equation">¶</a></span>\[ 
-    \| U_t \| \leq e^{t\omega} M 
+<span class="eqno">(6.8)<a class="headerlink" href="#equation-sgbound" title="Permalink to this equation">¶</a></span>\[
+    \| U_t \| \leq e^{t\omega} M
     \quad \text{for all } \; t \geq 0
 \]</div>
 <p>Using this and <a class="reference internal" href="#equation-czsg2">(6.7)</a>, show that, for any <span class="math notranslate nohighlight">\(g \in \BB\)</span>, the map <span class="math notranslate nohighlight">\(t \mapsto
 U_t g\)</span> is continuous at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
 </div>
-<div class="section" id="exercise-3">
-<h3><span class="section-number">6.5.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="generators-ex-3">
+<p class="admonition-title"><span class="caption-number">Exercise 6.3 </span></p>
+<div class="section" id="exercise-content">
 <p>Following on from the previous exercise,
 a UC semigroup is often defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
 such that</p>
@@ -593,11 +589,12 @@ in the definition we used above.</p>
 <p>In particular, show that, for any <span class="math notranslate nohighlight">\(t_n \to t\)</span>, we have
 <span class="math notranslate nohighlight">\(\| U_{t_n} - U_t \| \to 0\)</span>  as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
 </div>
-</div>
+</div></div>
 <div class="section" id="solutions">
 <h2><span class="section-number">6.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="solution-to-exercise-1">
-<h3><span class="section-number">6.6.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="solution admonition" id="generators-solution-8">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="ergodicity.html#ergodicity-ex-1"><span>Solution to </span> Exercise 8.1</a></p>
+<div class="section" id="solution-content">
 <p>To show the first equality, fix <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>, take <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and observe that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -610,8 +607,9 @@ in the definition we used above.</p>
 completing the proof of the first equality in <a class="reference internal" href="#equation-expdiffer">(6.5)</a>.</p>
 <p>The proof of the second equality is similar.</p>
 </div>
-<div class="section" id="solution-to-exercise-2">
-<h3><span class="section-number">6.6.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="generators-solution-9">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="ergodicity.html#ergodicity-ex-2"><span>Solution to </span> Exercise 8.2</a></p>
+<div class="section" id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a> and let
 <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(6.8)</a>.</p>
 <p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
@@ -626,8 +624,9 @@ completing the proof of the first equality in <a class="reference internal" href
 \]</div>
 <p>as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.  This completes the proof.</p>
 </div>
-<div class="section" id="solution-to-exercise-3">
-<h3><span class="section-number">6.6.3. </span>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="generators-solution-10">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="ergodicity.html#ergodicity-ex-3"><span>Solution to </span> Exercise 8.3</a></p>
+<div class="section" id="solution-content">
 <p>The solution is similar to that of the previous exercise.</p>
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg3">(6.9)</a>,
 fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and take <span class="math notranslate nohighlight">\((h_n)\)</span> to be a scalar sequence satisfying <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
@@ -641,7 +640,8 @@ and <a class="reference internal" href="#equation-sgbound">(6.8)</a>,</p>
     \leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
 \]</div>
 <p>This converges to 0 as <span class="math notranslate nohighlight">\(n \to \infty\)</span>, completing our proof.</p>
-<hr class="footnotes docutils" />
+</div>
+</div><hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="footnotepp"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.</p>
@@ -664,7 +664,6 @@ have, by definition of the operator norm,
 <dd><p>An excellent treatment of the general theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, can be found in <span id="id10">[<a class="reference internal" href="zreferences.html#id7">Bobrowski, 2005</a>]</span>.</p>
 </dd>
 </dl>
-</div>
 </div>
 </div>
 
@@ -703,8 +702,6 @@ have, by definition of the operator norm,
                 </footer> <!-- .page__footer -->
 
             </div> <!-- .page -->
-
-            
 
             
             <div class="sidebar bd-sidebar inactive" id="site-navigation">
@@ -796,7 +793,8 @@ have, by definition of the operator norm,
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                        <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/generators.ipynb" download><i data-feather="download-cloud"></i></a></li>
+                        <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/generators.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
@@ -809,7 +807,7 @@ have, by definition of the operator norm,
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="" download><p>Book (PDF)</p></a>
+                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>

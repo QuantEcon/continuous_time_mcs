@@ -389,7 +389,8 @@ This connects to Poisson process theory, as we shall soon see.
 
 ## Exercises
 
-### Exercise 1
+```{exercise}
+:label: memoryless-ex-1
 
 Due to its memoryless property, we can "stop" and "restart" an exponential
 draw without changing its distribution.
@@ -404,9 +405,10 @@ In particular, consider the random variable $X$ defined as follows:
 * If not, draw $Z$ independently from $\Exp(\lambda)$ and set $X = s + Z$.
 
 Show that $X \sim \Exp(\lambda)$.
+```
 
-
-### Exercise 2
+```{exercise}
+:label: memoryless-ex-2
 
 Fix $\lambda = 0.5$ and $s=1.0$.
 
@@ -418,12 +420,17 @@ and compare to $t \mapsto e^{-\lambda t}$.
 Is the fit good?  How about if the number of draws is increased?
 
 Are the results in line with those of the previous exercise?
-
+```
 
 ## Solutions
 
+```{note}
+code is currently not supported in `sphinx-exercise`
+so code-cell solutions are immediately after this
+solution block.
+```
 
-### Solution to Exercise 1
+```{solution} memoryless-ex-1
 
 Let $X$ be constructed as in the statement of the exercise and fix $t > 0$.
 
@@ -446,14 +453,14 @@ $$
 $$
 
 Either way, we have $X \sim \Exp(\lambda)$, as was to be shown.
+```
 
 
-### Solution to Exercise 2
-
+```{solution} memoryless-ex-2
 Here's one solution, starting with 1,000 draws.
+```
 
 ```{code-cell} ipython3
-
 λ = 0.5 
 np.random.seed(1234)
 t_grid = np.linspace(0, 10, 200)
@@ -479,12 +486,15 @@ ax.plot(t_grid, empirical_exceedance, label='empirical exceedance')
 ax.legend()
 
 plt.show()
-
 ```
+
+```{solution} memoryless-ex-2
+**Solution Continued:**
 
 The fit is already very close, which matches with the theory in Exercise 1.
 
 The two lines become indistinguishable as $n$ is increased further.
+```
 
 ```{code-cell} ipython3
 
@@ -496,7 +506,6 @@ ax.plot(t_grid, empirical_exceedance, label='empirical exceedance')
 ax.legend()
 
 plt.show()
-
 ```
 
 

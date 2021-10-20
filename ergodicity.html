@@ -9,7 +9,25 @@
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
+    <script>
+        MathJax = {
+          loader: {load: ['[tex]/boldsymbol']},
+          tex: {
+            packages: {'[+]': ['boldsymbol']},
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true,
+            macros: {
+                "argmax" : "arg\\,max",
+                "argmin" : "arg\\,min"
+            }
+          },
+          svg: {
+            fontCache: 'global',
+            scale: 0.92,
+            displayAlign: "center",
+          },
+        };
+    </script>
     
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -27,13 +45,14 @@
       
 
     
+    <link rel="stylesheet" href="_static/quantecon-book-theme.b2c9c855ebbf206c0b4223812193cad1.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -44,21 +63,22 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="_static/quantecon-book-theme.a5462485f8dd312884626d20cc9f547c.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="9. Bibliography" href="zreferences.html" />
@@ -168,45 +188,11 @@
   <a class="reference internal nav-link" href="#exercises">
    8.5. Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
-     8.5.1. Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
-     8.5.2. Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-3">
-     8.5.3. Exercise 3
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
    8.6. Solutions
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     8.6.1. Solution to Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     8.6.2. Solution to Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-3">
-     8.6.3. Solution to Exercise 3
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -538,7 +524,7 @@ result, we obtain</p>
 </div>
 <p><a class="reference internal" href="#equivirr">Theorem 8.2</a> leads directly to the following strong result.</p>
 <div class="proof corollary admonition" id="perimposs">
-<p class="admonition-title"><span class="caption-number">Corollary 8.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Corollary 8.1 </span></p>
 <div class="corollary-content section" id="proof-content">
 <p>For a UC Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>, the following statements are
 equivalent:</p>
@@ -553,7 +539,7 @@ equivalent:</p>
 common to assume that the chain is aperiodic.</p>
 <p>This needs to be assumed on top of irreducibility if one wishes to rule out
 all dependence on initial conditions.</p>
-<p><a class="reference internal" href="#perimposs">Corollary 8.3</a> shows that periodicity is not a concern for irreducible
+<p><a class="reference internal" href="#perimposs">Corollary 8.1</a> shows that periodicity is not a concern for irreducible
 continuous time Markov chains.</p>
 <p>Positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> at some <span class="math notranslate nohighlight">\(t &gt; 0\)</span> immediately implies
 positive flow for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
@@ -595,7 +581,7 @@ semigroups.</p>
 <p>Hence every Markov operator is contracting on <span class="math notranslate nohighlight">\(\dD\)</span>.</p>
 <p>Moreover, if <span class="math notranslate nohighlight">\(P\)</span> is everywhere positive, then this inequality is strict:</p>
 <div class="proof lemma admonition" id="strictcontract">
-<p class="admonition-title"><span class="caption-number">Lemma 8.4 </span> (Strict Contractivity)</p>
+<p class="admonition-title"><span class="caption-number">Lemma 8.1 </span> (Strict Contractivity)</p>
 <div class="lemma-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(P\)</span> is a Markov matrix and <span class="math notranslate nohighlight">\(P(x, y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(x, y\)</span>, then</p>
 <div class="math notranslate nohighlight">
@@ -615,7 +601,7 @@ triangle inequality we used to obtain <a class="reference internal" href="#equat
 <a class="reference external" href="https://en.wikipedia.org/wiki/Absorbing_set">absorbing sets</a>.</p>
 <p>This in turn leads to uniqueness of stationary distributions:</p>
 <div class="proof theorem admonition" id="uniirr">
-<p class="admonition-title"><span class="caption-number">Theorem 8.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 8.3 </span></p>
 <div class="theorem-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.  If <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible, then
 <span class="math notranslate nohighlight">\((P_t)\)</span> has at most one stationary distribution.</p>
@@ -625,12 +611,12 @@ triangle inequality we used to obtain <a class="reference internal" href="#equat
 <span class="math notranslate nohighlight">\((P_t)\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible, we know that <span class="math notranslate nohighlight">\(P_1(x,y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(x,y \in S\)</span>.</p>
 <p>If <span class="math notranslate nohighlight">\(\psi \not= \phi\)</span>, then, due to positivity of <span class="math notranslate nohighlight">\(P_1\)</span>, the strict inequality
-in <a class="reference internal" href="#strictcontract">Lemma 8.4</a> holds.</p>
+in <a class="reference internal" href="#strictcontract">Lemma 8.1</a> holds.</p>
 <p>At the same time, by stationarity, <span class="math notranslate nohighlight">\(\| \psi P - \phi P \| = \| \psi - \phi
 \|\)</span>.  Contradiction.</p>
 </div>
 <div class="proof example admonition" id="example-5">
-<p class="admonition-title"><span class="caption-number">Example 8.6 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 8.1 </span></p>
 <div class="example-content section" id="proof-content">
 <p>An M/M/1 queue with parameters <span class="math notranslate nohighlight">\(\mu, \lambda\)</span> is a continuous time Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> on <span class="math notranslate nohighlight">\(S = \ZZ_+\)</span> with with intensity matrix</p>
 <div class="math notranslate nohighlight" id="equation-mm1q">
@@ -648,7 +634,7 @@ rate <span class="math notranslate nohighlight">\(\lambda\)</span> and are serve
 <p>If <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> are both positive, then there is a <span class="math notranslate nohighlight">\(Q\)</span>-positive
 probability flow between any two states, in both directions, so the
 corresponding semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible.</p>
-<p><a class="reference internal" href="#uniirr">Theorem 8.5</a> now tells us that <span class="math notranslate nohighlight">\((P_t)\)</span> has at most one stationary
+<p><a class="reference internal" href="#uniirr">Theorem 8.3</a> now tells us that <span class="math notranslate nohighlight">\((P_t)\)</span> has at most one stationary
 distribution.</p>
 </div>
 </div></div>
@@ -662,14 +648,14 @@ distribution.</p>
 <p>The critical ingredient linking these two concepts is the contractivity in
 <a class="reference internal" href="#equation-allmocontract">(8.4)</a>.</p>
 <div class="proof lemma admonition" id="stabskel">
-<p class="admonition-title"><span class="caption-number">Lemma 8.7 </span></p>
+<p class="admonition-title"><span class="caption-number">Lemma 8.2 </span></p>
 <div class="lemma-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup. If there exists an <span class="math notranslate nohighlight">\(s &gt; 0\)</span> such that the
 Markov matrix <span class="math notranslate nohighlight">\(P_s\)</span> is asymptotically stable, then <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically
 stable with the same stationary distribution.</p>
 </div>
 </div><div class="proof admonition" id="proof">
-<p>Proof. Let <span class="math notranslate nohighlight">\((P_t)\)</span> and <span class="math notranslate nohighlight">\(s\)</span> be as in the statement of <a class="reference internal" href="#stabskel">Lemma 8.7</a>.</p>
+<p>Proof. Let <span class="math notranslate nohighlight">\((P_t)\)</span> and <span class="math notranslate nohighlight">\(s\)</span> be as in the statement of <a class="reference internal" href="#stabskel">Lemma 8.2</a>.</p>
 <p>Let <span class="math notranslate nohighlight">\(\psi^*\)</span> be the stationary distribution of <span class="math notranslate nohighlight">\(P_s\)</span>.  Fix <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and
 <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>.</p>
 <p>By stability of <span class="math notranslate nohighlight">\(P_s\)</span>, we can take an <span class="math notranslate nohighlight">\(n \in \NN\)</span> such that
@@ -693,10 +679,10 @@ obtaining asymptotic stability when the state space can be infinite.</p>
 <p>The idea is to show that the state tends to drift back to a finite set over
 time.</p>
 <p>Such drift, when combined with the contractivity in
-<a class="reference internal" href="#strictcontract">Lemma 8.4</a>, is enough to give global stability.</p>
+<a class="reference internal" href="#strictcontract">Lemma 8.1</a>, is enough to give global stability.</p>
 <p>The next theorem gives a useful version of this class of results.</p>
 <div class="proof theorem admonition" id="sdrift">
-<p class="admonition-title"><span class="caption-number">Theorem 8.8 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 8.4 </span></p>
 <div class="theorem-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup with intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>.  If <span class="math notranslate nohighlight">\((P_t)\)</span> is
 irreducible and there exists a function <span class="math notranslate nohighlight">\(v \colon S \to \RR_+\)</span>, a finite set
@@ -713,15 +699,15 @@ irreducible and there exists a function <span class="math notranslate nohighligh
 \end{split}\]</div>
 <p>then <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
 </div>
-</div><p>The proof of <a class="reference internal" href="#sdrift">Theorem 8.8</a> can be found in <span id="id3">[<a class="reference internal" href="zreferences.html#id2">Pichór <em>et al.</em>, 2012</a>]</span>.</p>
+</div><p>The proof of <a class="reference internal" href="#sdrift">Theorem 8.4</a> can be found in <span id="id3">[<a class="reference internal" href="zreferences.html#id2">Pichór <em>et al.</em>, 2012</a>]</span>.</p>
 <div class="proof example admonition" id="example-8">
-<p class="admonition-title"><span class="caption-number">Example 8.9 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 8.2 </span></p>
 <div class="example-content section" id="proof-content">
 <p>Consider again the M/M/1 queue on <span class="math notranslate nohighlight">\(\ZZ_+\)</span> with intensity matrix <a class="reference internal" href="#equation-mm1q">(8.5)</a>.</p>
 <p>Suppose that <span class="math notranslate nohighlight">\(\lambda &lt; \mu\)</span>.</p>
 <p>It is intuitive that, in this case, the queue length will not
 tend to infinity (since the service rate is higher than the arrival rate).</p>
-<p>This intuition can be confirmed via <a class="reference internal" href="#sdrift">Theorem 8.8</a>, after setting <span class="math notranslate nohighlight">\(v(j) =
+<p>This intuition can be confirmed via <a class="reference internal" href="#sdrift">Theorem 8.4</a>, after setting <span class="math notranslate nohighlight">\(v(j) =
 j\)</span>.</p>
 <p>Indeed, we have, for any <span class="math notranslate nohighlight">\(i \geq 1\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -731,11 +717,11 @@ j\)</span>.</p>
     = \lambda - \mu
 \]</div>
 <p>Setting <span class="math notranslate nohighlight">\(F=\{0\}\)</span> and <span class="math notranslate nohighlight">\(M = \lambda - \mu = - \epsilon\)</span>, we see that the conditions
-of <a class="reference internal" href="#sdrift">Theorem 8.8</a> hold.</p>
+of <a class="reference internal" href="#sdrift">Theorem 8.4</a> hold.</p>
 <p>Hence the associated semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
 </div>
 </div><div class="proof corollary admonition" id="sfinite">
-<p class="admonition-title"><span class="caption-number">Corollary 8.10 </span></p>
+<p class="admonition-title"><span class="caption-number">Corollary 8.2 </span></p>
 <div class="corollary-content section" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((P_t)\)</span> is an irreducible UC Markov semigroup and <span class="math notranslate nohighlight">\(S\)</span> is finite, then
 <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
@@ -745,13 +731,15 @@ of <a class="reference internal" href="#sdrift">Theorem 8.8</a> hold.</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">8.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="exercise-1">
-<h3><span class="section-number">8.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="ergodicity-ex-1">
+<p class="admonition-title"><span class="caption-number">Exercise 8.1 </span></p>
+<div class="section" id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup.  True or false:
 for this semigroup, every state <span class="math notranslate nohighlight">\(x\)</span> is accessible from itself.</p>
 </div>
-<div class="section" id="exercise-2">
-<h3><span class="section-number">8.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="ergodicity-ex-2">
+<p class="admonition-title"><span class="caption-number">Exercise 8.2 </span></p>
+<div class="section" id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\((\lambda_k)\)</span> be a bounded non-increasing sequence in <span class="math notranslate nohighlight">\((0, \infty)\)</span>.</p>
 <p>A <strong>pure birth process</strong> starting at zero is a continuous time Markov process
 <span class="math notranslate nohighlight">\((X_t)\)</span> on state space <span class="math notranslate nohighlight">\(\ZZ_+\)</span> with intensity matrix</p>
@@ -767,19 +755,22 @@ Q=\begin{pmatrix}
 <p>Show that <span class="math notranslate nohighlight">\((P_t)\)</span>, the corresponding Markov semigroup, has no stationary
 distribution.</p>
 </div>
-<div class="section" id="exercise-3">
-<h3><span class="section-number">8.5.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
-<p>Confirm that <a class="reference internal" href="#sdrift">Theorem 8.8</a> implies <a class="reference internal" href="#sfinite">Corollary 8.10</a>.</p>
+</div><div class="exercise admonition" id="ergodicity-ex-3">
+<p class="admonition-title"><span class="caption-number">Exercise 8.3 </span></p>
+<div class="section" id="exercise-content">
+<p>Confirm that <a class="reference internal" href="#sdrift">Theorem 8.4</a> implies <a class="reference internal" href="#sfinite">Corollary 8.2</a>.</p>
 </div>
-</div>
+</div></div>
 <div class="section" id="solutions">
 <h2><span class="section-number">8.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="solution-to-exercise-1">
-<h3><span class="section-number">8.6.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="solution admonition" id="ergodicity-solution-13">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#ergodicity-ex-1"><span>Solution to </span> Exercise 8.1</a></p>
+<div class="section" id="solution-content">
 <p>The statement is true.  With <span class="math notranslate nohighlight">\(t=0\)</span> we have <span class="math notranslate nohighlight">\(P_t(x,x) = I(x,x) = 1 &gt; 0\)</span>.</p>
 </div>
-<div class="section" id="solution-to-exercise-2">
-<h3><span class="section-number">8.6.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="ergodicity-solution-14">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#ergodicity-ex-2"><span>Solution to </span> Exercise 8.2</a></p>
+<div class="section" id="solution-content">
 <p>Suppose to the contrary that <span class="math notranslate nohighlight">\(\phi \in \dD\)</span> and <span class="math notranslate nohighlight">\(\phi Q = 0\)</span>.</p>
 <p>Then, for any <span class="math notranslate nohighlight">\(j \geq 1\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -804,21 +795,22 @@ distribution.</p>
 (Why?)</p>
 <p>Contradiction.</p>
 </div>
-<div class="section" id="solution-to-exercise-3">
-<h3><span class="section-number">8.6.3. </span>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="ergodicity-solution-15">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#ergodicity-ex-3"><span>Solution to </span> Exercise 8.3</a></p>
+<div class="section" id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be an irreducible UC Markov semigroup and let <span class="math notranslate nohighlight">\(S\)</span> be finite.</p>
 <p>Pick any positive constants <span class="math notranslate nohighlight">\(M, \epsilon\)</span> and set <span class="math notranslate nohighlight">\(v = M\)</span> and <span class="math notranslate nohighlight">\(F = S\)</span>.</p>
 <p>We then have</p>
 <div class="math notranslate nohighlight">
 \[
     \sum_y Q(x, y) v(y)
-    = M \sum_y Q(x, y) 
+    = M \sum_y Q(x, y)
     = 0
 \]</div>
-<p>Hence the drift condition in <a class="reference internal" href="#sdrift">Theorem 8.8</a> holds and <span class="math notranslate nohighlight">\((P_t)\)</span> is
+<p>Hence the drift condition in <a class="reference internal" href="#sdrift">Theorem 8.4</a> holds and <span class="math notranslate nohighlight">\((P_t)\)</span> is
 asymptotically stable.</p>
 </div>
-</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -856,8 +848,6 @@ asymptotically stable.</p>
                 </footer> <!-- .page__footer -->
 
             </div> <!-- .page -->
-
-            
 
             
             <div class="sidebar bd-sidebar inactive" id="site-navigation">
@@ -949,7 +939,8 @@ asymptotically stable.</p>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                        <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/ergodicity.ipynb" download><i data-feather="download-cloud"></i></a></li>
+                        <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/ergodicity.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
@@ -962,7 +953,7 @@ asymptotically stable.</p>
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="" download><p>Book (PDF)</p></a>
+                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>

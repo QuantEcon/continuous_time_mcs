@@ -9,7 +9,25 @@
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
+    <script>
+        MathJax = {
+          loader: {load: ['[tex]/boldsymbol']},
+          tex: {
+            packages: {'[+]': ['boldsymbol']},
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true,
+            macros: {
+                "argmax" : "arg\\,max",
+                "argmin" : "arg\\,min"
+            }
+          },
+          svg: {
+            fontCache: 'global',
+            scale: 0.92,
+            displayAlign: "center",
+          },
+        };
+    </script>
     
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -27,13 +45,14 @@
       
 
     
+    <link rel="stylesheet" href="_static/quantecon-book-theme.b2c9c855ebbf206c0b4223812193cad1.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -44,21 +63,57 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="_static/quantecon-book-theme.a5462485f8dd312884626d20cc9f547c.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4. The Kolmogorov Backward Equation" href="kolmogorov_bwd.html" />
@@ -253,55 +308,11 @@
   <a class="reference internal nav-link" href="#exercises">
    3.8. Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
-     3.8.1. Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
-     3.8.2. Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-3">
-     3.8.3. Exercise 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-4">
-     3.8.4. Exercise 4
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions">
    3.9. Solutions
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-1">
-     3.9.1. Solution to Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-2">
-     3.9.2. Solution to Exercise 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-3">
-     3.9.3. Solution to Exercise 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution-to-exercise-4">
-     3.9.4. Solution to Exercise 4
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -1036,14 +1047,16 @@ distribution “cools” over time)</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">3.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="exercise-1">
-<h3><span class="section-number">3.8.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="exercise admonition" id="markov-prop-1">
+<p class="admonition-title"><span class="caption-number">Exercise 3.1 </span></p>
+<div class="section" id="exercise-content">
 <p>Consider the binary (Bernoulli) distribution where outcomes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> each have
 probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 <p>Construct two different random variables with this distribution.</p>
 </div>
-<div class="section" id="exercise-2">
-<h3><span class="section-number">3.8.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="markov-prop-2">
+<p class="admonition-title"><span class="caption-number">Exercise 3.2 </span></p>
+<div class="section" id="exercise-content">
 <p>Show by direct calculation that the Poisson matrices <span class="math notranslate nohighlight">\((P_t)\)</span> defined in
 <a class="reference internal" href="#equation-poissemi">(3.9)</a> satisfy the semigroup property <a class="reference internal" href="#equation-chapkol-ct2">(3.7)</a>.</p>
 <p>Hints</p>
@@ -1052,8 +1065,9 @@ probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 <li><p>Consider using the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_theorem">binomial formula</a>.</p></li>
 </ul>
 </div>
-<div class="section" id="exercise-3">
-<h3><span class="section-number">3.8.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="markov-prop-3">
+<p class="admonition-title"><span class="caption-number">Exercise 3.3 </span></p>
+<div class="section" id="exercise-content">
 <p>Consider the distribution over <span class="math notranslate nohighlight">\(S^{n+1}\)</span> previously shown in <a class="reference internal" href="#equation-mathjointd">(3.5)</a>, which is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1067,16 +1081,24 @@ probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>, the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n)\)</span> has joint
 distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>.</p>
 </div>
-<div class="section" id="exercise-4">
-<h3><span class="section-number">3.8.4. </span>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+</div><div class="exercise admonition" id="markov-prop-4">
+<p class="admonition-title"><span class="caption-number">Exercise 3.4 </span></p>
+<div class="section" id="exercise-content">
 <p>Try to produce your own version of the figure <a class="reference internal" href="#flow-fig"><span class="std std-ref">Probability flows for the inventory model.</span></a></p>
 <p>The initial condition is <code class="docutils literal notranslate"><span class="pre">ψ_0</span> <span class="pre">=</span> <span class="pre">binom.pmf(states,</span> <span class="pre">n,</span> <span class="pre">0.25)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
 </div>
-</div>
+</div></div>
 <div class="section" id="solutions">
 <h2><span class="section-number">3.9. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="solution-to-exercise-1">
-<h3><span class="section-number">3.9.1. </span>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
+so code-cell solutions are immediately after this
+solution block.</p>
+</div>
+<div class="solution admonition" id="markov_prop-solution-5">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-1"><span>Solution to </span> Exercise 3.1</a></p>
+<div class="section" id="solution-content">
 <p>This is easy.</p>
 <p>One example is to take <span class="math notranslate nohighlight">\(U\)</span> to be uniform on <span class="math notranslate nohighlight">\((0, 1)\)</span> and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(U &lt;
 0.5\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
@@ -1084,8 +1106,9 @@ distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</sp
 <p>Alternatively, we could take <span class="math notranslate nohighlight">\(Z\)</span> to be standard normal and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(Z &lt;
 0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
 </div>
-<div class="section" id="solution-to-exercise-2">
-<h3><span class="section-number">3.9.2. </span>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="markov_prop-solution-6">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-2"><span>Solution to </span> Exercise 3.2</a></p>
+<div class="section" id="solution-content">
 <p>Fixing <span class="math notranslate nohighlight">\(s, t \in \RR_+\)</span> and <span class="math notranslate nohighlight">\(j \leq k\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1121,8 +1144,9 @@ distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</sp
 \]</div>
 <p>Hence <a class="reference internal" href="#equation-chapkol-ct2">(3.7)</a> holds, and the semigroup property is satisfied.</p>
 </div>
-<div class="section" id="solution-to-exercise-3">
-<h3><span class="section-number">3.9.3. </span>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="markov_prop-solution-7">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-3"><span>Solution to </span> Exercise 3.3</a></p>
+<div class="section" id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((X_t)\)</span> be a Markov chain satisfying <a class="reference internal" href="#equation-markovpropd">(3.2)</a> and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>.</p>
 <p>When <span class="math notranslate nohighlight">\(n=0\)</span>, we have <span class="math notranslate nohighlight">\(\mathbf P_\psi^n = \mathbf P_\psi^0 = \psi\)</span>, and this
 agrees with the distribution of the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n) = (X_0)\)</span>.</p>
@@ -1151,12 +1175,14 @@ defined above.</p>
 \]</div>
 <p>The last expression equals <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>, which concludes the proof.</p>
 </div>
-<div class="section" id="solution-to-exercise-4">
-<h3><span class="section-number">3.9.4. </span>Solution to Exercise 4<a class="headerlink" href="#solution-to-exercise-4" title="Permalink to this headline">¶</a></h3>
+</div><div class="solution admonition" id="markov_prop-solution-8">
+<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-4"><span>Solution to </span> Exercise 3.4</a></p>
+<div class="section" id="solution-content">
 <p>Here is one approach.</p>
 <p>(The statements involving <code class="docutils literal notranslate"><span class="pre">glue</span></code> are specific to this book and can be deleted
 by most readers.  They store the output so it can be displayed elsewhere.)</p>
-<div class="cell docutils container">
+</div>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">α</span> <span class="o">=</span> <span class="mf">0.6</span>
 <span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -1220,7 +1246,6 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
 </dl>
 </div>
 </div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1257,8 +1282,6 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
                 </footer> <!-- .page__footer -->
 
             </div> <!-- .page -->
-
-            
 
             
             <div class="sidebar bd-sidebar inactive" id="site-navigation">
@@ -1350,7 +1373,8 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                        <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/markov_prop.ipynb" download><i data-feather="download-cloud"></i></a></li>
+                        <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/markov_prop.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
@@ -1363,7 +1387,7 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="" download><p>Book (PDF)</p></a>
+                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>
