@@ -13,4 +13,5 @@ dependencies:
     - sphinx-exercise==0.2.1
     - ghp-import==1.1.0
     - sphinxcontrib-youtube
+    - sphinx-proof
 
