@@ -19,9 +19,9 @@ sphinx:
             keywords: Python, QuantEcon, Quantitative Economics, Economics, John Stachurski, Schmidt Futures, Markov Chains
             # google_analytics_id: UA-54984338-10
         bibtex_reference_style: author_year
-        mathjax_config:
-            TeX:
-                Macros:
+        mathjax3_config:
+            tex:
+                macros:
                     "Exp" : ["\\operatorname{Exp}"]
                     "Binomial" : ["\\operatorname{Binomial}"]
                     "Poisson" : ["\\operatorname{Poisson}"]
