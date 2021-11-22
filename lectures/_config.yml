@@ -40,6 +40,7 @@ sphinx:
     extra_extensions:
         - sphinx_proof
         - sphinx_exercise
+        - sphinx_tojupyter
 
 execute:
     execute_notebooks: cache
