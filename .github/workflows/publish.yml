@@ -77,7 +77,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _build/html/
-          # cname: continuous-time-mcs.quantecon.org
+          cname: continuous-time-mcs.quantecon.org
       - name: Prepare continuous-time-mcs.notebooks sync
         shell: bash -l {0}
         run: |
