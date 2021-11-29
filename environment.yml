@@ -10,7 +10,7 @@ dependencies:
     - quantecon-book-theme==0.3.0
     - sphinx-tojupyter==0.2.0
     - sphinxext-rediraffe==0.2.7
-    - sphinx-exercise==0.2.1
+    - git+https://github.com/executablebooks/sphinx-exercise@refactor-oct2021
     - ghp-import==1.1.0
     - sphinxcontrib-youtube
     - sphinx-proof
