@@ -58,7 +58,7 @@ jobs:
         run: |
           jb build -W --keep-going lectures --path-output ./
       - name: Save Build as Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: _build
           path: _build
