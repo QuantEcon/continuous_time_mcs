@@ -1102,6 +1102,7 @@ plot_distribution_dynamics(ax, ψ_0)
 
 from myst_nb import glue
 glue("flow_fig", fig, display=False)
+plt.savefig("_static/lecture_specific/markov_prop/flow_fig.png")
 
 plt.show()
 ```
