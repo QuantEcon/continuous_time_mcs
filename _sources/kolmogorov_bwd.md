@@ -14,6 +14,13 @@ kernelspec:
 
 # The Kolmogorov Backward Equation
 
+In addition to what’s in Anaconda, this lecture will need the following libraries:
+
+```{code-cell} ipython3
+:tags: [hide-output]
+!pip install quantecon
+```
+
 ## Overview
 
 As models become more complex, deriving analytical representations of the

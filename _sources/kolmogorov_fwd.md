@@ -14,6 +14,12 @@ kernelspec:
 
 # The Kolmogorov Forward Equation
 
+In addition to what’s in Anaconda, this lecture will need the following libraries:
+
+```{code-cell} ipython3
+:tags: [hide-output]
+!pip install quantecon
+```
 
 
 ## Overview
@@ -59,7 +65,7 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 {ref}`Previously <invdistflows>` we generated this figure, which shows how distributions evolve over time for the inventory model under a certain parameterization:
 
-```{glue:figure} flow_fig
+```{figure} _static/lecture_specific/markov_prop/flow_fig.png
 Probability flows for the inventory model.
 ```
 

@@ -1,122 +1,115 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7. UC Markov Semigroups &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
+        <script>
+            MathJax = {
+            loader: {load: ['[tex]/boldsymbol', '[tex]/textmacros']},
+            tex: {
+                packages: {'[+]': ['boldsymbol', 'textmacros']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true,
+                macros: {
+                    "argmax" : "arg\\,max",
+                    "argmin" : "arg\\,min",
+                    "col"    : "col",
+                    "Span"   :  "span",
+                    "epsilon": "\\varepsilon",
+                    "EE": "\\mathbb{E}",
+                    "PP": "\\mathbb{P}",
+                    "RR": "\\mathbb{R}",
+                    "NN": "\\mathbb{N}",
+                    "ZZ": "\\mathbb{Z}",
+                    "aA": "\\mathcal{A}",
+                    "bB": "\\mathcal{B}",
+                    "cC": "\\mathcal{C}",
+                    "dD": "\\mathcal{D}",
+                    "eE": "\\mathcal{E}",
+                    "fF": "\\mathcal{F}",
+                    "gG": "\\mathcal{G}",
+                    "hH": "\\mathcal{H}",
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 0.92,
+                displayAlign: "center",
+            },
+            };
+        </script>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=f77998adf44a3f900caaca31caf410c810f6f245" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=eed9c059a3ee152aae2353ec732f0a6d12e6aa07"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uc_mc_semigroups';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="8. Stationarity and Ergodicity" href="ergodicity.html" />
@@ -150,99 +143,47 @@
 
     <span id="top"></span>
 
-    <div class="wrapper">
+    <div class="qe-wrapper">
 
-        <div class="main">
+        <div class="qe-main">
 
-            <div class="page" id=uc_mc_semigroups>
+            <div class="qe-page" id=uc_mc_semigroups>
 
-                <div class="page__toc">
+                <div class="qe-page__toc">
 
                     <div class="inner">
 
                         
-                        <div class="page__toc-header">
+                        <div class="qe-page__toc-header">
                             On this page
                         </div>
 
 
-                        <nav id="bd-toc-nav" class="page__toc-nav">
+                        <nav id="bd-toc-nav" class="qe-page__toc-nav">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   7.1. Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notation-and-terminology">
-   7.2. Notation and Terminology
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#uc-markov-semigroups-and-their-generators">
-   7.3. UC Markov Semigroups and their Generators
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-necessary-and-sufficient-condition">
-     7.3.1. A Necessary and Sufficient Condition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-finite-state-case">
-     7.3.2. The Finite State Case
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#from-intensity-matrix-to-jump-chain">
-   7.4. From Intensity Matrix to Jump Chain
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jump-chain-pairs">
-     7.4.1. Jump Chain Pairs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#jump-chain-decomposition">
-     7.4.2. Jump Chain Decomposition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-conservative-case">
-     7.4.3. The Conservative Case
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simulation">
-     7.4.4. Simulation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beyond-bounded-intensity-matrices">
-   7.5. Beyond Bounded Intensity Matrices
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   7.6. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solutions">
-   7.7. Solutions
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">7.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-and-terminology">7.2. Notation and Terminology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uc-markov-semigroups-and-their-generators">7.3. UC Markov Semigroups and their Generators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-necessary-and-sufficient-condition">7.3.1. A Necessary and Sufficient Condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finite-state-case">7.3.2. The Finite State Case</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-intensity-matrix-to-jump-chain">7.4. From Intensity Matrix to Jump Chain</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-chain-pairs">7.4.1. Jump Chain Pairs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-chain-decomposition">7.4.2. Jump Chain Decomposition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conservative-case">7.4.3. The Conservative Case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">7.4.4. Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-bounded-intensity-matrices">7.5. Beyond Bounded Intensity Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.6. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">7.7. Solutions</a></li>
+</ul>
                             <p class="logo">
                                 
                                     
-                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo" alt="logo"></a>
+                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo logo-img" alt="logo"></a>
+                                    
                                     
                                 
                             </p>
@@ -251,7 +192,7 @@
 
                         </nav>
 
-                        <div class="page__toc-footer">
+                        <div class="qe-page__toc-footer">
                             
                             
                             <p><a href="#top"><strong>Back to top</strong></a></p>
@@ -261,31 +202,32 @@
 
                 </div>
 
-                <div class="page__header">
+                <div class="qe-page__header">
 
-                    <div class="page__header-copy">
+                    <div class="qe-page__header-copy">
 
-                        <p class="page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
+                        <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="page__header-subheading">UC Markov Semigroups</p>
+                        <p class="qe-page__header-subheading">UC Markov Semigroups</p>
 
                     </div>
+                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
+                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
-                    <p class="page__header-authors">Thomas J. Sargent & John Stachurski</p>
 
                 </div> <!-- .page__header -->
 
 
 
                 
-                <main class="page__content" role="main">
+                <main class="qe-page__content" role="main">
                     
                     <div>
                         
-  <div class="section" id="uc-markov-semigroups">
-<h1><span class="section-number">7. </span>UC Markov Semigroups<a class="headerlink" href="#uc-markov-semigroups" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2><span class="section-number">7.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="uc-markov-semigroups">
+<h1><span class="section-number">7. </span>UC Markov Semigroups<a class="headerlink" href="#uc-markov-semigroups" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2><span class="section-number">7.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>In our previous lecture we covered some of the general theory of operator
 semigroups.</p>
 <p>Next we translate these results into the setting of Markov semigroups.</p>
@@ -300,9 +242,9 @@ semigroups.</p>
 associated Markov chain.</p>
 <p>We will also give a brief discussion of intensity matrices that do not have
 this property, along with the processes they generate.</p>
-</div>
-<div class="section" id="notation-and-terminology">
-<h2><span class="section-number">7.2. </span>Notation and Terminology<a class="headerlink" href="#notation-and-terminology" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="notation-and-terminology">
+<h2><span class="section-number">7.2. </span>Notation and Terminology<a class="headerlink" href="#notation-and-terminology" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(S\)</span> be an arbitrary countable set.</p>
 <p>Let <span class="math notranslate nohighlight">\(\ell_1\)</span> be the Banach space of <strong>summable functions</strong> on <span class="math notranslate nohighlight">\(S\)</span>; that is, all <span class="math notranslate nohighlight">\(g \, \colon S \to \RR\)</span> with</p>
 <div class="math notranslate nohighlight">
@@ -313,7 +255,7 @@ this property, along with the processes they generate.</p>
 <p>Each Markov matrix <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(S\)</span> can and will be identifed with a linear operator
 <span class="math notranslate nohighlight">\(f \mapsto fP\)</span> on <span class="math notranslate nohighlight">\(\ell_1\)</span> via</p>
 <div class="math notranslate nohighlight" id="equation-mmismo">
-<span class="eqno">(7.1)<a class="headerlink" href="#equation-mmismo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-mmismo" title="Permalink to this equation">#</a></span>\[
     (fP)(y) = \sum_x f(x) P(x, y)
     \qquad (f \in \ell_1, \; y \in S)
 \]</div>
@@ -322,7 +264,7 @@ the left and applying <span class="math notranslate nohighlight">\(P\)</span> to
 <p>In the exercises you are asked to verify that <a class="reference internal" href="#equation-mmismo">(7.1)</a> defines
 a bounded linear operator on <span class="math notranslate nohighlight">\(\ell_1\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-propp">
-<span class="eqno">(7.2)<a class="headerlink" href="#equation-propp" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-propp" title="Permalink to this equation">#</a></span>\[
     \|P\| = 1 \text{ and } \phi P \in \dD \text{ whenever } \phi \in \dD
 \]</div>
 <p>Note that composition of <span class="math notranslate nohighlight">\(P\)</span> with itself is equivalent to powers of the matrix
@@ -330,7 +272,7 @@ under matrix multiplication.</p>
 <p>For an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> we can try to introduce the associated
 operator analogously, via</p>
 <div class="math notranslate nohighlight" id="equation-imislo">
-<span class="eqno">(7.3)<a class="headerlink" href="#equation-imislo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-imislo" title="Permalink to this equation">#</a></span>\[
     (fQ)(y) = \sum_x f(x) Q(x, y)
     \qquad (f \in \ell_1, \; y \in S)
 \]</div>
@@ -339,9 +281,9 @@ operator analogously, via</p>
 <a class="reference internal" href="#equation-imislo">(7.3)</a> is well defined at all <span class="math notranslate nohighlight">\(y\)</span> and, in addition, the mapping <span class="math notranslate nohighlight">\(f
 \mapsto fQ\)</span> in <a class="reference internal" href="#equation-imislo">(7.3)</a> is a bounded linear operator on <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
 <p>Below we show how this property can be checked in applications.</p>
-</div>
-<div class="section" id="uc-markov-semigroups-and-their-generators">
-<h2><span class="section-number">7.3. </span>UC Markov Semigroups and their Generators<a class="headerlink" href="#uc-markov-semigroups-and-their-generators" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="uc-markov-semigroups-and-their-generators">
+<h2><span class="section-number">7.3. </span>UC Markov Semigroups and their Generators<a class="headerlink" href="#uc-markov-semigroups-and-their-generators" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(Q\)</span> be a conservative intensity matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\(Q\)</span> is in <span class="math notranslate nohighlight">\(\linopell\)</span>, the operator exponential <span class="math notranslate nohighlight">\(e^{tQ}\)</span> is well defined
 as an element of <span class="math notranslate nohighlight">\(\linopell\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
@@ -352,10 +294,10 @@ collection of operators, as in <a class="reference internal" href="#equation-mmi
 <p>The next theorem says that this is the only way UC Markov semigroups can arise.</p>
 <div class="proof theorem admonition" id="usmg">
 <p class="admonition-title"><span class="caption-number">Theorem 7.1 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC Markov semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>, then there
 exists a conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC semigroup on <span class="math notranslate nohighlight">\(\ell_1\)</span>, it follows from
@@ -382,7 +324,7 @@ conservative intensity matrix.</p>
 <p>The last of these results shows that we can obtain the intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> by differentiating <span class="math notranslate nohighlight">\(P_t\)</span> at <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
 <div class="proof example admonition" id="uc-mc-semigroups-prf-1">
 <p class="admonition-title"><span class="caption-number">Example 7.1 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>Let us consider again the Poisson process <span class="math notranslate nohighlight">\((N_t)\)</span> with rate <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>
 in light of the discussion above.</p>
 <p>The corresponding semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is UC and hence there exists a
@@ -394,7 +336,7 @@ conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</
 <p>The semigroup for a Poisson process with rate <span class="math notranslate nohighlight">\(\lambda\)</span> was given in
 <a class="reference internal" href="markov_prop.html#equation-poissemi">(3.9)</a> and is repeated here:</p>
 <div class="math notranslate nohighlight" id="equation-poissemi2">
-<span class="eqno">(7.4)<a class="headerlink" href="#equation-poissemi2" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-poissemi2" title="Permalink to this equation">#</a></span>\[\begin{split}
     P_t(j, k) 
     = 
     \begin{cases}
@@ -406,7 +348,7 @@ conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</
 \end{split}\]</div>
 <p>For the intensity matrix we take</p>
 <div class="math notranslate nohighlight" id="equation-poissonq">
-<span class="eqno">(7.5)<a class="headerlink" href="#equation-poissonq" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-poissonq" title="Permalink to this equation">#</a></span>\[\begin{split}
     Q := 
     \begin{pmatrix}
     -\lambda &amp; \lambda &amp; 0 &amp; 0 &amp; 0 &amp; \cdots
@@ -453,26 +395,26 @@ j) = \mathbb 1\{j = i + m\}\)</span>.</p>
 <p>This is identical to <a class="reference internal" href="#equation-poissemi2">(7.4)</a>.</p>
 <p>It now follows that <span class="math notranslate nohighlight">\(t \mapsto P_t \in \lL(\ell_1)\)</span> is differentiable at every
 <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> is the generator of <span class="math notranslate nohighlight">\((P_t)\)</span>, with <span class="math notranslate nohighlight">\(P_0' = Q\)</span>.</p>
-</div>
-</div><div class="section" id="a-necessary-and-sufficient-condition">
-<h3><span class="section-number">7.3.1. </span>A Necessary and Sufficient Condition<a class="headerlink" href="#a-necessary-and-sufficient-condition" title="Permalink to this headline">¶</a></h3>
+</section>
+</div><section id="a-necessary-and-sufficient-condition">
+<h3><span class="section-number">7.3.1. </span>A Necessary and Sufficient Condition<a class="headerlink" href="#a-necessary-and-sufficient-condition" title="Permalink to this heading">#</a></h3>
 <p>Our definition of a conservative intensity matrix works for the theory above
 but can be hard to check in appliations and lacks probabilistic intuition.</p>
 <p>Fortunately, we have the following simple characterization.</p>
 <div class="proof lemma admonition" id="scintcon">
 <p class="admonition-title"><span class="caption-number">Lemma 7.1 </span></p>
-<div class="lemma-content section" id="proof-content">
+<section class="lemma-content" id="proof-content">
 <p>An intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is conservative if and only if <span class="math notranslate nohighlight">\(\sup_x |Q(x,
 x)|\)</span> is finite.</p>
-</div>
+</section>
 </div><p>The proof is a solved exercise.</p>
 <div class="proof example admonition" id="jccs">
 <p class="admonition-title"><span class="caption-number">Example 7.2 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>Recall the jump chain setting where, repeating <a class="reference internal" href="kolmogorov_bwd.html#equation-kolbackeq">(4.4)</a>, we defined <span class="math notranslate nohighlight">\(Q\)</span>
 via</p>
 <div class="math notranslate nohighlight" id="equation-kolbackeq-inf">
-<span class="eqno">(7.6)<a class="headerlink" href="#equation-kolbackeq-inf" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-kolbackeq-inf" title="Permalink to this equation">#</a></span>\[
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 \]</div>
 <p>The function <span class="math notranslate nohighlight">\(\lambda \colon S \to \RR_+\)</span> gives the jump rate at each state,
@@ -485,12 +427,12 @@ still an intensity matrix.</p>
 \lambda(x)\)</span>.</p>
 <p>Hence, <span class="math notranslate nohighlight">\(Q\)</span> is conservative if and only if <span class="math notranslate nohighlight">\(\sup_x \lambda(x)\)</span> is finite.</p>
 <p>In other words, <span class="math notranslate nohighlight">\(Q\)</span> is conservative if the set of jump rates is bounded.</p>
-</div>
+</section>
 </div><p>This example shows that requiring <span class="math notranslate nohighlight">\(Q\)</span> to be conservative is a relatively mild
 restriction.</p>
-</div>
-<div class="section" id="the-finite-state-case">
-<h3><span class="section-number">7.3.2. </span>The Finite State Case<a class="headerlink" href="#the-finite-state-case" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-finite-state-case">
+<h3><span class="section-number">7.3.2. </span>The Finite State Case<a class="headerlink" href="#the-finite-state-case" title="Permalink to this heading">#</a></h3>
 <p>It is immediate from <a class="reference internal" href="#scintcon">Lemma 7.1</a> that every intensity matrix is
 conservative when the state space <span class="math notranslate nohighlight">\(S\)</span> is finite.</p>
 <p>Hence, in this setting, every intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> defines a UC Markov
@@ -507,22 +449,22 @@ continuous everywhere on <span class="math notranslate nohighlight">\(\RR_+\)</s
 <p>Combining these results with <a class="reference internal" href="#usmg">Theorem 7.1</a>, we conclude that, when <span class="math notranslate nohighlight">\(S\)</span> is
 finite, there is a one-to-one correspondence between Markov semigroups and
 intensity matrices.</p>
-</div>
-</div>
-<div class="section" id="from-intensity-matrix-to-jump-chain">
-<h2><span class="section-number">7.4. </span>From Intensity Matrix to Jump Chain<a class="headerlink" href="#from-intensity-matrix-to-jump-chain" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="from-intensity-matrix-to-jump-chain">
+<h2><span class="section-number">7.4. </span>From Intensity Matrix to Jump Chain<a class="headerlink" href="#from-intensity-matrix-to-jump-chain" title="Permalink to this heading">#</a></h2>
 <p>We now understand that there is a one-to-one pairing between conservative
 intensity matrices and UC Markov semigroups.</p>
 <p>These ideas are important from an analytical perspective.</p>
 <p>Now we provide another point of view, more connected to probability.</p>
 <p>This point of view is important for both theory and computation.</p>
-<div class="section" id="jump-chain-pairs">
-<h3><span class="section-number">7.4.1. </span>Jump Chain Pairs<a class="headerlink" href="#jump-chain-pairs" title="Permalink to this headline">¶</a></h3>
+<section id="jump-chain-pairs">
+<h3><span class="section-number">7.4.1. </span>Jump Chain Pairs<a class="headerlink" href="#jump-chain-pairs" title="Permalink to this heading">#</a></h3>
 <p>Let us agree to call <span class="math notranslate nohighlight">\((\lambda, K)\)</span> a <strong>jump chain pair</strong> if <span class="math notranslate nohighlight">\(\lambda\)</span> is a
 map from <span class="math notranslate nohighlight">\(S\)</span> to <span class="math notranslate nohighlight">\(\RR_+\)</span> and <span class="math notranslate nohighlight">\(K\)</span> is a Markov matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>It is easy to verify that the matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> defined by</p>
 <div class="math notranslate nohighlight" id="equation-jcinmat">
-<span class="eqno">(7.7)<a class="headerlink" href="#equation-jcinmat" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-jcinmat" title="Permalink to this equation">#</a></span>\[
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 \]</div>
 <p>is an intensity matrix.</p>
@@ -531,18 +473,18 @@ matrix for the jump chain <span class="math notranslate nohighlight">\((X_t)\)</
 chain pair <span class="math notranslate nohighlight">\((\lambda, K)\)</span>.)</p>
 <p>As we now show, every intensity matrix admits the decomposition in
 <a class="reference internal" href="#equation-jcinmat">(7.7)</a> for some jump chain pair.</p>
-</div>
-<div class="section" id="jump-chain-decomposition">
-<h3><span class="section-number">7.4.2. </span>Jump Chain Decomposition<a class="headerlink" href="#jump-chain-decomposition" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="jump-chain-decomposition">
+<h3><span class="section-number">7.4.2. </span>Jump Chain Decomposition<a class="headerlink" href="#jump-chain-decomposition" title="Permalink to this heading">#</a></h3>
 <p>Given an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>, set</p>
 <div class="math notranslate nohighlight" id="equation-lambdafromq">
-<span class="eqno">(7.8)<a class="headerlink" href="#equation-lambdafromq" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-lambdafromq" title="Permalink to this equation">#</a></span>\[
     \lambda(x) := -Q(x, x)
     \qquad (x \in S)
 \]</div>
 <p>Next we build <span class="math notranslate nohighlight">\(K\)</span>, first along the principle diagonal via</p>
 <div class="math notranslate nohighlight" id="equation-kfromqxx">
-<span class="eqno">(7.9)<a class="headerlink" href="#equation-kfromqxx" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(7.9)<a class="headerlink" href="#equation-kfromqxx" title="Permalink to this equation">#</a></span>\[\begin{split}
     K(x,x) = 
     \begin{cases}
         0 &amp; \text{ if } \lambda(x) &gt; 0
@@ -557,7 +499,7 @@ jump occurs.</p>
 state</strong>.</p>
 <p>Off the principle diagonal, where <span class="math notranslate nohighlight">\(x \not= y\)</span>, we set</p>
 <div class="math notranslate nohighlight" id="equation-kfromqxy">
-<span class="eqno">(7.10)<a class="headerlink" href="#equation-kfromqxy" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(7.10)<a class="headerlink" href="#equation-kfromqxy" title="Permalink to this equation">#</a></span>\[\begin{split}
     K(x,y) = 
     \begin{cases}
         \frac{Q(x,y)}{\lambda(x)} &amp; \text{ if } \lambda(x) &gt; 0
@@ -566,7 +508,7 @@ state</strong>.</p>
     \end{cases}
 \end{split}\]</div>
 <p>The exercises below ask you to confirm that, for <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(K\)</span> just defined,</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\((\lambda, K)\)</span> is a jump chain pair and</p></li>
 <li><p>the intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> satisfies <a class="reference internal" href="#equation-jcinmat">(7.7)</a>.</p></li>
 </ol>
@@ -574,13 +516,13 @@ state</strong>.</p>
 <p>We summarize in a lemma.</p>
 <div class="proof lemma admonition" id="imatjc">
 <p class="admonition-title"><span class="caption-number">Lemma 7.2 </span></p>
-<div class="lemma-content section" id="proof-content">
+<section class="lemma-content" id="proof-content">
 <p>A matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is an intensity matrix if and only if there exists a jump
 chain pair <span class="math notranslate nohighlight">\((\lambda, K)\)</span> such that <a class="reference internal" href="#equation-jcinmat">(7.7)</a> holds.</p>
-</div>
-</div></div>
-<div class="section" id="the-conservative-case">
-<h3><span class="section-number">7.4.3. </span>The Conservative Case<a class="headerlink" href="#the-conservative-case" title="Permalink to this headline">¶</a></h3>
+</section>
+</div></section>
+<section id="the-conservative-case">
+<h3><span class="section-number">7.4.3. </span>The Conservative Case<a class="headerlink" href="#the-conservative-case" title="Permalink to this heading">#</a></h3>
 <p>We know from <a class="reference internal" href="#jccs">Example 7.2</a> that an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> is conservative
 if and only if <span class="math notranslate nohighlight">\(\lambda\)</span> is bounded.</p>
 <p>Moreover, we saw in <a class="reference internal" href="#usmg">Theorem 7.1</a> that the pairing between conservative
@@ -588,22 +530,22 @@ intensity matrices and UC Markov semigroups is one-to-one.</p>
 <p>This leads to the following result.</p>
 <div class="proof theorem admonition" id="theorem-5">
 <p class="admonition-title"><span class="caption-number">Theorem 7.2 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>On <span class="math notranslate nohighlight">\(S\)</span>, there exists a one-to-one correspondence between the following sets of
 objects:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The set of all jump chain pairs <span class="math notranslate nohighlight">\((\lambda, K)\)</span> such that <span class="math notranslate nohighlight">\(\lambda\)</span> is bounded.</p></li>
 <li><p>The set of all conservative intensity matrices.</p></li>
 <li><p>The set of all UC Markov semigroups.</p></li>
 </ol>
-</div>
-</div></div>
-<div class="section" id="simulation">
-<h3><span class="section-number">7.4.4. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h3>
+</section>
+</div></section>
+<section id="simulation">
+<h3><span class="section-number">7.4.4. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h3>
 <p>In view of the preceding discussion, we have a simple way to simulate a Markov
 chain given any conservative intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <p>The steps are</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Decompose <span class="math notranslate nohighlight">\(Q\)</span> into a jump chain pair <span class="math notranslate nohighlight">\((\lambda, K)\)</span>.</p></li>
 <li><p>Simulate via <a class="reference internal" href="kolmogorov_bwd.html#ejc_algo">Algorithm 4.1</a>.</p></li>
 </ol>
@@ -614,10 +556,10 @@ this produces a Markov chain with Markov semigroup
 <span class="math notranslate nohighlight">\(S\)</span> is countably infinite and <span class="math notranslate nohighlight">\(Q\)</span> is conservative with very minor changes.)</p>
 <p>In particular, <span class="math notranslate nohighlight">\((X_t)\)</span> is a continuous time Markov chain with intensity matrix
 <span class="math notranslate nohighlight">\(Q\)</span>.</p>
-</div>
-</div>
-<div class="section" id="beyond-bounded-intensity-matrices">
-<h2><span class="section-number">7.5. </span>Beyond Bounded Intensity Matrices<a class="headerlink" href="#beyond-bounded-intensity-matrices" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="beyond-bounded-intensity-matrices">
+<h2><span class="section-number">7.5. </span>Beyond Bounded Intensity Matrices<a class="headerlink" href="#beyond-bounded-intensity-matrices" title="Permalink to this heading">#</a></h2>
 <p>If we do run into an application where an intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> is not
 conservative, what might we expect?</p>
 <p>In this scenario, we can at least hope that <span class="math notranslate nohighlight">\(Q\)</span> is the generator of a <span class="math notranslate nohighlight">\(C_0\)</span>
@@ -638,47 +580,58 @@ valid solution defined for all <span class="math notranslate nohighlight">\(t \i
 <p>The problem is that the time path explodes to infinity in finite time.</p>
 <p>The same issue can occur for Markov processes, if jump rates grow sufficiently
 quickly.</p>
-<p>For more discussion, see, for example, Section 2.7 of <span id="id2">[<a class="reference internal" href="zreferences.html#id12">Norris, 1998</a>]</span>.</p>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">7.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>For more discussion, see, for example, Section 2.7 of <span id="id2">[<a class="reference internal" href="zreferences.html#id12" title="James R Norris. Markov chains. Number 2. Cambridge University Press, 1998.">Norris, 1998</a>]</span>.</p>
+</section>
+<section id="exercises">
+<h2><span class="section-number">7.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <div class="exercise admonition" id="uc-mc-semigroups-ex-1">
+
 <p class="admonition-title"><span class="caption-number">Exercise 7.1 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\(P\)</span> be a Markov matrix on <span class="math notranslate nohighlight">\(S\)</span> and identify it with the linear operator in
 <a class="reference internal" href="#equation-mmismo">(7.1)</a>.  Verify the claims in <a class="reference internal" href="#equation-propp">(7.2)</a>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="uc-mc-semigroups-ex-2">
+<div class="exercise admonition" id="uc-mc-semigroups-ex-2">
+
 <p class="admonition-title"><span class="caption-number">Exercise 7.2 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Prove the claim in <a class="reference internal" href="#scintcon">Lemma 7.1</a>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="uc-mc-semigroups-ex-3">
+<div class="exercise admonition" id="uc-mc-semigroups-ex-3">
+
 <p class="admonition-title"><span class="caption-number">Exercise 7.3 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Confirm that <span class="math notranslate nohighlight">\(Q\)</span> defined in <a class="reference internal" href="#equation-poissonq">(7.5)</a> induces a bounded linear operator on
 <span class="math notranslate nohighlight">\(\ell_1\)</span> via <a class="reference internal" href="#equation-imislo">(7.3)</a>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="uc-mc-semigroups-ex-4">
+<div class="exercise admonition" id="uc-mc-semigroups-ex-4">
+
 <p class="admonition-title"><span class="caption-number">Exercise 7.4 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\(K\)</span> be defined on <span class="math notranslate nohighlight">\(\ZZ_+ \times \ZZ_+\)</span> by <span class="math notranslate nohighlight">\(K(i, j) = \mathbb 1\{j = i + 1\}\)</span>.</p>
 <p>Show that, with <span class="math notranslate nohighlight">\(K^m\)</span> representing the <span class="math notranslate nohighlight">\(m\)</span>-th matrix product of <span class="math notranslate nohighlight">\(K\)</span> with itself,
 we have <span class="math notranslate nohighlight">\(K^m(i, j) = \mathbb 1\{j = i + m\}\)</span> for any <span class="math notranslate nohighlight">\(i, j \in \ZZ_+\)</span>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="uc-mc-semigroups-ex-5">
+<div class="exercise admonition" id="uc-mc-semigroups-ex-5">
+
 <p class="admonition-title"><span class="caption-number">Exercise 7.5 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\(Q\)</span> be any intensity matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>Prove that the jump chain decomposition of <span class="math notranslate nohighlight">\(Q\)</span> is in fact a jump chain pair.</p>
 <p>Prove that, in addition, this decomposition <span class="math notranslate nohighlight">\((\lambda, K)\)</span> satisfies <a class="reference internal" href="#equation-jcinmat">(7.7)</a>.</p>
+</section>
 </div>
-</div></div>
-<div class="section" id="solutions">
-<h2><span class="section-number">7.7. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solutions">
+<h2><span class="section-number">7.7. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <div class="solution admonition" id="uc_mc_semigroups-solution-11">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#uc-mc-semigroups-ex-1"><span>Solution to </span> Exercise 7.1</a></p>
-<div class="section" id="solution-content">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#uc-mc-semigroups-ex-1"> Exercise 7.1</a></p>
+<section id="solution-content">
 <p>To determine the norm of <span class="math notranslate nohighlight">\(P\)</span>, we use the definition in <a class="reference internal" href="generators.html#equation-norml">(6.2)</a>.</p>
 <p>If <span class="math notranslate nohighlight">\(f \in \ell_1\)</span> and <span class="math notranslate nohighlight">\(\| f \| \leq 1\)</span>, then</p>
 <div class="math notranslate nohighlight">
@@ -702,10 +655,12 @@ obtaining <span class="math notranslate nohighlight">\(\| fP \| = \|f\|\)</span>
     = 1
 \]</div>
 <p>Hence <span class="math notranslate nohighlight">\(\phi P \in \dD\)</span> as claimed.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="uc_mc_semigroups-solution-12">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#uc-mc-semigroups-ex-2"><span>Solution to </span> Exercise 7.2</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="uc_mc_semigroups-solution-12">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#uc-mc-semigroups-ex-2"> Exercise 7.2</a></p>
+<section id="solution-content">
 <p>Here is one solution.</p>
 <p>Let <span class="math notranslate nohighlight">\(Q\)</span> be an intensity matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>Suppose first that <span class="math notranslate nohighlight">\(m := \sup_x |Q(x,x)|\)</span> is finite.</p>
@@ -730,10 +685,12 @@ P - I)\)</span>.</p>
     \geq | Q(x, x) |
 \]</div>
 <p>Contradiction.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="uc_mc_semigroups-solution-13">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#uc-mc-semigroups-ex-3"><span>Solution to </span> Exercise 7.3</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="uc_mc_semigroups-solution-13">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#uc-mc-semigroups-ex-3"> Exercise 7.3</a></p>
+<section id="solution-content">
 <p>Linearity is obvious so we focus on boundedness.</p>
 <p>For any <span class="math notranslate nohighlight">\(f \in \ell_1\)</span> and this choice of <span class="math notranslate nohighlight">\(Q\)</span>, we have</p>
 <div class="math notranslate nohighlight">
@@ -746,10 +703,12 @@ P - I)\)</span>.</p>
 by <span class="math notranslate nohighlight">\(2 \lambda \| f\|\)</span>.</p>
 <p>Hence <span class="math notranslate nohighlight">\(\| fQ \| \leq 2 \lambda \|f\|\)</span>, which implies that <span class="math notranslate nohighlight">\(Q \in \lL(\ell_1)\)</span>
 as required.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="uc_mc_semigroups-solution-14">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#uc-mc-semigroups-ex-4"><span>Solution to </span> Exercise 7.4</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="uc_mc_semigroups-solution-14">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#uc-mc-semigroups-ex-4"> Exercise 7.4</a></p>
+<section id="solution-content">
 <p>The statement <span class="math notranslate nohighlight">\(K^m(i, j) = \mathbb 1\{j = i + m\}\)</span> holds by definition when
 <span class="math notranslate nohighlight">\(m=1\)</span>.</p>
 <p>Now suppose it holds at arbitrary <span class="math notranslate nohighlight">\(m\)</span>.</p>
@@ -762,10 +721,12 @@ as required.</p>
     = K(i, j-m)
 \]</div>
 <p>Applying the definition <span class="math notranslate nohighlight">\(K(i, j) = \mathbb 1\{j = i + 1\}\)</span> completes verification of the claim.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="uc_mc_semigroups-solution-15">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#uc-mc-semigroups-ex-5"><span>Solution to </span> Exercise 7.5</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="uc_mc_semigroups-solution-15">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#uc-mc-semigroups-ex-5"> Exercise 7.5</a></p>
+<section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\(Q\)</span> be an intensity matrix and let <span class="math notranslate nohighlight">\((\lambda, K)\)</span> be the jump chain
 decomposition of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <p>Nonnegativity of <span class="math notranslate nohighlight">\(\lambda\)</span> is immediate from the definition of an intensity
@@ -787,8 +748,9 @@ matrix.</p>
 <p>The proof that <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\((\lambda, K)\)</span> satisfy <a class="reference internal" href="#equation-jcinmat">(7.7)</a> is mechanical and
 the details are omitted.</p>
 <p>(Try working case-by-case, with <span class="math notranslate nohighlight">\(\lambda(x) = 0, x=y\)</span>, <span class="math notranslate nohighlight">\(\lambda(x) &gt; 0, x=y\)</span>, etc.)</p>
+</section>
 </div>
-</div><hr class="footnotes docutils" />
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fnim"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Previously, we introduced the notion of an intensity matrix when <span class="math notranslate nohighlight">\(S\)</span>
@@ -798,8 +760,8 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
 <span class="math notranslate nohighlight">\(x \not= y\)</span>.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -813,7 +775,7 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -827,7 +789,7 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
                 
 
 
-                <footer class="page__footer">
+                <footer class="qe-page__footer">
 
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
@@ -840,16 +802,16 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
             
 
             
-            <div class="sidebar bd-sidebar inactive" id="site-navigation">
+            <div class="qe-sidebar bd-sidebar inactive" id="site-navigation">
 
-                <div class="sidebar__header">
+                <div class="qe-sidebar__header">
 
 
                     Contents
 
                 </div>
 
-                <nav class="sidebar__nav" id="sidebar-nav" aria-label="Main navigation">
+                <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
@@ -900,7 +862,7 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
 
                 </nav>
 
-                <div class="sidebar__footer">
+                <div class="qe-sidebar__footer">
 
                 </div>
 
@@ -908,31 +870,30 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
             
         </div> <!-- .main -->
 
-        <div class="toolbar">
+        <div class="qe-toolbar">
 
-            <div class="toolbar__inner">
+            <div class="qe-toolbar__inner">
 
-                <ul class="toolbar__main">
+                <ul class="qe-toolbar__main">
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
-                    <!-- <li class="btn__search">
-                        <form action="search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off">
-                            <i data-feather="search"></i>
-                        </form>
-                    </li> -->
                 </ul>
 
-                <ul class="toolbar__links">
+                <ul class="qe-toolbar__links">
+                    <li class="btn__search">
+                        <form action="search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
+                            <i data-feather="search" id="search-icon"></i>
+                        </form>
+                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                    <li data-tippy-content="Download Notebook"><a href="_notebooks/uc_mc_semigroups.ipynb" download><i data-feather="download-cloud"></i></a></li>
-                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/uc_mc_semigroups.ipynb" download><i data-feather="download-cloud"></i></a></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/uc_mc_semigroups.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/uc_mc_semigroups.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -944,7 +905,7 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
+                    <a href="/_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>
@@ -961,18 +922,16 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
-                    <option value="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/uc_mc_semigroups.ipynb">BinderHub</option>
-                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/uc_mc_semigroups.ipynb" data-branch=main>
+                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/uc_mc_semigroups.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -1003,9 +962,9 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "uc_mc_semigroups";
-                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
-                const urlPath = "tree/continuous_time_mcs.notebooks/uc_mc_semigroups.ipynb";
-                const branch = "main"
+                const repoURL = "";
+                const urlPath = "";
+                const branch = ""
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists
@@ -1058,6 +1017,5 @@ setting.  In particular, <span class="math notranslate nohighlight">\(Q \colon S
         </div>
 
     </div> <!-- .wrapper-->
-    
   </body>
 </html>

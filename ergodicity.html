@@ -1,66 +1,115 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>8. Stationarity and Ergodicity &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
+        <script>
+            MathJax = {
+            loader: {load: ['[tex]/boldsymbol', '[tex]/textmacros']},
+            tex: {
+                packages: {'[+]': ['boldsymbol', 'textmacros']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true,
+                macros: {
+                    "argmax" : "arg\\,max",
+                    "argmin" : "arg\\,min",
+                    "col"    : "col",
+                    "Span"   :  "span",
+                    "epsilon": "\\varepsilon",
+                    "EE": "\\mathbb{E}",
+                    "PP": "\\mathbb{P}",
+                    "RR": "\\mathbb{R}",
+                    "NN": "\\mathbb{N}",
+                    "ZZ": "\\mathbb{Z}",
+                    "aA": "\\mathcal{A}",
+                    "bB": "\\mathcal{B}",
+                    "cC": "\\mathcal{C}",
+                    "dD": "\\mathcal{D}",
+                    "eE": "\\mathcal{E}",
+                    "fF": "\\mathcal{F}",
+                    "gG": "\\mathcal{G}",
+                    "hH": "\\mathcal{H}",
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 0.92,
+                displayAlign: "center",
+            },
+            };
+        </script>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=f77998adf44a3f900caaca31caf410c810f6f245" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=eed9c059a3ee152aae2353ec732f0a6d12e6aa07"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ergodicity';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="9. Bibliography" href="zreferences.html" />
@@ -94,94 +143,46 @@
 
     <span id="top"></span>
 
-    <div class="wrapper">
+    <div class="qe-wrapper">
 
-        <div class="main">
+        <div class="qe-main">
 
-            <div class="page" id=ergodicity>
+            <div class="qe-page" id=ergodicity>
 
-                <div class="page__toc">
+                <div class="qe-page__toc">
 
                     <div class="inner">
 
                         
-                        <div class="page__toc-header">
+                        <div class="qe-page__toc-header">
                             On this page
                         </div>
 
 
-                        <nav id="bd-toc-nav" class="page__toc-nav">
+                        <nav id="bd-toc-nav" class="qe-page__toc-nav">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   8.1. Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stationary-distributions">
-   8.2. Stationary Distributions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definition">
-     8.2.1. Definition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stationarity-via-the-generator">
-     8.2.2. Stationarity via the Generator
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#irreducibility-and-uniqueness">
-   8.3. Irreducibility and Uniqueness
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#asymptotic-stabilitiy">
-   8.4. Asymptotic Stabilitiy
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contractivity">
-     8.4.1. Contractivity
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#uniqueness">
-     8.4.2. Uniqueness
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stability-from-the-skeleton">
-     8.4.3. Stability from the Skeleton
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stability-via-drift">
-     8.4.4. Stability via Drift
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   8.5. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solutions">
-   8.6. Solutions
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">8.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-distributions">8.2. Stationary Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">8.2.1. Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity-via-the-generator">8.2.2. Stationarity via the Generator</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#irreducibility-and-uniqueness">8.3. Irreducibility and Uniqueness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotic-stabilitiy">8.4. Asymptotic Stabilitiy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contractivity">8.4.1. Contractivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueness">8.4.2. Uniqueness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-from-the-skeleton">8.4.3. Stability from the Skeleton</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-via-drift">8.4.4. Stability via Drift</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">8.6. Solutions</a></li>
+</ul>
                             <p class="logo">
                                 
                                     
-                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo" alt="logo"></a>
+                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo logo-img" alt="logo"></a>
+                                    
                                     
                                 
                             </p>
@@ -190,7 +191,7 @@
 
                         </nav>
 
-                        <div class="page__toc-footer">
+                        <div class="qe-page__toc-footer">
                             
                             
                             <p><a href="#top"><strong>Back to top</strong></a></p>
@@ -200,31 +201,62 @@
 
                 </div>
 
-                <div class="page__header">
+                <div class="qe-page__header">
 
-                    <div class="page__header-copy">
+                    <div class="qe-page__header-copy">
 
-                        <p class="page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
+                        <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="page__header-subheading">Stationarity and Ergodicity</p>
+                        <p class="qe-page__header-subheading">Stationarity and Ergodicity</p>
 
                     </div>
+                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
+                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
-                    <p class="page__header-authors">Thomas J. Sargent & John Stachurski</p>
 
                 </div> <!-- .page__header -->
 
 
 
                 
-                <main class="page__content" role="main">
+                <main class="qe-page__content" role="main">
                     
                     <div>
                         
-  <div class="section" id="stationarity-and-ergodicity">
-<h1><span class="section-number">8. </span>Stationarity and Ergodicity<a class="headerlink" href="#stationarity-and-ergodicity" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2><span class="section-number">8.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="stationarity-and-ergodicity">
+<h1><span class="section-number">8. </span>Stationarity and Ergodicity<a class="headerlink" href="#stationarity-and-ergodicity" title="Permalink to this heading">#</a></h1>
+<p>In addition to what’s in Anaconda, this lecture will need the following libraries:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>quantecon
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (0.7.2)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (0.60.0)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.26.4)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (2.32.3)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.1)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.2)
+Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.43.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2024.8.30)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from sympy-&gt;quantecon) (1.3.0)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="overview">
+<h2><span class="section-number">8.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>In this lecture we discuss stability and equilibrium behavior for continuous
 time Markov chains.</p>
 <p>To give one example of why this theory matters, consider queues, which are
@@ -261,11 +293,11 @@ often modeled as continuous time Markov chains.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="stationary-distributions">
-<h2><span class="section-number">8.2. </span>Stationary Distributions<a class="headerlink" href="#stationary-distributions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="definition">
-<h3><span class="section-number">8.2.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="stationary-distributions">
+<h2><span class="section-number">8.2. </span>Stationary Distributions<a class="headerlink" href="#stationary-distributions" title="Permalink to this heading">#</a></h2>
+<section id="definition">
+<h3><span class="section-number">8.2.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(S\)</span> be countable.</p>
 <p>Recall that, for a discrete time Markov chain with Markov matrix <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(S\)</span>, a
 distribution <span class="math notranslate nohighlight">\(\psi\)</span> is called stationary for <span class="math notranslate nohighlight">\(P\)</span> if <span class="math notranslate nohighlight">\(\psi P = \psi\)</span>.</p>
@@ -293,6 +325,11 @@ distribution <span class="math notranslate nohighlight">\(\psi\)</span> is calle
 that the three trajectories seem to be converging to.</p>
 <p>(Recall that, in the color scheme, trajectories cool as time evolves.)</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unit_simplex</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
     
@@ -362,8 +399,9 @@ that the three trajectories seem to be converging to.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/ergodicity_5_0.png" src="_images/ergodicity_5_0.png" />
+<img alt="_images/dd1b810cc78fdec40e66569abfaf4394af243b57593bd0ad92ded0f74e3e39cb.png" src="_images/dd1b810cc78fdec40e66569abfaf4394af243b57593bd0ad92ded0f74e3e39cb.png" />
 </div>
 </div>
 <p>This black dot is the stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> of the Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> generated by <span class="math notranslate nohighlight">\(Q\)</span>.</p>
@@ -373,9 +411,9 @@ that the three trajectories seem to be converging to.</p>
 <span class="math notranslate nohighlight">\(\psi^*\)</span> is unique in <span class="math notranslate nohighlight">\(\dD\)</span>, due to irreducibility.</p>
 <p>Moreover, <span class="math notranslate nohighlight">\(\psi P_t \to \psi^*\)</span> as <span class="math notranslate nohighlight">\(t \to \infty\)</span> for any <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>, as
 suggested by the figure.</p>
-</div>
-<div class="section" id="stationarity-via-the-generator">
-<h3><span class="section-number">8.2.2. </span>Stationarity via the Generator<a class="headerlink" href="#stationarity-via-the-generator" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="stationarity-via-the-generator">
+<h3><span class="section-number">8.2.2. </span>Stationarity via the Generator<a class="headerlink" href="#stationarity-via-the-generator" title="Permalink to this heading">#</a></h3>
 <p>In many cases, it is easier to use the generator of the semigroup to identify
 stationary distributions rather than the semigroup itself.</p>
 <p>This is analogous to the idea that a point <span class="math notranslate nohighlight">\(\bar x\)</span> in <span class="math notranslate nohighlight">\(\RR^d\)</span> is stationary for
@@ -385,10 +423,10 @@ a vector ODE <span class="math notranslate nohighlight">\(x'_t = F(x_t)\)</span>
 is easy to prove and sufficient for applications we consider.</p>
 <div class="proof theorem admonition" id="statfromq">
 <p class="admonition-title"><span class="caption-number">Theorem 8.1 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup with generator <span class="math notranslate nohighlight">\(Q\)</span>.  A distribution
 <span class="math notranslate nohighlight">\(\psi\)</span> on <span class="math notranslate nohighlight">\(S\)</span> is stationary for <span class="math notranslate nohighlight">\((P_t)\)</span> if and only if <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. Fix <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and suppose first that <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\((P_t)\)</span> is a UC Markov semigroup, we have <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>,
@@ -416,10 +454,10 @@ I)\)</span>.</p>
 <p>As <span class="math notranslate nohighlight">\(\psi\)</span> is stationary for <span class="math notranslate nohighlight">\((P_t)\)</span>, we have <span class="math notranslate nohighlight">\(\psi D_t = 0\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Hence <span class="math notranslate nohighlight">\(\psi Q = 0\)</span>, as was to be shown.</p>
 </div>
-</div>
-</div>
-<div class="section" id="irreducibility-and-uniqueness">
-<h2><span class="section-number">8.3. </span>Irreducibility and Uniqueness<a class="headerlink" href="#irreducibility-and-uniqueness" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="irreducibility-and-uniqueness">
+<h2><span class="section-number">8.3. </span>Irreducibility and Uniqueness<a class="headerlink" href="#irreducibility-and-uniqueness" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span> and consider arbitrary states <span class="math notranslate nohighlight">\(x, y \in S\)</span>.</p>
 <p>We say that state <span class="math notranslate nohighlight">\(y\)</span> is <strong>accessible</strong> from state <span class="math notranslate nohighlight">\(x\)</span> if
 there exists a <span class="math notranslate nohighlight">\(t \geq 0\)</span> such that <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span>.</p>
@@ -434,29 +472,29 @@ to <span class="math notranslate nohighlight">\(y\)</span> if there exists a fin
 <span class="math notranslate nohighlight">\(x=z_0\)</span> and ending at <span class="math notranslate nohighlight">\(y=z_m\)</span> such that <span class="math notranslate nohighlight">\(Q(z_i, z_{i+1}) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <div class="proof theorem admonition" id="equivirr">
 <p class="admonition-title"><span class="caption-number">Theorem 8.2 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup with generator <span class="math notranslate nohighlight">\(Q\)</span>.
 For distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, the following statements are equivalent:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The state <span class="math notranslate nohighlight">\(y\)</span> is accessible from <span class="math notranslate nohighlight">\(x\)</span> under <span class="math notranslate nohighlight">\((P_t)\)</span>.</p></li>
 <li><p>There is a <span class="math notranslate nohighlight">\(Q\)</span>-positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p></li>
 </ol>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. Pick any two distinct states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p>It is obvious that statement 3 implies statement 1, so we need only prove
 (1 <span class="math notranslate nohighlight">\(\implies\)</span> 2) and (2 <span class="math notranslate nohighlight">\(\implies\)</span> 3).</p>
 <p>Starting with (1 <span class="math notranslate nohighlight">\(\implies\)</span> 2), recall that</p>
 <div class="math notranslate nohighlight" id="equation-ptexpan">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-ptexpan" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-ptexpan" title="Permalink to this equation">#</a></span>\[
     P_t(x, y) = t Q(x,y) + \frac{t^2}{2!} Q^2(x, y) + \cdots
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(x\)</span> is accessible from <span class="math notranslate nohighlight">\(y\)</span>, then <span class="math notranslate nohighlight">\(P_t(x, y) &gt; 0\)</span> for some <span class="math notranslate nohighlight">\(t &gt; 0\)</span>, so
 <span class="math notranslate nohighlight">\(Q^k(x,y) &gt; 0\)</span> for at least one <span class="math notranslate nohighlight">\(k \in \NN\)</span>.</p>
 <p>Writing out the matrix product as a sum, we now have</p>
 <div class="math notranslate nohighlight" id="equation-qkassum">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-qkassum" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-qkassum" title="Permalink to this equation">#</a></span>\[
     Q^k(x,y) =
     \sum_{z_1}
     \sum_{z_2}
@@ -507,14 +545,14 @@ result, we obtain</p>
 <p><a class="reference internal" href="#equivirr">Theorem 8.2</a> leads directly to the following strong result.</p>
 <div class="proof corollary admonition" id="perimposs">
 <p class="admonition-title"><span class="caption-number">Corollary 8.1 </span></p>
-<div class="corollary-content section" id="proof-content">
+<section class="corollary-content" id="proof-content">
 <p>For a UC Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span>, the following statements are
 equivalent:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible.</p></li>
 <li><p><span class="math notranslate nohighlight">\(P_t(x,y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and all <span class="math notranslate nohighlight">\((x,y) \in S \times S\)</span>.</p></li>
 </ol>
-</div>
+</section>
 </div><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To obtain stable long run behavior in discrete time Markov chains, it is
@@ -526,24 +564,24 @@ continuous time Markov chains.</p>
 <p>Positive probability flow from <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(y\)</span> at some <span class="math notranslate nohighlight">\(t &gt; 0\)</span> immediately implies
 positive flow for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
 </div>
-</div>
-<div class="section" id="asymptotic-stabilitiy">
-<h2><span class="section-number">8.4. </span>Asymptotic Stabilitiy<a class="headerlink" href="#asymptotic-stabilitiy" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="asymptotic-stabilitiy">
+<h2><span class="section-number">8.4. </span>Asymptotic Stabilitiy<a class="headerlink" href="#asymptotic-stabilitiy" title="Permalink to this heading">#</a></h2>
 <p>We call Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> <strong>asymptotically stable</strong> if <span class="math notranslate nohighlight">\((P_t)\)</span> has a
 unique stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> in <span class="math notranslate nohighlight">\(\dD\)</span> and</p>
 <div class="math notranslate nohighlight" id="equation-asyms">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-asyms" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-asyms" title="Permalink to this equation">#</a></span>\[
     \| \psi P_t - \psi^* \| \to 0 \text{ as } t \to \infty
     \text{ for all } \psi \in \dD
 \]</div>
 <p>Our aim is to establish conditions for asymptotic stability of Markov
 semigroups.</p>
-<div class="section" id="contractivity">
-<h3><span class="section-number">8.4.1. </span>Contractivity<a class="headerlink" href="#contractivity" title="Permalink to this headline">¶</a></h3>
+<section id="contractivity">
+<h3><span class="section-number">8.4.1. </span>Contractivity<a class="headerlink" href="#contractivity" title="Permalink to this heading">#</a></h3>
 <p>Let’s recall some useful facts about the discrete time case.</p>
 <p>First, if <span class="math notranslate nohighlight">\(P\)</span> is any Markov matrix, we have, in the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm,</p>
 <div class="math notranslate nohighlight" id="equation-allmocontract">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-allmocontract" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-allmocontract" title="Permalink to this equation">#</a></span>\[
     \| \psi P \| \leq \| \psi \|
     \text{ for all } \psi \in \dD
 \]</div>
@@ -564,7 +602,7 @@ semigroups.</p>
 <p>Moreover, if <span class="math notranslate nohighlight">\(P\)</span> is everywhere positive, then this inequality is strict:</p>
 <div class="proof lemma admonition" id="strictcontract">
 <p class="admonition-title"><span class="caption-number">Lemma 8.1 </span> (Strict Contractivity)</p>
-<div class="lemma-content section" id="proof-content">
+<section class="lemma-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(P\)</span> is a Markov matrix and <span class="math notranslate nohighlight">\(P(x, y) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(x, y\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -572,22 +610,22 @@ semigroups.</p>
     \text{ for all } \psi, \phi \in \dD
     \text{ with } \psi \not= \phi
 \]</div>
-</div>
+</section>
 </div><p>The proof follows from the strict triangle inequality, as opposed to the weak
 triangle inequality we used to obtain <a class="reference internal" href="#equation-allmocontract">(8.4)</a>.</p>
-<p>See, for example, Proposition 3.1.2 of <span id="id1">[<a class="reference internal" href="zreferences.html#id3">Lasota and Mackey, 1994</a>]</span> or Lemma 8.2.3 of <span id="id2">[<a class="reference internal" href="zreferences.html#id4">Stachurski, 2009</a>]</span>.</p>
-</div>
-<div class="section" id="uniqueness">
-<h3><span class="section-number">8.4.2. </span>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h3>
+<p>See, for example, Proposition 3.1.2 of <span id="id1">[<a class="reference internal" href="zreferences.html#id3" title="Andrzej Lasota and Michael C Mackey. Chaos, fractals, and noise: stochastic aspects of dynamics. Volume 97. Springer Science &amp; Business Media, 1994.">Lasota and Mackey, 1994</a>]</span> or Lemma 8.2.3 of <span id="id2">[<a class="reference internal" href="zreferences.html#id4" title="John Stachurski. Economic dynamics: theory and computation. MIT Press, 2009.">Stachurski, 2009</a>]</span>.</p>
+</section>
+<section id="uniqueness">
+<h3><span class="section-number">8.4.2. </span>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this heading">#</a></h3>
 <p>Irreducibility of a given Markov chain implies that there are no disjoint
 <a class="reference external" href="https://en.wikipedia.org/wiki/Absorbing_set">absorbing sets</a>.</p>
 <p>This in turn leads to uniqueness of stationary distributions:</p>
 <div class="proof theorem admonition" id="uniirr">
 <p class="admonition-title"><span class="caption-number">Theorem 8.3 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup on <span class="math notranslate nohighlight">\(S\)</span>.  If <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible, then
 <span class="math notranslate nohighlight">\((P_t)\)</span> has at most one stationary distribution.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. Suppose to the contrary that <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> are both stationary for
 <span class="math notranslate nohighlight">\((P_t)\)</span>.</p>
@@ -599,10 +637,10 @@ in <a class="reference internal" href="#strictcontract">Lemma 8.1</a> holds.</p>
 </div>
 <div class="proof example admonition" id="example-5">
 <p class="admonition-title"><span class="caption-number">Example 8.1 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>An M/M/1 queue with parameters <span class="math notranslate nohighlight">\(\mu, \lambda\)</span> is a continuous time Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> on <span class="math notranslate nohighlight">\(S = \ZZ_+\)</span> with with intensity matrix</p>
 <div class="math notranslate nohighlight" id="equation-mm1q">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-mm1q" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-mm1q" title="Permalink to this equation">#</a></span>\[\begin{split}
 Q=\begin{pmatrix}
     -\lambda &amp; \lambda &amp; 0 &amp; 0 &amp; \cdots \\
     \mu &amp; -(\mu + \lambda) &amp; \lambda &amp; 0 &amp; \cdots \\
@@ -618,10 +656,10 @@ probability flow between any two states, in both directions, so the
 corresponding semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is irreducible.</p>
 <p><a class="reference internal" href="#uniirr">Theorem 8.3</a> now tells us that <span class="math notranslate nohighlight">\((P_t)\)</span> has at most one stationary
 distribution.</p>
-</div>
-</div></div>
-<div class="section" id="stability-from-the-skeleton">
-<h3><span class="section-number">8.4.3. </span>Stability from the Skeleton<a class="headerlink" href="#stability-from-the-skeleton" title="Permalink to this headline">¶</a></h3>
+</section>
+</div></section>
+<section id="stability-from-the-skeleton">
+<h3><span class="section-number">8.4.3. </span>Stability from the Skeleton<a class="headerlink" href="#stability-from-the-skeleton" title="Permalink to this heading">#</a></h3>
 <p>Recall the definition of asymptotic stability given in <a class="reference internal" href="#equation-asyms">(8.3)</a>.</p>
 <p>Analogously, we call an individual Markov operator <span class="math notranslate nohighlight">\(P\)</span> asymptotically stable if
 <span class="math notranslate nohighlight">\(P\)</span> has a unique stationary distribution <span class="math notranslate nohighlight">\(\psi^*\)</span> in <span class="math notranslate nohighlight">\(\dD\)</span> and
@@ -631,11 +669,11 @@ distribution.</p>
 <a class="reference internal" href="#equation-allmocontract">(8.4)</a>.</p>
 <div class="proof lemma admonition" id="stabskel">
 <p class="admonition-title"><span class="caption-number">Lemma 8.2 </span></p>
-<div class="lemma-content section" id="proof-content">
+<section class="lemma-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup. If there exists an <span class="math notranslate nohighlight">\(s &gt; 0\)</span> such that the
 Markov matrix <span class="math notranslate nohighlight">\(P_s\)</span> is asymptotically stable, then <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically
 stable with the same stationary distribution.</p>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. Let <span class="math notranslate nohighlight">\((P_t)\)</span> and <span class="math notranslate nohighlight">\(s\)</span> be as in the statement of <a class="reference internal" href="#stabskel">Lemma 8.2</a>.</p>
 <p>Let <span class="math notranslate nohighlight">\(\psi^*\)</span> be the stationary distribution of <span class="math notranslate nohighlight">\(P_s\)</span>.  Fix <span class="math notranslate nohighlight">\(\psi \in \dD\)</span> and
@@ -653,9 +691,9 @@ stable with the same stationary distribution.</p>
 \]</div>
 <p>Hence asymptotic stability holds for <span class="math notranslate nohighlight">\((P_t)\)</span>.</p>
 </div>
-</div>
-<div class="section" id="stability-via-drift">
-<h3><span class="section-number">8.4.4. </span>Stability via Drift<a class="headerlink" href="#stability-via-drift" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="stability-via-drift">
+<h3><span class="section-number">8.4.4. </span>Stability via Drift<a class="headerlink" href="#stability-via-drift" title="Permalink to this heading">#</a></h3>
 <p>In this section we address drift conditions, which are a powerful method for
 obtaining asymptotic stability when the state space can be infinite.</p>
 <p>The idea is to show that the state tends to drift back to a finite set over
@@ -665,7 +703,7 @@ time.</p>
 <p>The next theorem gives a useful version of this class of results.</p>
 <div class="proof theorem admonition" id="sdrift">
 <p class="admonition-title"><span class="caption-number">Theorem 8.4 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a UC Markov semigroup with intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>.  If <span class="math notranslate nohighlight">\((P_t)\)</span> is
 irreducible and there exists a function <span class="math notranslate nohighlight">\(v \colon S \to \RR_+\)</span>, a finite set
 <span class="math notranslate nohighlight">\(F \subset S\)</span> and positive constants <span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
@@ -680,11 +718,11 @@ irreducible and there exists a function <span class="math notranslate nohighligh
     \end{cases}
 \end{split}\]</div>
 <p>then <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
-</div>
-</div><p>The proof of <a class="reference internal" href="#sdrift">Theorem 8.4</a> can be found in <span id="id3">[<a class="reference internal" href="zreferences.html#id2">Pichór <em>et al.</em>, 2012</a>]</span>.</p>
+</section>
+</div><p>The proof of <a class="reference internal" href="#sdrift">Theorem 8.4</a> can be found in <span id="id3">[<a class="reference internal" href="zreferences.html#id2" title="Katarzyna Pichór, Ryszard Rudnicki, and Marta Tyran-Kamińska. Stochastic semigroups and their applications to biological models. Demonstratio Mathematica, 45(2):463–494, 2012.">Pichór <em>et al.</em>, 2012</a>]</span>.</p>
 <div class="proof example admonition" id="example-8">
 <p class="admonition-title"><span class="caption-number">Example 8.2 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>Consider again the M/M/1 queue on <span class="math notranslate nohighlight">\(\ZZ_+\)</span> with intensity matrix <a class="reference internal" href="#equation-mm1q">(8.5)</a>.</p>
 <p>Suppose that <span class="math notranslate nohighlight">\(\lambda &lt; \mu\)</span>.</p>
 <p>It is intuitive that, in this case, the queue length will not
@@ -701,27 +739,30 @@ j\)</span>.</p>
 <p>Setting <span class="math notranslate nohighlight">\(F=\{0\}\)</span> and <span class="math notranslate nohighlight">\(M = \lambda - \mu = - \epsilon\)</span>, we see that the conditions
 of <a class="reference internal" href="#sdrift">Theorem 8.4</a> hold.</p>
 <p>Hence the associated semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
-</div>
+</section>
 </div><div class="proof corollary admonition" id="sfinite">
 <p class="admonition-title"><span class="caption-number">Corollary 8.2 </span></p>
-<div class="corollary-content section" id="proof-content">
+<section class="corollary-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((P_t)\)</span> is an irreducible UC Markov semigroup and <span class="math notranslate nohighlight">\(S\)</span> is finite, then
 <span class="math notranslate nohighlight">\((P_t)\)</span> is asymptotically stable.</p>
-</div>
+</section>
 </div><p>A solved exercise below asks you to confirm this.</p>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">8.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="exercises">
+<h2><span class="section-number">8.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <div class="exercise admonition" id="ergodicity-ex-1">
+
 <p class="admonition-title"><span class="caption-number">Exercise 8.1 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup.  True or false:
 for this semigroup, every state <span class="math notranslate nohighlight">\(x\)</span> is accessible from itself.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="ergodicity-ex-2">
+<div class="exercise admonition" id="ergodicity-ex-2">
+
 <p class="admonition-title"><span class="caption-number">Exercise 8.2 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\((\lambda_k)\)</span> be a bounded non-increasing sequence in <span class="math notranslate nohighlight">\((0, \infty)\)</span>.</p>
 <p>A <strong>pure birth process</strong> starting at zero is a continuous time Markov process
 <span class="math notranslate nohighlight">\((X_t)\)</span> on state space <span class="math notranslate nohighlight">\(\ZZ_+\)</span> with intensity matrix</p>
@@ -736,23 +777,29 @@ Q=\begin{pmatrix}
 \end{split}\]</div>
 <p>Show that <span class="math notranslate nohighlight">\((P_t)\)</span>, the corresponding Markov semigroup, has no stationary
 distribution.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="ergodicity-ex-3">
+<div class="exercise admonition" id="ergodicity-ex-3">
+
 <p class="admonition-title"><span class="caption-number">Exercise 8.3 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Confirm that <a class="reference internal" href="#sdrift">Theorem 8.4</a> implies <a class="reference internal" href="#sfinite">Corollary 8.2</a>.</p>
+</section>
 </div>
-</div></div>
-<div class="section" id="solutions">
-<h2><span class="section-number">8.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solutions">
+<h2><span class="section-number">8.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <div class="solution admonition" id="ergodicity-solution-13">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#ergodicity-ex-1"><span>Solution to </span> Exercise 8.1</a></p>
-<div class="section" id="solution-content">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#ergodicity-ex-1"> Exercise 8.1</a></p>
+<section id="solution-content">
 <p>The statement is true.  With <span class="math notranslate nohighlight">\(t=0\)</span> we have <span class="math notranslate nohighlight">\(P_t(x,x) = I(x,x) = 1 &gt; 0\)</span>.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="ergodicity-solution-14">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#ergodicity-ex-2"><span>Solution to </span> Exercise 8.2</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="ergodicity-solution-14">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#ergodicity-ex-2"> Exercise 8.2</a></p>
+<section id="solution-content">
 <p>Suppose to the contrary that <span class="math notranslate nohighlight">\(\phi \in \dD\)</span> and <span class="math notranslate nohighlight">\(\phi Q = 0\)</span>.</p>
 <p>Then, for any <span class="math notranslate nohighlight">\(j \geq 1\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -776,10 +823,12 @@ distribution.</p>
 <p>But <span class="math notranslate nohighlight">\(\dD\)</span> contains no non-decreasing functions when the state space is infinite.
 (Why?)</p>
 <p>Contradiction.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="ergodicity-solution-15">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#ergodicity-ex-3"><span>Solution to </span> Exercise 8.3</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="ergodicity-solution-15">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#ergodicity-ex-3"> Exercise 8.3</a></p>
+<section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be an irreducible UC Markov semigroup and let <span class="math notranslate nohighlight">\(S\)</span> be finite.</p>
 <p>Pick any positive constants <span class="math notranslate nohighlight">\(M, \epsilon\)</span> and set <span class="math notranslate nohighlight">\(v = M\)</span> and <span class="math notranslate nohighlight">\(F = S\)</span>.</p>
 <p>We then have</p>
@@ -791,9 +840,10 @@ distribution.</p>
 \]</div>
 <p>Hence the drift condition in <a class="reference internal" href="#sdrift">Theorem 8.4</a> holds and <span class="math notranslate nohighlight">\((P_t)\)</span> is
 asymptotically stable.</p>
+</section>
 </div>
-</div></div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -807,7 +857,7 @@ asymptotically stable.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -821,7 +871,7 @@ asymptotically stable.</p>
                 
 
 
-                <footer class="page__footer">
+                <footer class="qe-page__footer">
 
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
@@ -834,16 +884,16 @@ asymptotically stable.</p>
             
 
             
-            <div class="sidebar bd-sidebar inactive" id="site-navigation">
+            <div class="qe-sidebar bd-sidebar inactive" id="site-navigation">
 
-                <div class="sidebar__header">
+                <div class="qe-sidebar__header">
 
 
                     Contents
 
                 </div>
 
-                <nav class="sidebar__nav" id="sidebar-nav" aria-label="Main navigation">
+                <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
@@ -894,7 +944,7 @@ asymptotically stable.</p>
 
                 </nav>
 
-                <div class="sidebar__footer">
+                <div class="qe-sidebar__footer">
 
                 </div>
 
@@ -902,31 +952,30 @@ asymptotically stable.</p>
             
         </div> <!-- .main -->
 
-        <div class="toolbar">
+        <div class="qe-toolbar">
 
-            <div class="toolbar__inner">
+            <div class="qe-toolbar__inner">
 
-                <ul class="toolbar__main">
+                <ul class="qe-toolbar__main">
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
-                    <!-- <li class="btn__search">
-                        <form action="search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off">
-                            <i data-feather="search"></i>
-                        </form>
-                    </li> -->
                 </ul>
 
-                <ul class="toolbar__links">
+                <ul class="qe-toolbar__links">
+                    <li class="btn__search">
+                        <form action="search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
+                            <i data-feather="search" id="search-icon"></i>
+                        </form>
+                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                    <li data-tippy-content="Download Notebook"><a href="_notebooks/ergodicity.ipynb" download><i data-feather="download-cloud"></i></a></li>
-                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/ergodicity.ipynb" download><i data-feather="download-cloud"></i></a></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/ergodicity.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/ergodicity.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -938,7 +987,7 @@ asymptotically stable.</p>
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
+                    <a href="/_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>
@@ -955,18 +1004,16 @@ asymptotically stable.</p>
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
-                    <option value="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/ergodicity.ipynb">BinderHub</option>
-                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/ergodicity.ipynb" data-branch=main>
+                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/ergodicity.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -997,9 +1044,9 @@ asymptotically stable.</p>
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "ergodicity";
-                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
-                const urlPath = "tree/continuous_time_mcs.notebooks/ergodicity.ipynb";
-                const branch = "main"
+                const repoURL = "";
+                const urlPath = "";
+                const branch = ""
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists
@@ -1052,6 +1099,5 @@ asymptotically stable.</p>
         </div>
 
     </div> <!-- .wrapper-->
-    
   </body>
 </html>

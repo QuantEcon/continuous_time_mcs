@@ -1,101 +1,115 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3. The Markov Property &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
+        <script>
+            MathJax = {
+            loader: {load: ['[tex]/boldsymbol', '[tex]/textmacros']},
+            tex: {
+                packages: {'[+]': ['boldsymbol', 'textmacros']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true,
+                macros: {
+                    "argmax" : "arg\\,max",
+                    "argmin" : "arg\\,min",
+                    "col"    : "col",
+                    "Span"   :  "span",
+                    "epsilon": "\\varepsilon",
+                    "EE": "\\mathbb{E}",
+                    "PP": "\\mathbb{P}",
+                    "RR": "\\mathbb{R}",
+                    "NN": "\\mathbb{N}",
+                    "ZZ": "\\mathbb{Z}",
+                    "aA": "\\mathcal{A}",
+                    "bB": "\\mathcal{B}",
+                    "cC": "\\mathcal{C}",
+                    "dD": "\\mathcal{D}",
+                    "eE": "\\mathcal{E}",
+                    "fF": "\\mathcal{F}",
+                    "gG": "\\mathcal{G}",
+                    "hH": "\\mathcal{H}",
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 0.92,
+                displayAlign: "center",
+            },
+            };
+        </script>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=f77998adf44a3f900caaca31caf410c810f6f245" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=eed9c059a3ee152aae2353ec732f0a6d12e6aa07"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markov_prop';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4. The Kolmogorov Backward Equation" href="kolmogorov_bwd.html" />
@@ -129,179 +143,71 @@
 
     <span id="top"></span>
 
-    <div class="wrapper">
+    <div class="qe-wrapper">
 
-        <div class="main">
+        <div class="qe-main">
 
-            <div class="page" id=markov_prop>
+            <div class="qe-page" id=markov_prop>
 
-                <div class="page__toc">
+                <div class="qe-page__toc">
 
                     <div class="inner">
 
                         
-                        <div class="page__toc-header">
+                        <div class="qe-page__toc-header">
                             On this page
                         </div>
 
 
-                        <nav id="bd-toc-nav" class="page__toc-nav">
+                        <nav id="bd-toc-nav" class="qe-page__toc-nav">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   3.1. Overview
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting">
-     3.1.1. Setting
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#markov-processes">
-   3.2. Markov Processes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discrete-time-finite-state">
-     3.2.1. Discrete Time, Finite State
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-joint-distribution">
-       3.2.1.1. The Joint Distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extending-to-infinite-countable-state-spaces">
-     3.2.2. Extending to Infinite (Countable) State Spaces
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-continuous-time-case">
-     3.2.3. The Continuous Time Case
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-canonical-chain">
-     3.2.4. The Canonical Chain
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simulation-and-probabilistic-constructions">
-     3.2.5. Simulation and Probabilistic Constructions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implications-of-the-markov-property">
-   3.3. Implications of the Markov Property
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-failure-of-the-markov-property">
-     3.3.1. Example: Failure of the Markov Property
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#restrictions-imposed-by-the-markov-property">
-     3.3.2. Restrictions Imposed by the Markov Property
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples-of-markov-processes">
-   3.4. Examples of Markov Processes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-poisson-processes">
-     3.4.1. Example: Poisson Processes
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-model-of-inventory-dynamics">
-   3.5. A Model of Inventory Dynamics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#representation">
-     3.5.1. Representation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simulation">
-     3.5.2. Simulation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-embedded-jump-chain">
-     3.5.3. The Embedded Jump Chain
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#markov-property">
-     3.5.4. Markov Property
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jump-processes-with-constant-rates">
-   3.6. Jump Processes with Constant Rates
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction">
-     3.6.1. Construction
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#examples">
-     3.6.2. Examples
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     3.6.3. Markov Property
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#transition-semigroup">
-     3.6.4. Transition Semigroup
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distribution-flows-for-the-inventory-model">
-   3.7. Distribution Flows for the Inventory Model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   3.8. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solutions">
-   3.9. Solutions
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">3.1. Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting">3.1.1. Setting</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-processes">3.2. Markov Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-finite-state">3.2.1. Discrete Time, Finite State</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-joint-distribution">3.2.1.1. The Joint Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-to-infinite-countable-state-spaces">3.2.2. Extending to Infinite (Countable) State Spaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-continuous-time-case">3.2.3. The Continuous Time Case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-canonical-chain">3.2.4. The Canonical Chain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-and-probabilistic-constructions">3.2.5. Simulation and Probabilistic Constructions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-of-the-markov-property">3.3. Implications of the Markov Property</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-failure-of-the-markov-property">3.3.1. Example: Failure of the Markov Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restrictions-imposed-by-the-markov-property">3.3.2. Restrictions Imposed by the Markov Property</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-markov-processes">3.4. Examples of Markov Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-poisson-processes">3.4.1. Example: Poisson Processes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-model-of-inventory-dynamics">3.5. A Model of Inventory Dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation">3.5.1. Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">3.5.2. Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-embedded-jump-chain">3.5.3. The Embedded Jump Chain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-property">3.5.4. Markov Property</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-processes-with-constant-rates">3.6. Jump Processes with Constant Rates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construction">3.6.1. Construction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">3.6.2. Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.6.3. Markov Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-semigroup">3.6.4. Transition Semigroup</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-flows-for-the-inventory-model">3.7. Distribution Flows for the Inventory Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.8. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">3.9. Solutions</a></li>
+</ul>
                             <p class="logo">
                                 
                                     
-                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo" alt="logo"></a>
+                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo logo-img" alt="logo"></a>
+                                    
                                     
                                 
                             </p>
@@ -310,7 +216,7 @@
 
                         </nav>
 
-                        <div class="page__toc-footer">
+                        <div class="qe-page__toc-footer">
                             
                             
                             <p><a href="#top"><strong>Back to top</strong></a></p>
@@ -320,31 +226,64 @@
 
                 </div>
 
-                <div class="page__header">
+                <div class="qe-page__header">
 
-                    <div class="page__header-copy">
+                    <div class="qe-page__header-copy">
 
-                        <p class="page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
+                        <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="page__header-subheading">The Markov Property</p>
+                        <p class="qe-page__header-subheading">The Markov Property</p>
 
                     </div>
+                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
+                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
-                    <p class="page__header-authors">Thomas J. Sargent & John Stachurski</p>
 
                 </div> <!-- .page__header -->
 
 
 
                 
-                <main class="page__content" role="main">
+                <main class="qe-page__content" role="main">
                     
                     <div>
                         
-  <div class="section" id="the-markov-property">
-<h1><span class="section-number">3. </span>The Markov Property<a class="headerlink" href="#the-markov-property" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2><span class="section-number">3.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-markov-property">
+<h1><span class="section-number">3. </span>The Markov Property<a class="headerlink" href="#the-markov-property" title="Permalink to this heading">#</a></h1>
+<p>In addition to what’s in Anaconda, this lecture will need the following libraries:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>quantecon
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (0.7.2)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (0.60.0)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.26.4)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (2.32.3)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.1)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.2)
+Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.43.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2024.8.30)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from sympy-&gt;quantecon) (1.3.0)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="overview">
+<h2><span class="section-number">3.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>A continuous time stochastic process is said to have the Markov property if
 its past and future are independent given the current state.</p>
 <p>(A more formal definition is provided below.)</p>
@@ -354,8 +293,8 @@ continuous time processes.</p>
 evolution and dynamics.</p>
 <p>At the same time, the Markov property is general enough to cover many applied
 problems, as described in <a class="reference internal" href="intro.html"><span class="doc">the introduction</span></a>.</p>
-<div class="section" id="setting">
-<h3><span class="section-number">3.1.1. </span>Setting<a class="headerlink" href="#setting" title="Permalink to this headline">¶</a></h3>
+<section id="setting">
+<h3><span class="section-number">3.1.1. </span>Setting<a class="headerlink" href="#setting" title="Permalink to this heading">#</a></h3>
 <p>In this lecture, the state space where dynamics
 evolve will be a <a class="reference external" href="https://en.wikipedia.org/wiki/Countable_set">countable set</a>,
 denoted henceforth by <span class="math notranslate nohighlight">\(S\)</span>, with typical elements <span class="math notranslate nohighlight">\(x, y\)</span>.</p>
@@ -373,7 +312,7 @@ mentally identify them with more familiar matrix
 notation, such as <span class="math notranslate nohighlight">\(A_{ij}\)</span>, if you wish.</p>
 <p>The product of two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> is defined by</p>
 <div class="math notranslate nohighlight" id="equation-kernprod">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-kernprod" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-kernprod" title="Permalink to this equation">#</a></span>\[
     (A B)(x, y) = \sum_z A(x, z) B(z, y)
     \qquad ((x, y) \in S \times S)
 \]</div>
@@ -403,14 +342,14 @@ vectors</em>, so that, for <span class="math notranslate nohighlight">\(\phi \in
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="markov-processes">
-<h2><span class="section-number">3.2. </span>Markov Processes<a class="headerlink" href="#markov-processes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="markov-processes">
+<h2><span class="section-number">3.2. </span>Markov Processes<a class="headerlink" href="#markov-processes" title="Permalink to this heading">#</a></h2>
 <p>We now introduce the definition of Markov processes, first reviewing the
 discrete case and then shifting to continuous time.</p>
-<div class="section" id="discrete-time-finite-state">
-<span id="finstatediscretemc"></span><h3><span class="section-number">3.2.1. </span>Discrete Time, Finite State<a class="headerlink" href="#discrete-time-finite-state" title="Permalink to this headline">¶</a></h3>
+<section id="discrete-time-finite-state">
+<span id="finstatediscretemc"></span><h3><span class="section-number">3.2.1. </span>Discrete Time, Finite State<a class="headerlink" href="#discrete-time-finite-state" title="Permalink to this heading">#</a></h3>
 <p>The simplest Markov processes are those with a discrete time parameter and finite state space.</p>
 <p>Assume for now that <span class="math notranslate nohighlight">\(S\)</span> has <span class="math notranslate nohighlight">\(n\)</span> elements and let <span class="math notranslate nohighlight">\(P\)</span> be a <strong>Markov matrix</strong>,
 which means that <span class="math notranslate nohighlight">\(P(x,y) \geq 0\)</span> and <span class="math notranslate nohighlight">\(\sum_y P(x,y) = 1\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -419,7 +358,7 @@ which means that <span class="math notranslate nohighlight">\(P(x,y) \geq 0\)</s
 <p>A <strong>Markov chain</strong> <span class="math notranslate nohighlight">\((X_t)_{t \in \ZZ_+}\)</span> on <span class="math notranslate nohighlight">\(S\)</span> with Markov
 matrix <span class="math notranslate nohighlight">\(P\)</span> is a sequence of random variables satisfying</p>
 <div class="math notranslate nohighlight" id="equation-markovpropd">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-markovpropd" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-markovpropd" title="Permalink to this equation">#</a></span>\[
     \PP\{X_{t+1} = y \,|\, X_0, X_1, \ldots, X_t \} = P (X_t, y)
 \]</div>
 <p>with probability one for all <span class="math notranslate nohighlight">\(y \in S\)</span> and any <span class="math notranslate nohighlight">\(t \in \ZZ_+\)</span>.</p>
@@ -430,12 +369,12 @@ the current state.</p>
 has distribution <span class="math notranslate nohighlight">\(\phi\)</span>, then <span class="math notranslate nohighlight">\(X_{t+1}\)</span> has distribution <span class="math notranslate nohighlight">\(\phi P\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\(\phi\)</span> is understood as a row vector, the meaning is</p>
 <div class="math notranslate nohighlight" id="equation-update-rule">
-<span class="eqno">(3.3)<a class="headerlink" href="#equation-update-rule" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-update-rule" title="Permalink to this equation">#</a></span>\[
     (\phi P)(y) = \sum_x \phi(x) P(x, y) 
     \qquad (y \in S)
 \]</div>
-<div class="section" id="the-joint-distribution">
-<span id="jdfin"></span><h4><span class="section-number">3.2.1.1. </span>The Joint Distribution<a class="headerlink" href="#the-joint-distribution" title="Permalink to this headline">¶</a></h4>
+<section id="the-joint-distribution">
+<span id="jdfin"></span><h4><span class="section-number">3.2.1.1. </span>The Joint Distribution<a class="headerlink" href="#the-joint-distribution" title="Permalink to this heading">#</a></h4>
 <p>In general, for given Markov matrix <span class="math notranslate nohighlight">\(P\)</span>, there can be many Markov chains
 <span class="math notranslate nohighlight">\((X_t)\)</span> that satisfy <a class="reference internal" href="#equation-markovpropd">(3.2)</a>.</p>
 <p>This is due to the more general observation that, for a given distribution
@@ -450,7 +389,7 @@ constructing the joint distribution of <span class="math notranslate nohighlight
 <a class="reference internal" href="#equation-markovpropd">(3.2)</a> and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span> is the distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> over
 <span class="math notranslate nohighlight">\(S^\infty\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-jointdeq">
-<span class="eqno">(3.4)<a class="headerlink" href="#equation-jointdeq" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-jointdeq" title="Permalink to this equation">#</a></span>\[
     \PP\{ X_{t_1} = y_1, \ldots, X_{t_m} = y_m \}
     =
     \mathbf P_\psi\{ (x_t) \in S^\infty \,:\, 
@@ -458,11 +397,11 @@ constructing the joint distribution of <span class="math notranslate nohighlight
 \]</div>
 <p>for any <span class="math notranslate nohighlight">\(m\)</span> positive integers <span class="math notranslate nohighlight">\(t_i\)</span> and <span class="math notranslate nohighlight">\(m\)</span> elements  <span class="math notranslate nohighlight">\(y_i\)</span> of the state space <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>(Joint distributions of discrete time processes are uniquely defined by their
-values at finite collections of times — see, for example, Theorem 7.2 of <span id="id1">[<a class="reference internal" href="zreferences.html#id10">Walsh, 2012</a>]</span>.)</p>
+values at finite collections of times — see, for example, Theorem 7.2 of <span id="id1">[<a class="reference internal" href="zreferences.html#id10" title="John B Walsh. Knowing the odds: an introduction to probability. Volume 139. American Mathematical Soc., 2012.">Walsh, 2012</a>]</span>.)</p>
 <p>We can construct <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> by first defining <span class="math notranslate nohighlight">\(P_\psi^n\)</span> over
 the finite Cartesian product <span class="math notranslate nohighlight">\(S^{n+1}\)</span> via</p>
 <div class="math notranslate nohighlight" id="equation-mathjointd">
-<span class="eqno">(3.5)<a class="headerlink" href="#equation-mathjointd" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-mathjointd" title="Permalink to this equation">#</a></span>\[
     \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
         = \psi(x_0)
         P(x_0, x_1)
@@ -478,10 +417,10 @@ P_\psi^n\)</span>.</p>
 infinite sequences in <span class="math notranslate nohighlight">\(S^\infty\)</span>.</p>
 <p>That this is true follows from a well known <a class="reference external" href="https://en.wikipedia.org/wiki/Kolmogorov_extension_theorem">theorem of Kolmogorov</a>.</p>
 <p>Hence <span class="math notranslate nohighlight">\(P\)</span> defines the joint distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi\)</span> when paired with any initial condition <span class="math notranslate nohighlight">\(\psi\)</span>.</p>
-</div>
-</div>
-<div class="section" id="extending-to-infinite-countable-state-spaces">
-<h3><span class="section-number">3.2.2. </span>Extending to Infinite (Countable) State Spaces<a class="headerlink" href="#extending-to-infinite-countable-state-spaces" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="extending-to-infinite-countable-state-spaces">
+<h3><span class="section-number">3.2.2. </span>Extending to Infinite (Countable) State Spaces<a class="headerlink" href="#extending-to-infinite-countable-state-spaces" title="Permalink to this heading">#</a></h3>
 <p>When <span class="math notranslate nohighlight">\(S\)</span> is infinite, the same idea carries through.</p>
 <p>Consistent with the finite case, a <strong>Markov matrix</strong> is a map
 <span class="math notranslate nohighlight">\(P\)</span> from <span class="math notranslate nohighlight">\(S \times S\)</span> to <span class="math notranslate nohighlight">\(\RR_+\)</span> satisfying</p>
@@ -517,7 +456,7 @@ elements are nonnegative — a version of Tonelli’s theorem).</p>
 <p>The elements of <span class="math notranslate nohighlight">\(P^k\)</span>, the <span class="math notranslate nohighlight">\(k\)</span>-th product of <span class="math notranslate nohighlight">\(P\)</span> with itself, give <span class="math notranslate nohighlight">\(k\)</span> step transition probabilities.</p>
 <p>For example, we have</p>
 <div class="math notranslate nohighlight" id="equation-kernprodk">
-<span class="eqno">(3.6)<a class="headerlink" href="#equation-kernprodk" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-kernprodk" title="Permalink to this equation">#</a></span>\[
     P^k(x, y) 
     = (P^{k-j} P^j)(x, y) = \sum_z P^{k-j}(x, z) P^j(z, y)
 \]</div>
@@ -533,16 +472,16 @@ x\)</span>, then</p>
 <p>All of the <a class="reference internal" href="#jdfin"><span class="std std-ref">preceding discussion</span></a> on the connection between <span class="math notranslate nohighlight">\(P\)</span>
 and the joint distribution of <span class="math notranslate nohighlight">\((X_t)\)</span> when <span class="math notranslate nohighlight">\(S\)</span> is finite carries over
 to the current setting.</p>
-</div>
-<div class="section" id="the-continuous-time-case">
-<h3><span class="section-number">3.2.3. </span>The Continuous Time Case<a class="headerlink" href="#the-continuous-time-case" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-continuous-time-case">
+<h3><span class="section-number">3.2.3. </span>The Continuous Time Case<a class="headerlink" href="#the-continuous-time-case" title="Permalink to this heading">#</a></h3>
 <p>A <strong>continuous time stochastic process</strong> on <span class="math notranslate nohighlight">\(S\)</span> is a collection <span class="math notranslate nohighlight">\((X_t)\)</span> of <span class="math notranslate nohighlight">\(S\)</span>-valued
 random variables <span class="math notranslate nohighlight">\(X_t\)</span> defined on a common probability space and indexed by <span class="math notranslate nohighlight">\(t
 \in \RR_+\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(I\)</span> be the Markov matrix on <span class="math notranslate nohighlight">\(S\)</span> defined by <span class="math notranslate nohighlight">\(I(x,y) = \mathbb 1\{x = y\}\)</span>.</p>
 <p>A <strong>Markov semigroup</strong> is a family <span class="math notranslate nohighlight">\((P_t)\)</span> of Markov matrices
 on <span class="math notranslate nohighlight">\(S\)</span> satisfying</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(P_0 = I\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lim_{t \to 0} P_t(x, y) = I(x,y)\)</span> for all <span class="math notranslate nohighlight">\(x,y\)</span> in <span class="math notranslate nohighlight">\(S\)</span>, and</p></li>
 <li><p>the semigroup property <span class="math notranslate nohighlight">\(P_{s + t} = P_s P_t\)</span> for all <span class="math notranslate nohighlight">\(s, t \geq 0\)</span>.</p></li>
@@ -560,14 +499,14 @@ goes by.<a class="footnote-reference brackets" href="#footnote1" id="id2">1</a><
 time version of the Chapman-Kolmogorov equation.</p>
 <p>This becomes clearer if we write it more explicitly as</p>
 <div class="math notranslate nohighlight" id="equation-chapkol-ct2">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-chapkol-ct2" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-chapkol-ct2" title="Permalink to this equation">#</a></span>\[
     P_{s+t}(x, y) 
     = \sum_z P_s(x, z) P_t(z, y)
 \]</div>
 <p>A stochastic process <span class="math notranslate nohighlight">\((X_t)\)</span> is called a (time homogeneous) <strong>continuous time
 Markov chain</strong> on <span class="math notranslate nohighlight">\(S\)</span> with Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> if</p>
 <div class="math notranslate nohighlight" id="equation-markovprop">
-<span class="eqno">(3.8)<a class="headerlink" href="#equation-markovprop" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-markovprop" title="Permalink to this equation">#</a></span>\[
     \PP\{X_{s + t} = y \,|\, \fF_s \}
     = P_t (X_s, y)
 \]</div>
@@ -587,10 +526,10 @@ initial condition.</p>
 expressions similar to <a class="reference internal" href="#equation-mathjointd">(3.5)</a>.</p>
 <p>Finally, the Kolmogorov extension theorem is applied, similar to the discrete
 time case.</p>
-<p>Corollary 6.4 of <span id="id3">[<a class="reference internal" href="zreferences.html#id9">Le Gall, 2016</a>]</span> provides full details.</p>
-</div>
-<div class="section" id="the-canonical-chain">
-<h3><span class="section-number">3.2.4. </span>The Canonical Chain<a class="headerlink" href="#the-canonical-chain" title="Permalink to this headline">¶</a></h3>
+<p>Corollary 6.4 of <span id="id3">[<a class="reference internal" href="zreferences.html#id9" title="Jean-François Le Gall. Brownian motion, martingales, and stochastic calculus. Volume 274. Springer, 2016.">Le Gall, 2016</a>]</span> provides full details.</p>
+</section>
+<section id="the-canonical-chain">
+<h3><span class="section-number">3.2.4. </span>The Canonical Chain<a class="headerlink" href="#the-canonical-chain" title="Permalink to this heading">#</a></h3>
 <p>Given a Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> on <span class="math notranslate nohighlight">\(S\)</span>, does there always exist a continuous
 time Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> such that <a class="reference internal" href="#equation-markovprop">(3.8)</a> holds?</p>
 <p>The answer is affirmative.</p>
@@ -607,9 +546,9 @@ rcS\)</span>, the Markov chain <span class="math notranslate nohighlight">\((X_t
 <p>Hence <span class="math notranslate nohighlight">\((X_t)\)</span> automatically has the correct distribution.</p>
 <p>The chain <span class="math notranslate nohighlight">\((X_t)\)</span> constructed in this way is called the <strong>canonical chain</strong>
 for the semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> and initial condition <span class="math notranslate nohighlight">\(\psi\)</span>.</p>
-</div>
-<div class="section" id="simulation-and-probabilistic-constructions">
-<h3><span class="section-number">3.2.5. </span>Simulation and Probabilistic Constructions<a class="headerlink" href="#simulation-and-probabilistic-constructions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="simulation-and-probabilistic-constructions">
+<h3><span class="section-number">3.2.5. </span>Simulation and Probabilistic Constructions<a class="headerlink" href="#simulation-and-probabilistic-constructions" title="Permalink to this heading">#</a></h3>
 <p>While we have answered the existence question in the affirmative,
 the canonical construction is quite abstract.</p>
 <p>Moreover, there is little information about how we might simulate such a chain.</p>
@@ -617,20 +556,20 @@ the canonical construction is quite abstract.</p>
 continuous time Markov chains from the objects that describe their
 distributions.</p>
 <p>We will learn about these in a <a class="reference internal" href="uc_mc_semigroups.html"><span class="doc">later lecture</span></a>.</p>
-</div>
-</div>
-<div class="section" id="implications-of-the-markov-property">
-<h2><span class="section-number">3.3. </span>Implications of the Markov Property<a class="headerlink" href="#implications-of-the-markov-property" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="implications-of-the-markov-property">
+<h2><span class="section-number">3.3. </span>Implications of the Markov Property<a class="headerlink" href="#implications-of-the-markov-property" title="Permalink to this heading">#</a></h2>
 <p>The Markov property carries some strong implications that are not immediately
 obvious.</p>
 <p>Let’s take some time to explore them.</p>
-<div class="section" id="example-failure-of-the-markov-property">
-<h3><span class="section-number">3.3.1. </span>Example: Failure of the Markov Property<a class="headerlink" href="#example-failure-of-the-markov-property" title="Permalink to this headline">¶</a></h3>
+<section id="example-failure-of-the-markov-property">
+<h3><span class="section-number">3.3.1. </span>Example: Failure of the Markov Property<a class="headerlink" href="#example-failure-of-the-markov-property" title="Permalink to this heading">#</a></h3>
 <p>Let’s look at how the Markov property can fail, via an intuitive rather than
 formal discussion.</p>
 <p>Let <span class="math notranslate nohighlight">\((X_t)\)</span> be a continuous time stochastic process with state space <span class="math notranslate nohighlight">\(S = \{0, 1\}\)</span>.</p>
 <p>The process starts at <span class="math notranslate nohighlight">\(0\)</span> and updates at follows:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Draw <span class="math notranslate nohighlight">\(W\)</span> independently from a fixed Pareto distribution.</p></li>
 <li><p>Hold <span class="math notranslate nohighlight">\((X_t)\)</span> in its current state for <span class="math notranslate nohighlight">\(W\)</span> units of time and then switch
 to the other state.</p></li>
@@ -647,9 +586,9 @@ time, then a switch in the near future becomes more likely.)</p>
 <p>As a result, the history prior to <span class="math notranslate nohighlight">\(X_s\)</span> is useful for predicting <span class="math notranslate nohighlight">\(X_{s+h}\)</span>,
 even when we know <span class="math notranslate nohighlight">\(X_s\)</span>.</p>
 <p>Thus, the Markov property fails.</p>
-</div>
-<div class="section" id="restrictions-imposed-by-the-markov-property">
-<h3><span class="section-number">3.3.2. </span>Restrictions Imposed by the Markov Property<a class="headerlink" href="#restrictions-imposed-by-the-markov-property" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="restrictions-imposed-by-the-markov-property">
+<h3><span class="section-number">3.3.2. </span>Restrictions Imposed by the Markov Property<a class="headerlink" href="#restrictions-imposed-by-the-markov-property" title="Permalink to this heading">#</a></h3>
 <p>From the discussion above, we see that, for continuous time Markov chains,
 the length of time between jumps must be memoryless.</p>
 <p>Recall that, by <a class="reference internal" href="memoryless.html#exp_unique">Theorem 1.1</a>, the only memoryless
@@ -659,18 +598,18 @@ exponential amount of time and then jumps.</p>
 <p>The way that the new state is chosen must also satisfy the Markov property,
 which adds another restriction.</p>
 <p>In summary, we already understand the following about continuous time Markov chains:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Holding times are independent exponential draws.</p></li>
 <li><p>New states are chosen in a ``Markovian’’ way, independent of the past given the current state.</p></li>
 </ol>
 <p>We just need to clarify the details in these steps to have a complete description.</p>
-</div>
-</div>
-<div class="section" id="examples-of-markov-processes">
-<h2><span class="section-number">3.4. </span>Examples of Markov Processes<a class="headerlink" href="#examples-of-markov-processes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="examples-of-markov-processes">
+<h2><span class="section-number">3.4. </span>Examples of Markov Processes<a class="headerlink" href="#examples-of-markov-processes" title="Permalink to this heading">#</a></h2>
 <p>Let’s look at some examples of processes that possess the Markov property.</p>
-<div class="section" id="example-poisson-processes">
-<h3><span class="section-number">3.4.1. </span>Example: Poisson Processes<a class="headerlink" href="#example-poisson-processes" title="Permalink to this headline">¶</a></h3>
+<section id="example-poisson-processes">
+<h3><span class="section-number">3.4.1. </span>Example: Poisson Processes<a class="headerlink" href="#example-poisson-processes" title="Permalink to this heading">#</a></h3>
 <p>The Poisson process discussed in our <a class="reference internal" href="poisson.html"><span class="doc">previous lecture</span></a> is a
 Markov process on state space <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
 <p>To obtain the Markov semigroup, we observe that, for <span class="math notranslate nohighlight">\(k \geq j\)</span>,</p>
@@ -690,7 +629,7 @@ Markov process on state space <span class="math notranslate nohighlight">\(\ZZ_+
 \]</div>
 <p>In summary, the Markov semigroup is</p>
 <div class="math notranslate nohighlight" id="equation-poissemi">
-<span class="eqno">(3.9)<a class="headerlink" href="#equation-poissemi" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.9)<a class="headerlink" href="#equation-poissemi" title="Permalink to this equation">#</a></span>\[
     P_t(j, k) 
     = e^{-\lambda t} \frac{ (\lambda t)^{k-j} }{(k-j)!}  
 \]</div>
@@ -700,10 +639,10 @@ can replace <span class="math notranslate nohighlight">\(j\)</span> with <span c
 <p>Under <a class="reference internal" href="#equation-poissemi">(3.9)</a>, each <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix and <span class="math notranslate nohighlight">\((P_t)\)</span> is a
 Markov semigroup.</p>
 <p>The proof of the semigroup property is a solved exercise below.<a class="footnote-reference brackets" href="#footnote2" id="id4">2</a></p>
-</div>
-</div>
-<div class="section" id="a-model-of-inventory-dynamics">
-<span id="inventory-dynam"></span><h2><span class="section-number">3.5. </span>A Model of Inventory Dynamics<a class="headerlink" href="#a-model-of-inventory-dynamics" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="a-model-of-inventory-dynamics">
+<span id="inventory-dynam"></span><h2><span class="section-number">3.5. </span>A Model of Inventory Dynamics<a class="headerlink" href="#a-model-of-inventory-dynamics" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(X_t\)</span> be the inventory of a firm at time <span class="math notranslate nohighlight">\(t\)</span>, taking values in the
 integers <span class="math notranslate nohighlight">\(0, 1, \ldots, b\)</span>.</p>
 <p>If <span class="math notranslate nohighlight">\(X_t &gt; 0\)</span>, then a customer arrives after <span class="math notranslate nohighlight">\(W\)</span>
@@ -718,8 +657,8 @@ IID draw from the geometric distribution started at 1 rather than 0:</p>
 <p>If <span class="math notranslate nohighlight">\(X_t = 0\)</span>, then no customers arrive and the firm places an order for <span class="math notranslate nohighlight">\(b\)</span> units.</p>
 <p>The order arrives after a delay of <span class="math notranslate nohighlight">\(D\)</span> units of time, where <span class="math notranslate nohighlight">\(D \sim \Exp (\lambda)\)</span>.</p>
 <p>(We use the same <span class="math notranslate nohighlight">\(\lambda\)</span> here just for convenience, to simplify the exposition.)</p>
-<div class="section" id="representation">
-<h3><span class="section-number">3.5.1. </span>Representation<a class="headerlink" href="#representation" title="Permalink to this headline">¶</a></h3>
+<section id="representation">
+<h3><span class="section-number">3.5.1. </span>Representation<a class="headerlink" href="#representation" title="Permalink to this heading">#</a></h3>
 <p>The inventory process jumps to a new value either when a new customer arrives
 or when new stock arrives.</p>
 <p>Between these arrival times it is constant.</p>
@@ -729,13 +668,13 @@ taken at the jumps.</p>
 by <span class="math notranslate nohighlight">\(\{Y_k\}\)</span>.</p>
 <p>Then we construct the state process via</p>
 <div class="math notranslate nohighlight" id="equation-xfromy">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-xfromy" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-xfromy" title="Permalink to this equation">#</a></span>\[
     X_t = \sum_{k \geq 0} Y_k \mathbb 1\{J_k \leq t &lt; J_{k+1}\}
     \qquad (t \geq 0)
 \]</div>
-</div>
-<div class="section" id="simulation">
-<h3><span class="section-number">3.5.2. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="simulation">
+<h3><span class="section-number">3.5.2. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h3>
 <p>Let’s simulate this process, starting at <span class="math notranslate nohighlight">\(X_0 = 0\)</span>.</p>
 <p>As above,</p>
 <ul class="simple">
@@ -748,7 +687,7 @@ by <span class="math notranslate nohighlight">\(\{Y_k\}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sim_path</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">α</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a path for inventory starting at b, up to time T.</span>
 
 <span class="sd">    Return the path as a function X(t) constructed from (J_k) and (Y_k).</span>
@@ -806,20 +745,20 @@ by <span class="math notranslate nohighlight">\(\{Y_k\}\)</span>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/markov_prop_5_0.png" src="_images/markov_prop_5_0.png" />
+<img alt="_images/311ecb0a643015c2dc76f3d08c41152205b1936e4dcc2dfb03873a00cd4e8abe.png" src="_images/311ecb0a643015c2dc76f3d08c41152205b1936e4dcc2dfb03873a00cd4e8abe.png" />
 </div>
 </div>
 <p>As expected, inventory falls and then jumps back up to <span class="math notranslate nohighlight">\(b\)</span>.</p>
-</div>
-<div class="section" id="the-embedded-jump-chain">
-<h3><span class="section-number">3.5.3. </span>The Embedded Jump Chain<a class="headerlink" href="#the-embedded-jump-chain" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-embedded-jump-chain">
+<h3><span class="section-number">3.5.3. </span>The Embedded Jump Chain<a class="headerlink" href="#the-embedded-jump-chain" title="Permalink to this heading">#</a></h3>
 <p>In models such as the one described above, the embedded discrete time
 process <span class="math notranslate nohighlight">\((Y_k)\)</span> is called the “embedded jump chain”.</p>
 <p>It is easy to see that <span class="math notranslate nohighlight">\((Y_k)\)</span> is discrete time finite state Markov chain.</p>
 <p>Its Markov matrix <span class="math notranslate nohighlight">\(K\)</span> is
 given by  <span class="math notranslate nohighlight">\(K(x, y) = \mathbb 1\{y=b\}\)</span> when <span class="math notranslate nohighlight">\(x=0\)</span> and,  when <span class="math notranslate nohighlight">\(0 &lt; x \leq b\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-ijumpkern">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-ijumpkern" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-ijumpkern" title="Permalink to this equation">#</a></span>\[\begin{split}
     K(x, y)
     =
     \begin{cases}
@@ -832,26 +771,26 @@ given by  <span class="math notranslate nohighlight">\(K(x, y) = \mathbb 1\{y=b\
         &amp; \text{ if } y = 0
     \end{cases}
 \end{split}\]</div>
-</div>
-<div class="section" id="markov-property">
-<h3><span class="section-number">3.5.4. </span>Markov Property<a class="headerlink" href="#markov-property" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="markov-property">
+<h3><span class="section-number">3.5.4. </span>Markov Property<a class="headerlink" href="#markov-property" title="Permalink to this heading">#</a></h3>
 <p>The inventory model just described has the Markov property precisely because</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>the jump chain <span class="math notranslate nohighlight">\((Y_k)\)</span> is Markov in discrete time and</p></li>
 <li><p>the holding times are independent exponential draws.</p></li>
 </ol>
 <p>Rather than providing more details on these points here, let us first describe
 a more general setting where the arguments will be clearer and more useful.</p>
-</div>
-</div>
-<div class="section" id="jump-processes-with-constant-rates">
-<h2><span class="section-number">3.6. </span>Jump Processes with Constant Rates<a class="headerlink" href="#jump-processes-with-constant-rates" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="jump-processes-with-constant-rates">
+<h2><span class="section-number">3.6. </span>Jump Processes with Constant Rates<a class="headerlink" href="#jump-processes-with-constant-rates" title="Permalink to this heading">#</a></h2>
 <p>The examples we have focused on so far are special cases of Markov processes
 with constant jump intensities.</p>
 <p>These processes turn out to be very representative (although the constant jump intensity will later be relaxed).</p>
 <p>Let’s now summarize the model and its properties.</p>
-<div class="section" id="construction">
-<h3><span class="section-number">3.6.1. </span>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h3>
+<section id="construction">
+<h3><span class="section-number">3.6.1. </span>Construction<a class="headerlink" href="#construction" title="Permalink to this heading">#</a></h3>
 <p>The data for a Markov process on <span class="math notranslate nohighlight">\(S\)</span> with constant jump rates are</p>
 <ul class="simple">
 <li><p>a parameter <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> called the <strong>jump rate</strong>, which governs the jump
@@ -865,10 +804,10 @@ new state via <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <p>In more detail, the construction is</p>
 <div class="proof algorithm admonition" id="algorithm-0">
 <p class="admonition-title"><span class="caption-number">Algorithm 3.1 </span> (Constant Rate Jump Chain)</p>
-<div class="algorithm-content section" id="proof-content">
+<section class="algorithm-content" id="proof-content">
 <p><strong>Inputs</strong> <span class="math notranslate nohighlight">\(\psi \in \dD\)</span>, positive constant <span class="math notranslate nohighlight">\(\lambda\)</span>, Markov matrix <span class="math notranslate nohighlight">\(K\)</span></p>
 <p><strong>Outputs</strong> Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>draw <span class="math notranslate nohighlight">\(Y_0\)</span> from <span class="math notranslate nohighlight">\(\psi\)</span></p></li>
 <li><p>set <span class="math notranslate nohighlight">\(k = 1\)</span> and <span class="math notranslate nohighlight">\(J_0 = 0\)</span></p></li>
 <li><p>draw <span class="math notranslate nohighlight">\(W_k\)</span> from Exp<span class="math notranslate nohighlight">\((\lambda)\)</span> and set <span class="math notranslate nohighlight">\(J_k = J_{k-1} + W_k\)</span></p></li>
@@ -876,7 +815,7 @@ new state via <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <li><p>draw <span class="math notranslate nohighlight">\(Y_k\)</span> from <span class="math notranslate nohighlight">\(K(Y_{k-1}, \cdot)\)</span></p></li>
 <li><p>set <span class="math notranslate nohighlight">\(k = k+1\)</span> and go to step 3.</p></li>
 </ol>
-</div>
+</section>
 </div><p>An alternative, more parsimonious way to express the same process is to take</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((N_t)\)</span> to be a Poisson process with rate <span class="math notranslate nohighlight">\(\lambda\)</span> and</p></li>
@@ -891,9 +830,9 @@ new state via <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <p>(Not to be confused with <span class="math notranslate nohighlight">\((X_t)\)</span>, which is often called a “jump process” or
 “jump chain” due to the fact that it changes states with jumps.)</p>
 <p>The draws <span class="math notranslate nohighlight">\((W_k)\)</span> are called the <strong>wait times</strong> or <strong>holding times</strong>.</p>
-</div>
-<div class="section" id="examples">
-<h3><span class="section-number">3.6.2. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="examples">
+<h3><span class="section-number">3.6.2. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
 <p>The Poisson process with rate <span class="math notranslate nohighlight">\(\lambda\)</span> is a jump process on <span class="math notranslate nohighlight">\(S = \ZZ_+\)</span>.</p>
 <p>The holding times are obviously exponential with constant rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>The jump matrix is just <span class="math notranslate nohighlight">\(K(i, j) = \mathbb 1\{j = i+1\}\)</span>, so that the state
@@ -901,9 +840,9 @@ jumps up by one at every <span class="math notranslate nohighlight">\(J_k\)</spa
 <p>The inventory model is also a jump process with constant rate <span class="math notranslate nohighlight">\(\lambda\)</span>, this
 time on <span class="math notranslate nohighlight">\(S = \{0, 1, \ldots, b\}\)</span>.</p>
 <p>The jump matrix was given in <a class="reference internal" href="#equation-ijumpkern">(3.11)</a>.</p>
-</div>
-<div class="section" id="id5">
-<h3><span class="section-number">3.6.3. </span>Markov Property<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">3.6.3. </span>Markov Property<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Let’s show that the jump process <span class="math notranslate nohighlight">\((X_t)\)</span> constructed above satisfies the
 Markov property, and obtain the Markov semigroup at the same time.</p>
 <p>We will use two facts:</p>
@@ -947,9 +886,9 @@ depends only on <span class="math notranslate nohighlight">\(X_s\)</span>.</p>
 \]</div>
 <p>Since the expression above depends only on <span class="math notranslate nohighlight">\(X_s\)</span>,
 we have proved that <span class="math notranslate nohighlight">\((X_t)\)</span> has the Markov property.</p>
-</div>
-<div class="section" id="transition-semigroup">
-<span id="consjumptransemi"></span><h3><span class="section-number">3.6.4. </span>Transition Semigroup<a class="headerlink" href="#transition-semigroup" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="transition-semigroup">
+<span id="consjumptransemi"></span><h3><span class="section-number">3.6.4. </span>Transition Semigroup<a class="headerlink" href="#transition-semigroup" title="Permalink to this heading">#</a></h3>
 <p>The Markov semigroup can be obtained from our final result, conditioning
 on <span class="math notranslate nohighlight">\(X_s = x\)</span> to get</p>
 <div class="math notranslate nohighlight">
@@ -974,15 +913,15 @@ get</p>
 makes it easy to understand and analyze distribution dynamics.</p>
 <p>For example, if <span class="math notranslate nohighlight">\(X_0\)</span> has distribution <span class="math notranslate nohighlight">\(\psi\)</span>, then <span class="math notranslate nohighlight">\(X_t\)</span> has distribution</p>
 <div class="math notranslate nohighlight" id="equation-distflowconst">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-distflowconst" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-distflowconst" title="Permalink to this equation">#</a></span>\[
     \psi P_t = \psi e^{t \lambda (K - I)}
 \]</div>
 <p>We just need to plug in <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(K\)</span> to obtain the entire flow <span class="math notranslate nohighlight">\(t \mapsto \psi P_t\)</span>.</p>
 <p>We will soon extend this representation to the case where <span class="math notranslate nohighlight">\(S\)</span> is infinite.</p>
-</div>
-</div>
-<div class="section" id="distribution-flows-for-the-inventory-model">
-<span id="invdistflows"></span><h2><span class="section-number">3.7. </span>Distribution Flows for the Inventory Model<a class="headerlink" href="#distribution-flows-for-the-inventory-model" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="distribution-flows-for-the-inventory-model">
+<span id="invdistflows"></span><h2><span class="section-number">3.7. </span>Distribution Flows for the Inventory Model<a class="headerlink" href="#distribution-flows-for-the-inventory-model" title="Permalink to this heading">#</a></h2>
 <p>Let’s apply these ideas to the inventory model described above.</p>
 <p>We fix</p>
 <ul class="simple">
@@ -1019,26 +958,29 @@ and compute <span class="math notranslate nohighlight">\(\psi_t\)</span> as <spa
 iterate forward 200 steps at time increments <span class="math notranslate nohighlight">\(h=0.1\)</span>.</p>
 <p>In the figure, hot colors indicate initial conditions and early dates (so that the
 distribution “cools” over time)</p>
-<div class="figure align-default" id="flow-fig">
-<div class="cell_output docutils container">
-<img alt="_images/markov_prop_7_0.png" src="_images/markov_prop_7_0.png" />
-</div>
-<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Probability flows for the inventory model.</span><a class="headerlink" href="#flow-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figure class="align-default" id="flow-fig">
+<img alt="_images/809814c40a91c5eaf9bed81597d5ba76e8f2fe809de26342dc095bdf863843e6.png" src="_images/809814c40a91c5eaf9bed81597d5ba76e8f2fe809de26342dc095bdf863843e6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Probability flows for the inventory model.</span><a class="headerlink" href="#flow-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>In the (solved) exercises you will be asked to try to reproduce this figure.</p>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">3.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercises">
+<h2><span class="section-number">3.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <div class="exercise admonition" id="markov-prop-1">
+
 <p class="admonition-title"><span class="caption-number">Exercise 3.1 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Consider the binary (Bernoulli) distribution where outcomes <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> each have
 probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 <p>Construct two different random variables with this distribution.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="markov-prop-2">
+<div class="exercise admonition" id="markov-prop-2">
+
 <p class="admonition-title"><span class="caption-number">Exercise 3.2 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Show by direct calculation that the Poisson matrices <span class="math notranslate nohighlight">\((P_t)\)</span> defined in
 <a class="reference internal" href="#equation-poissemi">(3.9)</a> satisfy the semigroup property <a class="reference internal" href="#equation-chapkol-ct2">(3.7)</a>.</p>
 <p>Hints</p>
@@ -1046,10 +988,12 @@ probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 <li><p>Recall that <span class="math notranslate nohighlight">\(P_t(j, k) = 0\)</span> whenever <span class="math notranslate nohighlight">\(j &gt; k\)</span>.</p></li>
 <li><p>Consider using the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_theorem">binomial formula</a>.</p></li>
 </ul>
+</section>
 </div>
-</div><div class="exercise admonition" id="markov-prop-3">
+<div class="exercise admonition" id="markov-prop-3">
+
 <p class="admonition-title"><span class="caption-number">Exercise 3.3 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Consider the distribution over <span class="math notranslate nohighlight">\(S^{n+1}\)</span> previously shown in <a class="reference internal" href="#equation-mathjointd">(3.5)</a>, which is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1062,16 +1006,19 @@ probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 <p>Show that, for any Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> satisfying <a class="reference internal" href="#equation-markovpropd">(3.2)</a>
 and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>, the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n)\)</span> has joint
 distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="markov-prop-4">
+<div class="exercise admonition" id="markov-prop-4">
+
 <p class="admonition-title"><span class="caption-number">Exercise 3.4 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Try to produce your own version of the figure <a class="reference internal" href="#flow-fig"><span class="std std-ref">Probability flows for the inventory model.</span></a></p>
 <p>The initial condition is <code class="docutils literal notranslate"><span class="pre">ψ_0</span> <span class="pre">=</span> <span class="pre">binom.pmf(states,</span> <span class="pre">n,</span> <span class="pre">0.25)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
+</section>
 </div>
-</div></div>
-<div class="section" id="solutions">
-<h2><span class="section-number">3.9. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solutions">
+<h2><span class="section-number">3.9. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
@@ -1079,18 +1026,21 @@ so code-cell solutions are immediately after this
 solution block.</p>
 </div>
 <div class="solution admonition" id="markov_prop-solution-5">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-1"><span>Solution to </span> Exercise 3.1</a></p>
-<div class="section" id="solution-content">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-1"> Exercise 3.1</a></p>
+<section id="solution-content">
 <p>This is easy.</p>
 <p>One example is to take <span class="math notranslate nohighlight">\(U\)</span> to be uniform on <span class="math notranslate nohighlight">\((0, 1)\)</span> and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(U &lt;
 0.5\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
 <p>Then <span class="math notranslate nohighlight">\(X\)</span> has the desired distribution.</p>
 <p>Alternatively, we could take <span class="math notranslate nohighlight">\(Z\)</span> to be standard normal and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(Z &lt;
 0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="markov_prop-solution-6">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-2"><span>Solution to </span> Exercise 3.2</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="markov_prop-solution-6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-2"> Exercise 3.2</a></p>
+<section id="solution-content">
 <p>Fixing <span class="math notranslate nohighlight">\(s, t \in \RR_+\)</span> and <span class="math notranslate nohighlight">\(j \leq k\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1125,10 +1075,12 @@ solution block.</p>
     = P_{s+t}(j, k)
 \]</div>
 <p>Hence <a class="reference internal" href="#equation-chapkol-ct2">(3.7)</a> holds, and the semigroup property is satisfied.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="markov_prop-solution-7">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-3"><span>Solution to </span> Exercise 3.3</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="markov_prop-solution-7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-3"> Exercise 3.3</a></p>
+<section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((X_t)\)</span> be a Markov chain satisfying <a class="reference internal" href="#equation-markovpropd">(3.2)</a> and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>.</p>
 <p>When <span class="math notranslate nohighlight">\(n=0\)</span>, we have <span class="math notranslate nohighlight">\(\mathbf P_\psi^n = \mathbf P_\psi^0 = \psi\)</span>, and this
 agrees with the distribution of the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n) = (X_0)\)</span>.</p>
@@ -1156,15 +1108,18 @@ defined above.</p>
         P(x_{n-2}, x_{n-1})
 \]</div>
 <p>The last expression equals <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>, which concludes the proof.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="markov_prop-solution-8">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#markov-prop-4"><span>Solution to </span> Exercise 3.4</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="markov_prop-solution-8">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-4"> Exercise 3.4</a></p>
+<section id="solution-content">
 <p>Here is one approach.</p>
 <p>(The statements involving <code class="docutils literal notranslate"><span class="pre">glue</span></code> are specific to this book and can be deleted
 by most readers.  They store the output so it can be displayed elsewhere.)</p>
+</section>
 </div>
-</div><div class="cell docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">α</span> <span class="o">=</span> <span class="mf">0.6</span>
 <span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -1208,26 +1163,27 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
 
 <span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;flow_fig&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;_static/lecture_specific/markov_prop/flow_fig.png&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/markov_prop_7_1.png" src="_images/markov_prop_7_1.png" />
+<img alt="_images/809814c40a91c5eaf9bed81597d5ba76e8f2fe809de26342dc095bdf863843e6.png" src="_images/809814c40a91c5eaf9bed81597d5ba76e8f2fe809de26342dc095bdf863843e6.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="footnote1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>On a technical level, right continuity of paths for <span class="math notranslate nohighlight">\((X_t)\)</span> implies condition 2, as proved in Theorem 2.12 of <span id="id6">[<a class="reference internal" href="zreferences.html#id8">Liggett, 2010</a>]</span>.  Right continuity of paths allows for jumps, but insists on only finitely many jumps in any bounded interval.</p>
+<dd><p>On a technical level, right continuity of paths for <span class="math notranslate nohighlight">\((X_t)\)</span> implies condition 2, as proved in Theorem 2.12 of <span id="id6">[<a class="reference internal" href="zreferences.html#id8" title="Thomas Milton Liggett. Continuous time Markov processes: an introduction. Volume 113. American Mathematical Soc., 2010.">Liggett, 2010</a>]</span>.  Right continuity of paths allows for jumps, but insists on only finitely many jumps in any bounded interval.</p>
 </dd>
 <dt class="label" id="footnote2"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
 <dd><p>In the definition of <span class="math notranslate nohighlight">\(P_t\)</span> in <a class="reference internal" href="#equation-poissemi">(3.9)</a>, we use the convention that <span class="math notranslate nohighlight">\(0^0 = 1\)</span>, which leads to <span class="math notranslate nohighlight">\(P_0 = I\)</span> and <span class="math notranslate nohighlight">\(\lim_{t \to 0} P_t(j, k) = I(j,k)\)</span> for all <span class="math notranslate nohighlight">\(j,k\)</span>.  These facts, along with the semigroup property, imply that <span class="math notranslate nohighlight">\((P_t)\)</span> is a valid Markov semigroup.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1241,7 +1197,7 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1255,7 +1211,7 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
                 
 
 
-                <footer class="page__footer">
+                <footer class="qe-page__footer">
 
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
@@ -1268,16 +1224,16 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
             
 
             
-            <div class="sidebar bd-sidebar inactive" id="site-navigation">
+            <div class="qe-sidebar bd-sidebar inactive" id="site-navigation">
 
-                <div class="sidebar__header">
+                <div class="qe-sidebar__header">
 
 
                     Contents
 
                 </div>
 
-                <nav class="sidebar__nav" id="sidebar-nav" aria-label="Main navigation">
+                <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
@@ -1328,7 +1284,7 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
 
                 </nav>
 
-                <div class="sidebar__footer">
+                <div class="qe-sidebar__footer">
 
                 </div>
 
@@ -1336,31 +1292,30 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
             
         </div> <!-- .main -->
 
-        <div class="toolbar">
+        <div class="qe-toolbar">
 
-            <div class="toolbar__inner">
+            <div class="qe-toolbar__inner">
 
-                <ul class="toolbar__main">
+                <ul class="qe-toolbar__main">
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
-                    <!-- <li class="btn__search">
-                        <form action="search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off">
-                            <i data-feather="search"></i>
-                        </form>
-                    </li> -->
                 </ul>
 
-                <ul class="toolbar__links">
+                <ul class="qe-toolbar__links">
+                    <li class="btn__search">
+                        <form action="search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
+                            <i data-feather="search" id="search-icon"></i>
+                        </form>
+                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                    <li data-tippy-content="Download Notebook"><a href="_notebooks/markov_prop.ipynb" download><i data-feather="download-cloud"></i></a></li>
-                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/markov_prop.ipynb" download><i data-feather="download-cloud"></i></a></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/markov_prop.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/markov_prop.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -1372,7 +1327,7 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
+                    <a href="/_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>
@@ -1389,18 +1344,16 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
-                    <option value="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/markov_prop.ipynb">BinderHub</option>
-                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/markov_prop.ipynb" data-branch=main>
+                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/markov_prop.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -1431,9 +1384,9 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "markov_prop";
-                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
-                const urlPath = "tree/continuous_time_mcs.notebooks/markov_prop.ipynb";
-                const branch = "main"
+                const repoURL = "";
+                const urlPath = "";
+                const branch = ""
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists
@@ -1486,6 +1439,5 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
         </div>
 
     </div> <!-- .wrapper-->
-    
   </body>
 </html>

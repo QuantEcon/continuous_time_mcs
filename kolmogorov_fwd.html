@@ -1,94 +1,115 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5. The Kolmogorov Forward Equation &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
+        <script>
+            MathJax = {
+            loader: {load: ['[tex]/boldsymbol', '[tex]/textmacros']},
+            tex: {
+                packages: {'[+]': ['boldsymbol', 'textmacros']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true,
+                macros: {
+                    "argmax" : "arg\\,max",
+                    "argmin" : "arg\\,min",
+                    "col"    : "col",
+                    "Span"   :  "span",
+                    "epsilon": "\\varepsilon",
+                    "EE": "\\mathbb{E}",
+                    "PP": "\\mathbb{P}",
+                    "RR": "\\mathbb{R}",
+                    "NN": "\\mathbb{N}",
+                    "ZZ": "\\mathbb{Z}",
+                    "aA": "\\mathcal{A}",
+                    "bB": "\\mathcal{B}",
+                    "cC": "\\mathcal{C}",
+                    "dD": "\\mathcal{D}",
+                    "eE": "\\mathcal{E}",
+                    "fF": "\\mathcal{F}",
+                    "gG": "\\mathcal{G}",
+                    "hH": "\\mathcal{H}",
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 0.92,
+                displayAlign: "center",
+            },
+            };
+        </script>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=f77998adf44a3f900caaca31caf410c810f6f245" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=eed9c059a3ee152aae2353ec732f0a6d12e6aa07"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'kolmogorov_fwd';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6. Semigroups and Generators" href="generators.html" />
@@ -122,99 +143,47 @@
 
     <span id="top"></span>
 
-    <div class="wrapper">
+    <div class="qe-wrapper">
 
-        <div class="main">
+        <div class="qe-main">
 
-            <div class="page" id=kolmogorov_fwd>
+            <div class="qe-page" id=kolmogorov_fwd>
 
-                <div class="page__toc">
+                <div class="qe-page__toc">
 
                     <div class="inner">
 
                         
-                        <div class="page__toc-header">
+                        <div class="qe-page__toc-header">
                             On this page
                         </div>
 
 
-                        <nav id="bd-toc-nav" class="page__toc-nav">
+                        <nav id="bd-toc-nav" class="qe-page__toc-nav">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   5.1. Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#from-difference-equations-to-odes">
-   5.2. From Difference Equations to ODEs
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-of-the-discrete-time-case">
-     5.2.1. Review of the Discrete Time Case
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shifting-to-continuous-time">
-     5.2.2. Shifting to Continuous Time
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#odes-in-distribution-space">
-   5.3. ODEs in Distribution Space
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solutions-to-linear-vector-odes">
-     5.3.1. Solutions to Linear Vector ODEs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#forwards-vs-backwards-equations">
-     5.3.2. Forwards vs Backwards Equations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-vs-vector-valued-odes">
-     5.3.3. Matrix- vs Vector-Valued ODEs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#preserving-distributions">
-     5.3.4. Preserving Distributions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jump-chains">
-   5.4. Jump Chains
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   5.5. Summary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   5.6. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solutions">
-   5.7. Solutions
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">5.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-difference-equations-to-odes">5.2. From Difference Equations to ODEs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-the-discrete-time-case">5.2.1. Review of the Discrete Time Case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shifting-to-continuous-time">5.2.2. Shifting to Continuous Time</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odes-in-distribution-space">5.3. ODEs in Distribution Space</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions-to-linear-vector-odes">5.3.1. Solutions to Linear Vector ODEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forwards-vs-backwards-equations">5.3.2. Forwards vs Backwards Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vs-vector-valued-odes">5.3.3. Matrix- vs Vector-Valued ODEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preserving-distributions">5.3.4. Preserving Distributions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-chains">5.4. Jump Chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.5. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.6. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">5.7. Solutions</a></li>
+</ul>
                             <p class="logo">
                                 
                                     
-                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo" alt="logo"></a>
+                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo logo-img" alt="logo"></a>
+                                    
                                     
                                 
                             </p>
@@ -223,7 +192,7 @@
 
                         </nav>
 
-                        <div class="page__toc-footer">
+                        <div class="qe-page__toc-footer">
                             
                             
                             <p><a href="#top"><strong>Back to top</strong></a></p>
@@ -233,31 +202,64 @@
 
                 </div>
 
-                <div class="page__header">
+                <div class="qe-page__header">
 
-                    <div class="page__header-copy">
+                    <div class="qe-page__header-copy">
 
-                        <p class="page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
+                        <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="page__header-subheading">The Kolmogorov Forward Equation</p>
+                        <p class="qe-page__header-subheading">The Kolmogorov Forward Equation</p>
 
                     </div>
+                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
+                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
-                    <p class="page__header-authors">Thomas J. Sargent & John Stachurski</p>
 
                 </div> <!-- .page__header -->
 
 
 
                 
-                <main class="page__content" role="main">
+                <main class="qe-page__content" role="main">
                     
                     <div>
                         
-  <div class="section" id="the-kolmogorov-forward-equation">
-<h1><span class="section-number">5. </span>The Kolmogorov Forward Equation<a class="headerlink" href="#the-kolmogorov-forward-equation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2><span class="section-number">5.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-kolmogorov-forward-equation">
+<h1><span class="section-number">5. </span>The Kolmogorov Forward Equation<a class="headerlink" href="#the-kolmogorov-forward-equation" title="Permalink to this heading">#</a></h1>
+<p>In addition to what’s in Anaconda, this lecture will need the following libraries:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>quantecon
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (0.7.2)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (0.60.0)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.26.4)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (2.32.3)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.1)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.2)
+Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.43.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2024.8.30)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from sympy-&gt;quantecon) (1.3.0)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="overview">
+<h2><span class="section-number">5.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>In this lecture we approach continuous time Markov chains from a more
 analytical perspective.</p>
 <p>The emphasis will be on describing distribution flows through vector-valued
@@ -289,23 +291,23 @@ treatment of infinite state spaces, assuming throughout this lecture that <span 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="from-difference-equations-to-odes">
-<h2><span class="section-number">5.2. </span>From Difference Equations to ODEs<a class="headerlink" href="#from-difference-equations-to-odes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="from-difference-equations-to-odes">
+<h2><span class="section-number">5.2. </span>From Difference Equations to ODEs<a class="headerlink" href="#from-difference-equations-to-odes" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="markov_prop.html#invdistflows"><span class="std std-ref">Previously</span></a> we generated this figure, which shows how distributions evolve over time for the inventory model under a certain parameterization:</p>
-<div class="figure align-default" id="id1">
-<div class="cell_output docutils container">
-<img alt="_images/markov_prop_7_0.png" src="_images/markov_prop_7_0.png" />
-</div>
-<p class="caption"><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Probability flows for the inventory model.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figure class="align-default" id="id1">
+<img alt="_images/flow_fig.png" src="_images/flow_fig.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Probability flows for the inventory model.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>(Hot colors indicate early dates and cool colors denote later dates.)</p>
 <p>We also learned how this flow is related to
 the Kolmogorov backward equation, which is an ODE.</p>
 <p>In this section we examine distribution flows and their connection to
 ODEs and continuous time Markov chains more systematically.</p>
-<div class="section" id="review-of-the-discrete-time-case">
-<h3><span class="section-number">5.2.1. </span>Review of the Discrete Time Case<a class="headerlink" href="#review-of-the-discrete-time-case" title="Permalink to this headline">¶</a></h3>
+<section id="review-of-the-discrete-time-case">
+<h3><span class="section-number">5.2.1. </span>Review of the Discrete Time Case<a class="headerlink" href="#review-of-the-discrete-time-case" title="Permalink to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\((X_t)\)</span> be a discrete time Markov chain with Markov matrix <span class="math notranslate nohighlight">\(P\)</span>.</p>
 <p><a class="reference internal" href="markov_prop.html#finstatediscretemc"><span class="std std-ref">Recall that</span></a>, in the discrete time case, the distribution <span class="math notranslate nohighlight">\(\psi_t\)</span> of <span class="math notranslate nohighlight">\(X_t\)</span> updates according to</p>
 <div class="math notranslate nohighlight">
@@ -327,6 +329,11 @@ simplex</a> in <span class="math notranslate nohighlight">\(\RR^3\)</span>.</p>
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unit_simplex</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
     
@@ -392,8 +399,9 @@ simplex</a> in <span class="math notranslate nohighlight">\(\RR^3\)</span>.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/kolmogorov_fwd_4_0.png" src="_images/kolmogorov_fwd_4_0.png" />
+<img alt="_images/addb6247340352b3451a7d4233fe996c114f5ced7985fd5ed0d7f474aece6a9e.png" src="_images/addb6247340352b3451a7d4233fe996c114f5ced7985fd5ed0d7f474aece6a9e.png" />
 </div>
 </div>
 <p>There’s a sense in which a discrete time Markov chain “is” a homogeneous
@@ -402,7 +410,7 @@ linear difference equation in distribution space.</p>
 take <span class="math notranslate nohighlight">\(G\)</span> to be a linear map from <span class="math notranslate nohighlight">\(\dD\)</span> to itself and
 write down the difference equation</p>
 <div class="math notranslate nohighlight" id="equation-gdiff2">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-gdiff2" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-gdiff2" title="Permalink to this equation">#</a></span>\[
     \psi_{t+1} = G(\psi_t)
     \quad \text{with } \psi_0 \in \dD \text{ given}.
 \]</div>
@@ -413,22 +421,22 @@ be represented by a matrix.</p>
 <p>So, under the stated conditions, our difference equation <a class="reference internal" href="#equation-gdiff2">(5.1)</a> uniquely
 identifies a Markov matrix, along with an initial condition <span class="math notranslate nohighlight">\(\psi_0\)</span>.</p>
 <p>Together, these objects identify the joint distribution of a discrete time Markov chain, as <a class="reference internal" href="markov_prop.html#jdfin"><span class="std std-ref">previously described</span></a>.</p>
-</div>
-<div class="section" id="shifting-to-continuous-time">
-<h3><span class="section-number">5.2.2. </span>Shifting to Continuous Time<a class="headerlink" href="#shifting-to-continuous-time" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="shifting-to-continuous-time">
+<h3><span class="section-number">5.2.2. </span>Shifting to Continuous Time<a class="headerlink" href="#shifting-to-continuous-time" title="Permalink to this heading">#</a></h3>
 <p>We have just argued that a discrete time Markov chain can be identified with a
 linear difference equation evolving in <span class="math notranslate nohighlight">\(\dD\)</span>.</p>
 <p>This strongly suggests that a continuous time Markov chain can be identified
 with a linear ODE evolving in <span class="math notranslate nohighlight">\(\dD\)</span>.</p>
 <p>This intuition is correct and important.</p>
 <p>The rest of the lecture maps out the main ideas.</p>
-</div>
-</div>
-<div class="section" id="odes-in-distribution-space">
-<h2><span class="section-number">5.3. </span>ODEs in Distribution Space<a class="headerlink" href="#odes-in-distribution-space" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="odes-in-distribution-space">
+<h2><span class="section-number">5.3. </span>ODEs in Distribution Space<a class="headerlink" href="#odes-in-distribution-space" title="Permalink to this heading">#</a></h2>
 <p>Consider linear differential equation given by</p>
 <div class="math notranslate nohighlight" id="equation-ode-mc">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-ode-mc" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-ode-mc" title="Permalink to this equation">#</a></span>\[
     \psi_t' = \psi_t Q, 
     \qquad \psi_0 \text{ a given element of } \dD,
 \]</div>
@@ -447,12 +455,12 @@ with a linear ODE evolving in <span class="math notranslate nohighlight">\(\dD\)
         \frac{d}{dt} \psi_t(x_n)
     \end{pmatrix}
 \]</div>
-<div class="section" id="solutions-to-linear-vector-odes">
-<span id="solvode"></span><h3><span class="section-number">5.3.1. </span>Solutions to Linear Vector ODEs<a class="headerlink" href="#solutions-to-linear-vector-odes" title="Permalink to this headline">¶</a></h3>
+<section id="solutions-to-linear-vector-odes">
+<span id="solvode"></span><h3><span class="section-number">5.3.1. </span>Solutions to Linear Vector ODEs<a class="headerlink" href="#solutions-to-linear-vector-odes" title="Permalink to this heading">#</a></h3>
 <p>Using the matrix exponential, the unique solution to the initial value problem
 <a class="reference internal" href="#equation-ode-mc">(5.2)</a> is</p>
 <div class="math notranslate nohighlight" id="equation-cmc-sol">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-cmc-sol" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-cmc-sol" title="Permalink to this equation">#</a></span>\[
     \psi_t = \psi_0 P_t 
     \quad \text{where } P_t := e^{tQ}
 \]</div>
@@ -491,6 +499,11 @@ the <a class="reference internal" href="kolmogorov_bwd.html"><span class="doc">K
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
 <span class="n">ψ_00</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">))</span>
@@ -519,14 +532,15 @@ the <a class="reference internal" href="kolmogorov_bwd.html"><span class="doc">K
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/kolmogorov_fwd_7_0.png" src="_images/kolmogorov_fwd_7_0.png" />
+<img alt="_images/6af8b49671cfe9900e410ed7d00d6001004d8498c02ca17f4a842f127182fafb.png" src="_images/6af8b49671cfe9900e410ed7d00d6001004d8498c02ca17f4a842f127182fafb.png" />
 </div>
 </div>
 <p>(Distributions cool over time, so initial conditions are hot colors.)</p>
-</div>
-<div class="section" id="forwards-vs-backwards-equations">
-<h3><span class="section-number">5.3.2. </span>Forwards vs Backwards Equations<a class="headerlink" href="#forwards-vs-backwards-equations" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="forwards-vs-backwards-equations">
+<h3><span class="section-number">5.3.2. </span>Forwards vs Backwards Equations<a class="headerlink" href="#forwards-vs-backwards-equations" title="Permalink to this heading">#</a></h3>
 <p>As the above discussion shows, we can take the Kolmogorov forward equation
 <span class="math notranslate nohighlight">\(P_t' = P_t Q\)</span> and premultiply by any distribution <span class="math notranslate nohighlight">\(\psi_0\)</span> to get the
 distribution ODE <span class="math notranslate nohighlight">\(\psi'_t = \psi_t Q\)</span>.</p>
@@ -541,9 +555,9 @@ distributions forward in time.</p>
 <p>Recalling that <span class="math notranslate nohighlight">\((P_t h)(x) = \EE [ h(X_t) \,|\, X_0 = x]\)</span>, this vector
 ODE tells us how expectations evolve, conditioning backward to time zero.</p>
 <p>Both the forward and the backward equations uniquely pin down the same solution <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> when combined with the initial condition <span class="math notranslate nohighlight">\(P_0 = I\)</span>.</p>
-</div>
-<div class="section" id="matrix-vs-vector-valued-odes">
-<h3><span class="section-number">5.3.3. </span>Matrix- vs Vector-Valued ODEs<a class="headerlink" href="#matrix-vs-vector-valued-odes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="matrix-vs-vector-valued-odes">
+<h3><span class="section-number">5.3.3. </span>Matrix- vs Vector-Valued ODEs<a class="headerlink" href="#matrix-vs-vector-valued-odes" title="Permalink to this heading">#</a></h3>
 <p>The ODE <span class="math notranslate nohighlight">\(\psi'_t = \psi_t Q\)</span> is sometimes called the
 <strong>Fokker–Planck equation</strong> (although this terminology is most commonly used
 in the context of diffusions).</p>
@@ -558,9 +572,9 @@ Fokker–Planck equation.</p>
 semigroup.</p>
 <p>The Kolmogorov forward and backward equations are the ODEs that define
 this fundamental object.</p>
-</div>
-<div class="section" id="preserving-distributions">
-<h3><span class="section-number">5.3.4. </span>Preserving Distributions<a class="headerlink" href="#preserving-distributions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="preserving-distributions">
+<h3><span class="section-number">5.3.4. </span>Preserving Distributions<a class="headerlink" href="#preserving-distributions" title="Permalink to this heading">#</a></h3>
 <p>In the simulation above, <span class="math notranslate nohighlight">\(Q\)</span> was chosen with some care, so that the flow
 remains in <span class="math notranslate nohighlight">\(\dD\)</span>.</p>
 <p>What are the exact properties we require on <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(\psi_t\)</span> is always
@@ -577,29 +591,29 @@ for all <span class="math notranslate nohighlight">\(t\)</span>?</p>
 sums and <span class="math notranslate nohighlight">\(Q(x, y) \geq 0\)</span> whenever <span class="math notranslate nohighlight">\(x \not= y\)</span>.</p>
 <div class="proof theorem admonition" id="intvsmk">
 <p class="admonition-title"><span class="caption-number">Theorem 5.1 </span></p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(Q\)</span> is a matrix on <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(P_t := e^{tQ}\)</span>, then the following statements
 are equivalent:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix for all <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix.</p></li>
 </ol>
-</div>
+</section>
 </div><p>The proof is related to that of <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a> and is found as
 a solved exercise below.</p>
 <div class="proof corollary admonition" id="intvsmk_c">
 <p class="admonition-title"><span class="caption-number">Corollary 5.1 </span></p>
-<div class="corollary-content section" id="proof-content">
+<section class="corollary-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix on finite <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>,
 then <span class="math notranslate nohighlight">\((P_t)\)</span> is a Markov semigroup.</p>
-</div>
+</section>
 </div><p>We call <span class="math notranslate nohighlight">\((P_t)\)</span> the Markov semigroup <strong>generated</strong> by <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <p>Later we will see that this result extends to the case <span class="math notranslate nohighlight">\(|S| = \infty\)</span> under
 some mild restrictions on <span class="math notranslate nohighlight">\(Q\)</span>.</p>
-</div>
-</div>
-<div class="section" id="jump-chains">
-<h2><span class="section-number">5.4. </span>Jump Chains<a class="headerlink" href="#jump-chains" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="jump-chains">
+<h2><span class="section-number">5.4. </span>Jump Chains<a class="headerlink" href="#jump-chains" title="Permalink to this heading">#</a></h2>
 <p>Let’s return to the chain <span class="math notranslate nohighlight">\((X_t)\)</span> created from jump chain pair <span class="math notranslate nohighlight">\((\lambda, K)\)</span> in
 <a class="reference internal" href="kolmogorov_bwd.html#ejc_algo">Algorithm 4.1</a>.</p>
 <p>We found that the semigroup is given by</p>
@@ -626,9 +640,9 @@ Q\)</span>, which is the Fokker–Planck equation.</p>
 \]</div>
 <p>The rate of probability flow into <span class="math notranslate nohighlight">\(y\)</span> is equal to the inflow from other states
 minus the outflow.</p>
-</div>
-<div class="section" id="summary">
-<h2><span class="section-number">5.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2><span class="section-number">5.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>We have seen that any intensity matrix <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(S\)</span> defines a Markov semigroup via <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span>.</p>
 <p>Henceforth, we will say that <span class="math notranslate nohighlight">\((X_t)\)</span> is <strong>a Markov chain with intensity matrix</strong> <span class="math notranslate nohighlight">\(Q\)</span> if
 <span class="math notranslate nohighlight">\((X_t)\)</span> is a Markov chain with Markov semigroup <span class="math notranslate nohighlight">\((e^{tQ})\)</span>.</p>
@@ -640,7 +654,7 @@ is a Markov chain with intensity matrix <span class="math notranslate nohighligh
 <p>Later we will prove this to be universally true when <span class="math notranslate nohighlight">\(S\)</span> is finite and true
 under mild conditions when <span class="math notranslate nohighlight">\(S\)</span> is countably infinite.</p>
 <p>Intensity matrices are important because</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>they are the natural infinitesimal descriptions of Markov semigroups,</p></li>
 <li><p>they are often easy to write down in applications and</p></li>
 <li><p>they provide an intuitive description of dynamics.</p></li>
@@ -651,18 +665,19 @@ understood as follows:</p>
 <li><p>when <span class="math notranslate nohighlight">\(x \not= y\)</span>, the value <span class="math notranslate nohighlight">\(Q(x, y)\)</span> is the “rate of leaving <span class="math notranslate nohighlight">\(x\)</span> for <span class="math notranslate nohighlight">\(y\)</span>” and</p></li>
 <li><p><span class="math notranslate nohighlight">\(-Q(x, x) \geq 0\)</span> is the “rate of leaving <span class="math notranslate nohighlight">\(x\)</span>” .</p></li>
 </ul>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">5.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercises">
+<h2><span class="section-number">5.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <div class="exercise admonition" id="kolmogorov-fwd-1">
+
 <p class="admonition-title"><span class="caption-number">Exercise 5.1 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup such that <span class="math notranslate nohighlight">\(t \mapsto P_t(x, y)\)</span> is
 differentiable at all <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\((x, y) \in S \times S\)</span>.</p>
 <p>(The derivative at <span class="math notranslate nohighlight">\(t=0\)</span> is the usual right derivative.)</p>
 <p>Define (pointwise, at each <span class="math notranslate nohighlight">\((x,y)\)</span>),</p>
 <div class="math notranslate nohighlight" id="equation-genfl">
-<span class="eqno">(5.4)<a class="headerlink" href="#equation-genfl" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-genfl" title="Permalink to this equation">#</a></span>\[
     Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
 \]</div>
 <p>Assuming that this limit exists, and hence <span class="math notranslate nohighlight">\(Q\)</span> is well-defined, show that</p>
@@ -673,10 +688,12 @@ differentiable at all <span class="math notranslate nohighlight">\(t \geq 0\)</s
     P'_t = Q P_t
 \]</div>
 <p>both hold. (These are the Kolmogorov forward and backward equations.)</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="kolmogorov-fwd-2">
+<div class="exercise admonition" id="kolmogorov-fwd-2">
+
 <p class="admonition-title"><span class="caption-number">Exercise 5.2 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Recall <a class="reference internal" href="kolmogorov_bwd.html#sdji"><span class="std std-ref">our model</span></a> of jump chains with state-dependent jump
 intensities given by rate function <span class="math notranslate nohighlight">\(x \mapsto \lambda(x)\)</span>.</p>
 <p>After a wait time with exponential rate <span class="math notranslate nohighlight">\(\lambda(x) \in (0, \infty)\)</span>, the
@@ -684,24 +701,28 @@ state transitions from <span class="math notranslate nohighlight">\(x\)</span> t
 <p>We found that the associated semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> satisfies the Kolmogorov
 backward equation <span class="math notranslate nohighlight">\(P'_t = Q P_t\)</span> with</p>
 <div class="math notranslate nohighlight" id="equation-qeqagain">
-<span class="eqno">(5.5)<a class="headerlink" href="#equation-qeqagain" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-qeqagain" title="Permalink to this equation">#</a></span>\[
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 \]</div>
 <p>Show that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix and that <a class="reference internal" href="#equation-genfl">(5.4)</a> holds.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="kolmogorov-fwd-3">
+<div class="exercise admonition" id="kolmogorov-fwd-3">
+
 <p class="admonition-title"><span class="caption-number">Exercise 5.3 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Prove <a class="reference internal" href="#intvsmk">Theorem 5.1</a> by adapting the arguments in <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a>.
 (This is nontrivial but worth at least trying.)</p>
 <p>Hint: The constant <span class="math notranslate nohighlight">\(m\)</span> in the proof can be set to <span class="math notranslate nohighlight">\(\max_x |Q(x, x)|\)</span>.</p>
+</section>
 </div>
-</div></div>
-<div class="section" id="solutions">
-<h2><span class="section-number">5.7. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solutions">
+<h2><span class="section-number">5.7. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <div class="solution admonition" id="kolmogorov_fwd-solution-5">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#kolmogorov-fwd-1"><span>Solution to </span> Exercise 5.1</a></p>
-<div class="section" id="solution-content">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#kolmogorov-fwd-1"> Exercise 5.1</a></p>
+<section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup and let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in the statement
 of the exercise.</p>
 <p>Fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(h &gt; 0\)</span>.</p>
@@ -722,10 +743,12 @@ which is the Kolmogorov forward equation.</p>
     = \frac{(P_h - I) P_t}{h}
 \]</div>
 <p>also holds.  Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> gives the Kolmogorov backward equation.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="kolmogorov_fwd-solution-6">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#kolmogorov-fwd-2"><span>Solution to </span> Exercise 5.2</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="kolmogorov_fwd-solution-6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#kolmogorov-fwd-2"> Exercise 5.2</a></p>
+<section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in <a class="reference internal" href="#equation-qeqagain">(5.5)</a>.</p>
 <p>We need to show that <span class="math notranslate nohighlight">\(Q\)</span> is nonnegative off the diagonal and has zero row
 sums.</p>
@@ -739,10 +762,12 @@ as a column vector of ones,</p>
     = \lambda (1 - 1)
     = 0
 \]</div>
+</section>
 </div>
-</div><div class="solution admonition" id="kolmogorov_fwd-solution-7">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#kolmogorov-fwd-3"><span>Solution to </span> Exercise 5.3</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="kolmogorov_fwd-solution-7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#kolmogorov-fwd-3"> Exercise 5.3</a></p>
+<section id="solution-content">
 <p>Suppose that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix, fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and set <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span>.</p>
 <p>The proof from <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a> that <span class="math notranslate nohighlight">\(P_t\)</span> has unit row sums applies
 directly to the current case.</p>
@@ -769,16 +794,17 @@ we can employ the Kolmogorov backward equation to obtain</p>
 <p>We can use the definition of the matrix exponential to obtain,
 for any <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-otp">
-<span class="eqno">(5.6)<a class="headerlink" href="#equation-otp" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-otp" title="Permalink to this equation">#</a></span>\[
     P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
 \]</div>
 <p>From this equality and the assumption that <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix for all
 <span class="math notranslate nohighlight">\(t\)</span>, we see that the off diagonal elements of <span class="math notranslate nohighlight">\(Q\)</span> must be
 nonnegative.</p>
 <p>Hence <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix.</p>
+</section>
 </div>
-</div></div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -792,7 +818,7 @@ nonnegative.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -806,7 +832,7 @@ nonnegative.</p>
                 
 
 
-                <footer class="page__footer">
+                <footer class="qe-page__footer">
 
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
@@ -819,16 +845,16 @@ nonnegative.</p>
             
 
             
-            <div class="sidebar bd-sidebar inactive" id="site-navigation">
+            <div class="qe-sidebar bd-sidebar inactive" id="site-navigation">
 
-                <div class="sidebar__header">
+                <div class="qe-sidebar__header">
 
 
                     Contents
 
                 </div>
 
-                <nav class="sidebar__nav" id="sidebar-nav" aria-label="Main navigation">
+                <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
@@ -879,7 +905,7 @@ nonnegative.</p>
 
                 </nav>
 
-                <div class="sidebar__footer">
+                <div class="qe-sidebar__footer">
 
                 </div>
 
@@ -887,31 +913,30 @@ nonnegative.</p>
             
         </div> <!-- .main -->
 
-        <div class="toolbar">
+        <div class="qe-toolbar">
 
-            <div class="toolbar__inner">
+            <div class="qe-toolbar__inner">
 
-                <ul class="toolbar__main">
+                <ul class="qe-toolbar__main">
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
-                    <!-- <li class="btn__search">
-                        <form action="search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off">
-                            <i data-feather="search"></i>
-                        </form>
-                    </li> -->
                 </ul>
 
-                <ul class="toolbar__links">
+                <ul class="qe-toolbar__links">
+                    <li class="btn__search">
+                        <form action="search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
+                            <i data-feather="search" id="search-icon"></i>
+                        </form>
+                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                    <li data-tippy-content="Download Notebook"><a href="_notebooks/kolmogorov_fwd.ipynb" download><i data-feather="download-cloud"></i></a></li>
-                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/kolmogorov_fwd.ipynb" download><i data-feather="download-cloud"></i></a></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/kolmogorov_fwd.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/kolmogorov_fwd.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -923,7 +948,7 @@ nonnegative.</p>
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
+                    <a href="/_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>
@@ -940,18 +965,16 @@ nonnegative.</p>
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
-                    <option value="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/kolmogorov_fwd.ipynb">BinderHub</option>
-                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/kolmogorov_fwd.ipynb" data-branch=main>
+                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/kolmogorov_fwd.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -982,9 +1005,9 @@ nonnegative.</p>
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "kolmogorov_fwd";
-                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
-                const urlPath = "tree/continuous_time_mcs.notebooks/kolmogorov_fwd.ipynb";
-                const branch = "main"
+                const repoURL = "";
+                const urlPath = "";
+                const branch = ""
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists
@@ -1037,6 +1060,5 @@ nonnegative.</p>
         </div>
 
     </div> <!-- .wrapper-->
-    
   </body>
 </html>

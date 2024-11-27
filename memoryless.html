@@ -1,108 +1,115 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1. Memoryless Distributions &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
+        <script>
+            MathJax = {
+            loader: {load: ['[tex]/boldsymbol', '[tex]/textmacros']},
+            tex: {
+                packages: {'[+]': ['boldsymbol', 'textmacros']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true,
+                macros: {
+                    "argmax" : "arg\\,max",
+                    "argmin" : "arg\\,min",
+                    "col"    : "col",
+                    "Span"   :  "span",
+                    "epsilon": "\\varepsilon",
+                    "EE": "\\mathbb{E}",
+                    "PP": "\\mathbb{P}",
+                    "RR": "\\mathbb{R}",
+                    "NN": "\\mathbb{N}",
+                    "ZZ": "\\mathbb{Z}",
+                    "aA": "\\mathcal{A}",
+                    "bB": "\\mathcal{B}",
+                    "cC": "\\mathcal{C}",
+                    "dD": "\\mathcal{D}",
+                    "eE": "\\mathcal{E}",
+                    "fF": "\\mathcal{F}",
+                    "gG": "\\mathcal{G}",
+                    "hH": "\\mathcal{H}",
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 0.92,
+                displayAlign: "center",
+            },
+            };
+        </script>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=f77998adf44a3f900caaca31caf410c810f6f245" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=eed9c059a3ee152aae2353ec732f0a6d12e6aa07"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'memoryless';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Poisson Processes" href="poisson.html" />
@@ -136,84 +143,44 @@
 
     <span id="top"></span>
 
-    <div class="wrapper">
+    <div class="qe-wrapper">
 
-        <div class="main">
+        <div class="qe-main">
 
-            <div class="page" id=memoryless>
+            <div class="qe-page" id=memoryless>
 
-                <div class="page__toc">
+                <div class="qe-page__toc">
 
                     <div class="inner">
 
                         
-                        <div class="page__toc-header">
+                        <div class="qe-page__toc-header">
                             On this page
                         </div>
 
 
-                        <nav id="bd-toc-nav" class="page__toc-nav">
+                        <nav id="bd-toc-nav" class="qe-page__toc-nav">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   1.1. Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-geometric-distribution">
-   1.2. The Geometric Distribution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#memorylessness">
-     1.2.1. Memorylessness
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-exponential-distribution">
-   1.3. The Exponential Distribution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#from-geometric-to-exponential">
-     1.3.1. From Geometric to Exponential
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#memoryless-property-of-the-exponential-distribution">
-     1.3.2. Memoryless Property of the Exponential Distribution
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#failure-of-memorylessness">
-     1.3.3. Failure of Memorylessness
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sums-of-exponentials">
-   1.4. Sums of Exponentials
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   1.5. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solutions">
-   1.6. Solutions
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">1.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geometric-distribution">1.2. The Geometric Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memorylessness">1.2.1. Memorylessness</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exponential-distribution">1.3. The Exponential Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-geometric-to-exponential">1.3.1. From Geometric to Exponential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memoryless-property-of-the-exponential-distribution">1.3.2. Memoryless Property of the Exponential Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-of-memorylessness">1.3.3. Failure of Memorylessness</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sums-of-exponentials">1.4. Sums of Exponentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">1.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">1.6. Solutions</a></li>
+</ul>
                             <p class="logo">
                                 
                                     
-                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo" alt="logo"></a>
+                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo logo-img" alt="logo"></a>
+                                    
                                     
                                 
                             </p>
@@ -222,7 +189,7 @@
 
                         </nav>
 
-                        <div class="page__toc-footer">
+                        <div class="qe-page__toc-footer">
                             
                             
                             <p><a href="#top"><strong>Back to top</strong></a></p>
@@ -232,31 +199,64 @@
 
                 </div>
 
-                <div class="page__header">
+                <div class="qe-page__header">
 
-                    <div class="page__header-copy">
+                    <div class="qe-page__header-copy">
 
-                        <p class="page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
+                        <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="page__header-subheading">Memoryless Distributions</p>
+                        <p class="qe-page__header-subheading">Memoryless Distributions</p>
 
                     </div>
+                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
+                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
-                    <p class="page__header-authors">Thomas J. Sargent & John Stachurski</p>
 
                 </div> <!-- .page__header -->
 
 
 
                 
-                <main class="page__content" role="main">
+                <main class="qe-page__content" role="main">
                     
                     <div>
                         
-  <div class="section" id="memoryless-distributions">
-<h1><span class="section-number">1. </span>Memoryless Distributions<a class="headerlink" href="#memoryless-distributions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="memoryless-distributions">
+<h1><span class="section-number">1. </span>Memoryless Distributions<a class="headerlink" href="#memoryless-distributions" title="Permalink to this heading">#</a></h1>
+<p>In addition to what’s in Anaconda, this lecture will need the following libraries:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>quantecon
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (0.7.2)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (0.60.0)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.26.4)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (2.32.3)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.1)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.2)
+Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.43.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2024.8.30)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from sympy-&gt;quantecon) (1.3.0)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="overview">
+<h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>Markov processes are, by definition, forgetful.</p>
 <p>In particular, for any Markov processes, the distribution over future outcomes
 depends only on the current state, rather than the entire history.</p>
@@ -281,9 +281,9 @@ distribution.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-geometric-distribution">
-<h2><span class="section-number">1.2. </span>The Geometric Distribution<a class="headerlink" href="#the-geometric-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="the-geometric-distribution">
+<h2><span class="section-number">1.2. </span>The Geometric Distribution<a class="headerlink" href="#the-geometric-distribution" title="Permalink to this heading">#</a></h2>
 <p>Consider betting on a roulette wheel and suppose that red has come up four times in a row.</p>
 <p>Since five reds in a row is an unlikely event, many people instinctively feel
 that black is more likely on the fifth spin — “Surely black will come up this time!”</p>
@@ -291,12 +291,12 @@ that black is more likely on the fifth spin — “Surely black will come up thi
 difference to the outcome of the next spin.</p>
 <p>(Many casinos offer an unlimited supply of free alcoholic beverages in order to discourage this kind of rational analysis.)</p>
 <p>A mathematical restatement of this phenomenon is: the geometric distribution is memoryless.</p>
-<div class="section" id="memorylessness">
-<h3><span class="section-number">1.2.1. </span>Memorylessness<a class="headerlink" href="#memorylessness" title="Permalink to this headline">¶</a></h3>
+<section id="memorylessness">
+<h3><span class="section-number">1.2.1. </span>Memorylessness<a class="headerlink" href="#memorylessness" title="Permalink to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable supported on the nonnegative integers <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
 <p>We say that <span class="math notranslate nohighlight">\(X\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_distribution">geometrically distributed</a> if, for some <span class="math notranslate nohighlight">\(\theta\)</span> satisfying <span class="math notranslate nohighlight">\(0 \leq \theta \leq 1\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-geodist">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-geodist" title="Permalink to this equation">¶</a></span>\[ 
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-geodist" title="Permalink to this equation">#</a></span>\[ 
     \PP\{X = k\} = (1-\theta)^k \theta 
     \qquad (k = 0, 1, \ldots)
 \]</div>
@@ -314,7 +314,7 @@ difference to the outcome of the next spin.</p>
 is <strong>memoryless</strong>.</p>
 <p>In particular, given any nonnegative integer <span class="math notranslate nohighlight">\(m\)</span>, we have</p>
 <div class="math notranslate nohighlight" id="equation-memgeo">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-memgeo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-memgeo" title="Permalink to this equation">#</a></span>\[
     \PP \{X = m + 1 \,|\, X &gt; m \} = \theta
 \]</div>
 <p>In other words, regardless of how long we have seen only red outcomes, the
@@ -333,10 +333,10 @@ distribution to obtain.</p>
         {(1-\theta)^{m+1} }
     = \theta
 \]</div>
-</div>
-</div>
-<div class="section" id="the-exponential-distribution">
-<h2><span class="section-number">1.3. </span>The Exponential Distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="the-exponential-distribution">
+<h2><span class="section-number">1.3. </span>The Exponential Distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this heading">#</a></h2>
 <p>Later, when we construct continuous time Markov chains, we will need to
 specify the distribution of the holding times, which are the time intervals
 between jumps.</p>
@@ -351,8 +351,8 @@ a poor fit for the continuous time case.</p>
     \PP\{Y &gt; y\} = e^{-\lambda y}
     \qquad (y \geq 0)
 \]</div>
-<div class="section" id="from-geometric-to-exponential">
-<span id="geomtoexp"></span><h3><span class="section-number">1.3.1. </span>From Geometric to Exponential<a class="headerlink" href="#from-geometric-to-exponential" title="Permalink to this headline">¶</a></h3>
+<section id="from-geometric-to-exponential">
+<span id="geomtoexp"></span><h3><span class="section-number">1.3.1. </span>From Geometric to Exponential<a class="headerlink" href="#from-geometric-to-exponential" title="Permalink to this heading">#</a></h3>
 <p>The exponential distribution can be regarded as the “limit” of the geometric
 distribution.</p>
 <p>To illustrate, let us suppose that</p>
@@ -393,21 +393,21 @@ h = t_i \to t\)</span>, we obtain, for large <span class="math notranslate nohig
     e^{- \lambda t}
 \]</div>
 <p>In this sense, the exponential is the limit of the geometric distribution.</p>
-</div>
-<div class="section" id="memoryless-property-of-the-exponential-distribution">
-<h3><span class="section-number">1.3.2. </span>Memoryless Property of the Exponential Distribution<a class="headerlink" href="#memoryless-property-of-the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="memoryless-property-of-the-exponential-distribution">
+<h3><span class="section-number">1.3.2. </span>Memoryless Property of the Exponential Distribution<a class="headerlink" href="#memoryless-property-of-the-exponential-distribution" title="Permalink to this heading">#</a></h3>
 <p>The exponential distribution is the only memoryless distribution supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>, as the next theorem attests.</p>
 <div class="proof theorem admonition" id="exp_unique">
 <p class="admonition-title"><span class="caption-number">Theorem 1.1 </span> (Characterization of the Exponential Distribution)</p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a random variable supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>, then there exists a
 <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> such that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span> if and only if, for all
 positive <span class="math notranslate nohighlight">\(s, t\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-memexpo">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-memexpo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-memexpo" title="Permalink to this equation">#</a></span>\[
     \PP \{X &gt; s + t \,|\, X &gt; s \} = \PP \{X &gt; t\}
 \]</div>
-</div>
+</section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. To see that <a class="reference internal" href="#equation-memexpo">(1.3)</a> holds when <span class="math notranslate nohighlight">\(X\)</span> is exponential with rate <span class="math notranslate nohighlight">\(\lambda\)</span>,
 fix <span class="math notranslate nohighlight">\(s, t &gt; 0\)</span> and observe that</p>
@@ -424,7 +424,7 @@ fix <span class="math notranslate nohighlight">\(s, t &gt; 0\)</span> and observ
 <p>To see that the converse holds, let <span class="math notranslate nohighlight">\(X\)</span> be a random variable supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>
 such that <a class="reference internal" href="#equation-memexpo">(1.3)</a> holds.</p>
 <p>The “exceedance” function <span class="math notranslate nohighlight">\(f(s) := \PP\{X &gt; s\}\)</span> then has three properties:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(f\)</span> is decreasing on <span class="math notranslate nohighlight">\(\RR_+\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(0 &lt; f(t) &lt; 1\)</span> for all <span class="math notranslate nohighlight">\(t &gt; 0\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(f(s + t) = f(s) f(t)\)</span> for all <span class="math notranslate nohighlight">\(s, t &gt; 0\)</span>.</p></li>
@@ -434,7 +434,7 @@ the fact that <span class="math notranslate nohighlight">\(X\)</span> is support
 third is <a class="reference internal" href="#equation-memexpo">(1.3)</a>.</p>
 <p>From these three properties we will show that</p>
 <div class="math notranslate nohighlight" id="equation-implex">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-implex" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-implex" title="Permalink to this equation">#</a></span>\[
     f(t) = f(1)^t  \;\; \forall \, t \geq 0
 \]</div>
 <p>This is sufficient to prove the claim because then <span class="math notranslate nohighlight">\(\lambda := - \ln f(1)\)</span> is a positive real number (by property 2) and, moreover,</p>
@@ -465,9 +465,9 @@ converging to <span class="math notranslate nohighlight">\(t\)</span> with <span
 \]</div>
 <p>Taking the limit in <span class="math notranslate nohighlight">\(n\)</span> completes the proof.</p>
 </div>
-</div>
-<div class="section" id="failure-of-memorylessness">
-<span id="fail-mem"></span><h3><span class="section-number">1.3.3. </span>Failure of Memorylessness<a class="headerlink" href="#failure-of-memorylessness" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="failure-of-memorylessness">
+<span id="fail-mem"></span><h3><span class="section-number">1.3.3. </span>Failure of Memorylessness<a class="headerlink" href="#failure-of-memorylessness" title="Permalink to this heading">#</a></h3>
 <p>We know from the proceeding section that any distribution on <span class="math notranslate nohighlight">\(\RR_+\)</span> other
 than the exponential distribution fails to be memoryless.</p>
 <p>Here’s an example that helps to clarify (although the support of the distribution is a proper subset of <span class="math notranslate nohighlight">\(\RR_+\)</span>).</p>
@@ -495,10 +495,10 @@ than the exponential distribution fails to be memoryless.</p>
 <p>Since this probability falls with <span class="math notranslate nohighlight">\(s\)</span>, the distribution is not memoryless.</p>
 <p>If we have waited many hours for an event (i.e., <span class="math notranslate nohighlight">\(s\)</span> is large), then the
 probability of waiting another hour is relatively small.</p>
-</div>
-</div>
-<div class="section" id="sums-of-exponentials">
-<h2><span class="section-number">1.4. </span>Sums of Exponentials<a class="headerlink" href="#sums-of-exponentials" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="sums-of-exponentials">
+<h2><span class="section-number">1.4. </span>Sums of Exponentials<a class="headerlink" href="#sums-of-exponentials" title="Permalink to this heading">#</a></h2>
 <p>A random variable <span class="math notranslate nohighlight">\(W\)</span> on <span class="math notranslate nohighlight">\(\RR_+\)</span> is said to have the <a class="reference external" href="https://en.wikipedia.org/wiki/Erlang_distribution">Erlang
 distribution</a> if its
 density has the form</p>
@@ -512,6 +512,11 @@ density has the form</p>
 parameters respectively.</p>
 <p>The next figure shows the shape for two parameterizations.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
@@ -536,13 +541,20 @@ parameters respectively.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/memoryless_3_0.png" src="_images/memoryless_3_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_5296/1026889215.py:17: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+  ax.plot(t_grid, e(t_grid), label=f&#39;$n={e.n}, \lambda={e.λ}$&#39;)
+</pre></div>
+</div>
+<img alt="_images/d8dd6f91e6f624e280e95e193636b5ab9935b0e8a4de889d38912f2d17957bea.png" src="_images/d8dd6f91e6f624e280e95e193636b5ab9935b0e8a4de889d38912f2d17957bea.png" />
 </div>
 </div>
 <p>The CDF of the Erlang distribution is</p>
 <div class="math notranslate nohighlight" id="equation-erlcdf">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-erlcdf" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-erlcdf" title="Permalink to this equation">#</a></span>\[
     F(t) 
     = \PP\{W \leq t\}
     = 1 - \sum_{k=0}^{n-1} \frac{(\lambda t)^k}{k!} e^{-\lambda t}
@@ -550,18 +562,19 @@ parameters respectively.</p>
 <p>The Erlang distribution is of interest to us because of the following fact.</p>
 <div class="proof lemma admonition" id="erlexp">
 <p class="admonition-title"><span class="caption-number">Lemma 1.1 </span> (Distribution of Sum of Exponentials)</p>
-<div class="lemma-content section" id="proof-content">
+<section class="lemma-content" id="proof-content">
 <p>If, for some <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, the sequence <span class="math notranslate nohighlight">\((W_i)\)</span> is IID and exponentially
 distributed with rate <span class="math notranslate nohighlight">\(\lambda\)</span>, then <span class="math notranslate nohighlight">\(J_n := \sum_{i=1}^n W_i\)</span> has the Erlang
 distribution with shape <span class="math notranslate nohighlight">\(n\)</span> and rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-</div>
+</section>
 </div><p>This connects to Poisson process theory, as we shall soon see.</p>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercises">
+<h2><span class="section-number">1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <div class="exercise admonition" id="memoryless-ex-1">
+
 <p class="admonition-title"><span class="caption-number">Exercise 1.1 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Due to its memoryless property, we can “stop” and “restart” an exponential
 draw without changing its distribution.</p>
 <p>To illustrate this, we can think of fixing <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, drawing from
@@ -573,20 +586,23 @@ draw without changing its distribution.</p>
 <li><p>If not, draw <span class="math notranslate nohighlight">\(Z\)</span> independently from <span class="math notranslate nohighlight">\(\Exp(\lambda)\)</span> and set <span class="math notranslate nohighlight">\(X = s + Z\)</span>.</p></li>
 </ul>
 <p>Show that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="memoryless-ex-2">
+<div class="exercise admonition" id="memoryless-ex-2">
+
 <p class="admonition-title"><span class="caption-number">Exercise 1.2 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Fix <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(s=1.0\)</span>.</p>
 <p>Simulate 1,000 draws of <span class="math notranslate nohighlight">\(X\)</span> using the algorithm above.</p>
 <p>Plot the fraction of the sample exceeding <span class="math notranslate nohighlight">\(t\)</span> for each <span class="math notranslate nohighlight">\(t \geq 0\)</span> (on a grid)
 and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambda t}\)</span>.</p>
 <p>Is the fit good?  How about if the number of draws is increased?</p>
 <p>Are the results in line with those of the previous exercise?</p>
+</section>
 </div>
-</div></div>
-<div class="section" id="solutions">
-<h2><span class="section-number">1.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solutions">
+<h2><span class="section-number">1.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
@@ -594,8 +610,9 @@ so code-cell solutions are immediately after this
 solution block.</p>
 </div>
 <div class="solution admonition" id="memoryless-solution-4">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#memoryless-ex-1"><span>Solution to </span> Exercise 1.1</a></p>
-<div class="section" id="solution-content">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#memoryless-ex-1"> Exercise 1.1</a></p>
+<section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be constructed as in the statement of the exercise and fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
 <p>Notice that <span class="math notranslate nohighlight">\(X &gt; s + t\)</span> if and only if <span class="math notranslate nohighlight">\(Y &gt; s\)</span> and <span class="math notranslate nohighlight">\(Z &gt; t\)</span>.</p>
 <p>As a result of this fact and independence,</p>
@@ -613,13 +630,16 @@ solution block.</p>
     = e^{-\lambda(s - t)}
 \]</div>
 <p>Either way, we have <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span>, as was to be shown.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="memoryless-solution-5">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#memoryless-ex-2"><span>Solution to </span> Exercise 1.2</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="memoryless-solution-5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#memoryless-ex-2"> Exercise 1.2</a></p>
+<section id="solution-content">
 <p>Here’s one solution, starting with 1,000 draws.</p>
+</section>
 </div>
-</div><div class="cell docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span> 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
@@ -650,17 +670,19 @@ solution block.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/memoryless_5_0.png" src="_images/memoryless_5_0.png" />
+<img alt="_images/6c9527562d0ff7c6b8db45dc77602a99807d29789a255c7d7fb81559f6250362.png" src="_images/6c9527562d0ff7c6b8db45dc77602a99807d29789a255c7d7fb81559f6250362.png" />
 </div>
 </div>
 <div class="solution admonition" id="memoryless-solution-6">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="#memoryless-ex-2"><span>Solution to </span> Exercise 1.2</a></p>
-<div class="section" id="solution-content">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#memoryless-ex-2"> Exercise 1.2</a></p>
+<section id="solution-content">
 <p><strong>Solution Continued:</strong></p>
 <p>The fit is already very close, which matches with the theory in Exercise 1.</p>
 <p>The two lines become indistinguishable as <span class="math notranslate nohighlight">\(n\)</span> is increased further.</p>
+</section>
 </div>
-</div><div class="cell docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">draws</span> <span class="o">=</span> <span class="n">draw_X</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
@@ -674,11 +696,11 @@ solution block.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/memoryless_7_0.png" src="_images/memoryless_7_0.png" />
+<img alt="_images/6dabd4ddea2308f7a3bf7fc4bb003e375c3b9ddbcd9549462d47aff85c5dc327.png" src="_images/6dabd4ddea2308f7a3bf7fc4bb003e375c3b9ddbcd9549462d47aff85c5dc327.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -692,7 +714,7 @@ solution block.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -706,7 +728,7 @@ solution block.</p>
                 
 
 
-                <footer class="page__footer">
+                <footer class="qe-page__footer">
 
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
@@ -719,16 +741,16 @@ solution block.</p>
             
 
             
-            <div class="sidebar bd-sidebar inactive" id="site-navigation">
+            <div class="qe-sidebar bd-sidebar inactive" id="site-navigation">
 
-                <div class="sidebar__header">
+                <div class="qe-sidebar__header">
 
 
                     Contents
 
                 </div>
 
-                <nav class="sidebar__nav" id="sidebar-nav" aria-label="Main navigation">
+                <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
@@ -779,7 +801,7 @@ solution block.</p>
 
                 </nav>
 
-                <div class="sidebar__footer">
+                <div class="qe-sidebar__footer">
 
                 </div>
 
@@ -787,31 +809,30 @@ solution block.</p>
             
         </div> <!-- .main -->
 
-        <div class="toolbar">
+        <div class="qe-toolbar">
 
-            <div class="toolbar__inner">
+            <div class="qe-toolbar__inner">
 
-                <ul class="toolbar__main">
+                <ul class="qe-toolbar__main">
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
-                    <!-- <li class="btn__search">
-                        <form action="search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off">
-                            <i data-feather="search"></i>
-                        </form>
-                    </li> -->
                 </ul>
 
-                <ul class="toolbar__links">
+                <ul class="qe-toolbar__links">
+                    <li class="btn__search">
+                        <form action="search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
+                            <i data-feather="search" id="search-icon"></i>
+                        </form>
+                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                    <li data-tippy-content="Download Notebook"><a href="_notebooks/memoryless.ipynb" download><i data-feather="download-cloud"></i></a></li>
-                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/memoryless.ipynb" download><i data-feather="download-cloud"></i></a></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/memoryless.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/memoryless.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -823,7 +844,7 @@ solution block.</p>
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
+                    <a href="/_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>
@@ -840,18 +861,16 @@ solution block.</p>
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
-                    <option value="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/memoryless.ipynb">BinderHub</option>
-                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/memoryless.ipynb" data-branch=main>
+                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/memoryless.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -882,9 +901,9 @@ solution block.</p>
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "memoryless";
-                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
-                const urlPath = "tree/continuous_time_mcs.notebooks/memoryless.ipynb";
-                const branch = "main"
+                const repoURL = "";
+                const urlPath = "";
+                const branch = ""
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists
@@ -937,6 +956,5 @@ solution block.</p>
         </div>
 
     </div> <!-- .wrapper-->
-    
   </body>
 </html>

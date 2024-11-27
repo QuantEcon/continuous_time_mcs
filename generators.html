@@ -1,73 +1,115 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6. Semigroups and Generators &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
+        <script>
+            MathJax = {
+            loader: {load: ['[tex]/boldsymbol', '[tex]/textmacros']},
+            tex: {
+                packages: {'[+]': ['boldsymbol', 'textmacros']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true,
+                macros: {
+                    "argmax" : "arg\\,max",
+                    "argmin" : "arg\\,min",
+                    "col"    : "col",
+                    "Span"   :  "span",
+                    "epsilon": "\\varepsilon",
+                    "EE": "\\mathbb{E}",
+                    "PP": "\\mathbb{P}",
+                    "RR": "\\mathbb{R}",
+                    "NN": "\\mathbb{N}",
+                    "ZZ": "\\mathbb{Z}",
+                    "aA": "\\mathcal{A}",
+                    "bB": "\\mathcal{B}",
+                    "cC": "\\mathcal{C}",
+                    "dD": "\\mathcal{D}",
+                    "eE": "\\mathcal{E}",
+                    "fF": "\\mathcal{F}",
+                    "gG": "\\mathcal{G}",
+                    "hH": "\\mathcal{H}",
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 0.92,
+                displayAlign: "center",
+            },
+            };
+        </script>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" href="_static/quantecon-book-theme.857ff391aaabaeb8c161d2309c375fe6.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=f77998adf44a3f900caaca31caf410c810f6f245" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="_static/quantecon-book-theme.76bf49d7bbc59738cdb03766fad654af.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"Exp": ["\\operatorname{Exp}"], "Binomial": ["\\operatorname{Binomial}"], "Poisson": ["\\operatorname{Poisson}"], "BB": ["\\mathbb{B}"], "EE": ["\\mathbb{E}"], "PP": ["\\mathbb{P}"], "RR": ["\\mathbb{R}"], "NN": ["\\mathbb{N}"], "ZZ": ["\\mathbb{Z}"], "dD": ["\\mathcal{D}"], "fF": ["\\mathcal{F}"], "lL": ["\\mathcal{L}"], "linop": ["\\mathcal{L}(\\mathbb{B})"], "linopell": ["\\mathcal{L}(\\ell_1)"]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=eed9c059a3ee152aae2353ec732f0a6d12e6aa07"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generators';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="7. UC Markov Semigroups" href="uc_mc_semigroups.html" />
@@ -101,94 +143,46 @@
 
     <span id="top"></span>
 
-    <div class="wrapper">
+    <div class="qe-wrapper">
 
-        <div class="main">
+        <div class="qe-main">
 
-            <div class="page" id=generators>
+            <div class="qe-page" id=generators>
 
-                <div class="page__toc">
+                <div class="qe-page__toc">
 
                     <div class="inner">
 
                         
-                        <div class="page__toc-header">
+                        <div class="qe-page__toc-header">
                             On this page
                         </div>
 
 
-                        <nav id="bd-toc-nav" class="page__toc-nav">
+                        <nav id="bd-toc-nav" class="qe-page__toc-nav">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   6.1. Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motivation">
-   6.2. Motivation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preliminaries">
-   6.3. Preliminaries
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-space-of-linear-operators">
-     6.3.1. The Space of Linear Operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-exponential-function">
-     6.3.2. The Exponential Function
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#operator-calculus">
-     6.3.3. Operator Calculus
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   6.4. Semigroups and Generators
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#operator-semigroups">
-     6.4.1. Operator Semigroups
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generators">
-     6.4.2. Generators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-characterization-of-uniformly-continuous-semigroups">
-     6.4.3. A Characterization of Uniformly Continuous Semigroups
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   6.5. Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solutions">
-   6.6. Solutions
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">6.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">6.2. Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">6.3. Preliminaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-space-of-linear-operators">6.3.1. The Space of Linear Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exponential-function">6.3.2. The Exponential Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operator-calculus">6.3.3. Operator Calculus</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.4. Semigroups and Generators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operator-semigroups">6.4.1. Operator Semigroups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generators">6.4.2. Generators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-characterization-of-uniformly-continuous-semigroups">6.4.3. A Characterization of Uniformly Continuous Semigroups</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">6.6. Solutions</a></li>
+</ul>
                             <p class="logo">
                                 
                                     
-                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo" alt="logo"></a>
+                                    <a href=https://quantecon.org><img src="_static/qe-logo-large.png" class="logo logo-img" alt="logo"></a>
+                                    
                                     
                                 
                             </p>
@@ -197,7 +191,7 @@
 
                         </nav>
 
-                        <div class="page__toc-footer">
+                        <div class="qe-page__toc-footer">
                             
                             
                             <p><a href="#top"><strong>Back to top</strong></a></p>
@@ -207,31 +201,32 @@
 
                 </div>
 
-                <div class="page__header">
+                <div class="qe-page__header">
 
-                    <div class="page__header-copy">
+                    <div class="qe-page__header-copy">
 
-                        <p class="page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
+                        <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="page__header-subheading">Semigroups and Generators</p>
+                        <p class="qe-page__header-subheading">Semigroups and Generators</p>
 
                     </div>
+                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
+                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
-                    <p class="page__header-authors">Thomas J. Sargent & John Stachurski</p>
 
                 </div> <!-- .page__header -->
 
 
 
                 
-                <main class="page__content" role="main">
+                <main class="qe-page__content" role="main">
                     
                     <div>
                         
-  <div class="section" id="semigroups-and-generators">
-<h1><span class="section-number">6. </span>Semigroups and Generators<a class="headerlink" href="#semigroups-and-generators" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="semigroups-and-generators">
+<h1><span class="section-number">6. </span>Semigroups and Generators<a class="headerlink" href="#semigroups-and-generators" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>We have seen in previous lectures that every intensity matrix generates a
 Markov semigroup.</p>
 <p>We have also hinted that the pairing is one-to-one, in a sense to be made precise.</p>
@@ -250,14 +245,14 @@ do have infinite state spaces.</p>
 bound.<a class="footnote-reference brackets" href="#footnotepp" id="id1">1</a></p></li>
 </ul>
 <p>Readers are assumed to have some basic familiarity with <a class="reference external" href="https://en.wikipedia.org/wiki/Banach_space">Banach spaces</a>.</p>
-</div>
-<div class="section" id="motivation">
-<h2><span class="section-number">6.2. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="motivation">
+<h2><span class="section-number">6.2. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
 <p>The general theory of continuous semigroups of operators is motivated by
 the problem of solving linear ODEs in infinite dimensional spaces.<a class="footnote-reference brackets" href="#fnpde" id="id2">2</a></p>
 <p>More specifically, the challenge is to solve initial value problems such as</p>
 <div class="math notranslate nohighlight" id="equation-abscp">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-abscp" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-abscp" title="Permalink to this equation">#</a></span>\[
     x'_t = A x_t,
     \quad x_0 \text{ given}
 \]</div>
@@ -287,12 +282,12 @@ problem is represented as a trajectory <span class="math notranslate nohighlight
 value <span class="math notranslate nohighlight">\(x_0\)</span> under a semigroup of maps <span class="math notranslate nohighlight">\((U_t)\)</span>.</p>
 <p>The operator <span class="math notranslate nohighlight">\(A\)</span> in <a class="reference internal" href="#equation-abscp">(6.1)</a> is called the “generator” of <span class="math notranslate nohighlight">\((U_t)\)</span> and is
 its infinitesimal description.</p>
-</div>
-<div class="section" id="preliminaries">
-<h2><span class="section-number">6.3. </span>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="preliminaries">
+<h2><span class="section-number">6.3. </span>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this heading">#</a></h2>
 <p>Throughout this lecture, <span class="math notranslate nohighlight">\((\BB, \| \cdot \|)\)</span> is a Banach space.</p>
-<div class="section" id="the-space-of-linear-operators">
-<h3><span class="section-number">6.3.1. </span>The Space of Linear Operators<a class="headerlink" href="#the-space-of-linear-operators" title="Permalink to this headline">¶</a></h3>
+<section id="the-space-of-linear-operators">
+<h3><span class="section-number">6.3.1. </span>The Space of Linear Operators<a class="headerlink" href="#the-space-of-linear-operators" title="Permalink to this heading">#</a></h3>
 <p>You will recall that a <strong>linear operator</strong> on <span class="math notranslate nohighlight">\(\BB\)</span> is a map <span class="math notranslate nohighlight">\(A\)</span> from <span class="math notranslate nohighlight">\(\BB\)</span> to
 itself satisfying</p>
 <div class="math notranslate nohighlight">
@@ -303,7 +298,7 @@ itself satisfying</p>
 \]</div>
 <p>The operator <span class="math notranslate nohighlight">\(A\)</span> is called <strong>bounded</strong> if</p>
 <div class="math notranslate nohighlight" id="equation-norml">
-<span class="eqno">(6.2)<a class="headerlink" href="#equation-norml" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-norml" title="Permalink to this equation">#</a></span>\[
     \| A \| := \sup_{g \in \BB, \, \| g \| \leq 1} \| A g \| &lt; \infty
 \]</div>
 <p>This is the usual definition of a <a class="reference external" href="https://en.wikipedia.org/wiki/Bounded_operator">bounded linear operator</a> on a normed linear space.</p>
@@ -324,13 +319,13 @@ as suggested by the notation, is a norm on <span class="math notranslate nohighl
 \| \leq \| A \| \| B\|\)</span> for all <span class="math notranslate nohighlight">\(A, B \in \linop\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(I\)</span> be the identity in <span class="math notranslate nohighlight">\(\linop\)</span>, satisfying <span class="math notranslate nohighlight">\(Ig = g\)</span> for all <span class="math notranslate nohighlight">\(g \in \BB\)</span>.</p>
 <p>(In fact <span class="math notranslate nohighlight">\(\linop\)</span> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Banach_algebra">unital Banach algebra</a> when multiplication is identified with operator composition and <span class="math notranslate nohighlight">\(I\)</span> is adopted as the unit.)</p>
-</div>
-<div class="section" id="the-exponential-function">
-<h3><span class="section-number">6.3.2. </span>The Exponential Function<a class="headerlink" href="#the-exponential-function" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-exponential-function">
+<h3><span class="section-number">6.3.2. </span>The Exponential Function<a class="headerlink" href="#the-exponential-function" title="Permalink to this heading">#</a></h3>
 <p>Given <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the exponential of <span class="math notranslate nohighlight">\(A\)</span> is the element of
 <span class="math notranslate nohighlight">\(\linop\)</span> defined as</p>
 <div class="math notranslate nohighlight" id="equation-opexpo">
-<span class="eqno">(6.3)<a class="headerlink" href="#equation-opexpo" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-opexpo" title="Permalink to this equation">#</a></span>\[
     e^A  
     = \sum_{k \geq 0} \frac{A^k}{k!} 
     = I + A + \frac{A^2}{2!} + \cdots
@@ -346,9 +341,9 @@ associated with continuous time Markov chains.</p>
 <li><p>If <span class="math notranslate nohighlight">\(A \in \linop\)</span>, then <span class="math notranslate nohighlight">\(e^A\)</span> is invertible and <span class="math notranslate nohighlight">\((e^A)^{-1} = e^{-A}\)</span>.</p></li>
 </ul>
 <p>The last fact is easily checked from the previous ones.</p>
-</div>
-<div class="section" id="operator-calculus">
-<h3><span class="section-number">6.3.3. </span>Operator Calculus<a class="headerlink" href="#operator-calculus" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="operator-calculus">
+<h3><span class="section-number">6.3.3. </span>Operator Calculus<a class="headerlink" href="#operator-calculus" title="Permalink to this heading">#</a></h3>
 <p>Consider a function</p>
 <div class="math notranslate nohighlight">
 \[
@@ -359,7 +354,7 @@ operators.</p>
 <p>We say that this function is <strong>differentiable at <span class="math notranslate nohighlight">\(\tau \in \RR_+\)</span></strong> if there exists
 an element <span class="math notranslate nohighlight">\(T\)</span> of <span class="math notranslate nohighlight">\(\linop\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-devlim">
-<span class="eqno">(6.4)<a class="headerlink" href="#equation-devlim" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-devlim" title="Permalink to this equation">#</a></span>\[
     \frac{U_{\tau+h} - U_\tau}{h} \to T 
     \; \text{ as } h \to 0
 \]</div>
@@ -374,13 +369,13 @@ an element <span class="math notranslate nohighlight">\(T\)</span> of <span clas
 <span class="math notranslate nohighlight">\(h \to 0\)</span> in <a class="reference internal" href="#equation-devlim">(6.4)</a> is the right limit.)</p>
 <div class="proof example admonition" id="generators-prf-1">
 <p class="admonition-title"><span class="caption-number">Example 6.1 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(U_t = t V\)</span> for some fixed <span class="math notranslate nohighlight">\(V \in \linop\)</span>, then it is easy to
 see that <span class="math notranslate nohighlight">\(V\)</span> is the derivative of <span class="math notranslate nohighlight">\(t \mapsto U_t\)</span> at every <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>.</p>
-</div>
+</section>
 </div><div class="proof example admonition" id="generators-prf-2">
 <p class="admonition-title"><span class="caption-number">Example 6.2 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>In <a class="reference internal" href="kolmogorov_fwd.html"><span class="doc">our discussion</span></a> of the Kolmogorov forward equation
 when <span class="math notranslate nohighlight">\(S\)</span> is finite, we introduced the derivative of a map <span class="math notranslate nohighlight">\(t
 \mapsto P_t\)</span>, where each <span class="math notranslate nohighlight">\(P_t\)</span> is a matrix on <span class="math notranslate nohighlight">\(S\)</span>.</p>
@@ -388,22 +383,22 @@ when <span class="math notranslate nohighlight">\(S\)</span> is finite, we intro
 <p>This coincides with the operator-theoretic definition in <a class="reference internal" href="#equation-devlim">(6.4)</a> when <span class="math notranslate nohighlight">\(S\)</span>
 is finite, because then the space <span class="math notranslate nohighlight">\(\lL(\ell_1)\)</span>, which consists of all bounded linear operators on <span class="math notranslate nohighlight">\(\ell_1\)</span>, is finite dimensional, and
 hence pointwise and norm convergence coincide.</p>
-</div>
+</section>
 </div><p>Analogous to the matrix and scalar cases, we have the following result:</p>
 <div class="proof lemma admonition" id="diffexpmap">
 <p class="admonition-title"><span class="caption-number">Lemma 6.1 </span> (Differentiability of the Exponential Curve)</p>
-<div class="lemma-content section" id="proof-content">
+<section class="lemma-content" id="proof-content">
 <p>For all <span class="math notranslate nohighlight">\(A \in \linop\)</span>, the exponential curve <span class="math notranslate nohighlight">\(t \mapsto e^{tA}\)</span> is everywhere differentiable and</p>
 <div class="math notranslate nohighlight" id="equation-expdiffer">
-<span class="eqno">(6.5)<a class="headerlink" href="#equation-expdiffer" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-expdiffer" title="Permalink to this equation">#</a></span>\[
     \frac{d}{dt} e^{tA} = e^{tA} A = A e^{tA}
 \]</div>
-</div>
+</section>
 </div><p>The proof is a (solved) exercise (see below).</p>
-</div>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">6.4. </span>Semigroups and Generators<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">6.4. </span>Semigroups and Generators<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>For continuous time Markov chains where the state space <span class="math notranslate nohighlight">\(S\)</span> is finite, we
 saw that Markov semigroups often take the form <span class="math notranslate nohighlight">\(P_t = e^{tQ}\)</span> for some
 intensity matrix <span class="math notranslate nohighlight">\(Q\)</span>.</p>
@@ -416,8 +411,8 @@ e^{tQ}\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.
 some restrictions are placed on the semigroup.</p>
 <p>Our aim is to make these statements precise, starting in an abstract setting
 and then specializing.</p>
-<div class="section" id="operator-semigroups">
-<h3><span class="section-number">6.4.1. </span>Operator Semigroups<a class="headerlink" href="#operator-semigroups" title="Permalink to this headline">¶</a></h3>
+<section id="operator-semigroups">
+<h3><span class="section-number">6.4.1. </span>Operator Semigroups<a class="headerlink" href="#operator-semigroups" title="Permalink to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(U_t\)</span> be an element of <span class="math notranslate nohighlight">\(\linop\)</span> for all <span class="math notranslate nohighlight">\(t \in \RR_+\)</span></p>
 <p>We say that <span class="math notranslate nohighlight">\((U_t)\)</span> is an <strong>evolution semigroup</strong> on <span class="math notranslate nohighlight">\(\linop\)</span> if <span class="math notranslate nohighlight">\(U_0 = I\)</span> and
 <span class="math notranslate nohighlight">\(U_{s + t} = U_s U_t\)</span> for all <span class="math notranslate nohighlight">\(s, t \geq 0\)</span>.</p>
@@ -430,10 +425,10 @@ and then specializing.</p>
 <p>In what follows we abbreviate “uniformly continuous” to UC.<a class="footnote-reference brackets" href="#ucnote" id="id5">4</a></p>
 <div class="proof example admonition" id="ecuc">
 <p class="admonition-title"><span class="caption-number">Example 6.3 </span> (Exponential curves are UC semigroups)</p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for <span class="math notranslate nohighlight">\(t \in \RR_+\)</span> and <span class="math notranslate nohighlight">\(A \in \linop\)</span>, then <span class="math notranslate nohighlight">\((U_t)\)</span>
 is a uniformly continuous semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>.</p>
-</div>
+</section>
 </div><p>The claim that <span class="math notranslate nohighlight">\((U_t)\)</span> is an evolution semigroup follows directly from the
 properties of the exponential function given above.</p>
 <p>Uniform continuity can be established using arguments similar to those in the
@@ -447,9 +442,9 @@ on continuous state spaces are typically <span class="math notranslate nohighlig
 discrete state spaces that fail to be uniformly continuous.</p>
 <p>However, we will soon see that, for most continuous time Markov chains used in
 applications, the semigroups are uniformly continuous.</p>
-</div>
-<div class="section" id="generators">
-<h3><span class="section-number">6.4.2. </span>Generators<a class="headerlink" href="#generators" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="generators">
+<h3><span class="section-number">6.4.2. </span>Generators<a class="headerlink" href="#generators" title="Permalink to this heading">#</a></h3>
 <p>Consider a continuous time Markov chain on a finite state space with intensity
 matrix <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <p>The Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> is fully specified by this infinitesimal
@@ -468,7 +463,7 @@ description <span class="math notranslate nohighlight">\(Q\)</span>, in the sens
 <p>More generally, given a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>, we say that a linear
 operator <span class="math notranslate nohighlight">\(A\)</span> from <span class="math notranslate nohighlight">\(\BB\)</span> to itself is the <strong>generator</strong> of <span class="math notranslate nohighlight">\((U_t)\)</span> if</p>
 <div class="math notranslate nohighlight" id="equation-defgenr">
-<span class="eqno">(6.6)<a class="headerlink" href="#equation-defgenr" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.6)<a class="headerlink" href="#equation-defgenr" title="Permalink to this equation">#</a></span>\[
     A g = \lim_{h \downarrow 0} \frac{U_h g - g}{h} 
 \]</div>
 <p>for all <span class="math notranslate nohighlight">\(g \in \BB\)</span> such that the limit exists.</p>
@@ -490,15 +485,15 @@ circumvented.<a class="footnote-reference brackets" href="#fnhy" id="id6">5</a><
 <p>Even better, for the applications we wish to consider, we can focus on UC
 semigroups, where these problems do not arise.</p>
 <p>The next section gives details.</p>
-</div>
-<div class="section" id="a-characterization-of-uniformly-continuous-semigroups">
-<h3><span class="section-number">6.4.3. </span>A Characterization of Uniformly Continuous Semigroups<a class="headerlink" href="#a-characterization-of-uniformly-continuous-semigroups" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="a-characterization-of-uniformly-continuous-semigroups">
+<h3><span class="section-number">6.4.3. </span>A Characterization of Uniformly Continuous Semigroups<a class="headerlink" href="#a-characterization-of-uniformly-continuous-semigroups" title="Permalink to this heading">#</a></h3>
 <p>We saw in <a class="reference internal" href="#ecuc">Example 6.3</a> that exponential curves are an example
 of a UC semigroup.</p>
 <p>The next theorem tells us that there are no other examples.</p>
 <div class="proof theorem admonition" id="ucsgec">
 <p class="admonition-title"><span class="caption-number">Theorem 6.1 </span> (UC Semigroups are Exponential Curves)</p>
-<div class="theorem-content section" id="proof-content">
+<section class="theorem-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\((U_t)\)</span> is a UC semigroup on <span class="math notranslate nohighlight">\(\BB\)</span>, then there exists an <span class="math notranslate nohighlight">\(A \in \linop\)</span>
 such that <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.  Moreover,</p>
 <ul class="simple">
@@ -506,7 +501,7 @@ such that <span class="math notranslate nohighlight">\(U_t = e^{tA}\)</span> for
 <li><p><span class="math notranslate nohighlight">\(A\)</span> is the generator of <span class="math notranslate nohighlight">\((U_t)\)</span> and</p></li>
 <li><p><span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>.</p></li>
 </ul>
-</div>
+</section>
 </div><p>The last three claims in <a class="reference internal" href="#ucsgec">Theorem 6.1</a> follow directly from the
 first claim.</p>
 <p>The statement <span class="math notranslate nohighlight">\(U_t' = A U_t = U_t A\)</span> is a
@@ -523,60 +518,67 @@ satisfying</p>
 <p>We proved something quite similar in <a class="reference internal" href="memoryless.html#exp_unique">Theorem 1.1</a>, on
 the memoryless property of the exponential function.</p>
 <p>For more discussion of the scalar case, see, for example,
-<span id="id7">[<a class="reference internal" href="zreferences.html#id6">Sahoo and Kannappan, 2011</a>]</span>.</p>
+<span id="id7">[<a class="reference internal" href="zreferences.html#id6" title="Prasanna K Sahoo and Palaniappan Kannappan. Introduction to functional equations. CRC Press, 2011.">Sahoo and Kannappan, 2011</a>]</span>.</p>
 <p>For a full proof of the first claim in <a class="reference internal" href="#ucsgec">Theorem 6.1</a>, in the setting of
 a Banach algebra, see, for
-example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zreferences.html#id7">Bobrowski, 2005</a>]</span>.</p>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">6.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zreferences.html#id7" title="Adam Bobrowski. Functional analysis for probability and stochastic processes: an introduction. Cambridge University Press, 2005.">Bobrowski, 2005</a>]</span>.</p>
+</section>
+</section>
+<section id="exercises">
+<h2><span class="section-number">6.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <div class="exercise admonition" id="generators-ex-1">
+
 <p class="admonition-title"><span class="caption-number">Exercise 6.1 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Prove that <a class="reference internal" href="#equation-expdiffer">(6.5)</a> holds for all <span class="math notranslate nohighlight">\(A \in \linop\)</span>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="generators-ex-2">
+<div class="exercise admonition" id="generators-ex-2">
+
 <p class="admonition-title"><span class="caption-number">Exercise 6.2 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>In many texts, a <span class="math notranslate nohighlight">\(C_0\)</span> semigroup is defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
 such that</p>
 <div class="math notranslate nohighlight" id="equation-czsg2">
-<span class="eqno">(6.7)<a class="headerlink" href="#equation-czsg2" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.7)<a class="headerlink" href="#equation-czsg2" title="Permalink to this equation">#</a></span>\[
     U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
 \]</div>
 <p>Our aim is to show that <a class="reference internal" href="#equation-czsg2">(6.7)</a> implies continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
 in the definition we used above.</p>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Uniform_boundedness_principle">Banach–Steinhaus Theorem</a> can be used to show that, for an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span> satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a>, there exist finite constants <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-sgbound">
-<span class="eqno">(6.8)<a class="headerlink" href="#equation-sgbound" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.8)<a class="headerlink" href="#equation-sgbound" title="Permalink to this equation">#</a></span>\[
     \| U_t \| \leq e^{t\omega} M
     \quad \text{for all } \; t \geq 0
 \]</div>
 <p>Using this and <a class="reference internal" href="#equation-czsg2">(6.7)</a>, show that, for any <span class="math notranslate nohighlight">\(g \in \BB\)</span>, the map <span class="math notranslate nohighlight">\(t \mapsto
 U_t g\)</span> is continuous at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</section>
 </div>
-</div><div class="exercise admonition" id="generators-ex-3">
+<div class="exercise admonition" id="generators-ex-3">
+
 <p class="admonition-title"><span class="caption-number">Exercise 6.3 </span></p>
-<div class="section" id="exercise-content">
+<section id="exercise-content">
 <p>Following on from the previous exercise,
 a UC semigroup is often defined as an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span>
 such that</p>
 <div class="math notranslate nohighlight" id="equation-czsg3">
-<span class="eqno">(6.9)<a class="headerlink" href="#equation-czsg3" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(6.9)<a class="headerlink" href="#equation-czsg3" title="Permalink to this equation">#</a></span>\[
     \| U_t - I \| \to 0 \text{ as } t \to 0 
 \]</div>
 <p>Show that <a class="reference internal" href="#equation-czsg3">(6.9)</a> implies norm continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
 in the definition we used above.</p>
 <p>In particular, show that, for any <span class="math notranslate nohighlight">\(t_n \to t\)</span>, we have
 <span class="math notranslate nohighlight">\(\| U_{t_n} - U_t \| \to 0\)</span>  as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
+</section>
 </div>
-</div></div>
-<div class="section" id="solutions">
-<h2><span class="section-number">6.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="solutions">
+<h2><span class="section-number">6.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <div class="solution admonition" id="generators-solution-8">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="ergodicity.html#ergodicity-ex-1"><span>Solution to </span> Exercise 8.1</a></p>
-<div class="section" id="solution-content">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-1"> Exercise 8.1</a></p>
+<section id="solution-content">
 <p>To show the first equality, fix <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>, take <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and observe that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -588,10 +590,12 @@ in the definition we used above.</p>
 <p>Using the definition of the exponential, this is easily verified,
 completing the proof of the first equality in <a class="reference internal" href="#equation-expdiffer">(6.5)</a>.</p>
 <p>The proof of the second equality is similar.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="generators-solution-9">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="ergodicity.html#ergodicity-ex-2"><span>Solution to </span> Exercise 8.2</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="generators-solution-9">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-2"> Exercise 8.2</a></p>
+<section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a> and let
 <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(6.8)</a>.</p>
 <p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
@@ -605,10 +609,12 @@ completing the proof of the first equality in <a class="reference internal" href
     \to 0
 \]</div>
 <p>as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.  This completes the proof.</p>
+</section>
 </div>
-</div><div class="solution admonition" id="generators-solution-10">
-<p class="admonition-title"><span class="caption-number"></span><a class="reference internal" href="ergodicity.html#ergodicity-ex-3"><span>Solution to </span> Exercise 8.3</a></p>
-<div class="section" id="solution-content">
+<div class="solution admonition" id="generators-solution-10">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-3"> Exercise 8.3</a></p>
+<section id="solution-content">
 <p>The solution is similar to that of the previous exercise.</p>
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg3">(6.9)</a>,
 fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and take <span class="math notranslate nohighlight">\((h_n)\)</span> to be a scalar sequence satisfying <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
@@ -622,15 +628,16 @@ and <a class="reference internal" href="#equation-sgbound">(6.8)</a>,</p>
     \leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
 \]</div>
 <p>This converges to 0 as <span class="math notranslate nohighlight">\(n \to \infty\)</span>, completing our proof.</p>
+</section>
 </div>
-</div><hr class="footnotes docutils" />
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="footnotepp"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>In fact a major concern with queues is that their length does not explode. This issue cannot be properly explored unless the state space is allowed to be infinite.</p>
 </dd>
 <dt class="label" id="fnpde"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>An excellent introduction to operator semigroups, combined with
-applications to PDEs and Markov processes, can be found in <span id="id9">[<a class="reference internal" href="zreferences.html#id5">Applebaum, 2019</a>]</span>.</p>
+applications to PDEs and Markov processes, can be found in <span id="id9">[<a class="reference internal" href="zreferences.html#id5" title="David Applebaum. Semigroups of Linear Operators. Volume 93. Cambridge University Press, 2019.">Applebaum, 2019</a>]</span>.</p>
 </dd>
 <dt class="label" id="fncoex"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p>Convergence of the sum in <a class="reference internal" href="#equation-opexpo">(6.3)</a> follows from boundedness of <span class="math notranslate nohighlight">\(A\)</span> and the fact that <span class="math notranslate nohighlight">\(\linop\)</span> is a Banach space.</p>
@@ -643,11 +650,11 @@ have, by definition of the operator norm,
 <span class="math notranslate nohighlight">\(\sup_{\| g \| \leq 1} \| U_s g - U_t g \| \to 0\)</span> when <span class="math notranslate nohighlight">\(s \to t\)</span>.</p>
 </dd>
 <dt class="label" id="fnhy"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
-<dd><p>An excellent treatment of the general theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, can be found in <span id="id10">[<a class="reference internal" href="zreferences.html#id7">Bobrowski, 2005</a>]</span>.</p>
+<dd><p>An excellent treatment of the general theory of <span class="math notranslate nohighlight">\(C_0\)</span> semigroups, can be found in <span id="id10">[<a class="reference internal" href="zreferences.html#id7" title="Adam Bobrowski. Functional analysis for probability and stochastic processes: an introduction. Cambridge University Press, 2005.">Bobrowski, 2005</a>]</span>.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -661,7 +668,7 @@ have, by definition of the operator norm,
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -675,7 +682,7 @@ have, by definition of the operator norm,
                 
 
 
-                <footer class="page__footer">
+                <footer class="qe-page__footer">
 
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
@@ -688,16 +695,16 @@ have, by definition of the operator norm,
             
 
             
-            <div class="sidebar bd-sidebar inactive" id="site-navigation">
+            <div class="qe-sidebar bd-sidebar inactive" id="site-navigation">
 
-                <div class="sidebar__header">
+                <div class="qe-sidebar__header">
 
 
                     Contents
 
                 </div>
 
-                <nav class="sidebar__nav" id="sidebar-nav" aria-label="Main navigation">
+                <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="memoryless.html">
@@ -748,7 +755,7 @@ have, by definition of the operator norm,
 
                 </nav>
 
-                <div class="sidebar__footer">
+                <div class="qe-sidebar__footer">
 
                 </div>
 
@@ -756,31 +763,30 @@ have, by definition of the operator norm,
             
         </div> <!-- .main -->
 
-        <div class="toolbar">
+        <div class="qe-toolbar">
 
-            <div class="toolbar__inner">
+            <div class="qe-toolbar__inner">
 
-                <ul class="toolbar__main">
+                <ul class="qe-toolbar__main">
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
-                    <!-- <li class="btn__search">
-                        <form action="search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off">
-                            <i data-feather="search"></i>
-                        </form>
-                    </li> -->
                 </ul>
 
-                <ul class="toolbar__links">
+                <ul class="qe-toolbar__links">
+                    <li class="btn__search">
+                        <form action="search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
+                            <i data-feather="search" id="search-icon"></i>
+                        </form>
+                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
-                    <li data-tippy-content="Download Notebook"><a href="_notebooks/generators.ipynb" download><i data-feather="download-cloud"></i></a></li>
-                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
+                    <li data-tippy-content="Download Notebook"><a href="/_notebooks/generators.ipynb" download><i data-feather="download-cloud"></i></a></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/tree/master/ctmc_lectures/generators.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/generators.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -792,7 +798,7 @@ have, by definition of the operator norm,
                     <p>Lecture (PDF)</p>
                 </li>
                 <li class="download-pdf-file">
-                    <a href="_pdf/book.pdf" download><p>Book (PDF)</p></a>
+                    <a href="/_pdf/book.pdf" download><p>Book (PDF)</p></a>
                 </li>
             </ul>
         </div>
@@ -809,18 +815,16 @@ have, by definition of the operator norm,
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
-                    <option value="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/generators.ipynb">BinderHub</option>
-                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/generators.ipynb" data-branch=main>
+                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="https://mybinder.org/v2/gh/QuantEcon/continuous_time_mcs.notebooks/main?urlpath=tree/generators.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -851,9 +855,9 @@ have, by definition of the operator norm,
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "generators";
-                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
-                const urlPath = "tree/continuous_time_mcs.notebooks/generators.ipynb";
-                const branch = "main"
+                const repoURL = "";
+                const urlPath = "";
+                const branch = ""
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists
@@ -906,6 +910,5 @@ have, by definition of the operator norm,
         </div>
 
     </div> <!-- .wrapper-->
-    
   </body>
 </html>
