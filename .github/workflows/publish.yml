@@ -92,7 +92,7 @@ jobs:
         with:
           source-directory: '_build/continuous-time-mcs.notebooks/'
           destination-repository-username: 'QuantEcon'
-          destination-repository-name: 'continuous-time-mcs.notebooks'
+          destination-repository-name: 'continuous_time_mcs.notebooks'
           commit-message: 'auto publishing updates to notebooks'
           destination-github-username: 'quantecon-services'
           user-email: services@quantecon.org
