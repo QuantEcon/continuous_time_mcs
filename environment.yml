@@ -6,13 +6,13 @@ dependencies:
   - anaconda=2024.10
   - pip
   - pip:
-    - jupyter-book==0.15.1
+    - jupyter-book==1.0.3
     - quantecon-book-theme==0.7.6
     - sphinx-tojupyter==0.3.0
     - sphinxext-rediraffe==0.2.7
-    - sphinx-exercise==0.4.1
+    - sphinx-exercise==1.0.1
     - ghp-import==2.1.0
     - sphinxcontrib-youtube
-    - sphinx-proof
+    - sphinx-proof==0.2.0
     - quantecon
 
