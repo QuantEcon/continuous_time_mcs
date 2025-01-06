@@ -129,7 +129,7 @@ In addition to connecting probabilities to the Markov matrix,
 {eq}`markovpropd` says that the process depends on its history only through
 the current state.
 
-We [recall that](https://python.quantecon.org/finite_markov.html#Marginal-Distributions), if $X_t$
+We [recall that](https://python.quantecon.org/finite_markov.html#marginal-distributions), if $X_t$
 has distribution $\phi$, then $X_{t+1}$ has distribution $\phi P$.
 
 Since $\phi$ is understood as a row vector, the meaning is
