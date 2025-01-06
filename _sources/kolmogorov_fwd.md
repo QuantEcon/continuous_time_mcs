@@ -92,7 +92,7 @@ $$
 where distributions are understood as row vectors.
 
 Here's a visualization for the case $S = \{0, 1, 2\}$, so that $\dD$ is the [standard
-simplex](https://en.wikipedia.org/wiki/Simplex#The_standard_simplex) in $\RR^3$.
+simplex](https://en.wikipedia.org/wiki/Simplex) in $\RR^3$.
 
 The initial condition is `` (0, 0, 1)`` and the Markov matrix is
 
