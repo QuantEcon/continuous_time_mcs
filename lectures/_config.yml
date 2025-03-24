@@ -17,7 +17,7 @@ sphinx:
             og_logo_url: https://assets.quantecon.org/img/qe-og-logo.png
             description: These lectures provides a short introduction to continuous time Markov chains designed and written by Thomas J. Sargent and John Stachurski.
             keywords: Python, QuantEcon, Quantitative Economics, Economics, John Stachurski, Schmidt Futures, Markov Chains
-            # google_analytics_id: UA-54984338-10
+            google_analytics_id: G-MVZ2FSB14W
         bibtex_reference_style: author_year
         mathjax3_config:
             tex:
