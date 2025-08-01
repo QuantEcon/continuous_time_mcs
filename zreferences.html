@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>9. Bibliography &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -70,15 +69,15 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -86,22 +85,21 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d6d86bce9979111653c4c495e33499e1796e172a"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
+    <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-MVZ2FSB14W"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -110,7 +108,15 @@
                 gtag('config', 'G-MVZ2FSB14W');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-MVZ2FSB14W');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'zreferences';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -141,6 +147,7 @@
   </head>
 <body>
 
+<!-- Override QuantEcon theme colors -->
 
     <span id="top"></span>
 
@@ -210,51 +217,64 @@
                     <div>
                         
   <section class="tex2jax_ignore mathjax_ignore" id="bibliography">
-<h1><span class="section-number">9. </span>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Bibliography<a class="headerlink" href="#bibliography" title="Link to this heading">#</a></h1>
 <section id="references">
-<h2><span class="section-number">9.1. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id1">
-<dl class="citation">
-<dt class="label" id="id5"><span class="brackets">App19</span></dt>
-<dd><p>David Applebaum. <em>Semigroups of Linear Operators</em>. Volume 93. Cambridge University Press, 2019.</p>
-</dd>
-<dt class="label" id="id7"><span class="brackets">Bob05</span></dt>
-<dd><p>Adam Bobrowski. <em>Functional analysis for probability and stochastic processes: an introduction</em>. Cambridge University Press, 2005.</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets">How17</span></dt>
-<dd><p>Douglas C Howard. <em>Elements of Stochastic Processes: A Computational Approach</em>. FE Press, 2017.</p>
-</dd>
-<dt class="label" id="id3"><span class="brackets">LM94</span></dt>
-<dd><p>Andrzej Lasota and Michael C Mackey. <em>Chaos, fractals, and noise: stochastic aspects of dynamics</em>. Volume 97. Springer Science &amp; Business Media, 1994.</p>
-</dd>
-<dt class="label" id="id9"><span class="brackets">LG16</span></dt>
-<dd><p>Jean-François Le Gall. <em>Brownian motion, martingales, and stochastic calculus</em>. Volume 274. Springer, 2016.</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets">Lig10</span></dt>
-<dd><p>Thomas Milton Liggett. <em>Continuous time Markov processes: an introduction</em>. Volume 113. American Mathematical Soc., 2010.</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets">Nor98</span></dt>
-<dd><p>James R Norris. <em>Markov chains</em>. Number 2. Cambridge University Press, 1998.</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets">Par08</span></dt>
-<dd><p>Etienne Pardoux. <em>Markov processes and applications: algorithms, networks, genome and finance</em>. Volume 796. John Wiley &amp; Sons, 2008.</p>
-</dd>
-<dt class="label" id="id2"><span class="brackets">PichorRTKaminska12</span></dt>
-<dd><p>Katarzyna Pichór, Ryszard Rudnicki, and Marta Tyran-Kamińska. Stochastic semigroups and their applications to biological models. <em>Demonstratio Mathematica</em>, 45(2):463–494, 2012.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets">SK11</span></dt>
-<dd><p>Prasanna K Sahoo and Palaniappan Kannappan. <em>Introduction to functional equations</em>. CRC Press, 2011.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets">Sta09</span></dt>
-<dd><p>John Stachurski. <em>Economic dynamics: theory and computation</em>. MIT Press, 2009.</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets">Str13</span></dt>
-<dd><p>Daniel W Stroock. <em>An introduction to Markov processes</em>. Volume 230. Springer Science &amp; Business Media, 2013.</p>
-</dd>
-<dt class="label" id="id10"><span class="brackets">Wal12</span></dt>
-<dd><p>John B Walsh. <em>Knowing the odds: an introduction to probability</em>. Volume 139. American Mathematical Soc., 2012.</p>
-</dd>
-</dl>
+<div role="list" class="citation-list">
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>App19<span class="fn-bracket">]</span></span>
+<p>David Applebaum. <em>Semigroups of Linear Operators</em>. Volume 93. Cambridge University Press, 2019.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bob05<span class="fn-bracket">]</span></span>
+<p>Adam Bobrowski. <em>Functional analysis for probability and stochastic processes: an introduction</em>. Cambridge University Press, 2005.</p>
+</div>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>How17<span class="fn-bracket">]</span></span>
+<p>Douglas C Howard. <em>Elements of Stochastic Processes: A Computational Approach</em>. FE Press, 2017.</p>
+</div>
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LM94<span class="fn-bracket">]</span></span>
+<p>Andrzej Lasota and Michael C Mackey. <em>Chaos, fractals, and noise: stochastic aspects of dynamics</em>. Volume 97. Springer Science &amp; Business Media, 1994.</p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LG16<span class="fn-bracket">]</span></span>
+<p>Jean-François Le Gall. <em>Brownian motion, martingales, and stochastic calculus</em>. Volume 274. Springer, 2016.</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Lig10<span class="fn-bracket">]</span></span>
+<p>Thomas Milton Liggett. <em>Continuous time Markov processes: an introduction</em>. Volume 113. American Mathematical Soc., 2010.</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Nor98<span class="fn-bracket">]</span></span>
+<p>James R Norris. <em>Markov chains</em>. Number 2. Cambridge University Press, 1998.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Par08<span class="fn-bracket">]</span></span>
+<p>Etienne Pardoux. <em>Markov processes and applications: algorithms, networks, genome and finance</em>. Volume 796. John Wiley &amp; Sons, 2008.</p>
+</div>
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PichorRTKaminska12<span class="fn-bracket">]</span></span>
+<p>Katarzyna Pichór, Ryszard Rudnicki, and Marta Tyran-Kamińska. Stochastic semigroups and their applications to biological models. <em>Demonstratio Mathematica</em>, 45(2):463–494, 2012.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SK11<span class="fn-bracket">]</span></span>
+<p>Prasanna K Sahoo and Palaniappan Kannappan. <em>Introduction to functional equations</em>. CRC Press, 2011.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Sta09<span class="fn-bracket">]</span></span>
+<p>John Stachurski. <em>Economic dynamics: theory and computation</em>. MIT Press, 2009.</p>
+</div>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Str13<span class="fn-bracket">]</span></span>
+<p>Daniel W Stroock. <em>An introduction to Markov processes</em>. Volume 230. Springer Science &amp; Business Media, 2013.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Wal12<span class="fn-bracket">]</span></span>
+<p>John B Walsh. <em>Knowing the odds: an introduction to probability</em>. Volume 139. American Mathematical Soc., 2012.</p>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -290,6 +310,8 @@
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
                     <p>Creative Commons License &ndash; This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International.</p>
+
+                    <p>A theme by <a href="https://quantecon.org">QuantEcon</a></p>
 
                 </footer> <!-- .page__footer -->
 
@@ -488,7 +510,7 @@
                 function setLaunchServer() {
                   launchNotebookLink.removeAttribute("style")
                   if ( localStorage.launcherType == 'launcher-private' ) {
-                    let repoPrefix = "/jupyter/hub/user-redirect/git-pull?repo=" + repoURL + "&branch=" + branch + "&urlpath=" + urlPath;
+                    let repoPrefix = "/user-redirect/git-pull?repo=" + repoURL + "&branch=" + branch + "&urlpath=" + urlPath;
                     launcherPrivateValue = launcherPrivate.value
                     if (!launcherPrivateValue) {
                         launchNotebookLink.removeAttribute("href")

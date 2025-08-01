@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1. Memoryless Distributions &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -70,15 +69,15 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -86,22 +85,21 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d6d86bce9979111653c4c495e33499e1796e172a"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
+    <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-MVZ2FSB14W"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -110,7 +108,15 @@
                 gtag('config', 'G-MVZ2FSB14W');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-MVZ2FSB14W');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'memoryless';</script>
@@ -144,6 +150,7 @@
   </head>
 <body>
 
+<!-- Override QuantEcon theme colors -->
 
     <span id="top"></span>
 
@@ -226,7 +233,7 @@
                     <div>
                         
   <section class="tex2jax_ignore mathjax_ignore" id="memoryless-distributions">
-<h1><span class="section-number">1. </span>Memoryless Distributions<a class="headerlink" href="#memoryless-distributions" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1. </span>Memoryless Distributions<a class="headerlink" href="#memoryless-distributions" title="Link to this heading">#</a></h1>
 <p>In addition to what’s in Anaconda, this lecture will need the following libraries:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
@@ -234,31 +241,31 @@
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
+<details class="admonition hide below-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (0.8.0)
-Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (0.60.0)
-Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.26.4)
-Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (2.32.3)
-Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.1)
-Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.2)
-Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.43.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.7)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2.2.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2024.8.30)
-Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from sympy-&gt;quantecon) (1.3.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.8.2)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.15.3)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.13.3)
+Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.44.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2.3.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2025.4.26)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from sympy-&gt;quantecon) (1.3.0)
 </pre></div>
 </div>
 </div>
 </details>
 </div>
 <section id="overview">
-<h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Markov processes are, by definition, forgetful.</p>
 <p>In particular, for any Markov processes, the distribution over future outcomes
 depends only on the current state, rather than the entire history.</p>
@@ -274,18 +281,18 @@ distribution.</p>
 <p>We will use the following imports:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
-<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
-<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">binom</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">quantecon</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">qe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">njit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">binom</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="the-geometric-distribution">
-<h2><span class="section-number">1.2. </span>The Geometric Distribution<a class="headerlink" href="#the-geometric-distribution" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.2. </span>The Geometric Distribution<a class="headerlink" href="#the-geometric-distribution" title="Link to this heading">#</a></h2>
 <p>Consider betting on a roulette wheel and suppose that red has come up four times in a row.</p>
 <p>Since five reds in a row is an unlikely event, many people instinctively feel
 that black is more likely on the fifth spin — “Surely black will come up this time!”</p>
@@ -294,11 +301,11 @@ difference to the outcome of the next spin.</p>
 <p>(Many casinos offer an unlimited supply of free alcoholic beverages in order to discourage this kind of rational analysis.)</p>
 <p>A mathematical restatement of this phenomenon is: the geometric distribution is memoryless.</p>
 <section id="memorylessness">
-<h3><span class="section-number">1.2.1. </span>Memorylessness<a class="headerlink" href="#memorylessness" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.2.1. </span>Memorylessness<a class="headerlink" href="#memorylessness" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable supported on the nonnegative integers <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
 <p>We say that <span class="math notranslate nohighlight">\(X\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_distribution">geometrically distributed</a> if, for some <span class="math notranslate nohighlight">\(\theta\)</span> satisfying <span class="math notranslate nohighlight">\(0 \leq \theta \leq 1\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-geodist">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-geodist" title="Permalink to this equation">#</a></span>\[ 
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-geodist" title="Link to this equation">#</a></span>\[ 
     \PP\{X = k\} = (1-\theta)^k \theta 
     \qquad (k = 0, 1, \ldots)
 \]</div>
@@ -316,7 +323,7 @@ difference to the outcome of the next spin.</p>
 is <strong>memoryless</strong>.</p>
 <p>In particular, given any nonnegative integer <span class="math notranslate nohighlight">\(m\)</span>, we have</p>
 <div class="math notranslate nohighlight" id="equation-memgeo">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-memgeo" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-memgeo" title="Link to this equation">#</a></span>\[
     \PP \{X = m + 1 \,|\, X &gt; m \} = \theta
 \]</div>
 <p>In other words, regardless of how long we have seen only red outcomes, the
@@ -338,7 +345,7 @@ distribution to obtain.</p>
 </section>
 </section>
 <section id="the-exponential-distribution">
-<h2><span class="section-number">1.3. </span>The Exponential Distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span>The Exponential Distribution<a class="headerlink" href="#the-exponential-distribution" title="Link to this heading">#</a></h2>
 <p>Later, when we construct continuous time Markov chains, we will need to
 specify the distribution of the holding times, which are the time intervals
 between jumps.</p>
@@ -354,7 +361,7 @@ a poor fit for the continuous time case.</p>
     \qquad (y \geq 0)
 \]</div>
 <section id="from-geometric-to-exponential">
-<span id="geomtoexp"></span><h3><span class="section-number">1.3.1. </span>From Geometric to Exponential<a class="headerlink" href="#from-geometric-to-exponential" title="Permalink to this heading">#</a></h3>
+<span id="geomtoexp"></span><h3><span class="section-number">1.3.1. </span>From Geometric to Exponential<a class="headerlink" href="#from-geometric-to-exponential" title="Link to this heading">#</a></h3>
 <p>The exponential distribution can be regarded as the “limit” of the geometric
 distribution.</p>
 <p>To illustrate, let us suppose that</p>
@@ -397,7 +404,7 @@ h = t_i \to t\)</span>, we obtain, for large <span class="math notranslate nohig
 <p>In this sense, the exponential is the limit of the geometric distribution.</p>
 </section>
 <section id="memoryless-property-of-the-exponential-distribution">
-<h3><span class="section-number">1.3.2. </span>Memoryless Property of the Exponential Distribution<a class="headerlink" href="#memoryless-property-of-the-exponential-distribution" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.3.2. </span>Memoryless Property of the Exponential Distribution<a class="headerlink" href="#memoryless-property-of-the-exponential-distribution" title="Link to this heading">#</a></h3>
 <p>The exponential distribution is the only memoryless distribution supported on <span class="math notranslate nohighlight">\(\RR_+\)</span>, as the next theorem attests.</p>
 <div class="proof theorem admonition" id="exp_unique">
 <p class="admonition-title"><span class="caption-number">Theorem 1.1 </span> (Characterization of the Exponential Distribution)</p>
@@ -406,7 +413,7 @@ h = t_i \to t\)</span>, we obtain, for large <span class="math notranslate nohig
 <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> such that <span class="math notranslate nohighlight">\(X \sim \Exp(\lambda)\)</span> if and only if, for all
 positive <span class="math notranslate nohighlight">\(s, t\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-memexpo">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-memexpo" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-memexpo" title="Link to this equation">#</a></span>\[
     \PP \{X &gt; s + t \,|\, X &gt; s \} = \PP \{X &gt; t\}
 \]</div>
 </section>
@@ -436,7 +443,7 @@ the fact that <span class="math notranslate nohighlight">\(X\)</span> is support
 third is <a class="reference internal" href="#equation-memexpo">(1.3)</a>.</p>
 <p>From these three properties we will show that</p>
 <div class="math notranslate nohighlight" id="equation-implex">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-implex" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-implex" title="Link to this equation">#</a></span>\[
     f(t) = f(1)^t  \;\; \forall \, t \geq 0
 \]</div>
 <p>This is sufficient to prove the claim because then <span class="math notranslate nohighlight">\(\lambda := - \ln f(1)\)</span> is a positive real number (by property 2) and, moreover,</p>
@@ -469,7 +476,7 @@ converging to <span class="math notranslate nohighlight">\(t\)</span> with <span
 </div>
 </section>
 <section id="failure-of-memorylessness">
-<span id="fail-mem"></span><h3><span class="section-number">1.3.3. </span>Failure of Memorylessness<a class="headerlink" href="#failure-of-memorylessness" title="Permalink to this heading">#</a></h3>
+<span id="fail-mem"></span><h3><span class="section-number">1.3.3. </span>Failure of Memorylessness<a class="headerlink" href="#failure-of-memorylessness" title="Link to this heading">#</a></h3>
 <p>We know from the proceeding section that any distribution on <span class="math notranslate nohighlight">\(\RR_+\)</span> other
 than the exponential distribution fails to be memoryless.</p>
 <p>Here’s an example that helps to clarify (although the support of the distribution is a proper subset of <span class="math notranslate nohighlight">\(\RR_+\)</span>).</p>
@@ -500,7 +507,7 @@ probability of waiting another hour is relatively small.</p>
 </section>
 </section>
 <section id="sums-of-exponentials">
-<h2><span class="section-number">1.4. </span>Sums of Exponentials<a class="headerlink" href="#sums-of-exponentials" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>Sums of Exponentials<a class="headerlink" href="#sums-of-exponentials" title="Link to this heading">#</a></h2>
 <p>A random variable <span class="math notranslate nohighlight">\(W\)</span> on <span class="math notranslate nohighlight">\(\RR_+\)</span> is said to have the <a class="reference external" href="https://en.wikipedia.org/wiki/Erlang_distribution">Erlang
 distribution</a> if its
 density has the form</p>
@@ -514,20 +521,20 @@ density has the form</p>
 parameters respectively.</p>
 <p>The next figure shows the shape for two parameterizations.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Erlang</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Erlang</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">λ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">λ</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">λ</span><span class="p">,</span> <span class="n">n</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
         <span class="n">n</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">λ</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">λ</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">λ</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
@@ -545,18 +552,12 @@ parameters respectively.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_6500/1026889215.py:17: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-  ax.plot(t_grid, e(t_grid), label=f&#39;$n={e.n}, \lambda={e.λ}$&#39;)
-</pre></div>
-</div>
-<img alt="_images/d8dd6f91e6f624e280e95e193636b5ab9935b0e8a4de889d38912f2d17957bea.png" src="_images/d8dd6f91e6f624e280e95e193636b5ab9935b0e8a4de889d38912f2d17957bea.png" />
+<img alt="_images/87342c76a041b9224adef9df723e6577f29c4acea85ec22681733aa1479c1312.png" src="_images/87342c76a041b9224adef9df723e6577f29c4acea85ec22681733aa1479c1312.png" />
 </div>
 </div>
 <p>The CDF of the Erlang distribution is</p>
 <div class="math notranslate nohighlight" id="equation-erlcdf">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-erlcdf" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-erlcdf" title="Link to this equation">#</a></span>\[
     F(t) 
     = \PP\{W \leq t\}
     = 1 - \sum_{k=0}^{n-1} \frac{(\lambda t)^k}{k!} e^{-\lambda t}
@@ -572,7 +573,7 @@ distribution with shape <span class="math notranslate nohighlight">\(n\)</span> 
 </div><p>This connects to Poisson process theory, as we shall soon see.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="exercise admonition" id="memoryless-ex-1">
 
 <p class="admonition-title"><span class="caption-number">Exercise 1.1 </span></p>
@@ -604,7 +605,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 </section>
 <section id="solutions">
-<h2><span class="section-number">1.6. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.6. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
@@ -648,7 +649,7 @@ solution block.</p>
 <span class="n">t_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 
 <span class="nd">@njit</span>
-<span class="k">def</span> <span class="nf">draw_X</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1_000</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_X</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1_000</span><span class="p">):</span>
     <span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">λ</span><span class="p">)</span>
@@ -672,7 +673,7 @@ solution block.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9a494c35c06e29374ab32e9398115739d39e7bcb3555e5c1097d9fdf1e985c4f.png" src="_images/9a494c35c06e29374ab32e9398115739d39e7bcb3555e5c1097d9fdf1e985c4f.png" />
+<img alt="_images/8fd3b8e189ba3cbd264f4a701703e530b663fc86e173287c036893eb2c040bb9.png" src="_images/8fd3b8e189ba3cbd264f4a701703e530b663fc86e173287c036893eb2c040bb9.png" />
 </div>
 </div>
 <div class="solution admonition" id="memoryless-solution-6">
@@ -698,7 +699,7 @@ solution block.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b98a776988abeae0c72bd260cec4389bd3e348f6044be2755c612a95142ee0ca.png" src="_images/b98a776988abeae0c72bd260cec4389bd3e348f6044be2755c612a95142ee0ca.png" />
+<img alt="_images/ca07aabd6cd74a93afe7faeacbcf97cfce7a353b9edc97a0b531506462c44c3c.png" src="_images/ca07aabd6cd74a93afe7faeacbcf97cfce7a353b9edc97a0b531506462c44c3c.png" />
 </div>
 </div>
 </section>
@@ -735,6 +736,8 @@ solution block.</p>
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
                     <p>Creative Commons License &ndash; This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International.</p>
+
+                    <p>A theme by <a href="https://quantecon.org">QuantEcon</a></p>
 
                 </footer> <!-- .page__footer -->
 
@@ -933,7 +936,7 @@ solution block.</p>
                 function setLaunchServer() {
                   launchNotebookLink.removeAttribute("style")
                   if ( localStorage.launcherType == 'launcher-private' ) {
-                    let repoPrefix = "/jupyter/hub/user-redirect/git-pull?repo=" + repoURL + "&branch=" + branch + "&urlpath=" + urlPath;
+                    let repoPrefix = "/user-redirect/git-pull?repo=" + repoURL + "&branch=" + branch + "&urlpath=" + urlPath;
                     launcherPrivateValue = launcherPrivate.value
                     if (!launcherPrivateValue) {
                         launchNotebookLink.removeAttribute("href")

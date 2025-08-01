@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. The Kolmogorov Backward Equation &#8212; Continuous Time Markov Chains</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -70,15 +69,15 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css?v=982b99e0" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -86,22 +85,21 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d6d86bce9979111653c4c495e33499e1796e172a"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
+    <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-MVZ2FSB14W"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -110,7 +108,15 @@
                 gtag('config', 'G-MVZ2FSB14W');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-MVZ2FSB14W');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'kolmogorov_bwd';</script>
@@ -144,6 +150,7 @@
   </head>
 <body>
 
+<!-- Override QuantEcon theme colors -->
 
     <span id="top"></span>
 
@@ -232,7 +239,7 @@
                     <div>
                         
   <section class="tex2jax_ignore mathjax_ignore" id="the-kolmogorov-backward-equation">
-<h1><span class="section-number">4. </span>The Kolmogorov Backward Equation<a class="headerlink" href="#the-kolmogorov-backward-equation" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>The Kolmogorov Backward Equation<a class="headerlink" href="#the-kolmogorov-backward-equation" title="Link to this heading">#</a></h1>
 <p>In addition to what’s in Anaconda, this lecture will need the following libraries:</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
@@ -240,31 +247,31 @@
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
+<details class="admonition hide below-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (0.8.0)
-Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (0.60.0)
-Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.26.4)
-Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (2.32.3)
-Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.1)
-Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from quantecon) (1.13.2)
-Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.43.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (3.7)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2.2.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from requests-&gt;quantecon) (2024.8.30)
-Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.12/site-packages (from sympy-&gt;quantecon) (1.3.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.8.2)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.15.3)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.13.3)
+Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.44.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2.3.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2025.4.26)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from sympy-&gt;quantecon) (1.3.0)
 </pre></div>
 </div>
 </div>
 </details>
 </div>
 <section id="overview">
-<h2><span class="section-number">4.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>As models become more complex, deriving analytical representations of the
 Markov semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> becomes harder.</p>
 <p>This is analogous to the idea that solutions to continuous time models often
@@ -281,21 +288,21 @@ chains.</p>
 <p>We will use the following imports</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">quantecon</span> <span class="k">as</span> <span class="nn">qe</span>
-<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">quantecon</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">qe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">njit</span>
 
-<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">expm</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">expm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">binom</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="state-dependent-jump-intensities">
-<span id="sdji"></span><h2><span class="section-number">4.2. </span>State Dependent Jump Intensities<a class="headerlink" href="#state-dependent-jump-intensities" title="Permalink to this heading">#</a></h2>
+<span id="sdji"></span><h2><span class="section-number">4.2. </span>State Dependent Jump Intensities<a class="headerlink" href="#state-dependent-jump-intensities" title="Link to this heading">#</a></h2>
 <p>As we have seen, continuous time Markov chains jump between states, and hence can
 have the form</p>
 <div class="math notranslate nohighlight">
@@ -318,7 +325,7 @@ with the state.</p>
 in our description of continuous time Markov chains, as
 clarified below.</p>
 <section id="motivation">
-<h3><span class="section-number">4.2.1. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.1. </span>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h3>
 <p>As a motivating example, recall <a class="reference internal" href="markov_prop.html#inventory-dynam"><span class="std std-ref">the inventory model</span></a>,
 where we assumed that the wait time for the next customer was equal
 to the wait time for new inventory.</p>
@@ -326,7 +333,7 @@ to the wait time for new inventory.</p>
 <p>When we relax it, the jump intensities depend on the state.</p>
 </section>
 <section id="jump-chain-algorithm">
-<span id="jumpchainalgo"></span><h3><span class="section-number">4.2.2. </span>Jump Chain Algorithm<a class="headerlink" href="#jump-chain-algorithm" title="Permalink to this heading">#</a></h3>
+<span id="jumpchainalgo"></span><h3><span class="section-number">4.2.2. </span>Jump Chain Algorithm<a class="headerlink" href="#jump-chain-algorithm" title="Link to this heading">#</a></h3>
 <p>We start with three primitives</p>
 <ol class="arabic simple">
 <li><p>An initial condition <span class="math notranslate nohighlight">\(\psi\)</span>,</p></li>
@@ -362,7 +369,7 @@ drawn independently.</p>
 </section>
 </section>
 <section id="computing-the-semigroup">
-<h2><span class="section-number">4.3. </span>Computing the Semigroup<a class="headerlink" href="#computing-the-semigroup" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Computing the Semigroup<a class="headerlink" href="#computing-the-semigroup" title="Link to this heading">#</a></h2>
 <p>For the jump process <span class="math notranslate nohighlight">\((X_t)\)</span> with time varying intensities described in the
 jump chain algorithm, calculating the Markov semigroup is not a trivial exercise.</p>
 <p>The approach we adopt is</p>
@@ -375,14 +382,14 @@ to work with.</p></li>
 </ol>
 <p>The differential equation in question has a special name:  the Kolmogorov backward equation.</p>
 <section id="an-integral-equation">
-<h3><span class="section-number">4.3.1. </span>An Integral Equation<a class="headerlink" href="#an-integral-equation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>An Integral Equation<a class="headerlink" href="#an-integral-equation" title="Link to this heading">#</a></h3>
 <p>Here is the first step in the sequence listed above.</p>
 <div class="proof lemma admonition" id="lemma-1">
 <p class="admonition-title"><span class="caption-number">Lemma 4.1 </span> (An Integral Equation)</p>
 <section class="lemma-content" id="proof-content">
 <p>The semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> of the jump chain with rate function <span class="math notranslate nohighlight">\(\lambda\)</span> and Markov matrix <span class="math notranslate nohighlight">\(K\)</span> obeys the integral equation</p>
 <div class="math notranslate nohighlight" id="equation-kbinteg">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-kbinteg" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-kbinteg" title="Link to this equation">#</a></span>\[
     P_t(x, y) = e^{-t \lambda(x)} I(x, y)
     + \lambda(x) 
       \int_0^t (K P_{t-\tau})(x, y) e^{- \tau \lambda(x)} d \tau
@@ -395,7 +402,7 @@ to work with.</p></li>
 <div class="proof admonition" id="proof">
 <p>Proof. Conditioning implicitly on <span class="math notranslate nohighlight">\(X_0 = x\)</span>, the semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> must satisfy</p>
 <div class="math notranslate nohighlight" id="equation-pt-split">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-pt-split" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-pt-split" title="Link to this equation">#</a></span>\[
     P_t(x, y) 
     = \PP\{X_t = y\}
     = \PP\{X_t = y, \; J_1 &gt; t \}
@@ -403,7 +410,7 @@ to work with.</p></li>
 \]</div>
 <p>Regarding the first term on the right hand side of <a class="reference internal" href="#equation-pt-split">(4.2)</a>, we have</p>
 <div class="math notranslate nohighlight" id="equation-pt-first">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-pt-first" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-pt-first" title="Link to this equation">#</a></span>\[
     \PP\{X_t = y, \; J_1 &gt; t \}
         = I(x, y) P\{J_1 &gt; t \}
         = I(x, y) e^{- t \lambda(x)}
@@ -443,7 +450,7 @@ to work with.</p></li>
 </div>
 </section>
 <section id="kolmogorov-s-differential-equation">
-<h3><span class="section-number">4.3.2. </span>Kolmogorov’s Differential Equation<a class="headerlink" href="#kolmogorov-s-differential-equation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>Kolmogorov’s Differential Equation<a class="headerlink" href="#kolmogorov-s-differential-equation" title="Link to this heading">#</a></h3>
 <p>We have now confirmed that the semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> associated with the jump
 chain process <span class="math notranslate nohighlight">\((X_t)\)</span> satisfies <a class="reference internal" href="#equation-kbinteg">(4.1)</a>.</p>
 <p>Equation <a class="reference internal" href="#equation-kbinteg">(4.1)</a> is important but we can simplify it further without
@@ -454,7 +461,7 @@ losing information by taking the time derivative.</p>
 <section class="theorem-content" id="proof-content">
 <p>The semigroup <span class="math notranslate nohighlight">\((P_t)\)</span> of the jump chain with rate function <span class="math notranslate nohighlight">\(\lambda\)</span> and Markov matrix <span class="math notranslate nohighlight">\(K\)</span> satisfies the <strong>Kolmogorov backward equation</strong></p>
 <div class="math notranslate nohighlight" id="equation-kolbackeq">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-kolbackeq" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-kolbackeq" title="Link to this equation">#</a></span>\[
     P'_t = Q P_t 
     \quad \text{where } \;
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
@@ -471,19 +478,19 @@ element, with respect to <span class="math notranslate nohighlight">\(t\)</span>
 important exercise (see below).</p>
 </section>
 <section id="exponential-solution">
-<h3><span class="section-number">4.3.3. </span>Exponential Solution<a class="headerlink" href="#exponential-solution" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.3. </span>Exponential Solution<a class="headerlink" href="#exponential-solution" title="Link to this heading">#</a></h3>
 <p>The Kolmogorov backward equation is a matrix-valued differential equation.</p>
 <p>Recall that, for a scalar differential equation <span class="math notranslate nohighlight">\(y'_t = a y_t\)</span> with constant
 <span class="math notranslate nohighlight">\(a\)</span> and initial condition <span class="math notranslate nohighlight">\(y_0\)</span>, the solution is <span class="math notranslate nohighlight">\(y_t = e^{ta} y_0\)</span>.</p>
 <p>This, along with <span class="math notranslate nohighlight">\(P_0 = I\)</span>, encourages us to guess that the solution to
 Kolmogorov’s backward equation <a class="reference internal" href="#equation-kolbackeq">(4.4)</a> is</p>
 <div class="math notranslate nohighlight" id="equation-expsol">
-<span class="eqno">(4.5)<a class="headerlink" href="#equation-expsol" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-expsol" title="Link to this equation">#</a></span>\[
     P_t = e^{t Q} 
 \]</div>
 <p>where the right hand side is the <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_exponential">matrix exponential</a>, with definition</p>
 <div class="math notranslate nohighlight" id="equation-expofun">
-<span class="eqno">(4.6)<a class="headerlink" href="#equation-expofun" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-expofun" title="Link to this equation">#</a></span>\[
     e^{tQ} 
     = \sum_{k \geq 0} \frac{1}{k!} (tQ)^k
     = I + tQ + \frac{t^2}{2!} Q^2 + \cdots
@@ -491,14 +498,14 @@ Kolmogorov’s backward equation <a class="reference internal" href="#equation-k
 <p>Working element by element, it is not difficult to confirm that
 the derivative of the exponential function <span class="math notranslate nohighlight">\(t \mapsto e^{tQ}\)</span> is</p>
 <div class="math notranslate nohighlight" id="equation-expoderiv">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-expoderiv" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-expoderiv" title="Link to this equation">#</a></span>\[
     \frac{d}{dt} e^{t Q} = Q e^{t Q} = e^{t Q} Q
 \]</div>
 <p>Hence, differentiating <a class="reference internal" href="#equation-expsol">(4.5)</a> gives <span class="math notranslate nohighlight">\(P'_t = Q e^{t Q} = Q P_t\)</span>, which
 convinces us that the exponential solution satisfies <a class="reference internal" href="#equation-kolbackeq">(4.4)</a>.</p>
 <p>Notice that our solution</p>
 <div class="math notranslate nohighlight" id="equation-psolq">
-<span class="eqno">(4.8)<a class="headerlink" href="#equation-psolq" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-psolq" title="Link to this equation">#</a></span>\[
     P_t = e^{t Q} 
     \quad \text{where } \;
     Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
@@ -512,10 +519,10 @@ constant jump intensity <span class="math notranslate nohighlight">\(\lambda\)</
 </section>
 </section>
 <section id="properties-of-the-solution">
-<h2><span class="section-number">4.4. </span>Properties of the Solution<a class="headerlink" href="#properties-of-the-solution" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>Properties of the Solution<a class="headerlink" href="#properties-of-the-solution" title="Link to this heading">#</a></h2>
 <p>Let’s investigate further the properties of the exponential solution.</p>
 <section id="checking-the-transition-semigroup-properties">
-<h3><span class="section-number">4.4.1. </span>Checking the Transition Semigroup Properties<a class="headerlink" href="#checking-the-transition-semigroup-properties" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.4.1. </span>Checking the Transition Semigroup Properties<a class="headerlink" href="#checking-the-transition-semigroup-properties" title="Link to this heading">#</a></h3>
 <p>While we have confirmed that <span class="math notranslate nohighlight">\(P_t = e^{t Q}\)</span> solves the Kolmogorov backward
 equation, we still need to check that this solution is a Markov semigroup.</p>
 <div class="proof lemma admonition" id="jctosg">
@@ -537,7 +544,7 @@ semigroup on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <p>As a small exercise, you can check that, with <span class="math notranslate nohighlight">\(1\)</span>
 representing a column vector of ones, the following is true</p>
 <div class="math notranslate nohighlight" id="equation-zrsnec">
-<span class="eqno">(4.9)<a class="headerlink" href="#equation-zrsnec" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.9)<a class="headerlink" href="#equation-zrsnec" title="Link to this equation">#</a></span>\[
     Q \text{ has zero row sums }
     \iff
     Q^k 1 = 0 \text{ for all } k \geq 1
@@ -581,7 +588,7 @@ continuous, and hence <span class="math notranslate nohighlight">\(P_t = e^{tQ} 
 is indeed a Markov semigroup.</p>
 </section>
 <section id="uniqueness">
-<h3><span class="section-number">4.4.2. </span>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.4.2. </span>Uniqueness<a class="headerlink" href="#uniqueness" title="Link to this heading">#</a></h3>
 <p>Might there be another, entirely different Markov semigroup that also
 satisfies the Kolmogorov backward equation?</p>
 <p>The answer is no:  linear ODEs in finite dimensional vector space with
@@ -591,7 +598,7 @@ have unique solutions.</p>
 </section>
 </section>
 <section id="application-the-inventory-model">
-<h2><span class="section-number">4.5. </span>Application: The Inventory Model<a class="headerlink" href="#application-the-inventory-model" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.5. </span>Application: The Inventory Model<a class="headerlink" href="#application-the-inventory-model" title="Link to this heading">#</a></h2>
 <p>Let us look at a modified version of the inventory model where jump
 intensities depend on the state.</p>
 <p>In particular, the wait time for new inventory will now be exponential at rate
@@ -617,7 +624,7 @@ histogramming them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span>
-<span class="k">def</span> <span class="nf">draw_X</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">X_0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_X</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">X_0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate one draw of X_T given X_0.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -641,7 +648,7 @@ histogramming them.</p>
 
 
 <span class="nd">@njit</span>
-<span class="k">def</span> <span class="nf">independent_draws</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_draws</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">independent_draws</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_draws</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="s2">&quot;Generate a vector of independent draws of X_T.&quot;</span>
 
     <span class="n">draws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">num_draws</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
@@ -670,14 +677,14 @@ histogramming them.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5314f8226669e8a4657833ca476c2ae6e1bd1174215547e40df33a815442f1e.png" src="_images/b5314f8226669e8a4657833ca476c2ae6e1bd1174215547e40df33a815442f1e.png" />
+<img alt="_images/a2bb888ca3fefe60064072955faa76233deff728fb6dbdf3ae9eb9e0a95d7fa2.png" src="_images/a2bb888ca3fefe60064072955faa76233deff728fb6dbdf3ae9eb9e0a95d7fa2.png" />
 </div>
 </div>
 <p>If you experiment with the code above, you will see that the large amount of
 mass on zero is due to the low arrival rate <span class="math notranslate nohighlight">\(\gamma\)</span> for inventory.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">4.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.6. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="exercise admonition" id="kolmogorov-bwd-1">
 
 <p class="admonition-title"><span class="caption-number">Exercise 4.1 </span></p>
@@ -715,7 +722,7 @@ Markov semigroup satisfying the backward equation <span class="math notranslate 
 </div>
 </section>
 <section id="solutions">
-<h2><span class="section-number">4.7. </span>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.7. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
@@ -759,7 +766,7 @@ solution block.</p>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">I</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
 
-<span class="k">def</span> <span class="nf">P_t</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">P_t</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">ψ</span> <span class="o">@</span> <span class="n">expm</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">Q</span><span class="p">)</span>
 
 <span class="n">ψ_0</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
@@ -775,7 +782,7 @@ solution block.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5a2f57c24a8d01dd0de2f0a88dc2ecb83c20c284647062b059e1c5d38d98f203.png" src="_images/5a2f57c24a8d01dd0de2f0a88dc2ecb83c20c284647062b059e1c5d38d98f203.png" />
+<img alt="_images/cd9fb75b6b4327ea4423b65172c1840c3638d31b4ee5c293a3c4834471ca2f0f.png" src="_images/cd9fb75b6b4327ea4423b65172c1840c3638d31b4ee5c293a3c4834471ca2f0f.png" />
 </div>
 </div>
 <div class="solution admonition" id="kolmogorov_bwd-solution-8">
@@ -785,7 +792,7 @@ solution block.</p>
 <p>One can easily verify that, when <span class="math notranslate nohighlight">\(f\)</span> is a differentiable function and <span class="math notranslate nohighlight">\(\alpha &gt;
 0\)</span>, we have</p>
 <div class="math notranslate nohighlight" id="equation-gdiff">
-<span class="eqno">(4.10)<a class="headerlink" href="#equation-gdiff" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.10)<a class="headerlink" href="#equation-gdiff" title="Link to this equation">#</a></span>\[
     g(t) = e^{- t \alpha} f(t)
     \quad \implies \quad
     g'(t) = e^{- t \alpha} f'(t) - \alpha g(t)
@@ -793,7 +800,7 @@ solution block.</p>
 <p>Note also that, with the change of variable <span class="math notranslate nohighlight">\(s = t - \tau\)</span>, we can rewrite
 <a class="reference internal" href="#equation-kbinteg">(4.1)</a> as</p>
 <div class="math notranslate nohighlight" id="equation-kbinteg2">
-<span class="eqno">(4.11)<a class="headerlink" href="#equation-kbinteg2" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-kbinteg2" title="Link to this equation">#</a></span>\[
     P_t(x, y) =
     e^{-t \lambda(x)}
     \left\{
@@ -880,6 +887,8 @@ now yield <span class="math notranslate nohighlight">\(\hat P_t = P_t\)</span>.<
                     <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
 
                     <p>Creative Commons License &ndash; This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International.</p>
+
+                    <p>A theme by <a href="https://quantecon.org">QuantEcon</a></p>
 
                 </footer> <!-- .page__footer -->
 
@@ -1078,7 +1087,7 @@ now yield <span class="math notranslate nohighlight">\(\hat P_t = P_t\)</span>.<
                 function setLaunchServer() {
                   launchNotebookLink.removeAttribute("style")
                   if ( localStorage.launcherType == 'launcher-private' ) {
-                    let repoPrefix = "/jupyter/hub/user-redirect/git-pull?repo=" + repoURL + "&branch=" + branch + "&urlpath=" + urlPath;
+                    let repoPrefix = "/user-redirect/git-pull?repo=" + repoURL + "&branch=" + branch + "&urlpath=" + urlPath;
                     launcherPrivateValue = launcherPrivate.value
                     if (!launcherPrivateValue) {
                         launchNotebookLink.removeAttribute("href")
