@@ -512,6 +512,7 @@ both hold. (These are the Kolmogorov forward and backward equations.)
 ```
 
 ```{solution} kolmogorov-fwd-1
+:class: dropdown
 
 Let $(P_t)$ be a Markov semigroup and let $Q$ be as defined in the statement
 of the exercise.
@@ -560,6 +561,7 @@ Show that $Q$ is an intensity matrix and that {eq}`genfl` holds.
 ```
 
 ```{solution} kolmogorov-fwd-2
+:class: dropdown
 
 Let $Q$ be as defined in {eq}`qeqagain`.
 
@@ -589,6 +591,7 @@ Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
 ```
 
 ```{solution} kolmogorov-fwd-3
+:class: dropdown
 
 Suppose that $Q$ is an intensity matrix, fix $t \geq 0$ and set $P_t = e^{tQ}$.
 

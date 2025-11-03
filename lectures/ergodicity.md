@@ -639,6 +639,8 @@ for this semigroup, every state $x$ is accessible from itself.
 ```
 
 ```{solution} ergodicity-ex-1
+:class: dropdown
+
 The statement is true.  With $t=0$ we have $P_t(x,x) = I(x,x) = 1 > 0$.
 ```
 
@@ -663,6 +665,8 @@ distribution.
 ```
 
 ```{solution} ergodicity-ex-2
+:class: dropdown
+
 Suppose to the contrary that $\phi \in \dD$ and $\phi Q = 0$.
 
 Then, for any $j \geq 1$,
@@ -701,6 +705,8 @@ Confirm that {prf:ref}`sdrift` implies {prf:ref}`sfinite`.
 ```
 
 ```{solution} ergodicity-ex-3
+:class: dropdown
+
 Let $(P_t)$ be an irreducible UC Markov semigroup and let $S$ be finite.
 
 Pick any positive constants $M, \epsilon$ and set $v = M$ and $F = S$.

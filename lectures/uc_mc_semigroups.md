@@ -507,6 +507,8 @@ Let $P$ be a Markov matrix on $S$ and identify it with the linear operator in
 ```
 
 ```{solution} uc-mc-semigroups-ex-1
+:class: dropdown
+
 To determine the norm of $P$, we use the definition in {eq}`norml`.
 
 If $f \in \ell_1$ and $\| f \| \leq 1$, then 
@@ -545,6 +547,8 @@ Prove the claim in {prf:ref}`scintcon`.
 ```
 
 ```{solution} uc-mc-semigroups-ex-2
+:class: dropdown
+
 Here is one solution.
 
 Let $Q$ be an intensity matrix on $S$.
@@ -591,6 +595,7 @@ $\ell_1$ via {eq}`imislo`.
 ```
 
 ```{solution} uc-mc-semigroups-ex-3
+:class: dropdown
 
 Linearity is obvious so we focus on boundedness.
 
@@ -619,6 +624,7 @@ we have $K^m(i, j) = \mathbb 1\{j = i + m\}$ for any $i, j \in \ZZ_+$.
 ```
 
 ```{solution} uc-mc-semigroups-ex-4
+:class: dropdown
 
 The statement $K^m(i, j) = \mathbb 1\{j = i + m\}$ holds by definition when
 $m=1$.
@@ -648,6 +654,7 @@ Prove that, in addition, this decomposition $(\lambda, K)$ satisfies {eq}`jcinma
 ```
 
 ```{solution} uc-mc-semigroups-ex-5
+:class: dropdown
 
 Let $Q$ be an intensity matrix and let $(\lambda, K)$ be the jump chain
 decomposition of $Q$.

@@ -445,6 +445,8 @@ Experiment with different values of $n$ and $\theta$.
 ```
 
 ```{solution} poisson-ex-1
+:class: dropdown
+
 Here is one solution.
 
 The figure shows that the fit is already good with a modest sample size.
@@ -497,6 +499,8 @@ plt.show()
 
 
 ```{solution} poisson-ex-2
+:class: dropdown
+
 Here is one solution.  It shows that the approximation is good when $n$ is
 large and $\theta$ is small.
 ```

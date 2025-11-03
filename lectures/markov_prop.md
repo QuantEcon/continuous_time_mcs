@@ -914,6 +914,7 @@ Construct two different random variables with this distribution.
 ```
 
 ```{solution} markov-prop-1
+:class: dropdown
 
 This is easy.
 
@@ -940,6 +941,8 @@ Hints
 ```
 
 ```{solution} markov-prop-2
+:class: dropdown
+
 Fixing $s, t \in \RR_+$ and $j \leq k$, we have 
 
 $$
@@ -998,6 +1001,8 @@ distribution $\mathbf P_\psi^n$.
 ```
 
 ```{solution} markov-prop-3
+:class: dropdown
+
 Let $(X_t)$ be a Markov chain satisfying {eq}`markovpropd` and $X_0 \sim \psi$.
 
 When $n=0$, we have $\mathbf P_\psi^n = \mathbf P_\psi^0 = \psi$, and this
@@ -1042,6 +1047,8 @@ The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1
 ```
 
 ```{solution} markov-prop-4
+:class: dropdown
+
 Here is one approach.
 
 (The statements involving ``glue`` are specific to this book and can be deleted

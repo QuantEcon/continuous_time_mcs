@@ -433,6 +433,7 @@ Prove that {eq}`expdiffer` holds for all $A \in \linop$.
 ```
 
 ```{solution} generators-ex-1
+:class: dropdown
 
 To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
 
@@ -475,6 +476,7 @@ U_t g$ is continuous at all $t$.
 ```
 
 ```{solution} generators-ex-2
+:class: dropdown
 
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
 $\omega$ and $M$ be as in {eq}`sgbound`.
@@ -514,6 +516,7 @@ $\| U_{t_n} - U_t \| \to 0$  as $n \to \infty$.
 ```
 
 ```{solution} generators-ex-3
+:class: dropdown
 
 The solution is similar to that of the previous exercise.
 

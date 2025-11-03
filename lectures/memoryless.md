@@ -414,6 +414,7 @@ Show that $X \sim \Exp(\lambda)$.
 ```
 
 ```{solution} memoryless-ex-1
+:class: dropdown
 
 Let $X$ be constructed as in the statement of the exercise and fix $t > 0$.
 
@@ -454,6 +455,8 @@ Are the results in line with those of the previous exercise?
 ```
 
 ```{solution} memoryless-ex-2
+:class: dropdown
+
 Here's one solution, starting with 1,000 draws.
 ```
 
@@ -486,6 +489,8 @@ plt.show()
 ```
 
 ```{solution} memoryless-ex-2
+:class: dropdown
+
 **Solution Continued:**
 
 The fit is already very close, which matches with the theory in Exercise 1.

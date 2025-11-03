@@ -523,6 +523,8 @@ Try to generate the same figure using {eq}`psolq` instead, modifying code from
 ````
 
 ```{solution} kolmogorov-bwd-1
+:class: dropdown
+
 Here is one solution:
 ```
 
@@ -576,6 +578,7 @@ Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`
 ```
 
 ```{solution} kolmogorov-bwd-2
+:class: dropdown
 
 One can easily verify that, when $f$ is a differentiable function and $\alpha >
 0$, we have
@@ -633,6 +636,7 @@ Try to supply a proof.
 ```
 
 ```{solution} kolmogorov-bwd-3
+:class: dropdown
 
 Here is one proof of uniqueness.
 
