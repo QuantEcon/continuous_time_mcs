@@ -1046,14 +1046,14 @@ Try to produce your own version of the figure {ref}`flow_fig`
 The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
 ```
 
-```{solution} markov-prop-4
+```{solution-start} markov-prop-4
 :class: dropdown
+```
 
 Here is one approach.
 
 (The statements involving ``glue`` are specific to this book and can be deleted
 by most readers.  They store the output so it can be displayed elsewhere.)
-```
 
 ```{code-cell} ipython3
 α = 0.6
@@ -1101,4 +1101,7 @@ glue("flow_fig", fig, display=False)
 plt.savefig("_static/lecture_specific/markov_prop/flow_fig.png")
 
 plt.show()
+```
+
+```{solution-end}
 ```

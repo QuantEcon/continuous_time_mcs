@@ -520,13 +520,13 @@ The calculation was done by simulating independent draws and histogramming.
 
 Try to generate the same figure using {eq}`psolq` instead, modifying code from
 {doc}`our lecture <markov_prop>` on the Markov property.
-````
+```
 
-```{solution} kolmogorov-bwd-1
+```{solution-start} kolmogorov-bwd-1
 :class: dropdown
+```
 
 Here is one solution:
-```
 
 ```{code-cell} ipython3
 α = 0.6
@@ -569,6 +569,9 @@ ax.bar(range(n), ψ_T, width=0.8, alpha=0.6)
 ax.set_xlabel("inventory", fontsize=14)
 
 plt.show()
+```
+
+```{solution-end}
 ```
 
 ```{exercise}

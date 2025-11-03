@@ -454,11 +454,12 @@ Is the fit good?  How about if the number of draws is increased?
 Are the results in line with those of the previous exercise?
 ```
 
-```{solution} memoryless-ex-2
+
+```{solution-start} memoryless-ex-2
 :class: dropdown
+```
 
 Here's one solution, starting with 1,000 draws.
-```
 
 ```{code-cell} ipython3
 λ = 0.5 
@@ -488,15 +489,11 @@ ax.legend()
 plt.show()
 ```
 
-```{solution} memoryless-ex-2
-:class: dropdown
-
 **Solution Continued:**
 
 The fit is already very close, which matches with the theory in Exercise 1.
 
 The two lines become indistinguishable as $n$ is increased further.
-```
 
 ```{code-cell} ipython3
 
@@ -513,3 +510,5 @@ draws = draw_X(n=10_000)
 
 empirical_exceedance = [np.mean(draws > t) for t in t_grid]
 
+```{solution-end}
+```

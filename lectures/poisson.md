@@ -444,15 +444,15 @@ Investigate this relationship by plotting the distributions side by side.
 Experiment with different values of $n$ and $\theta$.
 ```
 
-```{solution} poisson-ex-1
+```{solution-start} poisson-ex-1
 :class: dropdown
+```
 
 Here is one solution.
 
 The figure shows that the fit is already good with a modest sample size.
 
 Increasing the sample size will further improve the fit.
-```
 
 ```{code-cell} ipython3
 λ = 0.5
@@ -497,13 +497,25 @@ ax.legend(fontsize=12)
 plt.show()
 ```
 
+```{solution-end}
+```
 
-```{solution} poisson-ex-2
+
+```{exercise}
+:label: poisson-ex-2
+
+Investigate how well $\Binomial(n, \theta) \approx \Poisson(n \theta)$ holds
+for different values of $n$ and $\theta$.
+
+Plot the distributions side by side for various choices.
+```
+
+```{solution-start} poisson-ex-2
 :class: dropdown
+```
 
 Here is one solution.  It shows that the approximation is good when $n$ is
 large and $\theta$ is small.
-```
 
 ```{code-cell} ipython3
 def binomial(k, n, p):
@@ -528,6 +540,9 @@ for n, θ, ax in zip(n_vals, θ_vals, axes.flatten()):
 
 fig.tight_layout()
 plt.show()
+```
+
+```{solution-end}
 ```
 
 
