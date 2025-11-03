@@ -489,14 +489,11 @@ ax.legend()
 plt.show()
 ```
 
-**Solution Continued:**
-
-The fit is already very close, which matches with the theory in Exercise 1.
+The fit is already very close, which matches with the theory in [](memoryless-ex-1).
 
 The two lines become indistinguishable as $n$ is increased further.
 
 ```{code-cell} ipython3
-
 fig, ax = plt.subplots()
 draws = draw_X(n=10_000)
 empirical_exceedance = [np.mean(draws > t) for t in t_grid]
@@ -506,9 +503,6 @@ ax.legend()
 
 plt.show()
 ```
-draws = draw_X(n=10_000)
-
-empirical_exceedance = [np.mean(draws > t) for t in t_grid]
 
 ```{solution-end}
 ```
