@@ -511,37 +511,6 @@ $$
 both hold. (These are the Kolmogorov forward and backward equations.)
 ```
 
-```{exercise}
-:label: kolmogorov-fwd-2
-
-Recall {ref}`our model <sdji>` of jump chains with state-dependent jump
-intensities given by rate function $x \mapsto \lambda(x)$.
-
-After a wait time with exponential rate $\lambda(x) \in (0, \infty)$, the
-state transitions from $x$ to $y$ with probability $K(x,y)$.
-
-We found that the associated semigroup $(P_t)$ satisfies the Kolmogorov
-backward equation $P'_t = Q P_t$ with
-
-$$
-    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
-$$ (qeqagain)
-
-Show that $Q$ is an intensity matrix and that {eq}`genfl` holds.
-```
-
-```{exercise}
-:label: kolmogorov-fwd-3
-
-Prove {prf:ref}`intvsmk` by adapting the arguments in {prf:ref}`jctosg`.
-(This is nontrivial but worth at least trying.)
-
-Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
-```
-
-
-## Solutions
-
 ```{solution} kolmogorov-fwd-1
 
 Let $(P_t)$ be a Markov semigroup and let $Q$ be as defined in the statement
@@ -571,6 +540,24 @@ $$
 also holds.  Taking $h \downarrow 0$ gives the Kolmogorov backward equation.
 ```
 
+```{exercise}
+:label: kolmogorov-fwd-2
+
+Recall {ref}`our model <sdji>` of jump chains with state-dependent jump
+intensities given by rate function $x \mapsto \lambda(x)$.
+
+After a wait time with exponential rate $\lambda(x) \in (0, \infty)$, the
+state transitions from $x$ to $y$ with probability $K(x,y)$.
+
+We found that the associated semigroup $(P_t)$ satisfies the Kolmogorov
+backward equation $P'_t = Q P_t$ with
+
+$$
+    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+$$ (qeqagain)
+
+Show that $Q$ is an intensity matrix and that {eq}`genfl` holds.
+```
 
 ```{solution} kolmogorov-fwd-2
 
@@ -592,6 +579,14 @@ $$
 $$
 ```
 
+```{exercise}
+:label: kolmogorov-fwd-3
+
+Prove {prf:ref}`intvsmk` by adapting the arguments in {prf:ref}`jctosg`.
+(This is nontrivial but worth at least trying.)
+
+Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
+```
 
 ```{solution} kolmogorov-fwd-3
 

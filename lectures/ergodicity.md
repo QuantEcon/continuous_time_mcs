@@ -638,6 +638,10 @@ Let $(P_t)$ be a Markov semigroup.  True or false:
 for this semigroup, every state $x$ is accessible from itself.
 ```
 
+```{solution} ergodicity-ex-1
+The statement is true.  With $t=0$ we have $P_t(x,x) = I(x,x) = 1 > 0$.
+```
+
 ```{exercise}
 :label: ergodicity-ex-2
 Let $(\lambda_k)$ be a bounded non-increasing sequence in $(0, \infty)$.
@@ -657,19 +661,6 @@ $$
 Show that $(P_t)$, the corresponding Markov semigroup, has no stationary
 distribution.
 ```
-
-
-```{exercise}
-:label: ergodicity-ex-3
-Confirm that {prf:ref}`sdrift` implies {prf:ref}`sfinite`.
-```
-
-## Solutions
-
-```{solution} ergodicity-ex-1
-The statement is true.  With $t=0$ we have $P_t(x,x) = I(x,x) = 1 > 0$.
-```
-
 
 ```{solution} ergodicity-ex-2
 Suppose to the contrary that $\phi \in \dD$ and $\phi Q = 0$.
@@ -703,6 +694,11 @@ But $\dD$ contains no non-decreasing functions when the state space is infinite.
 Contradiction.
 ```
 
+
+```{exercise}
+:label: ergodicity-ex-3
+Confirm that {prf:ref}`sdrift` implies {prf:ref}`sfinite`.
+```
 
 ```{solution} ergodicity-ex-3
 Let $(P_t)$ be an irreducible UC Markov semigroup and let $S$ be finite.

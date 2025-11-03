@@ -522,31 +522,6 @@ Try to generate the same figure using {eq}`psolq` instead, modifying code from
 {doc}`our lecture <markov_prop>` on the Markov property.
 ````
 
-```{exercise}
-:label: kolmogorov-bwd-2
-
-Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`.
-```
-
-```{exercise}
-:label: kolmogorov-bwd-3
-
-We claimed above that the solution $P_t = e^{t Q}$ is the unique
-Markov semigroup satisfying the backward equation $P'_t = Q P_t$.
-
-Try to supply a proof.
-
-(This is not an easy exercise but worth thinking about in any case.)
-```
-
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
-```
-
 ```{solution} kolmogorov-bwd-1
 Here is one solution:
 ```
@@ -594,6 +569,11 @@ ax.set_xlabel("inventory", fontsize=14)
 plt.show()
 ```
 
+```{exercise}
+:label: kolmogorov-bwd-2
+
+Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`.
+```
 
 ```{solution} kolmogorov-bwd-2
 
@@ -641,6 +621,16 @@ $$
 which is identical to {eq}`kolbackeq`.
 ```
 
+```{exercise}
+:label: kolmogorov-bwd-3
+
+We claimed above that the solution $P_t = e^{t Q}$ is the unique
+Markov semigroup satisfying the backward equation $P'_t = Q P_t$.
+
+Try to supply a proof.
+
+(This is not an easy exercise but worth thinking about in any case.)
+```
 
 ```{solution} kolmogorov-bwd-3
 
@@ -668,6 +658,6 @@ where, in the second last equality, we used {eq}`expoderiv`.
 
 Hence $V_s$ is constant, so our previous observations $V_0 = \hat P_t$ and $V_t = P_t$
 now yield $\hat P_t = P_t$.
-
+```
 Since $t$ was arbitrary, the proof is now done.
 ```

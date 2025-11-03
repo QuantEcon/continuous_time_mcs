@@ -413,29 +413,6 @@ In particular, consider the random variable $X$ defined as follows:
 Show that $X \sim \Exp(\lambda)$.
 ```
 
-```{exercise}
-:label: memoryless-ex-2
-
-Fix $\lambda = 0.5$ and $s=1.0$.
-
-Simulate 1,000 draws of $X$ using the algorithm above.
-
-Plot the fraction of the sample exceeding $t$ for each $t \geq 0$ (on a grid)
-and compare to $t \mapsto e^{-\lambda t}$.
-
-Is the fit good?  How about if the number of draws is increased?
-
-Are the results in line with those of the previous exercise?
-```
-
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
-```
-
 ```{solution} memoryless-ex-1
 
 Let $X$ be constructed as in the statement of the exercise and fix $t > 0$.
@@ -461,6 +438,20 @@ $$
 Either way, we have $X \sim \Exp(\lambda)$, as was to be shown.
 ```
 
+```{exercise}
+:label: memoryless-ex-2
+
+Fix $\lambda = 0.5$ and $s=1.0$.
+
+Simulate 1,000 draws of $X$ using the algorithm above.
+
+Plot the fraction of the sample exceeding $t$ for each $t \geq 0$ (on a grid)
+and compare to $t \mapsto e^{-\lambda t}$.
+
+Is the fit good?  How about if the number of draws is increased?
+
+Are the results in line with those of the previous exercise?
+```
 
 ```{solution} memoryless-ex-2
 Here's one solution, starting with 1,000 draws.
@@ -513,5 +504,7 @@ ax.legend()
 
 plt.show()
 ```
+draws = draw_X(n=10_000)
 
+empirical_exceedance = [np.mean(draws > t) for t in t_grid]
 

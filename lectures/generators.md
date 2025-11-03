@@ -432,6 +432,24 @@ example, Chapter 7 of {cite}`bobrowski2005functional`.
 Prove that {eq}`expdiffer` holds for all $A \in \linop$.
 ```
 
+```{solution} generators-ex-1
+
+To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
+
+$$
+    e^{(t+h)A} - e^{tA} - e^{tA} A
+    = e^{tA} (e^{hA} - I - A)
+$$
+
+Since the norm on $\linop$ is submultiplicative, it suffices to show that 
+$\| e^{hA} - I - A \| = o(h)$ as $h \to 0$.
+
+Using the definition of the exponential, this is easily verified,
+completing the proof of the first equality in {eq}`expdiffer`.
+
+The proof of the second equality is similar.
+```
+
 ```{exercise}
 :label: generators-ex-2
 
@@ -456,6 +474,27 @@ Using this and {eq}`czsg2`, show that, for any $g \in \BB$, the map $t \mapsto
 U_t g$ is continuous at all $t$.
 ```
 
+```{solution} generators-ex-2
+
+Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
+$\omega$ and $M$ be as in {eq}`sgbound`.
+
+Pick any $g \in \BB$,  $t > 0$ and $h_n \downarrow 0$ as $n \to \infty$.  
+
+On one hand, $U_{t+ h_n} g = U_{h_n} U_t g \to U_t g$ by {eq}`czsg2`.
+
+On the other hand, from {eq}`sgbound` and the definition of the operator norm,
+
+$$
+    \| U_{t-h_n} g - U_t g\|
+    = \|  U_{t-h_n} ( g - U_{h_n} g) \|
+    \leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
+    	o 0
+$$
+
+as $n \to \infty$.  This completes the proof.
+```
+
 ```{exercise}
 :label: generators-ex-3
 
@@ -474,49 +513,7 @@ In particular, show that, for any $t_n \to t$, we have
 $\| U_{t_n} - U_t \| \to 0$  as $n \to \infty$.
 ```
 
-
-## Solutions
-
-```{solution} ergodicity-ex-1
-
-To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
-
-$$
-    e^{(t+h)A} - e^{tA} - e^{tA} A
-    = e^{tA} (e^{hA} - I - A)
-$$
-
-Since the norm on $\linop$ is submultiplicative, it suffices to show that 
-$\| e^{hA} - I - A \| = o(h)$ as $h \to 0$.
-
-Using the definition of the exponential, this is easily verified,
-completing the proof of the first equality in {eq}`expdiffer`.
-
-The proof of the second equality is similar.
-```
-
-```{solution} ergodicity-ex-2
-
-Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
-$\omega$ and $M$ be as in {eq}`sgbound`.
-
-Pick any $g \in \BB$,  $t > 0$ and $h_n \downarrow 0$ as $n \to \infty$.  
-
-On one hand, $U_{t+ h_n} g = U_{h_n} U_t g \to U_t g$ by {eq}`czsg2`.
-
-On the other hand, from {eq}`sgbound` and the definition of the operator norm,
-
-$$
-    \| U_{t-h_n} g - U_t g\|
-    = \|  U_{t-h_n} ( g - U_{h_n} g) \|
-    \leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
-    \to 0
-$$
-
-as $n \to \infty$.  This completes the proof.
-```
-
-```{solution} ergodicity-ex-3
+```{solution} generators-ex-3
 
 The solution is similar to that of the previous exercise.
 

@@ -913,55 +913,6 @@ probability $0.5$.
 Construct two different random variables with this distribution.
 ```
 
-
-```{exercise}
-:label: markov-prop-2
-
-Show by direct calculation that the Poisson matrices $(P_t)$ defined in 
-{eq}`poissemi` satisfy the semigroup property {eq}`chapkol_ct2`.
-
-Hints
-
-* Recall that $P_t(j, k) = 0$ whenever $j > k$.
-* Consider using the [binomial formula](https://en.wikipedia.org/wiki/Binomial_theorem).
-```
-
-
-```{exercise}
-:label: markov-prop-3
-
-Consider the distribution over $S^{n+1}$ previously shown in {eq}`mathjointd`, which is
-
-$$
-    \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
-        = \psi(x_0)
-        P(x_0, x_1)
-        \times \cdots \times
-        P(x_{n-1}, x_n)
-$$ 
-
-Show that, for any Markov chain $(X_t)$ satisfying {eq}`markovpropd`
-and $X_0 \sim \psi$, the restriction $(X_0, \ldots, X_n)$ has joint
-distribution $\mathbf P_\psi^n$.
-```
-
-
-```{exercise}
-:label: markov-prop-4
-
-Try to produce your own version of the figure {ref}`flow_fig`
-
-The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
-```
-
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
-```
-
 ```{solution} markov-prop-1
 
 This is easy.
@@ -975,6 +926,18 @@ Alternatively, we could take $Z$ to be standard normal and set $X=0$ if $Z <
 0$ and $1$ otherwise.
 ```
 
+
+```{exercise}
+:label: markov-prop-2
+
+Show by direct calculation that the Poisson matrices $(P_t)$ defined in 
+{eq}`poissemi` satisfy the semigroup property {eq}`chapkol_ct2`.
+
+Hints
+
+* Recall that $P_t(j, k) = 0$ whenever $j > k$.
+* Consider using the [binomial formula](https://en.wikipedia.org/wiki/Binomial_theorem).
+```
 
 ```{solution} markov-prop-2
 Fixing $s, t \in \RR_+$ and $j \leq k$, we have 
@@ -1016,6 +979,24 @@ Hence {eq}`chapkol_ct2` holds, and the semigroup property is satisfied.
 ```
 
 
+```{exercise}
+:label: markov-prop-3
+
+Consider the distribution over $S^{n+1}$ previously shown in {eq}`mathjointd`, which is
+
+$$
+    \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
+        = \psi(x_0)
+        P(x_0, x_1)
+        \times \cdots \times
+        P(x_{n-1}, x_n)
+$$ 
+
+Show that, for any Markov chain $(X_t)$ satisfying {eq}`markovpropd`
+and $X_0 \sim \psi$, the restriction $(X_0, \ldots, X_n)$ has joint
+distribution $\mathbf P_\psi^n$.
+```
+
 ```{solution} markov-prop-3
 Let $(X_t)$ be a Markov chain satisfying {eq}`markovpropd` and $X_0 \sim \psi$.
 
@@ -1032,7 +1013,7 @@ $$
     \PP \{X_0 = x_0, \ldots, X_n = x_n\}
     = \PP \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
     \\
-        \times \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
+        	imes \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
 $$
 
 From the Markov property and the induction hypothesis, the right hand side is
@@ -1044,13 +1025,21 @@ $$
         P (x_{n-1}, x_n )
         \psi(x_0)
         P(x_0, x_1)
-        \times \cdots \times
+        	imes \cdots \times
         P(x_{n-2}, x_{n-1})
 $$
 
 The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
 ```
 
+
+```{exercise}
+:label: markov-prop-4
+
+Try to produce your own version of the figure {ref}`flow_fig`
+
+The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
+```
 
 ```{solution} markov-prop-4
 Here is one approach.

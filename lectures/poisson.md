@@ -444,14 +444,6 @@ Investigate this relationship by plotting the distributions side by side.
 Experiment with different values of $n$ and $\theta$.
 ```
 
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
-```
-
 ```{solution} poisson-ex-1
 Here is one solution.
 

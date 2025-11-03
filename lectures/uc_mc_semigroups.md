@@ -506,41 +506,6 @@ Let $P$ be a Markov matrix on $S$ and identify it with the linear operator in
 {eq}`mmismo`.  Verify the claims in {eq}`propp`.
 ```
 
-```{exercise}
-:label: uc-mc-semigroups-ex-2
-
-Prove the claim in {prf:ref}`scintcon`.
-```
-
-```{exercise}
-:label: uc-mc-semigroups-ex-3
-
-Confirm that $Q$ defined in {eq}`poissonq` induces a bounded linear operator on
-$\ell_1$ via {eq}`imislo`.
-```
-
-```{exercise}
-:label: uc-mc-semigroups-ex-4
-
-Let $K$ be defined on $\ZZ_+ \times \ZZ_+$ by $K(i, j) = \mathbb 1\{j = i + 1\}$. 
-
-Show that, with $K^m$ representing the $m$-th matrix product of $K$ with itself, 
-we have $K^m(i, j) = \mathbb 1\{j = i + m\}$ for any $i, j \in \ZZ_+$.
-```
-
-```{exercise}
-:label: uc-mc-semigroups-ex-5
-
-Let $Q$ be any intensity matrix on $S$.
-
-Prove that the jump chain decomposition of $Q$ is in fact a jump chain pair.
-
-Prove that, in addition, this decomposition $(\lambda, K)$ satisfies {eq}`jcinmat`.
-```
-
-
-## Solutions
-
 ```{solution} uc-mc-semigroups-ex-1
 To determine the norm of $P$, we use the definition in {eq}`norml`.
 
@@ -573,6 +538,11 @@ $$
 Hence $\phi P \in \dD$ as claimed.
 ```
 
+```{exercise}
+:label: uc-mc-semigroups-ex-2
+
+Prove the claim in {prf:ref}`scintcon`.
+```
 
 ```{solution} uc-mc-semigroups-ex-2
 Here is one solution.
@@ -613,6 +583,12 @@ $$
 Contradiction.
 ```
 
+```{exercise}
+:label: uc-mc-semigroups-ex-3
+
+Confirm that $Q$ defined in {eq}`poissonq` induces a bounded linear operator on
+$\ell_1$ via {eq}`imislo`.
+```
 
 ```{solution} uc-mc-semigroups-ex-3
 
@@ -633,6 +609,14 @@ Hence $\| fQ \| \leq 2 \lambda \|f\|$, which implies that $Q \in \lL(\ell_1)$
 as required.
 ```
 
+```{exercise}
+:label: uc-mc-semigroups-ex-4
+
+Let $K$ be defined on $\ZZ_+ \times \ZZ_+$ by $K(i, j) = \mathbb 1\{j = i + 1\}$. 
+
+Show that, with $K^m$ representing the $m$-th matrix product of $K$ with itself, 
+we have $K^m(i, j) = \mathbb 1\{j = i + m\}$ for any $i, j \in \ZZ_+$.
+```
 
 ```{solution} uc-mc-semigroups-ex-4
 
@@ -653,6 +637,15 @@ $$
 Applying the definition $K(i, j) = \mathbb 1\{j = i + 1\}$ completes verification of the claim.
 ```
 
+```{exercise}
+:label: uc-mc-semigroups-ex-5
+
+Let $Q$ be any intensity matrix on $S$.
+
+Prove that the jump chain decomposition of $Q$ is in fact a jump chain pair.
+
+Prove that, in addition, this decomposition $(\lambda, K)$ satisfies {eq}`jcinmat`.
+```
 
 ```{solution} uc-mc-semigroups-ex-5
 
