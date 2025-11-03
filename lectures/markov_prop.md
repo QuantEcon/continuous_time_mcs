@@ -913,6 +913,18 @@ probability $0.5$.
 Construct two different random variables with this distribution.
 ```
 
+```{solution} markov-prop-1
+:class: dropdown
+
+One example is to take $U$ to be uniform on $(0, 1)$ and set $X=0$ if $U <
+0.5$ and $1$ otherwise.
+
+Then $X$ has the desired distribution.
+
+Alternatively, we could take $Z$ to be standard normal and set $X=0$ if $Z <
+0$ and $1$ otherwise.
+```
+
 
 ```{exercise}
 :label: markov-prop-2
@@ -926,57 +938,9 @@ Hints
 * Consider using the [binomial formula](https://en.wikipedia.org/wiki/Binomial_theorem).
 ```
 
-
-```{exercise}
-:label: markov-prop-3
-
-Consider the distribution over $S^{n+1}$ previously shown in {eq}`mathjointd`, which is
-
-$$
-    \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
-        = \psi(x_0)
-        P(x_0, x_1)
-        \times \cdots \times
-        P(x_{n-1}, x_n)
-$$ 
-
-Show that, for any Markov chain $(X_t)$ satisfying {eq}`markovpropd`
-and $X_0 \sim \psi$, the restriction $(X_0, \ldots, X_n)$ has joint
-distribution $\mathbf P_\psi^n$.
-```
-
-
-```{exercise}
-:label: markov-prop-4
-
-Try to produce your own version of the figure {ref}`flow_fig`
-
-The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
-```
-
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
-```
-
-```{solution} markov-prop-1
-
-This is easy.
-
-One example is to take $U$ to be uniform on $(0, 1)$ and set $X=0$ if $U <
-0.5$ and $1$ otherwise.
-
-Then $X$ has the desired distribution.
-
-Alternatively, we could take $Z$ to be standard normal and set $X=0$ if $Z <
-0$ and $1$ otherwise.
-```
-
-
 ```{solution} markov-prop-2
+:class: dropdown
+
 Fixing $s, t \in \RR_+$ and $j \leq k$, we have 
 
 $$
@@ -1015,8 +979,27 @@ $$
 Hence {eq}`chapkol_ct2` holds, and the semigroup property is satisfied.
 ```
 
+```{exercise}
+:label: markov-prop-3
+
+Consider the distribution over $S^{n+1}$ previously shown in {eq}`mathjointd`, which is
+
+$$
+\mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
+    = \psi(x_0)
+    P(x_0, x_1)
+    \times \cdots \times
+    P(x_{n-1}, x_n)
+$$ 
+
+Show that, for any Markov chain $(X_t)$ satisfying {eq}`markovpropd`
+and $X_0 \sim \psi$, the restriction $(X_0, \ldots, X_n)$ has joint
+distribution $\mathbf P_\psi^n$.
+```
 
 ```{solution} markov-prop-3
+:class: dropdown
+
 Let $(X_t)$ be a Markov chain satisfying {eq}`markovpropd` and $X_0 \sim \psi$.
 
 When $n=0$, we have $\mathbf P_\psi^n = \mathbf P_\psi^0 = \psi$, and this
@@ -1029,35 +1012,45 @@ defined above.
 Then 
 
 $$
-    \PP \{X_0 = x_0, \ldots, X_n = x_n\}
-    = \PP \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
-    \\
-        \times \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
+\PP \{X_0 = x_0, \ldots, X_n = x_n\}
+= \PP \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
+\\
+    \times \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
 $$
 
 From the Markov property and the induction hypothesis, the right hand side is
 
 $$
+P (x_{n-1}, x_n )
+\mathbf P_\psi^{n-1}(x_0, x_1, \ldots, x_{n-1})
+=
     P (x_{n-1}, x_n )
-    \mathbf P_\psi^{n-1}(x_0, x_1, \ldots, x_{n-1})
-    =
-        P (x_{n-1}, x_n )
-        \psi(x_0)
-        P(x_0, x_1)
-        \times \cdots \times
-        P(x_{n-2}, x_{n-1})
+    \psi(x_0)
+    P(x_0, x_1)
+    \times \cdots \times
+    P(x_{n-2}, x_{n-1})
 $$
 
 The last expression equals $\mathbf P_\psi^n$, which concludes the proof.
 ```
 
 
-```{solution} markov-prop-4
+```{exercise}
+:label: markov-prop-4
+
+Try to produce your own version of the figure {ref}`flow_fig`
+
+The initial condition is ``ψ_0 = binom.pmf(states, n, 0.25)`` where ``n = b + 1``.
+```
+
+```{solution-start} markov-prop-4
+:class: dropdown
+```
+
 Here is one approach.
 
 (The statements involving ``glue`` are specific to this book and can be deleted
 by most readers.  They store the output so it can be displayed elsewhere.)
-```
 
 ```{code-cell} ipython3
 α = 0.6
@@ -1105,4 +1098,7 @@ glue("flow_fig", fig, display=False)
 plt.savefig("_static/lecture_specific/markov_prop/flow_fig.png")
 
 plt.show()
+```
+
+```{solution-end}
 ```

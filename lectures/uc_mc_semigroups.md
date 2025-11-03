@@ -19,8 +19,6 @@ kernelspec:
 In our previous lecture we covered some of the general theory of operator
 semigroups. 
 
-
-
 Next we translate these results into the setting of Markov semigroups.
 
 The Markov semigroups are defined on a countable set $S$.
@@ -506,52 +504,19 @@ Let $P$ be a Markov matrix on $S$ and identify it with the linear operator in
 {eq}`mmismo`.  Verify the claims in {eq}`propp`.
 ```
 
-```{exercise}
-:label: uc-mc-semigroups-ex-2
-
-Prove the claim in {prf:ref}`scintcon`.
-```
-
-```{exercise}
-:label: uc-mc-semigroups-ex-3
-
-Confirm that $Q$ defined in {eq}`poissonq` induces a bounded linear operator on
-$\ell_1$ via {eq}`imislo`.
-```
-
-```{exercise}
-:label: uc-mc-semigroups-ex-4
-
-Let $K$ be defined on $\ZZ_+ \times \ZZ_+$ by $K(i, j) = \mathbb 1\{j = i + 1\}$. 
-
-Show that, with $K^m$ representing the $m$-th matrix product of $K$ with itself, 
-we have $K^m(i, j) = \mathbb 1\{j = i + m\}$ for any $i, j \in \ZZ_+$.
-```
-
-```{exercise}
-:label: uc-mc-semigroups-ex-5
-
-Let $Q$ be any intensity matrix on $S$.
-
-Prove that the jump chain decomposition of $Q$ is in fact a jump chain pair.
-
-Prove that, in addition, this decomposition $(\lambda, K)$ satisfies {eq}`jcinmat`.
-```
-
-
-## Solutions
-
 ```{solution} uc-mc-semigroups-ex-1
+:class: dropdown
+
 To determine the norm of $P$, we use the definition in {eq}`norml`.
 
 If $f \in \ell_1$ and $\| f \| \leq 1$, then 
 
 $$
-    \| f P \| 
-    \leq \sum_y \sum_x |f(x)| P(x, y)
-    = \sum_x |f(x)| \sum_y P(x, y)
-    = \sum_x |f(x)| 
-    = \| f \|
+\| f P \| 
+\leq \sum_y \sum_x |f(x)| P(x, y)
+= \sum_x |f(x)| \sum_y P(x, y)
+= \sum_x |f(x)| 
+= \| f \|
 $$
 
 Hence $\| P \| \leq 1$.  
@@ -564,17 +529,24 @@ Now pick any $\phi \in \dD$.
 Clearly $\phi P \geq 0$, and 
 
 $$
-    \sum_y (\phi P)(y)
-    =\sum_y \sum_x \phi (x) P(x, y)
-    =\sum_x \phi (x) \sum_y P(x, y)
-    = 1
+\sum_y (\phi P)(y)
+=\sum_y \sum_x \phi (x) P(x, y)
+=\sum_x \phi (x) \sum_y P(x, y)
+= 1
 $$
 
 Hence $\phi P \in \dD$ as claimed.
 ```
 
+```{exercise}
+:label: uc-mc-semigroups-ex-2
+
+Prove the claim in {prf:ref}`scintcon`.
+```
 
 ```{solution} uc-mc-semigroups-ex-2
+:class: dropdown
+
 Here is one solution.
 
 Let $Q$ be an intensity matrix on $S$.
@@ -603,27 +575,34 @@ Let $f \in \ell_1$ be defined by $f(z) = \mathbb 1\{z = x\}$.
 Since $\|f\| = 1$, we have
 
 $$
-    \| Q \| 
-    \geq \| f Q \|
-    = \sum_y \left| \sum_z f(z) Q(z, y) \right|
-    = \sum_y | Q(x, y) |
-    \geq | Q(x, x) |
+\| Q \| 
+\geq \| f Q \|
+= \sum_y \left| \sum_z f(z) Q(z, y) \right|
+= \sum_y | Q(x, y) |
+\geq | Q(x, x) |
 $$
 
 Contradiction.
 ```
 
+```{exercise}
+:label: uc-mc-semigroups-ex-3
+
+Confirm that $Q$ defined in {eq}`poissonq` induces a bounded linear operator on
+$\ell_1$ via {eq}`imislo`.
+```
 
 ```{solution} uc-mc-semigroups-ex-3
+:class: dropdown
 
 Linearity is obvious so we focus on boundedness.
 
 For any $f \in \ell_1$ and this choice of $Q$, we have
 
 $$
-    \sum_y |(fQ)(y)|
-    \leq \sum_y \sum_x |f(x) Q(x, y)|
-    \leq \lambda \sum_y \sum_x |f(y) - f(y+1)|
+\sum_y |(fQ)(y)|
+\leq \sum_y \sum_x |f(x) Q(x, y)|
+\leq \lambda \sum_y \sum_x |f(y) - f(y+1)|
 $$
 
 Applying the triangle inequality, we see that the right hand side is dominated
@@ -634,7 +613,17 @@ as required.
 ```
 
 
+```{exercise}
+:label: uc-mc-semigroups-ex-4
+
+Let $K$ be defined on $\ZZ_+ \times \ZZ_+$ by $K(i, j) = \mathbb 1\{j = i + 1\}$. 
+
+Show that, with $K^m$ representing the $m$-th matrix product of $K$ with itself, 
+we have $K^m(i, j) = \mathbb 1\{j = i + m\}$ for any $i, j \in \ZZ_+$.
+```
+
 ```{solution} uc-mc-semigroups-ex-4
+:class: dropdown
 
 The statement $K^m(i, j) = \mathbb 1\{j = i + m\}$ holds by definition when
 $m=1$.
@@ -653,8 +642,18 @@ $$
 Applying the definition $K(i, j) = \mathbb 1\{j = i + 1\}$ completes verification of the claim.
 ```
 
+```{exercise}
+:label: uc-mc-semigroups-ex-5
+
+Let $Q$ be any intensity matrix on $S$.
+
+Prove that the jump chain decomposition of $Q$ is in fact a jump chain pair.
+
+Prove that, in addition, this decomposition $(\lambda, K)$ satisfies {eq}`jcinmat`.
+```
 
 ```{solution} uc-mc-semigroups-ex-5
+:class: dropdown
 
 Let $Q$ be an intensity matrix and let $(\lambda, K)$ be the jump chain
 decomposition of $Q$.
@@ -668,10 +667,10 @@ $\lambda(x) > 0$.
 Then 
 
 $$
-    \sum_y K(x, y) 
-    = \sum_{y \not= x} K(x,y) 
-    = \sum_{y \not= x} \frac{Q(x,y)}{\lambda(x)}
-    = 1
+\sum_y K(x, y) 
+= \sum_{y \not= x} K(x,y) 
+= \sum_{y \not= x} \frac{Q(x,y)}{\lambda(x)}
+= 1
 $$
 
 If, on the other hand, $\lambda(x) = 0$, then 
