@@ -638,6 +638,12 @@ Let $(P_t)$ be a Markov semigroup.  True or false:
 for this semigroup, every state $x$ is accessible from itself.
 ```
 
+```{solution} ergodicity-ex-1
+:class: dropdown
+
+The statement is true.  With $t=0$ we have $P_t(x,x) = I(x,x) = 1 > 0$.
+```
+
 ```{exercise}
 :label: ergodicity-ex-2
 Let $(\lambda_k)$ be a bounded non-increasing sequence in $(0, \infty)$.
@@ -658,41 +664,30 @@ Show that $(P_t)$, the corresponding Markov semigroup, has no stationary
 distribution.
 ```
 
-
-```{exercise}
-:label: ergodicity-ex-3
-Confirm that {prf:ref}`sdrift` implies {prf:ref}`sfinite`.
-```
-
-## Solutions
-
-```{solution} ergodicity-ex-1
-The statement is true.  With $t=0$ we have $P_t(x,x) = I(x,x) = 1 > 0$.
-```
-
-
 ```{solution} ergodicity-ex-2
+:class: dropdown
+
 Suppose to the contrary that $\phi \in \dD$ and $\phi Q = 0$.
 
 Then, for any $j \geq 1$,
 
 $$
-    (\phi Q)(j) 
-    = \sum_{i \geq 0} \phi(i) Q(i, j)
-    = - \lambda_j \phi(j) + \lambda_{j-1} \phi(j-1) 
-    = 0
+(\phi Q)(j) 
+= \sum_{i \geq 0} \phi(i) Q(i, j)
+= - \lambda_j \phi(j) + \lambda_{j-1} \phi(j-1) 
+= 0
 $$
 
 Since $(\lambda_k)$ is non-increasing, it follows that
 
 $$
-    \frac{\phi(j)}{\phi(j-1)} = \frac{\lambda_{j-1}}{\lambda_j} \geq 1
+\frac{\phi(j)}{\phi(j-1)} = \frac{\lambda_{j-1}}{\lambda_j} \geq 1
 $$
 
 Therefore, for any $j\geq 1$, it must be:
 
 $$
-    \phi(j) \geq \phi(j-1)
+\phi(j) \geq \phi(j-1)
 $$
 
 It follows that $\phi$ is non-decreasing on $\ZZ_+$.
@@ -704,7 +699,14 @@ Contradiction.
 ```
 
 
+```{exercise}
+:label: ergodicity-ex-3
+Confirm that {prf:ref}`sdrift` implies {prf:ref}`sfinite`.
+```
+
 ```{solution} ergodicity-ex-3
+:class: dropdown
+
 Let $(P_t)$ be an irreducible UC Markov semigroup and let $S$ be finite.
 
 Pick any positive constants $M, \epsilon$ and set $v = M$ and $F = S$.
@@ -712,9 +714,9 @@ Pick any positive constants $M, \epsilon$ and set $v = M$ and $F = S$.
 We then have
 
 $$
-    \sum_y Q(x, y) v(y)
-    = M \sum_y Q(x, y)
-    = 0
+\sum_y Q(x, y) v(y)
+= M \sum_y Q(x, y)
+= 0
 $$
 
 Hence the drift condition in {prf:ref}`sdrift` holds and $(P_t)$ is

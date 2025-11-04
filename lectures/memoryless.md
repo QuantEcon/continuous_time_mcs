@@ -413,6 +413,32 @@ In particular, consider the random variable $X$ defined as follows:
 Show that $X \sim \Exp(\lambda)$.
 ```
 
+```{solution} memoryless-ex-1
+:class: dropdown
+
+Let $X$ be constructed as in the statement of the exercise and fix $t > 0$.
+
+Notice that $X > s + t$ if and only if $Y > s$ and $Z > t$.
+
+As a result of this fact and independence,
+
+$$
+\PP\{X > s + t\}
+= \PP\{Y > s \} \PP\{Z > t\}
+= e^{-\lambda(s + t)}
+$$
+
+At the same time, $X > s-t$ if and only if $Y > s-t$, so
+
+$$
+\PP\{X > s - t\}
+= \PP\{Y > s - t \} 
+= e^{-\lambda(s - t)}
+$$
+
+Either way, we have $X \sim \Exp(\lambda)$, as was to be shown.
+```
+
 ```{exercise}
 :label: memoryless-ex-2
 
@@ -428,43 +454,11 @@ Is the fit good?  How about if the number of draws is increased?
 Are the results in line with those of the previous exercise?
 ```
 
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
+```{solution-start} memoryless-ex-2
+:class: dropdown
 ```
 
-```{solution} memoryless-ex-1
-
-Let $X$ be constructed as in the statement of the exercise and fix $t > 0$.
-
-Notice that $X > s + t$ if and only if $Y > s$ and $Z > t$.
-
-As a result of this fact and independence,
-
-$$
-    \PP\{X > s + t\}
-    = \PP\{Y > s \} \PP\{Z > t\}
-    = e^{-\lambda(s + t)}
-$$
-
-At the same time, $X > s-t$ if and only if $Y > s-t$, so
-
-$$
-    \PP\{X > s - t\}
-    = \PP\{Y > s - t \} 
-    = e^{-\lambda(s - t)}
-$$
-
-Either way, we have $X \sim \Exp(\lambda)$, as was to be shown.
-```
-
-
-```{solution} memoryless-ex-2
 Here's one solution, starting with 1,000 draws.
-```
 
 ```{code-cell} ipython3
 λ = 0.5 
@@ -494,24 +488,19 @@ ax.legend()
 plt.show()
 ```
 
-```{solution} memoryless-ex-2
-**Solution Continued:**
-
-The fit is already very close, which matches with the theory in Exercise 1.
+The fit is already very close, which matches with the theory in [](memoryless-ex-1).
 
 The two lines become indistinguishable as $n$ is increased further.
-```
 
 ```{code-cell} ipython3
-
 fig, ax = plt.subplots()
 draws = draw_X(n=10_000)
 empirical_exceedance = [np.mean(draws > t) for t in t_grid]
 ax.plot(t_grid, np.exp(- λ * t_grid), label='exponential exceedance')
 ax.plot(t_grid, empirical_exceedance, label='empirical exceedance')
 ax.legend()
-
 plt.show()
 ```
 
-
+```{solution-end}
+```
