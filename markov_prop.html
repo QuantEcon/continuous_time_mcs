@@ -70,7 +70,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +95,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -212,7 +212,6 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-flows-for-the-inventory-model">3.7. Distribution Flows for the Inventory Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.8. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">3.9. Solutions</a></li>
 </ul>
                             <p class="logo">
                                 
@@ -223,7 +222,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -274,7 +273,7 @@
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.8.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.10.1)
 Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
 Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
 Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
@@ -986,6 +985,17 @@ probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 <p>Construct two different random variables with this distribution.</p>
 </section>
 </div>
+<div class="solution dropdown admonition" id="markov_prop-solution-2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-1"> Exercise 3.1</a></p>
+<section id="solution-content">
+<p>One example is to take <span class="math notranslate nohighlight">\(U\)</span> to be uniform on <span class="math notranslate nohighlight">\((0, 1)\)</span> and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(U &lt;
+0.5\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
+<p>Then <span class="math notranslate nohighlight">\(X\)</span> has the desired distribution.</p>
+<p>Alternatively, we could take <span class="math notranslate nohighlight">\(Z\)</span> to be standard normal and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(Z &lt;
+0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
+</section>
+</div>
 <div class="exercise admonition" id="markov-prop-2">
 
 <p class="admonition-title"><span class="caption-number">Exercise 3.2 </span></p>
@@ -999,54 +1009,7 @@ probability <span class="math notranslate nohighlight">\(0.5\)</span>.</p>
 </ul>
 </section>
 </div>
-<div class="exercise admonition" id="markov-prop-3">
-
-<p class="admonition-title"><span class="caption-number">Exercise 3.3 </span></p>
-<section id="exercise-content">
-<p>Consider the distribution over <span class="math notranslate nohighlight">\(S^{n+1}\)</span> previously shown in <a class="reference internal" href="#equation-mathjointd">(3.5)</a>, which is</p>
-<div class="math notranslate nohighlight">
-\[
-    \mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
-        = \psi(x_0)
-        P(x_0, x_1)
-        \times \cdots \times
-        P(x_{n-1}, x_n)
-\]</div>
-<p>Show that, for any Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> satisfying <a class="reference internal" href="#equation-markovpropd">(3.2)</a>
-and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>, the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n)\)</span> has joint
-distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>.</p>
-</section>
-</div>
-<div class="exercise admonition" id="markov-prop-4">
-
-<p class="admonition-title"><span class="caption-number">Exercise 3.4 </span></p>
-<section id="exercise-content">
-<p>Try to produce your own version of the figure <a class="reference internal" href="#flow-fig"><span class="std std-ref">Probability flows for the inventory model.</span></a></p>
-<p>The initial condition is <code class="docutils literal notranslate"><span class="pre">ψ_0</span> <span class="pre">=</span> <span class="pre">binom.pmf(states,</span> <span class="pre">n,</span> <span class="pre">0.25)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
-</section>
-</div>
-</section>
-<section id="solutions">
-<h2><span class="section-number">3.9. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
-so code-cell solutions are immediately after this
-solution block.</p>
-</div>
-<div class="solution admonition" id="markov_prop-solution-5">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-1"> Exercise 3.1</a></p>
-<section id="solution-content">
-<p>This is easy.</p>
-<p>One example is to take <span class="math notranslate nohighlight">\(U\)</span> to be uniform on <span class="math notranslate nohighlight">\((0, 1)\)</span> and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(U &lt;
-0.5\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
-<p>Then <span class="math notranslate nohighlight">\(X\)</span> has the desired distribution.</p>
-<p>Alternatively, we could take <span class="math notranslate nohighlight">\(Z\)</span> to be standard normal and set <span class="math notranslate nohighlight">\(X=0\)</span> if <span class="math notranslate nohighlight">\(Z &lt;
-0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> otherwise.</p>
-</section>
-</div>
-<div class="solution admonition" id="markov_prop-solution-6">
+<div class="solution dropdown admonition" id="markov_prop-solution-4">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-2"> Exercise 3.2</a></p>
 <section id="solution-content">
@@ -1086,7 +1049,25 @@ solution block.</p>
 <p>Hence <a class="reference internal" href="#equation-chapkol-ct2">(3.7)</a> holds, and the semigroup property is satisfied.</p>
 </section>
 </div>
-<div class="solution admonition" id="markov_prop-solution-7">
+<div class="exercise admonition" id="markov-prop-3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.3 </span></p>
+<section id="exercise-content">
+<p>Consider the distribution over <span class="math notranslate nohighlight">\(S^{n+1}\)</span> previously shown in <a class="reference internal" href="#equation-mathjointd">(3.5)</a>, which is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf P_\psi^n(x_0, x_1, \ldots, x_n)
+    = \psi(x_0)
+    P(x_0, x_1)
+    \times \cdots \times
+    P(x_{n-1}, x_n)
+\]</div>
+<p>Show that, for any Markov chain <span class="math notranslate nohighlight">\((X_t)\)</span> satisfying <a class="reference internal" href="#equation-markovpropd">(3.2)</a>
+and <span class="math notranslate nohighlight">\(X_0 \sim \psi\)</span>, the restriction <span class="math notranslate nohighlight">\((X_0, \ldots, X_n)\)</span> has joint
+distribution <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="markov_prop-solution-6">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-3"> Exercise 3.3</a></p>
 <section id="solution-content">
@@ -1099,35 +1080,41 @@ defined above.</p>
 <p>Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-    \PP \{X_0 = x_0, \ldots, X_n = x_n\}
-    = \PP \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
-    \\
-        \times \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
+\PP \{X_0 = x_0, \ldots, X_n = x_n\}
+= \PP \{X_n = x_n \,|\, X_0 = x_0, \ldots, X_{n-1} = x_{n-1}  \}
+\\
+    \times \PP \{X_0 = x_0, \ldots, X_{n-1} = x_{n-1}\}
 \end{split}\]</div>
 <p>From the Markov property and the induction hypothesis, the right hand side is</p>
 <div class="math notranslate nohighlight">
 \[
+P (x_{n-1}, x_n )
+\mathbf P_\psi^{n-1}(x_0, x_1, \ldots, x_{n-1})
+=
     P (x_{n-1}, x_n )
-    \mathbf P_\psi^{n-1}(x_0, x_1, \ldots, x_{n-1})
-    =
-        P (x_{n-1}, x_n )
-        \psi(x_0)
-        P(x_0, x_1)
-        \times \cdots \times
-        P(x_{n-2}, x_{n-1})
+    \psi(x_0)
+    P(x_0, x_1)
+    \times \cdots \times
+    P(x_{n-2}, x_{n-1})
 \]</div>
 <p>The last expression equals <span class="math notranslate nohighlight">\(\mathbf P_\psi^n\)</span>, which concludes the proof.</p>
 </section>
 </div>
-<div class="solution admonition" id="markov_prop-solution-8">
+<div class="exercise admonition" id="markov-prop-4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3.4 </span></p>
+<section id="exercise-content">
+<p>Try to produce your own version of the figure <a class="reference internal" href="#flow-fig"><span class="std std-ref">Probability flows for the inventory model.</span></a></p>
+<p>The initial condition is <code class="docutils literal notranslate"><span class="pre">ψ_0</span> <span class="pre">=</span> <span class="pre">binom.pmf(states,</span> <span class="pre">n,</span> <span class="pre">0.25)</span></code> where <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="markov_prop-solution-8">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#markov-prop-4"> Exercise 3.4</a></p>
 <section id="solution-content">
 <p>Here is one approach.</p>
 <p>(The statements involving <code class="docutils literal notranslate"><span class="pre">glue</span></code> are specific to this book and can be deleted
 by most readers.  They store the output so it can be displayed elsewhere.)</p>
-</section>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">α</span> <span class="o">=</span> <span class="mf">0.6</span>
@@ -1181,6 +1168,8 @@ by most readers.  They store the output so it can be displayed elsewhere.)</p>
 <div class="cell_output docutils container">
 <img alt="_images/f8d8dcdab77117f51bc024c99864780b5c672f4966ab99c4364fb20a10d3e1c7.png" src="_images/f8d8dcdab77117f51bc024c99864780b5c672f4966ab99c4364fb20a10d3e1c7.png" />
 </div>
+</div>
+</section>
 </div>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">

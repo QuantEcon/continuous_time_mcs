@@ -70,7 +70,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +95,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -187,7 +187,6 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">8.6. Solutions</a></li>
 </ul>
                             <p class="logo">
                                 
@@ -198,7 +197,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -252,7 +251,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting quantecon
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading quantecon-0.8.2-py3-none-any.whl.metadata (5.3 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading quantecon-0.10.1-py3-none-any.whl.metadata (5.3 kB)
 Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
 Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
 Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
@@ -264,13 +263,13 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/env
 Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2.3.0)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2025.4.26)
 Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from sympy-&gt;quantecon) (1.3.0)
-Downloading quantecon-0.8.2-py3-none-any.whl (322 kB)
+Downloading quantecon-0.10.1-py3-none-any.whl (325 kB)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: quantecon
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed quantecon-0.8.2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed quantecon-0.10.1
 </pre></div>
 </div>
 </div>
@@ -780,6 +779,13 @@ of <a class="reference internal" href="#sdrift">Theorem 8.4</a> hold.</p>
 for this semigroup, every state <span class="math notranslate nohighlight">\(x\)</span> is accessible from itself.</p>
 </section>
 </div>
+<div class="solution dropdown admonition" id="ergodicity-solution-11">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#ergodicity-ex-1"> Exercise 8.1</a></p>
+<section id="solution-content">
+<p>The statement is true.  With <span class="math notranslate nohighlight">\(t=0\)</span> we have <span class="math notranslate nohighlight">\(P_t(x,x) = I(x,x) = 1 &gt; 0\)</span>.</p>
+</section>
+</div>
 <div class="exercise admonition" id="ergodicity-ex-2">
 
 <p class="admonition-title"><span class="caption-number">Exercise 8.2 </span></p>
@@ -800,24 +806,7 @@ Q=\begin{pmatrix}
 distribution.</p>
 </section>
 </div>
-<div class="exercise admonition" id="ergodicity-ex-3">
-
-<p class="admonition-title"><span class="caption-number">Exercise 8.3 </span></p>
-<section id="exercise-content">
-<p>Confirm that <a class="reference internal" href="#sdrift">Theorem 8.4</a> implies <a class="reference internal" href="#sfinite">Corollary 8.2</a>.</p>
-</section>
-</div>
-</section>
-<section id="solutions">
-<h2><span class="section-number">8.6. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
-<div class="solution admonition" id="ergodicity-solution-13">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#ergodicity-ex-1"> Exercise 8.1</a></p>
-<section id="solution-content">
-<p>The statement is true.  With <span class="math notranslate nohighlight">\(t=0\)</span> we have <span class="math notranslate nohighlight">\(P_t(x,x) = I(x,x) = 1 &gt; 0\)</span>.</p>
-</section>
-</div>
-<div class="solution admonition" id="ergodicity-solution-14">
+<div class="solution dropdown admonition" id="ergodicity-solution-13">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#ergodicity-ex-2"> Exercise 8.2</a></p>
 <section id="solution-content">
@@ -825,20 +814,20 @@ distribution.</p>
 <p>Then, for any <span class="math notranslate nohighlight">\(j \geq 1\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-    (\phi Q)(j) 
-    = \sum_{i \geq 0} \phi(i) Q(i, j)
-    = - \lambda_j \phi(j) + \lambda_{j-1} \phi(j-1) 
-    = 0
+(\phi Q)(j) 
+= \sum_{i \geq 0} \phi(i) Q(i, j)
+= - \lambda_j \phi(j) + \lambda_{j-1} \phi(j-1) 
+= 0
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\((\lambda_k)\)</span> is non-increasing, it follows that</p>
 <div class="math notranslate nohighlight">
 \[
-    \frac{\phi(j)}{\phi(j-1)} = \frac{\lambda_{j-1}}{\lambda_j} \geq 1
+\frac{\phi(j)}{\phi(j-1)} = \frac{\lambda_{j-1}}{\lambda_j} \geq 1
 \]</div>
 <p>Therefore, for any <span class="math notranslate nohighlight">\(j\geq 1\)</span>, it must be:</p>
 <div class="math notranslate nohighlight">
 \[
-    \phi(j) \geq \phi(j-1)
+\phi(j) \geq \phi(j-1)
 \]</div>
 <p>It follows that <span class="math notranslate nohighlight">\(\phi\)</span> is non-decreasing on <span class="math notranslate nohighlight">\(\ZZ_+\)</span>.</p>
 <p>But <span class="math notranslate nohighlight">\(\dD\)</span> contains no non-decreasing functions when the state space is infinite.
@@ -846,7 +835,14 @@ distribution.</p>
 <p>Contradiction.</p>
 </section>
 </div>
-<div class="solution admonition" id="ergodicity-solution-15">
+<div class="exercise admonition" id="ergodicity-ex-3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 8.3 </span></p>
+<section id="exercise-content">
+<p>Confirm that <a class="reference internal" href="#sdrift">Theorem 8.4</a> implies <a class="reference internal" href="#sfinite">Corollary 8.2</a>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="ergodicity-solution-15">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#ergodicity-ex-3"> Exercise 8.3</a></p>
 <section id="solution-content">
@@ -855,9 +851,9 @@ distribution.</p>
 <p>We then have</p>
 <div class="math notranslate nohighlight">
 \[
-    \sum_y Q(x, y) v(y)
-    = M \sum_y Q(x, y)
-    = 0
+\sum_y Q(x, y) v(y)
+= M \sum_y Q(x, y)
+= 0
 \]</div>
 <p>Hence the drift condition in <a class="reference internal" href="#sdrift">Theorem 8.4</a> holds and <span class="math notranslate nohighlight">\((P_t)\)</span> is
 asymptotically stable.</p>

@@ -433,32 +433,15 @@ distribution with rate $T \lambda$.
 Try first with $\lambda = 0.5$ and $T=10$.
 ```
 
-
-```{exercise}
-:label: poisson-ex-2
-
-In the lecture we used the fact that $\Binomial(n, \theta) \approx \Poisson(n \theta)$ when $n$ is large and $\theta$ is small.
-
-Investigate this relationship by plotting the distributions side by side.
-
-Experiment with different values of $n$ and $\theta$.
+```{solution-start} poisson-ex-1
+:class: dropdown
 ```
 
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
-```
-
-```{solution} poisson-ex-1
 Here is one solution.
 
 The figure shows that the fit is already good with a modest sample size.
 
 Increasing the sample size will further improve the fit.
-```
 
 ```{code-cell} ipython3
 λ = 0.5
@@ -503,11 +486,26 @@ ax.legend(fontsize=12)
 plt.show()
 ```
 
+```{solution-end}
+```
 
-```{solution} poisson-ex-2
+
+```{exercise}
+:label: poisson-ex-2
+
+In the lecture we used the fact that $\Binomial(n, \theta) \approx \Poisson(n \theta)$ when $n$ is large and $\theta$ is small.
+
+Investigate this relationship by plotting the distributions side by side.
+
+Experiment with different values of $n$ and $\theta$.
+```
+
+```{solution-start} poisson-ex-2
+:class: dropdown
+```
+
 Here is one solution.  It shows that the approximation is good when $n$ is
 large and $\theta$ is small.
-```
 
 ```{code-cell} ipython3
 def binomial(k, n, p):
@@ -534,4 +532,6 @@ fig.tight_layout()
 plt.show()
 ```
 
+```{solution-end}
+```
 

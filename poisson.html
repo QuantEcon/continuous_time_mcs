@@ -70,7 +70,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +95,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -184,7 +184,6 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">2.6. Solutions</a></li>
 </ul>
                             <p class="logo">
                                 
@@ -195,7 +194,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -246,7 +245,7 @@
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.8.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.10.1)
 Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
 Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
 Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
@@ -625,33 +624,13 @@ distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)<
 <p>Try first with <span class="math notranslate nohighlight">\(\lambda = 0.5\)</span> and <span class="math notranslate nohighlight">\(T=10\)</span>.</p>
 </section>
 </div>
-<div class="exercise admonition" id="poisson-ex-2">
-
-<p class="admonition-title"><span class="caption-number">Exercise 2.2 </span></p>
-<section id="exercise-content">
-<p>In the lecture we used the fact that <span class="math notranslate nohighlight">\(\Binomial(n, \theta) \approx \Poisson(n \theta)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
-<p>Investigate this relationship by plotting the distributions side by side.</p>
-<p>Experiment with different values of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
-</section>
-</div>
-</section>
-<section id="solutions">
-<h2><span class="section-number">2.6. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>code is currently not supported in <code class="docutils literal notranslate"><span class="pre">sphinx-exercise</span></code>
-so code-cell solutions are immediately after this
-solution block.</p>
-</div>
-<div class="solution admonition" id="poisson-solution-4">
+<div class="solution dropdown admonition" id="poisson-solution-3">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#poisson-ex-1"> Exercise 2.1</a></p>
 <section id="solution-content">
 <p>Here is one solution.</p>
 <p>The figure shows that the fit is already good with a modest sample size.</p>
 <p>Increasing the sample size will further improve the fit.</p>
-</section>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">λ</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -698,17 +677,26 @@ solution block.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8eb4f6400c124ead6f234384dd259f7e6a2b378e4a591f2810ca586d38c28d07.png" src="_images/8eb4f6400c124ead6f234384dd259f7e6a2b378e4a591f2810ca586d38c28d07.png" />
+<img alt="_images/55a2db2e0d65928bfc92e0893ffb6e42808ae4c224a24568ce788ee3b447c947.png" src="_images/55a2db2e0d65928bfc92e0893ffb6e42808ae4c224a24568ce788ee3b447c947.png" />
 </div>
 </div>
-<div class="solution admonition" id="poisson-solution-5">
+</section>
+</div>
+<div class="exercise admonition" id="poisson-ex-2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 2.2 </span></p>
+<section id="exercise-content">
+<p>In the lecture we used the fact that <span class="math notranslate nohighlight">\(\Binomial(n, \theta) \approx \Poisson(n \theta)\)</span> when <span class="math notranslate nohighlight">\(n\)</span> is large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
+<p>Investigate this relationship by plotting the distributions side by side.</p>
+<p>Experiment with different values of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="poisson-solution-5">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#poisson-ex-2"> Exercise 2.2</a></p>
 <section id="solution-content">
 <p>Here is one solution.  It shows that the approximation is good when <span class="math notranslate nohighlight">\(n\)</span> is
 large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
-</section>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">binomial</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
@@ -739,6 +727,8 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
 <div class="cell_output docutils container">
 <img alt="_images/cfd9c09c74d9c54c832fb34d517c8a6758344b9fc5235fa738de644c4053d49d.png" src="_images/cfd9c09c74d9c54c832fb34d517c8a6758344b9fc5235fa738de644c4053d49d.png" />
 </div>
+</div>
+</section>
 </div>
 </section>
 </section>

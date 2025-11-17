@@ -70,7 +70,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +95,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -187,7 +187,6 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">6.6. Solutions</a></li>
 </ul>
                             <p class="logo">
                                 
@@ -198,7 +197,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -544,6 +543,23 @@ example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zrefer
 <p>Prove that <a class="reference internal" href="#equation-expdiffer">(6.5)</a> holds for all <span class="math notranslate nohighlight">\(A \in \linop\)</span>.</p>
 </section>
 </div>
+<div class="solution dropdown admonition" id="generators-solution-6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-1"> Exercise 8.1</a></p>
+<section id="solution-content">
+<p>To show the first equality, fix <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>, take <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and observe that</p>
+<div class="math notranslate nohighlight">
+\[
+e^{(t+h)A} - e^{tA} - e^{tA} A
+= e^{tA} (e^{hA} - I - A)
+\]</div>
+<p>Since the norm on <span class="math notranslate nohighlight">\(\linop\)</span> is submultiplicative, it suffices to show that
+<span class="math notranslate nohighlight">\(\| e^{hA} - I - A \| = o(h)\)</span> as <span class="math notranslate nohighlight">\(h \to 0\)</span>.</p>
+<p>Using the definition of the exponential, this is easily verified,
+completing the proof of the first equality in <a class="reference internal" href="#equation-expdiffer">(6.5)</a>.</p>
+<p>The proof of the second equality is similar.</p>
+</section>
+</div>
 <div class="exercise admonition" id="generators-ex-2">
 
 <p class="admonition-title"><span class="caption-number">Exercise 6.2 </span></p>
@@ -552,18 +568,37 @@ example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zrefer
 such that</p>
 <div class="math notranslate nohighlight" id="equation-czsg2">
 <span class="eqno">(6.7)<a class="headerlink" href="#equation-czsg2" title="Link to this equation">#</a></span>\[
-    U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
+U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
 \]</div>
 <p>Our aim is to show that <a class="reference internal" href="#equation-czsg2">(6.7)</a> implies continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
 in the definition we used above.</p>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Uniform_boundedness_principle">Banach–Steinhaus Theorem</a> can be used to show that, for an evolution semigroup <span class="math notranslate nohighlight">\((U_t)\)</span> satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a>, there exist finite constants <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-sgbound">
 <span class="eqno">(6.8)<a class="headerlink" href="#equation-sgbound" title="Link to this equation">#</a></span>\[
-    \| U_t \| \leq e^{t\omega} M
-    \quad \text{for all } \; t \geq 0
+\| U_t \| \leq e^{t\omega} M
+\quad \text{for all } \; t \geq 0
 \]</div>
 <p>Using this and <a class="reference internal" href="#equation-czsg2">(6.7)</a>, show that, for any <span class="math notranslate nohighlight">\(g \in \BB\)</span>, the map <span class="math notranslate nohighlight">\(t \mapsto
 U_t g\)</span> is continuous at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="generators-solution-8">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-2"> Exercise 8.2</a></p>
+<section id="solution-content">
+<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a> and let
+<span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(6.8)</a>.</p>
+<p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
+<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} g = U_{h_n} U_t g \to U_t g\)</span> by <a class="reference internal" href="#equation-czsg2">(6.7)</a>.</p>
+<p>On the other hand, from <a class="reference internal" href="#equation-sgbound">(6.8)</a> and the definition of the operator norm,</p>
+<div class="math notranslate nohighlight">
+\[
+\| U_{t-h_n} g - U_t g\|
+= \|  U_{t-h_n} ( g - U_{h_n} g) \|
+\leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
+\to 0
+\]</div>
+<p>as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.  This completes the proof.</p>
 </section>
 </div>
 <div class="exercise admonition" id="generators-ex-3">
@@ -575,7 +610,7 @@ a UC semigroup is often defined as an evolution semigroup <span class="math notr
 such that</p>
 <div class="math notranslate nohighlight" id="equation-czsg3">
 <span class="eqno">(6.9)<a class="headerlink" href="#equation-czsg3" title="Link to this equation">#</a></span>\[
-    \| U_t - I \| \to 0 \text{ as } t \to 0 
+\| U_t - I \| \to 0 \text{ as } t \to 0 
 \]</div>
 <p>Show that <a class="reference internal" href="#equation-czsg3">(6.9)</a> implies norm continuity at every point <span class="math notranslate nohighlight">\(t\)</span>, as
 in the definition we used above.</p>
@@ -583,46 +618,7 @@ in the definition we used above.</p>
 <span class="math notranslate nohighlight">\(\| U_{t_n} - U_t \| \to 0\)</span>  as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
 </section>
 </div>
-</section>
-<section id="solutions">
-<h2><span class="section-number">6.6. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
-<div class="solution admonition" id="generators-solution-8">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-1"> Exercise 8.1</a></p>
-<section id="solution-content">
-<p>To show the first equality, fix <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>, take <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and observe that</p>
-<div class="math notranslate nohighlight">
-\[
-    e^{(t+h)A} - e^{tA} - e^{tA} A
-    = e^{tA} (e^{hA} - I - A)
-\]</div>
-<p>Since the norm on <span class="math notranslate nohighlight">\(\linop\)</span> is submultiplicative, it suffices to show that
-<span class="math notranslate nohighlight">\(\| e^{hA} - I - A \| = o(h)\)</span> as <span class="math notranslate nohighlight">\(h \to 0\)</span>.</p>
-<p>Using the definition of the exponential, this is easily verified,
-completing the proof of the first equality in <a class="reference internal" href="#equation-expdiffer">(6.5)</a>.</p>
-<p>The proof of the second equality is similar.</p>
-</section>
-</div>
-<div class="solution admonition" id="generators-solution-9">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-2"> Exercise 8.2</a></p>
-<section id="solution-content">
-<p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a> and let
-<span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(6.8)</a>.</p>
-<p>Pick any <span class="math notranslate nohighlight">\(g \in \BB\)</span>,  <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and <span class="math notranslate nohighlight">\(h_n \downarrow 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
-<p>On one hand, <span class="math notranslate nohighlight">\(U_{t+ h_n} g = U_{h_n} U_t g \to U_t g\)</span> by <a class="reference internal" href="#equation-czsg2">(6.7)</a>.</p>
-<p>On the other hand, from <a class="reference internal" href="#equation-sgbound">(6.8)</a> and the definition of the operator norm,</p>
-<div class="math notranslate nohighlight">
-\[
-    \| U_{t-h_n} g - U_t g\|
-    = \|  U_{t-h_n} ( g - U_{h_n} g) \|
-    \leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
-    \to 0
-\]</div>
-<p>as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.  This completes the proof.</p>
-</section>
-</div>
-<div class="solution admonition" id="generators-solution-10">
+<div class="solution dropdown admonition" id="generators-solution-10">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-3"> Exercise 8.3</a></p>
 <section id="solution-content">
@@ -634,9 +630,9 @@ fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and take <spa
 and <a class="reference internal" href="#equation-sgbound">(6.8)</a>,</p>
 <div class="math notranslate nohighlight">
 \[
-    \| U_{t-h_n} - U_t \|
-    = \|  U_{t-h_n} ( I - U_{h_n}) \|
-    \leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
+\| U_{t-h_n} - U_t \|
+= \|  U_{t-h_n} ( I - U_{h_n}) \|
+\leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
 \]</div>
 <p>This converges to 0 as <span class="math notranslate nohighlight">\(n \to \infty\)</span>, completing our proof.</p>
 </section>

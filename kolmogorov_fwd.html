@@ -70,7 +70,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=bd0785fbb14d8d2bd4d9ae501d79ed8d3bc089ec" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +95,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=d9faaf6c4b57726f74ba012412af1f5681bdff87"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -188,7 +188,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jump-chains">5.4. Jump Chains</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.5. Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.6. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">5.7. Solutions</a></li>
 </ul>
                             <p class="logo">
                                 
@@ -199,7 +198,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -250,7 +249,7 @@
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.8.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.10.1)
 Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
 Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
 Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
@@ -687,16 +686,42 @@ differentiable at all <span class="math notranslate nohighlight">\(t \geq 0\)</s
 <p>Define (pointwise, at each <span class="math notranslate nohighlight">\((x,y)\)</span>),</p>
 <div class="math notranslate nohighlight" id="equation-genfl">
 <span class="eqno">(5.4)<a class="headerlink" href="#equation-genfl" title="Link to this equation">#</a></span>\[
-    Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
+Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
 \]</div>
 <p>Assuming that this limit exists, and hence <span class="math notranslate nohighlight">\(Q\)</span> is well-defined, show that</p>
 <div class="math notranslate nohighlight">
 \[
-    P'_t = P_t Q
-    \quad \text{and} \quad
-    P'_t = Q P_t
+P'_t = P_t Q
+\quad \text{and} \quad
+P'_t = Q P_t
 \]</div>
 <p>both hold. (These are the Kolmogorov forward and backward equations.)</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="kolmogorov_fwd-solution-3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#kolmogorov-fwd-1"> Exercise 5.1</a></p>
+<section id="solution-content">
+<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup and let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in the statement
+of the exercise.</p>
+<p>Fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(h &gt; 0\)</span>.</p>
+<p>Combining the semigroup property and linearity with the restriction <span class="math notranslate nohighlight">\(P_0 = I\)</span>, we get</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{P_{t+h} - P_t}{h}
+= \frac{P_t P_h - P_t}{h}
+= \frac{P_t (P_h - I)}{h}
+\]</div>
+<p>Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> and using the definition of <span class="math notranslate nohighlight">\(Q\)</span> give <span class="math notranslate nohighlight">\(P_t' = P_t Q\)</span>,
+which is the Kolmogorov forward equation.</p>
+<p>For the backward equation we observe that</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{P_{t+h} - P_t}{h}
+= \frac{P_h P_t - P_t}{h}
+= \frac{(P_h - I) P_t}{h}
+\]</div>
+<p>also holds.  Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> gives the Kolmogorov backward equation.</p>
 </section>
 </div>
 <div class="exercise admonition" id="kolmogorov-fwd-2">
@@ -711,50 +736,12 @@ state transitions from <span class="math notranslate nohighlight">\(x\)</span> t
 backward equation <span class="math notranslate nohighlight">\(P'_t = Q P_t\)</span> with</p>
 <div class="math notranslate nohighlight" id="equation-qeqagain">
 <span class="eqno">(5.5)<a class="headerlink" href="#equation-qeqagain" title="Link to this equation">#</a></span>\[
-    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 \]</div>
 <p>Show that <span class="math notranslate nohighlight">\(Q\)</span> is an intensity matrix and that <a class="reference internal" href="#equation-genfl">(5.4)</a> holds.</p>
 </section>
 </div>
-<div class="exercise admonition" id="kolmogorov-fwd-3">
-
-<p class="admonition-title"><span class="caption-number">Exercise 5.3 </span></p>
-<section id="exercise-content">
-<p>Prove <a class="reference internal" href="#intvsmk">Theorem 5.1</a> by adapting the arguments in <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a>.
-(This is nontrivial but worth at least trying.)</p>
-<p>Hint: The constant <span class="math notranslate nohighlight">\(m\)</span> in the proof can be set to <span class="math notranslate nohighlight">\(\max_x |Q(x, x)|\)</span>.</p>
-</section>
-</div>
-</section>
-<section id="solutions">
-<h2><span class="section-number">5.7. </span>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
-<div class="solution admonition" id="kolmogorov_fwd-solution-5">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#kolmogorov-fwd-1"> Exercise 5.1</a></p>
-<section id="solution-content">
-<p>Let <span class="math notranslate nohighlight">\((P_t)\)</span> be a Markov semigroup and let <span class="math notranslate nohighlight">\(Q\)</span> be as defined in the statement
-of the exercise.</p>
-<p>Fix <span class="math notranslate nohighlight">\(t \geq 0\)</span> and <span class="math notranslate nohighlight">\(h &gt; 0\)</span>.</p>
-<p>Combining the semigroup property and linearity with the restriction <span class="math notranslate nohighlight">\(P_0 = I\)</span>, we get</p>
-<div class="math notranslate nohighlight">
-\[
-    \frac{P_{t+h} - P_t}{h}
-    = \frac{P_t P_h - P_t}{h}
-    = \frac{P_t (P_h - I)}{h}
-\]</div>
-<p>Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> and using the definition of <span class="math notranslate nohighlight">\(Q\)</span> give <span class="math notranslate nohighlight">\(P_t' = P_t Q\)</span>,
-which is the Kolmogorov forward equation.</p>
-<p>For the backward equation we observe that</p>
-<div class="math notranslate nohighlight">
-\[
-    \frac{P_{t+h} - P_t}{h}
-    = \frac{P_h P_t - P_t}{h}
-    = \frac{(P_h - I) P_t}{h}
-\]</div>
-<p>also holds.  Taking <span class="math notranslate nohighlight">\(h \downarrow 0\)</span> gives the Kolmogorov backward equation.</p>
-</section>
-</div>
-<div class="solution admonition" id="kolmogorov_fwd-solution-6">
+<div class="solution dropdown admonition" id="kolmogorov_fwd-solution-5">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#kolmogorov-fwd-2"> Exercise 5.2</a></p>
 <section id="solution-content">
@@ -766,14 +753,23 @@ sums.</p>
 as a column vector of ones,</p>
 <div class="math notranslate nohighlight">
 \[
-    Q 1
-    = \lambda (K 1 - 1)
-    = \lambda (1 - 1)
-    = 0
+Q 1
+= \lambda (K 1 - 1)
+= \lambda (1 - 1)
+= 0
 \]</div>
 </section>
 </div>
-<div class="solution admonition" id="kolmogorov_fwd-solution-7">
+<div class="exercise admonition" id="kolmogorov-fwd-3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 5.3 </span></p>
+<section id="exercise-content">
+<p>Prove <a class="reference internal" href="#intvsmk">Theorem 5.1</a> by adapting the arguments in <a class="reference internal" href="kolmogorov_bwd.html#jctosg">Lemma 4.2</a>.
+(This is nontrivial but worth at least trying.)</p>
+<p>Hint: The constant <span class="math notranslate nohighlight">\(m\)</span> in the proof can be set to <span class="math notranslate nohighlight">\(\max_x |Q(x, x)|\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="kolmogorov_fwd-solution-7">
 
 <p class="admonition-title">Solution to<a class="reference internal" href="#kolmogorov-fwd-3"> Exercise 5.3</a></p>
 <section id="solution-content">
@@ -792,19 +788,19 @@ matrix for all <span class="math notranslate nohighlight">\(t\)</span> and let <
 we can employ the Kolmogorov backward equation to obtain</p>
 <div class="math notranslate nohighlight">
 \[
-    Q 1
-      = Q P_t 1
-      = \left( \frac{d}{d t} P_t \right) 1
-      = \frac{d}{d t} (P_t 1)
-      = \frac{d}{d t} 1
-      = 0
+Q 1
+    = Q P_t 1
+    = \left( \frac{d}{d t} P_t \right) 1
+    = \frac{d}{d t} (P_t 1)
+    = \frac{d}{d t} 1
+    = 0
 \]</div>
 <p>Hence <span class="math notranslate nohighlight">\(Q\)</span> has zero row sums.</p>
 <p>We can use the definition of the matrix exponential to obtain,
 for any <span class="math notranslate nohighlight">\(x, y\)</span> and <span class="math notranslate nohighlight">\(t \geq 0\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-otp">
 <span class="eqno">(5.6)<a class="headerlink" href="#equation-otp" title="Link to this equation">#</a></span>\[
-    P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
+P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
 \]</div>
 <p>From this equality and the assumption that <span class="math notranslate nohighlight">\(P_t\)</span> is a Markov matrix for all
 <span class="math notranslate nohighlight">\(t\)</span>, we see that the off diagonal elements of <span class="math notranslate nohighlight">\(Q\)</span> must be
