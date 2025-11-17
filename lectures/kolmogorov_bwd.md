@@ -522,34 +522,11 @@ Try to generate the same figure using {eq}`psolq` instead, modifying code from
 {doc}`our lecture <markov_prop>` on the Markov property.
 ````
 
-```{exercise}
-:label: kolmogorov-bwd-2
-
-Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`.
+```{solution-start} kolmogorov-bwd-1
+:class: dropdown
 ```
 
-```{exercise}
-:label: kolmogorov-bwd-3
-
-We claimed above that the solution $P_t = e^{t Q}$ is the unique
-Markov semigroup satisfying the backward equation $P'_t = Q P_t$.
-
-Try to supply a proof.
-
-(This is not an easy exercise but worth thinking about in any case.)
-```
-
-## Solutions
-
-```{note}
-code is currently not supported in `sphinx-exercise`
-so code-cell solutions are immediately after this
-solution block.
-```
-
-```{solution} kolmogorov-bwd-1
 Here is one solution:
-```
 
 ```{code-cell} ipython3
 α = 0.6
@@ -594,55 +571,75 @@ ax.set_xlabel("inventory", fontsize=14)
 plt.show()
 ```
 
+```{solution-end}
+```
+
+```{exercise}
+:label: kolmogorov-bwd-2
+
+Prove that differentiating {eq}`kbinteg` at each $(x, y)$ yields {eq}`kolbackeq`.
+```
 
 ```{solution} kolmogorov-bwd-2
+:class: dropdown
 
 One can easily verify that, when $f$ is a differentiable function and $\alpha >
 0$, we have
 
 $$
-    g(t) = e^{- t \alpha} f(t)
-    \quad \implies \quad
-    g'(t) = e^{- t \alpha} f'(t) - \alpha g(t)
+g(t) = e^{- t \alpha} f(t)
+\quad \implies \quad
+g'(t) = e^{- t \alpha} f'(t) - \alpha g(t)
 $$ (gdiff)
 
 Note also that, with the change of variable $s = t - \tau$, we can rewrite
 {eq}`kbinteg` as
 
 $$
-    P_t(x, y) =
-    e^{-t \lambda(x)}
-    \left\{
-        I(x, y)
-        + \lambda(x)
-        \int_0^t (K P_s)(x, y) e^{s \lambda(x)} d s
-    \right\}
+P_t(x, y) =
+e^{-t \lambda(x)}
+\left\{
+    I(x, y)
+    + \lambda(x)
+    \int_0^t (K P_s)(x, y) e^{s \lambda(x)} d s
+\right\}
 $$ (kbinteg2)
 
 Applying {eq}`gdiff` yields
 
 $$
-    P'_t(x, y)
-    = e^{-t \lambda(x)}
-        \left\{ 
-             \lambda(x)
-             (K P_t)(x, y) e^{t \lambda(x)}
-        \right\}
-        - \lambda(x) P_t(x, y)
+P'_t(x, y)
+= e^{-t \lambda(x)}
+    \left\{ 
+            \lambda(x)
+            (K P_t)(x, y) e^{t \lambda(x)}
+    \right\}
+    - \lambda(x) P_t(x, y)
 $$
 
 After minor rearrangements this becomes
 
 $$
-    P'_t(x, y)
-    = \lambda(x) [ (K - I)  P_t](x, y)
+P'_t(x, y)
+= \lambda(x) [ (K - I)  P_t](x, y)
 $$
 
 which is identical to {eq}`kolbackeq`.
 ```
 
+```{exercise}
+:label: kolmogorov-bwd-3
+
+We claimed above that the solution $P_t = e^{t Q}$ is the unique
+Markov semigroup satisfying the backward equation $P'_t = Q P_t$.
+
+Try to supply a proof.
+
+(This is not an easy exercise but worth thinking about in any case.)
+```
 
 ```{solution} kolmogorov-bwd-3
+:class: dropdown
 
 Here is one proof of uniqueness.
 
@@ -657,14 +654,13 @@ Note that $V_0 = \hat P_t$ and $V_t = P_t$.
 Note also that $s \mapsto V_s$ is differentiable, with derivative
 
 $$
-    V'_s 
-    = P'_s \hat P_{t-s} - P_s \hat P'_{t-s}
-    = P_s Q \hat P_{t-s} - P_s Q \hat P_{t-s}
-    = 0
+V'_s 
+= P'_s \hat P_{t-s} - P_s \hat P'_{t-s}
+= P_s Q \hat P_{t-s} - P_s Q \hat P_{t-s}
+= 0
 $$
 
 where, in the second last equality, we used {eq}`expoderiv`.
-
 
 Hence $V_s$ is constant, so our previous observations $V_0 = \hat P_t$ and $V_t = P_t$
 now yield $\hat P_t = P_t$.

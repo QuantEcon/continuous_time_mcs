@@ -497,18 +497,48 @@ differentiable at all $t \geq 0$ and $(x, y) \in S \times S$.
 Define (pointwise, at each $(x,y)$),
 
 $$
-    Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
+Q := P'_0 = \lim_{h \downarrow 0} \frac{P_h - I}{h}
 $$ (genfl)
 
 Assuming that this limit exists, and hence $Q$ is well-defined, show that
 
 $$
-    P'_t = P_t Q
-    \quad \text{and} \quad
-    P'_t = Q P_t
+P'_t = P_t Q
+\quad \text{and} \quad
+P'_t = Q P_t
 $$
 
 both hold. (These are the Kolmogorov forward and backward equations.)
+```
+
+```{solution} kolmogorov-fwd-1
+:class: dropdown
+
+Let $(P_t)$ be a Markov semigroup and let $Q$ be as defined in the statement
+of the exercise.
+
+Fix $t \geq 0$ and $h > 0$.
+
+Combining the semigroup property and linearity with the restriction $P_0 = I$, we get
+
+$$
+\frac{P_{t+h} - P_t}{h}
+= \frac{P_t P_h - P_t}{h}
+= \frac{P_t (P_h - I)}{h}
+$$
+
+Taking $h \downarrow 0$ and using the definition of $Q$ give $P_t' = P_t Q$,
+which is the Kolmogorov forward equation.
+
+For the backward equation we observe that
+
+$$
+\frac{P_{t+h} - P_t}{h}
+= \frac{P_h P_t - P_t}{h}
+= \frac{(P_h - I) P_t}{h}
+$$
+
+also holds.  Taking $h \downarrow 0$ gives the Kolmogorov backward equation.
 ```
 
 ```{exercise}
@@ -524,55 +554,14 @@ We found that the associated semigroup $(P_t)$ satisfies the Kolmogorov
 backward equation $P'_t = Q P_t$ with
 
 $$
-    Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
+Q(x, y) := \lambda(x) (K(x, y) - I(x, y))
 $$ (qeqagain)
 
 Show that $Q$ is an intensity matrix and that {eq}`genfl` holds.
 ```
 
-```{exercise}
-:label: kolmogorov-fwd-3
-
-Prove {prf:ref}`intvsmk` by adapting the arguments in {prf:ref}`jctosg`.
-(This is nontrivial but worth at least trying.)
-
-Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
-```
-
-
-## Solutions
-
-```{solution} kolmogorov-fwd-1
-
-Let $(P_t)$ be a Markov semigroup and let $Q$ be as defined in the statement
-of the exercise.
-
-Fix $t \geq 0$ and $h > 0$.
-
-Combining the semigroup property and linearity with the restriction $P_0 = I$, we get
-
-$$
-    \frac{P_{t+h} - P_t}{h}
-    = \frac{P_t P_h - P_t}{h}
-    = \frac{P_t (P_h - I)}{h}
-$$
-
-Taking $h \downarrow 0$ and using the definition of $Q$ give $P_t' = P_t Q$,
-which is the Kolmogorov forward equation.
-
-For the backward equation we observe that
-
-$$
-    \frac{P_{t+h} - P_t}{h}
-    = \frac{P_h P_t - P_t}{h}
-    = \frac{(P_h - I) P_t}{h}
-$$
-
-also holds.  Taking $h \downarrow 0$ gives the Kolmogorov backward equation.
-```
-
-
 ```{solution} kolmogorov-fwd-2
+:class: dropdown
 
 Let $Q$ be as defined in {eq}`qeqagain`.
 
@@ -585,15 +574,24 @@ For the second, we use the fact that $K$ is a Markov matrix, so that, with $1$
 as a column vector of ones,
 
 $$
-    Q 1
-    = \lambda (K 1 - 1)
-    = \lambda (1 - 1)
-    = 0
+Q 1
+= \lambda (K 1 - 1)
+= \lambda (1 - 1)
+= 0
 $$
 ```
 
+```{exercise}
+:label: kolmogorov-fwd-3
+
+Prove {prf:ref}`intvsmk` by adapting the arguments in {prf:ref}`jctosg`.
+(This is nontrivial but worth at least trying.)
+
+Hint: The constant $m$ in the proof can be set to $\max_x |Q(x, x)|$.
+```
 
 ```{solution} kolmogorov-fwd-3
+:class: dropdown
 
 Suppose that $Q$ is an intensity matrix, fix $t \geq 0$ and set $P_t = e^{tQ}$.
 
@@ -618,12 +616,12 @@ Because $P_t$ has unit row sums and differentiation is linear,
 we can employ the Kolmogorov backward equation to obtain
 
 $$
-    Q 1
-      = Q P_t 1
-      = \left( \frac{d}{d t} P_t \right) 1
-      = \frac{d}{d t} (P_t 1)
-      = \frac{d}{d t} 1
-      = 0
+Q 1
+    = Q P_t 1
+    = \left( \frac{d}{d t} P_t \right) 1
+    = \frac{d}{d t} (P_t 1)
+    = \frac{d}{d t} 1
+    = 0
 $$
 
 Hence $Q$ has zero row sums.
@@ -632,7 +630,7 @@ We can use the definition of the matrix exponential to obtain,
  for any $x, y$ and $t \geq 0$,
 
 $$
-    P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
+P_t(x, y) = \mathbb 1\{x = y\} + t Q(x, y) + o(t)
 $$ (otp)
 
 From this equality and the assumption that $P_t$ is a Markov matrix for all

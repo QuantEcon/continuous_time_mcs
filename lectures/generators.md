@@ -432,58 +432,14 @@ example, Chapter 7 of {cite}`bobrowski2005functional`.
 Prove that {eq}`expdiffer` holds for all $A \in \linop$.
 ```
 
-```{exercise}
-:label: generators-ex-2
-
-In many texts, a $C_0$ semigroup is defined as an evolution semigroup $(U_t)$
-such that
-
-$$
-    U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
-$$ (czsg2)
-
-Our aim is to show that {eq}`czsg2` implies continuity at every point $t$, as
-in the definition we used above.
-
-The [Banach--Steinhaus Theorem](https://en.wikipedia.org/wiki/Uniform_boundedness_principle) can be used to show that, for an evolution semigroup $(U_t)$ satisfying {eq}`czsg2`, there exist finite constants $\omega$ and $M$ such that
-
-$$
-    \| U_t \| \leq e^{t\omega} M
-    \quad \text{for all } \; t \geq 0
-$$ (sgbound)
-
-Using this and {eq}`czsg2`, show that, for any $g \in \BB$, the map $t \mapsto
-U_t g$ is continuous at all $t$.
-```
-
-```{exercise}
-:label: generators-ex-3
-
-Following on from the previous exercise, 
-a UC semigroup is often defined as an evolution semigroup $(U_t)$
-such that 
-
-$$
-    \| U_t - I \| \to 0 \text{ as } t \to 0 
-$$ (czsg3)
-
-Show that {eq}`czsg3` implies norm continuity at every point $t$, as
-in the definition we used above.
-
-In particular, show that, for any $t_n \to t$, we have
-$\| U_{t_n} - U_t \| \to 0$  as $n \to \infty$.
-```
-
-
-## Solutions
-
 ```{solution} ergodicity-ex-1
+:class: dropdown
 
 To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
 
 $$
-    e^{(t+h)A} - e^{tA} - e^{tA} A
-    = e^{tA} (e^{hA} - I - A)
+e^{(t+h)A} - e^{tA} - e^{tA} A
+= e^{tA} (e^{hA} - I - A)
 $$
 
 Since the norm on $\linop$ is submultiplicative, it suffices to show that 
@@ -495,7 +451,32 @@ completing the proof of the first equality in {eq}`expdiffer`.
 The proof of the second equality is similar.
 ```
 
+```{exercise}
+:label: generators-ex-2
+
+In many texts, a $C_0$ semigroup is defined as an evolution semigroup $(U_t)$
+such that
+
+$$
+U_t g \to g \text{ as } t \to 0 \text{ for any } g \in \BB
+$$ (czsg2)
+
+Our aim is to show that {eq}`czsg2` implies continuity at every point $t$, as
+in the definition we used above.
+
+The [Banach--Steinhaus Theorem](https://en.wikipedia.org/wiki/Uniform_boundedness_principle) can be used to show that, for an evolution semigroup $(U_t)$ satisfying {eq}`czsg2`, there exist finite constants $\omega$ and $M$ such that
+
+$$
+\| U_t \| \leq e^{t\omega} M
+\quad \text{for all } \; t \geq 0
+$$ (sgbound)
+
+Using this and {eq}`czsg2`, show that, for any $g \in \BB$, the map $t \mapsto
+U_t g$ is continuous at all $t$.
+```
+
 ```{solution} ergodicity-ex-2
+:class: dropdown
 
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
 $\omega$ and $M$ be as in {eq}`sgbound`.
@@ -507,16 +488,36 @@ On one hand, $U_{t+ h_n} g = U_{h_n} U_t g \to U_t g$ by {eq}`czsg2`.
 On the other hand, from {eq}`sgbound` and the definition of the operator norm,
 
 $$
-    \| U_{t-h_n} g - U_t g\|
-    = \|  U_{t-h_n} ( g - U_{h_n} g) \|
-    \leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
-    \to 0
+\| U_{t-h_n} g - U_t g\|
+= \|  U_{t-h_n} ( g - U_{h_n} g) \|
+\leq e^{(t-h_n)\omega} M \| g - U_{h_n} g\|
+\to 0
 $$
 
 as $n \to \infty$.  This completes the proof.
 ```
 
+
+```{exercise}
+:label: generators-ex-3
+
+Following on from the previous exercise, 
+a UC semigroup is often defined as an evolution semigroup $(U_t)$
+such that 
+
+$$
+\| U_t - I \| \to 0 \text{ as } t \to 0 
+$$ (czsg3)
+
+Show that {eq}`czsg3` implies norm continuity at every point $t$, as
+in the definition we used above.
+
+In particular, show that, for any $t_n \to t$, we have
+$\| U_{t_n} - U_t \| \to 0$  as $n \to \infty$.
+```
+
 ```{solution} ergodicity-ex-3
+:class: dropdown
 
 The solution is similar to that of the previous exercise.
 
@@ -529,9 +530,9 @@ On the other hand, from the submultiplicative property of the operator norm
 and {eq}`sgbound`,
 
 $$
-    \| U_{t-h_n} - U_t \|
-    = \|  U_{t-h_n} ( I - U_{h_n}) \|
-    \leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
+\| U_{t-h_n} - U_t \|
+= \|  U_{t-h_n} ( I - U_{h_n}) \|
+\leq e^{(t-h_n)\omega} M  \| I - U_{h_n} \|
 $$
 
 This converges to 0 as $n \to \infty$, completing our proof.
