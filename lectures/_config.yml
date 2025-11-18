@@ -10,8 +10,8 @@ sphinx:
     html_theme_options:
       header_organisation_url: https://quantecon.org
       header_organisation: QuantEcon
-      repository_url: https://github.com/jstac/continuous_time_mcs
-      # nb_repository_url: https://github.com/QuantEcon/lecture-python.notebooks
+      repository_url: https://github.com/QuantEcon/continuous_time_mcs
+      nb_repository_url: https://github.com/QuantEcon/continuous_time_mcs.notebooks
       twitter: quantecon
       twitter_logo_url: https://assets.quantecon.org/img/qe-twitter-logo.png
       og_logo_url: https://assets.quantecon.org/img/qe-og-logo.png
@@ -19,6 +19,8 @@ sphinx:
       keywords: Python, QuantEcon, Quantitative Economics, Economics, John Stachurski, Schmidt Futures, Markov Chains
       analytics:
         google_analytics_id: G-MVZ2FSB14W
+      launch_buttons:
+        colab_url: https://colab.research.google.com
     bibtex_reference_style: author_year
     mathjax3_config:
       tex:
