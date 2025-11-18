@@ -10,8 +10,8 @@ sphinx:
     html_theme_options:
       header_organisation_url: https://quantecon.org
       header_organisation: QuantEcon
-      repository_url: https://github.com/jstac/continuous_time_mcs
-      # nb_repository_url: https://github.com/QuantEcon/lecture-python.notebooks
+      repository_url: https://github.com/QuantEcon/continuous_time_mcs
+      nb_repository_url: https://github.com/QuantEcon/continuous_time_mcs
       twitter: quantecon
       twitter_logo_url: https://assets.quantecon.org/img/qe-twitter-logo.png
       og_logo_url: https://assets.quantecon.org/img/qe-og-logo.png
