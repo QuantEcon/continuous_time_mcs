@@ -661,7 +661,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5e5dd2ca5508a939a8263988b1cc1a84c9d2ffe1fe54c2233a81e4f53bba8417.png" src="_images/5e5dd2ca5508a939a8263988b1cc1a84c9d2ffe1fe54c2233a81e4f53bba8417.png" />
+<img alt="_images/06bb3bc29d5d4e62f4738f2f8740fafe0c2dfb0308c52002bbb4b32296336cc1.png" src="_images/06bb3bc29d5d4e62f4738f2f8740fafe0c2dfb0308c52002bbb4b32296336cc1.png" />
 </div>
 </div>
 <p>The fit is already very close, which matches with the theory in <code class="xref myst std-numref docutils literal notranslate"></code>.</p>
@@ -679,7 +679,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/276a00bc4b391eb6c7d9c84e42d1abf32bcd6c8dd491217ff90f5dfbc737f5e8.png" src="_images/276a00bc4b391eb6c7d9c84e42d1abf32bcd6c8dd491217ff90f5dfbc737f5e8.png" />
+<img alt="_images/76b6a7d68f0ae252d23e84c1986b3b43f8927a3e9c22c7699ba5d54e2a56d276.png" src="_images/76b6a7d68f0ae252d23e84c1986b3b43f8927a3e9c22c7699ba5d54e2a56d276.png" />
 </div>
 </div>
 </section>
@@ -818,12 +818,13 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
                     <li data-tippy-content="Download Notebook"><a href="/_notebooks/memoryless.ipynb" download><i data-feather="download-cloud"></i></a></li>
+                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <!--
                     # Enable if looking for link to specific document hosted on GitHub
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/memoryless.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/QuantEcon/continuous_time_mcs/blob/main/lectures/memoryless.md" download><i data-feather="github"></i></a></li>
                     -->
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/QuantEcon/continuous_time_mcs" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -852,16 +853,18 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
+                    <option value="https://colab.research.google.com/github/QuantEcon/continuous_time_mcs.notebooks/blob/main/memoryless.ipynb">Colab</option>
+                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
+                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/memoryless.ipynb" data-branch=main>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="https://colab.research.google.com/github/QuantEcon/continuous_time_mcs.notebooks/blob/main/memoryless.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -892,9 +895,9 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "memoryless";
-                const repoURL = "";
-                const urlPath = "";
-                const branch = ""
+                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
+                const urlPath = "tree/continuous_time_mcs.notebooks/memoryless.ipynb";
+                const branch = "main"
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists

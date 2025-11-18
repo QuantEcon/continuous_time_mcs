@@ -677,7 +677,7 @@ distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0bd641c4d05dde7a81708a4a036278d520f25074e3e1b9ac848ca597a70c1565.png" src="_images/0bd641c4d05dde7a81708a4a036278d520f25074e3e1b9ac848ca597a70c1565.png" />
+<img alt="_images/23c4f5de5a649898b3074419d0eb77bf67a5f3dfe580d3fc83501f7e7a726329.png" src="_images/23c4f5de5a649898b3074419d0eb77bf67a5f3dfe580d3fc83501f7e7a726329.png" />
 </div>
 </div>
 </section>
@@ -864,12 +864,13 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
                     <li data-tippy-content="Download Notebook"><a href="/_notebooks/poisson.ipynb" download><i data-feather="download-cloud"></i></a></li>
+                    <li class="settings-button" id="settingsButton"><div data-tippy-content="Launch Notebook"><i data-feather="play-circle"></i></div></li>
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <!--
                     # Enable if looking for link to specific document hosted on GitHub
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs/blob/main/lectures/poisson.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/QuantEcon/continuous_time_mcs/blob/main/lectures/poisson.md" download><i data-feather="github"></i></a></li>
                     -->
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/jstac/continuous_time_mcs" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/QuantEcon/continuous_time_mcs" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
@@ -898,16 +899,18 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
                 <span class="label">Public</span>
                 <select id="launcher-public-input">
                 
+                    <option value="https://colab.research.google.com/github/QuantEcon/continuous_time_mcs.notebooks/blob/main/poisson.ipynb">Colab</option>
+                
                 </select>
                 <i class="fas fa-check-circle"></i>
             </li>
             <li class="launcher-private">
                 <span class="label">Private</span>
-                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
+                <input type="text" id="launcher-private-input" data-repourl="https://github.com/QuantEcon/continuous_time_mcs.notebooks" data-urlpath="tree/continuous_time_mcs.notebooks/poisson.ipynb" data-branch=main>
                 <i class="fas fa-check-circle"></i>
             </li>
             </ul>
-            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <p class="launch"><a href="https://colab.research.google.com/github/QuantEcon/continuous_time_mcs.notebooks/blob/main/poisson.ipynb" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
             <script>
                 // QuantEcon Notebook Launcher
                 const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
@@ -938,9 +941,9 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
                 const launcherPublic = document.getElementById('launcher-public-input');
                 const launcherPrivate = document.getElementById('launcher-private-input');
                 const pageName = "poisson";
-                const repoURL = "";
-                const urlPath = "";
-                const branch = ""
+                const repoURL = "https://github.com/QuantEcon/continuous_time_mcs.notebooks";
+                const urlPath = "tree/continuous_time_mcs.notebooks/poisson.ipynb";
+                const branch = "main"
                 const launchNotebookLink = document.getElementById('advancedLaunchButton');
 
                 // Highlight public server option if previous selection exists
