@@ -41,7 +41,6 @@ sphinx:
           "linopell" : "\\mathcal{L}(\\ell_1)"
     # sphinx-tojupyter
     tojupyter_static_file_path: ["_static"]
-    tojupyter_target_html: true
     tojupyter_urlpath: "https://continuous-time-mcs.quantecon.org/"
     tojupyter_image_urlpath: "https://continuous-time-mcs.quantecon.org/_static/"
     tojupyter_lang_synonyms: ["ipython", "ipython3", "python"]
