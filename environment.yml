@@ -8,11 +8,13 @@ dependencies:
   - pip:
     - jupyter-book==1.0.4post1
     - quantecon-book-theme==0.10.0
-    - sphinx-tojupyter==0.6.0
+    - git+https://github.com/QuantEcon/sphinx-tojupyter.git@refs/pull/62/head
     - sphinx-proof==0.3.0
     - sphinxext-rediraffe==0.2.7
     - sphinx-exercise==1.2.1
     - sphinxcontrib-youtube==1.4.1
     - sphinx-togglebutton==0.3.2
+    - quantecon
+    - numba
 
 
