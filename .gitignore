@@ -1,2 +1,5 @@
 */_build
 */.ipynb_checkpoints/
+
+# macOS
+.DS_Store
