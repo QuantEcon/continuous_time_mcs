@@ -4,14 +4,91 @@ author: Thomas J. Sargent & John Stachurski
 logo: _static/qe-logo-large.png
 description: These lectures provides a short introduction to continuous time Markov chains designed and written by Thomas J. Sargent and John Stachurski.
 
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+
+only_build_toc_files: true
+
+execute:
+  execute_notebooks: cache
+
+bibtex_bibfiles:
+  - references.bib
+
+html:
+  baseurl: https://continuous-time-mcs.quantecon.org/
+
+latex:
+  latex_engine: "xelatex"
+  latex_documents:
+    targetname: book.tex
+
 sphinx:
+  extra_extensions:
+    - sphinx_proof
+    - sphinx_exercise
+    - sphinx_tojupyter
+
   config:
+    # false-positive links
+    linkcheck_ignore: []
+    bibtex_reference_style: author_year
+    suppress_warnings: ["mystnb.unknown_mime_type"]
+    nb_merge_streams: true
+    nb_mime_priority_overrides: [
+       # HTML
+       ['html', 'application/vnd.jupyter.widget-view+json', 10],
+       ['html', 'application/javascript', 20],
+       ['html', 'text/html', 30],
+       ['html', 'text/latex', 40],
+       ['html', 'image/svg+xml', 50],
+       ['html', 'image/png', 60],
+       ['html', 'image/jpeg', 70],
+       ['html', 'text/markdown', 80],
+       ['html', 'text/plain', 90],
+       # Jupyter Notebooks
+       ['jupyter', 'application/vnd.jupyter.widget-view+json', 10],
+       ['jupyter', 'application/javascript', 20],
+       ['jupyter', 'text/html', 30],
+       ['jupyter', 'text/latex', 40],
+       ['jupyter', 'image/svg+xml', 50],
+       ['jupyter', 'image/png', 60],
+       ['jupyter', 'image/jpeg', 70],
+       ['jupyter', 'text/markdown', 80],
+       ['jupyter', 'text/plain', 90],
+       # LaTeX
+       ['latex', 'text/latex', 10],
+       ['latex', 'application/pdf', 20],
+       ['latex', 'image/png', 30],
+       ['latex', 'image/jpeg', 40],
+       ['latex', 'text/markdown', 50],
+       ['latex', 'text/plain', 60],
+       # Link Checker
+       ['linkcheck', 'text/plain', 10],
+     ]
     html_theme: quantecon_book_theme
+    html_static_path: ['_static']
     html_theme_options:
+      authors:
+        - name: Thomas J. Sargent
+          url: http://www.tomsargent.com/
+        - name: John Stachurski
+          url: https://johnstachurski.net/
       header_organisation_url: https://quantecon.org
       header_organisation: QuantEcon
       repository_url: https://github.com/QuantEcon/continuous_time_mcs
       nb_repository_url: https://github.com/QuantEcon/continuous_time_mcs.notebooks
+      path_to_docs: lectures
       twitter: quantecon
       twitter_logo_url: https://assets.quantecon.org/img/qe-twitter-logo.png
       og_logo_url: https://assets.quantecon.org/img/qe-og-logo.png
@@ -21,7 +98,6 @@ sphinx:
         google_analytics_id: G-MVZ2FSB14W
       launch_buttons:
         colab_url: https://colab.research.google.com
-    bibtex_reference_style: author_year
     mathjax3_config:
       tex:
         macros:
@@ -39,6 +115,7 @@ sphinx:
           "lL" : "\\mathcal{L}"
           "linop" : "\\mathcal{L}(\\mathbb{B})"
           "linopell" : "\\mathcal{L}(\\ell_1)"
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     # sphinx-tojupyter
     tojupyter_static_file_path: ["_static"]
     tojupyter_target_html: true
@@ -53,19 +130,3 @@ sphinx:
           name: python3
         file_extension: ".py"
     tojupyter_images_markdown: true
-
-  extra_extensions:
-    - sphinx_proof
-    - sphinx_exercise
-    - sphinx_tojupyter
-
-execute:
-  execute_notebooks: cache
-
-latex:
-  latex_engine: "xelatex"
-  latex_documents:
-    targetname: book.tex
-
-bibtex_bibfiles:
-  - references.bib
