@@ -432,7 +432,7 @@ example, Chapter 7 of {cite}`bobrowski2005functional`.
 Prove that {eq}`expdiffer` holds for all $A \in \linop$.
 ```
 
-```{solution} ergodicity-ex-1
+```{solution} generators-ex-1
 :class: dropdown
 
 To show the first equality, fix $t \in \RR_+$, take $h > 0$ and observe that
@@ -475,7 +475,7 @@ Using this and {eq}`czsg2`, show that, for any $g \in \BB$, the map $t \mapsto
 U_t g$ is continuous at all $t$.
 ```
 
-```{solution} ergodicity-ex-2
+```{solution} generators-ex-2
 :class: dropdown
 
 Let $(U_t)$ be an evolution semigroup satisfying {eq}`czsg2` and let
@@ -516,7 +516,7 @@ In particular, show that, for any $t_n \to t$, we have
 $\| U_{t_n} - U_t \| \to 0$  as $n \to \infty$.
 ```
 
-```{solution} ergodicity-ex-3
+```{solution} generators-ex-3
 :class: dropdown
 
 The solution is similar to that of the previous exercise.
