@@ -116,6 +116,10 @@ sphinx:
           "linop" : "\\mathcal{L}(\\mathbb{B})"
           "linopell" : "\\mathcal{L}(\\ell_1)"
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    # sphinx-proof
+    proof_minimal_theme: true
+    # sphinx-exercise
+    exercise_style: "solution_follow_exercise"
     # sphinx-tojupyter
     tojupyter_static_file_path: ["_static"]
     tojupyter_target_html: true
