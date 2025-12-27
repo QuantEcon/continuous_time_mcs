@@ -11,4 +11,5 @@ chapters:
   - file: generators
   - file: uc_mc_semigroups
   - file: ergodicity
+  - file: status
   - file: zreferences
