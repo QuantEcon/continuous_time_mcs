@@ -1,9 +1,6 @@
 Continuous Time Markov Chains
 =============================
 
-**Authors**: [Thomas J. Sargent](http://www.tomsargent.com/) and [John
-Stachurski](https://johnstachurski.net/)
-
 These lectures provides a short introduction to continuous time Markov chains.
 Mathematical ideas are combined with computer code to build intuition and
 bridge the gap between theory and applications.  There are many solved
