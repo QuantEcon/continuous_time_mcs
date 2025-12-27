@@ -7,9 +7,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Search - Continuous Time Markov Chains</title>
-    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js" integrity="sha384-bq5PNg/ZcfW7KMvFSmhjqCQJ/VFnec+6sZkctn/4ZLeubkn7U58Le4zFFSn3dhUu" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     
         <script>
             MathJax = {
@@ -68,7 +75,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=22b71a9b445b7b2b6a277c0a48ea72bf6e7c90d9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -93,7 +100,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=65b86b9423025043228643fcfb616ce846cb91c1"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -119,6 +126,7 @@
   <script src="_static/searchtools.js"></script>
   <script src="_static/language_data.js"></script>
   <script src="searchindex.js"></script>
+    <link rel="canonical" href="https://continuous-time-mcs.quantecon.org/search.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="#" />
 
@@ -138,7 +146,7 @@
 <!-- Opengraph tags -->
 <meta property="og:title" content="Continuous Time Markov Chains" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="None" />
+<meta property="og:url" content="https://continuous-time-mcs.quantecon.org/search.html" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
 <meta property="og:description" content="These lectures provides a short introduction to continuous time Markov chains designed and written by Thomas J. Sargent and John Stachurski." />
 <meta property="og:site_name" content="Continuous Time Markov Chains" />
@@ -175,7 +183,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/v1/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -195,12 +203,24 @@
 
                         <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="qe-page__header-subheading"></p>
-
                     </div>
-                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
-                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
+                    <!-- Authors section -->
+                        <p class="qe-page__header-authors" font-size="18">
+                            
+                                
+                                    <a href="http://www.tomsargent.com/" target="_blank"><span>Thomas J. Sargent</span></a>
+                                
+                            
+                                
+                                    and <a href="https://johnstachurski.net/" target="_blank"><span>John Stachurski</span></a>
+                                
+                            
+                        </p>
+
+                    <!-- Last modified / Changelog dropdown -->
+
+                    <!-- Changelog dropdown content -->
 
                 </div> <!-- .page__header -->
 
@@ -317,8 +337,13 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="status.html">
+   9. Execution Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   9. Bibliography
+   10. Bibliography
   </a>
  </li>
 </ul>
@@ -359,9 +384,9 @@
                         <li class="download-pdf" id="downloadButton"><i data-feather="file"></i></li>
                     <!--
                     # Enable if looking for link to specific document hosted on GitHub
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/QuantEcon/continuous_time_mcs/blob/main/lectures/" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="None/blob/main/lectures/" download><i data-feather="github"></i></a></li>
                     -->
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/QuantEcon/continuous_time_mcs" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="None" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>

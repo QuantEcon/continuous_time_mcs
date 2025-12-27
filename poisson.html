@@ -9,9 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2. Poisson Processes &#8212; Continuous Time Markov Chains</title>
-    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js" integrity="sha384-bq5PNg/ZcfW7KMvFSmhjqCQJ/VFnec+6sZkctn/4ZLeubkn7U58Le4zFFSn3dhUu" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     
         <script>
             MathJax = {
@@ -70,7 +77,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=22b71a9b445b7b2b6a277c0a48ea72bf6e7c90d9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +102,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=65b86b9423025043228643fcfb616ce846cb91c1"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -120,6 +127,7 @@
     <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'poisson';</script>
+    <link rel="canonical" href="https://continuous-time-mcs.quantecon.org/poisson.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. The Markov Property" href="markov_prop.html" />
@@ -141,7 +149,7 @@
 <!-- Opengraph tags -->
 <meta property="og:title" content="Poisson Processes" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="None" />
+<meta property="og:url" content="https://continuous-time-mcs.quantecon.org/poisson.html" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
 <meta property="og:description" content="These lectures provides a short introduction to continuous time Markov chains designed and written by Thomas J. Sargent and John Stachurski." />
 <meta property="og:site_name" content="Continuous Time Markov Chains" />
@@ -194,7 +202,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/v1/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -214,12 +222,43 @@
 
                         <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="qe-page__header-subheading">Poisson Processes</p>
-
                     </div>
-                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
-                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
+                    <!-- Authors section -->
+                        <p class="qe-page__header-authors" font-size="18">
+                            
+                                
+                                    <a href="http://www.tomsargent.com/" target="_blank"><span>Thomas J. Sargent</span></a>
+                                
+                            
+                                
+                                    and <a href="https://johnstachurski.net/" target="_blank"><span>John Stachurski</span></a>
+                                
+                            
+                        </p>
+
+                    <!-- Last modified / Changelog dropdown -->
+                        <button class="qe-page__header-changed" id="changelog-toggle" aria-expanded="false">
+                            Last changed: Dec 27, 2025
+                            <span class="changelog-icon">▼</span>
+                        </button>
+
+                    <!-- Changelog dropdown content -->
+                    <div class="qe-page__header-changelog" id="changelog-content" aria-hidden="true">
+                        <h4>Changelog (<a href="https://github.com/QuantEcon/continuous_time_mcs/commits/main/lectures/poisson.md">full history</a>)</h4>
+                        <ul class="changelog-list">
+                            
+                            <li class="changelog-entry">
+                                
+                                <a href="https://github.com/QuantEcon/continuous_time_mcs/commit/56da2f2" class="changelog-hash">56da2f2</a>
+                                
+                                <span class="changelog-author">Matt McKay</span>
+                                <span class="changelog-time">6 minutes ago</span>
+                                <span class="changelog-message">Add _config.yml updates for quantecon-book-theme 0.15.1 (#156)</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
 
                 </div> <!-- .page__header -->
 
@@ -246,16 +285,16 @@
 </summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.10.1)
-Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
-Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
-Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
-Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.15.3)
-Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.13.3)
-Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.44.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.7)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2.3.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2025.4.26)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.62.1)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.3.5)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.5)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.16.3)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.14.0)
+Requirement already satisfied: llvmlite&lt;0.46,&gt;=0.45.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.45.1)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2025.11.12)
 Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from sympy-&gt;quantecon) (1.3.0)
 </pre></div>
 </div>
@@ -331,7 +370,7 @@ satisfying  <span class="math notranslate nohighlight">\(J_k \to \infty\)</span>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/06d2b43e6593216106dc8480c376e3e9a800ee57c8ba09e8f35276a9aa041092.png" src="_images/06d2b43e6593216106dc8480c376e3e9a800ee57c8ba09e8f35276a9aa041092.png" />
+<img alt="_images/9040db4a61bef4cf9226edbf4bf5d4618ff8b6bf56da169a8f77023fb2f18535.png" src="_images/9040db4a61bef4cf9226edbf4bf5d4618ff8b6bf56da169a8f77023fb2f18535.png" />
 </div>
 </div>
 <p>An alternative but equivalent definition is</p>
@@ -424,7 +463,7 @@ at each new arrival.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/1c8714ff6d48b4852c60c6c124cca5652b8ef0665e06013cc5e064b10e2821b9.png" src="_images/1c8714ff6d48b4852c60c6c124cca5652b8ef0665e06013cc5e064b10e2821b9.png" />
+<img alt="_images/7496d55727f4031ac7df1bfb9ea438cca4e2b922c2d28107c06933b25c2beaf1.png" src="_images/7496d55727f4031ac7df1bfb9ea438cca4e2b922c2d28107c06933b25c2beaf1.png" />
 </div>
 </div>
 </section>
@@ -505,7 +544,7 @@ subsets of <span class="math notranslate nohighlight">\((V_i)\)</span>.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/254bc07967140cb89cb9e317ab400def5b60a3ab5c07a01df889d0c98e9427c2.png" src="_images/254bc07967140cb89cb9e317ab400def5b60a3ab5c07a01df889d0c98e9427c2.png" />
+<img alt="_images/e521f7f3ae4f4ffa844c59fff463617a3525b2cba8b6afa78edaaa0a9409df03.png" src="_images/e521f7f3ae4f4ffa844c59fff463617a3525b2cba8b6afa78edaaa0a9409df03.png" />
 </div>
 </div>
 <p>We expect from the discussion above that <span class="math notranslate nohighlight">\((\hat N_t)\)</span> approximates a Poisson process.</p>
@@ -626,7 +665,7 @@ distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)<
 </div>
 <div class="solution dropdown admonition" id="poisson-solution-3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#poisson-ex-1"> Exercise 2.1</a></p>
+<p class="admonition-title">Solution</p>
 <section id="solution-content">
 <p>Here is one solution.</p>
 <p>The figure shows that the fit is already good with a modest sample size.</p>
@@ -677,7 +716,7 @@ distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23c4f5de5a649898b3074419d0eb77bf67a5f3dfe580d3fc83501f7e7a726329.png" src="_images/23c4f5de5a649898b3074419d0eb77bf67a5f3dfe580d3fc83501f7e7a726329.png" />
+<img alt="_images/37af62e9733835016ac16e0b9f88690ddcd7b6dc76d444749e2466b53a0cf645.png" src="_images/37af62e9733835016ac16e0b9f88690ddcd7b6dc76d444749e2466b53a0cf645.png" />
 </div>
 </div>
 </section>
@@ -693,7 +732,7 @@ distribution with rate <span class="math notranslate nohighlight">\(T \lambda\)<
 </div>
 <div class="solution dropdown admonition" id="poisson-solution-5">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#poisson-ex-2"> Exercise 2.2</a></p>
+<p class="admonition-title">Solution</p>
 <section id="solution-content">
 <p>Here is one solution.  It shows that the approximation is good when <span class="math notranslate nohighlight">\(n\)</span> is
 large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.</p>
@@ -725,7 +764,7 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cfd9c09c74d9c54c832fb34d517c8a6758344b9fc5235fa738de644c4053d49d.png" src="_images/cfd9c09c74d9c54c832fb34d517c8a6758344b9fc5235fa738de644c4053d49d.png" />
+<img alt="_images/865817423686b174de2e515e705de205de2203392a9eea01d99e3215384cc001.png" src="_images/865817423686b174de2e515e705de205de2203392a9eea01d99e3215384cc001.png" />
 </div>
 </div>
 </section>
@@ -826,8 +865,13 @@ large and <span class="math notranslate nohighlight">\(\theta\)</span> is small.
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="status.html">
+   9. Execution Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   9. Bibliography
+   10. Bibliography
   </a>
  </li>
 </ul>

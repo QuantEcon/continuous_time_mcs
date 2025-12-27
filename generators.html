@@ -9,9 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6. Semigroups and Generators &#8212; Continuous Time Markov Chains</title>
-    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js" integrity="sha384-bq5PNg/ZcfW7KMvFSmhjqCQJ/VFnec+6sZkctn/4ZLeubkn7U58Le4zFFSn3dhUu" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     
         <script>
             MathJax = {
@@ -70,7 +77,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=22b71a9b445b7b2b6a277c0a48ea72bf6e7c90d9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +102,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=65b86b9423025043228643fcfb616ce846cb91c1"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -120,6 +127,7 @@
     <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generators';</script>
+    <link rel="canonical" href="https://continuous-time-mcs.quantecon.org/generators.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="7. UC Markov Semigroups" href="uc_mc_semigroups.html" />
@@ -141,7 +149,7 @@
 <!-- Opengraph tags -->
 <meta property="og:title" content="Semigroups and Generators" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="None" />
+<meta property="og:url" content="https://continuous-time-mcs.quantecon.org/generators.html" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
 <meta property="og:description" content="These lectures provides a short introduction to continuous time Markov chains designed and written by Thomas J. Sargent and John Stachurski." />
 <meta property="og:site_name" content="Continuous Time Markov Chains" />
@@ -197,7 +205,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/v1/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -217,12 +225,43 @@
 
                         <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="qe-page__header-subheading">Semigroups and Generators</p>
-
                     </div>
-                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
-                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
+                    <!-- Authors section -->
+                        <p class="qe-page__header-authors" font-size="18">
+                            
+                                
+                                    <a href="http://www.tomsargent.com/" target="_blank"><span>Thomas J. Sargent</span></a>
+                                
+                            
+                                
+                                    and <a href="https://johnstachurski.net/" target="_blank"><span>John Stachurski</span></a>
+                                
+                            
+                        </p>
+
+                    <!-- Last modified / Changelog dropdown -->
+                        <button class="qe-page__header-changed" id="changelog-toggle" aria-expanded="false">
+                            Last changed: Dec 27, 2025
+                            <span class="changelog-icon">▼</span>
+                        </button>
+
+                    <!-- Changelog dropdown content -->
+                    <div class="qe-page__header-changelog" id="changelog-content" aria-hidden="true">
+                        <h4>Changelog (<a href="https://github.com/QuantEcon/continuous_time_mcs/commits/main/lectures/generators.md">full history</a>)</h4>
+                        <ul class="changelog-list">
+                            
+                            <li class="changelog-entry">
+                                
+                                <a href="https://github.com/QuantEcon/continuous_time_mcs/commit/56da2f2" class="changelog-hash">56da2f2</a>
+                                
+                                <span class="changelog-author">Matt McKay</span>
+                                <span class="changelog-time">6 minutes ago</span>
+                                <span class="changelog-message">Add _config.yml updates for quantecon-book-theme 0.15.1 (#156)</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
 
                 </div> <!-- .page__header -->
 
@@ -545,7 +584,7 @@ example, Chapter 7 of <span id="id8">[<a class="reference internal" href="zrefer
 </div>
 <div class="solution dropdown admonition" id="generators-solution-6">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-1"> Exercise 8.1</a></p>
+<p class="admonition-title">Solution</p>
 <section id="solution-content">
 <p>To show the first equality, fix <span class="math notranslate nohighlight">\(t \in \RR_+\)</span>, take <span class="math notranslate nohighlight">\(h &gt; 0\)</span> and observe that</p>
 <div class="math notranslate nohighlight">
@@ -584,7 +623,7 @@ U_t g\)</span> is continuous at all <span class="math notranslate nohighlight">\
 </div>
 <div class="solution dropdown admonition" id="generators-solution-8">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-2"> Exercise 8.2</a></p>
+<p class="admonition-title">Solution</p>
 <section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg2">(6.7)</a> and let
 <span class="math notranslate nohighlight">\(\omega\)</span> and <span class="math notranslate nohighlight">\(M\)</span> be as in <a class="reference internal" href="#equation-sgbound">(6.8)</a>.</p>
@@ -620,7 +659,7 @@ in the definition we used above.</p>
 </div>
 <div class="solution dropdown admonition" id="generators-solution-10">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="ergodicity.html#ergodicity-ex-3"> Exercise 8.3</a></p>
+<p class="admonition-title">Solution</p>
 <section id="solution-content">
 <p>The solution is similar to that of the previous exercise.</p>
 <p>Let <span class="math notranslate nohighlight">\((U_t)\)</span> be an evolution semigroup satisfying <a class="reference internal" href="#equation-czsg3">(6.9)</a>,
@@ -761,8 +800,13 @@ have, by definition of the operator norm,
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="status.html">
+   9. Execution Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   9. Bibliography
+   10. Bibliography
   </a>
  </li>
 </ul>

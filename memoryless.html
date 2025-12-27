@@ -9,9 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1. Memoryless Distributions &#8212; Continuous Time Markov Chains</title>
-    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js" integrity="sha384-bq5PNg/ZcfW7KMvFSmhjqCQJ/VFnec+6sZkctn/4ZLeubkn7U58Le4zFFSn3dhUu" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     
         <script>
             MathJax = {
@@ -70,7 +77,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=4890ae55f4d5f196460e99a17085458eb1f4c2f0" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/quantecon-book-theme.css?digest=22b71a9b445b7b2b6a277c0a48ea72bf6e7c90d9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
@@ -95,7 +102,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/scripts/quantecon-book-theme.js?digest=06ebc90d5139b434c2742937a4ef3b185cb93e2f"></script>
+    <script src="_static/scripts/quantecon-book-theme.js?digest=65b86b9423025043228643fcfb616ce846cb91c1"></script>
     <script src="_static/scripts/jquery.js?v=5d32c60e"></script>
     <script src="_static/scripts/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -120,6 +127,7 @@
     <script>window.MathJax = {"tex": {"macros": {"Exp": "\\operatorname{Exp}", "Binomial": "\\operatorname{Binomial}", "Poisson": "\\operatorname{Poisson}", "BB": "\\mathbb{B}", "EE": "\\mathbb{E}", "PP": "\\mathbb{P}", "RR": "\\mathbb{R}", "NN": "\\mathbb{N}", "ZZ": "\\mathbb{Z}", "dD": "\\mathcal{D}", "fF": "\\mathcal{F}", "lL": "\\mathcal{L}", "linop": "\\mathcal{L}(\\mathbb{B})", "linopell": "\\mathcal{L}(\\ell_1)"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'memoryless';</script>
+    <link rel="canonical" href="https://continuous-time-mcs.quantecon.org/memoryless.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Poisson Processes" href="poisson.html" />
@@ -141,7 +149,7 @@
 <!-- Opengraph tags -->
 <meta property="og:title" content="Memoryless Distributions" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="None" />
+<meta property="og:url" content="https://continuous-time-mcs.quantecon.org/memoryless.html" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
 <meta property="og:description" content="These lectures provides a short introduction to continuous time Markov chains designed and written by Thomas J. Sargent and John Stachurski." />
 <meta property="og:site_name" content="Continuous Time Markov Chains" />
@@ -195,7 +203,7 @@
                                 
                             </p>
 
-                            <p class="powered">Powered by <a href="https://jupyterbook.org/en/stable/">Jupyter Book</a></p>
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/v1/">Jupyter Book</a></p>
 
                         </nav>
 
@@ -215,12 +223,43 @@
 
                         <p class="qe-page__header-heading"><a href="intro.html">Continuous Time Markov Chains</a></p>
 
-                        <p class="qe-page__header-subheading">Memoryless Distributions</p>
-
                     </div>
-                    <!-- length 2, since its a string and empty dict has length 2 - {} -->
-                        <p class="qe-page__header-authors" font-size="18">Thomas J. Sargent & John Stachurski</p>
 
+                    <!-- Authors section -->
+                        <p class="qe-page__header-authors" font-size="18">
+                            
+                                
+                                    <a href="http://www.tomsargent.com/" target="_blank"><span>Thomas J. Sargent</span></a>
+                                
+                            
+                                
+                                    and <a href="https://johnstachurski.net/" target="_blank"><span>John Stachurski</span></a>
+                                
+                            
+                        </p>
+
+                    <!-- Last modified / Changelog dropdown -->
+                        <button class="qe-page__header-changed" id="changelog-toggle" aria-expanded="false">
+                            Last changed: Dec 27, 2025
+                            <span class="changelog-icon">▼</span>
+                        </button>
+
+                    <!-- Changelog dropdown content -->
+                    <div class="qe-page__header-changelog" id="changelog-content" aria-hidden="true">
+                        <h4>Changelog (<a href="https://github.com/QuantEcon/continuous_time_mcs/commits/main/lectures/memoryless.md">full history</a>)</h4>
+                        <ul class="changelog-list">
+                            
+                            <li class="changelog-entry">
+                                
+                                <a href="https://github.com/QuantEcon/continuous_time_mcs/commit/56da2f2" class="changelog-hash">56da2f2</a>
+                                
+                                <span class="changelog-author">Matt McKay</span>
+                                <span class="changelog-time">6 minutes ago</span>
+                                <span class="changelog-message">Add _config.yml updates for quantecon-book-theme 0.15.1 (#156)</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
 
                 </div> <!-- .page__header -->
 
@@ -247,16 +286,16 @@
 </summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: quantecon in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (0.10.1)
-Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.61.0)
-Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.1.3)
-Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.3)
-Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.15.3)
-Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.13.3)
-Requirement already satisfied: llvmlite&lt;0.45,&gt;=0.44.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.44.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.7)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2.3.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2025.4.26)
+Requirement already satisfied: numba&gt;=0.49.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (0.62.1)
+Requirement already satisfied: numpy&gt;=1.17.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.3.5)
+Requirement already satisfied: requests in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (2.32.5)
+Requirement already satisfied: scipy&gt;=1.5.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.16.3)
+Requirement already satisfied: sympy in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from quantecon) (1.14.0)
+Requirement already satisfied: llvmlite&lt;0.46,&gt;=0.45.0dev0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from numba&gt;=0.49.0-&gt;quantecon) (0.45.1)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from requests-&gt;quantecon) (2025.11.12)
 Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /home/runner/miniconda3/envs/quantecon/lib/python3.13/site-packages (from sympy-&gt;quantecon) (1.3.0)
 </pre></div>
 </div>
@@ -551,7 +590,7 @@ parameters respectively.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/87342c76a041b9224adef9df723e6577f29c4acea85ec22681733aa1479c1312.png" src="_images/87342c76a041b9224adef9df723e6577f29c4acea85ec22681733aa1479c1312.png" />
+<img alt="_images/60bfdd6ec6a67ed73e1425fae3ef03fd81074f08f4b889ab4490f0cd0f173bde.png" src="_images/60bfdd6ec6a67ed73e1425fae3ef03fd81074f08f4b889ab4490f0cd0f173bde.png" />
 </div>
 </div>
 <p>The CDF of the Erlang distribution is</p>
@@ -592,7 +631,7 @@ draw without changing its distribution.</p>
 </div>
 <div class="solution dropdown admonition" id="memoryless-solution-3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#memoryless-ex-1"> Exercise 1.1</a></p>
+<p class="admonition-title">Solution</p>
 <section id="solution-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be constructed as in the statement of the exercise and fix <span class="math notranslate nohighlight">\(t &gt; 0\)</span>.</p>
 <p>Notice that <span class="math notranslate nohighlight">\(X &gt; s + t\)</span> if and only if <span class="math notranslate nohighlight">\(Y &gt; s\)</span> and <span class="math notranslate nohighlight">\(Z &gt; t\)</span>.</p>
@@ -627,7 +666,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 <div class="solution dropdown admonition" id="memoryless-solution-5">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#memoryless-ex-2"> Exercise 1.2</a></p>
+<p class="admonition-title">Solution</p>
 <section id="solution-content">
 <p>Here’s one solution, starting with 1,000 draws.</p>
 <div class="cell docutils container">
@@ -661,7 +700,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06bb3bc29d5d4e62f4738f2f8740fafe0c2dfb0308c52002bbb4b32296336cc1.png" src="_images/06bb3bc29d5d4e62f4738f2f8740fafe0c2dfb0308c52002bbb4b32296336cc1.png" />
+<img alt="_images/4b0c59428bbbef082ce15b88fc10609f12648a483ee0f0d6b996783325a89a0c.png" src="_images/4b0c59428bbbef082ce15b88fc10609f12648a483ee0f0d6b996783325a89a0c.png" />
 </div>
 </div>
 <p>The fit is already very close, which matches with the theory in <code class="xref myst std-numref docutils literal notranslate"></code>.</p>
@@ -679,7 +718,7 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/76b6a7d68f0ae252d23e84c1986b3b43f8927a3e9c22c7699ba5d54e2a56d276.png" src="_images/76b6a7d68f0ae252d23e84c1986b3b43f8927a3e9c22c7699ba5d54e2a56d276.png" />
+<img alt="_images/26a0a15b509171d0465107aae31d73a8bbcc6d98c4392e66440ce29885448328.png" src="_images/26a0a15b509171d0465107aae31d73a8bbcc6d98c4392e66440ce29885448328.png" />
 </div>
 </div>
 </section>
@@ -780,8 +819,13 @@ and compare to <span class="math notranslate nohighlight">\(t \mapsto e^{-\lambd
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="status.html">
+   9. Execution Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="zreferences.html">
-   9. Bibliography
+   10. Bibliography
   </a>
  </li>
 </ul>
