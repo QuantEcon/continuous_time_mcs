@@ -1,4 +1,4 @@
-name: Link Checker [Anaconda, Linux]
+name: Link Checker
 on:
   schedule:
     # UTC 23:00 is early morning in Australia (9am)
@@ -11,19 +11,41 @@ jobs:
     permissions:
       issues: write # required for peter-evans/create-issue-from-file
     steps:
-      # Checkout the live site (html)
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          ref: gh-pages
+      # This repo deploys GitHub Pages via the artifact workflow (OIDC), so
+      # there is no gh-pages branch to check out — mirror the live site instead.
+      - name: Mirror published site
+        id: mirror
+        run: |
+          wget --quiet --recursive --no-parent --no-host-directories \
+               --accept html https://continuous-time-mcs.quantecon.org/ || true
+          count=$(find . -name '*.html' | wc -l | tr -d ' ')
+          echo "Mirrored $count HTML file(s) from https://continuous-time-mcs.quantecon.org/"
+          if [ "$count" -eq 0 ]; then
+            # Mirror failed (site down or wget broke). Don't run lychee against
+            # an empty mirror and report green — surface the failure instead.
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            mkdir -p lychee
+            {
+              echo "## Link Checker — mirror failed"
+              echo
+              echo "\`wget\` mirrored **0 HTML files** from https://continuous-time-mcs.quantecon.org/, so the link check did not run."
+              echo "The live site may be down, or the mirror step may be broken — please investigate."
+            } > lychee/out.md
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Link Checker
         id: lychee
+        if: steps.mirror.outputs.ok == 'true'
         uses: lycheeverse/lychee-action@v2
         with:
           fail: false
-          args: --accept 200,403,503 *.html
+          args: --accept 403,503 '**/*.html'
+
+      # Open an issue if the mirror failed, or if lychee found broken links.
       - name: Create Issue From File
-        if: steps.lychee.outputs.exit_code != 0
+        if: steps.mirror.outputs.ok != 'true' || steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@v6
         with:
           title: Link Checker Report
