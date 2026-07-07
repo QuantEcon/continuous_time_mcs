@@ -51,10 +51,13 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           fail: false
+          # Check only the top-level lecture pages (as the old checkout did) —
+          # not theme partials under _static/ (e.g. webpack-macros.html holds
+          # raw Jinja `{{ pathto(...) }}` that isn't a real link).
           # 200 must stay in --accept or every working link is flagged as an
           # error. --root-dir resolves root-relative links (e.g.
           # /_notebooks/*.ipynb, /_pdf/book.pdf) against the extracted site root.
-          args: --accept 200,403,503 --root-dir ${{ github.workspace }}/_site '_site/**/*.html'
+          args: --accept 200,403,503 --root-dir ${{ github.workspace }}/_site '_site/*.html'
 
       # Open an issue if the release asset was missing, or lychee found broken links.
       - name: Create Issue From File
