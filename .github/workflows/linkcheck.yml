@@ -29,7 +29,14 @@ jobs:
             --jq '.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url' 2>/dev/null | head -1 || true)
           mkdir -p _site
           if [ -n "$asset_url" ]; then
-            curl -sSL "$asset_url" | tar -xz -C _site || true
+            # `curl -f` fails on HTTP errors; an `if !` guard catches a failed
+            # or partial download/extract and discards the incomplete tree, so
+            # lychee never runs against a half-extracted site (which would
+            # reintroduce "file not found" false positives).
+            if ! curl -fsSL "$asset_url" | tar -xz -C _site; then
+              echo "::warning::could not download/extract $asset_url — treating as no usable asset"
+              rm -rf _site && mkdir -p _site
+            fi
           fi
           count=$(find _site -name '*.html' | wc -l | tr -d ' ')
           echo "Extracted $count HTML file(s) from the latest release asset"
