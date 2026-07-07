@@ -9,27 +9,37 @@ jobs:
     name: Link Checking
     runs-on: "ubuntu-latest"
     permissions:
-      issues: write # required for peter-evans/create-issue-from-file
+      contents: read  # read the latest release asset
+      issues: write   # required for peter-evans/create-issue-from-file
     steps:
-      # This repo deploys GitHub Pages via the artifact workflow (OIDC), so
-      # there is no gh-pages branch to check out — mirror the live site instead.
-      - name: Mirror published site
-        id: mirror
+      # This repo deploys GitHub Pages via the artifact workflow (no gh-pages
+      # branch). Check links against the published HTML release asset — a
+      # permanent tarball of the full site (HTML plus _static/_images/_pdf/
+      # _notebooks) — so lychee resolves local asset and root-relative links
+      # without depending on the live site being reachable.
+      - name: Download and extract latest release HTML
+        id: fetch
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          wget --quiet --recursive --no-parent --no-host-directories \
-               --accept html https://continuous-time-mcs.quantecon.org/ || true
-          count=$(find . -name '*.html' | wc -l | tr -d ' ')
-          echo "Mirrored $count HTML file(s) from https://continuous-time-mcs.quantecon.org/"
+          asset_url=$(gh api repos/${{ github.repository }}/releases/latest \
+            --jq '.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url' | head -1)
+          mkdir -p _site
+          if [ -n "$asset_url" ]; then
+            curl -sSL "$asset_url" | tar -xz -C _site || true
+          fi
+          count=$(find _site -name '*.html' | wc -l | tr -d ' ')
+          echo "Extracted $count HTML file(s) from the latest release asset"
           if [ "$count" -eq 0 ]; then
-            # Mirror failed (site down or wget broke). Don't run lychee against
-            # an empty mirror and report green — surface the failure instead.
+            # No usable release asset — don't run lychee against an empty tree
+            # and report green; surface the failure instead.
             echo "ok=false" >> "$GITHUB_OUTPUT"
             mkdir -p lychee
             {
-              echo "## Link Checker — mirror failed"
+              echo "## Link Checker — release asset missing"
               echo
-              echo "\`wget\` mirrored **0 HTML files** from https://continuous-time-mcs.quantecon.org/, so the link check did not run."
-              echo "The live site may be down, or the mirror step may be broken — please investigate."
+              echo "Could not download or extract an HTML \`.tar.gz\` from the latest release, so the link check did not run."
+              echo "Check that the most recent \`publish-*\` release has the \`continuous-time-mcs-html-*.tar.gz\` asset attached."
             } > lychee/out.md
           else
             echo "ok=true" >> "$GITHUB_OUTPUT"
@@ -37,15 +47,18 @@ jobs:
 
       - name: Link Checker
         id: lychee
-        if: steps.mirror.outputs.ok == 'true'
+        if: steps.fetch.outputs.ok == 'true'
         uses: lycheeverse/lychee-action@v2
         with:
           fail: false
-          args: --accept 403,503 '**/*.html'
+          # 200 must stay in --accept or every working link is flagged as an
+          # error. --root-dir resolves root-relative links (e.g.
+          # /_notebooks/*.ipynb, /_pdf/book.pdf) against the extracted site root.
+          args: --accept 200,403,503 --root-dir ${{ github.workspace }}/_site '_site/**/*.html'
 
-      # Open an issue if the mirror failed, or if lychee found broken links.
+      # Open an issue if the release asset was missing, or lychee found broken links.
       - name: Create Issue From File
-        if: steps.mirror.outputs.ok != 'true' || steps.lychee.outputs.exit_code != 0
+        if: steps.fetch.outputs.ok != 'true' || steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@v6
         with:
           title: Link Checker Report
