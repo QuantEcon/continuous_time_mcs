@@ -1,4 +1,4 @@
-name: Build & Publish to GH-PAGES
+name: Build & Publish to GH Pages
 on:
   push:
     tags:

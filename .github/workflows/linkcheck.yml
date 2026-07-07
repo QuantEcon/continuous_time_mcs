@@ -1,4 +1,4 @@
-name: Link Checker [Anaconda, Linux]
+name: Link Checker
 on:
   schedule:
     # UTC 23:00 is early morning in Australia (9am)
