@@ -22,8 +22,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # `|| true` + 2>/dev/null: a transient gh api error (rate-limit/auth)
+          # must not abort the step under `set -eo pipefail` — fall through to
+          # the empty-input guard below so it reports "release asset missing".
           asset_url=$(gh api repos/${{ github.repository }}/releases/latest \
-            --jq '.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url' | head -1)
+            --jq '.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url' 2>/dev/null | head -1 || true)
           mkdir -p _site
           if [ -n "$asset_url" ]; then
             curl -sSL "$asset_url" | tar -xz -C _site || true
