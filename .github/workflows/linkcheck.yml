@@ -1,4 +1,4 @@
-name: Link Checker [Anaconda, Linux]
+name: Link Checker
 on:
   schedule:
     # UTC 23:00 is early morning in Australia (9am)
@@ -42,7 +42,7 @@ jobs:
             exit 1
           fi
       - name: AI-Powered Link Checker
-        uses: QuantEcon/action-link-checker@main
+        uses: QuantEcon/action-link-checker@v1.0.0
         with:
           html-path: '_site'
           fail-on-broken: 'false'
