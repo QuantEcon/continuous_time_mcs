@@ -6,74 +6,46 @@ on:
   workflow_dispatch:
 jobs:
   link-checking:
-    name: Link Checking
+    name: QuantEcon AI link checking
     runs-on: "ubuntu-latest"
     permissions:
-      contents: read  # read the latest release asset
-      issues: write   # required for peter-evans/create-issue-from-file
+      contents: read  # read latest release assets via gh api
+      issues: write   # required for QuantEcon link-checker
     steps:
       # This repo deploys GitHub Pages via the artifact workflow (no gh-pages
-      # branch). Check links against the published HTML release asset — a
-      # permanent tarball of the full site (HTML plus _static/_images/_pdf/
-      # _notebooks) — so lychee resolves local asset and root-relative links
-      # without depending on the live site being reachable.
-      - name: Download and extract latest release HTML
-        id: fetch
+      # branch), so check links against the published HTML release asset — a
+      # permanent tarball of the full site, not subject to artifact expiry.
+      - name: Get latest release asset URL
+        id: release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # `|| true` + 2>/dev/null: a transient gh api error (rate-limit/auth)
-          # must not abort the step under `set -eo pipefail` — fall through to
-          # the empty-input guard below so it reports "release asset missing".
-          asset_url=$(gh api repos/${{ github.repository }}/releases/latest \
-            --jq '.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url' 2>/dev/null | head -1 || true)
-          mkdir -p _site
-          if [ -n "$asset_url" ]; then
-            # `curl -f` fails on HTTP errors; an `if !` guard catches a failed
-            # or partial download/extract and discards the incomplete tree, so
-            # lychee never runs against a half-extracted site (which would
-            # reintroduce "file not found" false positives).
-            if ! curl -fsSL "$asset_url" | tar -xz -C _site; then
-              echo "::warning::could not download/extract $asset_url — treating as no usable asset"
-              rm -rf _site && mkdir -p _site
-            fi
+          set -euo pipefail
+          ASSET_URL=$(gh api repos/${{ github.repository }}/releases/latest \
+            --jq '[.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url] | first // ""')
+          if [ -z "$ASSET_URL" ]; then
+            echo "::error::No .tar.gz asset found on the latest release"
+            exit 1
           fi
+          echo "asset-url=$ASSET_URL" >> "$GITHUB_OUTPUT"
+      - name: Download and extract release HTML
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          curl -fsSL "${{ steps.release.outputs.asset-url }}" | tar -xzf - -C _site
+          # Guard against an empty or partial extract: with no HTML to scan the
+          # checker reports a clean run instead of surfacing the failure.
           count=$(find _site -name '*.html' | wc -l | tr -d ' ')
           echo "Extracted $count HTML file(s) from the latest release asset"
           if [ "$count" -eq 0 ]; then
-            # No usable release asset — don't run lychee against an empty tree
-            # and report green; surface the failure instead.
-            echo "ok=false" >> "$GITHUB_OUTPUT"
-            mkdir -p lychee
-            {
-              echo "## Link Checker — release asset missing"
-              echo
-              echo "Could not download or extract an HTML \`.tar.gz\` from the latest release, so the link check did not run."
-              echo "Check that the most recent \`publish-*\` release has the \`continuous-time-mcs-html-*.tar.gz\` asset attached."
-            } > lychee/out.md
-          else
-            echo "ok=true" >> "$GITHUB_OUTPUT"
+            echo "::error::No HTML files extracted from the release asset"
+            exit 1
           fi
-
-      - name: Link Checker
-        id: lychee
-        if: steps.fetch.outputs.ok == 'true'
-        uses: lycheeverse/lychee-action@v2
+      - name: AI-Powered Link Checker
+        uses: QuantEcon/action-link-checker@v1.0.0
         with:
-          fail: false
-          # Check only the top-level lecture pages (as the old checkout did) —
-          # not theme partials under _static/ (e.g. webpack-macros.html holds
-          # raw Jinja `{{ pathto(...) }}` that isn't a real link).
-          # 200 must stay in --accept or every working link is flagged as an
-          # error. --root-dir resolves root-relative links (e.g.
-          # /_notebooks/*.ipynb, /_pdf/book.pdf) against the extracted site root.
-          args: --accept 200,403,503 --root-dir ${{ github.workspace }}/_site '_site/*.html'
-
-      # Open an issue if the release asset was missing, or lychee found broken links.
-      - name: Create Issue From File
-        if: steps.fetch.outputs.ok != 'true' || steps.lychee.outputs.exit_code != 0
-        uses: peter-evans/create-issue-from-file@v6
-        with:
-          title: Link Checker Report
-          content-filepath: ./lychee/out.md
-          labels: report, automated issue, linkchecker
+          html-path: '_site'
+          fail-on-broken: 'false'
+          silent-codes: '403,503'
+          ai-suggestions: 'true'
+          create-issue: 'true'
