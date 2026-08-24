@@ -42,7 +42,7 @@ jobs:
             exit 1
           fi
       - name: AI-Powered Link Checker
-        uses: QuantEcon/action-link-checker@v1.0.0
+        uses: QuantEcon/action-link-checker@v1.1.0
         with:
           html-path: '_site'
           fail-on-broken: 'false'
